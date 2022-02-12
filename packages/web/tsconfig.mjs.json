@@ -1,0 +1,10 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "target": "ES2021",
+    "outDir": "./dist/mjs"
+  },
+  "references": [
+    { "path": "../core/tsconfig.mjs.json" }
+  ]
+}
