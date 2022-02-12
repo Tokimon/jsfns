@@ -1,0 +1,36 @@
+{
+  "name": "@js-fns/core",
+  "version": "1.0.0",
+  "description": "Collection of convenience utility functions that aims to make it a little easier to work with JS",
+  "author": "Toke Voltelen",
+  "license": "MIT",
+  "keywords": [
+    "javascript",
+    "helpers",
+    "snippets",
+    "utility",
+    "tool"
+  ],
+  "main": "./index.cjs",
+  "module": "./index.mjs",
+  "types": "./index.d.ts",
+  "typings": "./index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "git+https://Tokimon@github.com/Tokimon/js-fns.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Tokimon/js-fns/issues"
+  },
+  "homepage": "https://github.com/Tokimon/js-fns#readme",
+  "scripts": {
+    "build": "tsc -b",
+    "build:mjs": "tsc -b tsconfig.mjs.json",
+    "build:cjs": "tsc -b tsconfig.cjs.json",
+    "type-check": "tsc -p tsconfig.json --noEmit",
+    "test": "jest"
+  },
+  "directories": {
+    "test": "tests"
+  }
+}
