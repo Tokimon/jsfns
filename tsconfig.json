@@ -1,0 +1,27 @@
+{
+  "compilerOptions": {
+    "lib": ["dom", "es2021"],
+    "moduleResolution": "Node",
+    "module": "ESNext",
+    "target": "es6",
+    "baseUrl": ".",
+    "paths": {
+      "~/*": ["packages/core/src/*", "packages/web/src/*"],
+      "@js-fns/core/*": ["packages/core/src/*"]
+    },
+    "declaration": true,
+    "noImplicitAny": true,
+    "sourceMap": false,
+    "allowJs": false,
+    "checkJs": false,
+    "strictNullChecks": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "esModuleInterop": true,
+    "composite": true,
+  },
+
+  "exclude": [
+    "**/node_modules/**"
+  ]
+}
