@@ -7,16 +7,33 @@
   "scripts": {
     "prepublishOnly": "npm run build",
     "postpublish": "npm run clean",
-    "test": "jest",
-    "test:coverage": "jest --collectCoverage",
-    "type-check": "tsc -p tsconfig.json --noEmit",
-    "build": "./bin/build.sh",
-    "clean": "./bin/clean.sh",
-    "missing": "./bin/missing.sh",
+
+    "test": "npm test --workspaces",
+    "test:coverage": "npm run test:coverage --workspaces",
+    
+    "type-check": "npm run check-types --workspaces",
+    "type-check:core": "npm run type-check -w @js-fns/core",
+    "type-check:web": "npm run type-check -w @js-fns/web",
+    
+    "build": "npm run build --workspaces",
+    "build:core": "npm run build -w @js-fns/core",
+    "build:web": "npm run build -w @js-fns/web",
+
+    "clean": "npm run clean --workspaces",
+    "clean:core": "npm run clean -w @js-fns/core",
+    "clean:web": "npm run clean -w @js-fns/web",
+    
+    "missing": "npm run missing --workspaces",
+    "missing:core": "npm run missing -w @js-fns/core",
+    "missing:web": "npm run missing -w @js-fns/web",
+    
+    "lint": "npm run lint --workspaces",
+    "lint:core": "npm run lint -w @js-fns/core",
+    "lint:web": "npm run lint -w @js-fns/web",
+
     "coveralls": "cat ./coverage/lcov.info | node node_modules/.bin/coveralls",
     "coveralls:win": "type ./coverage/lcov.info | node node_modules/.bin/coveralls",
-    "docs": "typedoc --options ./typedoc.json ./ts",
-    "lint": "eslint ./src"
+    "docs": "typedoc --options ./typedoc.json ./ts"
   },
   "repository": {
     "type": "git",

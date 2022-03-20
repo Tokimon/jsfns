@@ -1,7 +1,7 @@
 {
   "name": "@js-fns/core",
   "version": "1.0.0",
-  "description": "Collection of convenience utility functions that aims to make it a little easier to work with JS",
+  "description": "Simple, no dependency, JS utility functions",
   "author": "Toke Voltelen",
   "license": "MIT",
   "keywords": [
@@ -24,13 +24,15 @@
   },
   "homepage": "https://github.com/Tokimon/js-fns#readme",
   "scripts": {
-    "build": "tsc -b",
-    "build:mjs": "tsc -b tsconfig.mjs.json",
-    "build:cjs": "tsc -b tsconfig.cjs.json",
+    "build": "../../bin/build.sh",
+    "clean": "../../bin/clean.sh",
+    "missing": "../../bin/missing.sh",
     "type-check": "tsc -p tsconfig.json --noEmit",
-    "test": "jest"
+    "test": "jest",
+    "test:coverage": "jest --collectCoverage"
   },
   "directories": {
     "test": "tests"
-  }
+  },
+  "devDependencies": {}
 }
