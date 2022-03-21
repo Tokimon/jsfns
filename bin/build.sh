@@ -17,7 +17,7 @@ build() {
   print_building "$message"
 
   # Compile the typescript files
-  npx tsc -p $PWD/$tsconfig
+  npx tsc --build $PWD/$tsconfig
 
   # Move build files to the root of the project
   for file in $PWD/dist/$1/*.js; do
@@ -36,22 +36,27 @@ build() {
   print_done
 }
 
-echo -e "Building \e[1;34m$workspaceName\e[0m"
+build_index() {
+  echo -e "Building \e[1;34m$workspaceName\e[0m"
 
-# Preparing the accumulated index file
-rm -f ./src/index.ts
+  # Preparing the accumulated index file
+  rm -f ./src/index.ts
 
-print_building 'index.ts'
+  print_building 'index.ts'
 
-for file in $PWD/src/*.ts; do
-  name=$(basename $file .ts)
+  for file in $PWD/src/*.ts; do
+    name=$(basename $file .ts)
 
-  if [[ ! "$name" =~ \.d ]]; then
-    echo "export { default as $name } from './$name';" >> $PWD/src/index.ts
-  fi
-done
+    if [[ ! "$name" =~ \.d ]]; then
+      echo "export { default as $name } from './$name';" >> $PWD/src/index.ts
+    fi
+  done
 
-print_done
+  print_done
+}
+
+# Build the accumulated index file
+build_index
 
 # Build the various file types
 build mjs

@@ -4,6 +4,7 @@
   "description": "Simple, no dependency, JS utility functions for use in a browser environment",
   "author": "Toke Voltelen",
   "license": "MIT",
+  "type": "module",
   "main": "./index.js",
   "browser": "./index.js",
   "module": "./index.mjs",
@@ -29,8 +30,8 @@
     "clean": "../../bin/clean.sh",
     "missing": "../../bin/missing.sh",
     "type-check": "tsc -p tsconfig.json --noEmit",
-    "test": "jest",
-    "test:coverage": "jest --collectCoverage"
+    "test": "NODE_OPTIONS=--experimental-vm-modules jest",
+    "test:coverage": "npm t -- --collectCoverage"
   },
   "dependencies": {
     "@js-fns/core": "^1.0.0"

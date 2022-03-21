@@ -1,14 +1,14 @@
-module.exports = {
-  preset: 'ts-jest',
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+import baseConfig from '../../jest.config.base.js';
+
+export default {
+  ...baseConfig,
+  testMatch: ['**/web/tests/*.test.ts'],
   testEnvironment: 'jsdom',
   setupFilesAfterEnv: ['./jest.setup.js'],
-  collectCoverage: false,
-  collectCoverageFrom: [
-    '**/web/src/*.ts'
-  ],
-  globals: {
-    'ts-jest': {
-      tsconfig: 'tsconfig.test.json'
-    }
+  transformIgnorePatterns: ['node_modules/(?!@js-fns)'],
+  moduleNameMapper: {
+    '^~web/(.*)$': '<rootDir>/src/$1',
+    '^@js-fns/core/(.*)$': '<rootDir>/../core/src/$1'
   }
 };

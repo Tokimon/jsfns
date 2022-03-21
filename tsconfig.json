@@ -4,11 +4,6 @@
     "moduleResolution": "Node",
     "module": "ESNext",
     "target": "es6",
-    "baseUrl": ".",
-    "paths": {
-      "~/*": ["packages/core/src/*", "packages/web/src/*"],
-      "@js-fns/core/*": ["packages/core/src/*"]
-    },
     "declaration": true,
     "noImplicitAny": true,
     "sourceMap": false,
@@ -19,9 +14,13 @@
     "forceConsistentCasingInFileNames": true,
     "esModuleInterop": true,
     "composite": true,
+    "baseUrl": ".",
+    "paths": {
+      "~web/*": ["./packages/web/src/*"],
+      "~core/*": ["./packages/core/src/*"],
+      "@js-fns/core/*": ["./packages/core/src/*"]
+    }
   },
 
-  "exclude": [
-    "**/node_modules/**"
-  ]
+  "include": ["./packages/core", "./packages/web"],
 }

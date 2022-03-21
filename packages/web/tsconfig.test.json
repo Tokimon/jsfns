@@ -1,0 +1,10 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "target": "ES2021",
+    "outDir": "./dist/tests",
+    "sourceMap": true,
+    "rootDir": "../"
+  },
+  "include": ["src", "test", "../core/src"]
+}

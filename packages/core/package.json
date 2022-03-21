@@ -4,6 +4,7 @@
   "description": "Simple, no dependency, JS utility functions",
   "author": "Toke Voltelen",
   "license": "MIT",
+  "type": "module",
   "keywords": [
     "javascript",
     "helpers",
@@ -28,8 +29,8 @@
     "clean": "../../bin/clean.sh",
     "missing": "../../bin/missing.sh",
     "type-check": "tsc -p tsconfig.json --noEmit",
-    "test": "jest",
-    "test:coverage": "jest --collectCoverage"
+    "test": "NODE_OPTIONS=--experimental-vm-modules jest",
+    "test:coverage": "npm t -- --collectCoverage"
   },
   "directories": {
     "test": "tests"

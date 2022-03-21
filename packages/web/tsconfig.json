@@ -2,7 +2,11 @@
   "extends": "../../tsconfig.json",
   "compilerOptions": {
     "outDir": "./dist/js",
-    "rootDir": "./src"
+    "baseUrl": ".",
+    "paths": {
+      "~web/*": ["./src/*"],
+      "@js-fns/core/*": ["../core/src/*"]
+    }
   },
   "include": ["src"],
   "references": [
