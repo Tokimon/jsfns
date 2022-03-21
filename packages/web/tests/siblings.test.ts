@@ -1,4 +1,4 @@
-import siblings, { nextSiblings, previousSiblings } from '../src/siblings';
+import siblings, { nextSiblings, previousSiblings } from '~web/siblings';
 import { byId, createElement, generateId, insertHtml, removeElement } from './assets/helpers';
 
 

@@ -1,7 +1,7 @@
 import { result, TestInput } from './assets/result';
 import { surround } from './assets/surround';
 
-import kebabCase, { KebabCaseSettings } from '../src/kebabCase';
+import kebabCase, { KebabCaseSettings } from '~core/kebabCase';
 
 
 

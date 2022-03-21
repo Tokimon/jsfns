@@ -1,4 +1,4 @@
-import { GeneralWindow } from '~/src/types';
+import { GeneralWindow } from '~web/types';
 
 
 

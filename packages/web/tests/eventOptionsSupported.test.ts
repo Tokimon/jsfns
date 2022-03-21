@@ -1,47 +1,47 @@
-import eventOptionsSupported from '../src/eventOptionsSupported';
+import { jest } from '@jest/globals';
+import eventOptionsSupported from '~web/eventOptionsSupported';
+import type { SpyReturnType } from './assets/mocks';
 
 
 
 describe('"eventOptionsSupported"', () => {
-  it('Memoizes the result', () => {
-    const spy = jest.spyOn(document, 'addEventListener');
+  let addEventListenerSpy: SpyReturnType<typeof document.addEventListener>;
 
+  beforeAll(() => {
+    addEventListenerSpy = jest.spyOn(document, 'addEventListener');
+  });
+
+  beforeEach(() => addEventListenerSpy.mockReset());
+
+  afterAll(() => addEventListenerSpy.mockRestore());
+
+  it('Memoizes the result', () => {
     eventOptionsSupported(true);
     eventOptionsSupported();
 
-    expect(spy).toHaveBeenCalledTimes(1);
-
-    spy.mockRestore();
+    expect(addEventListenerSpy).toHaveBeenCalledTimes(1);
   });
 
   it('Calling with recheck = true, bypasses the memoization', () => {
     const spy = jest.fn();
-    const stub = jest.spyOn(document, 'addEventListener').mockImplementation(spy);
+    addEventListenerSpy.mockImplementation(spy);
 
     eventOptionsSupported(true);
     eventOptionsSupported(true);
 
-    expect(spy).toHaveBeenCalledTimes(2);
-
-    stub.mockRestore();
+    expect(addEventListenerSpy).toHaveBeenCalledTimes(2);
   });
 
   it('Returns `false` when options are ignored when calling `addEventListener`', () => {
-    const stub = jest.spyOn(document, 'addEventListener').mockImplementation(() => undefined);
+    addEventListenerSpy.mockImplementation(() => undefined);
 
     expect(eventOptionsSupported(true)).toBe(false);
-
-    stub.mockRestore();
   });
 
   it('Returns `false` when calling `addEventListener` with options, throws an error', () => {
-    const stub = jest
-      .spyOn(document, 'addEventListener')
-      .mockImplementation(() => { throw new Error('ups'); });
+    addEventListenerSpy.mockImplementation(() => { throw new Error('ups'); });
 
     expect(eventOptionsSupported(true)).toBe(false);
-
-    stub.mockRestore();
   });
 
   it('Returns `true` when options are supported', () => {
@@ -53,10 +53,8 @@ describe('"eventOptionsSupported"', () => {
       const { passive } = options as AddEventListenerOptions;
     };
 
-    const stub = jest.spyOn(window, 'addEventListener').mockImplementation(cb);
+    addEventListenerSpy.mockImplementation(cb);
 
     expect(eventOptionsSupported(true)).toBe(true);
-
-    stub.mockRestore();
   });
 });

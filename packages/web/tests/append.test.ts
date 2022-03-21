@@ -1,6 +1,6 @@
 import { getOne, insertHtml, byId, removeElement, createElement, generateId } from './assets/helpers';
 
-import append from '../src/append';
+import append from '~web/append';
 
 
 

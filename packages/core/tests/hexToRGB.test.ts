@@ -1,4 +1,4 @@
-import hexToRGB from '../src/hexToRGB';
+import hexToRGB from '~core/hexToRGB';
 
 
 

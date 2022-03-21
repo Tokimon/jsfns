@@ -1,6 +1,6 @@
 import { appendFrame, createDetachedDocument, createElement } from './assets/helpers';
 
-import isDOMRoot from '../src/isDOMRoot';
+import isDOMRoot from '~web/isDOMRoot';
 
 
 

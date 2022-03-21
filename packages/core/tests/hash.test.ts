@@ -1,4 +1,4 @@
-import hash, { hashCode } from '../src/hash';
+import hash, { hashCode } from '~core/hash';
 
 
 

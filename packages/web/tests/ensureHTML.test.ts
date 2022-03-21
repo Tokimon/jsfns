@@ -1,4 +1,4 @@
-import ensureHTML from '../src/ensureHTML';
+import ensureHTML from '~web/ensureHTML';
 
 
 

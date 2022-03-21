@@ -2,8 +2,8 @@ import createBooleanSettings from './assets/createBooleanSettings';
 import firstUpper from './assets/firstUpper';
 import { result, TestInput } from './assets/result';
 
-import { defaultSettings } from '../src/camelCase';
-import pascalCase, { PascalCaseSettings } from '../src/pascalCase';
+import { defaultSettings } from '~core/camelCase';
+import pascalCase, { PascalCaseSettings } from '~core/pascalCase';
 
 
 

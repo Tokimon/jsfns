@@ -1,4 +1,4 @@
-import uniqueArray from '../src/uniqueArray';
+import uniqueArray from '~core/uniqueArray';
 
 
 

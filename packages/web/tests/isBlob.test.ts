@@ -1,4 +1,4 @@
-import isBlob from '../src/isBlob';
+import isBlob from '~web/isBlob';
 
 
 

@@ -1,9 +1,11 @@
-import randomInt from '../src/randomInt';
+import { jest } from '@jest/globals';
+import randomInt from '~core/randomInt';
+import type { SpyReturnType } from './assets/SpyReturnType';
 
 
 
 describe('"randomInt"', () => {
-  let randomSpy: jest.SpyInstance;
+  let randomSpy: SpyReturnType<typeof Math.random>;
 
   beforeAll(() => {
     randomSpy = jest.spyOn(Math, 'random');
@@ -11,9 +13,7 @@ describe('"randomInt"', () => {
 
   beforeEach(() => randomSpy.mockReset());
 
-  afterAll(() => {
-    randomSpy.mockRestore();
-  });
+  afterAll(() => randomSpy.mockRestore());
 
 
 

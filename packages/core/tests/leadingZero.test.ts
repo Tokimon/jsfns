@@ -1,4 +1,4 @@
-import leadingZero from '../src/leadingZero';
+import leadingZero from '~core/leadingZero';
 
 
 

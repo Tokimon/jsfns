@@ -1,6 +1,6 @@
 import { byId, createElement, appendFrame, generateId, insertHtml, removeElement, createDetachedDocument } from './assets/helpers';
 
-import isDOMChildNode from '../src/isDOMChildNode';
+import isDOMChildNode from '~web/isDOMChildNode';
 
 
 

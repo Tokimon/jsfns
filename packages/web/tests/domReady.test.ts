@@ -1,6 +1,6 @@
-import { bind, unbind, triggerEvent } from './assets/helpers';
-
-import domReady, { docComplete } from '../src/domReady';
+import { jest } from '@jest/globals';
+import domReady, { docComplete } from '~web/domReady';
+import { bind, triggerEvent, unbind } from './assets/helpers';
 
 
 

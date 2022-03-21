@@ -1,7 +1,7 @@
 import { result, TestInput } from './assets/result';
 import { surround } from './assets/surround';
 
-import phrasify, { PhrasifySettings } from '../src/phrasify';
+import phrasify, { PhrasifySettings } from '~core/phrasify';
 
 
 

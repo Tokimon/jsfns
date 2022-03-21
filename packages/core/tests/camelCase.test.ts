@@ -2,7 +2,7 @@ import createBooleanSettings from './assets/createBooleanSettings';
 import firstUpper from './assets/firstUpper';
 import { result, TestInput } from './assets/result';
 
-import camelCase, { CamelCaseSettings, defaultSettings } from '../src/camelCase';
+import camelCase, { CamelCaseSettings, defaultSettings } from '~core/camelCase';
 
 
 

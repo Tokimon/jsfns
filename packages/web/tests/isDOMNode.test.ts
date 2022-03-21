@@ -1,6 +1,6 @@
 import { appendFrame, createDetachedDocument } from './assets/helpers';
 
-import isDOMNode from '../src/isDOMNode';
+import isDOMNode from '~web/isDOMNode';
 
 
 

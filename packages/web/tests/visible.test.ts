@@ -1,6 +1,6 @@
 import { generateId, removeElement, byId, insertHtml, createElement } from './assets/helpers';
 
-import visible from '../src/visible';
+import visible from '~web/visible';
 
 
 

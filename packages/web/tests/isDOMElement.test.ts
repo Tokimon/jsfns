@@ -1,6 +1,6 @@
 import { appendFrame, createDetachedDocument } from './assets/helpers';
 
-import isDOMElement from '../src/isDOMElement';
+import isDOMElement from '~web/isDOMElement';
 
 
 

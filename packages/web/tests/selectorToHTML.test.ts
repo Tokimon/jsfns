@@ -1,4 +1,4 @@
-import selectorToHTML from '../src/selectorToHTML';
+import selectorToHTML from '~web/selectorToHTML';
 
 
 

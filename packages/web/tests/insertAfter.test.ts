@@ -1,6 +1,6 @@
 import { byId, createElement, generateId, insertHtml, removeElement } from './assets/helpers';
 
-import insertAfter from '../src/insertAfter';
+import insertAfter from '~web/insertAfter';
 
 
 

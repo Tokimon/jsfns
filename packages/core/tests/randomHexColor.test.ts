@@ -1,4 +1,5 @@
-import randomHexColor from '../src/randomHexColor';
+import { jest } from '@jest/globals';
+import randomHexColor from '~core/randomHexColor';
 
 
 

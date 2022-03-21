@@ -1,6 +1,6 @@
 import { byId, generateId, insertHtml, removeElement } from './assets/helpers';
 
-import matches from '../src/matches';
+import matches from '~web/matches';
 
 
 

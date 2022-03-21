@@ -1,6 +1,6 @@
 import { byId, generateId, insertHtml, removeElement } from './assets/helpers';
 
-import findByTagName from '../src/findByTagName';
+import findByTagName from '~web/findByTagName';
 
 
 

@@ -1,4 +1,4 @@
-import defaultCurrencyFormat, { currencyFormat } from '../src/currencyFormat';
+import defaultCurrencyFormat, { currencyFormat } from '~core/currencyFormat';
 
 
 

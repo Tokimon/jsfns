@@ -1,4 +1,4 @@
-import isBoolean from '../src/isBoolean';
+import isBoolean from '~core/isBoolean';
 
 
 

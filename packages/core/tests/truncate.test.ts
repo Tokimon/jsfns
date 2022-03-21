@@ -1,4 +1,4 @@
-import truncate from '../src/truncate';
+import truncate from '~core/truncate';
 
 
 

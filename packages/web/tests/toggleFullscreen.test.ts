@@ -1,6 +1,6 @@
 import { byId, createElement, generateId, insertHtml, removeElement } from './assets/helpers';
 
-import toggleFullscreen from '../src/toggleFullscreen';
+import toggleFullscreen from '~web/toggleFullscreen';
 
 
 

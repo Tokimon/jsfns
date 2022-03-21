@@ -1,7 +1,7 @@
 import { byId, generateId, insertHtml, removeElement } from './assets/helpers';
 
-import viewport from '../src/viewport';
-import * as sizeFns from '../src/size';
+import viewport from '~web/viewport';
+import * as sizeFns from '~web/size';
 
 
 

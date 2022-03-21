@@ -1,4 +1,4 @@
-import isNumber from '../src/isNumber';
+import isNumber from '~core/isNumber';
 
 
 

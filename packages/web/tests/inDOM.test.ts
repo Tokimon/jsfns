@@ -1,6 +1,6 @@
 import { appendFrame, createDetachedDocument, createElement } from './assets/helpers';
 
-import inDOM from '../src/inDOM';
+import inDOM from '~web/inDOM';
 
 
 

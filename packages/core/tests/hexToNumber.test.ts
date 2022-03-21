@@ -1,4 +1,4 @@
-import hexToNumber from '../src/hexToNumber';
+import hexToNumber from '~core/hexToNumber';
 
 
 

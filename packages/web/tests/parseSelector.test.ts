@@ -1,4 +1,4 @@
-import parseSelector from '../src/parseSelector';
+import parseSelector from '~web/parseSelector';
 
 
 

@@ -1,6 +1,6 @@
 import { createElement } from './assets/helpers';
 
-import toDOM from '../src/toDOM';
+import toDOM from '~web/toDOM';
 
 
 

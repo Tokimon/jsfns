@@ -1,4 +1,4 @@
-import chunkString from '../src/chunkString';
+import chunkString from '~core/chunkString';
 
 
 

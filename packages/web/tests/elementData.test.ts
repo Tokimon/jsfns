@@ -1,6 +1,6 @@
 import { insertHtml, removeElement, byId, generateId } from './assets/helpers';
 
-import elementData, { resetCache } from '../src/elementData';
+import elementData, { resetCache } from '~web/elementData';
 
 
 

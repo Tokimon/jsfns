@@ -1,6 +1,6 @@
 import { appendFrame, createDetachedDocument } from './assets/helpers';
 
-import isWindow from '../src/isWindow';
+import isWindow from '~web/isWindow';
 
 
 

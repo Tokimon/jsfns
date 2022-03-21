@@ -1,4 +1,4 @@
-import formatNumber from '../src/formatNumber';
+import formatNumber from '~core/formatNumber';
 
 
 

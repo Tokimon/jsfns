@@ -1,4 +1,4 @@
-import popIndex, { popIndexPure } from '../src/popIndex';
+import popIndex, { popIndexPure } from '~core/popIndex';
 
 
 describe('"popIndex"', () => {

@@ -1,6 +1,6 @@
 import { byId, createElement, generateId, insertHtml, removeElement } from './assets/helpers';
 
-import toggleClass from '../src/toggleClass';
+import toggleClass from '~web/toggleClass';
 
 
 

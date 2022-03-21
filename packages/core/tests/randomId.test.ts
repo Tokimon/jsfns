@@ -1,4 +1,4 @@
-import randomId from '../src/randomId';
+import randomId from '~core/randomId';
 
 
 

@@ -1,6 +1,6 @@
 import { generateId, removeElement, byId, insertHtml } from './assets/helpers';
 
-import wrap from '../src/wrap';
+import wrap from '~web/wrap';
 
 
 

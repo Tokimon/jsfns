@@ -1,4 +1,4 @@
-import safeDateChange from '../src/safeDateChange';
+import safeDateChange from '~core/safeDateChange';
 
 
 const dateStr = (date: Date) => `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`;

@@ -1,6 +1,6 @@
 import { byId, createElement, generateId, insertHtml, removeElement } from './assets/helpers';
 
-import insertBefore from '../src/insertBefore';
+import insertBefore from '~web/insertBefore';
 
 
 

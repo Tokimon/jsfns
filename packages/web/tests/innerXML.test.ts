@@ -1,4 +1,6 @@
-import innerXML from '../src/innerXML';
+import { jest } from '@jest/globals';
+import innerXML from '~web/innerXML';
+import type { SpyInstance } from './assets/mocks';
 
 
 
@@ -24,7 +26,9 @@ describe('"innerXML"', () => {
     });
 
     it('When `innerHTML` is not present', () => {
-      const mock = jest.spyOn(xmlElm, 'innerHTML', 'get').mockImplementation(undefined);
+      const mock: SpyInstance<string | undefined, []> = jest.spyOn(xmlElm, 'innerHTML', 'get');
+
+      mock.mockImplementation(() => undefined);
 
       expect(innerXML(xmlElm)).toBe(innerHTML);
 

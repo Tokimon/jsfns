@@ -1,6 +1,6 @@
 import { byId, createElement, generateId, insertHtml, removeElement } from './assets/helpers';
 
-import invisible from '../src/invisible';
+import invisible from '~web/invisible';
 
 
 

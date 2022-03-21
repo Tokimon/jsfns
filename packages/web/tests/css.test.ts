@@ -1,6 +1,6 @@
 import { insertHtml, removeElement, generateId, byId } from './assets/helpers';
 
-import css from '../src/css';
+import css from '~web/css';
 
 
 

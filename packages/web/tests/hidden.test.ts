@@ -1,6 +1,6 @@
 import { byId, createElement, generateId, insertHtml, removeElement } from './assets/helpers';
 
-import hidden from '../src/hidden';
+import hidden from '~web/hidden';
 
 
 

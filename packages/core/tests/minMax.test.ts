@@ -1,4 +1,4 @@
-import minMax from '../src/minMax';
+import minMax from '~core/minMax';
 
 
 

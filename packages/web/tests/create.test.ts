@@ -1,4 +1,4 @@
-import create from '../src/create';
+import create from '~web/create';
 
 
 

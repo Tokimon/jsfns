@@ -1,4 +1,4 @@
-import viewport from '../src/viewport';
+import viewport from '~web/viewport';
 import { appendFrame, createDetachedDocument } from './assets/helpers';
 
 

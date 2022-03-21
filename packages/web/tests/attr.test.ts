@@ -1,6 +1,6 @@
 import { byId, insertHtml, removeElement, generateId } from './assets/helpers';
 
-import attr from '../src/attr';
+import attr from '~web/attr';
 
 
 

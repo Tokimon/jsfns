@@ -1,4 +1,4 @@
-import limitDecimals from '../src/limitDecimals';
+import limitDecimals from '~core/limitDecimals';
 
 
 

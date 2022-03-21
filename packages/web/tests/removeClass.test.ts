@@ -1,6 +1,6 @@
 import { insertHtml, byId, removeElement, createElement, generateId } from './assets/helpers';
 
-import removeClass from '../src/removeClass';
+import removeClass from '~web/removeClass';
 
 
 

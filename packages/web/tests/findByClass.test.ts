@@ -1,6 +1,6 @@
 import { insertHtml, removeElement, byId } from './assets/helpers';
 
-import findByClass from '../src/findByClass';
+import findByClass from '~web/findByClass';
 
 
 

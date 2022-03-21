@@ -1,6 +1,6 @@
 import { appendFrame, createDetachedDocument, createElement } from './assets/helpers';
 
-import getCurrentWindow from '../src/getCurrentWindow';
+import getCurrentWindow from '~web/getCurrentWindow';
 
 
 

@@ -1,6 +1,6 @@
 import { insertHtml, removeElement, byId, generateId, createElement } from './assets/helpers';
 
-import elmIndex from '../src/elmIndex';
+import elmIndex from '~web/elmIndex';
 
 
 

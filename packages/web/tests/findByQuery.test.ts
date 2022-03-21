@@ -1,6 +1,6 @@
 import { byId, insertHtml, removeElement } from './assets/helpers';
 
-import findByQuery from '../src/findByQuery';
+import findByQuery from '~web/findByQuery';
 
 
 

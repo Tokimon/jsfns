@@ -1,4 +1,4 @@
-import numberToHex from '../src/numberToHex';
+import numberToHex from '~core/numberToHex';
 
 
 

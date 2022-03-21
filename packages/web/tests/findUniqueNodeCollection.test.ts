@@ -1,6 +1,6 @@
 import { insertHtml, byId, removeElement, createElement, generateId } from './assets/helpers';
 
-import findUniqueNodeCollection from '../src/findUniqueNodeCollection';
+import findUniqueNodeCollection from '~web/findUniqueNodeCollection';
 
 
 

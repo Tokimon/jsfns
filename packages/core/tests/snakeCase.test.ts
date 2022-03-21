@@ -1,7 +1,7 @@
 import { result, TestInput } from './assets/result';
 import { surround } from './assets/surround';
 
-import snakeCase, { SnakeCaseSettings } from '../src/snakeCase';
+import snakeCase, { SnakeCaseSettings } from '~core/snakeCase';
 
 
 

@@ -1,6 +1,6 @@
 import { byId, generateId, insertHtml, removeElement } from './assets/helpers';
 
-import hasClass, { hasAnyClass } from '../src/hasClass';
+import hasClass, { hasAnyClass } from '~web/hasClass';
 
 
 

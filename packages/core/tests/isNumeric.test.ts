@@ -1,4 +1,4 @@
-import isNumeric from '../src/isNumeric';
+import isNumeric from '~core/isNumeric';
 
 
 

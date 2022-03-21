@@ -1,4 +1,4 @@
-import isEventTarget from '../src/isEventTarget';
+import isEventTarget from '~web/isEventTarget';
 
 
 

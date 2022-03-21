@@ -1,4 +1,4 @@
-import RGBToHex from '../src/RGBToHex';
+import RGBToHex from '~core/RGBToHex';
 
 
 

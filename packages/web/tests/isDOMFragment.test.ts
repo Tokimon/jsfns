@@ -1,6 +1,6 @@
 import { createElement } from './assets/helpers';
 
-import isDOMFragment from '../src/isDOMFragment';
+import isDOMFragment from '~web/isDOMFragment';
 
 
 

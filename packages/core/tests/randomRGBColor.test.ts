@@ -1,4 +1,5 @@
-import randomRGBColor from '../src/randomRGBColor';
+import { jest } from '@jest/globals';
+import randomRGBColor from '~core/randomRGBColor';
 
 
 

@@ -1,6 +1,6 @@
 import { insertHtml, byId, removeElement, generateId } from './assets/helpers';
 
-import scrollInfo from '../src/scrollInfo';
+import scrollInfo from '~web/scrollInfo';
 
 
 

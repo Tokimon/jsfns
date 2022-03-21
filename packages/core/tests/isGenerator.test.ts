@@ -1,4 +1,4 @@
-import isGeneratorFunction, { isGenerator } from '../src/isGenerator';
+import isGeneratorFunction, { isGenerator } from '~core/isGenerator';
 
 
 

@@ -1,15 +1,14 @@
-import type { Noop } from './types';
-
-import isEventTarget from './isEventTarget';
 import eventOptionsSupported from './eventOptionsSupported';
-import on from './on';
+import isEventTarget from './isEventTarget';
 import off from './off';
+import on from './on';
 
 
 
-type WhenFunction = (e: Event) => boolean;
 
-export interface OnceEventListenerOptions extends AddEventListenerOptions {
+export type WhenFunction = (e: Event) => boolean;
+
+export type OnceEventListenerOptions = AddEventListenerOptions & {
   /** A function that returns a boolean to determine when the event should trigger */
   when?: WhenFunction
 }
@@ -38,7 +37,7 @@ const bind = (
   eventNames: string | string[],
   handler: EventListenerOrEventListenerObject,
   options?: OnceEventListenerOptions
-): Noop => {
+): () => ReturnType<typeof off> => {
   const noOptions = !eventOptionsSupported();
   const { when, ...eventOptions } = options || {};
   eventOptions.once = !when;
@@ -69,7 +68,7 @@ function once(
   eventNames: string | string[],
   handler: EventListenerOrEventListenerObject,
   options?: OnceEventListenerOptions
-): Noop;
+): ReturnType<typeof bind>;
 
 /**
  * Bind a single fire event handler for one or more event names on `document`.
@@ -84,7 +83,7 @@ function once(
   eventNames: string | string[],
   handler: EventListenerOrEventListenerObject,
   options?: OnceEventListenerOptions
-): Noop;
+): ReturnType<typeof bind>;
 
 
 
@@ -93,7 +92,7 @@ function once(
   eventNames: string | string[] | EventListenerOrEventListenerObject,
   handler?: EventListenerOrEventListenerObject | OnceEventListenerOptions,
   options?: OnceEventListenerOptions
-): Noop {
+): ReturnType<typeof bind> {
   if (!isEventTarget(elm)) {
     options = handler as OnceEventListenerOptions;
     handler = eventNames as EventListenerOrEventListenerObject;

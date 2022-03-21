@@ -1,4 +1,4 @@
-import isString from '../src/isString';
+import isString from '~core/isString';
 
 
 

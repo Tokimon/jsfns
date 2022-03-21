@@ -1,6 +1,6 @@
+import { jest } from '@jest/globals';
+import trigger from '~web/trigger';
 import { bind, unbind } from './assets/helpers';
-
-import trigger from '../src/trigger';
 
 
 
@@ -8,8 +8,8 @@ describe('"Trigger"', () => {
   function suite(elm?: Element | Window) {
     const cb = jest.fn();
 
-    const evt = 'test';
-    const evts = [1, 2, 3].map((n) => evt + n);
+    const eventName = 'test';
+    const eventNames = [1, 2, 3].map((n) => eventName + n);
 
     const _trigger = (...args: [
       eventNames: string | string[],
@@ -23,7 +23,7 @@ describe('"Trigger"', () => {
     });
 
     it('Returns the given element', () => {
-      expect(_trigger(evt)).toBe(target);
+      expect(_trigger(eventName)).toBe(target);
     });
 
     it.each(
@@ -46,13 +46,13 @@ describe('"Trigger"', () => {
     it('Triggers multiple events', () => {
       const cb = jest.fn();
 
-      evts.forEach((e) => bind(target, e, cb));
+      eventNames.forEach((e) => bind(target, e, cb));
 
-      _trigger(evts);
+      _trigger(eventNames);
 
       expect(cb).toHaveBeenCalledTimes(3);
 
-      evts.forEach((e) => unbind(target, e, cb));
+      eventNames.forEach((e) => unbind(target, e, cb));
     });
 
     it.each([
@@ -60,9 +60,9 @@ describe('"Trigger"', () => {
       ['Function', () => undefined],
       ['String', 'test']
     ])('Triggers given event with extra data: %s', (_, val) => {
-      bind(target, evt, cb);
+      bind(target, eventName, cb);
 
-      _trigger(evt, val);
+      _trigger(eventName, val);
 
       expect(cb).toHaveBeenLastCalledWith(
         expect.objectContaining({

@@ -1,6 +1,6 @@
 import { appendFrame, byId, createDetachedDocument, generateId, getOne, insertHtml, removeElement } from './assets/helpers';
 
-import scrollParent from '../src/scrollParent';
+import scrollParent from '~web/scrollParent';
 
 
 

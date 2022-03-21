@@ -1,4 +1,4 @@
-import vendorPrefixed, { VendorPrefixing } from '../src/vendorPrefixed';
+import vendorPrefixed, { VendorPrefixing } from '~web/vendorPrefixed';
 
 
 

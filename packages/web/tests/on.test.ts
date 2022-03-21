@@ -1,17 +1,18 @@
+import { jest } from '@jest/globals';
+import eventOptionsSupported from '~web/eventOptionsSupported';
+import on from '~web/on';
 import { unbind } from './assets/helpers';
-
-import eventOptionsSupported from '../src/eventOptionsSupported';
-import on from '../src/on';
+import type { SpyReturnType } from './assets/mocks';
 
 
 
 describe('"on"', () => {
   function suite(elm?: HTMLElement | Window) {
-    let spy: jest.SpyInstance;
+    let addEventListenerSpy: SpyReturnType<typeof document.addEventListener>;
     const cb = jest.fn();
 
-    const evt = 'test';
-    const evts = [1, 2, 3].map((n) => evt + n);
+    const eventName = 'test';
+    const eventNames = [1, 2, 3].map((n) => eventName + n);
 
     const _on = (...args: [
       string | string[],
@@ -25,38 +26,38 @@ describe('"on"', () => {
       // we need to do the check to get the right number of calls,
       // since the check uses "addEventListener"
       eventOptionsSupported();
-      spy = jest.spyOn(target, 'addEventListener');
+      addEventListenerSpy = jest.spyOn(target, 'addEventListener');
     });
 
     beforeEach(() => {
       // we need to do the check to get the right number of calls,
       // since the check uses "addEventListener"
       eventOptionsSupported();
-      spy.mockClear();
+      addEventListenerSpy.mockClear();
       cb.mockClear();
     });
 
-    afterAll(() => spy.mockRestore());
+    afterAll(() => addEventListenerSpy.mockRestore());
 
     it.each(
       ['', '_', '-', '.', ':']
     )('Adds event with separator: "%s"', (separator) => {
-      let e = evt;
+      let e = eventName;
       if (separator) { e += separator + 'part'; }
 
       _on(e, cb);
 
-      expect(spy).toHaveBeenCalledTimes(1);
+      expect(addEventListenerSpy).toHaveBeenCalledTimes(1);
 
       unbind(target, e, cb);
     });
 
     it('Calls "addEventListener" for each event name in a list', () => {
-      _on(evts, cb);
+      _on(eventNames, cb);
 
-      expect(spy).toHaveBeenCalledTimes(3);
+      expect(addEventListenerSpy).toHaveBeenCalledTimes(3);
 
-      evts.forEach((e) => unbind(target, e, cb));
+      eventNames.forEach((e) => unbind(target, e, cb));
     });
 
     describe('When EventTarget is not supported, third argument in "addEventListener" is', () => {
@@ -77,27 +78,27 @@ describe('"on"', () => {
       afterEach(() => { eventOptionsSupported(true); });
 
       it('`false` when no options are given', () => {
-        _on(evt, cb);
+        _on(eventName, cb);
 
-        expect(spy).toHaveBeenCalledWith(evt, cb, false);
+        expect(addEventListenerSpy).toHaveBeenCalledWith(eventName, cb, false);
 
-        unbind(target, evt, cb);
+        unbind(target, eventName, cb);
       });
 
       it('`false` when "capture" is falsy', () => {
-        _on(evt, cb, { capture: false });
+        _on(eventName, cb, { capture: false });
 
-        expect(spy).toHaveBeenCalledWith(evt, cb, false);
+        expect(addEventListenerSpy).toHaveBeenCalledWith(eventName, cb, false);
 
-        unbind(target, evt, cb);
+        unbind(target, eventName, cb);
       });
 
       it('`true` when "capture" is true', () => {
-        _on(evt, cb, { capture: true });
+        _on(eventName, cb, { capture: true });
 
-        expect(spy).toHaveBeenCalledWith(evt, cb, true);
+        expect(addEventListenerSpy).toHaveBeenCalledWith(eventName, cb, true);
 
-        unbind(target, evt, cb);
+        unbind(target, eventName, cb);
       });
     });
   }

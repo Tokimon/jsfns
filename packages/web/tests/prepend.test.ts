@@ -1,6 +1,6 @@
 import { insertHtml, byId, removeElement, createElement, generateId } from './assets/helpers';
 
-import prepend from '../src/prepend';
+import prepend from '~web/prepend';
 
 
 

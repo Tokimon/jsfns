@@ -1,6 +1,6 @@
 import { byId, createElement, generateId, getOne, insertHtml, removeElement } from './assets/helpers';
 
-import replaceNode from '../src/replaceNode';
+import replaceNode from '~web/replaceNode';
 
 
 

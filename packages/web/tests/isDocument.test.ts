@@ -1,6 +1,6 @@
 import { appendFrame, createDetachedDocument } from './assets/helpers';
 
-import isDocument from '../src/isDocument';
+import isDocument from '~web/isDocument';
 
 
 

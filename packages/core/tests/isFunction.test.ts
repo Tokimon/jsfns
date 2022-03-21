@@ -1,4 +1,4 @@
-import isFunction from '../src/isFunction';
+import isFunction from '~core/isFunction';
 
 
 

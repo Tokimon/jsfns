@@ -1,4 +1,4 @@
-import promisefy, { NodeLikeCallback } from '../src/promisefy';
+import promisefy, { NodeLikeCallback } from '~core/promisefy';
 
 
 

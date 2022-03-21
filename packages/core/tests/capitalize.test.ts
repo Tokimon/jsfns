@@ -1,4 +1,4 @@
-import capitalize from '../src/capitalize';
+import capitalize from '~core/capitalize';
 
 
 

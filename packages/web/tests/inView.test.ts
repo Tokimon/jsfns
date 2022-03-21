@@ -1,7 +1,6 @@
-import { mockClientRect } from './assets/mocks';
+import inView from '~web/inView';
 import { byId, createElement, generateId, insertHtml, removeElement } from './assets/helpers';
-
-import inView from '../src/inView';
+import { mockClientRect } from './assets/mocks';
 
 
 

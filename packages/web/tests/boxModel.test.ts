@@ -1,6 +1,6 @@
 import { insertHtml, removeElement, byId, generateId } from './assets/helpers';
 
-import boxModel from '../src/boxModel';
+import boxModel from '~web/boxModel';
 
 
 

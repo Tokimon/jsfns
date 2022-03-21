@@ -1,4 +1,4 @@
-import objectType from '../src/objectType';
+import objectType from '~core/objectType';
 
 
 

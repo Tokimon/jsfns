@@ -1,6 +1,6 @@
 import { insertHtml, removeElement, createElement, byId, generateId } from './assets/helpers';
 
-import children from '../src/children';
+import children from '~web/children';
 
 
 
