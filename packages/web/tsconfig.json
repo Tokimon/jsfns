@@ -1,14 +1,13 @@
 {
   "extends": "../../tsconfig.json",
   "compilerOptions": {
-    "outDir": "./dist/js",
     "baseUrl": ".",
     "paths": {
       "~web/*": ["./src/*"],
       "@js-fns/core/*": ["../core/src/*"]
     }
   },
-  "include": ["src"],
+  "include": ["src", "test"],
   "references": [
     { "path": "../core" },
   ]

@@ -2,9 +2,10 @@
   "extends": "./tsconfig.json",
   "compilerOptions": {
     "target": "ES2021",
-    "outDir": "./dist/tests",
+    "outDir": "./build/tests",
     "sourceMap": true,
-    "rootDir": "../"
   },
-  "include": ["src", "test", "../core/src"]
+  "references": [
+    { "path": "../core/tsconfig.test.json" }
+  ]
 }

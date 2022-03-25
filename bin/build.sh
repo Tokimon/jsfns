@@ -11,7 +11,7 @@ print_building() {
 }
 
 build() {
-  [ $1 == 'js' ] && tsconfig="tsconfig.json" || tsconfig="tsconfig.$1.json"
+  tsconfig="tsconfig.$1.json"
   [ $1 == 'js' ] && message=".js\e[0m and \e[1;33m.d.ts" || message=".$1"
 
   print_building "$message"
@@ -20,14 +20,14 @@ build() {
   npx tsc --build $PWD/$tsconfig
 
   # Move build files to the root of the project
-  for file in $PWD/dist/$1/*.js; do
+  for file in $PWD/build/$1/src/*.js; do
     dest=$PWD/$(basename $file .js).$1
     mv -u $file $dest
   done
 
   # Move .d.ts to the root of the project
   if [[ $1 == 'js' ]]; then
-    for file in $PWD/dist/$1/*.d.ts; do
+    for file in $PWD/build/$1/src/*.d.ts; do
       dest=$PWD/$(basename $file)
       mv -u "$file" "$dest"
     done

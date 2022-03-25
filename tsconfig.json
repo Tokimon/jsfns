@@ -20,7 +20,5 @@
       "~core/*": ["./packages/core/src/*"],
       "@js-fns/core/*": ["./packages/core/src/*"]
     }
-  },
-
-  "include": ["./packages/core", "./packages/web"],
+  }
 }

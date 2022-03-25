@@ -1,7 +1,7 @@
 {
-  "extends": "./tsconfig.json",
+  "extends": "./tsconfig.js.json",
   "compilerOptions": {
     "target": "ES2021",
-    "outDir": "./dist/mjs"
+    "outDir": "./build/mjs"
   }
 }
