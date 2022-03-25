@@ -5,7 +5,6 @@ import on from './on';
 
 
 
-
 export type WhenFunction = (e: Event) => boolean;
 
 export type OnceEventListenerOptions = AddEventListenerOptions & {

@@ -1,4 +1,4 @@
-import { insertHtml, byId, removeElement, createElement, generateId } from './assets/helpers';
+import { insertHtml, removeElement, generateId } from './assets/helpers';
 
 import findUniqueNodeCollection from '~web/findUniqueNodeCollection';
 

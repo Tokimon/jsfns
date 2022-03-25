@@ -1,0 +1,10 @@
+build
+coverage
+node_modules
+
+*.js
+*.mjs
+*.cjs
+*.d.ts
+
+!jest.*.jsnp

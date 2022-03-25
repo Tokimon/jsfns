@@ -30,7 +30,8 @@
     "missing": "../../bin/missing.sh",
     "type-check": "tsc -p tsconfig.json --noEmit",
     "test": "NODE_OPTIONS=--experimental-vm-modules jest",
-    "test:coverage": "npm t -- --collectCoverage"
+    "test:coverage": "npm t -- --collectCoverage",
+    "lint": "eslint . --max-warnings=0"
   },
   "directories": {
     "test": "tests"

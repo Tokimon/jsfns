@@ -50,6 +50,7 @@ describe('"eventOptionsSupported"', () => {
       handler: EventListenerOrEventListenerObject,
       options?: boolean | AddEventListenerOptions
     ) => {
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
       const { passive } = options as AddEventListenerOptions;
     };
 

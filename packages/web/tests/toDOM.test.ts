@@ -1,5 +1,3 @@
-import { createElement } from './assets/helpers';
-
 import toDOM from '~web/toDOM';
 
 
