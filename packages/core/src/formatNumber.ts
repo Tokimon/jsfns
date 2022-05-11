@@ -2,7 +2,7 @@ import limitDecimals from './limitDecimals';
 
 
 
-export interface FormatNumberSettings {
+export type FormatNumberSettings = {
   decimals?: number | string;
   thousand?: string;
   decimal?: string;

@@ -5,7 +5,7 @@ import isWindow from './isWindow';
 
 
 
-interface ScrollInfo {
+type ScrollInfo = {
   x: number;
   y: number;
   xMax: number;

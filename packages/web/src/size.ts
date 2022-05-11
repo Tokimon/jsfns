@@ -6,7 +6,7 @@ import viewport from './viewport';
 
 
 
-interface Size {
+type Size = {
   width: number,
   height: number
 }

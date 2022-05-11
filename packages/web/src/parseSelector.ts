@@ -10,7 +10,7 @@ const attrExp = new RegExp(`\\[(${nameExpStr})(?:=([^\\]]+))?]`, 'g');
 type AttributeMapping = Record<string, Set<string>>;
 type Attributes = Record<string, string>;
 
-interface SelectorParsing {
+type SelectorParsing = {
   tagName: string
   attributes: Attributes
 }

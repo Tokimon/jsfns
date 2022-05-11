@@ -8,7 +8,7 @@ import size from './size';
 
 
 
-interface Position {
+type Position = {
   top: number;
   left: number;
   right: number;

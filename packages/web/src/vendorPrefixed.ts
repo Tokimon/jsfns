@@ -3,7 +3,7 @@ import kebabCase from '@js-fns/core/kebabCase';
 
 
 
-export interface VendorPrefixing {
+export type VendorPrefixing = {
   prefix: 'webkit' | 'moz' | 'ms' | 'o'
   js: string;
   css: string;

@@ -1,11 +1,11 @@
-interface BoxModelSectionMapping {
+type BoxModelSectionMapping = {
   top: number;
   left: number;
   bottom: number;
   right: number;
 }
 
-interface BoxModelMapping {
+type BoxModelMapping = {
   margin: BoxModelSectionMapping
   padding: BoxModelSectionMapping
   border: BoxModelSectionMapping

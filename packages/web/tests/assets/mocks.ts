@@ -1,7 +1,7 @@
 import { jest } from '@jest/globals';
 export { SpyReturnType, SpyInstance } from '../../../core/tests/assets/SpyReturnType';
 
-interface Overrides {
+type Overrides = {
   top?: number,
   left?: number,
   right?: number,

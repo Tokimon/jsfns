@@ -1,9 +1,11 @@
 import phrasify, { PhrasifySettings } from './phrasify';
 
 
-
-export interface CamelCaseSettings extends PhrasifySettings {
+/** Settings for how to format the Camel Case */
+export type CamelCaseSettings = PhrasifySettings & {
+  /** Convert to UpperCase CamelCase (aka PascalCase) */
   upper?: boolean;
+  /** Keep abbreviations uppercase (false == HTMLElement => HtmlElement | true == HTMLElement => HTMLElement) */
   abbr?: boolean;
 }
 

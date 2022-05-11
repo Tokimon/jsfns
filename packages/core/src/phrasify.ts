@@ -1,4 +1,4 @@
-export interface PhrasifySettings {
+export type PhrasifySettings = {
   numbers?: boolean;
 }
 
