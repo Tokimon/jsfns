@@ -16,7 +16,7 @@ const customEvent = (name: string, data?: unknown) => {
  * @param elm - DOM element to trigger the event on
  * @param eventNames - Event names to trigger
  * @param data - Extra data to add to the triggered event
- * @return The 'elm' (or document)
+ * @returns The 'elm' (or document)
  */
 function trigger(
   elm: EventTarget,
@@ -29,7 +29,7 @@ function trigger(
  *
  * @param eventNames - Event names to trigger
  * @param data - Extra data to add to the triggered event
- * @return The 'elm' (or document)
+ * @returns The 'elm' (or document)
  */
 function trigger(
   eventNames: string | string[],

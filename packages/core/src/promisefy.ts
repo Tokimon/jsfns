@@ -9,6 +9,11 @@ type PromisefiedFunction = (...args: any[]) => Promise<unknown>;
 /**
  * Converts a callback based action into one returning a Promise instead.
  *
+ * @param settings - The settings for the string formatting
+ * @param str - The string to format
+ *
+ * @returns The formatted string
+ *
  * @example
  * ```ts
  * function action(name, callback) { ... callback(); }
@@ -19,10 +24,6 @@ type PromisefiedFunction = (...args: any[]) => Promise<unknown>;
  *   .then(() => 'all good')
  *   .catch(() => 'Something went wrong');
  * ```
- *
- * @param settings - The settings for the string formatting
- * @param str - The string to format
- * @return - The formatted string
  */
 export default function promisefy(fn: PromisefyCallback): PromisefiedFunction {
   return (...args: any[]) =>

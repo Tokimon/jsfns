@@ -7,7 +7,7 @@ import toDOM from './toDOM';
  * Creates an element from a given CSS selector (restricted to only one element)
  *
  * @param selector - The CSS selector to convert
- * @return The created element
+ * @returns The created element
  *
  * @example
  *

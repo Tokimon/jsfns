@@ -2,7 +2,7 @@
  * Find the children of a given DOM element and return it as an Array
  *
  * @param elm - DOM element to find children from
- * @return List of found child DOM elements
+ * @returns List of found child DOM elements
  *
  * @example
  *

@@ -71,7 +71,7 @@ const getElementPosition = (elm: HTMLElement): PositionData => {
  *
  * @param elm - The DOM element to find the position of
  * @param relative = false - Find the position relative to the offsetParent rather than the document
- * @return the position information of the element
+ * @returns the position information of the element
  *
  * @example
  *

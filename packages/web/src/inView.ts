@@ -26,7 +26,7 @@ type PositionIndicator = {
  *                    the element is no longer inside in the viewport area,
  *                    in pixels
  *
- * @return An object with indications of where the element is compared to the viewport area
+ * @returns An object with indications of where the element is compared to the viewport area
  *
  * @example
  *

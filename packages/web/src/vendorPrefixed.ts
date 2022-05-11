@@ -15,7 +15,7 @@ export type VendorPrefixing = {
  * Add vendor prefixes to a string
  *
  * @param str - String to add vendor prefixes to
- * @return Array of the various vendor vendorPrefixed versions of the string
+ * @returns Array of the various vendor vendorPrefixed versions of the string
  */
 export default function vendorPrefixed(str: string): VendorPrefixing[] {
   const pascalStr = pascalCase(`${str}`);

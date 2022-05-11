@@ -24,6 +24,11 @@ export const defaultSettings: CamelCaseSettings = {
 /**
  * Transform a string into a camelCased word (eg. 'camel case' -> 'camelCase')
  *
+ * @param input The string to format
+ * @param settings The settings for the transform
+ *
+ * @returns The formatted string
+ *
  * @example
  * ```ts
  * camelCase('data-value2-input'); // -> dataValue2input
@@ -34,10 +39,6 @@ export const defaultSettings: CamelCaseSettings = {
  *
  * camelCase('data-VALUE2-input', settings); // -> DataVALUE2Input
  * ```
- *
- * @param input - The string to format
- * @param settings - The settings for the transform
- * @return - The formatted string
  */
 function camelCase(input: string, settings?: CamelCaseSettings): string {
   if (!input) { return ''; }

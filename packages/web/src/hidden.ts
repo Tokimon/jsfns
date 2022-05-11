@@ -10,7 +10,7 @@ import inDOM from './inDOM';
  * - visibility: hidden.
  *
  * @param elm - DOM element to test
- * @return Is the element technically hidden or not
+ * @returns Is the element technically hidden or not
  */
 export default function hidden(elm: HTMLElement): boolean {
   return !inDOM(elm)

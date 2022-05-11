@@ -1,6 +1,11 @@
 /**
- * Verifies and corrects Dates where the month could accedently have skipped into the
+ * Verifies and corrects Dates where the month could accidentally have skipped into the
  * next month because the date is out of bounds by the month changed to.
+ *
+ * @param from - Date going from
+ * @param to - Date going to
+ *
+ * @returns Altered "to" date
  *
  * @example
  * ```ts
@@ -16,10 +21,6 @@
  *
  * // newDate === "February 28 2017"
  * ```
- *
- * @param from - Date going from
- * @param to - Date going to
- * @return - Altered "to" date
  */
 export default function safeDateChange(from: Date, to: Date): Date {
   const d = from.getDate();

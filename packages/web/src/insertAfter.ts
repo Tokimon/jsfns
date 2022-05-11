@@ -11,7 +11,7 @@ import isDOMRoot from './isDOMRoot';
  *
  * @param elm - The DOM element to insert elements after
  * @param insertElm - DOM element or HTML (or selector) to insert
- * @return The inserted element
+ * @returns The inserted element
  */
 export default function insertAfter(elm: Element, insertElm: string | Element): Element | null {
   if (!inDOM(elm) || isDOMRoot(elm)) { return null; }

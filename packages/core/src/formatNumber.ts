@@ -22,6 +22,11 @@ const defaultSettings: FormatNumberSettings = {
  * Formats a number with defined thousand and decimal separator, and a decimal limit
  * (see `limitDecimals` for details on `decCount`)
  *
+ * @param num - Number to format
+ * @param settings - Settings for the number formatting
+ *
+ * @returns Formatted number as a string
+ *
  * @example
  * ```ts
  * // Default format
@@ -30,10 +35,6 @@ const defaultSettings: FormatNumberSettings = {
  * // Custom format
  * formatNumber(123456, { decimals: '>3', thousand: '-', decimal: ':' }); // -> 123-456:000
  * ```
- *
- * @param num - Number to format
- * @param settings - Settings for the number formatting
- * @return Formatted number as a string
  */
 export default function formatNumber(num: number, settings?: FormatNumberSettings): string {
   const { decimals, thousand, decimal } = { ...defaultSettings, ...settings };

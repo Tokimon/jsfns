@@ -10,7 +10,7 @@ import eventOptionsSupported from './eventOptionsSupported';
  * @param eventNames - Event names to bind the handler to
  * @param handler - Handler to bind to the event
  * @param options - Options to pass to the 'addEventListener'
- * @return `elm`
+ * @returns `elm`
  */
 function on(
   elm: EventTarget,
@@ -25,7 +25,7 @@ function on(
  * @param eventNames - Event names to bind the handler to
  * @param handler - Handler to bind to the event
  * @param options - Options to pass to the 'addEventListener'
- * @return `document`
+ * @returns `document`
  */
 function on(
   eventNames: string | string[],

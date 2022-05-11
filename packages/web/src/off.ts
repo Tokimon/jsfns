@@ -10,7 +10,7 @@ import eventOptionsSupported from './eventOptionsSupported';
  * @param eventNames - Event names to bind the handler to
  * @param handler - Handler to bind to the event
  * @param options - Options to pass to the 'removeEventListener'
- * @return `elm`
+ * @returns `elm`
  */
 function off(
   elm: EventTarget,

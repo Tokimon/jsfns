@@ -8,7 +8,7 @@ import isString from '@js-fns/core/isString';
  * @param elm - DOM element to test
  * @param classNames - Class names to test
  * @param any - Test if at least one class name exist
- * @return All/any class names listed were found in the elements list of class names
+ * @returns All/any class names listed were found in the elements list of class names
  */
 function hasClass(
   elm: Element,
@@ -30,7 +30,7 @@ export default hasClass;
  *
  * @param elm - DOM element to test
  * @param classNames - Class names to test
- * @return At least one of the class names listed were found in the elements list of class names
+ * @returns At least one of the class names listed were found in the elements list of class names
  */
 export function hasAnyClass(
   elm: Element,

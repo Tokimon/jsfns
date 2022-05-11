@@ -11,7 +11,7 @@ const voidTags = ['area', 'base', 'br', 'col', 'embed', 'hr', 'img', 'input', 'k
  * (No this is not an Emmet substitute, so it is limited to only one element)
  *
  * @param selector - The CSS selector to convert
- * @return The parsed HTML
+ * @returns The parsed HTML
  *
  * @example
  *

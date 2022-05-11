@@ -5,7 +5,7 @@ import isDOMNode from './isDOMNode';
  *
  * @param obj - The object to check
  * @param tags - Tag name to match
- * @return Is it a DOM element node or not and optionally of the right type
+ * @returns Is it a DOM element node or not and optionally of the right type
  */
 export default function isDOMElement(obj: unknown, tags?: string | string[]): obj is Element {
   if (!isDOMNode(obj)) { return false; }

@@ -4,7 +4,7 @@
  * @param elm - The DOM element to fetch/set the attribute from
  * @param attrName - Name of the attribute to handle
  * @param value - Value to insert into the attribute
- * @return Data found in the attribute (the old value if {value} is defined)
+ * @returns Data found in the attribute (the old value if {value} is defined)
  *
  * @example
  *

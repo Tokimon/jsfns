@@ -17,7 +17,7 @@ export type DelegateRemoveFunction = () => ReturnType<typeof off>;
  *
  * @param selector - CSS Selector that matches the element to delegate the event to
  * @param handler - Handler to trigger if selector selector match
- * @return The delegate event handler
+ * @returns The delegate event handler
  *
  * @example
  *
@@ -53,7 +53,7 @@ export function delegateHandler(
  * @param eventNames - Event names to bind the handler to
  * @param selector - CSS Selector that matches the element to delegate the event to
  * @param handler - Handler to bind to the event
- * @return A function that removes the event selector handler again
+ * @returns A function that removes the event selector handler again
  *
  * @example
  *
@@ -79,7 +79,7 @@ function delegate(
  * @param eventNames - Event names to bind the handler to
  * @param selector - CSS Selector that matches the element to delegate the event to
  * @param handler - Handler to bind to the event
- * @return A function that removes the event selector handler again
+ * @returns A function that removes the event selector handler again
  *
  * @example
  *

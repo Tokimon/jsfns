@@ -7,6 +7,7 @@ import selectorToHTML from './selectorToHTML';
  * is a selector and parses it to HTML
  *
  * @param htmlOrSelector - The string to parse
+ *
  * @returns The HTML string
  *
  * @example

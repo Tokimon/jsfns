@@ -7,7 +7,7 @@ import isString from '@js-fns/core/isString';
  *
  * @param queries - CSS selector to find elements by
  * @param first - Return only the first found element
- * @return List of found DOM elements
+ * @returns List of found DOM elements
  */
  function findByQuery(
   queries: string | string[],
@@ -21,7 +21,7 @@ import isString from '@js-fns/core/isString';
  * @param elm - The DOM element to start the search from
  * @param queries - CSS selector to find elements by
  * @param first - Return only the first found element
- * @return List of found DOM elements
+ * @returns List of found DOM elements
  */
  function findByQuery(
   elm: Document | Element,
@@ -34,7 +34,7 @@ import isString from '@js-fns/core/isString';
  *
  * @param queries - CSS selector to find elements by
  * @param first - Return only the first found element
- * @return List of found DOM elements
+ * @returns List of found DOM elements
  */
  function findByQuery(
   queries: string | string[],
@@ -47,7 +47,7 @@ import isString from '@js-fns/core/isString';
  * @param elm - The DOM element to start the search from
  * @param queries - CSS selector to find elements by
  * @param first - Return only the first found element
- * @return List of found DOM elements
+ * @returns List of found DOM elements
  */
 function findByQuery(
   elm: Document | Element,

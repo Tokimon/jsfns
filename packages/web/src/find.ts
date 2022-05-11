@@ -13,7 +13,7 @@ import findByQuery from './findByQuery';
  * to find elements](https://jsperf.com/queryselector-vs-selective-find/1)
  *
  * @param selector - The selector to use
- * @return List of found DOM elements
+ * @returns List of found DOM elements
  */
  function find(selector: string): HTMLElement | Element | Element[] | null;
 
@@ -24,7 +24,7 @@ import findByQuery from './findByQuery';
  *
  * @param elm - The DOM element to start the search from
  * @param selector - The selector to use
- * @return List of found DOM elements
+ * @returns List of found DOM elements
  */
 function find(
   elm: Document | Element,

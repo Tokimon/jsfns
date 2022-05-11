@@ -20,7 +20,7 @@ type ScrollInfo = {
  * Gather the current scroll position information of a DOM element or the window
  *
  * @param elm - The element to find the scrolling position from
- * @return The scroll information
+ * @returns The scroll information
  */
 export default function scrollInfo(elm: Element | GeneralWindow = window): ScrollInfo {
   const _elm = isWindow(elm)

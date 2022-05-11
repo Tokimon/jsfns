@@ -60,7 +60,7 @@ const bind = (
  * @param eventNames - Event names to bind the handler to
  * @param handler - Handler to bind to the event
  * @param options - Options to pass to the 'addEventListener'
- * @return A function to remove the handler again
+ * @returns A function to remove the handler again
  */
 function once(
   elm: EventTarget,
@@ -76,7 +76,7 @@ function once(
  * @param eventNames - Event names to bind the handler to
  * @param handler - Handler to bind to the event
  * @param options - Options to pass to the 'addEventListener'
- * @return A function to remove the handler again
+ * @returns A function to remove the handler again
  */
 function once(
   eventNames: string | string[],

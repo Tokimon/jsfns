@@ -7,7 +7,7 @@ import viewport from './viewport';
  * Get the parent element that has scrolling
  *
  * @param elm - The element whose scroll parent is determined
- * @return The scroll parent or the viewport
+ * @returns The scroll parent or the viewport
  */
 export default function scrollParent(elm: Element): Element | HTMLElement | null {
   const vp = viewport(elm);

@@ -11,7 +11,7 @@ const manualInnerXml = (XMLNode: Element) => {
  * (like innerHTML but for XML elements - eg. in SVG)
  *
  * @param XMLNode - The XML node to grab the inner XML structure from
- * @return The inner XML structure
+ * @returns The inner XML structure
  *
  * @example
  *

@@ -87,7 +87,7 @@ export function windowSize(win: GeneralWindow = window, type: SizeType = SizeTyp
  *
  * @param elm - The DOM element (or window) to find the size of
  * @param type - What type of size has to be computed. See `sizeType` for further details
- * @return Object describing width and height of the element
+ * @returns Object describing width and height of the element
  *
  * @example
  *
@@ -106,7 +106,7 @@ function size(type?: SizeType): Size
  *
  * @param elm - The DOM element (or window) to find the size of
  * @param type - What type of size has to be computed. See `sizeType` for further details
- * @return Object describing width and height of the element
+ * @returns Object describing width and height of the element
  *
  * @example
  *
@@ -142,7 +142,7 @@ export default size;
  * Find the size of a DOM element or window including margins and borders
  *
  * @param elm - The DOM element (or window) to find the size of
- * @return Object describing width and height of the element
+ * @returns Object describing width and height of the element
  */
 export const marginBoxSize = (elm: HTMLElement | GeneralWindow): Size => size(elm, SizeType.MARGIN_BOX);
 
@@ -152,7 +152,7 @@ export const marginBoxSize = (elm: HTMLElement | GeneralWindow): Size => size(el
  * Find the size of a DOM element or window including borders
  *
  * @param elm - The DOM element (or window) to find the size of
- * @return Object describing width and height of the element
+ * @returns Object describing width and height of the element
  */
 export const outerSize = (elm: HTMLElement | GeneralWindow): Size => size(elm, SizeType.OUTER);
 
@@ -162,7 +162,7 @@ export const outerSize = (elm: HTMLElement | GeneralWindow): Size => size(elm, S
  * Find the size of a DOM element or window excluding borders and margins
  *
  * @param elm - The DOM element (or window) to find the size of
- * @return Object describing width and height of the element
+ * @returns Object describing width and height of the element
  */
 export const innerSize = (elm: HTMLElement | GeneralWindow): Size => size(elm, SizeType.INNER);
 
@@ -172,7 +172,7 @@ export const innerSize = (elm: HTMLElement | GeneralWindow): Size => size(elm, S
  * Find the size of the content (scrollable area minus padding) of a DOM element or window
  *
  * @param elm - The DOM element (or window) to find the size of
- * @return Object describing width and height of the element
+ * @returns Object describing width and height of the element
  */
 export const contentSize = (elm: HTMLElement | GeneralWindow): Size => size(elm, SizeType.CONTENT);
 
@@ -182,6 +182,6 @@ export const contentSize = (elm: HTMLElement | GeneralWindow): Size => size(elm,
  * Find the size of a DOM element or window excluding borders, margins and padding
  *
  * @param elm - The DOM element (or window) to find the size of
- * @return Object describing width and height of the element
+ * @returns Object describing width and height of the element
  */
 export const contentBoxSize = (elm: HTMLElement | GeneralWindow): Size => size(elm, SizeType.CONTENT_BOX);

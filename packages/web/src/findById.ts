@@ -10,7 +10,7 @@ const byId = (id: string) => document.getElementById(id);
  * Find a DOM element with the given ID
  *
  * @param ids - ID to find the element by
- * @return The found element
+ * @returns The found element
  */
  function findById(ids: string): HTMLElement | null
 
@@ -18,7 +18,7 @@ const byId = (id: string) => document.getElementById(id);
  * Find a DOM elements from a list of IDs
  *
  * @param ids - ID to find the element by
- * @return The found elements
+ * @returns The found elements
  */
 function findById(ids: string[]): HTMLElement[]
 

@@ -17,6 +17,10 @@ const thousandRegExp = /^(\D*)1(\D*)000(\D*)(\d*)(\D*)$/;
  * symbols (no numbers), a thousand separator and a decimal separator followed by
  * the number of decimals defined with zeroes: `[before]1[thou.]000[dec.]00[after] -> $ 1,000.00`
  *
+ * @param thousand - The template for how to format a number, takes an example of 1000 in the desired currency (eg. '1.000,00 €')
+ *
+ * @returns Curried function to format a given number
+ *
  * @example
  * ```ts
  * // Format number to default currency format (euro)
@@ -36,9 +40,6 @@ const thousandRegExp = /^(\D*)1(\D*)000(\D*)(\d*)(\D*)$/;
  * sixDecimals(2345234.678); // -> '$ 2,345,234.678000'
  * sixDecimals(234.12345678); // -> '$ 234.123457'
  * ```
- *
- * @param thousand - The template for how to format a number, takes an example of 1000 in the desired curreny (eg. '1.000,00 €')
- * @return - Curried function to format a given number
  */
 export function currencyFormat(thousandString = '1.000,00 €'): CurrencyFomatter {
   let m = thousandRegExp.exec(thousandString);

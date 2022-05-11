@@ -27,6 +27,11 @@ function minDecimals(num: number, decimals: number): string {
  * **<n** | Maximum number of decimals, longer decimals will be rounded and shortened down to this number.
  * **n** | Match this exact number of decimals, rounding longer decimals and adding extra 0 (zeroes) to shorter ones.
  *
+ * @param num - Number to limit the decimals on
+ * @param decimals - Setting for how to handle the decimals
+ *
+ * @returns String representation of the number with the decimals adjusted according to the decimal setting
+ *
  * @example
  * ```ts
  * // Exact number of decimals
@@ -41,10 +46,6 @@ function minDecimals(num: number, decimals: number): string {
  * limitDecimals(123.4, '>4') // -> 123.4000
  * limitDecimals(123.456789, '>4') // -> 123.456789
  * ```
- *
- * @param num - Number to limit the decimals on
- * @param decimals - Setting for how to handle the decimals
- * @return - String representation of the number with the decimals adjusted according to the decimal setting
  */
 export default function limitDecimals(num: number, decimals: number | string = 2): string {
   if (isString(decimals)) {

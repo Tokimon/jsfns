@@ -4,7 +4,7 @@
  * @param elm - DOM element to toggle class names from
  * @param classNames - Class names to toggle
  * @param force - Force to add/remove the given class names (true = add, false = remove)
- * @return The given `elm`
+ * @returns The given `elm`
  */
 export default function toggleClass(
   elm: Element,

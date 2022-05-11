@@ -1,13 +1,13 @@
 /**
  * Generate a random id of designated length
  *
+ * @returns A random generated id
+ *
  * @example
  * ```ts
  * randomId(); // -> eg. 'efuc6f1n4xf'
  * randomId(20); // -> eg. '3vsmrbxlh9at0vhcsf1xh'
  * ```
- *
- * @return - A random generated id
  */
 export default function randomId(length = 10): string {
   let id = '';

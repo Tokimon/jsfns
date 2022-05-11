@@ -6,6 +6,10 @@ import isFunction from './isFunction';
  * Determine if the given argument is a Generator object.
  * (A generator is the one created when calling a generator function)
  *
+ * @param x - Argument to test
+ *
+ * @returns Whether the argument a Generator like function or not
+ *
  * @example
  * ```ts
  * function *gen() {}
@@ -14,9 +18,6 @@ import isFunction from './isFunction';
  * isGenerator({ next() {}, throw() {} return() {} [Symbol.iterator]() {} }); // -> true
  * isGenerator(() => {}); // -> false
  * ```
- *
- * @param x - Argument to test
- * @return - Whether the argument a Generator like function or not
  */
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types, @typescript-eslint/no-explicit-any
 export function isGenerator(x: any): x is Generator {
@@ -41,7 +42,7 @@ export function isGenerator(x: any): x is Generator {
  * ```
  *
  * @param x - Argument to test
- * @return - Whether the argument a Generator or not
+ * @returns Whether the argument a Generator or not
  */
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types, @typescript-eslint/no-explicit-any
 export default function isGeneratorFunction(x: any): x is GeneratorFunction {

@@ -10,15 +10,16 @@ const defaultSettings: PhrasifySettings = { numbers: false };
 /**
  * Transform a string into a space separated phrase
  *
+ * @param input - The string to transform
+ * @param settings - The settings for the transform
+ *
+ * @returns The transformed phrase or word
+ *
  * @example
  * ```ts
  * phrasify('XMLDataInput'); // -> XML data input
  * phrasify('dataVALUE2-input', { numbers: true }); // -> data VALUE 2 input
  * ```
- *
- * @param input - The string to transform
- * @param settings - The settings for the transform
- * @return - The transformed phrase or word
  */
 function phrasify(input: string, settings?: PhrasifySettings): string {
   if (!input) { return ''; }

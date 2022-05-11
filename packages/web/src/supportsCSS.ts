@@ -33,7 +33,7 @@ export function supportsProp(prop: CSSStyleKey, value: string): boolean {
  *
  * @param prop    - Property to test
  * @param value   - Value to test with the property
- * @return Returns object if property is supported with prefix, otherwise a boolean is returned
+ * @returns Returns object if property is supported with prefix, otherwise a boolean is returned
  */
 export default function supportsCSS(prop: CSSStyleKey, value: string): PrefixedPropMatch | boolean {
   // Property (+ value) is supported natively as is

@@ -60,7 +60,7 @@ const parseAttribute = (selector: string, attributes: AttributeMapping) => {
  * Parses a selector string into a structured object
  *
  * @param selector - The CSS selector to parse
- * @return The attribute parsing mapping
+ * @returns The attribute parsing mapping
  */
 export default function parseSelector(selector: string): SelectorParsing {
   const mapping = {} as AttributeMapping;

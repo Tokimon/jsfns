@@ -7,6 +7,10 @@ import hexToNumber from './hexToNumber';
 /**
  * Converts a Hexadecimal color to a RGB(A) color array
  *
+ * @param hex - Hex color to convert to RGB
+ *
+ * @returns Array with RGB values
+ *
  * @example
  * ```ts
  * hexToRGB('#2fd466'); // -> [47, 212, 102]
@@ -14,9 +18,6 @@ import hexToNumber from './hexToNumber';
  * // And with alpha channel
  * hexToRGB('#2fd46680'); // -> [47, 212, 102, 0.5]
  * ```
- *
- * @param hex - Hex color to convert to RGB
- * @return - Array with RGB values
  */
 export default function hexToRGB(hex: string): number[] {
   if (!isString(hex) || !hex) { return [0, 0, 0]; }

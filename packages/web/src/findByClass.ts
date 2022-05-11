@@ -13,7 +13,7 @@ const byCn = (elm: Document | Element) => (cn: string) => elm.getElementsByClass
  * Separate multiple selectors by comma. Separate multiple class names by space.
  *
  * @param classNames - Class name(s) to find elements by
- * @return List of found DOM elements
+ * @returns List of found DOM elements
  */
 function findByClass(
   classNames: string | string[]
@@ -25,7 +25,7 @@ function findByClass(
  *
  * @param elm - The DOM element to start the search from
  * @param classNames - Class name(s) to find elements by
- * @return List of found DOM elements
+ * @returns List of found DOM elements
  */
 function findByClass(
   elm: Document | Element,

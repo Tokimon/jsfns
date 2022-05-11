@@ -8,7 +8,7 @@ import getCurrentDocument from './getCurrentDocument';
  * Get the current viewport element (scrolling element) of the current document, from a given element
  *
  * @param doc - Element to find the viewport element from
- * @return The viewport element
+ * @returns The viewport element
  *
  * @example
  *

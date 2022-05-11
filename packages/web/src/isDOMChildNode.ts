@@ -13,7 +13,7 @@ interface ChildNodeWithParent extends ChildNode {
  * Is the given object a DOM node child of a DOM element
  *
  * @param obj - The object to check
- * @return Is it a DOM child node or not
+ * @returns Is it a DOM child node or not
  */
 export default function isDOMChildNode(node: Node): node is ChildNodeWithParent {
   return isDOMNode(node) && node.parentElement != null;

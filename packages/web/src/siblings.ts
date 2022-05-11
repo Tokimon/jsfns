@@ -33,7 +33,7 @@ const getSiblings = (type: 'prev' | 'next' | 'all') => (elm: Node | null): Eleme
  * Get all sibling elements before a given DOM element in the structure
  *
  * @param elm - DOM element to find siblings of
- * @return Collection of sibling elements
+ * @returns Collection of sibling elements
  *
  * @example
  *
@@ -47,7 +47,7 @@ export const previousSiblings = getSiblings('prev');
  * Get all sibling elements after a given DOM element in the structure
  *
  * @param elm - DOM element to find siblings of
- * @return Collection of sibling elements
+ * @returns Collection of sibling elements
  *
  * @example
  *
@@ -61,7 +61,7 @@ export const nextSiblings = getSiblings('next');
  * Get all sibling elements of a given DOM element
  *
  * @param elm - DOM element to find siblings of
- * @return Collection of sibling elements
+ * @returns Collection of sibling elements
  *
  * @example
  *

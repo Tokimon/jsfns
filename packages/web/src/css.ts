@@ -97,7 +97,7 @@ const handleMultipleValues = (
  *
  * @param elm - DOM element to set the style on
  * @param style - Styling to set on the element
- * @return All styling on the element
+ * @returns All styling on the element
  */
 function css(elm: HTMLElement, style?: CSSStyleProperties): CSSStyleDeclaration;
 
@@ -112,7 +112,7 @@ function css(elm: HTMLElement, style?: CSSStyleProperties): CSSStyleDeclaration;
  * @param elm - DOM element to get/set the style on
  * @param style - Style property name
  * @param value - The new value
- * @return The value of the property
+ * @returns The value of the property
  */
 function css(elm: HTMLElement, property: CSSStyleKey, value?: string | number): string | number | null;
 

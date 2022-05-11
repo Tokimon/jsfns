@@ -10,7 +10,7 @@ import create from './create';
  *
  * @param elm - DOM element to replace
  * @param replacement - DOM element or plain HTML string to replace {elm}
- * @return The value given in `elm`
+ * @returns The value given in `elm`
  */
 export default function replaceNode(elm: Node, replacement?: Node | string): Node | void {
   if (!isDOMChildNode(elm)) { return; }

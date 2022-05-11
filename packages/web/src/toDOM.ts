@@ -2,7 +2,7 @@
  * Convert HTML into DOM node(s)
  *
  * @param html - HTML string to transform into nodes
- * @return DOM elements that the HTML represented
+ * @returns DOM elements that the HTML represented
  *
  * @remarks
  *
