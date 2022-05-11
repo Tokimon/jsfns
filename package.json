@@ -8,37 +8,28 @@
   "scripts": {
     "prepublishOnly": "npm run build",
     "postpublish": "npm run clean",
-
     "test": "npm test --workspaces",
     "test:core": "npm test -w @js-fns/core",
     "test:web": "npm test -w @js-fns/web",
     "test:coverage": "npm run test:coverage --workspaces",
-
     "type-check": "npm run check-types --workspaces",
     "type-check:core": "npm run type-check -w @js-fns/core",
     "type-check:web": "npm run type-check -w @js-fns/web",
-
     "build": "npm run build --workspaces",
     "build:core": "npm run build -w @js-fns/core",
     "build:web": "npm run build -w @js-fns/web",
-
     "clean": "npm run clean --workspaces",
     "clean:core": "npm run clean -w @js-fns/core",
     "clean:web": "npm run clean -w @js-fns/web",
-
     "missing": "npm run missing --workspaces",
     "missing:core": "npm run missing -w @js-fns/core",
     "missing:web": "npm run missing -w @js-fns/web",
-
     "lint": "npm run lint --workspaces",
     "lint:core": "npm run lint -w @js-fns/core",
     "lint:web": "npm run lint -w @js-fns/web",
-
     "coveralls": "cat ./coverage/lcov.info | node node_modules/.bin/coveralls",
     "coveralls:win": "type ./coverage/lcov.info | node node_modules/.bin/coveralls",
-
-    "docs": "typedoc --options ./typedoc.json ./ts"
-
+    "docs": "typedoc --options ./typedoc.json"
   },
   "repository": {
     "type": "git",
@@ -52,20 +43,22 @@
   },
   "homepage": "https://github.com/Tokimon/js-fns#readme",
   "devDependencies": {
-    "@types/jest": "^27.4.1",
-    "@typescript-eslint/eslint-plugin": "^5.15.0",
-    "@typescript-eslint/parser": "^5.15.0",
+    "@types/jest": "^27.5.0",
+    "@typescript-eslint/eslint-plugin": "^5.23.0",
+    "@typescript-eslint/parser": "^5.23.0",
     "coveralls": "^3.1.1",
-    "eslint": "^8.11.0",
-    "eslint-config-standard": "^16.0.3",
-    "eslint-plugin-import": "^2.25.4",
-    "eslint-plugin-jest": "^26.1.2",
+    "eslint": "^8.15.0",
+    "eslint-config-standard": "^17.0.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-jest": "^26.1.5",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^6.0.0",
     "eslint-plugin-standard": "^5.0.0",
-    "jest": "^27.5.1",
-    "ts-jest": "^27.1.3",
-    "typescript": "^4.6.2"
+    "jest": "^28.1.0",
+    "ts-jest": "^28.0.2",
+    "typedoc": "^0.22.15",
+    "typedoc-plugin-missing-exports": "^0.22.6",
+    "typescript": "^4.6.4"
   },
   "workspaces": [
     "packages/*"
