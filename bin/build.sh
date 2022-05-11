@@ -37,12 +37,10 @@ build() {
 }
 
 build_index() {
-  echo -e "Building \e[1;34m$workspaceName\e[0m"
+  print_building 'index.ts'
 
   # Preparing the accumulated index file
-  rm -f ./src/index.ts
-
-  print_building 'index.ts'
+  rm -f $PWD/src/index.ts
 
   for file in $PWD/src/*.ts; do
     name=$(basename $file .ts)
@@ -54,6 +52,9 @@ build_index() {
 
   print_done
 }
+
+# Entry message
+echo -e "Building \e[1;34m$workspaceName\e[0m"
 
 # Build the accumulated index file
 build_index
