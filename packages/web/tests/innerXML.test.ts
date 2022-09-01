@@ -26,7 +26,7 @@ describe('"innerXML"', () => {
     });
 
     it('When `innerHTML` is not present', () => {
-      const mock: SpyInstance<string | undefined, []> = jest.spyOn(xmlElm, 'innerHTML', 'get');
+      const mock: SpyInstance<() => string | undefined> = jest.spyOn(xmlElm, 'innerHTML', 'get');
 
       mock.mockImplementation(() => undefined);
 

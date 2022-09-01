@@ -11,7 +11,7 @@ const childID = generateId('Child');
 describe('"delegate"', () => {
   describe('"delegateHandler"', () => {
     it('Calls handler when event target matches the delegation', () => {
-      const cb: DelegateEventHandler = jest.fn();
+      const cb = jest.fn<DelegateEventHandler>();
       const handler = delegateHandler('body', cb);
 
       document.addEventListener('click', handler);
@@ -26,7 +26,7 @@ describe('"delegate"', () => {
     it('Does not call handler when event target does not match delegation', () => {
       insertHtml(`<div id="${delegateID}"></div>`);
 
-      const cb: DelegateEventHandler = jest.fn();
+      const cb = jest.fn<DelegateEventHandler>();
       const handler = delegateHandler('#Delegate', cb);
 
       document.addEventListener('click', handler);
@@ -43,7 +43,7 @@ describe('"delegate"', () => {
     it('Calls handler when event target is a child of delegation target', () => {
       insertHtml(`<div id="${delegateID}"><div id="${childID}"></div></div>`);
 
-      const cb: DelegateEventHandler = jest.fn();
+      const cb = jest.fn<DelegateEventHandler>();
       const handler = delegateHandler('#' + delegateID, cb);
 
       document.addEventListener('click', handler);
@@ -61,7 +61,7 @@ describe('"delegate"', () => {
 
   describe('"delegate"', () => {
     it('Bind a delegate event handler to an object', () => {
-      const cb: DelegateEventHandler = jest.fn();
+      const cb = jest.fn<DelegateEventHandler>();
 
       delegate(document, 'delegate', 'body', cb);
 
@@ -71,7 +71,7 @@ describe('"delegate"', () => {
     });
 
     it('Defaults to document if no valid event target is given', () => {
-      const cb: DelegateEventHandler = jest.fn();
+      const cb = jest.fn<DelegateEventHandler>();
 
       delegate('delegate', 'body', cb);
 

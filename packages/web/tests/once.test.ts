@@ -136,7 +136,7 @@ describe('"once"', () => {
       });
 
       it('Trigger given event the first time the "when" option is fulfilled', () => {
-        const when = jest.fn<ReturnType<WhenFunction>, Parameters<WhenFunction>>()
+        const when = jest.fn<WhenFunction>()
           .mockReturnValue(true)
           .mockReturnValueOnce(false);
 
