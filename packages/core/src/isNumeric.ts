@@ -12,14 +12,14 @@ import isString from './isString';
  *
  * @example
  * ```ts
- * isNumber(123); // -> true
- * isNumber('123'); // -> true
- * isNumber(Infinity); // -> false
+ * isNumeric(123); // -> true
+ * isNumeric('123'); // -> true
+ * isNumeric(Infinity); // -> false
  * ```
  */
 export default function isNumeric(x: unknown): boolean {
   if (isString(x)) {
-    if (!x.length) { return false; }
+    if (!x) return false;
     x = Number(x);
   }
 

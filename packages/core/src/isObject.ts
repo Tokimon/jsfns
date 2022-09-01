@@ -1,7 +1,3 @@
-import objectType from './objectType';
-
-
-
 /**
  * Is the given argument of type String
  *
@@ -18,7 +14,6 @@ import objectType from './objectType';
  * isObject('123'); // -> false
  * ```
  */
-// eslint-disable-next-line @typescript-eslint/ban-types
 export default function isObject(x: unknown): x is object {
-  return objectType(x) === 'object' && Object(x) === x;
+  return x != null && typeof x === 'object' && !Array.isArray(x) && Object(x) === x;
 }

@@ -6,9 +6,7 @@ describe('"isString"', () => {
   describe('Returns `true` for String values', () => {
     it.each([
       '',
-      String(''),
-      // eslint-disable-next-line no-new-wrappers
-      new String('')
+      String('test')
     ])('"%s"', (n) => {
       expect(isString(n)).toBe(true);
     });

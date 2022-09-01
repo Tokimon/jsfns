@@ -1,7 +1,3 @@
-import objectType from './objectType';
-
-
-
 /**
  * Is the given argument of type String
  *
@@ -16,5 +12,5 @@ import objectType from './objectType';
  * ```
  */
 export default function isString(x: unknown): x is string {
-  return typeof x === 'string' || objectType(x) === 'string';
+  return typeof x === 'string';
 }

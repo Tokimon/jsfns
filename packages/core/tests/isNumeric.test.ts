@@ -8,12 +8,8 @@ describe('"isNumeric"', () => {
       8,
       9.5,
       Number('0'),
-      // eslint-disable-next-line no-new-wrappers
-      new Number('5'),
       '7.4',
-      String('6'),
-      // eslint-disable-next-line no-new-wrappers
-      new String('3.4')
+      String('6')
     ])('"%s"', (n) => {
       expect(isNumeric(n)).toBe(true);
     });
@@ -26,8 +22,6 @@ describe('"isNumeric"', () => {
       Infinity,
       NaN,
       '',
-      // eslint-disable-next-line no-new-wrappers
-      new String(''),
       [],
       {}
     ])('"%s"', (n) => {
