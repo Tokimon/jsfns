@@ -43,22 +43,22 @@
   },
   "homepage": "https://github.com/Tokimon/js-fns#readme",
   "devDependencies": {
-    "@types/jest": "^27.5.0",
-    "@typescript-eslint/eslint-plugin": "^5.23.0",
-    "@typescript-eslint/parser": "^5.23.0",
+    "@types/jest": "^29.0.0",
+    "@typescript-eslint/eslint-plugin": "^5.36.1",
+    "@typescript-eslint/parser": "^5.36.1",
     "coveralls": "^3.1.1",
-    "eslint": "^8.15.0",
+    "eslint": "^8.23.0",
     "eslint-config-standard": "^17.0.0",
     "eslint-plugin-import": "^2.26.0",
-    "eslint-plugin-jest": "^26.1.5",
+    "eslint-plugin-jest": "^27.0.1",
     "eslint-plugin-node": "^11.1.0",
-    "eslint-plugin-promise": "^6.0.0",
+    "eslint-plugin-promise": "^6.0.1",
     "eslint-plugin-standard": "^5.0.0",
-    "jest": "^28.1.0",
-    "ts-jest": "^28.0.2",
-    "typedoc": "^0.22.15",
-    "typedoc-plugin-missing-exports": "^0.22.6",
-    "typescript": "^4.6.4"
+    "jest": "^29.0.1",
+    "ts-jest": "^28.0.8",
+    "typedoc": "^0.23.13",
+    "typedoc-plugin-missing-exports": "^1.0.0",
+    "typescript": "^4.8.2"
   },
   "workspaces": [
     "packages/*"
