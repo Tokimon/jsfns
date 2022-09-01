@@ -40,5 +40,7 @@
   "directories": {
     "test": "tests"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "jest-environment-jsdom": "^29.0.1"
+  }
 }

@@ -4,7 +4,7 @@ import baseConfig from '../../jest.config.base.js';
 export default {
   ...baseConfig,
   testMatch: ['**/web/tests/*.test.ts'],
-  testEnvironment: 'jsdom',
+  testEnvironment: 'jest-environment-jsdom',
   setupFilesAfterEnv: ['./jest.setup.js'],
   transformIgnorePatterns: ['node_modules/(?!@js-fns)'],
   moduleNameMapper: {
