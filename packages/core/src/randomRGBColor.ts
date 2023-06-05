@@ -12,6 +12,6 @@ import randomInt from './randomInt';
  * randomRGBColor(); // -> eg. [169, 100, 52]
  * ```
  */
-export default function randomRGBColor(): [number, number, number] {
+export default function randomRGBColor(): [r: number, g: number, b: number] {
   return [randomInt(255), randomInt(255), randomInt(255)];
 }
