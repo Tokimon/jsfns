@@ -9,9 +9,6 @@ export type CamelCaseSettings = PhrasifySettings & {
   abbr?: boolean;
 }
 
-export type CamelCaseFunction = (str: string) => string;
-
-
 
 export const defaultSettings: CamelCaseSettings = {
   upper: false,
@@ -43,7 +40,7 @@ export const defaultSettings: CamelCaseSettings = {
 function camelCase(input: string, settings?: CamelCaseSettings): string {
   if (!input) { return ''; }
 
-  const { upper, abbr, numbers } = Object.assign({}, defaultSettings, settings);
+  const { upper, abbr, numbers } = { ...defaultSettings, ...settings };
 
   return phrasify(input, { numbers })
     .replace(/(?:^|\s+)(\w+)/g, (_: string, word: string, index: number) => {
@@ -53,7 +50,7 @@ function camelCase(input: string, settings?: CamelCaseSettings): string {
           : word.toLowerCase();
       }
 
-      const restOfWord = word.substr(1);
+      const restOfWord = word.slice(1);
       return word[0].toUpperCase() + (abbr ? restOfWord : restOfWord.toLowerCase());
     });
 }
