@@ -12,7 +12,7 @@ const hexStr = (color: number) => hex(minMax(color, 0, 255));
 
 
 /**
- * Converts a Array of R G B (A) colors into a hex color.
+ * Converts an Array of R G B (A) colors into a hex color.
  *
  * @param rgb - The R G B (A) color represented as an array
  *
@@ -50,19 +50,10 @@ function RGBToHex(rgb: RGBTuple): string;
 function RGBToHex(r: number, g: number, b: number, a?: number): string;
 
 function RGBToHex(r: number | RGBTuple, g?: number, b?: number, a?: number): string {
-  if (Array.isArray(r)) {
-    [r, g, b, a] = r;
-  }
+  if (Array.isArray(r)) [r, g, b, a] = r;
 
-  let hex = '#'
-    + hexStr(r)
-    + hexStr(g as number)
-    + hexStr(b as number);
-
-  if (a !== undefined && a < 1) {
-    if (a < 0) { a = 0; }
-    hex += hexStr(a * 255);
-  }
+  let hex = '#' + hexStr(r) + hexStr(g as number) + hexStr(b as number);
+  if (a !== undefined) hex += hexStr(minMax(a, 0, 1) * 255);
 
   return hex;
 }
