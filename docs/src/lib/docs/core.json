@@ -1,0 +1,5605 @@
+{
+	"id": 0,
+	"name": "@js-fns/core",
+	"kind": 1,
+	"flags": {},
+	"originalName": "",
+	"children": [
+		{
+			"id": 168,
+			"name": "RGBToHex",
+			"kind": 2,
+			"kindString": "Module",
+			"flags": {},
+			"children": [
+				{
+					"id": 262,
+					"name": "<internal>",
+					"kind": 4,
+					"kindString": "Namespace",
+					"flags": {},
+					"children": [
+						{
+							"id": 263,
+							"name": "RGBTuple",
+							"kind": 4194304,
+							"kindString": "Type alias",
+							"flags": {},
+							"sources": [
+								{
+									"fileName": "packages/core/src/RGBToHex.ts",
+									"line": 6,
+									"character": 5
+								}
+							],
+							"type": {
+								"type": "tuple",
+								"elements": [
+									{
+										"type": "named-tuple-member",
+										"name": "red",
+										"isOptional": false,
+										"element": {
+											"type": "intrinsic",
+											"name": "number"
+										}
+									},
+									{
+										"type": "named-tuple-member",
+										"name": "green",
+										"isOptional": false,
+										"element": {
+											"type": "intrinsic",
+											"name": "number"
+										}
+									},
+									{
+										"type": "named-tuple-member",
+										"name": "blue",
+										"isOptional": false,
+										"element": {
+											"type": "intrinsic",
+											"name": "number"
+										}
+									},
+									{
+										"type": "named-tuple-member",
+										"name": "alpha",
+										"isOptional": true,
+										"element": {
+											"type": "intrinsic",
+											"name": "number"
+										}
+									}
+								]
+							}
+						}
+					],
+					"groups": [
+						{
+							"title": "Type aliases",
+							"kind": 4194304,
+							"children": [
+								263
+							]
+						}
+					]
+				},
+				{
+					"id": 169,
+					"name": "default",
+					"kind": 64,
+					"kindString": "Function",
+					"flags": {},
+					"sources": [
+						{
+							"fileName": "packages/core/src/RGBToHex.ts",
+							"line": 29,
+							"character": 9
+						}
+					],
+					"signatures": [
+						{
+							"id": 170,
+							"name": "default",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "Converts a Array of R G B (A) colors into a hex color.",
+								"returns": "A Hex representation of the given color\n",
+								"tags": [
+									{
+										"tag": "example",
+										"text": "\n```ts\nRGBToHex([123, 123, 123]) // -> #7b7b7b\n\n// With alpha channel\nRGBToHex([123, 123, 123, 0.5]) // -> #7b7b7b80\n```\n"
+									}
+								]
+							},
+							"parameters": [
+								{
+									"id": 171,
+									"name": "rgb",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"shortText": "The R G B (A) color represented as an array\n"
+									},
+									"type": {
+										"type": "reference",
+										"id": 263,
+										"name": "RGBTuple"
+									}
+								}
+							],
+							"type": {
+								"type": "intrinsic",
+								"name": "string"
+							}
+						},
+						{
+							"id": 172,
+							"name": "default",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "Converts R G B (A) color arguments into a hex color.",
+								"returns": "A Hex representation of the given colors\n",
+								"tags": [
+									{
+										"tag": "example",
+										"text": "\n```ts\n// RGB as arguments\nRGBToHex( 123, 123, 123 ) // -> #7b7b7b80\n\n// With alpha channel\nRGBToHex( 123, 123, 123, 0.5 ) // -> #7b7b7b80\n```\n"
+									}
+								]
+							},
+							"parameters": [
+								{
+									"id": 173,
+									"name": "r",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"shortText": "Red color"
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "number"
+									}
+								},
+								{
+									"id": 174,
+									"name": "g",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"shortText": "Green color"
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "number"
+									}
+								},
+								{
+									"id": 175,
+									"name": "b",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"shortText": "Blue color"
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "number"
+									}
+								},
+								{
+									"id": 176,
+									"name": "a",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {
+										"isOptional": true
+									},
+									"comment": {
+										"shortText": "Alpha channel\n"
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "number"
+									}
+								}
+							],
+							"type": {
+								"type": "intrinsic",
+								"name": "string"
+							}
+						}
+					]
+				}
+			],
+			"groups": [
+				{
+					"title": "Namespaces",
+					"kind": 4,
+					"children": [
+						262
+					]
+				},
+				{
+					"title": "Functions",
+					"kind": 64,
+					"children": [
+						169
+					]
+				}
+			],
+			"sources": [
+				{
+					"fileName": "packages/core/src/RGBToHex.ts",
+					"line": 1,
+					"character": 0
+				}
+			]
+		},
+		{
+			"id": 1,
+			"name": "camelCase",
+			"kind": 2,
+			"kindString": "Module",
+			"flags": {},
+			"children": [
+				{
+					"id": 6,
+					"name": "CamelCaseFunction",
+					"kind": 4194304,
+					"kindString": "Type alias",
+					"flags": {},
+					"sources": [
+						{
+							"fileName": "packages/core/src/camelCase.ts",
+							"line": 12,
+							"character": 12
+						}
+					],
+					"type": {
+						"type": "reflection",
+						"declaration": {
+							"id": 7,
+							"name": "__type",
+							"kind": 65536,
+							"kindString": "Type literal",
+							"flags": {},
+							"sources": [
+								{
+									"fileName": "packages/core/src/camelCase.ts",
+									"line": 12,
+									"character": 32
+								}
+							],
+							"signatures": [
+								{
+									"id": 8,
+									"name": "__type",
+									"kind": 4096,
+									"kindString": "Call signature",
+									"flags": {},
+									"parameters": [
+										{
+											"id": 9,
+											"name": "str",
+											"kind": 32768,
+											"kindString": "Parameter",
+											"flags": {},
+											"type": {
+												"type": "intrinsic",
+												"name": "string"
+											}
+										}
+									],
+									"type": {
+										"type": "intrinsic",
+										"name": "string"
+									}
+								}
+							]
+						}
+					}
+				},
+				{
+					"id": 2,
+					"name": "CamelCaseSettings",
+					"kind": 4194304,
+					"kindString": "Type alias",
+					"flags": {},
+					"comment": {
+						"shortText": "Settings for how to format the Camel Case"
+					},
+					"sources": [
+						{
+							"fileName": "packages/core/src/camelCase.ts",
+							"line": 5,
+							"character": 12
+						}
+					],
+					"type": {
+						"type": "intersection",
+						"types": [
+							{
+								"type": "reference",
+								"id": 128,
+								"name": "PhrasifySettings"
+							},
+							{
+								"type": "reflection",
+								"declaration": {
+									"id": 3,
+									"name": "__type",
+									"kind": 65536,
+									"kindString": "Type literal",
+									"flags": {},
+									"children": [
+										{
+											"id": 5,
+											"name": "abbr",
+											"kind": 1024,
+											"kindString": "Property",
+											"flags": {
+												"isOptional": true
+											},
+											"comment": {
+												"shortText": "Keep abbreviations uppercase (false == HTMLElement => HtmlElement | true == HTMLElement => HTMLElement)"
+											},
+											"sources": [
+												{
+													"fileName": "packages/core/src/camelCase.ts",
+													"line": 9,
+													"character": 2
+												}
+											],
+											"type": {
+												"type": "intrinsic",
+												"name": "boolean"
+											}
+										},
+										{
+											"id": 4,
+											"name": "upper",
+											"kind": 1024,
+											"kindString": "Property",
+											"flags": {
+												"isOptional": true
+											},
+											"comment": {
+												"shortText": "Convert to UpperCase CamelCase (aka PascalCase)"
+											},
+											"sources": [
+												{
+													"fileName": "packages/core/src/camelCase.ts",
+													"line": 7,
+													"character": 2
+												}
+											],
+											"type": {
+												"type": "intrinsic",
+												"name": "boolean"
+											}
+										}
+									],
+									"groups": [
+										{
+											"title": "Properties",
+											"kind": 1024,
+											"children": [
+												5,
+												4
+											]
+										}
+									],
+									"sources": [
+										{
+											"fileName": "packages/core/src/camelCase.ts",
+											"line": 5,
+											"character": 51
+										}
+									]
+								}
+							}
+						]
+					}
+				},
+				{
+					"id": 10,
+					"name": "defaultSettings",
+					"kind": 32,
+					"kindString": "Variable",
+					"flags": {
+						"isConst": true
+					},
+					"sources": [
+						{
+							"fileName": "packages/core/src/camelCase.ts",
+							"line": 16,
+							"character": 13
+						}
+					],
+					"type": {
+						"type": "reference",
+						"id": 2,
+						"name": "CamelCaseSettings"
+					},
+					"defaultValue": "..."
+				},
+				{
+					"id": 11,
+					"name": "default",
+					"kind": 64,
+					"kindString": "Function",
+					"flags": {},
+					"sources": [
+						{
+							"fileName": "packages/core/src/camelCase.ts",
+							"line": 43,
+							"character": 9
+						}
+					],
+					"signatures": [
+						{
+							"id": 12,
+							"name": "default",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "Transform a string into a camelCased word (eg. 'camel case' -> 'camelCase')",
+								"returns": "The formatted string\n",
+								"tags": [
+									{
+										"tag": "example",
+										"text": "\n```ts\ncamelCase('data-value2-input'); // -> dataValue2input\ncamelCase('XML data input'); // -> XmlDataInput\n\n// With settings\nconst settings = { abbr: true, numbers: true, upper: true };\n\ncamelCase('data-VALUE2-input', settings); // -> DataVALUE2Input\n```\n"
+									}
+								]
+							},
+							"parameters": [
+								{
+									"id": 13,
+									"name": "input",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"shortText": "The string to format"
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "string"
+									}
+								},
+								{
+									"id": 14,
+									"name": "settings",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {
+										"isOptional": true
+									},
+									"comment": {
+										"shortText": "The settings for the transform\n"
+									},
+									"type": {
+										"type": "reference",
+										"id": 2,
+										"name": "CamelCaseSettings"
+									}
+								}
+							],
+							"type": {
+								"type": "intrinsic",
+								"name": "string"
+							}
+						}
+					]
+				}
+			],
+			"groups": [
+				{
+					"title": "Type aliases",
+					"kind": 4194304,
+					"children": [
+						6,
+						2
+					]
+				},
+				{
+					"title": "Variables",
+					"kind": 32,
+					"children": [
+						10
+					]
+				},
+				{
+					"title": "Functions",
+					"kind": 64,
+					"children": [
+						11
+					]
+				}
+			],
+			"sources": [
+				{
+					"fileName": "packages/core/src/camelCase.ts",
+					"line": 1,
+					"character": 0
+				}
+			]
+		},
+		{
+			"id": 15,
+			"name": "capitalize",
+			"kind": 2,
+			"kindString": "Module",
+			"flags": {},
+			"children": [
+				{
+					"id": 16,
+					"name": "default",
+					"kind": 64,
+					"kindString": "Function",
+					"flags": {},
+					"sources": [
+						{
+							"fileName": "packages/core/src/capitalize.ts",
+							"line": 14,
+							"character": 24
+						}
+					],
+					"signatures": [
+						{
+							"id": 17,
+							"name": "default",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "Capitalize each word in a phrase",
+								"returns": "Capitalized string\n",
+								"tags": [
+									{
+										"tag": "example",
+										"text": "\n```ts\ncapitalize('capitalize this phrase'); // -> Capitalize This Phrase\ncapitalize('capitalize-This-phrase'); // -> Capitalize-This-Phrase\n```\n"
+									}
+								]
+							},
+							"parameters": [
+								{
+									"id": 18,
+									"name": "str",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"shortText": "String to capitalize\n"
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "string"
+									}
+								}
+							],
+							"type": {
+								"type": "intrinsic",
+								"name": "string"
+							}
+						}
+					]
+				}
+			],
+			"groups": [
+				{
+					"title": "Functions",
+					"kind": 64,
+					"children": [
+						16
+					]
+				}
+			],
+			"sources": [
+				{
+					"fileName": "packages/core/src/capitalize.ts",
+					"line": 14,
+					"character": 0
+				}
+			]
+		},
+		{
+			"id": 19,
+			"name": "chunkString",
+			"kind": 2,
+			"kindString": "Module",
+			"flags": {},
+			"children": [
+				{
+					"id": 20,
+					"name": "default",
+					"kind": 64,
+					"kindString": "Function",
+					"flags": {},
+					"sources": [
+						{
+							"fileName": "packages/core/src/chunkString.ts",
+							"line": 15,
+							"character": 24
+						}
+					],
+					"signatures": [
+						{
+							"id": 21,
+							"name": "default",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "Split a String up into smaller strings of a give size (eg. 'ABCDEF' -> [AB,CD,EF])",
+								"returns": "Array of string chunks\n",
+								"tags": [
+									{
+										"tag": "example",
+										"text": "\n```ts\nchunkString('abcdefghijkl'); // -> ['ab', 'cd', 'ef', 'gh', 'ij', 'kl']\nchunkString('abcdefghijkl', 4); // -> ['abcd', 'efgh', 'ijkl']\n```\n"
+									}
+								]
+							},
+							"parameters": [
+								{
+									"id": 22,
+									"name": "str",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"shortText": "String to split up"
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "string"
+									}
+								},
+								{
+									"id": 23,
+									"name": "size",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"shortText": "Size par chunk\n"
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "number"
+									},
+									"defaultValue": "2"
+								}
+							],
+							"type": {
+								"type": "array",
+								"elementType": {
+									"type": "intrinsic",
+									"name": "string"
+								}
+							}
+						}
+					]
+				}
+			],
+			"groups": [
+				{
+					"title": "Functions",
+					"kind": 64,
+					"children": [
+						20
+					]
+				}
+			],
+			"sources": [
+				{
+					"fileName": "packages/core/src/chunkString.ts",
+					"line": 15,
+					"character": 0
+				}
+			]
+		},
+		{
+			"id": 24,
+			"name": "currencyFormat",
+			"kind": 2,
+			"kindString": "Module",
+			"flags": {},
+			"children": [
+				{
+					"id": 28,
+					"name": "CurrencyFomatter",
+					"kind": 4194304,
+					"kindString": "Type alias",
+					"flags": {},
+					"sources": [
+						{
+							"fileName": "packages/core/src/currencyFormat.ts",
+							"line": 5,
+							"character": 12
+						}
+					],
+					"type": {
+						"type": "reflection",
+						"declaration": {
+							"id": 29,
+							"name": "__type",
+							"kind": 65536,
+							"kindString": "Type literal",
+							"flags": {},
+							"sources": [
+								{
+									"fileName": "packages/core/src/currencyFormat.ts",
+									"line": 5,
+									"character": 31
+								}
+							],
+							"signatures": [
+								{
+									"id": 30,
+									"name": "__type",
+									"kind": 4096,
+									"kindString": "Call signature",
+									"flags": {},
+									"parameters": [
+										{
+											"id": 31,
+											"name": "num",
+											"kind": 32768,
+											"kindString": "Parameter",
+											"flags": {},
+											"type": {
+												"type": "intrinsic",
+												"name": "number"
+											}
+										}
+									],
+									"type": {
+										"type": "intrinsic",
+										"name": "string"
+									}
+								}
+							]
+						}
+					}
+				},
+				{
+					"id": 25,
+					"name": "currencyFormat",
+					"kind": 64,
+					"kindString": "Function",
+					"flags": {},
+					"sources": [
+						{
+							"fileName": "packages/core/src/currencyFormat.ts",
+							"line": 44,
+							"character": 16
+						}
+					],
+					"signatures": [
+						{
+							"id": 26,
+							"name": "currencyFormat",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "Creates a function that formats a number to a given currency format (eg. 1000 -> 1.000,00 €)",
+								"text": "The template string should be the number 1000 described with before and after\nsymbols (no numbers), a thousand separator and a decimal separator followed by\nthe number of decimals defined with zeroes: `[before]1[thou.]000[dec.]00[after] -> $ 1,000.00`\n",
+								"returns": "Curried function to format a given number\n",
+								"tags": [
+									{
+										"tag": "example",
+										"text": "\n```ts\n// Format number to default currency format (euro)\nconst euro = currencyFormat();\neuro(2345234.678); // -> '2.345.234,68 €'\n\n// Format number to USD currency format\nconst usd = currencyFormat('$ 1,000.00');\nusd(2345234.678); // -> '$ 2,345,234.68'\n\n// Format number to custom currency format\nconst custom = currencyFormat('# 1-000;00 ¤');\ncustom(2345234.678); // -> '# 2-345-234;68 ¤'\n\n// Specifying number of decimals\nconst sixDecimals = currencyFormat('$ 1,000.000000');\nsixDecimals(2345234.678); // -> '$ 2,345,234.678000'\nsixDecimals(234.12345678); // -> '$ 234.123457'\n```\n"
+									}
+								]
+							},
+							"parameters": [
+								{
+									"id": 27,
+									"name": "thousandString",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"type": {
+										"type": "intrinsic",
+										"name": "string"
+									},
+									"defaultValue": "'1.000,00 €'"
+								}
+							],
+							"type": {
+								"type": "reference",
+								"id": 28,
+								"name": "CurrencyFomatter"
+							}
+						}
+					]
+				},
+				{
+					"id": 32,
+					"name": "default",
+					"kind": 64,
+					"kindString": "Function",
+					"flags": {},
+					"signatures": [
+						{
+							"id": 33,
+							"name": "default",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"parameters": [
+								{
+									"id": 34,
+									"name": "num",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"type": {
+										"type": "intrinsic",
+										"name": "number"
+									}
+								}
+							],
+							"type": {
+								"type": "intrinsic",
+								"name": "string"
+							}
+						}
+					]
+				}
+			],
+			"groups": [
+				{
+					"title": "Type aliases",
+					"kind": 4194304,
+					"children": [
+						28
+					]
+				},
+				{
+					"title": "Functions",
+					"kind": 64,
+					"children": [
+						25,
+						32
+					]
+				}
+			],
+			"sources": [
+				{
+					"fileName": "packages/core/src/currencyFormat.ts",
+					"line": 1,
+					"character": 0
+				}
+			]
+		},
+		{
+			"id": 35,
+			"name": "formatNumber",
+			"kind": 2,
+			"kindString": "Module",
+			"flags": {},
+			"children": [
+				{
+					"id": 36,
+					"name": "FormatNumberSettings",
+					"kind": 4194304,
+					"kindString": "Type alias",
+					"flags": {},
+					"sources": [
+						{
+							"fileName": "packages/core/src/formatNumber.ts",
+							"line": 5,
+							"character": 12
+						}
+					],
+					"type": {
+						"type": "reflection",
+						"declaration": {
+							"id": 37,
+							"name": "__type",
+							"kind": 65536,
+							"kindString": "Type literal",
+							"flags": {},
+							"children": [
+								{
+									"id": 40,
+									"name": "decimal",
+									"kind": 1024,
+									"kindString": "Property",
+									"flags": {
+										"isOptional": true
+									},
+									"sources": [
+										{
+											"fileName": "packages/core/src/formatNumber.ts",
+											"line": 8,
+											"character": 2
+										}
+									],
+									"type": {
+										"type": "intrinsic",
+										"name": "string"
+									}
+								},
+								{
+									"id": 38,
+									"name": "decimals",
+									"kind": 1024,
+									"kindString": "Property",
+									"flags": {
+										"isOptional": true
+									},
+									"sources": [
+										{
+											"fileName": "packages/core/src/formatNumber.ts",
+											"line": 6,
+											"character": 2
+										}
+									],
+									"type": {
+										"type": "union",
+										"types": [
+											{
+												"type": "intrinsic",
+												"name": "number"
+											},
+											{
+												"type": "intrinsic",
+												"name": "string"
+											}
+										]
+									}
+								},
+								{
+									"id": 39,
+									"name": "thousand",
+									"kind": 1024,
+									"kindString": "Property",
+									"flags": {
+										"isOptional": true
+									},
+									"sources": [
+										{
+											"fileName": "packages/core/src/formatNumber.ts",
+											"line": 7,
+											"character": 2
+										}
+									],
+									"type": {
+										"type": "intrinsic",
+										"name": "string"
+									}
+								}
+							],
+							"groups": [
+								{
+									"title": "Properties",
+									"kind": 1024,
+									"children": [
+										40,
+										38,
+										39
+									]
+								}
+							],
+							"sources": [
+								{
+									"fileName": "packages/core/src/formatNumber.ts",
+									"line": 5,
+									"character": 35
+								}
+							]
+						}
+					}
+				},
+				{
+					"id": 41,
+					"name": "default",
+					"kind": 64,
+					"kindString": "Function",
+					"flags": {},
+					"sources": [
+						{
+							"fileName": "packages/core/src/formatNumber.ts",
+							"line": 39,
+							"character": 24
+						}
+					],
+					"signatures": [
+						{
+							"id": 42,
+							"name": "default",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "Formats a number with defined thousand and decimal separator, and a decimal limit\n(see `limitDecimals` for details on `decCount`)",
+								"returns": "Formatted number as a string\n",
+								"tags": [
+									{
+										"tag": "example",
+										"text": "\n```ts\n// Default format\nformatNumber(123456); // -> 123.456,00\n\n// Custom format\nformatNumber(123456, { decimals: '>3', thousand: '-', decimal: ':' }); // -> 123-456:000\n```\n"
+									}
+								]
+							},
+							"parameters": [
+								{
+									"id": 43,
+									"name": "num",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"shortText": "Number to format"
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "number"
+									}
+								},
+								{
+									"id": 44,
+									"name": "settings",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {
+										"isOptional": true
+									},
+									"comment": {
+										"shortText": "Settings for the number formatting\n"
+									},
+									"type": {
+										"type": "reference",
+										"id": 36,
+										"name": "FormatNumberSettings"
+									}
+								}
+							],
+							"type": {
+								"type": "intrinsic",
+								"name": "string"
+							}
+						}
+					]
+				}
+			],
+			"groups": [
+				{
+					"title": "Type aliases",
+					"kind": 4194304,
+					"children": [
+						36
+					]
+				},
+				{
+					"title": "Functions",
+					"kind": 64,
+					"children": [
+						41
+					]
+				}
+			],
+			"sources": [
+				{
+					"fileName": "packages/core/src/formatNumber.ts",
+					"line": 1,
+					"character": 0
+				}
+			]
+		},
+		{
+			"id": 45,
+			"name": "hash",
+			"kind": 2,
+			"kindString": "Module",
+			"flags": {},
+			"children": [
+				{
+					"id": 49,
+					"name": "default",
+					"kind": 64,
+					"kindString": "Function",
+					"flags": {},
+					"sources": [
+						{
+							"fileName": "packages/core/src/hash.ts",
+							"line": 37,
+							"character": 24
+						}
+					],
+					"signatures": [
+						{
+							"id": 50,
+							"name": "default",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "Generates a unique hash (DJB2) string from a string",
+								"returns": "Hash string\n",
+								"tags": [
+									{
+										"tag": "example",
+										"text": "\n```ts\nhash('Hash this string'); // -> sg463l\n```\n"
+									}
+								]
+							},
+							"parameters": [
+								{
+									"id": 51,
+									"name": "str",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"shortText": "String to generate hash string from"
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "string"
+									}
+								}
+							],
+							"type": {
+								"type": "intrinsic",
+								"name": "string"
+							}
+						}
+					]
+				},
+				{
+					"id": 46,
+					"name": "hashCode",
+					"kind": 64,
+					"kindString": "Function",
+					"flags": {},
+					"sources": [
+						{
+							"fileName": "packages/core/src/hash.ts",
+							"line": 13,
+							"character": 16
+						}
+					],
+					"signatures": [
+						{
+							"id": 47,
+							"name": "hashCode",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "Generates a unique numeric hash (DJB2) code from a string",
+								"returns": "Hash code\n",
+								"tags": [
+									{
+										"tag": "example",
+										"text": "\n```ts\nhashCode('Hash this string'); // -> 1720121313\n```\n"
+									}
+								]
+							},
+							"parameters": [
+								{
+									"id": 48,
+									"name": "str",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"shortText": "String to generate hash code from\n"
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "string"
+									}
+								}
+							],
+							"type": {
+								"type": "intrinsic",
+								"name": "number"
+							}
+						}
+					]
+				}
+			],
+			"groups": [
+				{
+					"title": "Functions",
+					"kind": 64,
+					"children": [
+						49,
+						46
+					]
+				}
+			],
+			"sources": [
+				{
+					"fileName": "packages/core/src/hash.ts",
+					"line": 13,
+					"character": 0
+				}
+			]
+		},
+		{
+			"id": 52,
+			"name": "hexToNumber",
+			"kind": 2,
+			"kindString": "Module",
+			"flags": {},
+			"children": [
+				{
+					"id": 53,
+					"name": "default",
+					"kind": 64,
+					"kindString": "Function",
+					"flags": {},
+					"sources": [
+						{
+							"fileName": "packages/core/src/hexToNumber.ts",
+							"line": 13,
+							"character": 24
+						}
+					],
+					"signatures": [
+						{
+							"id": 54,
+							"name": "default",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "Convert Hexadecimal into a number (eg. b4 => 180)",
+								"returns": "Numeric representation of the hex code\n",
+								"tags": [
+									{
+										"tag": "example",
+										"text": "\n```ts\nhexToNumber('ba'); // -> 186\n```\n"
+									}
+								]
+							},
+							"parameters": [
+								{
+									"id": 55,
+									"name": "hex",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"shortText": "Hex code to parse\n"
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "string"
+									}
+								}
+							],
+							"type": {
+								"type": "intrinsic",
+								"name": "number"
+							}
+						}
+					]
+				}
+			],
+			"groups": [
+				{
+					"title": "Functions",
+					"kind": 64,
+					"children": [
+						53
+					]
+				}
+			],
+			"sources": [
+				{
+					"fileName": "packages/core/src/hexToNumber.ts",
+					"line": 13,
+					"character": 0
+				}
+			]
+		},
+		{
+			"id": 56,
+			"name": "hexToRGB",
+			"kind": 2,
+			"kindString": "Module",
+			"flags": {},
+			"children": [
+				{
+					"id": 57,
+					"name": "default",
+					"kind": 64,
+					"kindString": "Function",
+					"flags": {},
+					"sources": [
+						{
+							"fileName": "packages/core/src/hexToRGB.ts",
+							"line": 22,
+							"character": 24
+						}
+					],
+					"signatures": [
+						{
+							"id": 58,
+							"name": "default",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "Converts a Hexadecimal color to a RGB(A) color array",
+								"returns": "Array with RGB values\n",
+								"tags": [
+									{
+										"tag": "example",
+										"text": "\n```ts\nhexToRGB('#2fd466'); // -> [47, 212, 102]\n\n// And with alpha channel\nhexToRGB('#2fd46680'); // -> [47, 212, 102, 0.5]\n```\n"
+									}
+								]
+							},
+							"parameters": [
+								{
+									"id": 59,
+									"name": "hex",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"shortText": "Hex color to convert to RGB\n"
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "string"
+									}
+								}
+							],
+							"type": {
+								"type": "array",
+								"elementType": {
+									"type": "intrinsic",
+									"name": "number"
+								}
+							}
+						}
+					]
+				}
+			],
+			"groups": [
+				{
+					"title": "Functions",
+					"kind": 64,
+					"children": [
+						57
+					]
+				}
+			],
+			"sources": [
+				{
+					"fileName": "packages/core/src/hexToRGB.ts",
+					"line": 1,
+					"character": 0
+				}
+			]
+		},
+		{
+			"id": 60,
+			"name": "isBoolean",
+			"kind": 2,
+			"kindString": "Module",
+			"flags": {},
+			"children": [
+				{
+					"id": 61,
+					"name": "default",
+					"kind": 64,
+					"kindString": "Function",
+					"flags": {},
+					"sources": [
+						{
+							"fileName": "packages/core/src/isBoolean.ts",
+							"line": 14,
+							"character": 24
+						}
+					],
+					"signatures": [
+						{
+							"id": 62,
+							"name": "default",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "Is the given argument a boolean",
+								"returns": "Whether the argument a Boolean or not\n",
+								"tags": [
+									{
+										"tag": "example",
+										"text": "\n```ts\nisBoolean(false); // -> true\nisBoolean('string'); // -> false\n```\n"
+									}
+								]
+							},
+							"parameters": [
+								{
+									"id": 63,
+									"name": "x",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"shortText": "Argument to test\n"
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "unknown"
+									}
+								}
+							],
+							"type": {
+								"type": "predicate",
+								"name": "x",
+								"asserts": false,
+								"targetType": {
+									"type": "intrinsic",
+									"name": "boolean"
+								}
+							}
+						}
+					]
+				}
+			],
+			"groups": [
+				{
+					"title": "Functions",
+					"kind": 64,
+					"children": [
+						61
+					]
+				}
+			],
+			"sources": [
+				{
+					"fileName": "packages/core/src/isBoolean.ts",
+					"line": 14,
+					"character": 0
+				}
+			]
+		},
+		{
+			"id": 64,
+			"name": "isFunction",
+			"kind": 2,
+			"kindString": "Module",
+			"flags": {},
+			"children": [
+				{
+					"id": 65,
+					"name": "default",
+					"kind": 64,
+					"kindString": "Function",
+					"flags": {},
+					"sources": [
+						{
+							"fileName": "packages/core/src/isFunction.ts",
+							"line": 15,
+							"character": 24
+						}
+					],
+					"signatures": [
+						{
+							"id": 66,
+							"name": "default",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "Is the given argument a Function",
+								"returns": "Whether the argument a Function or not\n",
+								"tags": [
+									{
+										"tag": "example",
+										"text": "\n```ts\nisFunction(() => {}); // -> true\nisFunction('string'); // -> false\n```\n"
+									}
+								]
+							},
+							"parameters": [
+								{
+									"id": 67,
+									"name": "x",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"type": {
+										"type": "intrinsic",
+										"name": "unknown"
+									}
+								}
+							],
+							"type": {
+								"type": "predicate",
+								"name": "x",
+								"asserts": false,
+								"targetType": {
+									"type": "reference",
+									"qualifiedName": "Function",
+									"package": "typescript",
+									"name": "Function"
+								}
+							}
+						}
+					]
+				}
+			],
+			"groups": [
+				{
+					"title": "Functions",
+					"kind": 64,
+					"children": [
+						65
+					]
+				}
+			],
+			"sources": [
+				{
+					"fileName": "packages/core/src/isFunction.ts",
+					"line": 15,
+					"character": 0
+				}
+			]
+		},
+		{
+			"id": 68,
+			"name": "isGenerator",
+			"kind": 2,
+			"kindString": "Module",
+			"flags": {},
+			"children": [
+				{
+					"id": 198,
+					"name": "<internal>",
+					"kind": 4,
+					"kindString": "Namespace",
+					"flags": {},
+					"children": [
+						{
+							"id": 199,
+							"name": "Generator",
+							"kind": 256,
+							"kindString": "Interface",
+							"flags": {
+								"isExternal": true
+							},
+							"children": [
+								{
+									"id": 209,
+									"name": "[iterator]",
+									"kind": 2048,
+									"kindString": "Method",
+									"flags": {
+										"isExternal": true
+									},
+									"signatures": [
+										{
+											"id": 210,
+											"name": "[iterator]",
+											"kind": 4096,
+											"kindString": "Call signature",
+											"flags": {
+												"isExternal": true
+											},
+											"type": {
+												"type": "reference",
+												"id": 199,
+												"typeArguments": [
+													{
+														"type": "reference",
+														"id": 211,
+														"qualifiedName": "Generator.T",
+														"package": "typescript",
+														"name": "T"
+													},
+													{
+														"type": "reference",
+														"id": 212,
+														"qualifiedName": "Generator.TReturn",
+														"package": "typescript",
+														"name": "TReturn"
+													},
+													{
+														"type": "reference",
+														"id": 213,
+														"qualifiedName": "Generator.TNext",
+														"package": "typescript",
+														"name": "TNext"
+													}
+												],
+												"qualifiedName": "Generator",
+												"package": "typescript",
+												"name": "Generator"
+											}
+										}
+									]
+								},
+								{
+									"id": 200,
+									"name": "next",
+									"kind": 2048,
+									"kindString": "Method",
+									"flags": {
+										"isExternal": true
+									},
+									"signatures": [
+										{
+											"id": 201,
+											"name": "next",
+											"kind": 4096,
+											"kindString": "Call signature",
+											"flags": {
+												"isExternal": true
+											},
+											"parameters": [
+												{
+													"id": 202,
+													"name": "args",
+													"kind": 32768,
+													"kindString": "Parameter",
+													"flags": {
+														"isExternal": true,
+														"isRest": true
+													},
+													"type": {
+														"type": "union",
+														"types": [
+															{
+																"type": "tuple"
+															},
+															{
+																"type": "tuple",
+																"elements": [
+																	{
+																		"type": "reference",
+																		"id": 213,
+																		"qualifiedName": "Generator.TNext",
+																		"package": "typescript",
+																		"name": "TNext"
+																	}
+																]
+															}
+														]
+													}
+												}
+											],
+											"type": {
+												"type": "reference",
+												"id": 227,
+												"typeArguments": [
+													{
+														"type": "reference",
+														"id": 211,
+														"qualifiedName": "Generator.T",
+														"package": "typescript",
+														"name": "T"
+													},
+													{
+														"type": "reference",
+														"id": 212,
+														"qualifiedName": "Generator.TReturn",
+														"package": "typescript",
+														"name": "TReturn"
+													}
+												],
+												"qualifiedName": "IteratorResult",
+												"package": "typescript",
+												"name": "IteratorResult"
+											},
+											"overwrites": {
+												"type": "reference",
+												"id": 216,
+												"name": "Iterator.next"
+											}
+										}
+									],
+									"overwrites": {
+										"type": "reference",
+										"id": 215,
+										"name": "Iterator.next"
+									}
+								},
+								{
+									"id": 203,
+									"name": "return",
+									"kind": 2048,
+									"kindString": "Method",
+									"flags": {
+										"isExternal": true
+									},
+									"signatures": [
+										{
+											"id": 204,
+											"name": "return",
+											"kind": 4096,
+											"kindString": "Call signature",
+											"flags": {
+												"isExternal": true
+											},
+											"parameters": [
+												{
+													"id": 205,
+													"name": "value",
+													"kind": 32768,
+													"kindString": "Parameter",
+													"flags": {
+														"isExternal": true
+													},
+													"type": {
+														"type": "reference",
+														"id": 212,
+														"qualifiedName": "Generator.TReturn",
+														"package": "typescript",
+														"name": "TReturn"
+													}
+												}
+											],
+											"type": {
+												"type": "reference",
+												"id": 227,
+												"typeArguments": [
+													{
+														"type": "reference",
+														"id": 211,
+														"qualifiedName": "Generator.T",
+														"package": "typescript",
+														"name": "T"
+													},
+													{
+														"type": "reference",
+														"id": 212,
+														"qualifiedName": "Generator.TReturn",
+														"package": "typescript",
+														"name": "TReturn"
+													}
+												],
+												"qualifiedName": "IteratorResult",
+												"package": "typescript",
+												"name": "IteratorResult"
+											},
+											"overwrites": {
+												"type": "reference",
+												"id": 219,
+												"name": "Iterator.return"
+											}
+										}
+									],
+									"overwrites": {
+										"type": "reference",
+										"id": 218,
+										"name": "Iterator.return"
+									}
+								},
+								{
+									"id": 206,
+									"name": "throw",
+									"kind": 2048,
+									"kindString": "Method",
+									"flags": {
+										"isExternal": true
+									},
+									"signatures": [
+										{
+											"id": 207,
+											"name": "throw",
+											"kind": 4096,
+											"kindString": "Call signature",
+											"flags": {
+												"isExternal": true
+											},
+											"parameters": [
+												{
+													"id": 208,
+													"name": "e",
+													"kind": 32768,
+													"kindString": "Parameter",
+													"flags": {
+														"isExternal": true
+													},
+													"type": {
+														"type": "intrinsic",
+														"name": "any"
+													}
+												}
+											],
+											"type": {
+												"type": "reference",
+												"id": 227,
+												"typeArguments": [
+													{
+														"type": "reference",
+														"id": 211,
+														"qualifiedName": "Generator.T",
+														"package": "typescript",
+														"name": "T"
+													},
+													{
+														"type": "reference",
+														"id": 212,
+														"qualifiedName": "Generator.TReturn",
+														"package": "typescript",
+														"name": "TReturn"
+													}
+												],
+												"qualifiedName": "IteratorResult",
+												"package": "typescript",
+												"name": "IteratorResult"
+											},
+											"overwrites": {
+												"type": "reference",
+												"id": 222,
+												"name": "Iterator.throw"
+											}
+										}
+									],
+									"overwrites": {
+										"type": "reference",
+										"id": 221,
+										"name": "Iterator.throw"
+									}
+								}
+							],
+							"groups": [
+								{
+									"title": "Methods",
+									"kind": 2048,
+									"children": [
+										209,
+										200,
+										203,
+										206
+									]
+								}
+							],
+							"sources": [
+								{
+									"fileName": "node_modules/typescript/lib/lib.es2015.generator.d.ts",
+									"line": 23,
+									"character": 10
+								}
+							],
+							"typeParameter": [
+								{
+									"id": 211,
+									"name": "T",
+									"kind": 131072,
+									"kindString": "Type parameter",
+									"flags": {
+										"isExternal": true
+									},
+									"default": {
+										"type": "intrinsic",
+										"name": "unknown"
+									}
+								},
+								{
+									"id": 212,
+									"name": "TReturn",
+									"kind": 131072,
+									"kindString": "Type parameter",
+									"flags": {
+										"isExternal": true
+									},
+									"default": {
+										"type": "intrinsic",
+										"name": "any"
+									}
+								},
+								{
+									"id": 213,
+									"name": "TNext",
+									"kind": 131072,
+									"kindString": "Type parameter",
+									"flags": {
+										"isExternal": true
+									},
+									"default": {
+										"type": "intrinsic",
+										"name": "unknown"
+									}
+								}
+							],
+							"extendedTypes": [
+								{
+									"type": "reference",
+									"id": 214,
+									"typeArguments": [
+										{
+											"type": "reference",
+											"id": 211,
+											"qualifiedName": "Generator.T",
+											"package": "typescript",
+											"name": "T"
+										},
+										{
+											"type": "reference",
+											"id": 212,
+											"qualifiedName": "Generator.TReturn",
+											"package": "typescript",
+											"name": "TReturn"
+										},
+										{
+											"type": "reference",
+											"id": 213,
+											"qualifiedName": "Generator.TNext",
+											"package": "typescript",
+											"name": "TNext"
+										}
+									],
+									"qualifiedName": "Iterator",
+									"package": "typescript",
+									"name": "Iterator"
+								}
+							]
+						},
+						{
+							"id": 214,
+							"name": "Iterator",
+							"kind": 256,
+							"kindString": "Interface",
+							"flags": {
+								"isExternal": true
+							},
+							"children": [
+								{
+									"id": 215,
+									"name": "next",
+									"kind": 2048,
+									"kindString": "Method",
+									"flags": {
+										"isExternal": true
+									},
+									"signatures": [
+										{
+											"id": 216,
+											"name": "next",
+											"kind": 4096,
+											"kindString": "Call signature",
+											"flags": {
+												"isExternal": true
+											},
+											"parameters": [
+												{
+													"id": 217,
+													"name": "args",
+													"kind": 32768,
+													"kindString": "Parameter",
+													"flags": {
+														"isExternal": true,
+														"isRest": true
+													},
+													"type": {
+														"type": "union",
+														"types": [
+															{
+																"type": "tuple"
+															},
+															{
+																"type": "tuple",
+																"elements": [
+																	{
+																		"type": "reference",
+																		"id": 226,
+																		"qualifiedName": "Iterator.TNext",
+																		"package": "typescript",
+																		"name": "TNext"
+																	}
+																]
+															}
+														]
+													}
+												}
+											],
+											"type": {
+												"type": "reference",
+												"id": 227,
+												"typeArguments": [
+													{
+														"type": "reference",
+														"id": 224,
+														"qualifiedName": "Iterator.T",
+														"package": "typescript",
+														"name": "T"
+													},
+													{
+														"type": "reference",
+														"id": 225,
+														"qualifiedName": "Iterator.TReturn",
+														"package": "typescript",
+														"name": "TReturn"
+													}
+												],
+												"qualifiedName": "IteratorResult",
+												"package": "typescript",
+												"name": "IteratorResult"
+											}
+										}
+									]
+								},
+								{
+									"id": 218,
+									"name": "return",
+									"kind": 2048,
+									"kindString": "Method",
+									"flags": {
+										"isExternal": true,
+										"isOptional": true
+									},
+									"signatures": [
+										{
+											"id": 219,
+											"name": "return",
+											"kind": 4096,
+											"kindString": "Call signature",
+											"flags": {
+												"isExternal": true
+											},
+											"parameters": [
+												{
+													"id": 220,
+													"name": "value",
+													"kind": 32768,
+													"kindString": "Parameter",
+													"flags": {
+														"isExternal": true,
+														"isOptional": true
+													},
+													"type": {
+														"type": "reference",
+														"id": 225,
+														"qualifiedName": "Iterator.TReturn",
+														"package": "typescript",
+														"name": "TReturn"
+													}
+												}
+											],
+											"type": {
+												"type": "reference",
+												"id": 227,
+												"typeArguments": [
+													{
+														"type": "reference",
+														"id": 224,
+														"qualifiedName": "Iterator.T",
+														"package": "typescript",
+														"name": "T"
+													},
+													{
+														"type": "reference",
+														"id": 225,
+														"qualifiedName": "Iterator.TReturn",
+														"package": "typescript",
+														"name": "TReturn"
+													}
+												],
+												"qualifiedName": "IteratorResult",
+												"package": "typescript",
+												"name": "IteratorResult"
+											}
+										}
+									]
+								},
+								{
+									"id": 221,
+									"name": "throw",
+									"kind": 2048,
+									"kindString": "Method",
+									"flags": {
+										"isExternal": true,
+										"isOptional": true
+									},
+									"signatures": [
+										{
+											"id": 222,
+											"name": "throw",
+											"kind": 4096,
+											"kindString": "Call signature",
+											"flags": {
+												"isExternal": true
+											},
+											"parameters": [
+												{
+													"id": 223,
+													"name": "e",
+													"kind": 32768,
+													"kindString": "Parameter",
+													"flags": {
+														"isExternal": true,
+														"isOptional": true
+													},
+													"type": {
+														"type": "intrinsic",
+														"name": "any"
+													}
+												}
+											],
+											"type": {
+												"type": "reference",
+												"id": 227,
+												"typeArguments": [
+													{
+														"type": "reference",
+														"id": 224,
+														"qualifiedName": "Iterator.T",
+														"package": "typescript",
+														"name": "T"
+													},
+													{
+														"type": "reference",
+														"id": 225,
+														"qualifiedName": "Iterator.TReturn",
+														"package": "typescript",
+														"name": "TReturn"
+													}
+												],
+												"qualifiedName": "IteratorResult",
+												"package": "typescript",
+												"name": "IteratorResult"
+											}
+										}
+									]
+								}
+							],
+							"groups": [
+								{
+									"title": "Methods",
+									"kind": 2048,
+									"children": [
+										215,
+										218,
+										221
+									]
+								}
+							],
+							"sources": [
+								{
+									"fileName": "node_modules/typescript/lib/lib.es2015.iterable.d.ts",
+									"line": 43,
+									"character": 10
+								}
+							],
+							"typeParameter": [
+								{
+									"id": 224,
+									"name": "T",
+									"kind": 131072,
+									"kindString": "Type parameter",
+									"flags": {
+										"isExternal": true
+									}
+								},
+								{
+									"id": 225,
+									"name": "TReturn",
+									"kind": 131072,
+									"kindString": "Type parameter",
+									"flags": {
+										"isExternal": true
+									},
+									"default": {
+										"type": "intrinsic",
+										"name": "any"
+									}
+								},
+								{
+									"id": 226,
+									"name": "TNext",
+									"kind": 131072,
+									"kindString": "Type parameter",
+									"flags": {
+										"isExternal": true
+									},
+									"default": {
+										"type": "intrinsic",
+										"name": "undefined"
+									}
+								}
+							],
+							"extendedBy": [
+								{
+									"type": "reference",
+									"id": 199,
+									"name": "Generator"
+								}
+							]
+						},
+						{
+							"id": 234,
+							"name": "IteratorReturnResult",
+							"kind": 256,
+							"kindString": "Interface",
+							"flags": {
+								"isExternal": true
+							},
+							"children": [
+								{
+									"id": 235,
+									"name": "done",
+									"kind": 1024,
+									"kindString": "Property",
+									"flags": {
+										"isExternal": true
+									},
+									"sources": [
+										{
+											"fileName": "node_modules/typescript/lib/lib.es2015.iterable.d.ts",
+											"line": 37,
+											"character": 4
+										}
+									],
+									"type": {
+										"type": "literal",
+										"value": true
+									}
+								},
+								{
+									"id": 236,
+									"name": "value",
+									"kind": 1024,
+									"kindString": "Property",
+									"flags": {
+										"isExternal": true
+									},
+									"sources": [
+										{
+											"fileName": "node_modules/typescript/lib/lib.es2015.iterable.d.ts",
+											"line": 38,
+											"character": 4
+										}
+									],
+									"type": {
+										"type": "reference",
+										"id": 237,
+										"qualifiedName": "IteratorReturnResult.TReturn",
+										"package": "typescript",
+										"name": "TReturn"
+									}
+								}
+							],
+							"groups": [
+								{
+									"title": "Properties",
+									"kind": 1024,
+									"children": [
+										235,
+										236
+									]
+								}
+							],
+							"sources": [
+								{
+									"fileName": "node_modules/typescript/lib/lib.es2015.iterable.d.ts",
+									"line": 36,
+									"character": 10
+								}
+							],
+							"typeParameter": [
+								{
+									"id": 237,
+									"name": "TReturn",
+									"kind": 131072,
+									"kindString": "Type parameter",
+									"flags": {
+										"isExternal": true
+									}
+								}
+							]
+						},
+						{
+							"id": 230,
+							"name": "IteratorYieldResult",
+							"kind": 256,
+							"kindString": "Interface",
+							"flags": {
+								"isExternal": true
+							},
+							"children": [
+								{
+									"id": 231,
+									"name": "done",
+									"kind": 1024,
+									"kindString": "Property",
+									"flags": {
+										"isExternal": true,
+										"isOptional": true
+									},
+									"sources": [
+										{
+											"fileName": "node_modules/typescript/lib/lib.es2015.iterable.d.ts",
+											"line": 32,
+											"character": 4
+										}
+									],
+									"type": {
+										"type": "literal",
+										"value": false
+									}
+								},
+								{
+									"id": 232,
+									"name": "value",
+									"kind": 1024,
+									"kindString": "Property",
+									"flags": {
+										"isExternal": true
+									},
+									"sources": [
+										{
+											"fileName": "node_modules/typescript/lib/lib.es2015.iterable.d.ts",
+											"line": 33,
+											"character": 4
+										}
+									],
+									"type": {
+										"type": "reference",
+										"id": 233,
+										"qualifiedName": "IteratorYieldResult.TYield",
+										"package": "typescript",
+										"name": "TYield"
+									}
+								}
+							],
+							"groups": [
+								{
+									"title": "Properties",
+									"kind": 1024,
+									"children": [
+										231,
+										232
+									]
+								}
+							],
+							"sources": [
+								{
+									"fileName": "node_modules/typescript/lib/lib.es2015.iterable.d.ts",
+									"line": 31,
+									"character": 10
+								}
+							],
+							"typeParameter": [
+								{
+									"id": 233,
+									"name": "TYield",
+									"kind": 131072,
+									"kindString": "Type parameter",
+									"flags": {
+										"isExternal": true
+									}
+								}
+							]
+						},
+						{
+							"id": 227,
+							"name": "IteratorResult",
+							"kind": 4194304,
+							"kindString": "Type alias",
+							"flags": {
+								"isExternal": true
+							},
+							"sources": [
+								{
+									"fileName": "node_modules/typescript/lib/lib.es2015.iterable.d.ts",
+									"line": 41,
+									"character": 5
+								}
+							],
+							"typeParameter": [
+								{
+									"id": 228,
+									"name": "T",
+									"kind": 131072,
+									"kindString": "Type parameter",
+									"flags": {
+										"isExternal": true
+									}
+								},
+								{
+									"id": 229,
+									"name": "TReturn",
+									"kind": 131072,
+									"kindString": "Type parameter",
+									"flags": {
+										"isExternal": true
+									},
+									"default": {
+										"type": "intrinsic",
+										"name": "any"
+									}
+								}
+							],
+							"type": {
+								"type": "union",
+								"types": [
+									{
+										"type": "reference",
+										"id": 230,
+										"typeArguments": [
+											{
+												"type": "reference",
+												"id": 228,
+												"qualifiedName": "T",
+												"package": "typescript",
+												"name": "T"
+											}
+										],
+										"qualifiedName": "IteratorYieldResult",
+										"package": "typescript",
+										"name": "IteratorYieldResult"
+									},
+									{
+										"type": "reference",
+										"id": 234,
+										"typeArguments": [
+											{
+												"type": "reference",
+												"id": 229,
+												"qualifiedName": "TReturn",
+												"package": "typescript",
+												"name": "TReturn"
+											}
+										],
+										"qualifiedName": "IteratorReturnResult",
+										"package": "typescript",
+										"name": "IteratorReturnResult"
+									}
+								]
+							}
+						}
+					],
+					"groups": [
+						{
+							"title": "Interfaces",
+							"kind": 256,
+							"children": [
+								199,
+								214,
+								234,
+								230
+							]
+						},
+						{
+							"title": "Type aliases",
+							"kind": 4194304,
+							"children": [
+								227
+							]
+						}
+					]
+				},
+				{
+					"id": 72,
+					"name": "default",
+					"kind": 64,
+					"kindString": "Function",
+					"flags": {},
+					"sources": [
+						{
+							"fileName": "packages/core/src/isGenerator.ts",
+							"line": 48,
+							"character": 24
+						}
+					],
+					"signatures": [
+						{
+							"id": 73,
+							"name": "default",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "Determine if the given argument is a Generator Function",
+								"returns": "Whether the argument a Generator or not\n",
+								"tags": [
+									{
+										"tag": "example",
+										"text": "\n```ts\nfunction* gen() {}\n\nisGeneratorFunction(gen); // -> true\nisGeneratorFunction(() => {}); // -> false\n```\n"
+									}
+								]
+							},
+							"parameters": [
+								{
+									"id": 74,
+									"name": "x",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"shortText": "Argument to test"
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "any"
+									}
+								}
+							],
+							"type": {
+								"type": "predicate",
+								"name": "x",
+								"asserts": false,
+								"targetType": {
+									"type": "reference",
+									"qualifiedName": "GeneratorFunction",
+									"package": "typescript",
+									"name": "GeneratorFunction"
+								}
+							}
+						}
+					]
+				},
+				{
+					"id": 69,
+					"name": "isGenerator",
+					"kind": 64,
+					"kindString": "Function",
+					"flags": {},
+					"sources": [
+						{
+							"fileName": "packages/core/src/isGenerator.ts",
+							"line": 23,
+							"character": 16
+						}
+					],
+					"signatures": [
+						{
+							"id": 70,
+							"name": "isGenerator",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "Determine if the given argument is a Generator object.\n(A generator is the one created when calling a generator function)",
+								"returns": "Whether the argument a Generator like function or not\n",
+								"tags": [
+									{
+										"tag": "example",
+										"text": "\n```ts\nfunction *gen() {}\n\nisGenerator(gen()); // -> true\nisGenerator({ next() {}, throw() {} return() {} [Symbol.iterator]() {} }); // -> true\nisGenerator(() => {}); // -> false\n```\n"
+									}
+								]
+							},
+							"parameters": [
+								{
+									"id": 71,
+									"name": "x",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"shortText": "Argument to test\n"
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "any"
+									}
+								}
+							],
+							"type": {
+								"type": "predicate",
+								"name": "x",
+								"asserts": false,
+								"targetType": {
+									"type": "reference",
+									"id": 199,
+									"typeArguments": [
+										{
+											"type": "intrinsic",
+											"name": "unknown"
+										},
+										{
+											"type": "intrinsic",
+											"name": "any"
+										},
+										{
+											"type": "intrinsic",
+											"name": "unknown"
+										}
+									],
+									"qualifiedName": "Generator",
+									"package": "typescript",
+									"name": "Generator"
+								}
+							}
+						}
+					]
+				}
+			],
+			"groups": [
+				{
+					"title": "Namespaces",
+					"kind": 4,
+					"children": [
+						198
+					]
+				},
+				{
+					"title": "Functions",
+					"kind": 64,
+					"children": [
+						72,
+						69
+					]
+				}
+			],
+			"sources": [
+				{
+					"fileName": "packages/core/src/isGenerator.ts",
+					"line": 1,
+					"character": 0
+				}
+			]
+		},
+		{
+			"id": 75,
+			"name": "isNumber",
+			"kind": 2,
+			"kindString": "Module",
+			"flags": {},
+			"children": [
+				{
+					"id": 76,
+					"name": "default",
+					"kind": 64,
+					"kindString": "Function",
+					"flags": {},
+					"sources": [
+						{
+							"fileName": "packages/core/src/isNumber.ts",
+							"line": 15,
+							"character": 24
+						}
+					],
+					"signatures": [
+						{
+							"id": 77,
+							"name": "default",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "Is the given argument is a finite Number",
+								"returns": "Whether the argument a finite number or not\n",
+								"tags": [
+									{
+										"tag": "example",
+										"text": "\n```ts\nisNumber(123); // -> true\nisNumber(Infinity); // -> false\nisNumber('123'); // -> false\n```\n"
+									}
+								]
+							},
+							"parameters": [
+								{
+									"id": 78,
+									"name": "x",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"shortText": "Argument to test\n"
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "unknown"
+									}
+								}
+							],
+							"type": {
+								"type": "predicate",
+								"name": "x",
+								"asserts": false,
+								"targetType": {
+									"type": "intrinsic",
+									"name": "number"
+								}
+							}
+						}
+					]
+				}
+			],
+			"groups": [
+				{
+					"title": "Functions",
+					"kind": 64,
+					"children": [
+						76
+					]
+				}
+			],
+			"sources": [
+				{
+					"fileName": "packages/core/src/isNumber.ts",
+					"line": 15,
+					"character": 0
+				}
+			]
+		},
+		{
+			"id": 79,
+			"name": "isNumeric",
+			"kind": 2,
+			"kindString": "Module",
+			"flags": {},
+			"children": [
+				{
+					"id": 80,
+					"name": "default",
+					"kind": 64,
+					"kindString": "Function",
+					"flags": {},
+					"sources": [
+						{
+							"fileName": "packages/core/src/isNumeric.ts",
+							"line": 20,
+							"character": 24
+						}
+					],
+					"signatures": [
+						{
+							"id": 81,
+							"name": "default",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "Is the given argument is a finite numeric value (number as string or number directly) or not.",
+								"returns": "Whether the given argument is a numeric value\n",
+								"tags": [
+									{
+										"tag": "example",
+										"text": "\n```ts\nisNumber(123); // -> true\nisNumber('123'); // -> true\nisNumber(Infinity); // -> false\n```\n"
+									}
+								]
+							},
+							"parameters": [
+								{
+									"id": 82,
+									"name": "x",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"shortText": "Argument to test\n"
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "unknown"
+									}
+								}
+							],
+							"type": {
+								"type": "intrinsic",
+								"name": "boolean"
+							}
+						}
+					]
+				}
+			],
+			"groups": [
+				{
+					"title": "Functions",
+					"kind": 64,
+					"children": [
+						80
+					]
+				}
+			],
+			"sources": [
+				{
+					"fileName": "packages/core/src/isNumeric.ts",
+					"line": 1,
+					"character": 0
+				}
+			]
+		},
+		{
+			"id": 83,
+			"name": "isObject",
+			"kind": 2,
+			"kindString": "Module",
+			"flags": {},
+			"children": [
+				{
+					"id": 84,
+					"name": "default",
+					"kind": 64,
+					"kindString": "Function",
+					"flags": {},
+					"sources": [
+						{
+							"fileName": "packages/core/src/isObject.ts",
+							"line": 22,
+							"character": 24
+						}
+					],
+					"signatures": [
+						{
+							"id": 85,
+							"name": "default",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "Is the given argument of type String",
+								"returns": "Whether the argument a plain object or not\n",
+								"tags": [
+									{
+										"tag": "example",
+										"text": "\n```ts\nclass Obj {}\n\nisObject({}); // -> true\nisObject(new Obj()); // -> true\nisObject('123'); // -> false\n```\n"
+									}
+								]
+							},
+							"parameters": [
+								{
+									"id": 86,
+									"name": "x",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"shortText": "Argument to test\n"
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "unknown"
+									}
+								}
+							],
+							"type": {
+								"type": "predicate",
+								"name": "x",
+								"asserts": false,
+								"targetType": {
+									"type": "intrinsic",
+									"name": "object"
+								}
+							}
+						}
+					]
+				}
+			],
+			"groups": [
+				{
+					"title": "Functions",
+					"kind": 64,
+					"children": [
+						84
+					]
+				}
+			],
+			"sources": [
+				{
+					"fileName": "packages/core/src/isObject.ts",
+					"line": 1,
+					"character": 0
+				}
+			]
+		},
+		{
+			"id": 87,
+			"name": "isString",
+			"kind": 2,
+			"kindString": "Module",
+			"flags": {},
+			"children": [
+				{
+					"id": 88,
+					"name": "default",
+					"kind": 64,
+					"kindString": "Function",
+					"flags": {},
+					"sources": [
+						{
+							"fileName": "packages/core/src/isString.ts",
+							"line": 18,
+							"character": 24
+						}
+					],
+					"signatures": [
+						{
+							"id": 89,
+							"name": "default",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "Is the given argument of type String",
+								"returns": "Whether the argument a string or not\n",
+								"tags": [
+									{
+										"tag": "example",
+										"text": "\n```ts\nisString('string'); // -> true\nisString(123); // -> false\n```\n"
+									}
+								]
+							},
+							"parameters": [
+								{
+									"id": 90,
+									"name": "x",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"type": {
+										"type": "intrinsic",
+										"name": "unknown"
+									}
+								}
+							],
+							"type": {
+								"type": "predicate",
+								"name": "x",
+								"asserts": false,
+								"targetType": {
+									"type": "intrinsic",
+									"name": "string"
+								}
+							}
+						}
+					]
+				}
+			],
+			"groups": [
+				{
+					"title": "Functions",
+					"kind": 64,
+					"children": [
+						88
+					]
+				}
+			],
+			"sources": [
+				{
+					"fileName": "packages/core/src/isString.ts",
+					"line": 1,
+					"character": 0
+				}
+			]
+		},
+		{
+			"id": 91,
+			"name": "kebabCase",
+			"kind": 2,
+			"kindString": "Module",
+			"flags": {},
+			"children": [
+				{
+					"id": 92,
+					"name": "KebabCaseSettings",
+					"kind": 4194304,
+					"kindString": "Type alias",
+					"flags": {},
+					"sources": [
+						{
+							"fileName": "packages/core/src/kebabCase.ts",
+							"line": 5,
+							"character": 12
+						}
+					],
+					"type": {
+						"type": "reference",
+						"id": 128,
+						"name": "PhrasifySettings"
+					}
+				},
+				{
+					"id": 93,
+					"name": "default",
+					"kind": 64,
+					"kindString": "Function",
+					"flags": {},
+					"sources": [
+						{
+							"fileName": "packages/core/src/kebabCase.ts",
+							"line": 24,
+							"character": 24
+						}
+					],
+					"signatures": [
+						{
+							"id": 94,
+							"name": "default",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "Transform phrase into a dashed phrase\n(eg. 'camelCase' -> 'camel-case' or 'spaced phrase' -> 'spaced-phrase')",
+								"returns": "The string with spaces replaced by a dash (-)\n",
+								"tags": [
+									{
+										"tag": "example",
+										"text": "\n```ts\ndashed('some dashed phrase'); // -> some-dashed-phrase\ndasher('dash version1 beta', { numbers: true }); // -> dash-version-1-beta\n```\n"
+									}
+								]
+							},
+							"parameters": [
+								{
+									"id": 95,
+									"name": "str",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"shortText": "String to transform"
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "string"
+									}
+								},
+								{
+									"id": 96,
+									"name": "settings",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {
+										"isOptional": true
+									},
+									"comment": {
+										"shortText": "Settings to pass to the phrasify function\n"
+									},
+									"type": {
+										"type": "reference",
+										"id": 128,
+										"name": "PhrasifySettings"
+									}
+								}
+							],
+							"type": {
+								"type": "intrinsic",
+								"name": "string"
+							}
+						}
+					]
+				}
+			],
+			"groups": [
+				{
+					"title": "Type aliases",
+					"kind": 4194304,
+					"children": [
+						92
+					]
+				},
+				{
+					"title": "Functions",
+					"kind": 64,
+					"children": [
+						93
+					]
+				}
+			],
+			"sources": [
+				{
+					"fileName": "packages/core/src/kebabCase.ts",
+					"line": 1,
+					"character": 0
+				}
+			]
+		},
+		{
+			"id": 97,
+			"name": "leadingZero",
+			"kind": 2,
+			"kindString": "Module",
+			"flags": {},
+			"children": [
+				{
+					"id": 98,
+					"name": "default",
+					"kind": 64,
+					"kindString": "Function",
+					"flags": {},
+					"sources": [
+						{
+							"fileName": "packages/core/src/leadingZero.ts",
+							"line": 16,
+							"character": 24
+						}
+					],
+					"signatures": [
+						{
+							"id": 99,
+							"name": "default",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "Makes sure a given number is a certain length and fills excess space with zeroes (0)",
+								"returns": "The given number as a string padded with zeroes to match the given min length\n",
+								"tags": [
+									{
+										"tag": "example",
+										"text": "\n```ts\nleadingZero(1); // -> '01'\nleadingZero(123); // -> '123'\nleadingZero(123, 5); // -> '00123'\n```\n"
+									}
+								]
+							},
+							"parameters": [
+								{
+									"id": 100,
+									"name": "num",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"shortText": "Number to add leading zeroes to"
+									},
+									"type": {
+										"type": "union",
+										"types": [
+											{
+												"type": "intrinsic",
+												"name": "string"
+											},
+											{
+												"type": "intrinsic",
+												"name": "number"
+											}
+										]
+									}
+								},
+								{
+									"id": 101,
+									"name": "len",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"shortText": "minimum length of the returned string\n"
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "number"
+									},
+									"defaultValue": "2"
+								}
+							],
+							"type": {
+								"type": "intrinsic",
+								"name": "string"
+							}
+						}
+					]
+				}
+			],
+			"groups": [
+				{
+					"title": "Functions",
+					"kind": 64,
+					"children": [
+						98
+					]
+				}
+			],
+			"sources": [
+				{
+					"fileName": "packages/core/src/leadingZero.ts",
+					"line": 16,
+					"character": 0
+				}
+			]
+		},
+		{
+			"id": 102,
+			"name": "limitDecimals",
+			"kind": 2,
+			"kindString": "Module",
+			"flags": {},
+			"children": [
+				{
+					"id": 103,
+					"name": "default",
+					"kind": 64,
+					"kindString": "Function",
+					"flags": {},
+					"sources": [
+						{
+							"fileName": "packages/core/src/limitDecimals.ts",
+							"line": 50,
+							"character": 24
+						}
+					],
+					"signatures": [
+						{
+							"id": 104,
+							"name": "default",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "Limit decimals of a floating number to specified length. The length depends on\n`decimals` which can have the following settings (n = integer):",
+								"text": "Char | Description\n----- | -------------\n**>n** | Minimum number of decimals, if the current number of decimals are shorter than the defined length, extra 0 (zeros) will be added.\n**<n** | Maximum number of decimals, longer decimals will be rounded and shortened down to this number.\n**n** | Match this exact number of decimals, rounding longer decimals and adding extra 0 (zeroes) to shorter ones.\n",
+								"returns": "String representation of the number with the decimals adjusted according to the decimal setting\n",
+								"tags": [
+									{
+										"tag": "example",
+										"text": "\n```ts\n// Exact number of decimals\nlimitDecimals(123.4567) // -> 123.46\nlimitDecimals(123, 5) // -> 123.00000\n\n// Max number of decimals\nlimitDecimals(123.4567, '<3') // -> 123.457\nlimitDecimals(123, '<3') // -> 123\n\n// Min number decimals\nlimitDecimals(123.4, '>4') // -> 123.4000\nlimitDecimals(123.456789, '>4') // -> 123.456789\n```\n"
+									}
+								]
+							},
+							"parameters": [
+								{
+									"id": 105,
+									"name": "num",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"shortText": "Number to limit the decimals on"
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "number"
+									}
+								},
+								{
+									"id": 106,
+									"name": "decimals",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"shortText": "Setting for how to handle the decimals\n"
+									},
+									"type": {
+										"type": "union",
+										"types": [
+											{
+												"type": "intrinsic",
+												"name": "string"
+											},
+											{
+												"type": "intrinsic",
+												"name": "number"
+											}
+										]
+									},
+									"defaultValue": "2"
+								}
+							],
+							"type": {
+								"type": "intrinsic",
+								"name": "string"
+							}
+						}
+					]
+				}
+			],
+			"groups": [
+				{
+					"title": "Functions",
+					"kind": 64,
+					"children": [
+						103
+					]
+				}
+			],
+			"sources": [
+				{
+					"fileName": "packages/core/src/limitDecimals.ts",
+					"line": 1,
+					"character": 0
+				}
+			]
+		},
+		{
+			"id": 107,
+			"name": "minMax",
+			"kind": 2,
+			"kindString": "Module",
+			"flags": {},
+			"children": [
+				{
+					"id": 108,
+					"name": "default",
+					"kind": 64,
+					"kindString": "Function",
+					"flags": {},
+					"sources": [
+						{
+							"fileName": "packages/core/src/minMax.ts",
+							"line": 17,
+							"character": 24
+						}
+					],
+					"signatures": [
+						{
+							"id": 109,
+							"name": "default",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "Limit a number to a certain range defined by Minimum and a Maximum",
+								"returns": "The number limited to the min/max boundaries\n",
+								"tags": [
+									{
+										"tag": "example",
+										"text": "\n```ts\nminMax(5, 10, 20); // -> 10\nminMax(15, 10, 20); // -> 15\nminMax(25, 10, 20); // -> 20\n```\n"
+									}
+								]
+							},
+							"parameters": [
+								{
+									"id": 110,
+									"name": "num",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"shortText": "The number to limit"
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "number"
+									}
+								},
+								{
+									"id": 111,
+									"name": "min",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"shortText": "Lower limit"
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "number"
+									}
+								},
+								{
+									"id": 112,
+									"name": "max",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"shortText": "Upper limit\n"
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "number"
+									}
+								}
+							],
+							"type": {
+								"type": "intrinsic",
+								"name": "number"
+							}
+						}
+					]
+				}
+			],
+			"groups": [
+				{
+					"title": "Functions",
+					"kind": 64,
+					"children": [
+						108
+					]
+				}
+			],
+			"sources": [
+				{
+					"fileName": "packages/core/src/minMax.ts",
+					"line": 17,
+					"character": 0
+				}
+			]
+		},
+		{
+			"id": 113,
+			"name": "numberToHex",
+			"kind": 2,
+			"kindString": "Module",
+			"flags": {},
+			"children": [
+				{
+					"id": 114,
+					"name": "default",
+					"kind": 64,
+					"kindString": "Function",
+					"flags": {},
+					"sources": [
+						{
+							"fileName": "packages/core/src/numberToHex.ts",
+							"line": 17,
+							"character": 24
+						}
+					],
+					"signatures": [
+						{
+							"id": 115,
+							"name": "default",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "Convert a number to a Hexadecimal representation (eg. 180 => b4)",
+								"returns": "Hex representation of the given number\n",
+								"tags": [
+									{
+										"tag": "example",
+										"text": "\n```ts\nnumberToHex(180); // -> 'b4'\n```\n"
+									}
+								]
+							},
+							"parameters": [
+								{
+									"id": 116,
+									"name": "num",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"shortText": "Number to convert\n"
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "number"
+									}
+								}
+							],
+							"type": {
+								"type": "intrinsic",
+								"name": "string"
+							}
+						}
+					]
+				}
+			],
+			"groups": [
+				{
+					"title": "Functions",
+					"kind": 64,
+					"children": [
+						114
+					]
+				}
+			],
+			"sources": [
+				{
+					"fileName": "packages/core/src/numberToHex.ts",
+					"line": 1,
+					"character": 0
+				}
+			]
+		},
+		{
+			"id": 117,
+			"name": "objectType",
+			"kind": 2,
+			"kindString": "Module",
+			"flags": {},
+			"children": [
+				{
+					"id": 118,
+					"name": "default",
+					"kind": 64,
+					"kindString": "Function",
+					"flags": {},
+					"sources": [
+						{
+							"fileName": "packages/core/src/objectType.ts",
+							"line": 15,
+							"character": 24
+						}
+					],
+					"signatures": [
+						{
+							"id": 119,
+							"name": "default",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "Returns the objects type definition name (eg. [object String] => \"string\")",
+								"returns": "Lower case string representation of the object type\n",
+								"tags": [
+									{
+										"tag": "example",
+										"text": "\n```ts\nobjectType('string'); // -> 'string'\nobjectType(123); // -> 'number'\nobjectType({}); // -> 'object'\n```\n"
+									}
+								]
+							},
+							"parameters": [
+								{
+									"id": 120,
+									"name": "obj",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"shortText": "Object to get the type of\n"
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "unknown"
+									}
+								}
+							],
+							"type": {
+								"type": "intrinsic",
+								"name": "string"
+							}
+						}
+					]
+				}
+			],
+			"groups": [
+				{
+					"title": "Functions",
+					"kind": 64,
+					"children": [
+						118
+					]
+				}
+			],
+			"sources": [
+				{
+					"fileName": "packages/core/src/objectType.ts",
+					"line": 15,
+					"character": 0
+				}
+			]
+		},
+		{
+			"id": 121,
+			"name": "pascalCase",
+			"kind": 2,
+			"kindString": "Module",
+			"flags": {},
+			"children": [
+				{
+					"id": 238,
+					"name": "<internal>",
+					"kind": 4,
+					"kindString": "Namespace",
+					"flags": {},
+					"children": [
+						{
+							"id": 245,
+							"name": "Exclude",
+							"kind": 4194304,
+							"kindString": "Type alias",
+							"flags": {
+								"isExternal": true
+							},
+							"comment": {
+								"shortText": "Exclude from T those types that are assignable to U"
+							},
+							"sources": [
+								{
+									"fileName": "node_modules/typescript/lib/lib.es5.d.ts",
+									"line": 1566,
+									"character": 5
+								}
+							],
+							"typeParameter": [
+								{
+									"id": 246,
+									"name": "T",
+									"kind": 131072,
+									"kindString": "Type parameter",
+									"flags": {
+										"isExternal": true
+									}
+								},
+								{
+									"id": 247,
+									"name": "U",
+									"kind": 131072,
+									"kindString": "Type parameter",
+									"flags": {
+										"isExternal": true
+									}
+								}
+							],
+							"type": {
+								"type": "conditional",
+								"checkType": {
+									"type": "reference",
+									"id": 246,
+									"qualifiedName": "T",
+									"package": "typescript",
+									"name": "T"
+								},
+								"extendsType": {
+									"type": "reference",
+									"id": 247,
+									"qualifiedName": "U",
+									"package": "typescript",
+									"name": "U"
+								},
+								"trueType": {
+									"type": "intrinsic",
+									"name": "never"
+								},
+								"falseType": {
+									"type": "reference",
+									"id": 246,
+									"qualifiedName": "T",
+									"package": "typescript",
+									"name": "T"
+								}
+							}
+						},
+						{
+							"id": 239,
+							"name": "Omit",
+							"kind": 4194304,
+							"kindString": "Type alias",
+							"flags": {
+								"isExternal": true
+							},
+							"comment": {
+								"shortText": "Construct a type with the properties of T except for those in type K."
+							},
+							"sources": [
+								{
+									"fileName": "node_modules/typescript/lib/lib.es5.d.ts",
+									"line": 1576,
+									"character": 5
+								}
+							],
+							"typeParameter": [
+								{
+									"id": 240,
+									"name": "T",
+									"kind": 131072,
+									"kindString": "Type parameter",
+									"flags": {
+										"isExternal": true
+									}
+								},
+								{
+									"id": 241,
+									"name": "K",
+									"kind": 131072,
+									"kindString": "Type parameter",
+									"flags": {
+										"isExternal": true
+									},
+									"type": {
+										"type": "typeOperator",
+										"operator": "keyof",
+										"target": {
+											"type": "intrinsic",
+											"name": "any"
+										}
+									}
+								}
+							],
+							"type": {
+								"type": "reference",
+								"id": 242,
+								"typeArguments": [
+									{
+										"type": "reference",
+										"id": 240,
+										"qualifiedName": "T",
+										"package": "typescript",
+										"name": "T"
+									},
+									{
+										"type": "reference",
+										"id": 245,
+										"typeArguments": [
+											{
+												"type": "typeOperator",
+												"operator": "keyof",
+												"target": {
+													"type": "reference",
+													"id": 240,
+													"qualifiedName": "T",
+													"package": "typescript",
+													"name": "T"
+												}
+											},
+											{
+												"type": "reference",
+												"id": 241,
+												"qualifiedName": "K",
+												"package": "typescript",
+												"name": "K"
+											}
+										],
+										"qualifiedName": "Exclude",
+										"package": "typescript",
+										"name": "Exclude"
+									}
+								],
+								"qualifiedName": "Pick",
+								"package": "typescript",
+								"name": "Pick"
+							}
+						},
+						{
+							"id": 242,
+							"name": "Pick",
+							"kind": 4194304,
+							"kindString": "Type alias",
+							"flags": {
+								"isExternal": true
+							},
+							"comment": {
+								"shortText": "From T, pick a set of properties whose keys are in the union K"
+							},
+							"sources": [
+								{
+									"fileName": "node_modules/typescript/lib/lib.es5.d.ts",
+									"line": 1552,
+									"character": 5
+								}
+							],
+							"typeParameter": [
+								{
+									"id": 243,
+									"name": "T",
+									"kind": 131072,
+									"kindString": "Type parameter",
+									"flags": {
+										"isExternal": true
+									}
+								},
+								{
+									"id": 244,
+									"name": "K",
+									"kind": 131072,
+									"kindString": "Type parameter",
+									"flags": {
+										"isExternal": true
+									},
+									"type": {
+										"type": "typeOperator",
+										"operator": "keyof",
+										"target": {
+											"type": "reference",
+											"id": 243,
+											"qualifiedName": "T",
+											"package": "typescript",
+											"name": "T"
+										}
+									}
+								}
+							],
+							"type": {
+								"type": "mapped",
+								"parameter": "P",
+								"parameterType": {
+									"type": "reference",
+									"id": 244,
+									"qualifiedName": "K",
+									"package": "typescript",
+									"name": "K"
+								},
+								"templateType": {
+									"type": "indexedAccess",
+									"indexType": {
+										"type": "reference",
+										"qualifiedName": "P",
+										"package": "typescript",
+										"name": "P"
+									},
+									"objectType": {
+										"type": "reference",
+										"id": 243,
+										"qualifiedName": "T",
+										"package": "typescript",
+										"name": "T"
+									}
+								}
+							}
+						}
+					],
+					"groups": [
+						{
+							"title": "Type aliases",
+							"kind": 4194304,
+							"children": [
+								245,
+								239,
+								242
+							]
+						}
+					]
+				},
+				{
+					"id": 122,
+					"name": "PascalCaseSettings",
+					"kind": 4194304,
+					"kindString": "Type alias",
+					"flags": {},
+					"sources": [
+						{
+							"fileName": "packages/core/src/pascalCase.ts",
+							"line": 5,
+							"character": 12
+						}
+					],
+					"type": {
+						"type": "reference",
+						"id": 239,
+						"typeArguments": [
+							{
+								"type": "reference",
+								"id": 2,
+								"name": "CamelCaseSettings"
+							},
+							{
+								"type": "literal",
+								"value": "upper"
+							}
+						],
+						"qualifiedName": "Omit",
+						"package": "typescript",
+						"name": "Omit"
+					}
+				},
+				{
+					"id": 123,
+					"name": "default",
+					"kind": 64,
+					"kindString": "Function",
+					"flags": {},
+					"sources": [
+						{
+							"fileName": "packages/core/src/pascalCase.ts",
+							"line": 28,
+							"character": 9
+						}
+					],
+					"signatures": [
+						{
+							"id": 124,
+							"name": "default",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "Transform a string into a PascalCased word (eg. 'pascal case' -> 'PascalCase')",
+								"returns": "The formatted string\n",
+								"tags": [
+									{
+										"tag": "example",
+										"text": "\n```ts\npascalCase('data-value2-input'); // -> DataValue2input\npascalCase('XML data input'); // -> XmlDataInput\n\n// With settings\nconst settings = { abbr: true, numbers: true };\n\npascalCase('data-VALUE2-input', settings); // -> DataVALUE2Input\n```\n"
+									}
+								]
+							},
+							"parameters": [
+								{
+									"id": 125,
+									"name": "input",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"shortText": "The string to format"
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "string"
+									}
+								},
+								{
+									"id": 126,
+									"name": "settings",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {
+										"isOptional": true
+									},
+									"comment": {
+										"shortText": "The settings for the transform\n"
+									},
+									"type": {
+										"type": "reference",
+										"id": 122,
+										"name": "PascalCaseSettings"
+									}
+								}
+							],
+							"type": {
+								"type": "intrinsic",
+								"name": "string"
+							}
+						}
+					]
+				}
+			],
+			"groups": [
+				{
+					"title": "Namespaces",
+					"kind": 4,
+					"children": [
+						238
+					]
+				},
+				{
+					"title": "Type aliases",
+					"kind": 4194304,
+					"children": [
+						122
+					]
+				},
+				{
+					"title": "Functions",
+					"kind": 64,
+					"children": [
+						123
+					]
+				}
+			],
+			"sources": [
+				{
+					"fileName": "packages/core/src/pascalCase.ts",
+					"line": 1,
+					"character": 0
+				}
+			]
+		},
+		{
+			"id": 127,
+			"name": "phrasify",
+			"kind": 2,
+			"kindString": "Module",
+			"flags": {},
+			"children": [
+				{
+					"id": 128,
+					"name": "PhrasifySettings",
+					"kind": 4194304,
+					"kindString": "Type alias",
+					"flags": {},
+					"sources": [
+						{
+							"fileName": "packages/core/src/phrasify.ts",
+							"line": 1,
+							"character": 12
+						}
+					],
+					"type": {
+						"type": "reflection",
+						"declaration": {
+							"id": 129,
+							"name": "__type",
+							"kind": 65536,
+							"kindString": "Type literal",
+							"flags": {},
+							"children": [
+								{
+									"id": 130,
+									"name": "numbers",
+									"kind": 1024,
+									"kindString": "Property",
+									"flags": {
+										"isOptional": true
+									},
+									"sources": [
+										{
+											"fileName": "packages/core/src/phrasify.ts",
+											"line": 2,
+											"character": 2
+										}
+									],
+									"type": {
+										"type": "intrinsic",
+										"name": "boolean"
+									}
+								}
+							],
+							"groups": [
+								{
+									"title": "Properties",
+									"kind": 1024,
+									"children": [
+										130
+									]
+								}
+							],
+							"sources": [
+								{
+									"fileName": "packages/core/src/phrasify.ts",
+									"line": 1,
+									"character": 31
+								}
+							]
+						}
+					}
+				},
+				{
+					"id": 131,
+					"name": "default",
+					"kind": 64,
+					"kindString": "Function",
+					"flags": {},
+					"sources": [
+						{
+							"fileName": "packages/core/src/phrasify.ts",
+							"line": 24,
+							"character": 9
+						}
+					],
+					"signatures": [
+						{
+							"id": 132,
+							"name": "default",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "Transform a string into a space separated phrase",
+								"returns": "The transformed phrase or word\n",
+								"tags": [
+									{
+										"tag": "example",
+										"text": "\n```ts\nphrasify('XMLDataInput'); // -> XML data input\nphrasify('dataVALUE2-input', { numbers: true }); // -> data VALUE 2 input\n```\n"
+									}
+								]
+							},
+							"parameters": [
+								{
+									"id": 133,
+									"name": "input",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"shortText": "The string to transform"
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "string"
+									}
+								},
+								{
+									"id": 134,
+									"name": "settings",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {
+										"isOptional": true
+									},
+									"comment": {
+										"shortText": "The settings for the transform\n"
+									},
+									"type": {
+										"type": "reference",
+										"id": 128,
+										"name": "PhrasifySettings"
+									}
+								}
+							],
+							"type": {
+								"type": "intrinsic",
+								"name": "string"
+							}
+						}
+					]
+				}
+			],
+			"groups": [
+				{
+					"title": "Type aliases",
+					"kind": 4194304,
+					"children": [
+						128
+					]
+				},
+				{
+					"title": "Functions",
+					"kind": 64,
+					"children": [
+						131
+					]
+				}
+			],
+			"sources": [
+				{
+					"fileName": "packages/core/src/phrasify.ts",
+					"line": 1,
+					"character": 0
+				}
+			]
+		},
+		{
+			"id": 135,
+			"name": "popIndex",
+			"kind": 2,
+			"kindString": "Module",
+			"flags": {},
+			"children": [
+				{
+					"id": 140,
+					"name": "default",
+					"kind": 64,
+					"kindString": "Function",
+					"flags": {},
+					"sources": [
+						{
+							"fileName": "packages/core/src/popIndex.ts",
+							"line": 40,
+							"character": 9
+						}
+					],
+					"signatures": [
+						{
+							"id": 141,
+							"name": "default",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "Removes and returns an entry from a given array, at a designated index position.\nWARNING: This is not a pure function and will alter the given array internally",
+								"tags": [
+									{
+										"tag": "example",
+										"text": "\n```ts\npopIndex([1,2,3], 1); // -> 2 (array will then be [1, 3])\n```\n"
+									}
+								]
+							},
+							"parameters": [
+								{
+									"id": 142,
+									"name": "list",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"shortText": "The Array to remove the item from"
+									},
+									"type": {
+										"type": "array",
+										"elementType": {
+											"type": "intrinsic",
+											"name": "unknown"
+										}
+									}
+								},
+								{
+									"id": 143,
+									"name": "index",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"shortText": "At what index to remove from\n"
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "number"
+									}
+								}
+							],
+							"type": {
+								"type": "intrinsic",
+								"name": "unknown"
+							}
+						}
+					]
+				},
+				{
+					"id": 136,
+					"name": "popIndexPure",
+					"kind": 64,
+					"kindString": "Function",
+					"flags": {},
+					"sources": [
+						{
+							"fileName": "packages/core/src/popIndex.ts",
+							"line": 16,
+							"character": 16
+						}
+					],
+					"signatures": [
+						{
+							"id": 137,
+							"name": "popIndexPure",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "Removes and returns an entry from a given array, at a designated index position.\nWARNING: This is not a pure function and will alter the given array internally",
+								"returns": "An array with two entries: the first entry is the value just removed and the second\n         is the new array with the entry removed.\n",
+								"tags": [
+									{
+										"tag": "example",
+										"text": "\n```ts\npopIndex([1,2,3], 1); // -> 2 (array will then be [1, 3])\n```\n"
+									}
+								]
+							},
+							"parameters": [
+								{
+									"id": 138,
+									"name": "list",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"shortText": "The Array to remove the item from"
+									},
+									"type": {
+										"type": "array",
+										"elementType": {
+											"type": "intrinsic",
+											"name": "unknown"
+										}
+									}
+								},
+								{
+									"id": 139,
+									"name": "index",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"shortText": "At what index to remove from\n"
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "number"
+									}
+								}
+							],
+							"type": {
+								"type": "tuple",
+								"elements": [
+									{
+										"type": "intrinsic",
+										"name": "unknown"
+									},
+									{
+										"type": "array",
+										"elementType": {
+											"type": "intrinsic",
+											"name": "unknown"
+										}
+									}
+								]
+							}
+						}
+					]
+				}
+			],
+			"groups": [
+				{
+					"title": "Functions",
+					"kind": 64,
+					"children": [
+						140,
+						136
+					]
+				}
+			],
+			"sources": [
+				{
+					"fileName": "packages/core/src/popIndex.ts",
+					"line": 16,
+					"character": 0
+				}
+			]
+		},
+		{
+			"id": 144,
+			"name": "promisefy",
+			"kind": 2,
+			"kindString": "Module",
+			"flags": {},
+			"children": [
+				{
+					"id": 248,
+					"name": "<internal>",
+					"kind": 4,
+					"kindString": "Namespace",
+					"flags": {},
+					"children": [
+						{
+							"id": 258,
+							"name": "Error",
+							"kind": 256,
+							"kindString": "Interface",
+							"flags": {
+								"isExternal": true
+							},
+							"children": [
+								{
+									"id": 260,
+									"name": "message",
+									"kind": 1024,
+									"kindString": "Property",
+									"flags": {
+										"isExternal": true
+									},
+									"sources": [
+										{
+											"fileName": "node_modules/typescript/lib/lib.es5.d.ts",
+											"line": 1023,
+											"character": 4
+										}
+									],
+									"type": {
+										"type": "intrinsic",
+										"name": "string"
+									}
+								},
+								{
+									"id": 259,
+									"name": "name",
+									"kind": 1024,
+									"kindString": "Property",
+									"flags": {
+										"isExternal": true
+									},
+									"sources": [
+										{
+											"fileName": "node_modules/typescript/lib/lib.es5.d.ts",
+											"line": 1022,
+											"character": 4
+										}
+									],
+									"type": {
+										"type": "intrinsic",
+										"name": "string"
+									}
+								},
+								{
+									"id": 261,
+									"name": "stack",
+									"kind": 1024,
+									"kindString": "Property",
+									"flags": {
+										"isExternal": true,
+										"isOptional": true
+									},
+									"sources": [
+										{
+											"fileName": "node_modules/typescript/lib/lib.es5.d.ts",
+											"line": 1024,
+											"character": 4
+										}
+									],
+									"type": {
+										"type": "intrinsic",
+										"name": "string"
+									}
+								}
+							],
+							"groups": [
+								{
+									"title": "Properties",
+									"kind": 1024,
+									"children": [
+										260,
+										259,
+										261
+									]
+								}
+							],
+							"sources": [
+								{
+									"fileName": "node_modules/typescript/lib/lib.es5.d.ts",
+									"line": 1021,
+									"character": 10
+								}
+							]
+						},
+						{
+							"id": 249,
+							"name": "PromisefiedFunction",
+							"kind": 4194304,
+							"kindString": "Type alias",
+							"flags": {},
+							"sources": [
+								{
+									"fileName": "packages/core/src/promisefy.ts",
+									"line": 5,
+									"character": 5
+								}
+							],
+							"type": {
+								"type": "reflection",
+								"declaration": {
+									"id": 250,
+									"name": "__type",
+									"kind": 65536,
+									"kindString": "Type literal",
+									"flags": {},
+									"sources": [
+										{
+											"fileName": "packages/core/src/promisefy.ts",
+											"line": 5,
+											"character": 27
+										}
+									],
+									"signatures": [
+										{
+											"id": 251,
+											"name": "__type",
+											"kind": 4096,
+											"kindString": "Call signature",
+											"flags": {},
+											"parameters": [
+												{
+													"id": 252,
+													"name": "args",
+													"kind": 32768,
+													"kindString": "Parameter",
+													"flags": {
+														"isRest": true
+													},
+													"type": {
+														"type": "array",
+														"elementType": {
+															"type": "intrinsic",
+															"name": "any"
+														}
+													}
+												}
+											],
+											"type": {
+												"type": "reference",
+												"typeArguments": [
+													{
+														"type": "intrinsic",
+														"name": "unknown"
+													}
+												],
+												"qualifiedName": "Promise",
+												"package": "typescript",
+												"name": "Promise"
+											}
+										}
+									]
+								}
+							}
+						},
+						{
+							"id": 253,
+							"name": "PromisefyCallback",
+							"kind": 4194304,
+							"kindString": "Type alias",
+							"flags": {},
+							"sources": [
+								{
+									"fileName": "packages/core/src/promisefy.ts",
+									"line": 4,
+									"character": 5
+								}
+							],
+							"type": {
+								"type": "reflection",
+								"declaration": {
+									"id": 254,
+									"name": "__type",
+									"kind": 65536,
+									"kindString": "Type literal",
+									"flags": {},
+									"sources": [
+										{
+											"fileName": "packages/core/src/promisefy.ts",
+											"line": 4,
+											"character": 25
+										}
+									],
+									"signatures": [
+										{
+											"id": 255,
+											"name": "__type",
+											"kind": 4096,
+											"kindString": "Call signature",
+											"flags": {},
+											"parameters": [
+												{
+													"id": 256,
+													"name": "args",
+													"kind": 32768,
+													"kindString": "Parameter",
+													"flags": {
+														"isRest": true
+													},
+													"type": {
+														"type": "array",
+														"elementType": {
+															"type": "intrinsic",
+															"name": "any"
+														}
+													}
+												}
+											],
+											"type": {
+												"type": "intrinsic",
+												"name": "unknown"
+											}
+										}
+									]
+								}
+							}
+						},
+						{
+							"id": 257,
+							"name": "Error",
+							"kind": 32,
+							"kindString": "Variable",
+							"flags": {
+								"isExternal": true
+							},
+							"sources": [
+								{
+									"fileName": "node_modules/typescript/lib/lib.es5.d.ts",
+									"line": 1033,
+									"character": 12
+								}
+							],
+							"type": {
+								"type": "reference",
+								"qualifiedName": "ErrorConstructor",
+								"package": "typescript",
+								"name": "ErrorConstructor"
+							}
+						}
+					],
+					"groups": [
+						{
+							"title": "Interfaces",
+							"kind": 256,
+							"children": [
+								258
+							]
+						},
+						{
+							"title": "Type aliases",
+							"kind": 4194304,
+							"children": [
+								249,
+								253
+							]
+						},
+						{
+							"title": "Variables",
+							"kind": 32,
+							"children": [
+								257
+							]
+						}
+					]
+				},
+				{
+					"id": 145,
+					"name": "NodeLikeCallback",
+					"kind": 4194304,
+					"kindString": "Type alias",
+					"flags": {},
+					"sources": [
+						{
+							"fileName": "packages/core/src/promisefy.ts",
+							"line": 3,
+							"character": 12
+						}
+					],
+					"type": {
+						"type": "reflection",
+						"declaration": {
+							"id": 146,
+							"name": "__type",
+							"kind": 65536,
+							"kindString": "Type literal",
+							"flags": {},
+							"sources": [
+								{
+									"fileName": "packages/core/src/promisefy.ts",
+									"line": 3,
+									"character": 31
+								}
+							],
+							"signatures": [
+								{
+									"id": 147,
+									"name": "__type",
+									"kind": 4096,
+									"kindString": "Call signature",
+									"flags": {},
+									"parameters": [
+										{
+											"id": 148,
+											"name": "err",
+											"kind": 32768,
+											"kindString": "Parameter",
+											"flags": {
+												"isOptional": true
+											},
+											"type": {
+												"type": "union",
+												"types": [
+													{
+														"type": "intrinsic",
+														"name": "string"
+													},
+													{
+														"type": "reference",
+														"id": 257,
+														"qualifiedName": "Error",
+														"package": "typescript",
+														"name": "Error"
+													},
+													{
+														"type": "literal",
+														"value": null
+													}
+												]
+											}
+										},
+										{
+											"id": 149,
+											"name": "data",
+											"kind": 32768,
+											"kindString": "Parameter",
+											"flags": {
+												"isOptional": true
+											},
+											"type": {
+												"type": "intrinsic",
+												"name": "unknown"
+											}
+										}
+									],
+									"type": {
+										"type": "intrinsic",
+										"name": "unknown"
+									}
+								}
+							]
+						}
+					}
+				},
+				{
+					"id": 150,
+					"name": "default",
+					"kind": 64,
+					"kindString": "Function",
+					"flags": {},
+					"sources": [
+						{
+							"fileName": "packages/core/src/promisefy.ts",
+							"line": 28,
+							"character": 24
+						}
+					],
+					"signatures": [
+						{
+							"id": 151,
+							"name": "default",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "Converts a callback based action into one returning a Promise instead.",
+								"returns": "The formatted string\n",
+								"tags": [
+									{
+										"tag": "example",
+										"text": "\n```ts\nfunction action(name, callback) { ... callback(); }\n\naction = promisefy(action);\n\naction\n  .then(() => 'all good')\n  .catch(() => 'Something went wrong');\n```\n"
+									}
+								]
+							},
+							"parameters": [
+								{
+									"id": 152,
+									"name": "fn",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"type": {
+										"type": "reference",
+										"id": 253,
+										"name": "PromisefyCallback"
+									}
+								}
+							],
+							"type": {
+								"type": "reference",
+								"id": 249,
+								"name": "PromisefiedFunction"
+							}
+						}
+					]
+				}
+			],
+			"groups": [
+				{
+					"title": "Namespaces",
+					"kind": 4,
+					"children": [
+						248
+					]
+				},
+				{
+					"title": "Type aliases",
+					"kind": 4194304,
+					"children": [
+						145
+					]
+				},
+				{
+					"title": "Functions",
+					"kind": 64,
+					"children": [
+						150
+					]
+				}
+			],
+			"sources": [
+				{
+					"fileName": "packages/core/src/promisefy.ts",
+					"line": 3,
+					"character": 0
+				}
+			]
+		},
+		{
+			"id": 153,
+			"name": "randomHexColor",
+			"kind": 2,
+			"kindString": "Module",
+			"flags": {},
+			"children": [
+				{
+					"id": 154,
+					"name": "default",
+					"kind": 64,
+					"kindString": "Function",
+					"flags": {},
+					"sources": [
+						{
+							"fileName": "packages/core/src/randomHexColor.ts",
+							"line": 16,
+							"character": 24
+						}
+					],
+					"signatures": [
+						{
+							"id": 155,
+							"name": "default",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "Generate a random HEX color",
+								"returns": "A random hex color\n",
+								"tags": [
+									{
+										"tag": "example",
+										"text": "\n```ts\nrandomHexColor(); // -> eg. #f42c71\n```\n"
+									}
+								]
+							},
+							"type": {
+								"type": "intrinsic",
+								"name": "string"
+							}
+						}
+					]
+				}
+			],
+			"groups": [
+				{
+					"title": "Functions",
+					"kind": 64,
+					"children": [
+						154
+					]
+				}
+			],
+			"sources": [
+				{
+					"fileName": "packages/core/src/randomHexColor.ts",
+					"line": 1,
+					"character": 0
+				}
+			]
+		},
+		{
+			"id": 156,
+			"name": "randomId",
+			"kind": 2,
+			"kindString": "Module",
+			"flags": {},
+			"children": [
+				{
+					"id": 157,
+					"name": "default",
+					"kind": 64,
+					"kindString": "Function",
+					"flags": {},
+					"sources": [
+						{
+							"fileName": "packages/core/src/randomId.ts",
+							"line": 12,
+							"character": 24
+						}
+					],
+					"signatures": [
+						{
+							"id": 158,
+							"name": "default",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "Generate a random id of designated length",
+								"returns": "A random generated id\n",
+								"tags": [
+									{
+										"tag": "example",
+										"text": "\n```ts\nrandomId(); // -> eg. 'efuc6f1n4xf'\nrandomId(20); // -> eg. '3vsmrbxlh9at0vhcsf1xh'\n```\n"
+									}
+								]
+							},
+							"parameters": [
+								{
+									"id": 159,
+									"name": "length",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"type": {
+										"type": "intrinsic",
+										"name": "number"
+									},
+									"defaultValue": "10"
+								}
+							],
+							"type": {
+								"type": "intrinsic",
+								"name": "string"
+							}
+						}
+					]
+				}
+			],
+			"groups": [
+				{
+					"title": "Functions",
+					"kind": 64,
+					"children": [
+						157
+					]
+				}
+			],
+			"sources": [
+				{
+					"fileName": "packages/core/src/randomId.ts",
+					"line": 12,
+					"character": 0
+				}
+			]
+		},
+		{
+			"id": 160,
+			"name": "randomInt",
+			"kind": 2,
+			"kindString": "Module",
+			"flags": {},
+			"children": [
+				{
+					"id": 161,
+					"name": "default",
+					"kind": 64,
+					"kindString": "Function",
+					"flags": {},
+					"sources": [
+						{
+							"fileName": "packages/core/src/randomInt.ts",
+							"line": 30,
+							"character": 24
+						}
+					],
+					"signatures": [
+						{
+							"id": 162,
+							"name": "default",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "Returns a random integer from a base number or range of numbers",
+								"returns": "The generated random number\n",
+								"tags": [
+									{
+										"tag": "example",
+										"text": "\n```ts\n// Direct base number\nrandomInt(100); // -> a number between 0 and 100\n\n// A range of numbers\nrandomInt(100, 200); // -> a number between 100 and 200\n```\n"
+									}
+								]
+							},
+							"parameters": [
+								{
+									"id": 163,
+									"name": "num",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"shortText": "The base number to generate the random number from"
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "number"
+									}
+								},
+								{
+									"id": 164,
+									"name": "num2",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {
+										"isOptional": true
+									},
+									"comment": {
+										"shortText": "The second number in a range to create the number between\n"
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "number"
+									}
+								}
+							],
+							"type": {
+								"type": "intrinsic",
+								"name": "number"
+							}
+						}
+					]
+				}
+			],
+			"groups": [
+				{
+					"title": "Functions",
+					"kind": 64,
+					"children": [
+						161
+					]
+				}
+			],
+			"sources": [
+				{
+					"fileName": "packages/core/src/randomInt.ts",
+					"line": 1,
+					"character": 0
+				}
+			]
+		},
+		{
+			"id": 165,
+			"name": "randomRGBColor",
+			"kind": 2,
+			"kindString": "Module",
+			"flags": {},
+			"children": [
+				{
+					"id": 166,
+					"name": "default",
+					"kind": 64,
+					"kindString": "Function",
+					"flags": {},
+					"sources": [
+						{
+							"fileName": "packages/core/src/randomRGBColor.ts",
+							"line": 15,
+							"character": 24
+						}
+					],
+					"signatures": [
+						{
+							"id": 167,
+							"name": "default",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "Generate a random RGB color",
+								"returns": "An Array with random R G B values\n",
+								"tags": [
+									{
+										"tag": "example",
+										"text": "\n```ts\nrandomRGBColor(); // -> eg. [169, 100, 52]\n```\n"
+									}
+								]
+							},
+							"type": {
+								"type": "tuple",
+								"elements": [
+									{
+										"type": "intrinsic",
+										"name": "number"
+									},
+									{
+										"type": "intrinsic",
+										"name": "number"
+									},
+									{
+										"type": "intrinsic",
+										"name": "number"
+									}
+								]
+							}
+						}
+					]
+				}
+			],
+			"groups": [
+				{
+					"title": "Functions",
+					"kind": 64,
+					"children": [
+						166
+					]
+				}
+			],
+			"sources": [
+				{
+					"fileName": "packages/core/src/randomRGBColor.ts",
+					"line": 1,
+					"character": 0
+				}
+			]
+		},
+		{
+			"id": 177,
+			"name": "safeDateChange",
+			"kind": 2,
+			"kindString": "Module",
+			"flags": {},
+			"children": [
+				{
+					"id": 178,
+					"name": "default",
+					"kind": 64,
+					"kindString": "Function",
+					"flags": {},
+					"sources": [
+						{
+							"fileName": "packages/core/src/safeDateChange.ts",
+							"line": 25,
+							"character": 24
+						}
+					],
+					"signatures": [
+						{
+							"id": 179,
+							"name": "default",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "Verifies and corrects Dates where the month could accidentally have skipped into the\nnext month because the date is out of bounds by the month changed to.",
+								"returns": "Altered \"to\" date\n",
+								"tags": [
+									{
+										"tag": "example",
+										"text": "\n```ts\nconst date = new Date(2017, 0, 31);\nnewDate = new Date(date);\nnewDate.setMonth(1);\n\n// Normally you would expect \"newDate\" month to be February, but since the date\n// of the previous date was 31 and february max date is 28 (or 29), the actual\n// \"newDate\" is \"Match 3rd 2017\" (or 2nd). Using this function keeps it at \"February 28 2017\"\n\nsafeDateChange(date, newDate);\n\n// newDate === \"February 28 2017\"\n```\n"
+									}
+								]
+							},
+							"parameters": [
+								{
+									"id": 180,
+									"name": "from",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"shortText": "Date going from"
+									},
+									"type": {
+										"type": "reference",
+										"qualifiedName": "Date",
+										"package": "typescript",
+										"name": "Date"
+									}
+								},
+								{
+									"id": 181,
+									"name": "to",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"shortText": "Date going to\n"
+									},
+									"type": {
+										"type": "reference",
+										"qualifiedName": "Date",
+										"package": "typescript",
+										"name": "Date"
+									}
+								}
+							],
+							"type": {
+								"type": "reference",
+								"qualifiedName": "Date",
+								"package": "typescript",
+								"name": "Date"
+							}
+						}
+					]
+				}
+			],
+			"groups": [
+				{
+					"title": "Functions",
+					"kind": 64,
+					"children": [
+						178
+					]
+				}
+			],
+			"sources": [
+				{
+					"fileName": "packages/core/src/safeDateChange.ts",
+					"line": 25,
+					"character": 0
+				}
+			]
+		},
+		{
+			"id": 182,
+			"name": "snakeCase",
+			"kind": 2,
+			"kindString": "Module",
+			"flags": {},
+			"children": [
+				{
+					"id": 183,
+					"name": "SnakeCaseSettings",
+					"kind": 4194304,
+					"kindString": "Type alias",
+					"flags": {},
+					"sources": [
+						{
+							"fileName": "packages/core/src/snakeCase.ts",
+							"line": 5,
+							"character": 12
+						}
+					],
+					"type": {
+						"type": "reference",
+						"id": 128,
+						"name": "PhrasifySettings"
+					}
+				},
+				{
+					"id": 184,
+					"name": "default",
+					"kind": 64,
+					"kindString": "Function",
+					"flags": {},
+					"sources": [
+						{
+							"fileName": "packages/core/src/snakeCase.ts",
+							"line": 24,
+							"character": 24
+						}
+					],
+					"signatures": [
+						{
+							"id": 185,
+							"name": "default",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "Transform phrase into a snake_case phrase\n(eg. 'camelCase' -> 'camel-case' or 'spaced phrase' -> 'spaced-phrase')",
+								"returns": "The string transformed to snake_case\n",
+								"tags": [
+									{
+										"tag": "example",
+										"text": "\n```ts\nsnakeCase('Convert This phrase'); // -> convert_this_phrase\nsnakeCase('dash VERSION1 beta', { numbers: true }); // -> dash_version_1_beta\n```\n"
+									}
+								]
+							},
+							"parameters": [
+								{
+									"id": 186,
+									"name": "str",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"shortText": "String to transform"
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "string"
+									}
+								},
+								{
+									"id": 187,
+									"name": "settings",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {
+										"isOptional": true
+									},
+									"comment": {
+										"shortText": "Settings to pass to the phrasify function\n"
+									},
+									"type": {
+										"type": "reference",
+										"id": 128,
+										"name": "PhrasifySettings"
+									}
+								}
+							],
+							"type": {
+								"type": "intrinsic",
+								"name": "string"
+							}
+						}
+					]
+				}
+			],
+			"groups": [
+				{
+					"title": "Type aliases",
+					"kind": 4194304,
+					"children": [
+						183
+					]
+				},
+				{
+					"title": "Functions",
+					"kind": 64,
+					"children": [
+						184
+					]
+				}
+			],
+			"sources": [
+				{
+					"fileName": "packages/core/src/snakeCase.ts",
+					"line": 1,
+					"character": 0
+				}
+			]
+		},
+		{
+			"id": 188,
+			"name": "truncate",
+			"kind": 2,
+			"kindString": "Module",
+			"flags": {},
+			"children": [
+				{
+					"id": 265,
+					"name": "<internal>",
+					"kind": 4,
+					"kindString": "Namespace",
+					"flags": {},
+					"children": [
+						{
+							"id": 266,
+							"name": "TruncateSettings",
+							"kind": 4194304,
+							"kindString": "Type alias",
+							"flags": {},
+							"sources": [
+								{
+									"fileName": "packages/core/src/truncate.ts",
+									"line": 5,
+									"character": 5
+								}
+							],
+							"type": {
+								"type": "reflection",
+								"declaration": {
+									"id": 267,
+									"name": "__type",
+									"kind": 65536,
+									"kindString": "Type literal",
+									"flags": {},
+									"children": [
+										{
+											"id": 269,
+											"name": "end",
+											"kind": 1024,
+											"kindString": "Property",
+											"flags": {
+												"isOptional": true
+											},
+											"sources": [
+												{
+													"fileName": "packages/core/src/truncate.ts",
+													"line": 7,
+													"character": 2
+												}
+											],
+											"type": {
+												"type": "intrinsic",
+												"name": "string"
+											}
+										},
+										{
+											"id": 268,
+											"name": "maxLength",
+											"kind": 1024,
+											"kindString": "Property",
+											"flags": {
+												"isOptional": true
+											},
+											"sources": [
+												{
+													"fileName": "packages/core/src/truncate.ts",
+													"line": 6,
+													"character": 2
+												}
+											],
+											"type": {
+												"type": "intrinsic",
+												"name": "number"
+											}
+										}
+									],
+									"groups": [
+										{
+											"title": "Properties",
+											"kind": 1024,
+											"children": [
+												269,
+												268
+											]
+										}
+									],
+									"sources": [
+										{
+											"fileName": "packages/core/src/truncate.ts",
+											"line": 5,
+											"character": 24
+										}
+									]
+								}
+							}
+						}
+					],
+					"groups": [
+						{
+							"title": "Type aliases",
+							"kind": 4194304,
+							"children": [
+								266
+							]
+						}
+					]
+				},
+				{
+					"id": 189,
+					"name": "default",
+					"kind": 64,
+					"kindString": "Function",
+					"flags": {},
+					"sources": [
+						{
+							"fileName": "packages/core/src/truncate.ts",
+							"line": 27,
+							"character": 24
+						}
+					],
+					"signatures": [
+						{
+							"id": 190,
+							"name": "default",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "Limits a string to a given number of characters and adds '...' in the end",
+								"returns": "The truncated string\n",
+								"tags": [
+									{
+										"tag": "example",
+										"text": "\n```ts\ntruncate('No max length to the string'); // -> No max limit to the string length\ntruncate('With a max length to the string', { maxLength: 10 }); // -> With a max...\ntruncate('With a max length to the string and a differnet ending', { maxLength: 10, end: ' <---' }); // -> With a max <---\n```\n"
+									}
+								]
+							},
+							"parameters": [
+								{
+									"id": 191,
+									"name": "str",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"shortText": "String to truncate"
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "string"
+									}
+								},
+								{
+									"id": 192,
+									"name": "settings",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"shortText": "Settings to use with the truncation\n"
+									},
+									"type": {
+										"type": "reference",
+										"id": 266,
+										"name": "TruncateSettings"
+									},
+									"defaultValue": "{}"
+								}
+							],
+							"type": {
+								"type": "intrinsic",
+								"name": "string"
+							}
+						}
+					]
+				}
+			],
+			"groups": [
+				{
+					"title": "Namespaces",
+					"kind": 4,
+					"children": [
+						265
+					]
+				},
+				{
+					"title": "Functions",
+					"kind": 64,
+					"children": [
+						189
+					]
+				}
+			],
+			"sources": [
+				{
+					"fileName": "packages/core/src/truncate.ts",
+					"line": 1,
+					"character": 0
+				}
+			]
+		},
+		{
+			"id": 193,
+			"name": "uniqueArray",
+			"kind": 2,
+			"kindString": "Module",
+			"flags": {},
+			"children": [
+				{
+					"id": 194,
+					"name": "default",
+					"kind": 64,
+					"kindString": "Function",
+					"flags": {},
+					"sources": [
+						{
+							"fileName": "packages/core/src/uniqueArray.ts",
+							"line": 14,
+							"character": 24
+						}
+					],
+					"signatures": [
+						{
+							"id": 195,
+							"name": "default",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "Filter out unknown duplicate values from an array",
+								"returns": "The truncated string\n",
+								"tags": [
+									{
+										"tag": "example",
+										"text": "\n```ts\nuniqueArray([1,2,3,1,4,5,3,7]); // -> [1,2,3,4,5,6,7]\n```\n"
+									}
+								]
+							},
+							"parameters": [
+								{
+									"id": 196,
+									"name": "arr",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"shortText": "Array to filter on"
+									},
+									"type": {
+										"type": "array",
+										"elementType": {
+											"type": "intrinsic",
+											"name": "unknown"
+										}
+									}
+								}
+							],
+							"type": {
+								"type": "array",
+								"elementType": {
+									"type": "intrinsic",
+									"name": "unknown"
+								}
+							}
+						}
+					]
+				}
+			],
+			"groups": [
+				{
+					"title": "Functions",
+					"kind": 64,
+					"children": [
+						194
+					]
+				}
+			],
+			"sources": [
+				{
+					"fileName": "packages/core/src/uniqueArray.ts",
+					"line": 14,
+					"character": 0
+				}
+			]
+		}
+	],
+	"groups": [
+		{
+			"title": "Modules",
+			"kind": 2,
+			"children": [
+				168,
+				1,
+				15,
+				19,
+				24,
+				35,
+				45,
+				52,
+				56,
+				60,
+				64,
+				68,
+				75,
+				79,
+				83,
+				87,
+				91,
+				97,
+				102,
+				107,
+				113,
+				117,
+				121,
+				127,
+				135,
+				144,
+				153,
+				156,
+				160,
+				165,
+				177,
+				182,
+				188,
+				193
+			]
+		}
+	]
+}
