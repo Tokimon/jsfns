@@ -19,6 +19,7 @@ node_modules
 # custom
 _tests
 build
+typedoc_docs
 
 packages/*/src/index.ts
 
