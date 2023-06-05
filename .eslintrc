@@ -49,7 +49,7 @@
         "maxEOF": 1
       }
     ],
-    "curly": [2, "all"],
+    "curly": 0,
     "import/first": 0,
     "quotes": [2, "single", { "avoidEscape": true }],
     "operator-linebreak": [2, "before"]
