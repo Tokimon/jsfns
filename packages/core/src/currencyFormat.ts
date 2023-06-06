@@ -44,9 +44,7 @@ const thousandRegExp = /^(\D*)1(\D*)000(\D*)(\d*)(\D*)$/;
 export function currencyFormat(thousandString = '1.000,00 €'): CurrencyFomatter {
   let m = thousandRegExp.exec(thousandString);
 
-  if (!m) {
-    m = thousandRegExp.exec('1.000,00 €') as RegExpExecArray;
-  }
+  if (!m) m = thousandRegExp.exec('1.000,00 €') as RegExpExecArray;
 
   const [before, thousand, decimal, dec, after] = m.slice(1);
 
