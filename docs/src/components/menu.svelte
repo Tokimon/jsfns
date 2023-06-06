@@ -24,9 +24,11 @@
 <style>
 	.menu {
 		grid-area: nav;
-		position: sticky;
+		position: fixed;
+		width: 250px;
 		top: var(--header-hight);
-		height: calc(100vh - var(--header-hight));
+		bottom: 0;
+		left: 0;
 		background: #131a20;
 		overflow-y: auto;
 		overflow-x: hidden;
