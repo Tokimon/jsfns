@@ -63,7 +63,7 @@ export type DocTypeTuple = {
 
 export type DocTypeIntersection = {
 	type: 'intersection';
-	types?: (DocTypeReference | DocTypeReflection)[];
+	types: (DocTypeReference | DocTypeReflection)[];
 };
 
 export type DocTypePredicate = {
@@ -170,7 +170,6 @@ export type TypeAliasKind = Omit<KindBase, 'kind' | 'kindString'> & {
 		| DocTypeIntersection
 		| DocTypeConditional
 		| DocTypeMapped;
-	children: TypeAliasKind[];
 	sources?: DocSource[];
 	typeParameter?: TypeParameterKind[];
 };
@@ -178,11 +177,12 @@ export type TypeAliasKind = Omit<KindBase, 'kind' | 'kindString'> & {
 export type TypeLiteralKind = Omit<KindBase, 'kind' | 'kindString'> & {
 	kind: 65536;
 	kindString: 'Type literal';
-	children?: PropertyKind[];
-	groups?: PropertiesGroup[];
+
 	sources: DocSource[];
-	signatures?: (CallSignatureKind | DocTypeReference)[];
-};
+} & (
+		| { children: PropertyKind[]; groups: PropertiesGroup[]; signatures: never }
+		| { children: never; groups: never; signatures: CallSignatureKind[] }
+	);
 
 export type TypeParameterKind = Omit<KindBase, 'kind' | 'kindString'> & {
 	kind: 131072;
