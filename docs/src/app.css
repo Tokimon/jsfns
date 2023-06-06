@@ -43,7 +43,6 @@ p {
 
 table {
 	table-layout: auto;
-	margin-bottom: 5px;
 	border-collapse: collapse;
 }
 
@@ -62,4 +61,22 @@ table td {
 table tbody tr:last-child th,
 table tbody tr:last-child td {
 	border-bottom: 0;
+}
+
+details[open] summary {
+	margin-bottom: 5px;
+}
+
+details pre code.hljs {
+	background-color: #1c2431;
+}
+
+summary {
+	font-size: 12px;
+	cursor: pointer;
+	color: gray;
+}
+
+pre code.hljs {
+	padding: 15px;
 }

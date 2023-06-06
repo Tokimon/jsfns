@@ -1,31 +1,19 @@
 <script context="module" lang="ts">
-  import type { CallSignatureKind, DocType } from 'src/types';
+  import type { CallSignatureKind } from 'src/types';
+  import { buildComment } from "../utils/buildComment";
+  import { buildFunction } from '../utils/buildFunction';
+  import { createTypeString } from "../utils/typeString";
+  import References from './References.svelte';
   import Markdown from "./markdown.svelte";
-
-  function typeString(type: DocType): string {
-    switch(type.type) {
-      case 'intrinsic': return type.name;
-      case 'tuple': return `[${type.elements?.map(typeString).join(', ')}]`;
-      case 'array': return type.elementType.name + '[]';
-      case 'reference': return type.name;
-      default: return type.type;
-    }
-  }
-
-  function params(parameters: CallSignatureKind['parameters']) {
-    return (parameters?.map(({name, flags, type, defaultValue}) => {
-      const optional = flags.isOptional ? '?' : '';
-      const defVal = defaultValue ? ' = ' + defaultValue : '';
-
-      return `${name}${optional}: ${typeString(type)}${defVal}`
-    }) || []).join(', ');
-  }
 </script>
 
 <script lang="ts">
   export let name: string;
   export let signature: CallSignatureKind;
-  const { comment, type } = signature;
+  const { comment } = signature;
+
+  const typeReferences: string[] = [];
+  const typeToString = createTypeString(name, typeReferences);
 
   $: examples = comment?.tags?.filter(({tag}) => tag === 'example') || [];
 </script>
@@ -37,53 +25,47 @@
     gap: 15px;
     padding: 15px;
   }
-
-  .returns {
-    color: gray;
-  }
   
-  .returns span {
-    color: #a2a2a2;
+  .definition {
+    font-size: 20px;
   }
 
-  summary {
-    font-size: 12px;
-    cursor: pointer;
-    color: gray;
-  }
-
-  details[open] summary {
-    margin-bottom: 5px;
+  .description {
+    font-size: 18px;
+    color: #aaa;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
   }
 </style>
 
 <div class="call-signature">
-  <!-- <Highlight language={highlightTSLang} code={`${name}(${params(signature.parameters)})`} /> -->
-  <Markdown text={`\`\`\`ts
-${name}(${params(signature.parameters)})
-  \`\`\``} />
+  <div class="definition">
+    <Markdown text={`\`\`\`ts
+${buildFunction(typeToString, name, signature)}
+\`\`\``} />
+  </div>
 
-  {#if examples.length || comment}
+  {#if examples.length || comment || typeReferences.length}
     <div class="content">
       {#if comment}
         <div class="description">
-          <Markdown text={comment.text || comment.shortText} />
-
-          {#if comment.returns}
-            <p class="returns"><string class="hljs-keyword">@returns</string> <span>[{type.name}]</span> {comment.returns}</p>
-          {/if}
+          <Markdown text={buildComment(comment)} />
         </div>
       {/if}
       
       
       {#if examples.length}
-      <details open>
-        <summary>Examples</summary>
-        {#each examples as example}
-        <Markdown text={example.text} />
-        <!-- {@html marked(example.text, { mangle: false, headerIds: false })} -->
-        {/each}
-      </details>
+        <details>
+          <summary>Examples</summary>
+          {#each examples as example}
+            <Markdown text={example.text} />
+          {/each}
+        </details>
+      {/if}
+
+      {#if typeReferences.length}
+        <References types={typeReferences} />
       {/if}
     </div>
   {/if}
