@@ -3,7 +3,7 @@ import limitDecimals from './limitDecimals';
 
 
 export type FormatNumberSettings = {
-  decimals?: number | string;
+  decimalCount?: number | string;
   thousand?: string;
   decimal?: string;
 }
@@ -11,7 +11,7 @@ export type FormatNumberSettings = {
 
 
 const defaultSettings: FormatNumberSettings = {
-  decimals: 2,
+  decimalCount: 2,
   thousand: '.',
   decimal: ','
 };
@@ -20,7 +20,7 @@ const defaultSettings: FormatNumberSettings = {
 
 /**
  * Formats a number with defined thousand and decimal separator, and a decimal limit
- * (see `limitDecimals` for details on `decCount`)
+ * (see `limitDecimals` for details on `decimalCount`)
  *
  * @param num - Number to format
  * @param settings - Settings for the number formatting
@@ -33,14 +33,14 @@ const defaultSettings: FormatNumberSettings = {
  * formatNumber(123456); // -> 123.456,00
  *
  * // Custom format
- * formatNumber(123456, { decimals: '>3', thousand: '-', decimal: ':' }); // -> 123-456:000
+ * formatNumber(123456, { decimalCount: '>3', thousand: '-', decimal: ':' }); // -> 123-456:000
  * ```
  */
 export default function formatNumber(num: number, settings?: FormatNumberSettings): string {
-  const { decimals, thousand, decimal } = { ...defaultSettings, ...settings };
+  const { decimalCount, thousand, decimal } = { ...defaultSettings, ...settings };
 
   // Format the number to the desired number of decimals and split.
-  const parts = limitDecimals(num, decimals).split('.');
+  const parts = limitDecimals(num, decimalCount).split('.');
 
   // Insert separator
   parts[0] = parts[0].replace(/(\d)(?=(\d{3})+$)/g, `$1${thousand}`);

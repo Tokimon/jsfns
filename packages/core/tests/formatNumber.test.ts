@@ -20,7 +20,7 @@ describe('"formatNumber"', () => {
     [1, '1.100,2'],
     ['>4', '1.100,2340'],
     ['<2', '1.100,23']
-  ])('Format the decimals (using "limitDecimals" expressions): %s', (decimals, output) => {
-    expect(formatNumber(1100.234, { decimals })).toBe(output);
+  ])('Format the decimals (using "limitDecimals" expressions): %s', (decimalCount, output) => {
+    expect(formatNumber(1100.234, { decimalCount })).toBe(output);
   });
 });

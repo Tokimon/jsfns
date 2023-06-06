@@ -28,7 +28,7 @@ function minDecimals(num: number, decimals: number): string {
  * **n** | Match this exact number of decimals, rounding longer decimals and adding extra 0 (zeroes) to shorter ones.
  *
  * @param num - Number to limit the decimals on
- * @param decimals - Setting for how to handle the decimals
+ * @param decimalCount - Setting for how to handle the decimals
  *
  * @returns String representation of the number with the decimals adjusted according to the decimal setting
  *
@@ -47,18 +47,18 @@ function minDecimals(num: number, decimals: number): string {
  * limitDecimals(123.456789, '>4') // -> 123.456789
  * ```
  */
-export default function limitDecimals(num: number, decimals: number | string = 2): string {
-  if (isString(decimals)) {
-    if (decimals.startsWith('<')) {
-      return String(maxDecimals(num, Number(decimals.slice(1))));
+export default function limitDecimals(num: number, decimalCount: number | string = 2): string {
+  if (isString(decimalCount)) {
+    if (decimalCount.startsWith('<')) {
+      return String(maxDecimals(num, Number(decimalCount.slice(1))));
     }
 
-    if (decimals.startsWith('>')) {
-      return minDecimals(num, Number(decimals.slice(1)));
+    if (decimalCount.startsWith('>')) {
+      return minDecimals(num, Number(decimalCount.slice(1)));
     }
 
-    if (decimals.includes(',')) {
-      const [minDec, maxDec] = decimals.split(/[, ]+/);
+    if (decimalCount.includes(',')) {
+      const [minDec, maxDec] = decimalCount.split(/[, ]+/);
       let min = Number(minDec);
       let max = Number(maxDec);
       if (max < min) { [min, max] = [max, min]; }
@@ -66,9 +66,9 @@ export default function limitDecimals(num: number, decimals: number | string = 2
       return minDecimals(maxDecimals(num, max), min);
     }
 
-    decimals = Number(decimals) || 0;
+    decimalCount = Number(decimalCount) || 0;
   }
 
 
-  return num.toFixed(decimals);
+  return num.toFixed(decimalCount);
 }
