@@ -1,13 +1,13 @@
 <script lang="ts">
+	import { onMount } from "svelte";
+	import { typeReferences, type StoreDictionary } from "../stores/typeReferences";
+	import { TSCode } from "../utils/ts-code";
 	import { createTypeString } from "../utils/typeString";
-  import { typeReferences, type StoreDictionary } from "../stores/typeReferences";
 	import Markdown from "./markdown.svelte";
 
   export let types: string[] = [];
 
-  let references: StoreDictionary;
-	typeReferences.subscribe(value => { references = value; });
-
+  let references: StoreDictionary = {};
   let markdown = '';
 
   $: {
@@ -17,13 +17,14 @@
       return `type ${typeName} = ${createTypeString(typeName)(kind.type)};`;
     }).filter((s) => !!s);
 
-    if (expressions.length)
-      markdown = `\`\`\`ts\n${expressions.join('\n\n')}\n\`\`\``;
+    if (expressions.length) markdown = TSCode(expressions.join('\n\n'));
   }
+
+  onMount(() => typeReferences.subscribe(value => { references = value; }))
 </script>
 
 {#if markdown}
-  <details open>
+  <details>
     <summary>Types</summary>
     <Markdown text={markdown} />
   </details>
