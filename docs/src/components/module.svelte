@@ -44,16 +44,27 @@
 </script>
 
 <style>
-  h1 {
+  .content h1 {
     margin: 0;
     padding: 0 15px;
     line-height: 50px;
     background: #394957;
-    font-size: 30px;
+    font-size: 18px;
   }
 
-  h1 b {
+  .content h1 a {
+    color: currentColor;
+    text-decoration: none;
+  }
+
+  .content h1 a:hover b,
+  .content h1 a:focus b {
+    color: currentColor;
+  }
+
+  .content h1 b {
     color: gray;
+    transition: color 0.2s;
   }
 
   .content {
@@ -85,7 +96,7 @@
 
 <section class="module" id={module.name}>
   <div class="content">
-    <h1><b>#</b> {module.name}</h1>
+    <h1><a href={'#' + module.name}><b>#</b> {module.name}</a></h1>
 
     <div class="signatures">
       {#each functions as func}
