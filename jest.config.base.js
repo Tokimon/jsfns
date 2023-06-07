@@ -4,11 +4,7 @@ export default {
   collectCoverageFrom: ['<rootDir>/src/*.ts'],
   coverageDirectory: '<rootDir>/coverage/',
   extensionsToTreatAsEsm: ['.ts'],
-  transform: {},
-  globals: {
-    'ts-jest': {
-      useESM: true,
-      tsconfig: '<rootDir>/tsconfig.test.json'
-    }
+  transform: {
+    '^.+\\.ts$' : ['ts-jest', { useESM: true, tsconfig: '<rootDir>/tsconfig.test.json' }]
   }
 };
