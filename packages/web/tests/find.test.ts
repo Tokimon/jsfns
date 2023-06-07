@@ -1,6 +1,6 @@
 import { jest } from '@jest/globals';
+import type { SpyInstance } from 'jest-mock';
 import find from '~web/find';
-import type { SpyReturnType } from './assets/mocks';
 
 
 
@@ -25,7 +25,7 @@ describe('"Find"', () => {
     });
 
     describe('Uses `getElementsByClassName` when selector is:', () => {
-      let classSpy: SpyReturnType<typeof document.getElementsByClassName>;
+      let classSpy: SpyInstance<typeof document.getElementsByClassName>;
 
       beforeAll(() => {
         classSpy = jest.spyOn(document, 'getElementsByClassName');
@@ -47,7 +47,7 @@ describe('"Find"', () => {
     });
 
     describe('Uses `querySelectorAll` when selector:', () => {
-      let querySpy: SpyReturnType<typeof document.querySelectorAll>;
+      let querySpy: SpyInstance<typeof document.querySelectorAll>;
 
       const testQuery = (query: string) => {
         find(query);
@@ -102,7 +102,7 @@ describe('"Find"', () => {
     });
 
     describe('Uses `getElementsByClassName` when selector is:', () => {
-      let classSpy: SpyReturnType<typeof document.getElementsByClassName>;
+      let classSpy: SpyInstance<typeof document.getElementsByClassName>;
 
       beforeAll(() => {
         classSpy = jest.spyOn(body, 'getElementsByClassName');
@@ -124,7 +124,7 @@ describe('"Find"', () => {
     });
 
     describe('Uses `querySelectorAll` when selector:', () => {
-      let querySpy: SpyReturnType<typeof document.querySelectorAll>;
+      let querySpy: SpyInstance<typeof document.querySelectorAll>;
 
       const testQuery = (query: string) => {
         find(body, query);

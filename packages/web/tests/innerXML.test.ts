@@ -1,6 +1,6 @@
 import { jest } from '@jest/globals';
+import type { SpyInstance } from 'jest-mock';
 import innerXML from '~web/innerXML';
-import type { SpyInstance } from './assets/mocks';
 
 
 

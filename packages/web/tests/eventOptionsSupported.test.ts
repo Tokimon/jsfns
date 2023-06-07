@@ -1,11 +1,11 @@
 import { jest } from '@jest/globals';
+import type { SpyInstance } from 'jest-mock';
 import eventOptionsSupported from '~web/eventOptionsSupported';
-import type { SpyReturnType } from './assets/mocks';
 
 
 
 describe('"eventOptionsSupported"', () => {
-  let addEventListenerSpy: SpyReturnType<typeof document.addEventListener>;
+  let addEventListenerSpy: SpyInstance<typeof document.addEventListener>;
 
   beforeAll(() => {
     addEventListenerSpy = jest.spyOn(document, 'addEventListener');

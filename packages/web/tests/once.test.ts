@@ -1,9 +1,9 @@
 import { jest } from '@jest/globals';
+import type { SpyInstance } from 'jest-mock';
 import eventOptionsSupported from '~web/eventOptionsSupported';
 import type { OnceEventListenerOptions, WhenFunction } from '~web/once';
 import once from '~web/once';
 import { triggerEvent } from './assets/helpers';
-import type { SpyReturnType } from './assets/mocks';
 
 
 
@@ -40,7 +40,7 @@ describe('"once"', () => {
     });
 
     describe('Binds event with "addEventListener"', () => {
-      let addEventListenerSpy: SpyReturnType<typeof document.addEventListener>;
+      let addEventListenerSpy: SpyInstance<typeof document.addEventListener>;
 
       beforeAll(() => {
         addEventListenerSpy = jest.spyOn(target, 'addEventListener');
