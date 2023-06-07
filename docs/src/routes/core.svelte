@@ -16,7 +16,8 @@
 </script>
 
 <Page
-	title={`${docs.name} v. ${version}`}
+	name={docs.name.replace('@js-fns/', '')}
+	version={version}
 	description={pageDescription}
 	modules={[...docs.children]}
 />

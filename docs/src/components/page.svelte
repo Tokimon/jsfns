@@ -5,10 +5,14 @@
 </script>
 
 <script lang="ts">
-  export let title: string;
+  export let name: string;
+  export let version: string;
   export let description: string;
   export let modules: ModuleKind[] = [];
 	
+	let menuOpen = false;
+	const toggleMenu = () => { menuOpen = !menuOpen; }
+
   $: {
     modules.sort((a, b) => {
       const aName = a.name.toLowerCase();
@@ -93,16 +97,25 @@
 </style>
 
 <svelte:head>
-	<title>{title}</title>
+	<title>@js-fns/{name} v. {version}</title>
 	<meta name="description" content={description} />
 </svelte:head>
 
 <main class="page">
 	<header class="header">
-		<h2 class="page-title">{title}</h2>
+		<button type="button" class="menu-trigger" on:click={toggleMenu} />
+
+		<h2 class="page-title">@js-fns/{name} v. {version}</h2>
+		
+		<a target='_blank' href='https://www.npmjs.com/package/@js-fns/{name}' class="repository">
+			<img src='https://static.npmjs.com/f1786e9b7cba9753ca7b9c40e8b98f67.png' alt='npm' />
+		</a>
+		<a target='_blank' href='https://github.com/Tokimon/js-fns/{name}' class="repository">
+			<img src='https://github.githubassets.com/favicons/favicon-dark.svg' alt='Github' />
+		</a>
 	</header>
 
-	<Menu names={modules.map((c) => c.name)}/>
+	<Menu names={modules.map((c) => c.name)} open={menuOpen} />
 
 	<article class="content">
 		{#each modules as module}

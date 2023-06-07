@@ -45,10 +45,11 @@
 		color: inherit;
 		font-weight: 600;
 		text-decoration: none;
+		transition: background-color 0.2s;
 	}
 	
 	.package-link:hover,
 	.package-link:focus {
-		background: #4fe3bb;
+		background: #58b29a;
 	}
 </style>

@@ -1,11 +1,15 @@
 <script context="module" lang="ts">
   import type { CallSignatureKind } from 'src/types';
+  import { onMount } from 'svelte';
+  import { typeReferences, type StoreDictionary } from "../stores/typeReferences";
   import { buildComment } from "../utils/buildComment";
   import { buildFunction } from '../utils/buildFunction';
+  import { buildTypeAlias } from "../utils/buildTypeAlias";
   import { TSCode } from '../utils/ts-code';
   import { createTypeString } from "../utils/typeString";
-  import References from './References.svelte';
   import Markdown from "./markdown.svelte";
+  import { offset, flip, shift } from "svelte-floating-ui/dom";
+  import { createFloatingActions } from "svelte-floating-ui";
 </script>
 
 <script lang="ts">
@@ -13,10 +17,80 @@
   export let signature: CallSignatureKind;
   const { comment } = signature;
 
-  const typeReferences: string[] = [];
-  const typeToString = createTypeString(name, typeReferences);
+  let references: StoreDictionary = {};
+  let expressions = new Map<string, string>();
+  let expressionsMarkdown = '';
+  let hoveredType = '';
+
+  const typeNames: string[] = [];
+  const typeToString = createTypeString(name, typeNames);
+
+  let definitionElement: HTMLDivElement | undefined;
+
+  const [ floatingRef, floatingContent ] = createFloatingActions({
+    strategy: "absolute",
+    placement: "top",
+    middleware: [
+      offset(6),
+      flip(),
+      shift(),
+    ]
+  });
+
+  const typeEnter = (e: MouseEvent) => {
+    const target = (e.currentTarget as HTMLElement);
+    const typeName = target.dataset.type;
+
+    if (typeName) {
+      floatingRef(target);
+      hoveredType = typeName;
+    }
+  };
+  
+  const typeLeave = () => { hoveredType = ''; };
+
+  const buildExpression = (typeName: string) => buildTypeAlias(typeName, references[typeName])
 
   $: examples = comment?.tags?.filter(({tag}) => tag === 'example') || [];
+
+  $: {
+    expressions.clear();
+    
+    setTimeout(() => {
+      for (const typeName of typeNames) {
+        const expression = buildExpression(typeName);
+        if (expression) expressions.set(typeName, expression);
+      }
+  
+      if (expressions.size) expressionsMarkdown = TSCode([...expressions.values()].join('\n\n'));
+    })
+  }
+
+  onMount(() => {
+    console.log('mount');
+    
+    const unsubscribe = typeReferences.subscribe(value => { references = value; });
+
+    const classTypeNodes = definitionElement?.querySelectorAll<HTMLElement>('.definition .hljs-title.class_');
+
+    classTypeNodes?.forEach((node) => {
+      const typeName = node.innerText;
+      if (!references[typeName]) return;
+
+      node.dataset.type = typeName;
+      node.addEventListener('mouseenter', typeEnter);
+      node.addEventListener('mouseleave', typeLeave);
+    });
+
+    return () => {
+      unsubscribe();
+
+      classTypeNodes?.forEach((node) => {
+        node.removeEventListener('mouseenter', typeEnter);
+        node.removeEventListener('mouseleave', typeLeave);
+      });
+    }
+  })
 </script>
 
 <style>
@@ -30,6 +104,9 @@
   .definition {
     font-size: 14px;
   }
+
+  :global(.definition .hljs-title.class_[data-type]) {
+    cursor: default;
   }
 
   .description {
@@ -40,6 +117,14 @@
     gap: 10px;
   }
 
+  .tooltip {
+    border-radius: 5px;
+    box-shadow: #1a1f23 0 4px 8px -2px;
+    overflow: hidden;
+    border: 1px solid #333;
+    z-index: 9;
+  }
+
   @container (min-width: 750px) {
     .definition {
       font-size: 20px;
@@ -48,11 +133,11 @@
 </style>
 
 <div class="call-signature">
-  <div class="definition">
+  <div class="definition" bind:this={definitionElement}>
     <Markdown text={TSCode(buildFunction(typeToString, name, signature))} />
   </div>
 
-  {#if examples.length || comment || typeReferences.length}
+  {#if examples.length || comment || typeNames.length}
     <div class="content">
       {#if comment}
         <div class="description">
@@ -69,9 +154,19 @@
         </details>
       {/if}
 
-      {#if typeReferences.length}
-        <References types={typeReferences} />
+      {#if expressionsMarkdown}
+        <details>
+          <summary>Types</summary>
+          <Markdown text={expressionsMarkdown} />
+        </details>
       {/if}
+
+    </div>
+  {/if}
+
+  {#if hoveredType}
+    <div class="tooltip" use:floatingContent>
+      <Markdown text={TSCode(buildExpression(hoveredType))} />
     </div>
   {/if}
 </div>
