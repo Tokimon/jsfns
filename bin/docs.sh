@@ -1,6 +1,8 @@
 package=$(basename $PWD)
 
+# Start
 echo -e "Building \e[1;34m$package\e[0m documentation"
+
 
 root=$(echo "$PWD" | sed "s/\(.*\/js-fns\).*/\1/p" -n)
 tsconfig="$PWD/tsconfig.js.json"
@@ -13,12 +15,16 @@ name=${arr[0]}
 version=${arr[1]}
 description=${arr[2]}
 
+major_version=$(echo $version | sed "s/[0-9]\+\$/x/")
+
 package_doc_path="$root/docs/src/lib/$package"
 versions_json_path="$package_doc_path/versions.json";
-output="$package_doc_path/$version"
+output="$package_doc_path/$major_version"
+
+
 
 # Clear existing assets
-rm -rf $output && mkdir $output
+rm -rf $output && mkdir -p $output
 rm -f $versions_json_path
 
 # Build docs
@@ -33,6 +39,7 @@ for dir in $package_doc_path/*/; do versions+=("\"$(basename "$dir")\""); done
 sorted=($(printf "%s\n" "${versions[@]}" | sort -r))
 
 echo "{\"versions\":[$(IFS=,; (printf '%s' "${sorted[*]}"))]}" >> $versions_json_path
+
 
 # Done
 echo -e '\e[1;32mdone\e[0m'
