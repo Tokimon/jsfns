@@ -29,7 +29,7 @@
     "build": "../../bin/build.sh",
     "clean": "../../bin/clean.sh",
     "missing": "../../bin/missing.sh",
-    "type-check": "tsc -p tsconfig.json --noEmit",
+    "types": "tsc -p tsconfig.json --noEmit",
     "test": "NODE_OPTIONS=--experimental-vm-modules jest",
     "test:coverage": "npm t -- --collectCoverage",
     "lint": "eslint . --max-warnings=0"
