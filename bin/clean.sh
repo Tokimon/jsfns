@@ -30,8 +30,8 @@ rm -f $PWD/src/index.ts
 ok "Generated index file"
 
 # Remove any remaining "dist" folder
-rm -rf $PWD/dist
-ok 'dist directory'
+rm -rf $PWD/build
+ok 'build directory'
 
 # Remove any remaining empty folders
 find $PWD -type d -empty -delete

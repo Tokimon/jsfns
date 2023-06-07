@@ -12,12 +12,12 @@ print_building() {
 
 build() {
   tsconfig="tsconfig.$1.json"
-  [ $1 == 'js' ] && message=".js\e[0m and \e[1;33m.d.ts" || message=".$1"
 
-  print_building "$message"
+  print_building ".$1"
 
   # Compile the typescript files
   npx tsc --build $PWD/$tsconfig
+  wait
 
   # Move build files to the root of the project
   for file in $PWD/build/$1/src/*.js; do
@@ -25,13 +25,16 @@ build() {
     mv -u $file $dest
   done
 
-  # Move .d.ts to the root of the project
-  if [[ $1 == 'js' ]]; then
-    for file in $PWD/build/$1/src/*.d.ts; do
-      dest=$PWD/$(basename $file)
-      mv -u "$file" "$dest"
-    done
-  fi
+  print_done
+}
+
+move_dts_files() {
+  print_building '.d.ts'
+
+  for file in $PWD/build/$1/src/*.d.ts; do
+    dest=$PWD/$(basename $file)
+    mv -u "$file" "$dest"
+  done
 
   print_done
 }
@@ -63,6 +66,7 @@ build_index
 build mjs
 build cjs
 build js
+move_dts_files js
 
 # Remove old build folder
-rm -rf $PWD/dist
+rm -rf $PWD/build

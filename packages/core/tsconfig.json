@@ -1,7 +1,7 @@
 {
   "extends": "../../tsconfig.json",
   "compilerOptions": {
-    "outDir": "./dist/js",
+    "outDir": "./build/js",
     "baseUrl": ".",
     "paths": {
       "~core/*": ["./src/*"],
