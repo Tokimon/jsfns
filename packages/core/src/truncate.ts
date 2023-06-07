@@ -2,7 +2,7 @@ import isNumber from './isNumber';
 
 
 
-type TruncateSettings = {
+export type TruncateSettings = {
   maxLength?: number;
   end?: string;
 }

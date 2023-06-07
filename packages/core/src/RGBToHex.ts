@@ -3,7 +3,7 @@ import hex from './numberToHex';
 
 
 
-type RGBTuple = [red: number, green: number, blue: number, alpha?: number];
+export type RGBTuple = [red: number, green: number, blue: number, alpha?: number];
 
 
 

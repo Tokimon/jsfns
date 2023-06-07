@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
 export type NodeLikeCallback = (err?: string | Error | null, data?: unknown) => unknown;
-type PromisefyCallback = (...args: any[]) => unknown;
-type PromisefiedFunction = (...args: any[]) => Promise<unknown>;
+export type PromisefyCallback = (...args: any[]) => unknown;
+export type PromisefiedFunction = (...args: any[]) => Promise<unknown>;
 
 
 
