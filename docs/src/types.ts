@@ -127,11 +127,19 @@ export type DocSource = {
 export type RootDocObject = {
 	id: number;
 	name: string;
+	variant: string;
 	kind: 1;
 	flags: DocFlags;
-	originalName: string;
 	children: ModuleKind[];
 	groups: GroupKind[];
+	packageName: string;
+	symbolIdMap: Record<
+		string,
+		{
+			sourceFileName: string;
+			qualifiedName: string;
+		}
+	>;
 };
 
 type KindBase = {
