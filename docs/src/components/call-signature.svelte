@@ -28,7 +28,8 @@
   }
   
   .definition {
-    font-size: 20px;
+    font-size: 14px;
+  }
   }
 
   .description {
@@ -37,6 +38,12 @@
     display: flex;
     flex-direction: column;
     gap: 10px;
+  }
+
+  @container (min-width: 750px) {
+    .definition {
+      font-size: 20px;
+    }
   }
 </style>
 

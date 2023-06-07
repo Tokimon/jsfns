@@ -1,6 +1,7 @@
 <script lang="ts">
   import { onDestroy, onMount } from 'svelte';
 
+	export let open = false;
   export let names: string[] = [];
 
 	const getHash = () => typeof location !== 'undefined' ? location.hash.slice(1) : '';
@@ -25,13 +26,21 @@
 	.menu {
 		grid-area: nav;
 		position: fixed;
-		width: 250px;
+		z-index: 98;
+		width: 200px;
 		top: var(--header-hight);
 		bottom: 0;
 		left: 0;
 		background: #131a20;
 		overflow-y: auto;
 		overflow-x: hidden;
+		translate: -100% 0;
+		transition: translate 0.3s ease;
+		font-size: 18px;
+	}
+
+	.menu.open {
+		translate: 0;
 	}
 
 	.menu-list {
@@ -57,9 +66,15 @@
 		background: rgba(255, 255, 255, 0.15);
 		outline: none;
 	}
+
+	@media (min-width: 800px) {
+		.menu {
+			translate: 0;
+		}
+	}
 </style>
 
-<nav class="menu">
+<nav class="menu" class:open={open}>
   <ul class="menu-list">
     {#each names as name}
       <li class="menu-list-item" class:current={current === name}>

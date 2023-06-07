@@ -22,12 +22,12 @@
 
 <style>
 	.page {
-		display: grid;
+		--header-hight: 50px;
+		
 		grid-template-areas:
     'header header'
     'nav content';
-  	grid-template-columns: 250px 1fr;
-		--header-hight: 50px;
+  	grid-template-columns: 200px 1fr;
 	}
 
 	.header {
@@ -35,6 +35,7 @@
 		top: 0;
 		left: 0;
 		right: 0;
+		z-index: 99;
 		background-color: #212d36;
 		color: white;
 		padding: 0 10px;
@@ -42,16 +43,52 @@
 		height: var(--header-hight);
 		display: flex;
 		align-items: center;
+		gap: 15px;
 	}
 
 	.page-title {
 		margin: 0;
 		font-size: 18px;
+		flex: 1 1 100%;
 	}
 
 	.content {
 		grid-area: content;
 		padding: 0 7px;
+		overflow: hidden;
+		position: relative;
+		z-index: 9;
+		container-type: inline-size;
+	}
+
+	.menu-trigger {
+		width: 22px;
+    height: 16px;
+		border: 0;
+		background: linear-gradient(white, white 25%, transparent 25%, transparent);
+		background-repeat: repeat;
+		background-size: 1px 7px;
+		appearance: none;
+	}
+
+	.menu-trigger,
+	.repository {
+		flex: 0 0 auto;
+	}
+
+	.repository img {
+		width: 20px;
+		aspect-ratio: 1;
+	}
+
+	@media (min-width: 800px) {
+		.page {
+			display: grid;
+		}
+
+		.menu-trigger {
+			display: none;
+		}
 	}
 </style>
 

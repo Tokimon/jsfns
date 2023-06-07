@@ -75,6 +75,12 @@
     flex-direction: column;
     gap: 15px;
   }
+
+  @container (min-width: 600px) {
+    .content h1 {
+      font-size: 30px;
+    }
+  }
 </style>
 
 <section class="module" id={module.name}>
