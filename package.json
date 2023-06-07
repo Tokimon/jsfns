@@ -29,7 +29,7 @@
     "lint:web": "npm run lint -w @js-fns/web",
     "coveralls": "cat ./coverage/lcov.info | node node_modules/.bin/coveralls",
     "coveralls:win": "type ./coverage/lcov.info | node node_modules/.bin/coveralls",
-    "docs": "typedoc --options ./typedoc.json",
+    "docs": "npm run docs --workspaces",
     "docs:core": "npm run docs -w @js-fns/core",
     "docs:web": "npm run docs -w @js-fns/web"
   },
