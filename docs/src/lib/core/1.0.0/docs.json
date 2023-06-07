@@ -6,14 +6,14 @@
 	"flags": {},
 	"children": [
 		{
-			"id": 171,
+			"id": 170,
 			"name": "RGBToHex",
 			"variant": "declaration",
 			"kind": 2,
 			"flags": {},
 			"children": [
 				{
-					"id": 172,
+					"id": 171,
 					"name": "RGBTuple",
 					"variant": "declaration",
 					"kind": 4194304,
@@ -23,7 +23,7 @@
 							"fileName": "RGBToHex.ts",
 							"line": 6,
 							"character": 12,
-							"url": "https://github.com/Tokimon/js-fns/blob/990f815/packages/core/src/RGBToHex.ts#L6"
+							"url": "https://github.com/Tokimon/js-fns/blob/335ea2b/packages/core/src/RGBToHex.ts#L6"
 						}
 					],
 					"type": {
@@ -69,7 +69,7 @@
 					}
 				},
 				{
-					"id": 173,
+					"id": 172,
 					"name": "default",
 					"variant": "declaration",
 					"kind": 64,
@@ -79,24 +79,24 @@
 							"fileName": "RGBToHex.ts",
 							"line": 29,
 							"character": 9,
-							"url": "https://github.com/Tokimon/js-fns/blob/990f815/packages/core/src/RGBToHex.ts#L29"
+							"url": "https://github.com/Tokimon/js-fns/blob/335ea2b/packages/core/src/RGBToHex.ts#L29"
 						},
 						{
 							"fileName": "RGBToHex.ts",
 							"line": 50,
 							"character": 9,
-							"url": "https://github.com/Tokimon/js-fns/blob/990f815/packages/core/src/RGBToHex.ts#L50"
+							"url": "https://github.com/Tokimon/js-fns/blob/335ea2b/packages/core/src/RGBToHex.ts#L50"
 						},
 						{
 							"fileName": "RGBToHex.ts",
 							"line": 52,
 							"character": 9,
-							"url": "https://github.com/Tokimon/js-fns/blob/990f815/packages/core/src/RGBToHex.ts#L52"
+							"url": "https://github.com/Tokimon/js-fns/blob/335ea2b/packages/core/src/RGBToHex.ts#L52"
 						}
 					],
 					"signatures": [
 						{
-							"id": 174,
+							"id": 173,
 							"name": "default",
 							"variant": "signature",
 							"kind": 4096,
@@ -134,12 +134,12 @@
 									"fileName": "RGBToHex.ts",
 									"line": 29,
 									"character": 0,
-									"url": "https://github.com/Tokimon/js-fns/blob/990f815/packages/core/src/RGBToHex.ts#L29"
+									"url": "https://github.com/Tokimon/js-fns/blob/335ea2b/packages/core/src/RGBToHex.ts#L29"
 								}
 							],
 							"parameters": [
 								{
-									"id": 175,
+									"id": 174,
 									"name": "rgb",
 									"variant": "param",
 									"kind": 32768,
@@ -154,7 +154,7 @@
 									},
 									"type": {
 										"type": "reference",
-										"target": 172,
+										"target": 171,
 										"name": "RGBTuple",
 										"package": "@js-fns/core"
 									}
@@ -166,7 +166,7 @@
 							}
 						},
 						{
-							"id": 176,
+							"id": 175,
 							"name": "default",
 							"variant": "signature",
 							"kind": 4096,
@@ -204,12 +204,12 @@
 									"fileName": "RGBToHex.ts",
 									"line": 50,
 									"character": 0,
-									"url": "https://github.com/Tokimon/js-fns/blob/990f815/packages/core/src/RGBToHex.ts#L50"
+									"url": "https://github.com/Tokimon/js-fns/blob/335ea2b/packages/core/src/RGBToHex.ts#L50"
 								}
 							],
 							"parameters": [
 								{
-									"id": 177,
+									"id": 176,
 									"name": "r",
 									"variant": "param",
 									"kind": 32768,
@@ -228,7 +228,7 @@
 									}
 								},
 								{
-									"id": 178,
+									"id": 177,
 									"name": "g",
 									"variant": "param",
 									"kind": 32768,
@@ -247,7 +247,7 @@
 									}
 								},
 								{
-									"id": 179,
+									"id": 178,
 									"name": "b",
 									"variant": "param",
 									"kind": 32768,
@@ -266,7 +266,7 @@
 									}
 								},
 								{
-									"id": 180,
+									"id": 179,
 									"name": "a",
 									"variant": "param",
 									"kind": 32768,
@@ -299,13 +299,13 @@
 				{
 					"title": "Type Aliases",
 					"children": [
-						172
+						171
 					]
 				},
 				{
 					"title": "Functions",
 					"children": [
-						173
+						172
 					]
 				}
 			],
@@ -314,7 +314,7 @@
 					"fileName": "RGBToHex.ts",
 					"line": 1,
 					"character": 0,
-					"url": "https://github.com/Tokimon/js-fns/blob/990f815/packages/core/src/RGBToHex.ts#L1"
+					"url": "https://github.com/Tokimon/js-fns/blob/335ea2b/packages/core/src/RGBToHex.ts#L1"
 				}
 			]
 		},
@@ -344,7 +344,7 @@
 							"fileName": "camelCase.ts",
 							"line": 5,
 							"character": 12,
-							"url": "https://github.com/Tokimon/js-fns/blob/990f815/packages/core/src/camelCase.ts#L5"
+							"url": "https://github.com/Tokimon/js-fns/blob/335ea2b/packages/core/src/camelCase.ts#L5"
 						}
 					],
 					"type": {
@@ -352,7 +352,7 @@
 						"types": [
 							{
 								"type": "reference",
-								"target": 121,
+								"target": 120,
 								"name": "PhrasifySettings",
 								"package": "@js-fns/core"
 							},
@@ -386,7 +386,7 @@
 													"fileName": "camelCase.ts",
 													"line": 9,
 													"character": 2,
-													"url": "https://github.com/Tokimon/js-fns/blob/990f815/packages/core/src/camelCase.ts#L9"
+													"url": "https://github.com/Tokimon/js-fns/blob/335ea2b/packages/core/src/camelCase.ts#L9"
 												}
 											],
 											"type": {
@@ -415,7 +415,7 @@
 													"fileName": "camelCase.ts",
 													"line": 7,
 													"character": 2,
-													"url": "https://github.com/Tokimon/js-fns/blob/990f815/packages/core/src/camelCase.ts#L7"
+													"url": "https://github.com/Tokimon/js-fns/blob/335ea2b/packages/core/src/camelCase.ts#L7"
 												}
 											],
 											"type": {
@@ -438,7 +438,7 @@
 											"fileName": "camelCase.ts",
 											"line": 5,
 											"character": 51,
-											"url": "https://github.com/Tokimon/js-fns/blob/990f815/packages/core/src/camelCase.ts#L5"
+											"url": "https://github.com/Tokimon/js-fns/blob/335ea2b/packages/core/src/camelCase.ts#L5"
 										}
 									]
 								}
@@ -459,7 +459,7 @@
 							"fileName": "camelCase.ts",
 							"line": 13,
 							"character": 13,
-							"url": "https://github.com/Tokimon/js-fns/blob/990f815/packages/core/src/camelCase.ts#L13"
+							"url": "https://github.com/Tokimon/js-fns/blob/335ea2b/packages/core/src/camelCase.ts#L13"
 						}
 					],
 					"type": {
@@ -481,7 +481,7 @@
 							"fileName": "camelCase.ts",
 							"line": 40,
 							"character": 9,
-							"url": "https://github.com/Tokimon/js-fns/blob/990f815/packages/core/src/camelCase.ts#L40"
+							"url": "https://github.com/Tokimon/js-fns/blob/335ea2b/packages/core/src/camelCase.ts#L40"
 						}
 					],
 					"signatures": [
@@ -524,7 +524,7 @@
 									"fileName": "camelCase.ts",
 									"line": 40,
 									"character": 0,
-									"url": "https://github.com/Tokimon/js-fns/blob/990f815/packages/core/src/camelCase.ts#L40"
+									"url": "https://github.com/Tokimon/js-fns/blob/335ea2b/packages/core/src/camelCase.ts#L40"
 								}
 							],
 							"parameters": [
@@ -604,7 +604,7 @@
 					"fileName": "camelCase.ts",
 					"line": 1,
 					"character": 0,
-					"url": "https://github.com/Tokimon/js-fns/blob/990f815/packages/core/src/camelCase.ts#L1"
+					"url": "https://github.com/Tokimon/js-fns/blob/335ea2b/packages/core/src/camelCase.ts#L1"
 				}
 			]
 		},
@@ -626,7 +626,7 @@
 							"fileName": "capitalize.ts",
 							"line": 14,
 							"character": 24,
-							"url": "https://github.com/Tokimon/js-fns/blob/990f815/packages/core/src/capitalize.ts#L14"
+							"url": "https://github.com/Tokimon/js-fns/blob/335ea2b/packages/core/src/capitalize.ts#L14"
 						}
 					],
 					"signatures": [
@@ -669,7 +669,7 @@
 									"fileName": "capitalize.ts",
 									"line": 14,
 									"character": 0,
-									"url": "https://github.com/Tokimon/js-fns/blob/990f815/packages/core/src/capitalize.ts#L14"
+									"url": "https://github.com/Tokimon/js-fns/blob/335ea2b/packages/core/src/capitalize.ts#L14"
 								}
 							],
 							"parameters": [
@@ -714,7 +714,7 @@
 					"fileName": "capitalize.ts",
 					"line": 1,
 					"character": 0,
-					"url": "https://github.com/Tokimon/js-fns/blob/990f815/packages/core/src/capitalize.ts#L1"
+					"url": "https://github.com/Tokimon/js-fns/blob/335ea2b/packages/core/src/capitalize.ts#L1"
 				}
 			]
 		},
@@ -736,7 +736,7 @@
 							"fileName": "chunkString.ts",
 							"line": 15,
 							"character": 24,
-							"url": "https://github.com/Tokimon/js-fns/blob/990f815/packages/core/src/chunkString.ts#L15"
+							"url": "https://github.com/Tokimon/js-fns/blob/335ea2b/packages/core/src/chunkString.ts#L15"
 						}
 					],
 					"signatures": [
@@ -779,7 +779,7 @@
 									"fileName": "chunkString.ts",
 									"line": 15,
 									"character": 0,
-									"url": "https://github.com/Tokimon/js-fns/blob/990f815/packages/core/src/chunkString.ts#L15"
+									"url": "https://github.com/Tokimon/js-fns/blob/335ea2b/packages/core/src/chunkString.ts#L15"
 								}
 							],
 							"parameters": [
@@ -847,7 +847,7 @@
 					"fileName": "chunkString.ts",
 					"line": 1,
 					"character": 0,
-					"url": "https://github.com/Tokimon/js-fns/blob/990f815/packages/core/src/chunkString.ts#L1"
+					"url": "https://github.com/Tokimon/js-fns/blob/335ea2b/packages/core/src/chunkString.ts#L1"
 				}
 			]
 		},
@@ -869,7 +869,7 @@
 							"fileName": "currencyFormat.ts",
 							"line": 5,
 							"character": 12,
-							"url": "https://github.com/Tokimon/js-fns/blob/990f815/packages/core/src/currencyFormat.ts#L5"
+							"url": "https://github.com/Tokimon/js-fns/blob/335ea2b/packages/core/src/currencyFormat.ts#L5"
 						}
 					],
 					"type": {
@@ -885,7 +885,7 @@
 									"fileName": "currencyFormat.ts",
 									"line": 5,
 									"character": 32,
-									"url": "https://github.com/Tokimon/js-fns/blob/990f815/packages/core/src/currencyFormat.ts#L5"
+									"url": "https://github.com/Tokimon/js-fns/blob/335ea2b/packages/core/src/currencyFormat.ts#L5"
 								}
 							],
 							"signatures": [
@@ -928,7 +928,7 @@
 							"fileName": "currencyFormat.ts",
 							"line": 44,
 							"character": 16,
-							"url": "https://github.com/Tokimon/js-fns/blob/990f815/packages/core/src/currencyFormat.ts#L44"
+							"url": "https://github.com/Tokimon/js-fns/blob/335ea2b/packages/core/src/currencyFormat.ts#L44"
 						}
 					],
 					"signatures": [
@@ -975,7 +975,7 @@
 									"fileName": "currencyFormat.ts",
 									"line": 44,
 									"character": 0,
-									"url": "https://github.com/Tokimon/js-fns/blob/990f815/packages/core/src/currencyFormat.ts#L44"
+									"url": "https://github.com/Tokimon/js-fns/blob/335ea2b/packages/core/src/currencyFormat.ts#L44"
 								}
 							],
 							"parameters": [
@@ -1020,7 +1020,7 @@
 							"fileName": "currencyFormat.ts",
 							"line": 56,
 							"character": 0,
-							"url": "https://github.com/Tokimon/js-fns/blob/990f815/packages/core/src/currencyFormat.ts#L56"
+							"url": "https://github.com/Tokimon/js-fns/blob/335ea2b/packages/core/src/currencyFormat.ts#L56"
 						}
 					],
 					"signatures": [
@@ -1035,7 +1035,7 @@
 									"fileName": "currencyFormat.ts",
 									"line": 5,
 									"character": 32,
-									"url": "https://github.com/Tokimon/js-fns/blob/990f815/packages/core/src/currencyFormat.ts#L5"
+									"url": "https://github.com/Tokimon/js-fns/blob/335ea2b/packages/core/src/currencyFormat.ts#L5"
 								}
 							],
 							"parameters": [
@@ -1079,7 +1079,7 @@
 					"fileName": "currencyFormat.ts",
 					"line": 1,
 					"character": 0,
-					"url": "https://github.com/Tokimon/js-fns/blob/990f815/packages/core/src/currencyFormat.ts#L1"
+					"url": "https://github.com/Tokimon/js-fns/blob/335ea2b/packages/core/src/currencyFormat.ts#L1"
 				}
 			]
 		},
@@ -1101,7 +1101,7 @@
 							"fileName": "formatNumber.ts",
 							"line": 5,
 							"character": 12,
-							"url": "https://github.com/Tokimon/js-fns/blob/990f815/packages/core/src/formatNumber.ts#L5"
+							"url": "https://github.com/Tokimon/js-fns/blob/335ea2b/packages/core/src/formatNumber.ts#L5"
 						}
 					],
 					"type": {
@@ -1126,7 +1126,7 @@
 											"fileName": "formatNumber.ts",
 											"line": 8,
 											"character": 2,
-											"url": "https://github.com/Tokimon/js-fns/blob/990f815/packages/core/src/formatNumber.ts#L8"
+											"url": "https://github.com/Tokimon/js-fns/blob/335ea2b/packages/core/src/formatNumber.ts#L8"
 										}
 									],
 									"type": {
@@ -1147,7 +1147,7 @@
 											"fileName": "formatNumber.ts",
 											"line": 6,
 											"character": 2,
-											"url": "https://github.com/Tokimon/js-fns/blob/990f815/packages/core/src/formatNumber.ts#L6"
+											"url": "https://github.com/Tokimon/js-fns/blob/335ea2b/packages/core/src/formatNumber.ts#L6"
 										}
 									],
 									"type": {
@@ -1177,7 +1177,7 @@
 											"fileName": "formatNumber.ts",
 											"line": 7,
 											"character": 2,
-											"url": "https://github.com/Tokimon/js-fns/blob/990f815/packages/core/src/formatNumber.ts#L7"
+											"url": "https://github.com/Tokimon/js-fns/blob/335ea2b/packages/core/src/formatNumber.ts#L7"
 										}
 									],
 									"type": {
@@ -1201,7 +1201,7 @@
 									"fileName": "formatNumber.ts",
 									"line": 5,
 									"character": 35,
-									"url": "https://github.com/Tokimon/js-fns/blob/990f815/packages/core/src/formatNumber.ts#L5"
+									"url": "https://github.com/Tokimon/js-fns/blob/335ea2b/packages/core/src/formatNumber.ts#L5"
 								}
 							]
 						}
@@ -1218,7 +1218,7 @@
 							"fileName": "formatNumber.ts",
 							"line": 39,
 							"character": 24,
-							"url": "https://github.com/Tokimon/js-fns/blob/990f815/packages/core/src/formatNumber.ts#L39"
+							"url": "https://github.com/Tokimon/js-fns/blob/335ea2b/packages/core/src/formatNumber.ts#L39"
 						}
 					],
 					"signatures": [
@@ -1277,7 +1277,7 @@
 									"fileName": "formatNumber.ts",
 									"line": 39,
 									"character": 0,
-									"url": "https://github.com/Tokimon/js-fns/blob/990f815/packages/core/src/formatNumber.ts#L39"
+									"url": "https://github.com/Tokimon/js-fns/blob/335ea2b/packages/core/src/formatNumber.ts#L39"
 								}
 							],
 							"parameters": [
@@ -1351,7 +1351,7 @@
 					"fileName": "formatNumber.ts",
 					"line": 1,
 					"character": 0,
-					"url": "https://github.com/Tokimon/js-fns/blob/990f815/packages/core/src/formatNumber.ts#L1"
+					"url": "https://github.com/Tokimon/js-fns/blob/335ea2b/packages/core/src/formatNumber.ts#L1"
 				}
 			]
 		},
@@ -1373,7 +1373,7 @@
 							"fileName": "hash.ts",
 							"line": 37,
 							"character": 24,
-							"url": "https://github.com/Tokimon/js-fns/blob/990f815/packages/core/src/hash.ts#L37"
+							"url": "https://github.com/Tokimon/js-fns/blob/335ea2b/packages/core/src/hash.ts#L37"
 						}
 					],
 					"signatures": [
@@ -1416,7 +1416,7 @@
 									"fileName": "hash.ts",
 									"line": 37,
 									"character": 0,
-									"url": "https://github.com/Tokimon/js-fns/blob/990f815/packages/core/src/hash.ts#L37"
+									"url": "https://github.com/Tokimon/js-fns/blob/335ea2b/packages/core/src/hash.ts#L37"
 								}
 							],
 							"parameters": [
@@ -1458,7 +1458,7 @@
 							"fileName": "hash.ts",
 							"line": 13,
 							"character": 16,
-							"url": "https://github.com/Tokimon/js-fns/blob/990f815/packages/core/src/hash.ts#L13"
+							"url": "https://github.com/Tokimon/js-fns/blob/335ea2b/packages/core/src/hash.ts#L13"
 						}
 					],
 					"signatures": [
@@ -1501,7 +1501,7 @@
 									"fileName": "hash.ts",
 									"line": 13,
 									"character": 0,
-									"url": "https://github.com/Tokimon/js-fns/blob/990f815/packages/core/src/hash.ts#L13"
+									"url": "https://github.com/Tokimon/js-fns/blob/335ea2b/packages/core/src/hash.ts#L13"
 								}
 							],
 							"parameters": [
@@ -1547,7 +1547,7 @@
 					"fileName": "hash.ts",
 					"line": 1,
 					"character": 0,
-					"url": "https://github.com/Tokimon/js-fns/blob/990f815/packages/core/src/hash.ts#L1"
+					"url": "https://github.com/Tokimon/js-fns/blob/335ea2b/packages/core/src/hash.ts#L1"
 				}
 			]
 		},
@@ -1569,7 +1569,7 @@
 							"fileName": "hexToNumber.ts",
 							"line": 13,
 							"character": 24,
-							"url": "https://github.com/Tokimon/js-fns/blob/990f815/packages/core/src/hexToNumber.ts#L13"
+							"url": "https://github.com/Tokimon/js-fns/blob/335ea2b/packages/core/src/hexToNumber.ts#L13"
 						}
 					],
 					"signatures": [
@@ -1612,7 +1612,7 @@
 									"fileName": "hexToNumber.ts",
 									"line": 13,
 									"character": 0,
-									"url": "https://github.com/Tokimon/js-fns/blob/990f815/packages/core/src/hexToNumber.ts#L13"
+									"url": "https://github.com/Tokimon/js-fns/blob/335ea2b/packages/core/src/hexToNumber.ts#L13"
 								}
 							],
 							"parameters": [
@@ -1657,7 +1657,7 @@
 					"fileName": "hexToNumber.ts",
 					"line": 1,
 					"character": 0,
-					"url": "https://github.com/Tokimon/js-fns/blob/990f815/packages/core/src/hexToNumber.ts#L1"
+					"url": "https://github.com/Tokimon/js-fns/blob/335ea2b/packages/core/src/hexToNumber.ts#L1"
 				}
 			]
 		},
@@ -1679,7 +1679,7 @@
 							"fileName": "hexToRGB.ts",
 							"line": 22,
 							"character": 24,
-							"url": "https://github.com/Tokimon/js-fns/blob/990f815/packages/core/src/hexToRGB.ts#L22"
+							"url": "https://github.com/Tokimon/js-fns/blob/335ea2b/packages/core/src/hexToRGB.ts#L22"
 						}
 					],
 					"signatures": [
@@ -1722,7 +1722,7 @@
 									"fileName": "hexToRGB.ts",
 									"line": 22,
 									"character": 0,
-									"url": "https://github.com/Tokimon/js-fns/blob/990f815/packages/core/src/hexToRGB.ts#L22"
+									"url": "https://github.com/Tokimon/js-fns/blob/335ea2b/packages/core/src/hexToRGB.ts#L22"
 								}
 							],
 							"parameters": [
@@ -1770,570 +1770,19 @@
 					"fileName": "hexToRGB.ts",
 					"line": 1,
 					"character": 0,
-					"url": "https://github.com/Tokimon/js-fns/blob/990f815/packages/core/src/hexToRGB.ts#L1"
+					"url": "https://github.com/Tokimon/js-fns/blob/335ea2b/packages/core/src/hexToRGB.ts#L1"
 				}
 			]
 		},
 		{
 			"id": 56,
-			"name": "index",
-			"variant": "declaration",
-			"kind": 2,
-			"flags": {},
-			"children": [
-				{
-					"id": 233,
-					"name": "RGBToHex",
-					"variant": "reference",
-					"kind": 8388608,
-					"flags": {},
-					"sources": [
-						{
-							"fileName": "index.ts",
-							"line": 29,
-							"character": 20
-						}
-					],
-					"target": 173
-				},
-				{
-					"id": 205,
-					"name": "camelCase",
-					"variant": "reference",
-					"kind": 8388608,
-					"flags": {},
-					"sources": [
-						{
-							"fileName": "index.ts",
-							"line": 1,
-							"character": 20
-						}
-					],
-					"target": 7
-				},
-				{
-					"id": 206,
-					"name": "capitalize",
-					"variant": "reference",
-					"kind": 8388608,
-					"flags": {},
-					"sources": [
-						{
-							"fileName": "index.ts",
-							"line": 2,
-							"character": 20
-						}
-					],
-					"target": 12
-				},
-				{
-					"id": 207,
-					"name": "chunkString",
-					"variant": "reference",
-					"kind": 8388608,
-					"flags": {},
-					"sources": [
-						{
-							"fileName": "index.ts",
-							"line": 3,
-							"character": 20
-						}
-					],
-					"target": 16
-				},
-				{
-					"id": 208,
-					"name": "currencyFormat",
-					"variant": "reference",
-					"kind": 8388608,
-					"flags": {},
-					"sources": [
-						{
-							"fileName": "index.ts",
-							"line": 4,
-							"character": 20
-						}
-					],
-					"target": 28
-				},
-				{
-					"id": 209,
-					"name": "formatNumber",
-					"variant": "reference",
-					"kind": 8388608,
-					"flags": {},
-					"sources": [
-						{
-							"fileName": "index.ts",
-							"line": 5,
-							"character": 20
-						}
-					],
-					"target": 37
-				},
-				{
-					"id": 210,
-					"name": "hash",
-					"variant": "reference",
-					"kind": 8388608,
-					"flags": {},
-					"sources": [
-						{
-							"fileName": "index.ts",
-							"line": 6,
-							"character": 20
-						}
-					],
-					"target": 45
-				},
-				{
-					"id": 211,
-					"name": "hexToNumber",
-					"variant": "reference",
-					"kind": 8388608,
-					"flags": {},
-					"sources": [
-						{
-							"fileName": "index.ts",
-							"line": 7,
-							"character": 20
-						}
-					],
-					"target": 49
-				},
-				{
-					"id": 212,
-					"name": "hexToRGB",
-					"variant": "reference",
-					"kind": 8388608,
-					"flags": {},
-					"sources": [
-						{
-							"fileName": "index.ts",
-							"line": 8,
-							"character": 20
-						}
-					],
-					"target": 53
-				},
-				{
-					"id": 213,
-					"name": "isBoolean",
-					"variant": "reference",
-					"kind": 8388608,
-					"flags": {},
-					"sources": [
-						{
-							"fileName": "index.ts",
-							"line": 9,
-							"character": 20
-						}
-					],
-					"target": 58
-				},
-				{
-					"id": 214,
-					"name": "isFunction",
-					"variant": "reference",
-					"kind": 8388608,
-					"flags": {},
-					"sources": [
-						{
-							"fileName": "index.ts",
-							"line": 10,
-							"character": 20
-						}
-					],
-					"target": 62
-				},
-				{
-					"id": 215,
-					"name": "isGenerator",
-					"variant": "reference",
-					"kind": 8388608,
-					"flags": {},
-					"sources": [
-						{
-							"fileName": "index.ts",
-							"line": 11,
-							"character": 20
-						}
-					],
-					"target": 69
-				},
-				{
-					"id": 216,
-					"name": "isNumber",
-					"variant": "reference",
-					"kind": 8388608,
-					"flags": {},
-					"sources": [
-						{
-							"fileName": "index.ts",
-							"line": 12,
-							"character": 20
-						}
-					],
-					"target": 73
-				},
-				{
-					"id": 217,
-					"name": "isNumeric",
-					"variant": "reference",
-					"kind": 8388608,
-					"flags": {},
-					"sources": [
-						{
-							"fileName": "index.ts",
-							"line": 13,
-							"character": 20
-						}
-					],
-					"target": 77
-				},
-				{
-					"id": 218,
-					"name": "isObject",
-					"variant": "reference",
-					"kind": 8388608,
-					"flags": {},
-					"sources": [
-						{
-							"fileName": "index.ts",
-							"line": 14,
-							"character": 20
-						}
-					],
-					"target": 81
-				},
-				{
-					"id": 219,
-					"name": "isString",
-					"variant": "reference",
-					"kind": 8388608,
-					"flags": {},
-					"sources": [
-						{
-							"fileName": "index.ts",
-							"line": 15,
-							"character": 20
-						}
-					],
-					"target": 85
-				},
-				{
-					"id": 220,
-					"name": "kebabCase",
-					"variant": "reference",
-					"kind": 8388608,
-					"flags": {},
-					"sources": [
-						{
-							"fileName": "index.ts",
-							"line": 16,
-							"character": 20
-						}
-					],
-					"target": 90
-				},
-				{
-					"id": 221,
-					"name": "leadingZero",
-					"variant": "reference",
-					"kind": 8388608,
-					"flags": {},
-					"sources": [
-						{
-							"fileName": "index.ts",
-							"line": 17,
-							"character": 20
-						}
-					],
-					"target": 95
-				},
-				{
-					"id": 222,
-					"name": "limitDecimals",
-					"variant": "reference",
-					"kind": 8388608,
-					"flags": {},
-					"sources": [
-						{
-							"fileName": "index.ts",
-							"line": 18,
-							"character": 20
-						}
-					],
-					"target": 100
-				},
-				{
-					"id": 223,
-					"name": "minMax",
-					"variant": "reference",
-					"kind": 8388608,
-					"flags": {},
-					"sources": [
-						{
-							"fileName": "index.ts",
-							"line": 19,
-							"character": 20
-						}
-					],
-					"target": 105
-				},
-				{
-					"id": 224,
-					"name": "numberToHex",
-					"variant": "reference",
-					"kind": 8388608,
-					"flags": {},
-					"sources": [
-						{
-							"fileName": "index.ts",
-							"line": 20,
-							"character": 20
-						}
-					],
-					"target": 111
-				},
-				{
-					"id": 225,
-					"name": "pascalCase",
-					"variant": "reference",
-					"kind": 8388608,
-					"flags": {},
-					"sources": [
-						{
-							"fileName": "index.ts",
-							"line": 21,
-							"character": 20
-						}
-					],
-					"target": 116
-				},
-				{
-					"id": 226,
-					"name": "phrasify",
-					"variant": "reference",
-					"kind": 8388608,
-					"flags": {},
-					"sources": [
-						{
-							"fileName": "index.ts",
-							"line": 22,
-							"character": 20
-						}
-					],
-					"target": 124
-				},
-				{
-					"id": 227,
-					"name": "popIndex",
-					"variant": "reference",
-					"kind": 8388608,
-					"flags": {},
-					"sources": [
-						{
-							"fileName": "index.ts",
-							"line": 23,
-							"character": 20
-						}
-					],
-					"target": 133
-				},
-				{
-					"id": 228,
-					"name": "promisefy",
-					"variant": "reference",
-					"kind": 8388608,
-					"flags": {},
-					"sources": [
-						{
-							"fileName": "index.ts",
-							"line": 24,
-							"character": 20
-						}
-					],
-					"target": 151
-				},
-				{
-					"id": 229,
-					"name": "randomHexColor",
-					"variant": "reference",
-					"kind": 8388608,
-					"flags": {},
-					"sources": [
-						{
-							"fileName": "index.ts",
-							"line": 25,
-							"character": 20
-						}
-					],
-					"target": 155
-				},
-				{
-					"id": 230,
-					"name": "randomId",
-					"variant": "reference",
-					"kind": 8388608,
-					"flags": {},
-					"sources": [
-						{
-							"fileName": "index.ts",
-							"line": 26,
-							"character": 20
-						}
-					],
-					"target": 158
-				},
-				{
-					"id": 231,
-					"name": "randomInt",
-					"variant": "reference",
-					"kind": 8388608,
-					"flags": {},
-					"sources": [
-						{
-							"fileName": "index.ts",
-							"line": 27,
-							"character": 20
-						}
-					],
-					"target": 162
-				},
-				{
-					"id": 232,
-					"name": "randomRGBColor",
-					"variant": "reference",
-					"kind": 8388608,
-					"flags": {},
-					"sources": [
-						{
-							"fileName": "index.ts",
-							"line": 28,
-							"character": 20
-						}
-					],
-					"target": 169
-				},
-				{
-					"id": 234,
-					"name": "safeDateChange",
-					"variant": "reference",
-					"kind": 8388608,
-					"flags": {},
-					"sources": [
-						{
-							"fileName": "index.ts",
-							"line": 30,
-							"character": 20
-						}
-					],
-					"target": 182
-				},
-				{
-					"id": 235,
-					"name": "snakeCase",
-					"variant": "reference",
-					"kind": 8388608,
-					"flags": {},
-					"sources": [
-						{
-							"fileName": "index.ts",
-							"line": 31,
-							"character": 20
-						}
-					],
-					"target": 188
-				},
-				{
-					"id": 236,
-					"name": "truncate",
-					"variant": "reference",
-					"kind": 8388608,
-					"flags": {},
-					"sources": [
-						{
-							"fileName": "index.ts",
-							"line": 32,
-							"character": 20
-						}
-					],
-					"target": 197
-				},
-				{
-					"id": 237,
-					"name": "uniqueArray",
-					"variant": "reference",
-					"kind": 8388608,
-					"flags": {},
-					"sources": [
-						{
-							"fileName": "index.ts",
-							"line": 33,
-							"character": 20
-						}
-					],
-					"target": 202
-				}
-			],
-			"groups": [
-				{
-					"title": "References",
-					"children": [
-						233,
-						205,
-						206,
-						207,
-						208,
-						209,
-						210,
-						211,
-						212,
-						213,
-						214,
-						215,
-						216,
-						217,
-						218,
-						219,
-						220,
-						221,
-						222,
-						223,
-						224,
-						225,
-						226,
-						227,
-						228,
-						229,
-						230,
-						231,
-						232,
-						234,
-						235,
-						236,
-						237
-					]
-				}
-			],
-			"sources": [
-				{
-					"fileName": "index.ts",
-					"line": 1,
-					"character": 0
-				}
-			]
-		},
-		{
-			"id": 57,
 			"name": "isBoolean",
 			"variant": "declaration",
 			"kind": 2,
 			"flags": {},
 			"children": [
 				{
-					"id": 58,
+					"id": 57,
 					"name": "default",
 					"variant": "declaration",
 					"kind": 64,
@@ -2343,12 +1792,12 @@
 							"fileName": "isBoolean.ts",
 							"line": 14,
 							"character": 24,
-							"url": "https://github.com/Tokimon/js-fns/blob/990f815/packages/core/src/isBoolean.ts#L14"
+							"url": "https://github.com/Tokimon/js-fns/blob/335ea2b/packages/core/src/isBoolean.ts#L14"
 						}
 					],
 					"signatures": [
 						{
-							"id": 59,
+							"id": 58,
 							"name": "default",
 							"variant": "signature",
 							"kind": 4096,
@@ -2386,12 +1835,12 @@
 									"fileName": "isBoolean.ts",
 									"line": 14,
 									"character": 0,
-									"url": "https://github.com/Tokimon/js-fns/blob/990f815/packages/core/src/isBoolean.ts#L14"
+									"url": "https://github.com/Tokimon/js-fns/blob/335ea2b/packages/core/src/isBoolean.ts#L14"
 								}
 							],
 							"parameters": [
 								{
-									"id": 60,
+									"id": 59,
 									"name": "x",
 									"variant": "param",
 									"kind": 32768,
@@ -2427,7 +1876,7 @@
 				{
 					"title": "Functions",
 					"children": [
-						58
+						57
 					]
 				}
 			],
@@ -2436,19 +1885,19 @@
 					"fileName": "isBoolean.ts",
 					"line": 1,
 					"character": 0,
-					"url": "https://github.com/Tokimon/js-fns/blob/990f815/packages/core/src/isBoolean.ts#L1"
+					"url": "https://github.com/Tokimon/js-fns/blob/335ea2b/packages/core/src/isBoolean.ts#L1"
 				}
 			]
 		},
 		{
-			"id": 61,
+			"id": 60,
 			"name": "isFunction",
 			"variant": "declaration",
 			"kind": 2,
 			"flags": {},
 			"children": [
 				{
-					"id": 62,
+					"id": 61,
 					"name": "default",
 					"variant": "declaration",
 					"kind": 64,
@@ -2458,12 +1907,12 @@
 							"fileName": "isFunction.ts",
 							"line": 15,
 							"character": 24,
-							"url": "https://github.com/Tokimon/js-fns/blob/990f815/packages/core/src/isFunction.ts#L15"
+							"url": "https://github.com/Tokimon/js-fns/blob/335ea2b/packages/core/src/isFunction.ts#L15"
 						}
 					],
 					"signatures": [
 						{
-							"id": 63,
+							"id": 62,
 							"name": "default",
 							"variant": "signature",
 							"kind": 4096,
@@ -2501,12 +1950,12 @@
 									"fileName": "isFunction.ts",
 									"line": 15,
 									"character": 0,
-									"url": "https://github.com/Tokimon/js-fns/blob/990f815/packages/core/src/isFunction.ts#L15"
+									"url": "https://github.com/Tokimon/js-fns/blob/335ea2b/packages/core/src/isFunction.ts#L15"
 								}
 							],
 							"parameters": [
 								{
-									"id": 64,
+									"id": 63,
 									"name": "x",
 									"variant": "param",
 									"kind": 32768,
@@ -2539,7 +1988,7 @@
 				{
 					"title": "Functions",
 					"children": [
-						62
+						61
 					]
 				}
 			],
@@ -2548,19 +1997,19 @@
 					"fileName": "isFunction.ts",
 					"line": 1,
 					"character": 0,
-					"url": "https://github.com/Tokimon/js-fns/blob/990f815/packages/core/src/isFunction.ts#L1"
+					"url": "https://github.com/Tokimon/js-fns/blob/335ea2b/packages/core/src/isFunction.ts#L1"
 				}
 			]
 		},
 		{
-			"id": 65,
+			"id": 64,
 			"name": "isGenerator",
 			"variant": "declaration",
 			"kind": 2,
 			"flags": {},
 			"children": [
 				{
-					"id": 69,
+					"id": 68,
 					"name": "default",
 					"variant": "declaration",
 					"kind": 64,
@@ -2570,12 +2019,12 @@
 							"fileName": "isGenerator.ts",
 							"line": 48,
 							"character": 24,
-							"url": "https://github.com/Tokimon/js-fns/blob/990f815/packages/core/src/isGenerator.ts#L48"
+							"url": "https://github.com/Tokimon/js-fns/blob/335ea2b/packages/core/src/isGenerator.ts#L48"
 						}
 					],
 					"signatures": [
 						{
-							"id": 70,
+							"id": 69,
 							"name": "default",
 							"variant": "signature",
 							"kind": 4096,
@@ -2613,12 +2062,12 @@
 									"fileName": "isGenerator.ts",
 									"line": 48,
 									"character": 0,
-									"url": "https://github.com/Tokimon/js-fns/blob/990f815/packages/core/src/isGenerator.ts#L48"
+									"url": "https://github.com/Tokimon/js-fns/blob/335ea2b/packages/core/src/isGenerator.ts#L48"
 								}
 							],
 							"parameters": [
 								{
-									"id": 71,
+									"id": 70,
 									"name": "x",
 									"variant": "param",
 									"kind": 32768,
@@ -2655,7 +2104,7 @@
 					]
 				},
 				{
-					"id": 66,
+					"id": 65,
 					"name": "isGenerator",
 					"variant": "declaration",
 					"kind": 64,
@@ -2665,12 +2114,12 @@
 							"fileName": "isGenerator.ts",
 							"line": 23,
 							"character": 16,
-							"url": "https://github.com/Tokimon/js-fns/blob/990f815/packages/core/src/isGenerator.ts#L23"
+							"url": "https://github.com/Tokimon/js-fns/blob/335ea2b/packages/core/src/isGenerator.ts#L23"
 						}
 					],
 					"signatures": [
 						{
-							"id": 67,
+							"id": 66,
 							"name": "isGenerator",
 							"variant": "signature",
 							"kind": 4096,
@@ -2708,12 +2157,12 @@
 									"fileName": "isGenerator.ts",
 									"line": 23,
 									"character": 0,
-									"url": "https://github.com/Tokimon/js-fns/blob/990f815/packages/core/src/isGenerator.ts#L23"
+									"url": "https://github.com/Tokimon/js-fns/blob/335ea2b/packages/core/src/isGenerator.ts#L23"
 								}
 							],
 							"parameters": [
 								{
-									"id": 68,
+									"id": 67,
 									"name": "x",
 									"variant": "param",
 									"kind": 32768,
@@ -2768,8 +2217,8 @@
 				{
 					"title": "Functions",
 					"children": [
-						69,
-						66
+						68,
+						65
 					]
 				}
 			],
@@ -2778,19 +2227,19 @@
 					"fileName": "isGenerator.ts",
 					"line": 1,
 					"character": 0,
-					"url": "https://github.com/Tokimon/js-fns/blob/990f815/packages/core/src/isGenerator.ts#L1"
+					"url": "https://github.com/Tokimon/js-fns/blob/335ea2b/packages/core/src/isGenerator.ts#L1"
 				}
 			]
 		},
 		{
-			"id": 72,
+			"id": 71,
 			"name": "isNumber",
 			"variant": "declaration",
 			"kind": 2,
 			"flags": {},
 			"children": [
 				{
-					"id": 73,
+					"id": 72,
 					"name": "default",
 					"variant": "declaration",
 					"kind": 64,
@@ -2800,12 +2249,12 @@
 							"fileName": "isNumber.ts",
 							"line": 15,
 							"character": 24,
-							"url": "https://github.com/Tokimon/js-fns/blob/990f815/packages/core/src/isNumber.ts#L15"
+							"url": "https://github.com/Tokimon/js-fns/blob/335ea2b/packages/core/src/isNumber.ts#L15"
 						}
 					],
 					"signatures": [
 						{
-							"id": 74,
+							"id": 73,
 							"name": "default",
 							"variant": "signature",
 							"kind": 4096,
@@ -2843,12 +2292,12 @@
 									"fileName": "isNumber.ts",
 									"line": 15,
 									"character": 0,
-									"url": "https://github.com/Tokimon/js-fns/blob/990f815/packages/core/src/isNumber.ts#L15"
+									"url": "https://github.com/Tokimon/js-fns/blob/335ea2b/packages/core/src/isNumber.ts#L15"
 								}
 							],
 							"parameters": [
 								{
-									"id": 75,
+									"id": 74,
 									"name": "x",
 									"variant": "param",
 									"kind": 32768,
@@ -2884,7 +2333,7 @@
 				{
 					"title": "Functions",
 					"children": [
-						73
+						72
 					]
 				}
 			],
@@ -2893,19 +2342,19 @@
 					"fileName": "isNumber.ts",
 					"line": 1,
 					"character": 0,
-					"url": "https://github.com/Tokimon/js-fns/blob/990f815/packages/core/src/isNumber.ts#L1"
+					"url": "https://github.com/Tokimon/js-fns/blob/335ea2b/packages/core/src/isNumber.ts#L1"
 				}
 			]
 		},
 		{
-			"id": 76,
+			"id": 75,
 			"name": "isNumeric",
 			"variant": "declaration",
 			"kind": 2,
 			"flags": {},
 			"children": [
 				{
-					"id": 77,
+					"id": 76,
 					"name": "default",
 					"variant": "declaration",
 					"kind": 64,
@@ -2915,12 +2364,12 @@
 							"fileName": "isNumeric.ts",
 							"line": 20,
 							"character": 24,
-							"url": "https://github.com/Tokimon/js-fns/blob/990f815/packages/core/src/isNumeric.ts#L20"
+							"url": "https://github.com/Tokimon/js-fns/blob/335ea2b/packages/core/src/isNumeric.ts#L20"
 						}
 					],
 					"signatures": [
 						{
-							"id": 78,
+							"id": 77,
 							"name": "default",
 							"variant": "signature",
 							"kind": 4096,
@@ -2958,12 +2407,12 @@
 									"fileName": "isNumeric.ts",
 									"line": 20,
 									"character": 0,
-									"url": "https://github.com/Tokimon/js-fns/blob/990f815/packages/core/src/isNumeric.ts#L20"
+									"url": "https://github.com/Tokimon/js-fns/blob/335ea2b/packages/core/src/isNumeric.ts#L20"
 								}
 							],
 							"parameters": [
 								{
-									"id": 79,
+									"id": 78,
 									"name": "x",
 									"variant": "param",
 									"kind": 32768,
@@ -2994,7 +2443,7 @@
 				{
 					"title": "Functions",
 					"children": [
-						77
+						76
 					]
 				}
 			],
@@ -3003,19 +2452,19 @@
 					"fileName": "isNumeric.ts",
 					"line": 1,
 					"character": 0,
-					"url": "https://github.com/Tokimon/js-fns/blob/990f815/packages/core/src/isNumeric.ts#L1"
+					"url": "https://github.com/Tokimon/js-fns/blob/335ea2b/packages/core/src/isNumeric.ts#L1"
 				}
 			]
 		},
 		{
-			"id": 80,
+			"id": 79,
 			"name": "isObject",
 			"variant": "declaration",
 			"kind": 2,
 			"flags": {},
 			"children": [
 				{
-					"id": 81,
+					"id": 80,
 					"name": "default",
 					"variant": "declaration",
 					"kind": 64,
@@ -3025,12 +2474,12 @@
 							"fileName": "isObject.ts",
 							"line": 17,
 							"character": 24,
-							"url": "https://github.com/Tokimon/js-fns/blob/990f815/packages/core/src/isObject.ts#L17"
+							"url": "https://github.com/Tokimon/js-fns/blob/335ea2b/packages/core/src/isObject.ts#L17"
 						}
 					],
 					"signatures": [
 						{
-							"id": 82,
+							"id": 81,
 							"name": "default",
 							"variant": "signature",
 							"kind": 4096,
@@ -3068,12 +2517,12 @@
 									"fileName": "isObject.ts",
 									"line": 17,
 									"character": 0,
-									"url": "https://github.com/Tokimon/js-fns/blob/990f815/packages/core/src/isObject.ts#L17"
+									"url": "https://github.com/Tokimon/js-fns/blob/335ea2b/packages/core/src/isObject.ts#L17"
 								}
 							],
 							"parameters": [
 								{
-									"id": 83,
+									"id": 82,
 									"name": "x",
 									"variant": "param",
 									"kind": 32768,
@@ -3109,7 +2558,7 @@
 				{
 					"title": "Functions",
 					"children": [
-						81
+						80
 					]
 				}
 			],
@@ -3118,19 +2567,19 @@
 					"fileName": "isObject.ts",
 					"line": 1,
 					"character": 0,
-					"url": "https://github.com/Tokimon/js-fns/blob/990f815/packages/core/src/isObject.ts#L1"
+					"url": "https://github.com/Tokimon/js-fns/blob/335ea2b/packages/core/src/isObject.ts#L1"
 				}
 			]
 		},
 		{
-			"id": 84,
+			"id": 83,
 			"name": "isString",
 			"variant": "declaration",
 			"kind": 2,
 			"flags": {},
 			"children": [
 				{
-					"id": 85,
+					"id": 84,
 					"name": "default",
 					"variant": "declaration",
 					"kind": 64,
@@ -3140,12 +2589,12 @@
 							"fileName": "isString.ts",
 							"line": 14,
 							"character": 24,
-							"url": "https://github.com/Tokimon/js-fns/blob/990f815/packages/core/src/isString.ts#L14"
+							"url": "https://github.com/Tokimon/js-fns/blob/335ea2b/packages/core/src/isString.ts#L14"
 						}
 					],
 					"signatures": [
 						{
-							"id": 86,
+							"id": 85,
 							"name": "default",
 							"variant": "signature",
 							"kind": 4096,
@@ -3183,12 +2632,12 @@
 									"fileName": "isString.ts",
 									"line": 14,
 									"character": 0,
-									"url": "https://github.com/Tokimon/js-fns/blob/990f815/packages/core/src/isString.ts#L14"
+									"url": "https://github.com/Tokimon/js-fns/blob/335ea2b/packages/core/src/isString.ts#L14"
 								}
 							],
 							"parameters": [
 								{
-									"id": 87,
+									"id": 86,
 									"name": "x",
 									"variant": "param",
 									"kind": 32768,
@@ -3216,7 +2665,7 @@
 				{
 					"title": "Functions",
 					"children": [
-						85
+						84
 					]
 				}
 			],
@@ -3225,19 +2674,19 @@
 					"fileName": "isString.ts",
 					"line": 1,
 					"character": 0,
-					"url": "https://github.com/Tokimon/js-fns/blob/990f815/packages/core/src/isString.ts#L1"
+					"url": "https://github.com/Tokimon/js-fns/blob/335ea2b/packages/core/src/isString.ts#L1"
 				}
 			]
 		},
 		{
-			"id": 88,
+			"id": 87,
 			"name": "kebabCase",
 			"variant": "declaration",
 			"kind": 2,
 			"flags": {},
 			"children": [
 				{
-					"id": 89,
+					"id": 88,
 					"name": "KebabCaseSettings",
 					"variant": "declaration",
 					"kind": 4194304,
@@ -3247,18 +2696,18 @@
 							"fileName": "kebabCase.ts",
 							"line": 5,
 							"character": 12,
-							"url": "https://github.com/Tokimon/js-fns/blob/990f815/packages/core/src/kebabCase.ts#L5"
+							"url": "https://github.com/Tokimon/js-fns/blob/335ea2b/packages/core/src/kebabCase.ts#L5"
 						}
 					],
 					"type": {
 						"type": "reference",
-						"target": 121,
+						"target": 120,
 						"name": "PhrasifySettings",
 						"package": "@js-fns/core"
 					}
 				},
 				{
-					"id": 90,
+					"id": 89,
 					"name": "default",
 					"variant": "declaration",
 					"kind": 64,
@@ -3268,12 +2717,12 @@
 							"fileName": "kebabCase.ts",
 							"line": 24,
 							"character": 24,
-							"url": "https://github.com/Tokimon/js-fns/blob/990f815/packages/core/src/kebabCase.ts#L24"
+							"url": "https://github.com/Tokimon/js-fns/blob/335ea2b/packages/core/src/kebabCase.ts#L24"
 						}
 					],
 					"signatures": [
 						{
-							"id": 91,
+							"id": 90,
 							"name": "default",
 							"variant": "signature",
 							"kind": 4096,
@@ -3311,12 +2760,12 @@
 									"fileName": "kebabCase.ts",
 									"line": 24,
 									"character": 0,
-									"url": "https://github.com/Tokimon/js-fns/blob/990f815/packages/core/src/kebabCase.ts#L24"
+									"url": "https://github.com/Tokimon/js-fns/blob/335ea2b/packages/core/src/kebabCase.ts#L24"
 								}
 							],
 							"parameters": [
 								{
-									"id": 92,
+									"id": 91,
 									"name": "str",
 									"variant": "param",
 									"kind": 32768,
@@ -3335,7 +2784,7 @@
 									}
 								},
 								{
-									"id": 93,
+									"id": 92,
 									"name": "settings",
 									"variant": "param",
 									"kind": 32768,
@@ -3352,7 +2801,7 @@
 									},
 									"type": {
 										"type": "reference",
-										"target": 121,
+										"target": 120,
 										"name": "PhrasifySettings",
 										"package": "@js-fns/core"
 									}
@@ -3370,13 +2819,13 @@
 				{
 					"title": "Type Aliases",
 					"children": [
-						89
+						88
 					]
 				},
 				{
 					"title": "Functions",
 					"children": [
-						90
+						89
 					]
 				}
 			],
@@ -3385,19 +2834,19 @@
 					"fileName": "kebabCase.ts",
 					"line": 1,
 					"character": 0,
-					"url": "https://github.com/Tokimon/js-fns/blob/990f815/packages/core/src/kebabCase.ts#L1"
+					"url": "https://github.com/Tokimon/js-fns/blob/335ea2b/packages/core/src/kebabCase.ts#L1"
 				}
 			]
 		},
 		{
-			"id": 94,
+			"id": 93,
 			"name": "leadingZero",
 			"variant": "declaration",
 			"kind": 2,
 			"flags": {},
 			"children": [
 				{
-					"id": 95,
+					"id": 94,
 					"name": "default",
 					"variant": "declaration",
 					"kind": 64,
@@ -3407,12 +2856,12 @@
 							"fileName": "leadingZero.ts",
 							"line": 16,
 							"character": 24,
-							"url": "https://github.com/Tokimon/js-fns/blob/990f815/packages/core/src/leadingZero.ts#L16"
+							"url": "https://github.com/Tokimon/js-fns/blob/335ea2b/packages/core/src/leadingZero.ts#L16"
 						}
 					],
 					"signatures": [
 						{
-							"id": 96,
+							"id": 95,
 							"name": "default",
 							"variant": "signature",
 							"kind": 4096,
@@ -3450,12 +2899,12 @@
 									"fileName": "leadingZero.ts",
 									"line": 16,
 									"character": 0,
-									"url": "https://github.com/Tokimon/js-fns/blob/990f815/packages/core/src/leadingZero.ts#L16"
+									"url": "https://github.com/Tokimon/js-fns/blob/335ea2b/packages/core/src/leadingZero.ts#L16"
 								}
 							],
 							"parameters": [
 								{
-									"id": 97,
+									"id": 96,
 									"name": "num",
 									"variant": "param",
 									"kind": 32768,
@@ -3483,7 +2932,7 @@
 									}
 								},
 								{
-									"id": 98,
+									"id": 97,
 									"name": "len",
 									"variant": "param",
 									"kind": 32768,
@@ -3515,7 +2964,7 @@
 				{
 					"title": "Functions",
 					"children": [
-						95
+						94
 					]
 				}
 			],
@@ -3524,19 +2973,19 @@
 					"fileName": "leadingZero.ts",
 					"line": 1,
 					"character": 0,
-					"url": "https://github.com/Tokimon/js-fns/blob/990f815/packages/core/src/leadingZero.ts#L1"
+					"url": "https://github.com/Tokimon/js-fns/blob/335ea2b/packages/core/src/leadingZero.ts#L1"
 				}
 			]
 		},
 		{
-			"id": 99,
+			"id": 98,
 			"name": "limitDecimals",
 			"variant": "declaration",
 			"kind": 2,
 			"flags": {},
 			"children": [
 				{
-					"id": 100,
+					"id": 99,
 					"name": "default",
 					"variant": "declaration",
 					"kind": 64,
@@ -3546,12 +2995,12 @@
 							"fileName": "limitDecimals.ts",
 							"line": 50,
 							"character": 24,
-							"url": "https://github.com/Tokimon/js-fns/blob/990f815/packages/core/src/limitDecimals.ts#L50"
+							"url": "https://github.com/Tokimon/js-fns/blob/335ea2b/packages/core/src/limitDecimals.ts#L50"
 						}
 					],
 					"signatures": [
 						{
-							"id": 101,
+							"id": 100,
 							"name": "default",
 							"variant": "signature",
 							"kind": 4096,
@@ -3597,12 +3046,12 @@
 									"fileName": "limitDecimals.ts",
 									"line": 50,
 									"character": 0,
-									"url": "https://github.com/Tokimon/js-fns/blob/990f815/packages/core/src/limitDecimals.ts#L50"
+									"url": "https://github.com/Tokimon/js-fns/blob/335ea2b/packages/core/src/limitDecimals.ts#L50"
 								}
 							],
 							"parameters": [
 								{
-									"id": 102,
+									"id": 101,
 									"name": "num",
 									"variant": "param",
 									"kind": 32768,
@@ -3621,7 +3070,7 @@
 									}
 								},
 								{
-									"id": 103,
+									"id": 102,
 									"name": "decimalCount",
 									"variant": "param",
 									"kind": 32768,
@@ -3662,7 +3111,7 @@
 				{
 					"title": "Functions",
 					"children": [
-						100
+						99
 					]
 				}
 			],
@@ -3671,19 +3120,19 @@
 					"fileName": "limitDecimals.ts",
 					"line": 1,
 					"character": 0,
-					"url": "https://github.com/Tokimon/js-fns/blob/990f815/packages/core/src/limitDecimals.ts#L1"
+					"url": "https://github.com/Tokimon/js-fns/blob/335ea2b/packages/core/src/limitDecimals.ts#L1"
 				}
 			]
 		},
 		{
-			"id": 104,
+			"id": 103,
 			"name": "minMax",
 			"variant": "declaration",
 			"kind": 2,
 			"flags": {},
 			"children": [
 				{
-					"id": 105,
+					"id": 104,
 					"name": "default",
 					"variant": "declaration",
 					"kind": 64,
@@ -3693,12 +3142,12 @@
 							"fileName": "minMax.ts",
 							"line": 17,
 							"character": 24,
-							"url": "https://github.com/Tokimon/js-fns/blob/990f815/packages/core/src/minMax.ts#L17"
+							"url": "https://github.com/Tokimon/js-fns/blob/335ea2b/packages/core/src/minMax.ts#L17"
 						}
 					],
 					"signatures": [
 						{
-							"id": 106,
+							"id": 105,
 							"name": "default",
 							"variant": "signature",
 							"kind": 4096,
@@ -3736,12 +3185,12 @@
 									"fileName": "minMax.ts",
 									"line": 17,
 									"character": 0,
-									"url": "https://github.com/Tokimon/js-fns/blob/990f815/packages/core/src/minMax.ts#L17"
+									"url": "https://github.com/Tokimon/js-fns/blob/335ea2b/packages/core/src/minMax.ts#L17"
 								}
 							],
 							"parameters": [
 								{
-									"id": 107,
+									"id": 106,
 									"name": "num",
 									"variant": "param",
 									"kind": 32768,
@@ -3760,7 +3209,7 @@
 									}
 								},
 								{
-									"id": 108,
+									"id": 107,
 									"name": "min",
 									"variant": "param",
 									"kind": 32768,
@@ -3779,7 +3228,7 @@
 									}
 								},
 								{
-									"id": 109,
+									"id": 108,
 									"name": "max",
 									"variant": "param",
 									"kind": 32768,
@@ -3810,7 +3259,7 @@
 				{
 					"title": "Functions",
 					"children": [
-						105
+						104
 					]
 				}
 			],
@@ -3819,19 +3268,19 @@
 					"fileName": "minMax.ts",
 					"line": 1,
 					"character": 0,
-					"url": "https://github.com/Tokimon/js-fns/blob/990f815/packages/core/src/minMax.ts#L1"
+					"url": "https://github.com/Tokimon/js-fns/blob/335ea2b/packages/core/src/minMax.ts#L1"
 				}
 			]
 		},
 		{
-			"id": 110,
+			"id": 109,
 			"name": "numberToHex",
 			"variant": "declaration",
 			"kind": 2,
 			"flags": {},
 			"children": [
 				{
-					"id": 111,
+					"id": 110,
 					"name": "default",
 					"variant": "declaration",
 					"kind": 64,
@@ -3841,12 +3290,12 @@
 							"fileName": "numberToHex.ts",
 							"line": 17,
 							"character": 24,
-							"url": "https://github.com/Tokimon/js-fns/blob/990f815/packages/core/src/numberToHex.ts#L17"
+							"url": "https://github.com/Tokimon/js-fns/blob/335ea2b/packages/core/src/numberToHex.ts#L17"
 						}
 					],
 					"signatures": [
 						{
-							"id": 112,
+							"id": 111,
 							"name": "default",
 							"variant": "signature",
 							"kind": 4096,
@@ -3884,12 +3333,12 @@
 									"fileName": "numberToHex.ts",
 									"line": 17,
 									"character": 0,
-									"url": "https://github.com/Tokimon/js-fns/blob/990f815/packages/core/src/numberToHex.ts#L17"
+									"url": "https://github.com/Tokimon/js-fns/blob/335ea2b/packages/core/src/numberToHex.ts#L17"
 								}
 							],
 							"parameters": [
 								{
-									"id": 113,
+									"id": 112,
 									"name": "num",
 									"variant": "param",
 									"kind": 32768,
@@ -3920,7 +3369,7 @@
 				{
 					"title": "Functions",
 					"children": [
-						111
+						110
 					]
 				}
 			],
@@ -3929,19 +3378,19 @@
 					"fileName": "numberToHex.ts",
 					"line": 1,
 					"character": 0,
-					"url": "https://github.com/Tokimon/js-fns/blob/990f815/packages/core/src/numberToHex.ts#L1"
+					"url": "https://github.com/Tokimon/js-fns/blob/335ea2b/packages/core/src/numberToHex.ts#L1"
 				}
 			]
 		},
 		{
-			"id": 114,
+			"id": 113,
 			"name": "pascalCase",
 			"variant": "declaration",
 			"kind": 2,
 			"flags": {},
 			"children": [
 				{
-					"id": 115,
+					"id": 114,
 					"name": "PascalCaseSettings",
 					"variant": "declaration",
 					"kind": 4194304,
@@ -3951,7 +3400,7 @@
 							"fileName": "pascalCase.ts",
 							"line": 5,
 							"character": 12,
-							"url": "https://github.com/Tokimon/js-fns/blob/990f815/packages/core/src/pascalCase.ts#L5"
+							"url": "https://github.com/Tokimon/js-fns/blob/335ea2b/packages/core/src/pascalCase.ts#L5"
 						}
 					],
 					"type": {
@@ -3977,7 +3426,7 @@
 					}
 				},
 				{
-					"id": 116,
+					"id": 115,
 					"name": "default",
 					"variant": "declaration",
 					"kind": 64,
@@ -3987,12 +3436,12 @@
 							"fileName": "pascalCase.ts",
 							"line": 28,
 							"character": 9,
-							"url": "https://github.com/Tokimon/js-fns/blob/990f815/packages/core/src/pascalCase.ts#L28"
+							"url": "https://github.com/Tokimon/js-fns/blob/335ea2b/packages/core/src/pascalCase.ts#L28"
 						}
 					],
 					"signatures": [
 						{
-							"id": 117,
+							"id": 116,
 							"name": "default",
 							"variant": "signature",
 							"kind": 4096,
@@ -4030,12 +3479,12 @@
 									"fileName": "pascalCase.ts",
 									"line": 28,
 									"character": 0,
-									"url": "https://github.com/Tokimon/js-fns/blob/990f815/packages/core/src/pascalCase.ts#L28"
+									"url": "https://github.com/Tokimon/js-fns/blob/335ea2b/packages/core/src/pascalCase.ts#L28"
 								}
 							],
 							"parameters": [
 								{
-									"id": 118,
+									"id": 117,
 									"name": "input",
 									"variant": "param",
 									"kind": 32768,
@@ -4054,7 +3503,7 @@
 									}
 								},
 								{
-									"id": 119,
+									"id": 118,
 									"name": "settings",
 									"variant": "param",
 									"kind": 32768,
@@ -4071,7 +3520,7 @@
 									},
 									"type": {
 										"type": "reference",
-										"target": 115,
+										"target": 114,
 										"name": "PascalCaseSettings",
 										"package": "@js-fns/core"
 									}
@@ -4089,13 +3538,13 @@
 				{
 					"title": "Type Aliases",
 					"children": [
-						115
+						114
 					]
 				},
 				{
 					"title": "Functions",
 					"children": [
-						116
+						115
 					]
 				}
 			],
@@ -4104,19 +3553,19 @@
 					"fileName": "pascalCase.ts",
 					"line": 1,
 					"character": 0,
-					"url": "https://github.com/Tokimon/js-fns/blob/990f815/packages/core/src/pascalCase.ts#L1"
+					"url": "https://github.com/Tokimon/js-fns/blob/335ea2b/packages/core/src/pascalCase.ts#L1"
 				}
 			]
 		},
 		{
-			"id": 120,
+			"id": 119,
 			"name": "phrasify",
 			"variant": "declaration",
 			"kind": 2,
 			"flags": {},
 			"children": [
 				{
-					"id": 121,
+					"id": 120,
 					"name": "PhrasifySettings",
 					"variant": "declaration",
 					"kind": 4194304,
@@ -4126,20 +3575,20 @@
 							"fileName": "phrasify.ts",
 							"line": 1,
 							"character": 12,
-							"url": "https://github.com/Tokimon/js-fns/blob/990f815/packages/core/src/phrasify.ts#L1"
+							"url": "https://github.com/Tokimon/js-fns/blob/335ea2b/packages/core/src/phrasify.ts#L1"
 						}
 					],
 					"type": {
 						"type": "reflection",
 						"declaration": {
-							"id": 122,
+							"id": 121,
 							"name": "__type",
 							"variant": "declaration",
 							"kind": 65536,
 							"flags": {},
 							"children": [
 								{
-									"id": 123,
+									"id": 122,
 									"name": "numbers",
 									"variant": "declaration",
 									"kind": 1024,
@@ -4151,7 +3600,7 @@
 											"fileName": "phrasify.ts",
 											"line": 2,
 											"character": 2,
-											"url": "https://github.com/Tokimon/js-fns/blob/990f815/packages/core/src/phrasify.ts#L2"
+											"url": "https://github.com/Tokimon/js-fns/blob/335ea2b/packages/core/src/phrasify.ts#L2"
 										}
 									],
 									"type": {
@@ -4164,7 +3613,7 @@
 								{
 									"title": "Properties",
 									"children": [
-										123
+										122
 									]
 								}
 							],
@@ -4173,14 +3622,14 @@
 									"fileName": "phrasify.ts",
 									"line": 1,
 									"character": 31,
-									"url": "https://github.com/Tokimon/js-fns/blob/990f815/packages/core/src/phrasify.ts#L1"
+									"url": "https://github.com/Tokimon/js-fns/blob/335ea2b/packages/core/src/phrasify.ts#L1"
 								}
 							]
 						}
 					}
 				},
 				{
-					"id": 124,
+					"id": 123,
 					"name": "default",
 					"variant": "declaration",
 					"kind": 64,
@@ -4190,12 +3639,12 @@
 							"fileName": "phrasify.ts",
 							"line": 24,
 							"character": 9,
-							"url": "https://github.com/Tokimon/js-fns/blob/990f815/packages/core/src/phrasify.ts#L24"
+							"url": "https://github.com/Tokimon/js-fns/blob/335ea2b/packages/core/src/phrasify.ts#L24"
 						}
 					],
 					"signatures": [
 						{
-							"id": 125,
+							"id": 124,
 							"name": "default",
 							"variant": "signature",
 							"kind": 4096,
@@ -4233,12 +3682,12 @@
 									"fileName": "phrasify.ts",
 									"line": 24,
 									"character": 0,
-									"url": "https://github.com/Tokimon/js-fns/blob/990f815/packages/core/src/phrasify.ts#L24"
+									"url": "https://github.com/Tokimon/js-fns/blob/335ea2b/packages/core/src/phrasify.ts#L24"
 								}
 							],
 							"parameters": [
 								{
-									"id": 126,
+									"id": 125,
 									"name": "input",
 									"variant": "param",
 									"kind": 32768,
@@ -4257,7 +3706,7 @@
 									}
 								},
 								{
-									"id": 127,
+									"id": 126,
 									"name": "settings",
 									"variant": "param",
 									"kind": 32768,
@@ -4274,7 +3723,7 @@
 									},
 									"type": {
 										"type": "reference",
-										"target": 121,
+										"target": 120,
 										"name": "PhrasifySettings",
 										"package": "@js-fns/core"
 									}
@@ -4292,13 +3741,13 @@
 				{
 					"title": "Type Aliases",
 					"children": [
-						121
+						120
 					]
 				},
 				{
 					"title": "Functions",
 					"children": [
-						124
+						123
 					]
 				}
 			],
@@ -4307,19 +3756,19 @@
 					"fileName": "phrasify.ts",
 					"line": 1,
 					"character": 0,
-					"url": "https://github.com/Tokimon/js-fns/blob/990f815/packages/core/src/phrasify.ts#L1"
+					"url": "https://github.com/Tokimon/js-fns/blob/335ea2b/packages/core/src/phrasify.ts#L1"
 				}
 			]
 		},
 		{
-			"id": 128,
+			"id": 127,
 			"name": "popIndex",
 			"variant": "declaration",
 			"kind": 2,
 			"flags": {},
 			"children": [
 				{
-					"id": 133,
+					"id": 132,
 					"name": "default",
 					"variant": "declaration",
 					"kind": 64,
@@ -4329,12 +3778,12 @@
 							"fileName": "popIndex.ts",
 							"line": 40,
 							"character": 9,
-							"url": "https://github.com/Tokimon/js-fns/blob/990f815/packages/core/src/popIndex.ts#L40"
+							"url": "https://github.com/Tokimon/js-fns/blob/335ea2b/packages/core/src/popIndex.ts#L40"
 						}
 					],
 					"signatures": [
 						{
-							"id": 134,
+							"id": 133,
 							"name": "default",
 							"variant": "signature",
 							"kind": 4096,
@@ -4363,12 +3812,12 @@
 									"fileName": "popIndex.ts",
 									"line": 40,
 									"character": 0,
-									"url": "https://github.com/Tokimon/js-fns/blob/990f815/packages/core/src/popIndex.ts#L40"
+									"url": "https://github.com/Tokimon/js-fns/blob/335ea2b/packages/core/src/popIndex.ts#L40"
 								}
 							],
 							"parameters": [
 								{
-									"id": 135,
+									"id": 134,
 									"name": "list",
 									"variant": "param",
 									"kind": 32768,
@@ -4390,7 +3839,7 @@
 									}
 								},
 								{
-									"id": 136,
+									"id": 135,
 									"name": "index",
 									"variant": "param",
 									"kind": 32768,
@@ -4417,7 +3866,7 @@
 					]
 				},
 				{
-					"id": 129,
+					"id": 128,
 					"name": "popIndexPure",
 					"variant": "declaration",
 					"kind": 64,
@@ -4427,12 +3876,12 @@
 							"fileName": "popIndex.ts",
 							"line": 16,
 							"character": 16,
-							"url": "https://github.com/Tokimon/js-fns/blob/990f815/packages/core/src/popIndex.ts#L16"
+							"url": "https://github.com/Tokimon/js-fns/blob/335ea2b/packages/core/src/popIndex.ts#L16"
 						}
 					],
 					"signatures": [
 						{
-							"id": 130,
+							"id": 129,
 							"name": "popIndexPure",
 							"variant": "signature",
 							"kind": 4096,
@@ -4470,12 +3919,12 @@
 									"fileName": "popIndex.ts",
 									"line": 16,
 									"character": 0,
-									"url": "https://github.com/Tokimon/js-fns/blob/990f815/packages/core/src/popIndex.ts#L16"
+									"url": "https://github.com/Tokimon/js-fns/blob/335ea2b/packages/core/src/popIndex.ts#L16"
 								}
 							],
 							"parameters": [
 								{
-									"id": 131,
+									"id": 130,
 									"name": "list",
 									"variant": "param",
 									"kind": 32768,
@@ -4497,7 +3946,7 @@
 									}
 								},
 								{
-									"id": 132,
+									"id": 131,
 									"name": "index",
 									"variant": "param",
 									"kind": 32768,
@@ -4540,8 +3989,8 @@
 				{
 					"title": "Functions",
 					"children": [
-						133,
-						129
+						132,
+						128
 					]
 				}
 			],
@@ -4550,19 +3999,19 @@
 					"fileName": "popIndex.ts",
 					"line": 1,
 					"character": 0,
-					"url": "https://github.com/Tokimon/js-fns/blob/990f815/packages/core/src/popIndex.ts#L1"
+					"url": "https://github.com/Tokimon/js-fns/blob/335ea2b/packages/core/src/popIndex.ts#L1"
 				}
 			]
 		},
 		{
-			"id": 137,
+			"id": 136,
 			"name": "promisefy",
 			"variant": "declaration",
 			"kind": 2,
 			"flags": {},
 			"children": [
 				{
-					"id": 138,
+					"id": 137,
 					"name": "NodeLikeCallback",
 					"variant": "declaration",
 					"kind": 4194304,
@@ -4572,13 +4021,13 @@
 							"fileName": "promisefy.ts",
 							"line": 3,
 							"character": 12,
-							"url": "https://github.com/Tokimon/js-fns/blob/990f815/packages/core/src/promisefy.ts#L3"
+							"url": "https://github.com/Tokimon/js-fns/blob/335ea2b/packages/core/src/promisefy.ts#L3"
 						}
 					],
 					"type": {
 						"type": "reflection",
 						"declaration": {
-							"id": 139,
+							"id": 138,
 							"name": "__type",
 							"variant": "declaration",
 							"kind": 65536,
@@ -4588,19 +4037,19 @@
 									"fileName": "promisefy.ts",
 									"line": 3,
 									"character": 31,
-									"url": "https://github.com/Tokimon/js-fns/blob/990f815/packages/core/src/promisefy.ts#L3"
+									"url": "https://github.com/Tokimon/js-fns/blob/335ea2b/packages/core/src/promisefy.ts#L3"
 								}
 							],
 							"signatures": [
 								{
-									"id": 140,
+									"id": 139,
 									"name": "__type",
 									"variant": "signature",
 									"kind": 4096,
 									"flags": {},
 									"parameters": [
 										{
-											"id": 141,
+											"id": 140,
 											"name": "err",
 											"variant": "param",
 											"kind": 32768,
@@ -4631,7 +4080,7 @@
 											}
 										},
 										{
-											"id": 142,
+											"id": 141,
 											"name": "data",
 											"variant": "param",
 											"kind": 32768,
@@ -4654,7 +4103,7 @@
 					}
 				},
 				{
-					"id": 147,
+					"id": 146,
 					"name": "PromisefiedFunction",
 					"variant": "declaration",
 					"kind": 4194304,
@@ -4664,13 +4113,13 @@
 							"fileName": "promisefy.ts",
 							"line": 5,
 							"character": 12,
-							"url": "https://github.com/Tokimon/js-fns/blob/990f815/packages/core/src/promisefy.ts#L5"
+							"url": "https://github.com/Tokimon/js-fns/blob/335ea2b/packages/core/src/promisefy.ts#L5"
 						}
 					],
 					"type": {
 						"type": "reflection",
 						"declaration": {
-							"id": 148,
+							"id": 147,
 							"name": "__type",
 							"variant": "declaration",
 							"kind": 65536,
@@ -4680,19 +4129,19 @@
 									"fileName": "promisefy.ts",
 									"line": 5,
 									"character": 34,
-									"url": "https://github.com/Tokimon/js-fns/blob/990f815/packages/core/src/promisefy.ts#L5"
+									"url": "https://github.com/Tokimon/js-fns/blob/335ea2b/packages/core/src/promisefy.ts#L5"
 								}
 							],
 							"signatures": [
 								{
-									"id": 149,
+									"id": 148,
 									"name": "__type",
 									"variant": "signature",
 									"kind": 4096,
 									"flags": {},
 									"parameters": [
 										{
-											"id": 150,
+											"id": 149,
 											"name": "args",
 											"variant": "param",
 											"kind": 32768,
@@ -4729,7 +4178,7 @@
 					}
 				},
 				{
-					"id": 143,
+					"id": 142,
 					"name": "PromisefyCallback",
 					"variant": "declaration",
 					"kind": 4194304,
@@ -4739,13 +4188,13 @@
 							"fileName": "promisefy.ts",
 							"line": 4,
 							"character": 12,
-							"url": "https://github.com/Tokimon/js-fns/blob/990f815/packages/core/src/promisefy.ts#L4"
+							"url": "https://github.com/Tokimon/js-fns/blob/335ea2b/packages/core/src/promisefy.ts#L4"
 						}
 					],
 					"type": {
 						"type": "reflection",
 						"declaration": {
-							"id": 144,
+							"id": 143,
 							"name": "__type",
 							"variant": "declaration",
 							"kind": 65536,
@@ -4755,19 +4204,19 @@
 									"fileName": "promisefy.ts",
 									"line": 4,
 									"character": 32,
-									"url": "https://github.com/Tokimon/js-fns/blob/990f815/packages/core/src/promisefy.ts#L4"
+									"url": "https://github.com/Tokimon/js-fns/blob/335ea2b/packages/core/src/promisefy.ts#L4"
 								}
 							],
 							"signatures": [
 								{
-									"id": 145,
+									"id": 144,
 									"name": "__type",
 									"variant": "signature",
 									"kind": 4096,
 									"flags": {},
 									"parameters": [
 										{
-											"id": 146,
+											"id": 145,
 											"name": "args",
 											"variant": "param",
 											"kind": 32768,
@@ -4793,7 +4242,7 @@
 					}
 				},
 				{
-					"id": 151,
+					"id": 150,
 					"name": "default",
 					"variant": "declaration",
 					"kind": 64,
@@ -4803,12 +4252,12 @@
 							"fileName": "promisefy.ts",
 							"line": 28,
 							"character": 24,
-							"url": "https://github.com/Tokimon/js-fns/blob/990f815/packages/core/src/promisefy.ts#L28"
+							"url": "https://github.com/Tokimon/js-fns/blob/335ea2b/packages/core/src/promisefy.ts#L28"
 						}
 					],
 					"signatures": [
 						{
-							"id": 152,
+							"id": 151,
 							"name": "default",
 							"variant": "signature",
 							"kind": 4096,
@@ -4846,19 +4295,19 @@
 									"fileName": "promisefy.ts",
 									"line": 28,
 									"character": 0,
-									"url": "https://github.com/Tokimon/js-fns/blob/990f815/packages/core/src/promisefy.ts#L28"
+									"url": "https://github.com/Tokimon/js-fns/blob/335ea2b/packages/core/src/promisefy.ts#L28"
 								}
 							],
 							"parameters": [
 								{
-									"id": 153,
+									"id": 152,
 									"name": "fn",
 									"variant": "param",
 									"kind": 32768,
 									"flags": {},
 									"type": {
 										"type": "reference",
-										"target": 143,
+										"target": 142,
 										"name": "PromisefyCallback",
 										"package": "@js-fns/core"
 									}
@@ -4866,7 +4315,7 @@
 							],
 							"type": {
 								"type": "reference",
-								"target": 147,
+								"target": 146,
 								"name": "PromisefiedFunction",
 								"package": "@js-fns/core"
 							}
@@ -4878,15 +4327,15 @@
 				{
 					"title": "Type Aliases",
 					"children": [
-						138,
-						147,
-						143
+						137,
+						146,
+						142
 					]
 				},
 				{
 					"title": "Functions",
 					"children": [
-						151
+						150
 					]
 				}
 			],
@@ -4895,19 +4344,19 @@
 					"fileName": "promisefy.ts",
 					"line": 1,
 					"character": 0,
-					"url": "https://github.com/Tokimon/js-fns/blob/990f815/packages/core/src/promisefy.ts#L1"
+					"url": "https://github.com/Tokimon/js-fns/blob/335ea2b/packages/core/src/promisefy.ts#L1"
 				}
 			]
 		},
 		{
-			"id": 154,
+			"id": 153,
 			"name": "randomHexColor",
 			"variant": "declaration",
 			"kind": 2,
 			"flags": {},
 			"children": [
 				{
-					"id": 155,
+					"id": 154,
 					"name": "default",
 					"variant": "declaration",
 					"kind": 64,
@@ -4917,12 +4366,12 @@
 							"fileName": "randomHexColor.ts",
 							"line": 16,
 							"character": 24,
-							"url": "https://github.com/Tokimon/js-fns/blob/990f815/packages/core/src/randomHexColor.ts#L16"
+							"url": "https://github.com/Tokimon/js-fns/blob/335ea2b/packages/core/src/randomHexColor.ts#L16"
 						}
 					],
 					"signatures": [
 						{
-							"id": 156,
+							"id": 155,
 							"name": "default",
 							"variant": "signature",
 							"kind": 4096,
@@ -4960,7 +4409,7 @@
 									"fileName": "randomHexColor.ts",
 									"line": 16,
 									"character": 0,
-									"url": "https://github.com/Tokimon/js-fns/blob/990f815/packages/core/src/randomHexColor.ts#L16"
+									"url": "https://github.com/Tokimon/js-fns/blob/335ea2b/packages/core/src/randomHexColor.ts#L16"
 								}
 							],
 							"type": {
@@ -4975,7 +4424,7 @@
 				{
 					"title": "Functions",
 					"children": [
-						155
+						154
 					]
 				}
 			],
@@ -4984,19 +4433,19 @@
 					"fileName": "randomHexColor.ts",
 					"line": 1,
 					"character": 0,
-					"url": "https://github.com/Tokimon/js-fns/blob/990f815/packages/core/src/randomHexColor.ts#L1"
+					"url": "https://github.com/Tokimon/js-fns/blob/335ea2b/packages/core/src/randomHexColor.ts#L1"
 				}
 			]
 		},
 		{
-			"id": 157,
+			"id": 156,
 			"name": "randomId",
 			"variant": "declaration",
 			"kind": 2,
 			"flags": {},
 			"children": [
 				{
-					"id": 158,
+					"id": 157,
 					"name": "default",
 					"variant": "declaration",
 					"kind": 64,
@@ -5006,12 +4455,12 @@
 							"fileName": "randomId.ts",
 							"line": 12,
 							"character": 24,
-							"url": "https://github.com/Tokimon/js-fns/blob/990f815/packages/core/src/randomId.ts#L12"
+							"url": "https://github.com/Tokimon/js-fns/blob/335ea2b/packages/core/src/randomId.ts#L12"
 						}
 					],
 					"signatures": [
 						{
-							"id": 159,
+							"id": 158,
 							"name": "default",
 							"variant": "signature",
 							"kind": 4096,
@@ -5049,12 +4498,12 @@
 									"fileName": "randomId.ts",
 									"line": 12,
 									"character": 0,
-									"url": "https://github.com/Tokimon/js-fns/blob/990f815/packages/core/src/randomId.ts#L12"
+									"url": "https://github.com/Tokimon/js-fns/blob/335ea2b/packages/core/src/randomId.ts#L12"
 								}
 							],
 							"parameters": [
 								{
-									"id": 160,
+									"id": 159,
 									"name": "length",
 									"variant": "param",
 									"kind": 32768,
@@ -5078,7 +4527,7 @@
 				{
 					"title": "Functions",
 					"children": [
-						158
+						157
 					]
 				}
 			],
@@ -5087,19 +4536,19 @@
 					"fileName": "randomId.ts",
 					"line": 1,
 					"character": 0,
-					"url": "https://github.com/Tokimon/js-fns/blob/990f815/packages/core/src/randomId.ts#L1"
+					"url": "https://github.com/Tokimon/js-fns/blob/335ea2b/packages/core/src/randomId.ts#L1"
 				}
 			]
 		},
 		{
-			"id": 161,
+			"id": 160,
 			"name": "randomInt",
 			"variant": "declaration",
 			"kind": 2,
 			"flags": {},
 			"children": [
 				{
-					"id": 162,
+					"id": 161,
 					"name": "default",
 					"variant": "declaration",
 					"kind": 64,
@@ -5109,24 +4558,24 @@
 							"fileName": "randomInt.ts",
 							"line": 22,
 							"character": 9,
-							"url": "https://github.com/Tokimon/js-fns/blob/990f815/packages/core/src/randomInt.ts#L22"
+							"url": "https://github.com/Tokimon/js-fns/blob/335ea2b/packages/core/src/randomInt.ts#L22"
 						},
 						{
 							"fileName": "randomInt.ts",
 							"line": 40,
 							"character": 9,
-							"url": "https://github.com/Tokimon/js-fns/blob/990f815/packages/core/src/randomInt.ts#L40"
+							"url": "https://github.com/Tokimon/js-fns/blob/335ea2b/packages/core/src/randomInt.ts#L40"
 						},
 						{
 							"fileName": "randomInt.ts",
 							"line": 42,
 							"character": 9,
-							"url": "https://github.com/Tokimon/js-fns/blob/990f815/packages/core/src/randomInt.ts#L42"
+							"url": "https://github.com/Tokimon/js-fns/blob/335ea2b/packages/core/src/randomInt.ts#L42"
 						}
 					],
 					"signatures": [
 						{
-							"id": 163,
+							"id": 162,
 							"name": "default",
 							"variant": "signature",
 							"kind": 4096,
@@ -5164,12 +4613,12 @@
 									"fileName": "randomInt.ts",
 									"line": 22,
 									"character": 0,
-									"url": "https://github.com/Tokimon/js-fns/blob/990f815/packages/core/src/randomInt.ts#L22"
+									"url": "https://github.com/Tokimon/js-fns/blob/335ea2b/packages/core/src/randomInt.ts#L22"
 								}
 							],
 							"parameters": [
 								{
-									"id": 164,
+									"id": 163,
 									"name": "min",
 									"variant": "param",
 									"kind": 32768,
@@ -5188,7 +4637,7 @@
 									}
 								},
 								{
-									"id": 165,
+									"id": 164,
 									"name": "max",
 									"variant": "param",
 									"kind": 32768,
@@ -5213,7 +4662,7 @@
 							}
 						},
 						{
-							"id": 166,
+							"id": 165,
 							"name": "default",
 							"variant": "signature",
 							"kind": 4096,
@@ -5251,12 +4700,12 @@
 									"fileName": "randomInt.ts",
 									"line": 40,
 									"character": 0,
-									"url": "https://github.com/Tokimon/js-fns/blob/990f815/packages/core/src/randomInt.ts#L40"
+									"url": "https://github.com/Tokimon/js-fns/blob/335ea2b/packages/core/src/randomInt.ts#L40"
 								}
 							],
 							"parameters": [
 								{
-									"id": 167,
+									"id": 166,
 									"name": "max",
 									"variant": "param",
 									"kind": 32768,
@@ -5289,7 +4738,7 @@
 				{
 					"title": "Functions",
 					"children": [
-						162
+						161
 					]
 				}
 			],
@@ -5298,19 +4747,19 @@
 					"fileName": "randomInt.ts",
 					"line": 1,
 					"character": 0,
-					"url": "https://github.com/Tokimon/js-fns/blob/990f815/packages/core/src/randomInt.ts#L1"
+					"url": "https://github.com/Tokimon/js-fns/blob/335ea2b/packages/core/src/randomInt.ts#L1"
 				}
 			]
 		},
 		{
-			"id": 168,
+			"id": 167,
 			"name": "randomRGBColor",
 			"variant": "declaration",
 			"kind": 2,
 			"flags": {},
 			"children": [
 				{
-					"id": 169,
+					"id": 168,
 					"name": "default",
 					"variant": "declaration",
 					"kind": 64,
@@ -5320,12 +4769,12 @@
 							"fileName": "randomRGBColor.ts",
 							"line": 15,
 							"character": 24,
-							"url": "https://github.com/Tokimon/js-fns/blob/990f815/packages/core/src/randomRGBColor.ts#L15"
+							"url": "https://github.com/Tokimon/js-fns/blob/335ea2b/packages/core/src/randomRGBColor.ts#L15"
 						}
 					],
 					"signatures": [
 						{
-							"id": 170,
+							"id": 169,
 							"name": "default",
 							"variant": "signature",
 							"kind": 4096,
@@ -5363,7 +4812,7 @@
 									"fileName": "randomRGBColor.ts",
 									"line": 15,
 									"character": 0,
-									"url": "https://github.com/Tokimon/js-fns/blob/990f815/packages/core/src/randomRGBColor.ts#L15"
+									"url": "https://github.com/Tokimon/js-fns/blob/335ea2b/packages/core/src/randomRGBColor.ts#L15"
 								}
 							],
 							"type": {
@@ -5406,7 +4855,7 @@
 				{
 					"title": "Functions",
 					"children": [
-						169
+						168
 					]
 				}
 			],
@@ -5415,19 +4864,19 @@
 					"fileName": "randomRGBColor.ts",
 					"line": 1,
 					"character": 0,
-					"url": "https://github.com/Tokimon/js-fns/blob/990f815/packages/core/src/randomRGBColor.ts#L1"
+					"url": "https://github.com/Tokimon/js-fns/blob/335ea2b/packages/core/src/randomRGBColor.ts#L1"
 				}
 			]
 		},
 		{
-			"id": 181,
+			"id": 180,
 			"name": "safeDateChange",
 			"variant": "declaration",
 			"kind": 2,
 			"flags": {},
 			"children": [
 				{
-					"id": 182,
+					"id": 181,
 					"name": "default",
 					"variant": "declaration",
 					"kind": 64,
@@ -5437,12 +4886,12 @@
 							"fileName": "safeDateChange.ts",
 							"line": 25,
 							"character": 24,
-							"url": "https://github.com/Tokimon/js-fns/blob/990f815/packages/core/src/safeDateChange.ts#L25"
+							"url": "https://github.com/Tokimon/js-fns/blob/335ea2b/packages/core/src/safeDateChange.ts#L25"
 						}
 					],
 					"signatures": [
 						{
-							"id": 183,
+							"id": 182,
 							"name": "default",
 							"variant": "signature",
 							"kind": 4096,
@@ -5480,12 +4929,12 @@
 									"fileName": "safeDateChange.ts",
 									"line": 25,
 									"character": 0,
-									"url": "https://github.com/Tokimon/js-fns/blob/990f815/packages/core/src/safeDateChange.ts#L25"
+									"url": "https://github.com/Tokimon/js-fns/blob/335ea2b/packages/core/src/safeDateChange.ts#L25"
 								}
 							],
 							"parameters": [
 								{
-									"id": 184,
+									"id": 183,
 									"name": "from",
 									"variant": "param",
 									"kind": 32768,
@@ -5509,7 +4958,7 @@
 									}
 								},
 								{
-									"id": 185,
+									"id": 184,
 									"name": "to",
 									"variant": "param",
 									"kind": 32768,
@@ -5550,7 +4999,7 @@
 				{
 					"title": "Functions",
 					"children": [
-						182
+						181
 					]
 				}
 			],
@@ -5559,19 +5008,19 @@
 					"fileName": "safeDateChange.ts",
 					"line": 1,
 					"character": 0,
-					"url": "https://github.com/Tokimon/js-fns/blob/990f815/packages/core/src/safeDateChange.ts#L1"
+					"url": "https://github.com/Tokimon/js-fns/blob/335ea2b/packages/core/src/safeDateChange.ts#L1"
 				}
 			]
 		},
 		{
-			"id": 186,
+			"id": 185,
 			"name": "snakeCase",
 			"variant": "declaration",
 			"kind": 2,
 			"flags": {},
 			"children": [
 				{
-					"id": 187,
+					"id": 186,
 					"name": "SnakeCaseSettings",
 					"variant": "declaration",
 					"kind": 4194304,
@@ -5581,18 +5030,18 @@
 							"fileName": "snakeCase.ts",
 							"line": 5,
 							"character": 12,
-							"url": "https://github.com/Tokimon/js-fns/blob/990f815/packages/core/src/snakeCase.ts#L5"
+							"url": "https://github.com/Tokimon/js-fns/blob/335ea2b/packages/core/src/snakeCase.ts#L5"
 						}
 					],
 					"type": {
 						"type": "reference",
-						"target": 121,
+						"target": 120,
 						"name": "PhrasifySettings",
 						"package": "@js-fns/core"
 					}
 				},
 				{
-					"id": 188,
+					"id": 187,
 					"name": "default",
 					"variant": "declaration",
 					"kind": 64,
@@ -5602,12 +5051,12 @@
 							"fileName": "snakeCase.ts",
 							"line": 24,
 							"character": 24,
-							"url": "https://github.com/Tokimon/js-fns/blob/990f815/packages/core/src/snakeCase.ts#L24"
+							"url": "https://github.com/Tokimon/js-fns/blob/335ea2b/packages/core/src/snakeCase.ts#L24"
 						}
 					],
 					"signatures": [
 						{
-							"id": 189,
+							"id": 188,
 							"name": "default",
 							"variant": "signature",
 							"kind": 4096,
@@ -5645,12 +5094,12 @@
 									"fileName": "snakeCase.ts",
 									"line": 24,
 									"character": 0,
-									"url": "https://github.com/Tokimon/js-fns/blob/990f815/packages/core/src/snakeCase.ts#L24"
+									"url": "https://github.com/Tokimon/js-fns/blob/335ea2b/packages/core/src/snakeCase.ts#L24"
 								}
 							],
 							"parameters": [
 								{
-									"id": 190,
+									"id": 189,
 									"name": "str",
 									"variant": "param",
 									"kind": 32768,
@@ -5669,7 +5118,7 @@
 									}
 								},
 								{
-									"id": 191,
+									"id": 190,
 									"name": "settings",
 									"variant": "param",
 									"kind": 32768,
@@ -5686,7 +5135,7 @@
 									},
 									"type": {
 										"type": "reference",
-										"target": 121,
+										"target": 120,
 										"name": "PhrasifySettings",
 										"package": "@js-fns/core"
 									}
@@ -5704,13 +5153,13 @@
 				{
 					"title": "Type Aliases",
 					"children": [
-						187
+						186
 					]
 				},
 				{
 					"title": "Functions",
 					"children": [
-						188
+						187
 					]
 				}
 			],
@@ -5719,19 +5168,19 @@
 					"fileName": "snakeCase.ts",
 					"line": 1,
 					"character": 0,
-					"url": "https://github.com/Tokimon/js-fns/blob/990f815/packages/core/src/snakeCase.ts#L1"
+					"url": "https://github.com/Tokimon/js-fns/blob/335ea2b/packages/core/src/snakeCase.ts#L1"
 				}
 			]
 		},
 		{
-			"id": 192,
+			"id": 191,
 			"name": "truncate",
 			"variant": "declaration",
 			"kind": 2,
 			"flags": {},
 			"children": [
 				{
-					"id": 193,
+					"id": 192,
 					"name": "TruncateSettings",
 					"variant": "declaration",
 					"kind": 4194304,
@@ -5741,20 +5190,20 @@
 							"fileName": "truncate.ts",
 							"line": 5,
 							"character": 12,
-							"url": "https://github.com/Tokimon/js-fns/blob/990f815/packages/core/src/truncate.ts#L5"
+							"url": "https://github.com/Tokimon/js-fns/blob/335ea2b/packages/core/src/truncate.ts#L5"
 						}
 					],
 					"type": {
 						"type": "reflection",
 						"declaration": {
-							"id": 194,
+							"id": 193,
 							"name": "__type",
 							"variant": "declaration",
 							"kind": 65536,
 							"flags": {},
 							"children": [
 								{
-									"id": 196,
+									"id": 195,
 									"name": "end",
 									"variant": "declaration",
 									"kind": 1024,
@@ -5766,7 +5215,7 @@
 											"fileName": "truncate.ts",
 											"line": 7,
 											"character": 2,
-											"url": "https://github.com/Tokimon/js-fns/blob/990f815/packages/core/src/truncate.ts#L7"
+											"url": "https://github.com/Tokimon/js-fns/blob/335ea2b/packages/core/src/truncate.ts#L7"
 										}
 									],
 									"type": {
@@ -5775,7 +5224,7 @@
 									}
 								},
 								{
-									"id": 195,
+									"id": 194,
 									"name": "maxLength",
 									"variant": "declaration",
 									"kind": 1024,
@@ -5787,7 +5236,7 @@
 											"fileName": "truncate.ts",
 											"line": 6,
 											"character": 2,
-											"url": "https://github.com/Tokimon/js-fns/blob/990f815/packages/core/src/truncate.ts#L6"
+											"url": "https://github.com/Tokimon/js-fns/blob/335ea2b/packages/core/src/truncate.ts#L6"
 										}
 									],
 									"type": {
@@ -5800,8 +5249,8 @@
 								{
 									"title": "Properties",
 									"children": [
-										196,
-										195
+										195,
+										194
 									]
 								}
 							],
@@ -5810,14 +5259,14 @@
 									"fileName": "truncate.ts",
 									"line": 5,
 									"character": 31,
-									"url": "https://github.com/Tokimon/js-fns/blob/990f815/packages/core/src/truncate.ts#L5"
+									"url": "https://github.com/Tokimon/js-fns/blob/335ea2b/packages/core/src/truncate.ts#L5"
 								}
 							]
 						}
 					}
 				},
 				{
-					"id": 197,
+					"id": 196,
 					"name": "default",
 					"variant": "declaration",
 					"kind": 64,
@@ -5827,12 +5276,12 @@
 							"fileName": "truncate.ts",
 							"line": 27,
 							"character": 24,
-							"url": "https://github.com/Tokimon/js-fns/blob/990f815/packages/core/src/truncate.ts#L27"
+							"url": "https://github.com/Tokimon/js-fns/blob/335ea2b/packages/core/src/truncate.ts#L27"
 						}
 					],
 					"signatures": [
 						{
-							"id": 198,
+							"id": 197,
 							"name": "default",
 							"variant": "signature",
 							"kind": 4096,
@@ -5870,12 +5319,12 @@
 									"fileName": "truncate.ts",
 									"line": 27,
 									"character": 0,
-									"url": "https://github.com/Tokimon/js-fns/blob/990f815/packages/core/src/truncate.ts#L27"
+									"url": "https://github.com/Tokimon/js-fns/blob/335ea2b/packages/core/src/truncate.ts#L27"
 								}
 							],
 							"parameters": [
 								{
-									"id": 199,
+									"id": 198,
 									"name": "str",
 									"variant": "param",
 									"kind": 32768,
@@ -5894,7 +5343,7 @@
 									}
 								},
 								{
-									"id": 200,
+									"id": 199,
 									"name": "settings",
 									"variant": "param",
 									"kind": 32768,
@@ -5909,7 +5358,7 @@
 									},
 									"type": {
 										"type": "reference",
-										"target": 193,
+										"target": 192,
 										"name": "TruncateSettings",
 										"package": "@js-fns/core"
 									},
@@ -5928,13 +5377,13 @@
 				{
 					"title": "Type Aliases",
 					"children": [
-						193
+						192
 					]
 				},
 				{
 					"title": "Functions",
 					"children": [
-						197
+						196
 					]
 				}
 			],
@@ -5943,19 +5392,19 @@
 					"fileName": "truncate.ts",
 					"line": 1,
 					"character": 0,
-					"url": "https://github.com/Tokimon/js-fns/blob/990f815/packages/core/src/truncate.ts#L1"
+					"url": "https://github.com/Tokimon/js-fns/blob/335ea2b/packages/core/src/truncate.ts#L1"
 				}
 			]
 		},
 		{
-			"id": 201,
+			"id": 200,
 			"name": "uniqueArray",
 			"variant": "declaration",
 			"kind": 2,
 			"flags": {},
 			"children": [
 				{
-					"id": 202,
+					"id": 201,
 					"name": "default",
 					"variant": "declaration",
 					"kind": 64,
@@ -5965,12 +5414,12 @@
 							"fileName": "uniqueArray.ts",
 							"line": 14,
 							"character": 24,
-							"url": "https://github.com/Tokimon/js-fns/blob/990f815/packages/core/src/uniqueArray.ts#L14"
+							"url": "https://github.com/Tokimon/js-fns/blob/335ea2b/packages/core/src/uniqueArray.ts#L14"
 						}
 					],
 					"signatures": [
 						{
-							"id": 203,
+							"id": 202,
 							"name": "default",
 							"variant": "signature",
 							"kind": 4096,
@@ -6008,12 +5457,12 @@
 									"fileName": "uniqueArray.ts",
 									"line": 14,
 									"character": 0,
-									"url": "https://github.com/Tokimon/js-fns/blob/990f815/packages/core/src/uniqueArray.ts#L14"
+									"url": "https://github.com/Tokimon/js-fns/blob/335ea2b/packages/core/src/uniqueArray.ts#L14"
 								}
 							],
 							"parameters": [
 								{
-									"id": 204,
+									"id": 203,
 									"name": "arr",
 									"variant": "param",
 									"kind": 32768,
@@ -6050,7 +5499,7 @@
 				{
 					"title": "Functions",
 					"children": [
-						202
+						201
 					]
 				}
 			],
@@ -6059,7 +5508,7 @@
 					"fileName": "uniqueArray.ts",
 					"line": 1,
 					"character": 0,
-					"url": "https://github.com/Tokimon/js-fns/blob/990f815/packages/core/src/uniqueArray.ts#L1"
+					"url": "https://github.com/Tokimon/js-fns/blob/335ea2b/packages/core/src/uniqueArray.ts#L1"
 				}
 			]
 		}
@@ -6068,7 +5517,7 @@
 		{
 			"title": "Modules",
 			"children": [
-				171,
+				170,
 				1,
 				11,
 				15,
@@ -6078,30 +5527,29 @@
 				48,
 				52,
 				56,
-				57,
-				61,
-				65,
-				72,
-				76,
-				80,
-				84,
-				88,
-				94,
-				99,
-				104,
-				110,
-				114,
-				120,
-				128,
-				137,
-				154,
-				157,
-				161,
-				168,
-				181,
-				186,
-				192,
-				201
+				60,
+				64,
+				71,
+				75,
+				79,
+				83,
+				87,
+				93,
+				98,
+				103,
+				109,
+				113,
+				119,
+				127,
+				136,
+				153,
+				156,
+				160,
+				167,
+				180,
+				185,
+				191,
+				200
 			]
 		}
 	],
@@ -6328,12 +5776,12 @@
 			"qualifiedName": "hex"
 		},
 		"56": {
-			"sourceFileName": "src/index.ts",
+			"sourceFileName": "src/isBoolean.ts",
 			"qualifiedName": ""
 		},
 		"57": {
 			"sourceFileName": "src/isBoolean.ts",
-			"qualifiedName": ""
+			"qualifiedName": "default"
 		},
 		"58": {
 			"sourceFileName": "src/isBoolean.ts",
@@ -6341,15 +5789,15 @@
 		},
 		"59": {
 			"sourceFileName": "src/isBoolean.ts",
-			"qualifiedName": "default"
+			"qualifiedName": "x"
 		},
 		"60": {
-			"sourceFileName": "src/isBoolean.ts",
-			"qualifiedName": "x"
+			"sourceFileName": "src/isFunction.ts",
+			"qualifiedName": ""
 		},
 		"61": {
 			"sourceFileName": "src/isFunction.ts",
-			"qualifiedName": ""
+			"qualifiedName": "default"
 		},
 		"62": {
 			"sourceFileName": "src/isFunction.ts",
@@ -6357,15 +5805,15 @@
 		},
 		"63": {
 			"sourceFileName": "src/isFunction.ts",
-			"qualifiedName": "default"
+			"qualifiedName": "x"
 		},
 		"64": {
-			"sourceFileName": "src/isFunction.ts",
-			"qualifiedName": "x"
+			"sourceFileName": "src/isGenerator.ts",
+			"qualifiedName": ""
 		},
 		"65": {
 			"sourceFileName": "src/isGenerator.ts",
-			"qualifiedName": ""
+			"qualifiedName": "isGenerator"
 		},
 		"66": {
 			"sourceFileName": "src/isGenerator.ts",
@@ -6373,11 +5821,11 @@
 		},
 		"67": {
 			"sourceFileName": "src/isGenerator.ts",
-			"qualifiedName": "isGenerator"
+			"qualifiedName": "x"
 		},
 		"68": {
 			"sourceFileName": "src/isGenerator.ts",
-			"qualifiedName": "x"
+			"qualifiedName": "default"
 		},
 		"69": {
 			"sourceFileName": "src/isGenerator.ts",
@@ -6385,15 +5833,15 @@
 		},
 		"70": {
 			"sourceFileName": "src/isGenerator.ts",
-			"qualifiedName": "default"
+			"qualifiedName": "x"
 		},
 		"71": {
-			"sourceFileName": "src/isGenerator.ts",
-			"qualifiedName": "x"
+			"sourceFileName": "src/isNumber.ts",
+			"qualifiedName": ""
 		},
 		"72": {
 			"sourceFileName": "src/isNumber.ts",
-			"qualifiedName": ""
+			"qualifiedName": "default"
 		},
 		"73": {
 			"sourceFileName": "src/isNumber.ts",
@@ -6401,15 +5849,15 @@
 		},
 		"74": {
 			"sourceFileName": "src/isNumber.ts",
-			"qualifiedName": "default"
+			"qualifiedName": "x"
 		},
 		"75": {
-			"sourceFileName": "src/isNumber.ts",
-			"qualifiedName": "x"
+			"sourceFileName": "src/isNumeric.ts",
+			"qualifiedName": ""
 		},
 		"76": {
 			"sourceFileName": "src/isNumeric.ts",
-			"qualifiedName": ""
+			"qualifiedName": "default"
 		},
 		"77": {
 			"sourceFileName": "src/isNumeric.ts",
@@ -6417,15 +5865,15 @@
 		},
 		"78": {
 			"sourceFileName": "src/isNumeric.ts",
-			"qualifiedName": "default"
+			"qualifiedName": "x"
 		},
 		"79": {
-			"sourceFileName": "src/isNumeric.ts",
-			"qualifiedName": "x"
+			"sourceFileName": "src/isObject.ts",
+			"qualifiedName": ""
 		},
 		"80": {
 			"sourceFileName": "src/isObject.ts",
-			"qualifiedName": ""
+			"qualifiedName": "default"
 		},
 		"81": {
 			"sourceFileName": "src/isObject.ts",
@@ -6433,15 +5881,15 @@
 		},
 		"82": {
 			"sourceFileName": "src/isObject.ts",
-			"qualifiedName": "default"
+			"qualifiedName": "x"
 		},
 		"83": {
-			"sourceFileName": "src/isObject.ts",
-			"qualifiedName": "x"
+			"sourceFileName": "src/isString.ts",
+			"qualifiedName": ""
 		},
 		"84": {
 			"sourceFileName": "src/isString.ts",
-			"qualifiedName": ""
+			"qualifiedName": "default"
 		},
 		"85": {
 			"sourceFileName": "src/isString.ts",
@@ -6449,19 +5897,19 @@
 		},
 		"86": {
 			"sourceFileName": "src/isString.ts",
-			"qualifiedName": "default"
-		},
-		"87": {
-			"sourceFileName": "src/isString.ts",
 			"qualifiedName": "x"
 		},
-		"88": {
+		"87": {
 			"sourceFileName": "src/kebabCase.ts",
 			"qualifiedName": ""
 		},
-		"89": {
+		"88": {
 			"sourceFileName": "src/kebabCase.ts",
 			"qualifiedName": "KebabCaseSettings"
+		},
+		"89": {
+			"sourceFileName": "src/kebabCase.ts",
+			"qualifiedName": "default"
 		},
 		"90": {
 			"sourceFileName": "src/kebabCase.ts",
@@ -6469,19 +5917,19 @@
 		},
 		"91": {
 			"sourceFileName": "src/kebabCase.ts",
-			"qualifiedName": "default"
+			"qualifiedName": "str"
 		},
 		"92": {
 			"sourceFileName": "src/kebabCase.ts",
-			"qualifiedName": "str"
+			"qualifiedName": "settings"
 		},
 		"93": {
-			"sourceFileName": "src/kebabCase.ts",
-			"qualifiedName": "settings"
+			"sourceFileName": "src/leadingZero.ts",
+			"qualifiedName": ""
 		},
 		"94": {
 			"sourceFileName": "src/leadingZero.ts",
-			"qualifiedName": ""
+			"qualifiedName": "default"
 		},
 		"95": {
 			"sourceFileName": "src/leadingZero.ts",
@@ -6489,19 +5937,19 @@
 		},
 		"96": {
 			"sourceFileName": "src/leadingZero.ts",
-			"qualifiedName": "default"
+			"qualifiedName": "num"
 		},
 		"97": {
 			"sourceFileName": "src/leadingZero.ts",
-			"qualifiedName": "num"
+			"qualifiedName": "len"
 		},
 		"98": {
-			"sourceFileName": "src/leadingZero.ts",
-			"qualifiedName": "len"
+			"sourceFileName": "src/limitDecimals.ts",
+			"qualifiedName": ""
 		},
 		"99": {
 			"sourceFileName": "src/limitDecimals.ts",
-			"qualifiedName": ""
+			"qualifiedName": "default"
 		},
 		"100": {
 			"sourceFileName": "src/limitDecimals.ts",
@@ -6509,19 +5957,19 @@
 		},
 		"101": {
 			"sourceFileName": "src/limitDecimals.ts",
-			"qualifiedName": "default"
+			"qualifiedName": "num"
 		},
 		"102": {
 			"sourceFileName": "src/limitDecimals.ts",
-			"qualifiedName": "num"
+			"qualifiedName": "decimalCount"
 		},
 		"103": {
-			"sourceFileName": "src/limitDecimals.ts",
-			"qualifiedName": "decimalCount"
+			"sourceFileName": "src/minMax.ts",
+			"qualifiedName": ""
 		},
 		"104": {
 			"sourceFileName": "src/minMax.ts",
-			"qualifiedName": ""
+			"qualifiedName": "default"
 		},
 		"105": {
 			"sourceFileName": "src/minMax.ts",
@@ -6529,23 +5977,23 @@
 		},
 		"106": {
 			"sourceFileName": "src/minMax.ts",
-			"qualifiedName": "default"
+			"qualifiedName": "num"
 		},
 		"107": {
 			"sourceFileName": "src/minMax.ts",
-			"qualifiedName": "num"
+			"qualifiedName": "min"
 		},
 		"108": {
 			"sourceFileName": "src/minMax.ts",
-			"qualifiedName": "min"
+			"qualifiedName": "max"
 		},
 		"109": {
-			"sourceFileName": "src/minMax.ts",
-			"qualifiedName": "max"
+			"sourceFileName": "src/numberToHex.ts",
+			"qualifiedName": ""
 		},
 		"110": {
 			"sourceFileName": "src/numberToHex.ts",
-			"qualifiedName": ""
+			"qualifiedName": "default"
 		},
 		"111": {
 			"sourceFileName": "src/numberToHex.ts",
@@ -6553,19 +6001,19 @@
 		},
 		"112": {
 			"sourceFileName": "src/numberToHex.ts",
-			"qualifiedName": "default"
-		},
-		"113": {
-			"sourceFileName": "src/numberToHex.ts",
 			"qualifiedName": "num"
 		},
-		"114": {
+		"113": {
 			"sourceFileName": "src/pascalCase.ts",
 			"qualifiedName": ""
 		},
-		"115": {
+		"114": {
 			"sourceFileName": "src/pascalCase.ts",
 			"qualifiedName": "PascalCaseSettings"
+		},
+		"115": {
+			"sourceFileName": "src/pascalCase.ts",
+			"qualifiedName": "pascalCase"
 		},
 		"116": {
 			"sourceFileName": "src/pascalCase.ts",
@@ -6573,31 +6021,31 @@
 		},
 		"117": {
 			"sourceFileName": "src/pascalCase.ts",
-			"qualifiedName": "pascalCase"
+			"qualifiedName": "input"
 		},
 		"118": {
 			"sourceFileName": "src/pascalCase.ts",
-			"qualifiedName": "input"
-		},
-		"119": {
-			"sourceFileName": "src/pascalCase.ts",
 			"qualifiedName": "settings"
 		},
-		"120": {
+		"119": {
 			"sourceFileName": "src/phrasify.ts",
 			"qualifiedName": ""
 		},
-		"121": {
+		"120": {
 			"sourceFileName": "src/phrasify.ts",
 			"qualifiedName": "PhrasifySettings"
 		},
-		"122": {
+		"121": {
 			"sourceFileName": "src/phrasify.ts",
 			"qualifiedName": "__type"
 		},
-		"123": {
+		"122": {
 			"sourceFileName": "src/phrasify.ts",
 			"qualifiedName": "__type.numbers"
+		},
+		"123": {
+			"sourceFileName": "src/phrasify.ts",
+			"qualifiedName": "phrasify"
 		},
 		"124": {
 			"sourceFileName": "src/phrasify.ts",
@@ -6605,19 +6053,19 @@
 		},
 		"125": {
 			"sourceFileName": "src/phrasify.ts",
-			"qualifiedName": "phrasify"
+			"qualifiedName": "input"
 		},
 		"126": {
 			"sourceFileName": "src/phrasify.ts",
-			"qualifiedName": "input"
+			"qualifiedName": "settings"
 		},
 		"127": {
-			"sourceFileName": "src/phrasify.ts",
-			"qualifiedName": "settings"
+			"sourceFileName": "src/popIndex.ts",
+			"qualifiedName": ""
 		},
 		"128": {
 			"sourceFileName": "src/popIndex.ts",
-			"qualifiedName": ""
+			"qualifiedName": "popIndexPure"
 		},
 		"129": {
 			"sourceFileName": "src/popIndex.ts",
@@ -6625,15 +6073,15 @@
 		},
 		"130": {
 			"sourceFileName": "src/popIndex.ts",
-			"qualifiedName": "popIndexPure"
+			"qualifiedName": "list"
 		},
 		"131": {
 			"sourceFileName": "src/popIndex.ts",
-			"qualifiedName": "list"
+			"qualifiedName": "index"
 		},
 		"132": {
 			"sourceFileName": "src/popIndex.ts",
-			"qualifiedName": "index"
+			"qualifiedName": "popIndex"
 		},
 		"133": {
 			"sourceFileName": "src/popIndex.ts",
@@ -6641,23 +6089,23 @@
 		},
 		"134": {
 			"sourceFileName": "src/popIndex.ts",
-			"qualifiedName": "popIndex"
+			"qualifiedName": "list"
 		},
 		"135": {
 			"sourceFileName": "src/popIndex.ts",
-			"qualifiedName": "list"
-		},
-		"136": {
-			"sourceFileName": "src/popIndex.ts",
 			"qualifiedName": "index"
 		},
-		"137": {
+		"136": {
 			"sourceFileName": "src/promisefy.ts",
 			"qualifiedName": ""
 		},
-		"138": {
+		"137": {
 			"sourceFileName": "src/promisefy.ts",
 			"qualifiedName": "NodeLikeCallback"
+		},
+		"138": {
+			"sourceFileName": "src/promisefy.ts",
+			"qualifiedName": "__type"
 		},
 		"139": {
 			"sourceFileName": "src/promisefy.ts",
@@ -6665,19 +6113,19 @@
 		},
 		"140": {
 			"sourceFileName": "src/promisefy.ts",
-			"qualifiedName": "__type"
+			"qualifiedName": "err"
 		},
 		"141": {
 			"sourceFileName": "src/promisefy.ts",
-			"qualifiedName": "err"
+			"qualifiedName": "data"
 		},
 		"142": {
 			"sourceFileName": "src/promisefy.ts",
-			"qualifiedName": "data"
+			"qualifiedName": "PromisefyCallback"
 		},
 		"143": {
 			"sourceFileName": "src/promisefy.ts",
-			"qualifiedName": "PromisefyCallback"
+			"qualifiedName": "__type"
 		},
 		"144": {
 			"sourceFileName": "src/promisefy.ts",
@@ -6685,15 +6133,15 @@
 		},
 		"145": {
 			"sourceFileName": "src/promisefy.ts",
-			"qualifiedName": "__type"
+			"qualifiedName": "args"
 		},
 		"146": {
 			"sourceFileName": "src/promisefy.ts",
-			"qualifiedName": "args"
+			"qualifiedName": "PromisefiedFunction"
 		},
 		"147": {
 			"sourceFileName": "src/promisefy.ts",
-			"qualifiedName": "PromisefiedFunction"
+			"qualifiedName": "__type"
 		},
 		"148": {
 			"sourceFileName": "src/promisefy.ts",
@@ -6701,11 +6149,11 @@
 		},
 		"149": {
 			"sourceFileName": "src/promisefy.ts",
-			"qualifiedName": "__type"
+			"qualifiedName": "args"
 		},
 		"150": {
 			"sourceFileName": "src/promisefy.ts",
-			"qualifiedName": "args"
+			"qualifiedName": "default"
 		},
 		"151": {
 			"sourceFileName": "src/promisefy.ts",
@@ -6713,27 +6161,27 @@
 		},
 		"152": {
 			"sourceFileName": "src/promisefy.ts",
-			"qualifiedName": "default"
+			"qualifiedName": "fn"
 		},
 		"153": {
-			"sourceFileName": "src/promisefy.ts",
-			"qualifiedName": "fn"
+			"sourceFileName": "src/randomHexColor.ts",
+			"qualifiedName": ""
 		},
 		"154": {
 			"sourceFileName": "src/randomHexColor.ts",
-			"qualifiedName": ""
+			"qualifiedName": "default"
 		},
 		"155": {
 			"sourceFileName": "src/randomHexColor.ts",
 			"qualifiedName": "default"
 		},
 		"156": {
-			"sourceFileName": "src/randomHexColor.ts",
-			"qualifiedName": "default"
+			"sourceFileName": "src/randomId.ts",
+			"qualifiedName": ""
 		},
 		"157": {
 			"sourceFileName": "src/randomId.ts",
-			"qualifiedName": ""
+			"qualifiedName": "default"
 		},
 		"158": {
 			"sourceFileName": "src/randomId.ts",
@@ -6741,15 +6189,15 @@
 		},
 		"159": {
 			"sourceFileName": "src/randomId.ts",
-			"qualifiedName": "default"
+			"qualifiedName": "length"
 		},
 		"160": {
-			"sourceFileName": "src/randomId.ts",
-			"qualifiedName": "length"
+			"sourceFileName": "src/randomInt.ts",
+			"qualifiedName": ""
 		},
 		"161": {
 			"sourceFileName": "src/randomInt.ts",
-			"qualifiedName": ""
+			"qualifiedName": "randomInt"
 		},
 		"162": {
 			"sourceFileName": "src/randomInt.ts",
@@ -6757,43 +6205,43 @@
 		},
 		"163": {
 			"sourceFileName": "src/randomInt.ts",
-			"qualifiedName": "randomInt"
+			"qualifiedName": "min"
 		},
 		"164": {
 			"sourceFileName": "src/randomInt.ts",
-			"qualifiedName": "min"
+			"qualifiedName": "max"
 		},
 		"165": {
 			"sourceFileName": "src/randomInt.ts",
-			"qualifiedName": "max"
+			"qualifiedName": "randomInt"
 		},
 		"166": {
 			"sourceFileName": "src/randomInt.ts",
-			"qualifiedName": "randomInt"
+			"qualifiedName": "max"
 		},
 		"167": {
-			"sourceFileName": "src/randomInt.ts",
-			"qualifiedName": "max"
+			"sourceFileName": "src/randomRGBColor.ts",
+			"qualifiedName": ""
 		},
 		"168": {
 			"sourceFileName": "src/randomRGBColor.ts",
-			"qualifiedName": ""
+			"qualifiedName": "default"
 		},
 		"169": {
 			"sourceFileName": "src/randomRGBColor.ts",
 			"qualifiedName": "default"
 		},
 		"170": {
-			"sourceFileName": "src/randomRGBColor.ts",
-			"qualifiedName": "default"
-		},
-		"171": {
 			"sourceFileName": "src/RGBToHex.ts",
 			"qualifiedName": ""
 		},
-		"172": {
+		"171": {
 			"sourceFileName": "src/RGBToHex.ts",
 			"qualifiedName": "RGBTuple"
+		},
+		"172": {
+			"sourceFileName": "src/RGBToHex.ts",
+			"qualifiedName": "RGBToHex"
 		},
 		"173": {
 			"sourceFileName": "src/RGBToHex.ts",
@@ -6801,35 +6249,35 @@
 		},
 		"174": {
 			"sourceFileName": "src/RGBToHex.ts",
-			"qualifiedName": "RGBToHex"
+			"qualifiedName": "rgb"
 		},
 		"175": {
 			"sourceFileName": "src/RGBToHex.ts",
-			"qualifiedName": "rgb"
+			"qualifiedName": "RGBToHex"
 		},
 		"176": {
 			"sourceFileName": "src/RGBToHex.ts",
-			"qualifiedName": "RGBToHex"
+			"qualifiedName": "r"
 		},
 		"177": {
 			"sourceFileName": "src/RGBToHex.ts",
-			"qualifiedName": "r"
+			"qualifiedName": "g"
 		},
 		"178": {
 			"sourceFileName": "src/RGBToHex.ts",
-			"qualifiedName": "g"
+			"qualifiedName": "b"
 		},
 		"179": {
 			"sourceFileName": "src/RGBToHex.ts",
-			"qualifiedName": "b"
+			"qualifiedName": "a"
 		},
 		"180": {
-			"sourceFileName": "src/RGBToHex.ts",
-			"qualifiedName": "a"
+			"sourceFileName": "src/safeDateChange.ts",
+			"qualifiedName": ""
 		},
 		"181": {
 			"sourceFileName": "src/safeDateChange.ts",
-			"qualifiedName": ""
+			"qualifiedName": "default"
 		},
 		"182": {
 			"sourceFileName": "src/safeDateChange.ts",
@@ -6837,23 +6285,23 @@
 		},
 		"183": {
 			"sourceFileName": "src/safeDateChange.ts",
-			"qualifiedName": "default"
+			"qualifiedName": "from"
 		},
 		"184": {
 			"sourceFileName": "src/safeDateChange.ts",
-			"qualifiedName": "from"
-		},
-		"185": {
-			"sourceFileName": "src/safeDateChange.ts",
 			"qualifiedName": "to"
 		},
-		"186": {
+		"185": {
 			"sourceFileName": "src/snakeCase.ts",
 			"qualifiedName": ""
 		},
-		"187": {
+		"186": {
 			"sourceFileName": "src/snakeCase.ts",
 			"qualifiedName": "SnakeCaseSettings"
+		},
+		"187": {
+			"sourceFileName": "src/snakeCase.ts",
+			"qualifiedName": "default"
 		},
 		"188": {
 			"sourceFileName": "src/snakeCase.ts",
@@ -6861,35 +6309,35 @@
 		},
 		"189": {
 			"sourceFileName": "src/snakeCase.ts",
-			"qualifiedName": "default"
+			"qualifiedName": "str"
 		},
 		"190": {
 			"sourceFileName": "src/snakeCase.ts",
-			"qualifiedName": "str"
-		},
-		"191": {
-			"sourceFileName": "src/snakeCase.ts",
 			"qualifiedName": "settings"
 		},
-		"192": {
+		"191": {
 			"sourceFileName": "src/truncate.ts",
 			"qualifiedName": ""
 		},
-		"193": {
+		"192": {
 			"sourceFileName": "src/truncate.ts",
 			"qualifiedName": "TruncateSettings"
 		},
-		"194": {
+		"193": {
 			"sourceFileName": "src/truncate.ts",
 			"qualifiedName": "__type"
 		},
-		"195": {
+		"194": {
 			"sourceFileName": "src/truncate.ts",
 			"qualifiedName": "__type.maxLength"
 		},
-		"196": {
+		"195": {
 			"sourceFileName": "src/truncate.ts",
 			"qualifiedName": "__type.end"
+		},
+		"196": {
+			"sourceFileName": "src/truncate.ts",
+			"qualifiedName": "default"
 		},
 		"197": {
 			"sourceFileName": "src/truncate.ts",
@@ -6897,19 +6345,19 @@
 		},
 		"198": {
 			"sourceFileName": "src/truncate.ts",
-			"qualifiedName": "default"
+			"qualifiedName": "str"
 		},
 		"199": {
 			"sourceFileName": "src/truncate.ts",
-			"qualifiedName": "str"
+			"qualifiedName": "settings"
 		},
 		"200": {
-			"sourceFileName": "src/truncate.ts",
-			"qualifiedName": "settings"
+			"sourceFileName": "src/uniqueArray.ts",
+			"qualifiedName": ""
 		},
 		"201": {
 			"sourceFileName": "src/uniqueArray.ts",
-			"qualifiedName": ""
+			"qualifiedName": "default"
 		},
 		"202": {
 			"sourceFileName": "src/uniqueArray.ts",
@@ -6917,143 +6365,7 @@
 		},
 		"203": {
 			"sourceFileName": "src/uniqueArray.ts",
-			"qualifiedName": "default"
-		},
-		"204": {
-			"sourceFileName": "src/uniqueArray.ts",
 			"qualifiedName": "arr"
-		},
-		"205": {
-			"sourceFileName": "src/index.ts",
-			"qualifiedName": "camelCase"
-		},
-		"206": {
-			"sourceFileName": "src/index.ts",
-			"qualifiedName": "capitalize"
-		},
-		"207": {
-			"sourceFileName": "src/index.ts",
-			"qualifiedName": "chunkString"
-		},
-		"208": {
-			"sourceFileName": "src/index.ts",
-			"qualifiedName": "currencyFormat"
-		},
-		"209": {
-			"sourceFileName": "src/index.ts",
-			"qualifiedName": "formatNumber"
-		},
-		"210": {
-			"sourceFileName": "src/index.ts",
-			"qualifiedName": "hash"
-		},
-		"211": {
-			"sourceFileName": "src/index.ts",
-			"qualifiedName": "hexToNumber"
-		},
-		"212": {
-			"sourceFileName": "src/index.ts",
-			"qualifiedName": "hexToRGB"
-		},
-		"213": {
-			"sourceFileName": "src/index.ts",
-			"qualifiedName": "isBoolean"
-		},
-		"214": {
-			"sourceFileName": "src/index.ts",
-			"qualifiedName": "isFunction"
-		},
-		"215": {
-			"sourceFileName": "src/index.ts",
-			"qualifiedName": "isGenerator"
-		},
-		"216": {
-			"sourceFileName": "src/index.ts",
-			"qualifiedName": "isNumber"
-		},
-		"217": {
-			"sourceFileName": "src/index.ts",
-			"qualifiedName": "isNumeric"
-		},
-		"218": {
-			"sourceFileName": "src/index.ts",
-			"qualifiedName": "isObject"
-		},
-		"219": {
-			"sourceFileName": "src/index.ts",
-			"qualifiedName": "isString"
-		},
-		"220": {
-			"sourceFileName": "src/index.ts",
-			"qualifiedName": "kebabCase"
-		},
-		"221": {
-			"sourceFileName": "src/index.ts",
-			"qualifiedName": "leadingZero"
-		},
-		"222": {
-			"sourceFileName": "src/index.ts",
-			"qualifiedName": "limitDecimals"
-		},
-		"223": {
-			"sourceFileName": "src/index.ts",
-			"qualifiedName": "minMax"
-		},
-		"224": {
-			"sourceFileName": "src/index.ts",
-			"qualifiedName": "numberToHex"
-		},
-		"225": {
-			"sourceFileName": "src/index.ts",
-			"qualifiedName": "pascalCase"
-		},
-		"226": {
-			"sourceFileName": "src/index.ts",
-			"qualifiedName": "phrasify"
-		},
-		"227": {
-			"sourceFileName": "src/index.ts",
-			"qualifiedName": "popIndex"
-		},
-		"228": {
-			"sourceFileName": "src/index.ts",
-			"qualifiedName": "promisefy"
-		},
-		"229": {
-			"sourceFileName": "src/index.ts",
-			"qualifiedName": "randomHexColor"
-		},
-		"230": {
-			"sourceFileName": "src/index.ts",
-			"qualifiedName": "randomId"
-		},
-		"231": {
-			"sourceFileName": "src/index.ts",
-			"qualifiedName": "randomInt"
-		},
-		"232": {
-			"sourceFileName": "src/index.ts",
-			"qualifiedName": "randomRGBColor"
-		},
-		"233": {
-			"sourceFileName": "src/index.ts",
-			"qualifiedName": "RGBToHex"
-		},
-		"234": {
-			"sourceFileName": "src/index.ts",
-			"qualifiedName": "safeDateChange"
-		},
-		"235": {
-			"sourceFileName": "src/index.ts",
-			"qualifiedName": "snakeCase"
-		},
-		"236": {
-			"sourceFileName": "src/index.ts",
-			"qualifiedName": "truncate"
-		},
-		"237": {
-			"sourceFileName": "src/index.ts",
-			"qualifiedName": "uniqueArray"
 		}
 	}
 }
