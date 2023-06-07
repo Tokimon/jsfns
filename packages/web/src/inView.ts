@@ -3,7 +3,7 @@ import hidden from './hidden';
 
 
 
-type PositionIndicator = {
+export type PositionIndicator = {
   /** Inside the viewport area? */
   inside: boolean;
   /** Above the viewport area? */

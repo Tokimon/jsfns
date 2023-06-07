@@ -1,5 +1,5 @@
-type cnObj = { [key: string]: boolean; };
-type Option = string | cnObj;
+export type cnObj = { [key: string]: boolean; };
+export type Option = string | cnObj;
 
 const combine = (base: string, cn: string) => base + (base && cn && ' ') + cn;
 const classNames = (...args: (Option | Option[])[]): string => {

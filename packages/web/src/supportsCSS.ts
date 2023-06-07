@@ -8,7 +8,7 @@ let div: HTMLDivElement;
 
 
 
-type PrefixedPropMatch = {
+export type PrefixedPropMatch = {
   prop: string;
   value: string;
   prefix: string;

@@ -8,14 +8,14 @@ import size from './size';
 
 
 
-type Position = {
+export type Position = {
   top: number;
   left: number;
   right: number;
   bottom: number;
 }
 
-interface PositionData extends Position {
+export interface PositionData extends Position {
   /** Position relative to the offset parent */
   parent: Position;
   /** Position relative to the viewport area */

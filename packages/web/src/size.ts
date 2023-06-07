@@ -6,7 +6,7 @@ import viewport from './viewport';
 
 
 
-type Size = {
+export type Size = {
   width: number,
   height: number
 }

@@ -1,11 +1,11 @@
-type BoxModelSectionMapping = {
+export type BoxModelSectionMapping = {
   top: number;
   left: number;
   bottom: number;
   right: number;
 }
 
-type BoxModelMapping = {
+export type BoxModelMapping = {
   margin: BoxModelSectionMapping
   padding: BoxModelSectionMapping
   border: BoxModelSectionMapping

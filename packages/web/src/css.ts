@@ -5,7 +5,7 @@ import kebabCase from '@js-fns/core/kebabCase';
 
 
 
-type CSSStyleProperties = { [key in CSSStyleKey]?: string | number | null };
+export type CSSStyleProperties = { [key in CSSStyleKey]?: string | number | null };
 
 
 

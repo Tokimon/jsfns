@@ -14,11 +14,11 @@ export type OnceEventListenerOptions = AddEventListenerOptions & {
 
 
 
-const manuelOnce = (
+function manuelOnce(
   elm: EventTarget,
   handler: EventListenerOrEventListenerObject,
   when?: WhenFunction
-) => {
+) {
   const offHandler = (e: Event) => {
     if (when && when(e) !== true) { return true; }
     off(elm as EventTarget, e.type, offHandler);
@@ -29,14 +29,14 @@ const manuelOnce = (
   };
 
   return offHandler;
-};
+}
 
-const bind = (
+function bind(
   elm: EventTarget,
   eventNames: string | string[],
   handler: EventListenerOrEventListenerObject,
   options?: OnceEventListenerOptions
-): () => ReturnType<typeof off> => {
+): () => ReturnType<typeof off> {
   const noOptions = !eventOptionsSupported();
   const { when, ...eventOptions } = options || {};
   eventOptions.once = !when;
@@ -48,7 +48,7 @@ const bind = (
   on(elm, eventNames, eventHandler, eventOptions);
 
   return () => off(elm, eventNames, eventHandler, eventOptions);
-};
+}
 
 
 
