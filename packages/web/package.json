@@ -29,16 +29,17 @@
     "build": "../../bin/build.sh",
     "clean": "../../bin/clean.sh",
     "missing": "../../bin/missing.sh",
+    "docs": "../../bin/docs.sh",
     "types": "tsc -p tsconfig.json --noEmit",
     "test": "NODE_OPTIONS=--experimental-vm-modules jest",
     "test:coverage": "npm t -- --collectCoverage",
     "lint": "eslint . --max-warnings=0"
   },
-  "dependencies": {
-    "@js-fns/core": "^1.0.0"
-  },
   "directories": {
     "test": "tests"
+  },
+  "dependencies": {
+    "@js-fns/core": "^1.0.0"
   },
   "devDependencies": {
     "jest-environment-jsdom": "^29.0.1"

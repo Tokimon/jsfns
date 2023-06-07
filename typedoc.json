@@ -1,9 +1,5 @@
 {
   "$schema": "https://typedoc.org/schema.json",
-  "entryPoints": ["./packages/core/src"],
-  "tsconfig": "./packages/core/tsconfig.js.json",
-  "out": "typedoc_docs",
-  "json": "docs/src/lib/docs/core.json",
   "entryPointStrategy": "Expand",
   "pretty": true,
   "cleanOutputDir": true,
