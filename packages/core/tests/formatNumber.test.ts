@@ -3,24 +3,22 @@ import formatNumber from '~core/formatNumber';
 
 
 describe('"formatNumber"', () => {
-  const num = 1100.234;
+  const num = 1100.254;
   it('Formats number with default settings', () => {
-    expect(formatNumber(num)).toBe('1.100,23');
+    expect(formatNumber(num)).toBe('1.100,25');
   });
 
   it.each([
-    [{ thousand: '|' }, '1|100,23'],
-    [{ decimal: '|' }, '1.100|23'],
-    [{ thousand: '-', decimal: '#' }, '1-100#23']
+    [{ thousand: '|' }, '1|100,25'],
+    [{ decimal: '|' }, '1.100|25'],
+    [{ decimalCount: 1 }, '1.100,3'],
+    [{ decimalCount: '>4' }, '1.100,2540'],
+    [{ decimalCount: '<2' }, '1.100,25'],
+    [{ thousand: '-', decimal: '#' }, '1-100#25'],
+    [{ thousand: '', decimalCount: 3 }, '1100,254'],
+    [{ decimal: '-', decimalCount: '>2' }, '1.100-254'],
+    [{ thousand: '.', decimal: ',', decimalCount: 3 }, '1.100,254']
   ])('Formats number with given separator configuration: %s', (config, output) => {
-    expect(formatNumber(1100.234, config)).toBe(output);
-  });
-
-  it.each([
-    [1, '1.100,2'],
-    ['>4', '1.100,2340'],
-    ['<2', '1.100,23']
-  ])('Format the decimals (using "limitDecimals" expressions): %s', (decimalCount, output) => {
-    expect(formatNumber(1100.234, { decimalCount })).toBe(output);
+    expect(formatNumber(num, config)).toBe(output);
   });
 });
