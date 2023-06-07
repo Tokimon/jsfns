@@ -20,16 +20,12 @@ describe('"RGBToHex"', () => {
       expect(RGBToHex(0, 255, 0, 0.5)).toBe('#00ff0080');
     });
 
-    it('A value of 1 is not added to the hex', () => {
-      expect(RGBToHex(0, 255, 0, 1)).toBe('#00ff00');
-    });
-
     it('Set negative numbers to 0', () => {
       expect(RGBToHex(0, 255, 0, -2)).toBe('#00ff0000');
     });
 
     it('Limits the alpha channel to 1', () => {
-      expect(RGBToHex(0, 255, 0, 200)).toBe('#00ff00');
+      expect(RGBToHex(0, 255, 0, 200)).toBe('#00ff00ff');
     });
   });
 
@@ -40,11 +36,10 @@ describe('"RGBToHex"', () => {
 
     describe('Adds the alpha channel correctly', () => {
       it.each([
-        [-200, '00'],
+        [-1, '00'],
         [0, '00'],
         [0.5, '80'],
-        [1, ''],
-        [200, '']
+        [1, 'ff']
       ])('Alpha: %i', (a, hexA) => {
         expect(RGBToHex([255, 0, 0, a])).toBe('#ff0000' + hexA);
       });
