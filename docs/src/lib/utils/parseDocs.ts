@@ -1,4 +1,4 @@
-import type { CallSignatureKind, ParameterKind, RootDocObject } from 'src/types';
+import type { CallSignatureKind, ParameterKind, RootDocObject } from '$lib/types';
 
 type FunctionOverride = {
 	parameters: ParameterKind[];

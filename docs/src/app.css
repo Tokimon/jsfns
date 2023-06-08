@@ -74,6 +74,13 @@ summary {
 	font-size: 12px;
 	cursor: pointer;
 	color: gray;
+	transition: color 0.2s;
+}
+
+summary:hover,
+summary:focus {
+	color: #cc7000;
+	outline: none;
 }
 
 pre code.hljs {

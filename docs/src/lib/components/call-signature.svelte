@@ -1,20 +1,20 @@
 <script context="module" lang="ts">
-  import type { CallSignatureKind } from 'src/types';
+  import type { Kind_Signature } from '$lib/types';
+  import { buildSummary } from "$lib/utils/buildSummary";
+  import { buildFunction } from '$lib/utils/buildFunction';
+  import { buildTypeAlias } from "$lib/utils/buildTypeAlias";
+  import { TSCode } from '$lib/utils/ts-code';
+  import { createTypeString } from "$lib/utils/typeString";
   import { onMount } from 'svelte';
-  import { typeReferences, type StoreDictionary } from "../stores/typeReferences";
-  import { buildComment } from "../utils/buildComment";
-  import { buildFunction } from '../utils/buildFunction';
-  import { buildTypeAlias } from "../utils/buildTypeAlias";
-  import { TSCode } from '../utils/ts-code';
-  import { createTypeString } from "../utils/typeString";
-  import Markdown from "./markdown.svelte";
-  import { offset, flip, shift } from "svelte-floating-ui/dom";
   import { createFloatingActions } from "svelte-floating-ui";
+  import { flip, offset, shift } from "svelte-floating-ui/dom";
+  import { typeReferences, type StoreDictionary } from "../stores/typeReferences";
+  import Markdown from "./markdown.svelte";
 </script>
 
 <script lang="ts">
   export let name: string;
-  export let signature: CallSignatureKind;
+  export let signature: Kind_Signature;
   const { comment } = signature;
 
   let references: StoreDictionary = {};
@@ -23,7 +23,7 @@
   let hoveredType = '';
 
   const typeNames: string[] = [];
-  const typeToString = createTypeString(name, typeNames);
+  const typeString = createTypeString(name, typeNames);
 
   let definitionElement: HTMLDivElement | undefined;
 
@@ -51,7 +51,7 @@
 
   const buildExpression = (typeName: string) => buildTypeAlias(typeName, references[typeName])
 
-  $: examples = comment?.tags?.filter(({tag}) => tag === 'example') || [];
+  $: examples = comment?.blockTags?.filter(({tag}) => tag === '@example').map(({ content }) => buildSummary(content)) || [];
 
   $: {
     expressions.clear();
@@ -67,8 +67,7 @@
   }
 
   onMount(() => {
-    console.log('mount');
-    
+    // TODO can this be done simpler with $typeReferences?
     const unsubscribe = typeReferences.subscribe(value => { references = value; });
 
     const classTypeNodes = definitionElement?.querySelectorAll<HTMLElement>('.definition .hljs-title.class_');
@@ -134,14 +133,14 @@
 
 <div class="call-signature">
   <div class="definition" bind:this={definitionElement}>
-    <Markdown text={TSCode(buildFunction(typeToString, name, signature))} />
+    <Markdown text={TSCode(buildFunction(typeString, name, signature))} />
   </div>
 
   {#if examples.length || comment || typeNames.length}
     <div class="content">
       {#if comment}
         <div class="description">
-          <Markdown text={buildComment(comment)} />
+          <Markdown text={buildSummary(comment?.summary)} />
         </div>
       {/if}
       
@@ -149,7 +148,7 @@
         <details>
           <summary>Examples</summary>
           {#each examples as example}
-            <Markdown text={example.text} />
+            <Markdown text={example} />
           {/each}
         </details>
       {/if}

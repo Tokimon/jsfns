@@ -1,26 +1,24 @@
 <script context="module" lang="ts">
-	export const prerender = true;
+	import packages from '$lib/data/packages.json';
+	// export const ssr = true; // TODO https://kit.svelte.dev/docs/hooks#handle
 </script>
 
 <script lang="ts">
-	const pageDescription = 'Description of js-fns';
+	const packageNames = Object.keys(packages).sort();
 </script>
 
 <svelte:head>
 	<title>@js-fns</title>
-	<meta name="description" content={pageDescription} />
 </svelte:head>
 
 <main>
 	<h1>@js-fns</h1>
 
-	<a class="package-link" href="/core">
-		/core
-	</a>
-
-	<a class="package-link" href="/web">
-		/web
-	</a>
+	{#each packageNames as packageName}
+		<a class="package-link" href="/{packageName}">
+			/{packageName}
+		</a>
+	{/each}
 </main>
 
 <style>

@@ -1,14 +1,24 @@
 <script context="module" lang="ts">
-	import type { ModuleKind } from 'src/types';
-	import Menu from '../components/menu.svelte';
-	import Module from '../components/module.svelte';
+	import { page } from '$app/stores';
+	import Menu from '$lib/components/menu.svelte';
+	import Module from '$lib/components/module.svelte';
+	import docs from '$lib/data/docs.json';
+	import { description } from '$lib/data/package-info.json';
+	import packages from '$lib/data/packages.json';
+	import type { Kind_Module } from '$lib/types';
+
+	// export const ssr = true; // TODO https://kit.svelte.dev/docs/hooks#handle
+	export const hydrate = true;
 </script>
 
 <script lang="ts">
-  export let name: string;
-  export let version: string;
-  export let description: string;
-  export let modules: ModuleKind[] = [];
+	const { slug } = $page.params;
+	const [packageName, version] = slug.split('/');
+	const versions = packages[packageName as (keyof typeof packages)];
+
+	const currentVersion = version ?? versions[0];
+
+  let modules = [...docs.children] as Kind_Module[];
 	
 	let menuOpen = false;
 	const toggleMenu = () => { menuOpen = !menuOpen; }
@@ -21,6 +31,8 @@
       return aName > bName ? 1 : aName === bName ? 0 : -1
     })
   }
+
+	$: title = `@js-fns/${packageName} v. ${currentVersion}`
 </script>
 
 
@@ -58,7 +70,7 @@
 
 	.content {
 		grid-area: content;
-		padding: 0 7px;
+		padding: 0 15px;
 		overflow: hidden;
 		position: relative;
 		z-index: 9;
@@ -97,7 +109,7 @@
 </style>
 
 <svelte:head>
-	<title>@js-fns/{name} v. {version}</title>
+	<title>{title}</title>
 	<meta name="description" content={description} />
 </svelte:head>
 
@@ -105,12 +117,13 @@
 	<header class="header">
 		<button type="button" class="menu-trigger" on:click={toggleMenu} />
 
-		<h2 class="page-title">@js-fns/{name} v. {version}</h2>
+		<h2 class="page-title">{title}</h2>
 		
-		<a target='_blank' href='https://www.npmjs.com/package/@js-fns/{name}' class="repository">
+		<a target='_blank' href='https://www.npmjs.com/package/@js-fns/{packageName}' class="repository">
 			<img src='https://static.npmjs.com/f1786e9b7cba9753ca7b9c40e8b98f67.png' alt='npm' />
 		</a>
-		<a target='_blank' href='https://github.com/Tokimon/js-fns/{name}' class="repository">
+
+		<a target='_blank' href='https://github.com/Tokimon/js-fns/{packageName}' class="repository">
 			<img src='https://github.githubassets.com/favicons/favicon-dark.svg' alt='Github' />
 		</a>
 	</header>

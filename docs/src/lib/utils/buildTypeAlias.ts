@@ -1,4 +1,4 @@
-import type { TypeAliasKind } from 'src/types';
+import type { TypeAliasKind } from '$lib/types';
 import { createTypeString } from './typeString';
 
 export const buildTypeAlias = (name: string, alias?: TypeAliasKind) => {

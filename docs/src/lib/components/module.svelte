@@ -1,14 +1,14 @@
 <script context="module" lang="ts">
-	import type { FunctionKind, ModuleKind } from 'src/types';
-	import { typeReferences } from '../stores/typeReferences';
+	import { type Kind_Function, type Kind_Module, Kind } from '$lib/types';
+	import { typeReferences } from '$lib/stores/typeReferences';
 	import CallSignature from './call-signature.svelte';
 
-  function getFunctions(module: ModuleKind): FunctionKind[] {
-    let methodFunc: FunctionKind | undefined;
-    const other: FunctionKind[] = []
+  function getFunctions(module: Kind_Module): Kind_Function[] {
+    let methodFunc: Kind_Function | undefined;
+    const other: Kind_Function[] = []
 
     for (const child of module.children) {
-      if (child.kindString !== 'Function') continue;
+      if (child.kind !== Kind.Function) continue;
 
       if (child.name === 'default') {
         if (!methodFunc) methodFunc = child
@@ -22,34 +22,52 @@
     return methodFunc ? [methodFunc].concat(other) : other;
   }
 
-  function getTypeReferences(module: ModuleKind) {
+  function getTypeReferences(module: Kind_Module) {
     for (const child of module.children) {
-      if (child.kindString === 'Namespace') {
-        for (const type of child.children)
-          if (type.kindString === 'Type alias')
-            typeReferences.add(type);
-
-      } else if(child.kindString === 'Type alias') {
-        typeReferences.add(child);
-      }
+      if (child.kind === Kind.TypeAlias) typeReferences.add(child);
     }
   }
 </script>
 
 <script lang="ts">
-  export let module: ModuleKind;
+  export let module: Kind_Module;
 
   $: functions = getFunctions(module);
   $: { getTypeReferences(module); }
 </script>
 
 <style>
+  .module {
+    padding-top: var(--header-hight);
+  }
+
+  .content {
+    background: #232f39;
+    border-radius: 5px;
+    margin-top: 15px;
+    box-shadow: rgba(0,0,0,0.5) 0 0 5px 0;
+    transition: box-shadow 1s;
+  }
+
+  .content:hover {
+    box-shadow: cornflowerblue 0 0 5px 0;
+    transition: box-shadow 0.2s;
+  }
+
+  .module:target .content,
+  .module:target .content:hover {
+    box-shadow: cornflowerblue 0 0 5px 3px;
+  }
+
   .content h1 {
     margin: 0;
     padding: 0 15px;
     line-height: 50px;
     background: #394957;
     font-size: 18px;
+    font-weight: 400;
+    border-top-left-radius: inherit;
+    border-top-right-radius: inherit;
   }
 
   .content h1 a {
@@ -67,20 +85,6 @@
     transition: color 0.2s;
   }
 
-  .content {
-    background: #232f39;
-    border: transparent 3px solid;
-    background-clip: content-box;
-  }
-
-  .module {
-    padding-top: var(--header-hight);
-  }
-
-  .module:target .content {
-    border-color: #aaa;
-  }
-
   .signatures {
     display: flex;
     flex-direction: column;
@@ -89,7 +93,7 @@
 
   @container (min-width: 600px) {
     .content h1 {
-      font-size: 30px;
+      font-size: 25px;
     }
   }
 </style>
