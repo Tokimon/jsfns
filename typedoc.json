@@ -1,7 +1,8 @@
 {
   "$schema": "https://typedoc.org/schema.json",
-  "entryPointStrategy": "Expand",
+  "entryPointStrategy": "expand",
   "pretty": true,
   "cleanOutputDir": true,
-  "readme": "none"
+  "readme": "none",
+  "exclude":["**/index.*"]
 }
