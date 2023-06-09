@@ -24,24 +24,24 @@ const thousandRegExp = /^(\D*)1(\D*)000(\D*)(\d*)(\D*)$/;
  * @example
  * ```ts
  * // Format number to default currency format (euro)
- * const euro = currencyFormat();
+ * const euro = formatCurrency();
  * euro(2345234.678); // -> '2.345.234,68 €'
  *
  * // Format number to USD currency format
- * const usd = currencyFormat('$ 1,000.00');
+ * const usd = formatCurrency('$ 1,000.00');
  * usd(2345234.678); // -> '$ 2,345,234.68'
  *
  * // Format number to custom currency format
- * const custom = currencyFormat('# 1-000;00 ¤');
+ * const custom = formatCurrency('# 1-000;00 ¤');
  * custom(2345234.678); // -> '# 2-345-234;68 ¤'
  *
  * // Specifying number of decimals
- * const sixDecimals = currencyFormat('$ 1,000.000000');
+ * const sixDecimals = formatCurrency('$ 1,000.000000');
  * sixDecimals(2345234.678); // -> '$ 2,345,234.678000'
  * sixDecimals(234.12345678); // -> '$ 234.123457'
  * ```
  */
-export function currencyFormat(thousandTemplate = '1.000,00 €'): CurrencyFormatter {
+export function formatCurrency(thousandTemplate = '1.000,00 €'): CurrencyFormatter {
   let m = thousandRegExp.exec(thousandTemplate);
 
   if (!m) m = thousandRegExp.exec('1.000,00 €') as RegExpExecArray;
@@ -53,4 +53,4 @@ export function currencyFormat(thousandTemplate = '1.000,00 €'): CurrencyForma
   return (num: number) => `${before}${formatNumber(num, settings)}${after}`;
 }
 
-export default currencyFormat();
+export default formatCurrency();
