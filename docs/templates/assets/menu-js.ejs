@@ -1,0 +1,24 @@
+<script defer>
+	const Menu = document.getElementById('Menu');
+	[...document.getElementsByClassName('menu-trigger')].forEach((button) => {
+		button.addEventListener('click', () => Menu.classList.toggle('open'));
+	});
+
+	function onHashChange() {
+		const moduleName = location.hash.slice(1);
+		const current = document.querySelector('.menu-list-item.current');
+
+		if (moduleName) {
+			const menuItem = document.getElementById('Menu-' + moduleName);
+
+			if (menuItem === current) return;
+
+			menuItem?.classList.add('current');
+		}
+
+		current?.classList.remove('current');
+	}
+
+	window.addEventListener('hashchange', onHashChange);
+	onHashChange();
+</script>

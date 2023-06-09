@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title><%= title %></title>
+		<%- await include('assets/base-css'); %> <%- await include('assets/modules-css'); %>
+		<style>
+			<%- highlightCss %>
+		</style>
+	</head>
+
+	<body>
+		<main class="page">
+			<header class="header">
+				<button type="button" class="menu-trigger"></button>
+
+				<h2 class="page-title"><a href="#"><%= title %></a></h2>
+
+				<a
+					target="_blank"
+					href="https://www.npmjs.com/package/@js-fns/<%_ packageName %>"
+					class="repository"
+				>
+					<img src="https://static.npmjs.com/f1786e9b7cba9753ca7b9c40e8b98f67.png" alt="npm" />
+				</a>
+
+				<a
+					target="_blank"
+					href="https://github.com/Tokimon/js-fns/<%_ packageName %>"
+					class="repository"
+				>
+					<img src="https://github.githubassets.com/favicons/favicon-dark.svg" alt="Github" />
+				</a>
+			</header>
+
+			<nav class="menu" id="Menu">
+				<ul class="menu-list">
+					<% modules.forEach((module) => { %>
+					<li class="menu-list-item" id="Menu-<%= module.name %>">
+						<a href="#<%= module.name %>"><%= module.name %></a>
+					</li>
+					<% }); %>
+				</ul>
+			</nav>
+
+			<article class="modules">
+				<% modules.forEach((module) => { %>
+				<section class="module" id="<%= module.name %>">
+					<div class="module-content">
+						<h1>
+							<a href="#<%= module.name %>"><b>#</b> <%= module.name %></a>
+						</h1>
+
+						<div class="signatures">
+							<% module.functions.forEach((func) => { %>
+							<div class="signature">
+								<div class="signature-definition"><%- func.definition %></div>
+
+								<% if (func.examples.length || func.comment || func.typesMarkdown) { %>
+								<div class="signature-content">
+									<% if (func.comment) { %>
+									<div class="signature-description"><%- func.comment %></div>
+									<% } %> <% if (func.examples.length) { %>
+									<details>
+										<summary>Examples</summary>
+										<% func.examples.forEach((example) => { %> <%- example %> <% }) %>
+									</details>
+									<% } %> <% if (func.typesMarkdown) { %>
+									<details>
+										<summary>Types</summary>
+										<%- func.typesMarkdown %>
+									</details>
+									<% } %>
+								</div>
+								<% } %>
+							</div>
+							<% }) %>
+						</div>
+					</div>
+				</section>
+				<% }); %>
+			</article>
+		</main>
+
+		<% customTypes.forEach(({ name, markdown }) => { %>
+		<div class="tooltip" id="Tooltip-<%= name %>"><%- markdown %></div>
+		<% }) %> <%- await include('assets/menu-js'); %> <%- await include('assets/tooltip-js'); %>
+	</body>
+</html>
