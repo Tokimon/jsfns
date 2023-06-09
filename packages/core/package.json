@@ -1,0 +1,41 @@
+{
+  "name": "@js-fns/core",
+  "version": "1.0.0",
+  "description": "Simple, no dependency, JS utility functions",
+  "author": "Toke Voltelen",
+  "license": "MIT",
+  "type": "module",
+  "main": "./index.js",
+  "module": "./index.mjs",
+  "types": "./index.d.ts",
+  "typings": "./index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "git+https://Tokimon@github.com/Tokimon/js-fns.git"
+  },
+  "keywords": [
+    "javascript",
+    "helpers",
+    "snippets",
+    "utility",
+    "tool"
+  ],
+  "bugs": {
+    "url": "https://github.com/Tokimon/js-fns/issues"
+  },
+  "homepage": "https://github.com/Tokimon/js-fns#readme",
+  "scripts": {
+    "build": "../../bin/build.sh",
+    "clean": "../../bin/clean.sh",
+    "missing": "../../bin/missing.sh",
+    "docs": "../../bin/docs.sh",
+    "types": "tsc -p tsconfig.json --noEmit",
+    "test": "NODE_OPTIONS=--experimental-vm-modules jest",
+    "test:coverage": "npm t -- --collectCoverage",
+    "lint": "eslint . --max-warnings=0"
+  },
+  "directories": {
+    "test": "tests"
+  },
+  "devDependencies": {}
+}
