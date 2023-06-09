@@ -29,7 +29,7 @@ ok ".js\e[0m and \e[1;33m.d.ts"
 rm -f $PWD/src/index.ts
 ok "Generated index file"
 
-# Remove any remaining "dist" folder
+# Remove any remaining "build" folder
 rm -rf $PWD/build
 ok 'build directory'
 

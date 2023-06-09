@@ -1,0 +1,3371 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>@js-fns/web v.1.0.x</title>
+		<style>
+	:root {
+		font-family: Arial, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu,
+			Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+
+		font-size: 14px;
+	}
+
+	body {
+		min-height: 100vh;
+		margin: 0;
+		background: #11181d;
+		color: whitesmoke;
+	}
+
+	pre {
+		margin: 0;
+	}
+
+	* {
+		scrollbar-width: thin;
+		scroll-behavior: smooth;
+	}
+
+	::-webkit-scrollbar {
+		width: 8px;
+		height: 8px;
+	}
+
+	::-webkit-scrollbar-track {
+		background: transparent;
+		box-shadow: none;
+	}
+
+	::-webkit-scrollbar-thumb {
+		border-radius: 2px;
+		background: rgba(255, 255, 255, 0.15);
+	}
+
+	p {
+		margin: 0;
+	}
+</style>
+ <style>
+	table {
+		table-layout: auto;
+		border-collapse: collapse;
+	}
+
+	table th,
+	table td {
+		text-align: left;
+		padding: 5px 10px;
+		border: 0 solid #444;
+		border-width: 0 0 1px;
+
+		& + & {
+			border-left-width: 1px;
+		}
+	}
+
+	table tbody tr:last-child th,
+	table tbody tr:last-child td {
+		border-bottom: 0;
+	}
+
+	details[open] summary {
+		margin-bottom: 5px;
+	}
+
+	details pre code.hljs {
+		background-color: #1c2431;
+		box-shadow: inset #141a24 0 0 5px;
+	}
+
+	summary {
+		font-size: 12px;
+		cursor: pointer;
+		color: gray;
+		transition: color 0.2s;
+	}
+
+	summary:hover,
+	summary:focus {
+		color: #cc7000;
+		outline: none;
+	}
+
+	pre code.hljs {
+		padding: 15px;
+	}
+
+	.page {
+		--header-hight: 50px;
+
+		grid-template-areas:
+			'header header'
+			'nav content';
+		grid-template-columns: 200px 1fr;
+	}
+
+	.header {
+		position: fixed;
+		top: 0;
+		left: 0;
+		right: 0;
+		z-index: 99;
+		background-color: #212d36;
+		color: white;
+		padding: 0 10px;
+		grid-area: header;
+		height: var(--header-hight);
+		display: flex;
+		align-items: center;
+		gap: 15px;
+	}
+
+	.page-title {
+		margin: 0;
+		font-size: 18px;
+		flex: 1 1 100%;
+	}
+
+	.page-title a {
+		color: currentColor;
+		text-decoration: none;
+	}
+
+	.page-title a:hover,
+	.page-title a:focus {
+		text-decoration: underline;
+	}
+
+	.modules {
+		grid-area: content;
+		padding: 0 15px var(--header-hight);
+		overflow: hidden;
+		position: relative;
+		z-index: 9;
+		container-type: inline-size;
+	}
+
+	.menu-trigger {
+		width: 22px;
+		height: 16px;
+		border: 0;
+		background: linear-gradient(white, white 25%, transparent 25%, transparent);
+		background-repeat: repeat;
+		background-size: 1px 7px;
+		appearance: none;
+		cursor: pointer;
+	}
+
+	.menu-trigger,
+	.repository {
+		flex: 0 0 auto;
+	}
+
+	.repository img {
+		width: 20px;
+		aspect-ratio: 1;
+	}
+
+	@media (min-width: 800px) {
+		.page {
+			display: grid;
+		}
+
+		.menu-trigger {
+			display: none;
+		}
+	}
+
+	.menu {
+		grid-area: nav;
+		position: fixed;
+		z-index: 98;
+		width: 200px;
+		top: var(--header-hight);
+		bottom: 0;
+		left: 0;
+		background: #131a20;
+		overflow-y: auto;
+		overflow-x: hidden;
+		translate: -100% 0;
+		transition: translate 0.3s ease;
+		font-size: 18px;
+	}
+
+	.menu.open {
+		translate: 0;
+	}
+
+	.menu-list {
+		margin: 0;
+		padding: 0;
+		list-style: none;
+		padding: 10px 0;
+		box-shadow: inset 0 0 0 transparent;
+	}
+
+	.menu-list-item a {
+		color: #ccc;
+		text-decoration: none;
+		padding: 10px;
+		display: block;
+		transition: all 0.2s;
+	}
+
+	.menu-list-item.current a {
+		background: rgba(122, 150, 174, 0.25);
+		box-shadow: inset 5px 0 0 cornflowerblue;
+		padding-left: 20px;
+	}
+
+	.menu-list-item a:hover,
+	.menu-list-item a:focus {
+		background: rgba(255, 255, 255, 0.15);
+		outline: none;
+	}
+
+	@media (min-width: 800px) {
+		.menu {
+			translate: 0;
+		}
+	}
+
+	.module {
+		padding-top: var(--header-hight);
+	}
+
+	.module-content {
+		background: #232f39;
+		border-radius: 5px;
+		margin-top: 15px;
+		box-shadow: rgba(0, 0, 0, 0.5) 0 0 5px 0;
+		transition: box-shadow 1s;
+	}
+
+	.module-content:hover {
+		box-shadow: cornflowerblue 0 0 5px 0;
+		transition: box-shadow 0.2s;
+	}
+
+	.module:target .module-content,
+	.module:target .module-content:hover {
+		box-shadow: cornflowerblue 0 0 5px 3px;
+	}
+
+	.module-content h1 {
+		margin: 0;
+		padding: 0 15px;
+		line-height: 50px;
+		background: #394957;
+		font-size: 18px;
+		font-weight: 400;
+		border-top-left-radius: inherit;
+		border-top-right-radius: inherit;
+	}
+
+	.module-content h1 a {
+		color: currentColor;
+		text-decoration: none;
+	}
+
+	.module-content h1 a:hover b,
+	.module-content h1 a:focus b {
+		color: currentColor;
+	}
+
+	.module-content h1 b {
+		color: gray;
+		transition: color 0.2s;
+	}
+
+	.signatures {
+		display: flex;
+		flex-direction: column;
+		gap: 15px;
+	}
+
+	@container (min-width: 600px) {
+		.module-content h1 {
+			font-size: 25px;
+		}
+	}
+
+	.signature-content {
+		display: flex;
+		flex-direction: column;
+		gap: 15px;
+		padding: 15px;
+	}
+
+	.signature-definition {
+		font-size: 14px;
+	}
+
+	.signature-description {
+		font-size: 18px;
+		color: #aaa;
+		display: flex;
+		flex-direction: column;
+		gap: 10px;
+	}
+
+	@container (min-width: 750px) {
+		.signature-definition {
+			font-size: 20px;
+		}
+	}
+
+	.tooltip {
+		display: none;
+		border-radius: 5px;
+		box-shadow: #1a1f23 0 4px 8px -2px;
+		overflow: hidden;
+		border: 1px solid #333;
+		z-index: -1;
+		position: absolute;
+	}
+
+	.tooltip code.hljs {
+		background-color: #292d25;
+	}
+</style>
+
+		<style>
+			pre code.hljs{display:block;overflow-x:auto;padding:1em}code.hljs{padding:3px 5px}/*!
+  Theme: GitHub Dark
+  Description: Dark theme as seen on github.com
+  Author: github.com
+  Maintainer: @Hirse
+  Updated: 2021-05-15
+
+  Outdated base version: https://github.com/primer/github-syntax-dark
+  Current colors taken from GitHub's CSS
+*/.hljs{color:#c9d1d9;background:#0d1117}.hljs-doctag,.hljs-keyword,.hljs-meta .hljs-keyword,.hljs-template-tag,.hljs-template-variable,.hljs-type,.hljs-variable.language_{color:#ff7b72}.hljs-title,.hljs-title.class_,.hljs-title.class_.inherited__,.hljs-title.function_{color:#d2a8ff}.hljs-attr,.hljs-attribute,.hljs-literal,.hljs-meta,.hljs-number,.hljs-operator,.hljs-selector-attr,.hljs-selector-class,.hljs-selector-id,.hljs-variable{color:#79c0ff}.hljs-meta .hljs-string,.hljs-regexp,.hljs-string{color:#a5d6ff}.hljs-built_in,.hljs-symbol{color:#ffa657}.hljs-code,.hljs-comment,.hljs-formula{color:#8b949e}.hljs-name,.hljs-quote,.hljs-selector-pseudo,.hljs-selector-tag{color:#7ee787}.hljs-subst{color:#c9d1d9}.hljs-section{color:#1f6feb;font-weight:700}.hljs-bullet{color:#f2cc60}.hljs-emphasis{color:#c9d1d9;font-style:italic}.hljs-strong{color:#c9d1d9;font-weight:700}.hljs-addition{color:#aff5b4;background-color:#033a16}.hljs-deletion{color:#ffdcd7;background-color:#67060c}
+		</style>
+	</head>
+
+	<body>
+		<main class="page">
+			<header class="header">
+				<button type="button" class="menu-trigger"></button>
+
+				<h2 class="page-title"><a href="#">@js-fns/web v.1.0.x</a></h2>
+
+				<a
+					target="_blank"
+					href="https://www.npmjs.com/package/@js-fns/"
+					class="repository"
+				>
+					<img src="https://static.npmjs.com/f1786e9b7cba9753ca7b9c40e8b98f67.png" alt="npm" />
+				</a>
+
+				<a
+					target="_blank"
+					href="https://github.com/Tokimon/js-fns/"
+					class="repository"
+				>
+					<img src="https://github.githubassets.com/favicons/favicon-dark.svg" alt="Github" />
+				</a>
+			</header>
+
+			<nav class="menu" id="Menu">
+				<ul class="menu-list">
+					
+					<li class="menu-list-item" id="Menu-addClass">
+						<a href="#addClass">addClass</a>
+					</li>
+					
+					<li class="menu-list-item" id="Menu-append">
+						<a href="#append">append</a>
+					</li>
+					
+					<li class="menu-list-item" id="Menu-attr">
+						<a href="#attr">attr</a>
+					</li>
+					
+					<li class="menu-list-item" id="Menu-boxModel">
+						<a href="#boxModel">boxModel</a>
+					</li>
+					
+					<li class="menu-list-item" id="Menu-children">
+						<a href="#children">children</a>
+					</li>
+					
+					<li class="menu-list-item" id="Menu-classNames">
+						<a href="#classNames">classNames</a>
+					</li>
+					
+					<li class="menu-list-item" id="Menu-create">
+						<a href="#create">create</a>
+					</li>
+					
+					<li class="menu-list-item" id="Menu-css">
+						<a href="#css">css</a>
+					</li>
+					
+					<li class="menu-list-item" id="Menu-delegate">
+						<a href="#delegate">delegate</a>
+					</li>
+					
+					<li class="menu-list-item" id="Menu-domReady">
+						<a href="#domReady">domReady</a>
+					</li>
+					
+					<li class="menu-list-item" id="Menu-elementData">
+						<a href="#elementData">elementData</a>
+					</li>
+					
+					<li class="menu-list-item" id="Menu-elmIndex">
+						<a href="#elmIndex">elmIndex</a>
+					</li>
+					
+					<li class="menu-list-item" id="Menu-ensureHTML">
+						<a href="#ensureHTML">ensureHTML</a>
+					</li>
+					
+					<li class="menu-list-item" id="Menu-eventOptionsSupported">
+						<a href="#eventOptionsSupported">eventOptionsSupported</a>
+					</li>
+					
+					<li class="menu-list-item" id="Menu-find">
+						<a href="#find">find</a>
+					</li>
+					
+					<li class="menu-list-item" id="Menu-findByClass">
+						<a href="#findByClass">findByClass</a>
+					</li>
+					
+					<li class="menu-list-item" id="Menu-findById">
+						<a href="#findById">findById</a>
+					</li>
+					
+					<li class="menu-list-item" id="Menu-findByName">
+						<a href="#findByName">findByName</a>
+					</li>
+					
+					<li class="menu-list-item" id="Menu-findByQuery">
+						<a href="#findByQuery">findByQuery</a>
+					</li>
+					
+					<li class="menu-list-item" id="Menu-findByTagName">
+						<a href="#findByTagName">findByTagName</a>
+					</li>
+					
+					<li class="menu-list-item" id="Menu-findUniqueNodeCollection">
+						<a href="#findUniqueNodeCollection">findUniqueNodeCollection</a>
+					</li>
+					
+					<li class="menu-list-item" id="Menu-getCurrentDocument">
+						<a href="#getCurrentDocument">getCurrentDocument</a>
+					</li>
+					
+					<li class="menu-list-item" id="Menu-getCurrentWindow">
+						<a href="#getCurrentWindow">getCurrentWindow</a>
+					</li>
+					
+					<li class="menu-list-item" id="Menu-hasClass">
+						<a href="#hasClass">hasClass</a>
+					</li>
+					
+					<li class="menu-list-item" id="Menu-hidden">
+						<a href="#hidden">hidden</a>
+					</li>
+					
+					<li class="menu-list-item" id="Menu-inDOM">
+						<a href="#inDOM">inDOM</a>
+					</li>
+					
+					<li class="menu-list-item" id="Menu-innerXML">
+						<a href="#innerXML">innerXML</a>
+					</li>
+					
+					<li class="menu-list-item" id="Menu-insertAfter">
+						<a href="#insertAfter">insertAfter</a>
+					</li>
+					
+					<li class="menu-list-item" id="Menu-insertBefore">
+						<a href="#insertBefore">insertBefore</a>
+					</li>
+					
+					<li class="menu-list-item" id="Menu-inView">
+						<a href="#inView">inView</a>
+					</li>
+					
+					<li class="menu-list-item" id="Menu-invisible">
+						<a href="#invisible">invisible</a>
+					</li>
+					
+					<li class="menu-list-item" id="Menu-isBlob">
+						<a href="#isBlob">isBlob</a>
+					</li>
+					
+					<li class="menu-list-item" id="Menu-isDocument">
+						<a href="#isDocument">isDocument</a>
+					</li>
+					
+					<li class="menu-list-item" id="Menu-isDOMChildNode">
+						<a href="#isDOMChildNode">isDOMChildNode</a>
+					</li>
+					
+					<li class="menu-list-item" id="Menu-isDOMContainer">
+						<a href="#isDOMContainer">isDOMContainer</a>
+					</li>
+					
+					<li class="menu-list-item" id="Menu-isDOMElement">
+						<a href="#isDOMElement">isDOMElement</a>
+					</li>
+					
+					<li class="menu-list-item" id="Menu-isDOMFragment">
+						<a href="#isDOMFragment">isDOMFragment</a>
+					</li>
+					
+					<li class="menu-list-item" id="Menu-isDOMNode">
+						<a href="#isDOMNode">isDOMNode</a>
+					</li>
+					
+					<li class="menu-list-item" id="Menu-isDOMRoot">
+						<a href="#isDOMRoot">isDOMRoot</a>
+					</li>
+					
+					<li class="menu-list-item" id="Menu-isEventTarget">
+						<a href="#isEventTarget">isEventTarget</a>
+					</li>
+					
+					<li class="menu-list-item" id="Menu-isWindow">
+						<a href="#isWindow">isWindow</a>
+					</li>
+					
+					<li class="menu-list-item" id="Menu-matches">
+						<a href="#matches">matches</a>
+					</li>
+					
+					<li class="menu-list-item" id="Menu-off">
+						<a href="#off">off</a>
+					</li>
+					
+					<li class="menu-list-item" id="Menu-on">
+						<a href="#on">on</a>
+					</li>
+					
+					<li class="menu-list-item" id="Menu-once">
+						<a href="#once">once</a>
+					</li>
+					
+					<li class="menu-list-item" id="Menu-parseSelector">
+						<a href="#parseSelector">parseSelector</a>
+					</li>
+					
+					<li class="menu-list-item" id="Menu-position">
+						<a href="#position">position</a>
+					</li>
+					
+					<li class="menu-list-item" id="Menu-prepend">
+						<a href="#prepend">prepend</a>
+					</li>
+					
+					<li class="menu-list-item" id="Menu-removeClass">
+						<a href="#removeClass">removeClass</a>
+					</li>
+					
+					<li class="menu-list-item" id="Menu-replaceClass">
+						<a href="#replaceClass">replaceClass</a>
+					</li>
+					
+					<li class="menu-list-item" id="Menu-replaceNode">
+						<a href="#replaceNode">replaceNode</a>
+					</li>
+					
+					<li class="menu-list-item" id="Menu-saveFile">
+						<a href="#saveFile">saveFile</a>
+					</li>
+					
+					<li class="menu-list-item" id="Menu-scrollInfo">
+						<a href="#scrollInfo">scrollInfo</a>
+					</li>
+					
+					<li class="menu-list-item" id="Menu-scrollParent">
+						<a href="#scrollParent">scrollParent</a>
+					</li>
+					
+					<li class="menu-list-item" id="Menu-selectorToHTML">
+						<a href="#selectorToHTML">selectorToHTML</a>
+					</li>
+					
+					<li class="menu-list-item" id="Menu-siblings">
+						<a href="#siblings">siblings</a>
+					</li>
+					
+					<li class="menu-list-item" id="Menu-size">
+						<a href="#size">size</a>
+					</li>
+					
+					<li class="menu-list-item" id="Menu-supportsCSS">
+						<a href="#supportsCSS">supportsCSS</a>
+					</li>
+					
+					<li class="menu-list-item" id="Menu-toDOM">
+						<a href="#toDOM">toDOM</a>
+					</li>
+					
+					<li class="menu-list-item" id="Menu-toggleClass">
+						<a href="#toggleClass">toggleClass</a>
+					</li>
+					
+					<li class="menu-list-item" id="Menu-toggleFullscreen">
+						<a href="#toggleFullscreen">toggleFullscreen</a>
+					</li>
+					
+					<li class="menu-list-item" id="Menu-trigger">
+						<a href="#trigger">trigger</a>
+					</li>
+					
+					<li class="menu-list-item" id="Menu-types">
+						<a href="#types">types</a>
+					</li>
+					
+					<li class="menu-list-item" id="Menu-vendorPrefixed">
+						<a href="#vendorPrefixed">vendorPrefixed</a>
+					</li>
+					
+					<li class="menu-list-item" id="Menu-viewport">
+						<a href="#viewport">viewport</a>
+					</li>
+					
+					<li class="menu-list-item" id="Menu-visible">
+						<a href="#visible">visible</a>
+					</li>
+					
+					<li class="menu-list-item" id="Menu-wrap">
+						<a href="#wrap">wrap</a>
+					</li>
+					
+				</ul>
+			</nav>
+
+			<article class="modules">
+				
+				<section class="module" id="addClass">
+					<div class="module-content">
+						<h1>
+							<a href="#addClass"><b>#</b> addClass</a>
+						</h1>
+
+						<div class="signatures">
+							
+							<div class="signature">
+								<div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">addClass</span>(<span class="hljs-attr">elm</span>: <span class="hljs-title class_">Element</span>, <span class="hljs-attr">classNames</span>: <span class="hljs-built_in">string</span> | <span class="hljs-built_in">string</span>[]): <span class="hljs-title class_">Element</span>
+</code></pre></div>
+
+								
+								<div class="signature-content">
+									
+									<div class="signature-description"><p>Adds one or multiple class names to a DOM element</p>
+</div>
+									  
+								</div>
+								
+							</div>
+							
+						</div>
+					</div>
+				</section>
+				
+				<section class="module" id="append">
+					<div class="module-content">
+						<h1>
+							<a href="#append"><b>#</b> append</a>
+						</h1>
+
+						<div class="signatures">
+							
+							<div class="signature">
+								<div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">append</span>(<span class="hljs-attr">elm</span>: <span class="hljs-title class_">Element</span>, <span class="hljs-attr">insertElm</span>: <span class="hljs-built_in">string</span> | <span class="hljs-title class_">Node</span>): <span class="hljs-title class_">Element</span> | <span class="hljs-string">&#x27;null&#x27;</span>
+</code></pre></div>
+
+								
+								<div class="signature-content">
+									
+									<div class="signature-description"><p>Append DOM element or plain HTML to the end of a given DOM element</p>
+</div>
+									  
+								</div>
+								
+							</div>
+							
+						</div>
+					</div>
+				</section>
+				
+				<section class="module" id="attr">
+					<div class="module-content">
+						<h1>
+							<a href="#attr"><b>#</b> attr</a>
+						</h1>
+
+						<div class="signatures">
+							
+							<div class="signature">
+								<div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">attr</span>(<span class="hljs-attr">elm</span>: <span class="hljs-title class_">Element</span>, <span class="hljs-attr">attrName</span>: <span class="hljs-built_in">string</span>, value?: <span class="hljs-built_in">string</span> | <span class="hljs-built_in">number</span> | <span class="hljs-built_in">boolean</span>): <span class="hljs-built_in">string</span> | <span class="hljs-string">&#x27;null&#x27;</span>
+</code></pre></div>
+
+								
+								<div class="signature-content">
+									
+									<div class="signature-description"><p>Get/set the value of an attribute on a given DOM element</p>
+</div>
+									 
+									<details>
+										<summary>Examples</summary>
+										 <pre><code class="hljs language-ts"><span class="hljs-comment">// Get the value of an attribute</span>
+<span class="hljs-title function_">attr</span>(<span class="hljs-variable language_">document</span>.<span class="hljs-property">documentElement</span>, <span class="hljs-string">&#x27;lang&#x27;</span>);
+
+<span class="hljs-comment">// Set the value of an attribute</span>
+<span class="hljs-title function_">attr</span>(<span class="hljs-variable language_">document</span>.<span class="hljs-property">documentElement</span>, <span class="hljs-string">&#x27;lang&#x27;</span>, <span class="hljs-string">&#x27;da-DK&#x27;</span>);
+</code></pre> 
+									</details>
+									 
+								</div>
+								
+							</div>
+							
+						</div>
+					</div>
+				</section>
+				
+				<section class="module" id="boxModel">
+					<div class="module-content">
+						<h1>
+							<a href="#boxModel"><b>#</b> boxModel</a>
+						</h1>
+
+						<div class="signatures">
+							
+							<div class="signature">
+								<div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">boxModel</span>(<span class="hljs-attr">elm</span>: <span class="hljs-title class_">Element</span>): <span class="hljs-title class_">BoxModelMapping</span>
+</code></pre></div>
+
+								
+								<div class="signature-content">
+									
+									<div class="signature-description"><p>Parses the box model numbers of an given Element (margin, padding and border widths)</p>
+</div>
+									 
+									<details>
+										<summary>Examples</summary>
+										 <pre><code class="hljs language-ts"><span class="hljs-title function_">boxModel</span>(someDiv);
+</code></pre> 
+									</details>
+									 
+									<details>
+										<summary>Types</summary>
+										<pre><code class="hljs language-ts"><span class="hljs-keyword">type</span> <span class="hljs-title class_">BoxModelMapping</span> = {
+  <span class="hljs-attr">border</span>: <span class="hljs-title class_">BoxModelSectionMapping</span>
+  <span class="hljs-attr">margin</span>: <span class="hljs-title class_">BoxModelSectionMapping</span>
+  <span class="hljs-attr">padding</span>: <span class="hljs-title class_">BoxModelSectionMapping</span>
+};
+</code></pre>
+									</details>
+									
+								</div>
+								
+							</div>
+							
+						</div>
+					</div>
+				</section>
+				
+				<section class="module" id="children">
+					<div class="module-content">
+						<h1>
+							<a href="#children"><b>#</b> children</a>
+						</h1>
+
+						<div class="signatures">
+							
+							<div class="signature">
+								<div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">children</span>(<span class="hljs-attr">elm</span>: <span class="hljs-title class_">ParentNode</span>): <span class="hljs-title class_">Element</span>[]
+</code></pre></div>
+
+								
+								<div class="signature-content">
+									
+									<div class="signature-description"><p>Find the children of a given DOM element and return it as an Array</p>
+</div>
+									 
+									<details>
+										<summary>Examples</summary>
+										 <pre><code class="hljs language-ts"><span class="hljs-title function_">children</span>(someDiv);
+</code></pre> 
+									</details>
+									 
+								</div>
+								
+							</div>
+							
+						</div>
+					</div>
+				</section>
+				
+				<section class="module" id="classNames">
+					<div class="module-content">
+						<h1>
+							<a href="#classNames"><b>#</b> classNames</a>
+						</h1>
+
+						<div class="signatures">
+							
+							<div class="signature">
+								<div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">classNames</span>(<span class="hljs-attr">args</span>: <span class="hljs-literal">undefined</span>[]): <span class="hljs-built_in">string</span>
+</code></pre></div>
+
+								
+							</div>
+							
+						</div>
+					</div>
+				</section>
+				
+				<section class="module" id="create">
+					<div class="module-content">
+						<h1>
+							<a href="#create"><b>#</b> create</a>
+						</h1>
+
+						<div class="signatures">
+							
+							<div class="signature">
+								<div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">create</span>(<span class="hljs-attr">selector</span>: <span class="hljs-built_in">string</span> = <span class="hljs-string">&#x27;div&#x27;</span>): <span class="hljs-title class_">Element</span>
+</code></pre></div>
+
+								
+								<div class="signature-content">
+									
+									<div class="signature-description"><p>Creates an element from a given CSS selector (restricted to only one element)</p>
+</div>
+									 
+									<details>
+										<summary>Examples</summary>
+										 <pre><code class="hljs language-ts"><span class="hljs-comment">// Create a div</span>
+<span class="hljs-title function_">create</span>();
+<span class="hljs-comment">// -&gt; &lt;div /&gt;</span>
+
+<span class="hljs-comment">// Create an element</span>
+<span class="hljs-title function_">create</span>(<span class="hljs-string">&#x27;img&#x27;</span>);
+<span class="hljs-comment">// -&gt; &lt;img /&gt;</span>
+
+<span class="hljs-comment">// Create an element from a selector</span>
+<span class="hljs-title function_">create</span>(#<span class="hljs-title class_">MyElement</span>.<span class="hljs-property">active</span>);
+<span class="hljs-comment">// -&gt; &lt;div id=&quot;MyElement&quot; class=&quot;active&quot; /&gt;</span>
+</code></pre> 
+									</details>
+									 
+								</div>
+								
+							</div>
+							
+						</div>
+					</div>
+				</section>
+				
+				<section class="module" id="css">
+					<div class="module-content">
+						<h1>
+							<a href="#css"><b>#</b> css</a>
+						</h1>
+
+						<div class="signatures">
+							
+							<div class="signature">
+								<div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">css</span>(<span class="hljs-attr">elm</span>: <span class="hljs-title class_">HTMLElement</span>, style?: <span class="hljs-title class_">CSSStyleProperties</span>): <span class="hljs-title class_">CSSStyleDeclaration</span>
+</code></pre></div>
+
+								
+								<div class="signature-content">
+									
+									<div class="signature-description"><p>Set multiple inline styling properties on a DOM element.</p>
+<h2>NOTE:</h2>
+<p><code>null</code></p>
+<h2> as value, removes the given property</h2>
+<p><code>!important</code></p>
+<p> in the value will be parsed and set correctly</p>
+</div>
+									  
+									<details>
+										<summary>Types</summary>
+										<pre><code class="hljs language-ts"><span class="hljs-keyword">type</span> <span class="hljs-title class_">CSSStyleProperties</span> = <span class="hljs-literal">undefined</span>;
+</code></pre>
+									</details>
+									
+								</div>
+								
+							</div>
+							
+							<div class="signature">
+								<div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">css</span>(<span class="hljs-attr">elm</span>: <span class="hljs-title class_">HTMLElement</span>, <span class="hljs-attr">property</span>: <span class="hljs-title class_">CSSStyleKey</span>, value?: <span class="hljs-built_in">string</span> | <span class="hljs-built_in">number</span>): <span class="hljs-built_in">string</span> | <span class="hljs-built_in">number</span> | <span class="hljs-string">&#x27;null&#x27;</span>
+</code></pre></div>
+
+								
+								<div class="signature-content">
+									
+									<div class="signature-description"><p>Get or set an inline style property on a DOM element.</p>
+<h2>NOTE:</h2>
+<p><code>null</code></p>
+<h2> removes the given property</h2>
+<p><code>!important</code></p>
+<p> added to the value, it will be parsed and set correctly</p>
+<ul>
+<li>Values that are pure numbers or pixel values will be converted to number before returned</li>
+</ul>
+</div>
+									  
+								</div>
+								
+							</div>
+							
+						</div>
+					</div>
+				</section>
+				
+				<section class="module" id="delegate">
+					<div class="module-content">
+						<h1>
+							<a href="#delegate"><b>#</b> delegate</a>
+						</h1>
+
+						<div class="signatures">
+							
+							<div class="signature">
+								<div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">delegate</span>(<span class="hljs-attr">eventNames</span>: <span class="hljs-built_in">string</span> | <span class="hljs-built_in">string</span>[], <span class="hljs-attr">selector</span>: <span class="hljs-built_in">string</span>, <span class="hljs-attr">handler</span>: <span class="hljs-title class_">DelegateEventHandler</span>, options?: <span class="hljs-title class_">EventListenerOptions</span>): <span class="hljs-title class_">DelegateRemoveFunction</span>
+</code></pre></div>
+
+								
+								<div class="signature-content">
+									
+									<div class="signature-description"><p>Bind a delegated event handler for one or more event names to document.</p>
+</div>
+									 
+									<details>
+										<summary>Examples</summary>
+										 <pre><code class="hljs language-ts"><span class="hljs-comment">// Bind to a single event</span>
+<span class="hljs-keyword">const</span> removeDelegate = <span class="hljs-title function_">delegate</span>(<span class="hljs-string">&#x27;click&#x27;</span>, <span class="hljs-string">&#x27;.my-element&#x27;</span>, <span class="hljs-function">(<span class="hljs-params">e: Event</span>) =&gt;</span> {});
+
+<span class="hljs-comment">// Bind to multiple events</span>
+<span class="hljs-keyword">const</span> removeDelegates = <span class="hljs-title function_">delegate</span>([<span class="hljs-string">&#x27;click&#x27;</span>, <span class="hljs-string">&#x27;mouseenter&#x27;</span>], <span class="hljs-string">&#x27;.my-element&#x27;</span>, <span class="hljs-function">(<span class="hljs-params">e: Event</span>) =&gt;</span> {});
+</code></pre> 
+									</details>
+									 
+									<details>
+										<summary>Types</summary>
+										<pre><code class="hljs language-ts"><span class="hljs-keyword">type</span> <span class="hljs-title class_">DelegateEventHandler</span> = <span class="hljs-function">(<span class="hljs-params">e: DelegateEvent</span>) =&gt;</span> <span class="hljs-built_in">boolean</span> | <span class="hljs-literal">undefined</span>;
+<span class="hljs-keyword">type</span> <span class="hljs-title class_">DelegateRemoveFunction</span> = <span class="hljs-function">(<span class="hljs-params"><span class="hljs-literal">undefined</span></span>) =&gt;</span> <span class="hljs-title class_">ReturnType</span>&lt;&gt;;
+</code></pre>
+									</details>
+									
+								</div>
+								
+							</div>
+							
+							<div class="signature">
+								<div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">delegate</span>(<span class="hljs-attr">target</span>: <span class="hljs-title class_">EventTarget</span>, <span class="hljs-attr">eventNames</span>: <span class="hljs-built_in">string</span> | <span class="hljs-built_in">string</span>[], <span class="hljs-attr">selector</span>: <span class="hljs-built_in">string</span>, <span class="hljs-attr">handler</span>: <span class="hljs-title class_">DelegateEventHandler</span>, options?: <span class="hljs-title class_">EventListenerOptions</span>): <span class="hljs-title class_">DelegateRemoveFunction</span>
+</code></pre></div>
+
+								
+								<div class="signature-content">
+									
+									<div class="signature-description"><p>Bind a delegated event handler for one or more event names to a DOM element.</p>
+</div>
+									 
+									<details>
+										<summary>Examples</summary>
+										 <pre><code class="hljs language-ts"><span class="hljs-comment">// Bind to a single event</span>
+<span class="hljs-keyword">const</span> removeDelegate = <span class="hljs-title function_">delegate</span>(element, <span class="hljs-string">&#x27;click&#x27;</span>, <span class="hljs-string">&#x27;.my-element&#x27;</span>, <span class="hljs-function">(<span class="hljs-params">e: Event</span>) =&gt;</span> {});
+
+<span class="hljs-comment">// Bind to multiple events</span>
+<span class="hljs-keyword">const</span> removeDelegates = <span class="hljs-title function_">delegate</span>(element, [<span class="hljs-string">&#x27;click&#x27;</span>, <span class="hljs-string">&#x27;mouseenter&#x27;</span>], <span class="hljs-string">&#x27;.my-element&#x27;</span>, <span class="hljs-function">(<span class="hljs-params">e: Event</span>) =&gt;</span> {});
+</code></pre> 
+									</details>
+									 
+									<details>
+										<summary>Types</summary>
+										<pre><code class="hljs language-ts"><span class="hljs-keyword">type</span> <span class="hljs-title class_">DelegateEventHandler</span> = <span class="hljs-function">(<span class="hljs-params">e: DelegateEvent</span>) =&gt;</span> <span class="hljs-built_in">boolean</span> | <span class="hljs-literal">undefined</span>;
+<span class="hljs-keyword">type</span> <span class="hljs-title class_">DelegateRemoveFunction</span> = <span class="hljs-function">(<span class="hljs-params"><span class="hljs-literal">undefined</span></span>) =&gt;</span> <span class="hljs-title class_">ReturnType</span>&lt;&gt;;
+</code></pre>
+									</details>
+									
+								</div>
+								
+							</div>
+							
+							<div class="signature">
+								<div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">delegateHandler</span>(<span class="hljs-attr">selector</span>: <span class="hljs-built_in">string</span>, <span class="hljs-attr">handler</span>: <span class="hljs-title class_">DelegateEventHandler</span>): <span class="hljs-title class_">EventListener</span>
+</code></pre></div>
+
+								
+								<div class="signature-content">
+									
+									<div class="signature-description"><p>Creates a function that triggers the given handler if the current event target
+matches the given selector</p>
+</div>
+									 
+									<details>
+										<summary>Examples</summary>
+										 <pre><code class="hljs language-ts"><span class="hljs-keyword">const</span> handler = <span class="hljs-title function_">delegateHandler</span>(<span class="hljs-string">&#x27;.my-element&#x27;</span>, <span class="hljs-function">(<span class="hljs-params">e: Event</span>) =&gt;</span> {});
+<span class="hljs-variable language_">document</span>.<span class="hljs-title function_">addEventHandler</span>(<span class="hljs-string">&#x27;click&#x27;</span>, handler);
+</code></pre> 
+									</details>
+									 
+									<details>
+										<summary>Types</summary>
+										<pre><code class="hljs language-ts"><span class="hljs-keyword">type</span> <span class="hljs-title class_">DelegateEventHandler</span> = <span class="hljs-function">(<span class="hljs-params">e: DelegateEvent</span>) =&gt;</span> <span class="hljs-built_in">boolean</span> | <span class="hljs-literal">undefined</span>;
+</code></pre>
+									</details>
+									
+								</div>
+								
+							</div>
+							
+						</div>
+					</div>
+				</section>
+				
+				<section class="module" id="domReady">
+					<div class="module-content">
+						<h1>
+							<a href="#domReady"><b>#</b> domReady</a>
+						</h1>
+
+						<div class="signatures">
+							
+							<div class="signature">
+								<div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">domReady</span>(<span class="hljs-attr">handler</span>: <span class="hljs-title class_">Noop</span>): <span class="hljs-built_in">void</span>
+</code></pre></div>
+
+								
+								<div class="signature-content">
+									
+									<div class="signature-description"><p>Execute a given function once the document has finished loading</p>
+</div>
+									 
+									<details>
+										<summary>Examples</summary>
+										 <pre><code class="hljs language-ts"><span class="hljs-title function_">domReady</span>(<span class="hljs-function">(<span class="hljs-params">e: Event</span>) =&gt;</span> { <span class="hljs-title function_">alert</span>(<span class="hljs-string">&#x27;DOM Ready&#x27;</span>) });
+</code></pre> 
+									</details>
+									 
+								</div>
+								
+							</div>
+							
+							<div class="signature">
+								<div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">docComplete</span>(<span class="hljs-literal">undefined</span>): <span class="hljs-built_in">boolean</span>
+</code></pre></div>
+
+								
+							</div>
+							
+						</div>
+					</div>
+				</section>
+				
+				<section class="module" id="elementData">
+					<div class="module-content">
+						<h1>
+							<a href="#elementData"><b>#</b> elementData</a>
+						</h1>
+
+						<div class="signatures">
+							
+							<div class="signature">
+								<div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">elementData</span>(<span class="hljs-attr">elm</span>: <span class="hljs-title class_">Node</span>, key?: <span class="hljs-built_in">string</span>, data?: <span class="hljs-built_in">unknown</span>): <span class="hljs-built_in">any</span>
+</code></pre></div>
+
+								
+							</div>
+							
+							<div class="signature">
+								<div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">resetCache</span>(<span class="hljs-literal">undefined</span>): <span class="hljs-built_in">void</span>
+</code></pre></div>
+
+								
+							</div>
+							
+						</div>
+					</div>
+				</section>
+				
+				<section class="module" id="elmIndex">
+					<div class="module-content">
+						<h1>
+							<a href="#elmIndex"><b>#</b> elmIndex</a>
+						</h1>
+
+						<div class="signatures">
+							
+							<div class="signature">
+								<div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">elmIndex</span>(<span class="hljs-attr">elm</span>: <span class="hljs-title class_">Element</span>): <span class="hljs-built_in">number</span>
+</code></pre></div>
+
+								
+								<div class="signature-content">
+									
+									<div class="signature-description"><p>Find the index of a DOM element amongst its siblings</p>
+</div>
+									 
+									<details>
+										<summary>Examples</summary>
+										 <pre><code class="hljs language-ts"><span class="hljs-title function_">elmIndex</span>(someDiv);
+</code></pre> 
+									</details>
+									 
+								</div>
+								
+							</div>
+							
+						</div>
+					</div>
+				</section>
+				
+				<section class="module" id="ensureHTML">
+					<div class="module-content">
+						<h1>
+							<a href="#ensureHTML"><b>#</b> ensureHTML</a>
+						</h1>
+
+						<div class="signatures">
+							
+							<div class="signature">
+								<div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">ensureHTML</span>(<span class="hljs-attr">htmlOrSelector</span>: <span class="hljs-built_in">string</span>): <span class="hljs-built_in">string</span>
+</code></pre></div>
+
+								
+								<div class="signature-content">
+									
+									<div class="signature-description"><p>Parses a string to see if it is already HTML otherwise it assumes
+is a selector and parses it to HTML</p>
+</div>
+									 
+									<details>
+										<summary>Examples</summary>
+										 <pre><code class="hljs language-ts"><span class="hljs-comment">// String is already HTML so it is returned as is</span>
+<span class="hljs-title function_">ensureHTML</span>(<span class="hljs-string">&#x27;&lt;div /&gt;&#x27;</span>);
+
+<span class="hljs-comment">// String is a selector, to is is parsed before it is returned</span>
+<span class="hljs-title function_">ensureHTML</span>(<span class="hljs-string">&#x27;.my-div&#x27;</span>);
+<span class="hljs-comment">// -&gt; &lt;div class=&quot;my-div&quot; /&gt;</span>
+</code></pre> 
+									</details>
+									 
+								</div>
+								
+							</div>
+							
+						</div>
+					</div>
+				</section>
+				
+				<section class="module" id="eventOptionsSupported">
+					<div class="module-content">
+						<h1>
+							<a href="#eventOptionsSupported"><b>#</b> eventOptionsSupported</a>
+						</h1>
+
+						<div class="signatures">
+							
+							<div class="signature">
+								<div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">eventOptionsSupported</span>(recheck?: <span class="hljs-built_in">boolean</span>): <span class="hljs-built_in">boolean</span>
+</code></pre></div>
+
+								
+								<div class="signature-content">
+									
+									<div class="signature-description"><p>Detect if options are supported by the add-/removeEventListener methods</p>
+</div>
+									  
+								</div>
+								
+							</div>
+							
+						</div>
+					</div>
+				</section>
+				
+				<section class="module" id="find">
+					<div class="module-content">
+						<h1>
+							<a href="#find"><b>#</b> find</a>
+						</h1>
+
+						<div class="signatures">
+							
+							<div class="signature">
+								<div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">find</span>(<span class="hljs-attr">selector</span>: <span class="hljs-built_in">string</span>): <span class="hljs-title class_">HTMLElement</span> | <span class="hljs-title class_">Element</span> | <span class="hljs-title class_">Element</span>[] | <span class="hljs-string">&#x27;null&#x27;</span>
+</code></pre></div>
+
+								
+								<div class="signature-content">
+									
+									<div class="signature-description"><p>Find elements by a given selector. The selector will be lightly analysed to determine
+the appropriate </p>
+<p><code>findByXX</code></p>
+<p> function. This should be faster than just <a href="https://jsperf.com/queryselector-vs-selective-find/1">running querySelector(All)
+to find elements</a></p>
+</div>
+									  
+								</div>
+								
+							</div>
+							
+							<div class="signature">
+								<div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">find</span>(<span class="hljs-attr">elm</span>: <span class="hljs-title class_">Element</span> | <span class="hljs-title class_">Document</span>, <span class="hljs-attr">selector</span>: <span class="hljs-built_in">string</span>): <span class="hljs-title class_">HTMLElement</span> | <span class="hljs-title class_">Element</span> | <span class="hljs-title class_">Element</span>[] | <span class="hljs-string">&#x27;null&#x27;</span>
+</code></pre></div>
+
+								
+								<div class="signature-content">
+									
+									<div class="signature-description"><p>Find elements by a given selector from a given element. The selector will be lightly analysed to determine
+the appropriate </p>
+<p><code>findByXX</code></p>
+<p> function. This should be faster than just <a href="https://jsperf.com/queryselector-vs-selective-find/1">running querySelector(All)
+to find elements</a></p>
+</div>
+									  
+								</div>
+								
+							</div>
+							
+						</div>
+					</div>
+				</section>
+				
+				<section class="module" id="findByClass">
+					<div class="module-content">
+						<h1>
+							<a href="#findByClass"><b>#</b> findByClass</a>
+						</h1>
+
+						<div class="signatures">
+							
+							<div class="signature">
+								<div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">findByClass</span>(<span class="hljs-attr">classNames</span>: <span class="hljs-built_in">string</span> | <span class="hljs-built_in">string</span>[]): <span class="hljs-title class_">Element</span>[]
+</code></pre></div>
+
+								
+								<div class="signature-content">
+									
+									<div class="signature-description"><p>Finds DOM elements with a given class name.
+Separate multiple selectors by comma. Separate multiple class names by space.</p>
+</div>
+									  
+								</div>
+								
+							</div>
+							
+							<div class="signature">
+								<div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">findByClass</span>(<span class="hljs-attr">elm</span>: <span class="hljs-title class_">Element</span> | <span class="hljs-title class_">Document</span>, <span class="hljs-attr">classNames</span>: <span class="hljs-built_in">string</span> | <span class="hljs-built_in">string</span>[]): <span class="hljs-title class_">Element</span>[]
+</code></pre></div>
+
+								
+								<div class="signature-content">
+									
+									<div class="signature-description"><p>Finds DOM elements with a given class name from a given element.
+Separate multiple selectors by comma. Separate multiple class names by space.</p>
+</div>
+									  
+								</div>
+								
+							</div>
+							
+						</div>
+					</div>
+				</section>
+				
+				<section class="module" id="findById">
+					<div class="module-content">
+						<h1>
+							<a href="#findById"><b>#</b> findById</a>
+						</h1>
+
+						<div class="signatures">
+							
+							<div class="signature">
+								<div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">findById</span>(<span class="hljs-attr">ids</span>: <span class="hljs-built_in">string</span>): <span class="hljs-title class_">HTMLElement</span> | <span class="hljs-string">&#x27;null&#x27;</span>
+</code></pre></div>
+
+								
+								<div class="signature-content">
+									
+									<div class="signature-description"><p>Find a DOM element with the given ID</p>
+</div>
+									  
+								</div>
+								
+							</div>
+							
+							<div class="signature">
+								<div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">findById</span>(<span class="hljs-attr">ids</span>: <span class="hljs-built_in">string</span>[]): <span class="hljs-title class_">HTMLElement</span>[]
+</code></pre></div>
+
+								
+								<div class="signature-content">
+									
+									<div class="signature-description"><p>Find a DOM elements from a list of IDs</p>
+</div>
+									  
+								</div>
+								
+							</div>
+							
+						</div>
+					</div>
+				</section>
+				
+				<section class="module" id="findByName">
+					<div class="module-content">
+						<h1>
+							<a href="#findByName"><b>#</b> findByName</a>
+						</h1>
+
+						<div class="signatures">
+							
+							<div class="signature">
+								<div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">findByName</span>(<span class="hljs-attr">names</span>: <span class="hljs-built_in">string</span> | <span class="hljs-built_in">string</span>[]): <span class="hljs-title class_">Element</span>[]
+</code></pre></div>
+
+								
+								<div class="signature-content">
+									
+									<div class="signature-description"><p>Find DOM elements with the given name</p>
+</div>
+									  
+								</div>
+								
+							</div>
+							
+						</div>
+					</div>
+				</section>
+				
+				<section class="module" id="findByQuery">
+					<div class="module-content">
+						<h1>
+							<a href="#findByQuery"><b>#</b> findByQuery</a>
+						</h1>
+
+						<div class="signatures">
+							
+							<div class="signature">
+								<div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">findByQuery</span>(<span class="hljs-attr">queries</span>: <span class="hljs-built_in">string</span> | <span class="hljs-built_in">string</span>[], <span class="hljs-attr">first</span>: <span class="hljs-string">&#x27;true&#x27;</span>): <span class="hljs-title class_">Element</span> | <span class="hljs-string">&#x27;null&#x27;</span>
+</code></pre></div>
+
+								
+								<div class="signature-content">
+									
+									<div class="signature-description"><p>Find an element by given CSS selector</p>
+</div>
+									  
+								</div>
+								
+							</div>
+							
+							<div class="signature">
+								<div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">findByQuery</span>(<span class="hljs-attr">elm</span>: <span class="hljs-title class_">Element</span> | <span class="hljs-title class_">Document</span>, <span class="hljs-attr">queries</span>: <span class="hljs-built_in">string</span> | <span class="hljs-built_in">string</span>[], <span class="hljs-attr">first</span>: <span class="hljs-string">&#x27;true&#x27;</span>): <span class="hljs-title class_">Element</span> | <span class="hljs-string">&#x27;null&#x27;</span>
+</code></pre></div>
+
+								
+								<div class="signature-content">
+									
+									<div class="signature-description"><p>Find an element by a given CSS selector from within a given element</p>
+</div>
+									  
+								</div>
+								
+							</div>
+							
+							<div class="signature">
+								<div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">findByQuery</span>(<span class="hljs-attr">queries</span>: <span class="hljs-built_in">string</span> | <span class="hljs-built_in">string</span>[], first?: <span class="hljs-string">&#x27;false&#x27;</span>): <span class="hljs-title class_">Element</span>[]
+</code></pre></div>
+
+								
+								<div class="signature-content">
+									
+									<div class="signature-description"><p>Find all elements matching a given CSS selector</p>
+</div>
+									  
+								</div>
+								
+							</div>
+							
+							<div class="signature">
+								<div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">findByQuery</span>(<span class="hljs-attr">elm</span>: <span class="hljs-title class_">Element</span> | <span class="hljs-title class_">Document</span>, <span class="hljs-attr">queries</span>: <span class="hljs-built_in">string</span> | <span class="hljs-built_in">string</span>[], first?: <span class="hljs-string">&#x27;false&#x27;</span>): <span class="hljs-title class_">Element</span>[]
+</code></pre></div>
+
+								
+								<div class="signature-content">
+									
+									<div class="signature-description"><p>Find all elements matching a given CSS selector from within a given element</p>
+</div>
+									  
+								</div>
+								
+							</div>
+							
+						</div>
+					</div>
+				</section>
+				
+				<section class="module" id="findByTagName">
+					<div class="module-content">
+						<h1>
+							<a href="#findByTagName"><b>#</b> findByTagName</a>
+						</h1>
+
+						<div class="signatures">
+							
+							<div class="signature">
+								<div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">findByTagName</span>(<span class="hljs-attr">tagNames</span>: <span class="hljs-built_in">string</span> | <span class="hljs-built_in">string</span>[]): <span class="hljs-title class_">Element</span>[]
+</code></pre></div>
+
+								
+								<div class="signature-content">
+									
+									<div class="signature-description"><p>Find elements by given tag name</p>
+</div>
+									  
+								</div>
+								
+							</div>
+							
+							<div class="signature">
+								<div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">findByTagName</span>(<span class="hljs-attr">elm</span>: <span class="hljs-title class_">Element</span> | <span class="hljs-title class_">Document</span>, tagNames?: <span class="hljs-built_in">string</span> | <span class="hljs-built_in">string</span>[]): <span class="hljs-title class_">Element</span>[]
+</code></pre></div>
+
+								
+								<div class="signature-content">
+									
+									<div class="signature-description"><p>Find elements by given tag name</p>
+</div>
+									  
+								</div>
+								
+							</div>
+							
+						</div>
+					</div>
+				</section>
+				
+				<section class="module" id="findUniqueNodeCollection">
+					<div class="module-content">
+						<h1>
+							<a href="#findUniqueNodeCollection"><b>#</b> findUniqueNodeCollection</a>
+						</h1>
+
+						<div class="signatures">
+							
+							<div class="signature">
+								<div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">findUniqueNodeCollection</span>(<span class="hljs-attr">selector</span>: <span class="hljs-built_in">string</span> | <span class="hljs-built_in">string</span>[], <span class="hljs-attr">findElements</span>: <span class="hljs-function">(<span class="hljs-params">name: <span class="hljs-built_in">string</span></span>) =&gt;</span> <span class="hljs-title class_">HTMLCollectionOf</span>&lt;<span class="hljs-title class_">Element</span>&gt; | <span class="hljs-title class_">NodeListOf</span>&lt;<span class="hljs-title class_">HTMLElement</span>&gt;): <span class="hljs-title class_">Element</span>[]
+</code></pre></div>
+
+								
+								<div class="signature-content">
+									
+									<div class="signature-description"><p>Make a unique list of Elements from a list of selectors and and function to use that selector.</p>
+</div>
+									 
+									<details>
+										<summary>Examples</summary>
+										 <pre><code class="hljs language-ts"><span class="hljs-keyword">const</span> <span class="hljs-title function_">byClassName</span> = (<span class="hljs-params">selector</span>) =&gt; <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementsByClassName</span>(selector)
+
+<span class="hljs-comment">// Using a single selector</span>
+<span class="hljs-title function_">findUniqueNodeCollection</span>(<span class="hljs-string">&#x27;my-elements&#x27;</span>, byClassName);
+
+<span class="hljs-comment">// Using multiple selectors</span>
+<span class="hljs-title function_">findUniqueNodeCollection</span>([<span class="hljs-string">&#x27;my-elements&#x27;</span>, <span class="hljs-string">&#x27;sone-other-elements&#x27;</span>], byClassName);
+</code></pre> 
+									</details>
+									 
+								</div>
+								
+							</div>
+							
+						</div>
+					</div>
+				</section>
+				
+				<section class="module" id="getCurrentDocument">
+					<div class="module-content">
+						<h1>
+							<a href="#getCurrentDocument"><b>#</b> getCurrentDocument</a>
+						</h1>
+
+						<div class="signatures">
+							
+							<div class="signature">
+								<div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">getCurrentDocument</span>(<span class="hljs-attr">obj</span>: <span class="hljs-built_in">unknown</span>): <span class="hljs-title class_">Document</span> | <span class="hljs-string">&#x27;null&#x27;</span>
+</code></pre></div>
+
+								
+							</div>
+							
+						</div>
+					</div>
+				</section>
+				
+				<section class="module" id="getCurrentWindow">
+					<div class="module-content">
+						<h1>
+							<a href="#getCurrentWindow"><b>#</b> getCurrentWindow</a>
+						</h1>
+
+						<div class="signatures">
+							
+							<div class="signature">
+								<div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">getCurrentWindow</span>(<span class="hljs-attr">obj</span>: <span class="hljs-built_in">unknown</span>): <span class="hljs-string">&#x27;null&#x27;</span> | <span class="hljs-title class_">GeneralWindow</span>
+</code></pre></div>
+
+								
+							</div>
+							
+						</div>
+					</div>
+				</section>
+				
+				<section class="module" id="hasClass">
+					<div class="module-content">
+						<h1>
+							<a href="#hasClass"><b>#</b> hasClass</a>
+						</h1>
+
+						<div class="signatures">
+							
+							<div class="signature">
+								<div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">hasClass</span>(<span class="hljs-attr">elm</span>: <span class="hljs-title class_">Element</span>, <span class="hljs-attr">classNames</span>: <span class="hljs-built_in">string</span> | <span class="hljs-built_in">string</span>[], <span class="hljs-built_in">any</span>?: <span class="hljs-built_in">boolean</span>): <span class="hljs-built_in">boolean</span>
+</code></pre></div>
+
+								
+								<div class="signature-content">
+									
+									<div class="signature-description"><p>Does all (or any) of the listed class names exist in the DOM elements list of class names</p>
+</div>
+									  
+								</div>
+								
+							</div>
+							
+							<div class="signature">
+								<div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">hasAnyClass</span>(<span class="hljs-attr">elm</span>: <span class="hljs-title class_">Element</span>, <span class="hljs-attr">classNames</span>: <span class="hljs-built_in">string</span> | <span class="hljs-built_in">string</span>[]): <span class="hljs-built_in">boolean</span>
+</code></pre></div>
+
+								
+								<div class="signature-content">
+									
+									<div class="signature-description"><p>Does any of the listed class names exist in the DOM elements list of class names</p>
+</div>
+									  
+								</div>
+								
+							</div>
+							
+						</div>
+					</div>
+				</section>
+				
+				<section class="module" id="hidden">
+					<div class="module-content">
+						<h1>
+							<a href="#hidden"><b>#</b> hidden</a>
+						</h1>
+
+						<div class="signatures">
+							
+							<div class="signature">
+								<div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">hidden</span>(<span class="hljs-attr">elm</span>: <span class="hljs-title class_">HTMLElement</span>): <span class="hljs-built_in">boolean</span>
+</code></pre></div>
+
+								
+								<div class="signature-content">
+									
+									<div class="signature-description"><p>Test if a given DOM element is technically hidden</p>
+<ul>
+<li>Not is DOM</li>
+<li>Collapsed</li>
+<li>display: none</li>
+<li>visibility: hidden.</li>
+</ul>
+</div>
+									  
+								</div>
+								
+							</div>
+							
+						</div>
+					</div>
+				</section>
+				
+				<section class="module" id="inDOM">
+					<div class="module-content">
+						<h1>
+							<a href="#inDOM"><b>#</b> inDOM</a>
+						</h1>
+
+						<div class="signatures">
+							
+							<div class="signature">
+								<div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">inDOM</span>(<span class="hljs-attr">elm</span>: <span class="hljs-title class_">Node</span>): <span class="hljs-built_in">boolean</span>
+</code></pre></div>
+
+								
+								<div class="signature-content">
+									
+									<div class="signature-description"><p>Is the given DOM node inserted into the DOM</p>
+</div>
+									  
+								</div>
+								
+							</div>
+							
+						</div>
+					</div>
+				</section>
+				
+				<section class="module" id="innerXML">
+					<div class="module-content">
+						<h1>
+							<a href="#innerXML"><b>#</b> innerXML</a>
+						</h1>
+
+						<div class="signatures">
+							
+							<div class="signature">
+								<div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">innerXML</span>(<span class="hljs-title class_">XMLElement</span>: <span class="hljs-title class_">Element</span>): <span class="hljs-built_in">string</span>
+</code></pre></div>
+
+								
+								<div class="signature-content">
+									
+									<div class="signature-description"><p>Gets the inner XML structure as a string from a XML element
+(like innerHTML but for XML elements - eg. in SVG)</p>
+</div>
+									 
+									<details>
+										<summary>Examples</summary>
+										 <pre><code class="hljs language-ts"><span class="hljs-comment">// String is already HTML so it is returned as is</span>
+<span class="hljs-title function_">innerXML</span>(<span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">svg</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">g</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">path</span> /&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">g</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">svg</span>&gt;</span></span>);
+<span class="hljs-comment">// -&gt; &#x27;&lt;g&gt;&lt;path /&gt;&lt;/g&gt;&#x27;</span>
+</code></pre> 
+									</details>
+									 
+								</div>
+								
+							</div>
+							
+						</div>
+					</div>
+				</section>
+				
+				<section class="module" id="insertAfter">
+					<div class="module-content">
+						<h1>
+							<a href="#insertAfter"><b>#</b> insertAfter</a>
+						</h1>
+
+						<div class="signatures">
+							
+							<div class="signature">
+								<div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">insertAfter</span>(<span class="hljs-attr">elm</span>: <span class="hljs-title class_">Element</span>, <span class="hljs-attr">insertElm</span>: <span class="hljs-built_in">string</span> | <span class="hljs-title class_">Element</span>): <span class="hljs-title class_">Element</span> | <span class="hljs-string">&#x27;null&#x27;</span>
+</code></pre></div>
+
+								
+								<div class="signature-content">
+									
+									<div class="signature-description"><p>Inserts DOM element or plain HTML after a given DOM element</p>
+</div>
+									  
+								</div>
+								
+							</div>
+							
+						</div>
+					</div>
+				</section>
+				
+				<section class="module" id="insertBefore">
+					<div class="module-content">
+						<h1>
+							<a href="#insertBefore"><b>#</b> insertBefore</a>
+						</h1>
+
+						<div class="signatures">
+							
+							<div class="signature">
+								<div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">insertBefore</span>(<span class="hljs-attr">elm</span>: <span class="hljs-title class_">Element</span>, <span class="hljs-attr">insertElm</span>: <span class="hljs-built_in">string</span> | <span class="hljs-title class_">Element</span>): <span class="hljs-title class_">Element</span> | <span class="hljs-string">&#x27;null&#x27;</span>
+</code></pre></div>
+
+								
+								<div class="signature-content">
+									
+									<div class="signature-description"><p>Inserts DOM element or plain HTML before a given DOM element</p>
+</div>
+									  
+								</div>
+								
+							</div>
+							
+						</div>
+					</div>
+				</section>
+				
+				<section class="module" id="inView">
+					<div class="module-content">
+						<h1>
+							<a href="#inView"><b>#</b> inView</a>
+						</h1>
+
+						<div class="signatures">
+							
+							<div class="signature">
+								<div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">inView</span>(<span class="hljs-attr">elm</span>: <span class="hljs-title class_">HTMLElement</span>, <span class="hljs-attr">threshold</span>: <span class="hljs-built_in">number</span> = <span class="hljs-number">0</span>): <span class="hljs-title class_">PositionIndicator</span>
+</code></pre></div>
+
+								
+								<div class="signature-content">
+									
+									<div class="signature-description"><p>Determines whether the element is in the area of the viewport or not.</p>
+</div>
+									 
+									<details>
+										<summary>Examples</summary>
+										 <pre><code class="hljs language-ts"><span class="hljs-comment">// Element inside viewport</span>
+<span class="hljs-keyword">const</span> { inside } = <span class="hljs-title function_">inView</span>(myElement);
+<span class="hljs-comment">// -&gt; inside === true</span>
+
+<span class="hljs-comment">// Element outside viewport</span>
+<span class="hljs-keyword">const</span> { inside, below } = <span class="hljs-title function_">inView</span>(myElement);
+<span class="hljs-comment">// -&gt; inside === false; below === true</span>
+
+<span class="hljs-comment">// With a threshold</span>
+<span class="hljs-keyword">const</span> { inside } = <span class="hljs-title function_">inView</span>(myElement, <span class="hljs-number">30</span>);
+<span class="hljs-comment">// -&gt; inside === true</span>
+</code></pre> 
+									</details>
+									 
+									<details>
+										<summary>Types</summary>
+										<pre><code class="hljs language-ts"><span class="hljs-keyword">type</span> <span class="hljs-title class_">PositionIndicator</span> = {
+  <span class="hljs-comment">// Above the viewport area?</span>
+  <span class="hljs-attr">above</span>: <span class="hljs-built_in">boolean</span>
+  <span class="hljs-comment">// Below the viewport area?</span>
+  <span class="hljs-attr">below</span>: <span class="hljs-built_in">boolean</span>
+  <span class="hljs-comment">// Inside the viewport area?</span>
+  <span class="hljs-attr">inside</span>: <span class="hljs-built_in">boolean</span>
+  <span class="hljs-comment">// To the left of the viewport area?</span>
+  <span class="hljs-attr">left</span>: <span class="hljs-built_in">boolean</span>
+  <span class="hljs-comment">// To the right of the viewport area?</span>
+  <span class="hljs-attr">right</span>: <span class="hljs-built_in">boolean</span>
+};
+</code></pre>
+									</details>
+									
+								</div>
+								
+							</div>
+							
+						</div>
+					</div>
+				</section>
+				
+				<section class="module" id="invisible">
+					<div class="module-content">
+						<h1>
+							<a href="#invisible"><b>#</b> invisible</a>
+						</h1>
+
+						<div class="signatures">
+							
+							<div class="signature">
+								<div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">invisible</span>(<span class="hljs-attr">elm</span>: <span class="hljs-title class_">HTMLElement</span>): <span class="hljs-built_in">boolean</span>
+</code></pre></div>
+
+								
+								<div class="signature-content">
+									
+									<div class="signature-description"><p>Test if a given DOM element is invisible.</p>
+</div>
+									  
+								</div>
+								
+							</div>
+							
+						</div>
+					</div>
+				</section>
+				
+				<section class="module" id="isBlob">
+					<div class="module-content">
+						<h1>
+							<a href="#isBlob"><b>#</b> isBlob</a>
+						</h1>
+
+						<div class="signatures">
+							
+							<div class="signature">
+								<div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">isBlob</span>(<span class="hljs-attr">obj</span>: <span class="hljs-built_in">unknown</span>): <span class="hljs-built_in">boolean</span> (obj is <span class="hljs-title class_">Blob</span>)
+</code></pre></div>
+
+								
+								<div class="signature-content">
+									
+									<div class="signature-description"><p>Is the given object a Blob object</p>
+</div>
+									  
+								</div>
+								
+							</div>
+							
+						</div>
+					</div>
+				</section>
+				
+				<section class="module" id="isDocument">
+					<div class="module-content">
+						<h1>
+							<a href="#isDocument"><b>#</b> isDocument</a>
+						</h1>
+
+						<div class="signatures">
+							
+							<div class="signature">
+								<div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">isDocument</span>(<span class="hljs-attr">obj</span>: <span class="hljs-built_in">unknown</span>): <span class="hljs-built_in">boolean</span> (obj is <span class="hljs-title class_">Document</span>)
+</code></pre></div>
+
+								
+								<div class="signature-content">
+									
+									<div class="signature-description"><p>Is the given object a DOM document node</p>
+</div>
+									  
+								</div>
+								
+							</div>
+							
+						</div>
+					</div>
+				</section>
+				
+				<section class="module" id="isDOMChildNode">
+					<div class="module-content">
+						<h1>
+							<a href="#isDOMChildNode"><b>#</b> isDOMChildNode</a>
+						</h1>
+
+						<div class="signatures">
+							
+							<div class="signature">
+								<div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">isDOMChildNode</span>(<span class="hljs-attr">node</span>: <span class="hljs-title class_">Node</span>): <span class="hljs-built_in">boolean</span> (node is <span class="hljs-title class_">ChildNodeWithParent</span>)
+</code></pre></div>
+
+								
+								<div class="signature-content">
+									
+									<div class="signature-description"><p>Is the given object a DOM node child of a DOM element</p>
+</div>
+									  
+								</div>
+								
+							</div>
+							
+						</div>
+					</div>
+				</section>
+				
+				<section class="module" id="isDOMContainer">
+					<div class="module-content">
+						<h1>
+							<a href="#isDOMContainer"><b>#</b> isDOMContainer</a>
+						</h1>
+
+						<div class="signatures">
+							
+							<div class="signature">
+								<div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">isDOMContainer</span>(<span class="hljs-attr">obj</span>: <span class="hljs-built_in">unknown</span>): <span class="hljs-built_in">boolean</span>
+</code></pre></div>
+
+								
+								<div class="signature-content">
+									
+									<div class="signature-description"><p>Is the given object a DOM node that can contain child DOM nodes</p>
+</div>
+									  
+								</div>
+								
+							</div>
+							
+						</div>
+					</div>
+				</section>
+				
+				<section class="module" id="isDOMElement">
+					<div class="module-content">
+						<h1>
+							<a href="#isDOMElement"><b>#</b> isDOMElement</a>
+						</h1>
+
+						<div class="signatures">
+							
+							<div class="signature">
+								<div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">isDOMElement</span>(<span class="hljs-attr">obj</span>: <span class="hljs-built_in">unknown</span>, tags?: <span class="hljs-built_in">string</span> | <span class="hljs-built_in">string</span>[]): <span class="hljs-built_in">boolean</span> (obj is <span class="hljs-title class_">Element</span>)
+</code></pre></div>
+
+								
+								<div class="signature-content">
+									
+									<div class="signature-description"><p>Is the given object a DOM element node and optionally of a given type</p>
+</div>
+									  
+								</div>
+								
+							</div>
+							
+						</div>
+					</div>
+				</section>
+				
+				<section class="module" id="isDOMFragment">
+					<div class="module-content">
+						<h1>
+							<a href="#isDOMFragment"><b>#</b> isDOMFragment</a>
+						</h1>
+
+						<div class="signatures">
+							
+							<div class="signature">
+								<div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">isDOMFragment</span>(<span class="hljs-attr">obj</span>: <span class="hljs-built_in">unknown</span>): <span class="hljs-built_in">boolean</span> (obj is <span class="hljs-title class_">DocumentFragment</span>)
+</code></pre></div>
+
+								
+								<div class="signature-content">
+									
+									<div class="signature-description"><p>Is the given object a Document Fragment</p>
+</div>
+									  
+								</div>
+								
+							</div>
+							
+						</div>
+					</div>
+				</section>
+				
+				<section class="module" id="isDOMNode">
+					<div class="module-content">
+						<h1>
+							<a href="#isDOMNode"><b>#</b> isDOMNode</a>
+						</h1>
+
+						<div class="signatures">
+							
+							<div class="signature">
+								<div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">isDOMNode</span>(<span class="hljs-attr">node</span>: <span class="hljs-built_in">unknown</span>): <span class="hljs-built_in">boolean</span> (node is <span class="hljs-title class_">Node</span>)
+</code></pre></div>
+
+								
+								<div class="signature-content">
+									
+									<div class="signature-description"><p>Is the given object a DOM Node</p>
+</div>
+									  
+								</div>
+								
+							</div>
+							
+						</div>
+					</div>
+				</section>
+				
+				<section class="module" id="isDOMRoot">
+					<div class="module-content">
+						<h1>
+							<a href="#isDOMRoot"><b>#</b> isDOMRoot</a>
+						</h1>
+
+						<div class="signatures">
+							
+							<div class="signature">
+								<div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">isDOMRoot</span>(<span class="hljs-attr">obj</span>: <span class="hljs-built_in">unknown</span>): <span class="hljs-built_in">boolean</span> (obj is <span class="hljs-title class_">HTMLElement</span>)
+</code></pre></div>
+
+								
+								<div class="signature-content">
+									
+									<div class="signature-description"><p>Is the given object root node of the DOM</p>
+</div>
+									  
+								</div>
+								
+							</div>
+							
+						</div>
+					</div>
+				</section>
+				
+				<section class="module" id="isEventTarget">
+					<div class="module-content">
+						<h1>
+							<a href="#isEventTarget"><b>#</b> isEventTarget</a>
+						</h1>
+
+						<div class="signatures">
+							
+							<div class="signature">
+								<div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">isEventTarget</span>(<span class="hljs-attr">obj</span>: <span class="hljs-built_in">unknown</span>): <span class="hljs-built_in">boolean</span> (obj is <span class="hljs-title class_">EventTarget</span>)
+</code></pre></div>
+
+								
+								<div class="signature-content">
+									
+									<div class="signature-description"><p>Is the given object a viable event target (implements the addEventListener function)</p>
+</div>
+									  
+								</div>
+								
+							</div>
+							
+						</div>
+					</div>
+				</section>
+				
+				<section class="module" id="isWindow">
+					<div class="module-content">
+						<h1>
+							<a href="#isWindow"><b>#</b> isWindow</a>
+						</h1>
+
+						<div class="signatures">
+							
+							<div class="signature">
+								<div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">isWindow</span>(<span class="hljs-attr">obj</span>: <span class="hljs-built_in">unknown</span>): <span class="hljs-built_in">boolean</span> (obj is <span class="hljs-title class_">GeneralWindow</span>)
+</code></pre></div>
+
+								
+								<div class="signature-content">
+									
+									<div class="signature-description"><p>Is the given object a Window object</p>
+</div>
+									  
+								</div>
+								
+							</div>
+							
+						</div>
+					</div>
+				</section>
+				
+				<section class="module" id="matches">
+					<div class="module-content">
+						<h1>
+							<a href="#matches"><b>#</b> matches</a>
+						</h1>
+
+						<div class="signatures">
+							
+							<div class="signature">
+								<div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">matches</span>(<span class="hljs-attr">elm</span>: <span class="hljs-title class_">Element</span>, <span class="hljs-attr">selector</span>: <span class="hljs-built_in">string</span> = <span class="hljs-string">&#x27;&#x27;</span>): <span class="hljs-built_in">boolean</span>
+</code></pre></div>
+
+								
+								<div class="signature-content">
+									
+									<div class="signature-description"><p>Determines whether or not a DOM element matches a given CSS query selector</p>
+</div>
+									  
+								</div>
+								
+							</div>
+							
+						</div>
+					</div>
+				</section>
+				
+				<section class="module" id="off">
+					<div class="module-content">
+						<h1>
+							<a href="#off"><b>#</b> off</a>
+						</h1>
+
+						<div class="signatures">
+							
+							<div class="signature">
+								<div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">off</span>(<span class="hljs-attr">elm</span>: <span class="hljs-title class_">EventTarget</span>, <span class="hljs-attr">eventNames</span>: <span class="hljs-built_in">string</span> | <span class="hljs-built_in">string</span>[], <span class="hljs-attr">handler</span>: <span class="hljs-title class_">EventListenerOrEventListenerObject</span>, options?: <span class="hljs-title class_">EventListenerOptions</span>): <span class="hljs-title class_">EventTarget</span>
+</code></pre></div>
+
+								
+								<div class="signature-content">
+									
+									<div class="signature-description"><p>Bind an event handler for one or more event names on a given DOM element.</p>
+</div>
+									  
+								</div>
+								
+							</div>
+							
+							<div class="signature">
+								<div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">off</span>(<span class="hljs-attr">eventNames</span>: <span class="hljs-built_in">string</span> | <span class="hljs-built_in">string</span>[], <span class="hljs-attr">handler</span>: <span class="hljs-title class_">EventListenerOrEventListenerObject</span>, options?: <span class="hljs-title class_">EventListenerOptions</span>): <span class="hljs-title class_">EventTarget</span>
+</code></pre></div>
+
+								
+								<div class="signature-content">
+									
+									<div class="signature-description"><p>Bind an event handler for one or more event names to </p>
+<p><code>document</code></p>
+</div>
+									  
+								</div>
+								
+							</div>
+							
+						</div>
+					</div>
+				</section>
+				
+				<section class="module" id="on">
+					<div class="module-content">
+						<h1>
+							<a href="#on"><b>#</b> on</a>
+						</h1>
+
+						<div class="signatures">
+							
+							<div class="signature">
+								<div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">on</span>(<span class="hljs-attr">elm</span>: <span class="hljs-title class_">EventTarget</span>, <span class="hljs-attr">eventNames</span>: <span class="hljs-built_in">string</span> | <span class="hljs-built_in">string</span>[], <span class="hljs-attr">handler</span>: <span class="hljs-title class_">EventListenerOrEventListenerObject</span>, options?: <span class="hljs-title class_">AddEventListenerOptions</span>): <span class="hljs-title class_">EventTarget</span>
+</code></pre></div>
+
+								
+								<div class="signature-content">
+									
+									<div class="signature-description"><p>Bind an event handler for one or more event names on a given DOM element.</p>
+</div>
+									  
+								</div>
+								
+							</div>
+							
+							<div class="signature">
+								<div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">on</span>(<span class="hljs-attr">eventNames</span>: <span class="hljs-built_in">string</span> | <span class="hljs-built_in">string</span>[], <span class="hljs-attr">handler</span>: <span class="hljs-title class_">EventListenerOrEventListenerObject</span>, options?: <span class="hljs-title class_">AddEventListenerOptions</span>): <span class="hljs-title class_">EventTarget</span>
+</code></pre></div>
+
+								
+								<div class="signature-content">
+									
+									<div class="signature-description"><p>Bind an event handler for one or more event names to </p>
+<p><code>document</code></p>
+</div>
+									  
+								</div>
+								
+							</div>
+							
+						</div>
+					</div>
+				</section>
+				
+				<section class="module" id="once">
+					<div class="module-content">
+						<h1>
+							<a href="#once"><b>#</b> once</a>
+						</h1>
+
+						<div class="signatures">
+							
+							<div class="signature">
+								<div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">once</span>(<span class="hljs-attr">elm</span>: <span class="hljs-title class_">EventTarget</span>, <span class="hljs-attr">eventNames</span>: <span class="hljs-built_in">string</span> | <span class="hljs-built_in">string</span>[], <span class="hljs-attr">handler</span>: <span class="hljs-title class_">EventListenerOrEventListenerObject</span>, options?: <span class="hljs-title class_">OnceEventListenerOptions</span>): <span class="hljs-title class_">ReturnType</span>&lt;&gt;
+</code></pre></div>
+
+								
+								<div class="signature-content">
+									
+									<div class="signature-description"><p>Bind a single fire event handler for one or more event names on a DOM element.
+(Add </p>
+<p><code>when</code></p>
+<p> to the options to conditional trigger the event)</p>
+</div>
+									  
+									<details>
+										<summary>Types</summary>
+										<pre><code class="hljs language-ts"><span class="hljs-keyword">type</span> <span class="hljs-title class_">OnceEventListenerOptions</span> = <span class="hljs-title class_">AddEventListenerOptions</span> &amp; {
+  <span class="hljs-comment">// A function that returns a boolean to determine when the event should trigger</span>
+  when?: <span class="hljs-title class_">WhenFunction</span>
+};
+</code></pre>
+									</details>
+									
+								</div>
+								
+							</div>
+							
+							<div class="signature">
+								<div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">once</span>(<span class="hljs-attr">eventNames</span>: <span class="hljs-built_in">string</span> | <span class="hljs-built_in">string</span>[], <span class="hljs-attr">handler</span>: <span class="hljs-title class_">EventListenerOrEventListenerObject</span>, options?: <span class="hljs-title class_">OnceEventListenerOptions</span>): <span class="hljs-title class_">ReturnType</span>&lt;&gt;
+</code></pre></div>
+
+								
+								<div class="signature-content">
+									
+									<div class="signature-description"><p>Bind a single fire event handler for one or more event names on </p>
+<p><code>document</code></p>
+<p>.
+(Add </p>
+<p><code>when</code></p>
+<p> to the options to conditional trigger the event)</p>
+</div>
+									  
+									<details>
+										<summary>Types</summary>
+										<pre><code class="hljs language-ts"><span class="hljs-keyword">type</span> <span class="hljs-title class_">OnceEventListenerOptions</span> = <span class="hljs-title class_">AddEventListenerOptions</span> &amp; {
+  <span class="hljs-comment">// A function that returns a boolean to determine when the event should trigger</span>
+  when?: <span class="hljs-title class_">WhenFunction</span>
+};
+</code></pre>
+									</details>
+									
+								</div>
+								
+							</div>
+							
+						</div>
+					</div>
+				</section>
+				
+				<section class="module" id="parseSelector">
+					<div class="module-content">
+						<h1>
+							<a href="#parseSelector"><b>#</b> parseSelector</a>
+						</h1>
+
+						<div class="signatures">
+							
+							<div class="signature">
+								<div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">parseSelector</span>(<span class="hljs-attr">selector</span>: <span class="hljs-built_in">string</span>): <span class="hljs-title class_">SelectorParsing</span>
+</code></pre></div>
+
+								
+								<div class="signature-content">
+									
+									<div class="signature-description"><p>Parses a selector string into a structured object</p>
+</div>
+									  
+									<details>
+										<summary>Types</summary>
+										<pre><code class="hljs language-ts"><span class="hljs-keyword">type</span> <span class="hljs-title class_">SelectorParsing</span> = {
+  <span class="hljs-attr">attributes</span>: <span class="hljs-title class_">Attributes</span>
+  <span class="hljs-attr">tagName</span>: <span class="hljs-built_in">string</span>
+};
+</code></pre>
+									</details>
+									
+								</div>
+								
+							</div>
+							
+						</div>
+					</div>
+				</section>
+				
+				<section class="module" id="position">
+					<div class="module-content">
+						<h1>
+							<a href="#position"><b>#</b> position</a>
+						</h1>
+
+						<div class="signatures">
+							
+							<div class="signature">
+								<div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">position</span>(elm?: <span class="hljs-title class_">Document</span> | <span class="hljs-title class_">HTMLElement</span> | <span class="hljs-title class_">GeneralWindow</span>): <span class="hljs-title class_">Position</span> | <span class="hljs-title class_">PositionData</span>
+</code></pre></div>
+
+								
+								<div class="signature-content">
+									
+									<div class="signature-description"><p>Get the current position of a DOM element, either relative to the offsetParent
+or relative to the document. If the element is the viewport or the window, the
+position of the window is returned.</p>
+</div>
+									 
+									<details>
+										<summary>Examples</summary>
+										 <pre><code class="hljs language-ts"><span class="hljs-comment">// Get the position of the current window</span>
+<span class="hljs-title function_">position</span>();
+
+<span class="hljs-comment">// Get the position of the window of a given document</span>
+<span class="hljs-title function_">position</span>(<span class="hljs-variable language_">document</span>);
+<span class="hljs-title function_">position</span>(<span class="hljs-variable language_">document</span>.<span class="hljs-property">documentElement</span>);
+<span class="hljs-title function_">position</span>(<span class="hljs-variable language_">document</span>.<span class="hljs-property">body</span>);
+
+<span class="hljs-comment">// Get the position of a given element</span>
+<span class="hljs-title function_">position</span>(someElement);
+</code></pre> 
+									</details>
+									 
+									<details>
+										<summary>Types</summary>
+										<pre><code class="hljs language-ts">
+<span class="hljs-keyword">type</span> <span class="hljs-title class_">Position</span> = {
+  <span class="hljs-attr">bottom</span>: <span class="hljs-built_in">number</span>
+  <span class="hljs-attr">left</span>: <span class="hljs-built_in">number</span>
+  <span class="hljs-attr">right</span>: <span class="hljs-built_in">number</span>
+  <span class="hljs-attr">top</span>: <span class="hljs-built_in">number</span>
+};
+</code></pre>
+									</details>
+									
+								</div>
+								
+							</div>
+							
+						</div>
+					</div>
+				</section>
+				
+				<section class="module" id="prepend">
+					<div class="module-content">
+						<h1>
+							<a href="#prepend"><b>#</b> prepend</a>
+						</h1>
+
+						<div class="signatures">
+							
+							<div class="signature">
+								<div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">prepend</span>(<span class="hljs-attr">elm</span>: <span class="hljs-title class_">Element</span>, <span class="hljs-attr">insertElm</span>: <span class="hljs-built_in">string</span> | <span class="hljs-title class_">Node</span>): <span class="hljs-title class_">Element</span> | <span class="hljs-string">&#x27;null&#x27;</span>
+</code></pre></div>
+
+								
+								<div class="signature-content">
+									
+									<div class="signature-description"><p>Append DOM element or plain HTML to the beginning of a given DOM element</p>
+</div>
+									  
+								</div>
+								
+							</div>
+							
+						</div>
+					</div>
+				</section>
+				
+				<section class="module" id="removeClass">
+					<div class="module-content">
+						<h1>
+							<a href="#removeClass"><b>#</b> removeClass</a>
+						</h1>
+
+						<div class="signatures">
+							
+							<div class="signature">
+								<div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">removeClass</span>(<span class="hljs-attr">elm</span>: <span class="hljs-title class_">Element</span>, <span class="hljs-attr">classNames</span>: <span class="hljs-built_in">string</span> | <span class="hljs-built_in">string</span>[]): <span class="hljs-title class_">Element</span>
+</code></pre></div>
+
+								
+								<div class="signature-content">
+									
+									<div class="signature-description"><p>Remove one or multiple class names from a DOM element</p>
+</div>
+									  
+								</div>
+								
+							</div>
+							
+						</div>
+					</div>
+				</section>
+				
+				<section class="module" id="replaceClass">
+					<div class="module-content">
+						<h1>
+							<a href="#replaceClass"><b>#</b> replaceClass</a>
+						</h1>
+
+						<div class="signatures">
+							
+							<div class="signature">
+								<div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">replaceClass</span>(<span class="hljs-attr">elm</span>: <span class="hljs-title class_">Element</span>, <span class="hljs-attr">classNames</span>: <span class="hljs-built_in">string</span> | <span class="hljs-built_in">string</span>[], <span class="hljs-attr">replacements</span>: <span class="hljs-built_in">string</span> | <span class="hljs-built_in">string</span>[]): <span class="hljs-title class_">Element</span>
+</code></pre></div>
+
+								
+								<div class="signature-content">
+									
+									<div class="signature-description"><p>Replaces css class with another on a DOM element.</p>
+</div>
+									  
+								</div>
+								
+							</div>
+							
+						</div>
+					</div>
+				</section>
+				
+				<section class="module" id="replaceNode">
+					<div class="module-content">
+						<h1>
+							<a href="#replaceNode"><b>#</b> replaceNode</a>
+						</h1>
+
+						<div class="signatures">
+							
+							<div class="signature">
+								<div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">replaceNode</span>(<span class="hljs-attr">elm</span>: <span class="hljs-title class_">Node</span>, replacement?: <span class="hljs-built_in">string</span> | <span class="hljs-title class_">Node</span>): <span class="hljs-title class_">Node</span> | <span class="hljs-built_in">void</span>
+</code></pre></div>
+
+								
+								<div class="signature-content">
+									
+									<div class="signature-description"><p>Replace a given DOM element with another DOM element or plain HTML string</p>
+</div>
+									  
+								</div>
+								
+							</div>
+							
+						</div>
+					</div>
+				</section>
+				
+				<section class="module" id="saveFile">
+					<div class="module-content">
+						<h1>
+							<a href="#saveFile"><b>#</b> saveFile</a>
+						</h1>
+
+						<div class="signatures">
+							
+							<div class="signature">
+								<div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">saveFile</span>(<span class="hljs-attr">content</span>: <span class="hljs-built_in">string</span> | <span class="hljs-title class_">Blob</span>, <span class="hljs-attr">name</span>: <span class="hljs-built_in">string</span>, <span class="hljs-attr">type</span>: <span class="hljs-built_in">string</span> = <span class="hljs-string">&#x27;text/plain; charset=utf-8&#x27;</span>): <span class="hljs-built_in">void</span>
+</code></pre></div>
+
+								
+								<div class="signature-content">
+									
+									<div class="signature-description"><p>Creates a file with given content and triggers download.
+(if the browser doesn&#39;t support file downloads, this method does nothing)</p>
+</div>
+									  
+								</div>
+								
+							</div>
+							
+							<div class="signature">
+								<div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">fileSavingSupported</span>(<span class="hljs-literal">undefined</span>): <span class="hljs-built_in">boolean</span>
+</code></pre></div>
+
+								
+							</div>
+							
+						</div>
+					</div>
+				</section>
+				
+				<section class="module" id="scrollInfo">
+					<div class="module-content">
+						<h1>
+							<a href="#scrollInfo"><b>#</b> scrollInfo</a>
+						</h1>
+
+						<div class="signatures">
+							
+							<div class="signature">
+								<div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">scrollInfo</span>(<span class="hljs-attr">elm</span>: <span class="hljs-title class_">Element</span> | <span class="hljs-title class_">GeneralWindow</span> = <span class="hljs-variable language_">window</span>): <span class="hljs-title class_">ScrollInfo</span>
+</code></pre></div>
+
+								
+								<div class="signature-content">
+									
+									<div class="signature-description"><p>Gather the current scroll position information of a DOM element or the window</p>
+</div>
+									  
+									<details>
+										<summary>Types</summary>
+										<pre><code class="hljs language-ts">
+<span class="hljs-keyword">type</span> <span class="hljs-title class_">ScrollInfo</span> = {
+  <span class="hljs-attr">x</span>: <span class="hljs-built_in">number</span>
+  <span class="hljs-attr">xMax</span>: <span class="hljs-built_in">number</span>
+  <span class="hljs-attr">xPct</span>: <span class="hljs-built_in">number</span>
+  <span class="hljs-attr">y</span>: <span class="hljs-built_in">number</span>
+  <span class="hljs-attr">yMax</span>: <span class="hljs-built_in">number</span>
+  <span class="hljs-attr">yPct</span>: <span class="hljs-built_in">number</span>
+};
+</code></pre>
+									</details>
+									
+								</div>
+								
+							</div>
+							
+						</div>
+					</div>
+				</section>
+				
+				<section class="module" id="scrollParent">
+					<div class="module-content">
+						<h1>
+							<a href="#scrollParent"><b>#</b> scrollParent</a>
+						</h1>
+
+						<div class="signatures">
+							
+							<div class="signature">
+								<div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">scrollParent</span>(<span class="hljs-attr">elm</span>: <span class="hljs-title class_">Element</span>): <span class="hljs-title class_">Element</span> | <span class="hljs-title class_">HTMLElement</span> | <span class="hljs-string">&#x27;null&#x27;</span>
+</code></pre></div>
+
+								
+								<div class="signature-content">
+									
+									<div class="signature-description"><p>Get the parent element that has scrolling</p>
+</div>
+									  
+								</div>
+								
+							</div>
+							
+						</div>
+					</div>
+				</section>
+				
+				<section class="module" id="selectorToHTML">
+					<div class="module-content">
+						<h1>
+							<a href="#selectorToHTML"><b>#</b> selectorToHTML</a>
+						</h1>
+
+						<div class="signatures">
+							
+							<div class="signature">
+								<div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">selectorToHTML</span>(<span class="hljs-attr">selector</span>: <span class="hljs-built_in">string</span>): <span class="hljs-built_in">string</span>
+</code></pre></div>
+
+								
+								<div class="signature-content">
+									
+									<div class="signature-description"><p>Converts a given CSS selector into HTML
+(No this is not an Emmet substitute, so it is limited to only one element)</p>
+</div>
+									 
+									<details>
+										<summary>Examples</summary>
+										 <pre><code class="hljs language-ts"><span class="hljs-title function_">selectorToHTML</span>(<span class="hljs-string">&#x27;#id.class-name&#x27;</span>);
+<span class="hljs-comment">// -&gt; &#x27;&lt;div id=&quot;id&quot; class=&quot;class-name&quot; /&gt;&#x27;</span>
+</code></pre> 
+									</details>
+									 
+								</div>
+								
+							</div>
+							
+						</div>
+					</div>
+				</section>
+				
+				<section class="module" id="siblings">
+					<div class="module-content">
+						<h1>
+							<a href="#siblings"><b>#</b> siblings</a>
+						</h1>
+
+						<div class="signatures">
+							
+							<div class="signature">
+								<div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">siblings</span>(<span class="hljs-attr">elm</span>: <span class="hljs-string">&#x27;null&#x27;</span> | <span class="hljs-title class_">Node</span>): <span class="hljs-title class_">Element</span>[]
+</code></pre></div>
+
+								
+								<div class="signature-content">
+									
+									<div class="signature-description"><p>Get all sibling elements of a given DOM element</p>
+</div>
+									 
+									<details>
+										<summary>Examples</summary>
+										 <pre><code class="hljs language-ts"><span class="hljs-title function_">siblings</span>(someElement);
+</code></pre> 
+									</details>
+									 
+								</div>
+								
+							</div>
+							
+							<div class="signature">
+								<div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">nextSiblings</span>(<span class="hljs-attr">elm</span>: <span class="hljs-string">&#x27;null&#x27;</span> | <span class="hljs-title class_">Node</span>): <span class="hljs-title class_">Element</span>[]
+</code></pre></div>
+
+								
+								<div class="signature-content">
+									
+									<div class="signature-description"><p>Get all sibling elements after a given DOM element in the structure</p>
+</div>
+									 
+									<details>
+										<summary>Examples</summary>
+										 <pre><code class="hljs language-ts"><span class="hljs-title function_">nextSiblings</span>(someElement);
+</code></pre> 
+									</details>
+									 
+								</div>
+								
+							</div>
+							
+							<div class="signature">
+								<div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">previousSiblings</span>(<span class="hljs-attr">elm</span>: <span class="hljs-string">&#x27;null&#x27;</span> | <span class="hljs-title class_">Node</span>): <span class="hljs-title class_">Element</span>[]
+</code></pre></div>
+
+								
+								<div class="signature-content">
+									
+									<div class="signature-description"><p>Get all sibling elements before a given DOM element in the structure</p>
+</div>
+									 
+									<details>
+										<summary>Examples</summary>
+										 <pre><code class="hljs language-ts"><span class="hljs-title function_">previousSiblings</span>(someElement);
+</code></pre> 
+									</details>
+									 
+								</div>
+								
+							</div>
+							
+						</div>
+					</div>
+				</section>
+				
+				<section class="module" id="size">
+					<div class="module-content">
+						<h1>
+							<a href="#size"><b>#</b> size</a>
+						</h1>
+
+						<div class="signatures">
+							
+							<div class="signature">
+								<div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">size</span>(<span class="hljs-keyword">type</span>?: <span class="hljs-title class_">SizeType</span>): <span class="hljs-title class_">Size</span>
+</code></pre></div>
+
+								
+								<div class="signature-content">
+									
+									<div class="signature-description"><p>Find the size of the current Window.</p>
+</div>
+									 
+									<details>
+										<summary>Examples</summary>
+										 <pre><code class="hljs language-ts"><span class="hljs-comment">// Get the outer size the window</span>
+<span class="hljs-title function_">size</span>();
+
+<span class="hljs-comment">// Get a specific size model of window</span>
+<span class="hljs-title function_">size</span>(<span class="hljs-title class_">SizeType</span>.<span class="hljs-property">MARGIN_BOX</span>);
+</code></pre> 
+									</details>
+									 
+									<details>
+										<summary>Types</summary>
+										<pre><code class="hljs language-ts">
+<span class="hljs-keyword">type</span> <span class="hljs-title class_">Size</span> = {
+  <span class="hljs-attr">height</span>: <span class="hljs-built_in">number</span>
+  <span class="hljs-attr">width</span>: <span class="hljs-built_in">number</span>
+};
+</code></pre>
+									</details>
+									
+								</div>
+								
+							</div>
+							
+							<div class="signature">
+								<div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">size</span>(<span class="hljs-attr">elm</span>: <span class="hljs-title class_">HTMLElement</span> | <span class="hljs-title class_">GeneralWindow</span>, <span class="hljs-keyword">type</span>?: <span class="hljs-title class_">SizeType</span>): <span class="hljs-title class_">Size</span>
+</code></pre></div>
+
+								
+								<div class="signature-content">
+									
+									<div class="signature-description"><p>Find the size of a DOM element or a Window instance.</p>
+</div>
+									 
+									<details>
+										<summary>Examples</summary>
+										 <pre><code class="hljs language-ts"><span class="hljs-comment">// Get the outer size af given element</span>
+<span class="hljs-title function_">size</span>(someElement);
+
+<span class="hljs-comment">// Get a specific size model of a given element</span>
+<span class="hljs-title function_">size</span>(someElement, <span class="hljs-title class_">SizeType</span>.<span class="hljs-property">MARGIN_BOX</span>);
+</code></pre> 
+									</details>
+									 
+									<details>
+										<summary>Types</summary>
+										<pre><code class="hljs language-ts">
+
+<span class="hljs-keyword">type</span> <span class="hljs-title class_">Size</span> = {
+  <span class="hljs-attr">height</span>: <span class="hljs-built_in">number</span>
+  <span class="hljs-attr">width</span>: <span class="hljs-built_in">number</span>
+};
+</code></pre>
+									</details>
+									
+								</div>
+								
+							</div>
+							
+							<div class="signature">
+								<div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">contentBoxSize</span>(<span class="hljs-attr">elm</span>: <span class="hljs-title class_">HTMLElement</span> | <span class="hljs-title class_">GeneralWindow</span>): <span class="hljs-title class_">Size</span>
+</code></pre></div>
+
+								
+								<div class="signature-content">
+									
+									<div class="signature-description"><p>Find the size of a DOM element or window excluding borders, margins and padding</p>
+</div>
+									  
+									<details>
+										<summary>Types</summary>
+										<pre><code class="hljs language-ts">
+<span class="hljs-keyword">type</span> <span class="hljs-title class_">Size</span> = {
+  <span class="hljs-attr">height</span>: <span class="hljs-built_in">number</span>
+  <span class="hljs-attr">width</span>: <span class="hljs-built_in">number</span>
+};
+</code></pre>
+									</details>
+									
+								</div>
+								
+							</div>
+							
+							<div class="signature">
+								<div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">contentSize</span>(<span class="hljs-attr">elm</span>: <span class="hljs-title class_">HTMLElement</span> | <span class="hljs-title class_">GeneralWindow</span>): <span class="hljs-title class_">Size</span>
+</code></pre></div>
+
+								
+								<div class="signature-content">
+									
+									<div class="signature-description"><p>Find the size of the content (scrollable area minus padding) of a DOM element or window</p>
+</div>
+									  
+									<details>
+										<summary>Types</summary>
+										<pre><code class="hljs language-ts">
+<span class="hljs-keyword">type</span> <span class="hljs-title class_">Size</span> = {
+  <span class="hljs-attr">height</span>: <span class="hljs-built_in">number</span>
+  <span class="hljs-attr">width</span>: <span class="hljs-built_in">number</span>
+};
+</code></pre>
+									</details>
+									
+								</div>
+								
+							</div>
+							
+							<div class="signature">
+								<div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">elmSize</span>(<span class="hljs-attr">elm</span>: <span class="hljs-title class_">HTMLElement</span>, <span class="hljs-keyword">type</span>?: <span class="hljs-title class_">SizeType</span>): <span class="hljs-title class_">Size</span>
+</code></pre></div>
+
+								
+								<div class="signature-content">
+									  
+									<details>
+										<summary>Types</summary>
+										<pre><code class="hljs language-ts">
+<span class="hljs-keyword">type</span> <span class="hljs-title class_">Size</span> = {
+  <span class="hljs-attr">height</span>: <span class="hljs-built_in">number</span>
+  <span class="hljs-attr">width</span>: <span class="hljs-built_in">number</span>
+};
+</code></pre>
+									</details>
+									
+								</div>
+								
+							</div>
+							
+							<div class="signature">
+								<div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">innerSize</span>(<span class="hljs-attr">elm</span>: <span class="hljs-title class_">HTMLElement</span> | <span class="hljs-title class_">GeneralWindow</span>): <span class="hljs-title class_">Size</span>
+</code></pre></div>
+
+								
+								<div class="signature-content">
+									
+									<div class="signature-description"><p>Find the size of a DOM element or window excluding borders and margins</p>
+</div>
+									  
+									<details>
+										<summary>Types</summary>
+										<pre><code class="hljs language-ts">
+<span class="hljs-keyword">type</span> <span class="hljs-title class_">Size</span> = {
+  <span class="hljs-attr">height</span>: <span class="hljs-built_in">number</span>
+  <span class="hljs-attr">width</span>: <span class="hljs-built_in">number</span>
+};
+</code></pre>
+									</details>
+									
+								</div>
+								
+							</div>
+							
+							<div class="signature">
+								<div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">marginBoxSize</span>(<span class="hljs-attr">elm</span>: <span class="hljs-title class_">HTMLElement</span> | <span class="hljs-title class_">GeneralWindow</span>): <span class="hljs-title class_">Size</span>
+</code></pre></div>
+
+								
+								<div class="signature-content">
+									
+									<div class="signature-description"><p>Find the size of a DOM element or window including margins and borders</p>
+</div>
+									  
+									<details>
+										<summary>Types</summary>
+										<pre><code class="hljs language-ts">
+<span class="hljs-keyword">type</span> <span class="hljs-title class_">Size</span> = {
+  <span class="hljs-attr">height</span>: <span class="hljs-built_in">number</span>
+  <span class="hljs-attr">width</span>: <span class="hljs-built_in">number</span>
+};
+</code></pre>
+									</details>
+									
+								</div>
+								
+							</div>
+							
+							<div class="signature">
+								<div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">outerSize</span>(<span class="hljs-attr">elm</span>: <span class="hljs-title class_">HTMLElement</span> | <span class="hljs-title class_">GeneralWindow</span>): <span class="hljs-title class_">Size</span>
+</code></pre></div>
+
+								
+								<div class="signature-content">
+									
+									<div class="signature-description"><p>Find the size of a DOM element or window including borders</p>
+</div>
+									  
+									<details>
+										<summary>Types</summary>
+										<pre><code class="hljs language-ts">
+<span class="hljs-keyword">type</span> <span class="hljs-title class_">Size</span> = {
+  <span class="hljs-attr">height</span>: <span class="hljs-built_in">number</span>
+  <span class="hljs-attr">width</span>: <span class="hljs-built_in">number</span>
+};
+</code></pre>
+									</details>
+									
+								</div>
+								
+							</div>
+							
+							<div class="signature">
+								<div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">windowSize</span>(<span class="hljs-attr">win</span>: <span class="hljs-title class_">GeneralWindow</span> = <span class="hljs-variable language_">window</span>, <span class="hljs-attr">type</span>: <span class="hljs-title class_">SizeType</span> = <span class="hljs-title class_">SizeType</span>.<span class="hljs-property">OUTER</span>): <span class="hljs-title class_">Size</span>
+</code></pre></div>
+
+								
+								<div class="signature-content">
+									  
+									<details>
+										<summary>Types</summary>
+										<pre><code class="hljs language-ts">
+
+<span class="hljs-keyword">type</span> <span class="hljs-title class_">Size</span> = {
+  <span class="hljs-attr">height</span>: <span class="hljs-built_in">number</span>
+  <span class="hljs-attr">width</span>: <span class="hljs-built_in">number</span>
+};
+</code></pre>
+									</details>
+									
+								</div>
+								
+							</div>
+							
+						</div>
+					</div>
+				</section>
+				
+				<section class="module" id="supportsCSS">
+					<div class="module-content">
+						<h1>
+							<a href="#supportsCSS"><b>#</b> supportsCSS</a>
+						</h1>
+
+						<div class="signatures">
+							
+							<div class="signature">
+								<div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">supportsCSS</span>(<span class="hljs-attr">prop</span>: <span class="hljs-title class_">CSSStyleKey</span>, <span class="hljs-attr">value</span>: <span class="hljs-built_in">string</span>): <span class="hljs-title class_">PrefixedPropMatch</span> | <span class="hljs-built_in">boolean</span>
+</code></pre></div>
+
+								
+								<div class="signature-content">
+									
+									<div class="signature-description"><p>Detect wether or not the given css property (and/or) value is supported by
+the current browser</p>
+</div>
+									  
+									<details>
+										<summary>Types</summary>
+										<pre><code class="hljs language-ts">
+<span class="hljs-keyword">type</span> <span class="hljs-title class_">PrefixedPropMatch</span> = {
+  <span class="hljs-attr">prefix</span>: <span class="hljs-built_in">string</span>
+  <span class="hljs-attr">prop</span>: <span class="hljs-built_in">string</span>
+  <span class="hljs-attr">value</span>: <span class="hljs-built_in">string</span>
+};
+</code></pre>
+									</details>
+									
+								</div>
+								
+							</div>
+							
+							<div class="signature">
+								<div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">supportsProp</span>(<span class="hljs-attr">prop</span>: <span class="hljs-title class_">CSSStyleKey</span>, <span class="hljs-attr">value</span>: <span class="hljs-built_in">string</span>): <span class="hljs-built_in">boolean</span>
+</code></pre></div>
+
+								
+							</div>
+							
+						</div>
+					</div>
+				</section>
+				
+				<section class="module" id="toDOM">
+					<div class="module-content">
+						<h1>
+							<a href="#toDOM"><b>#</b> toDOM</a>
+						</h1>
+
+						<div class="signatures">
+							
+							<div class="signature">
+								<div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">toDOM</span>(<span class="hljs-attr">html</span>: <span class="hljs-built_in">string</span>): <span class="hljs-built_in">string</span> | <span class="hljs-title class_">HTMLCollection</span>
+</code></pre></div>
+
+								
+								<div class="signature-content">
+									
+									<div class="signature-description"><p>Convert HTML into DOM node(s)</p>
+</div>
+									 
+									<details>
+										<summary>Examples</summary>
+										 <pre><code class="hljs language-ts"><span class="hljs-comment">// HTML is returned as is, as it cannot be parsed easily</span>
+<span class="hljs-title function_">toDOM</span>(<span class="hljs-string">&#x27;&lt;html&gt;&lt;body&gt;&lt;div /&gt;&lt;/body&gt;&lt;/html&gt;&#x27;</span>);
+
+<span class="hljs-comment">// Convert a given HTML string to HTML</span>
+<span class="hljs-title function_">toDOM</span>(<span class="hljs-string">&#x27;&lt;div&gt;&lt;a&gt;link&lt;/a&gt;&lt;/div&gt;&#x27;</span>)
+<span class="hljs-comment">// -&gt; &lt;div&gt;&lt;a&gt;link&lt;/a&gt;&lt;/div&gt;</span>
+</code></pre> 
+									</details>
+									 
+								</div>
+								
+							</div>
+							
+						</div>
+					</div>
+				</section>
+				
+				<section class="module" id="toggleClass">
+					<div class="module-content">
+						<h1>
+							<a href="#toggleClass"><b>#</b> toggleClass</a>
+						</h1>
+
+						<div class="signatures">
+							
+							<div class="signature">
+								<div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">toggleClass</span>(<span class="hljs-attr">elm</span>: <span class="hljs-title class_">Element</span>, <span class="hljs-attr">classNames</span>: <span class="hljs-built_in">string</span> | <span class="hljs-built_in">string</span>[], force?: <span class="hljs-built_in">boolean</span>): <span class="hljs-title class_">Element</span>
+</code></pre></div>
+
+								
+								<div class="signature-content">
+									
+									<div class="signature-description"><p>Toggles (add/remove) one or multiple class names on a DOM element</p>
+</div>
+									  
+								</div>
+								
+							</div>
+							
+						</div>
+					</div>
+				</section>
+				
+				<section class="module" id="toggleFullscreen">
+					<div class="module-content">
+						<h1>
+							<a href="#toggleFullscreen"><b>#</b> toggleFullscreen</a>
+						</h1>
+
+						<div class="signatures">
+							
+							<div class="signature">
+								<div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">toggleFullscreen</span>(<span class="hljs-attr">elm</span>: <span class="hljs-title class_">Element</span> = <span class="hljs-variable language_">document</span>.<span class="hljs-property">documentElement</span>, options?: <span class="hljs-title class_">FullscreenOptions</span>): <span class="hljs-title class_">Promise</span>&lt;<span class="hljs-built_in">void</span>&gt;
+</code></pre></div>
+
+								
+							</div>
+							
+						</div>
+					</div>
+				</section>
+				
+				<section class="module" id="trigger">
+					<div class="module-content">
+						<h1>
+							<a href="#trigger"><b>#</b> trigger</a>
+						</h1>
+
+						<div class="signatures">
+							
+							<div class="signature">
+								<div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">trigger</span>(<span class="hljs-attr">elm</span>: <span class="hljs-title class_">EventTarget</span>, <span class="hljs-attr">eventNames</span>: <span class="hljs-built_in">string</span> | <span class="hljs-built_in">string</span>[], data?: <span class="hljs-built_in">unknown</span>): <span class="hljs-title class_">EventTarget</span>
+</code></pre></div>
+
+								
+								<div class="signature-content">
+									
+									<div class="signature-description"><p>Trigger one or more events on a given DOM element.</p>
+</div>
+									  
+								</div>
+								
+							</div>
+							
+							<div class="signature">
+								<div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">trigger</span>(<span class="hljs-attr">eventNames</span>: <span class="hljs-built_in">string</span> | <span class="hljs-built_in">string</span>[], data?: <span class="hljs-built_in">unknown</span>): <span class="hljs-title class_">EventTarget</span>
+</code></pre></div>
+
+								
+								<div class="signature-content">
+									
+									<div class="signature-description"><p>Trigger one or more events on Document.</p>
+</div>
+									  
+								</div>
+								
+							</div>
+							
+						</div>
+					</div>
+				</section>
+				
+				<section class="module" id="types">
+					<div class="module-content">
+						<h1>
+							<a href="#types"><b>#</b> types</a>
+						</h1>
+
+						<div class="signatures">
+							
+						</div>
+					</div>
+				</section>
+				
+				<section class="module" id="vendorPrefixed">
+					<div class="module-content">
+						<h1>
+							<a href="#vendorPrefixed"><b>#</b> vendorPrefixed</a>
+						</h1>
+
+						<div class="signatures">
+							
+							<div class="signature">
+								<div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">vendorPrefixed</span>(<span class="hljs-attr">str</span>: <span class="hljs-built_in">string</span>): <span class="hljs-title class_">VendorPrefixing</span>[]
+</code></pre></div>
+
+								
+								<div class="signature-content">
+									
+									<div class="signature-description"><p>Add vendor prefixes to a string</p>
+</div>
+									  
+								</div>
+								
+							</div>
+							
+						</div>
+					</div>
+				</section>
+				
+				<section class="module" id="viewport">
+					<div class="module-content">
+						<h1>
+							<a href="#viewport"><b>#</b> viewport</a>
+						</h1>
+
+						<div class="signatures">
+							
+							<div class="signature">
+								<div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">viewport</span>(elm?: <span class="hljs-title class_">Element</span> | <span class="hljs-title class_">Document</span> | <span class="hljs-title class_">GeneralWindow</span>): <span class="hljs-title class_">Element</span> | <span class="hljs-title class_">HTMLElement</span> | <span class="hljs-string">&#x27;null&#x27;</span>
+</code></pre></div>
+
+								
+								<div class="signature-content">
+									
+									<div class="signature-description"><p>Get the current viewport element (scrolling element) of the current document, from a given element</p>
+</div>
+									 
+									<details>
+										<summary>Examples</summary>
+										 <pre><code class="hljs language-ts"><span class="hljs-comment">// Get the viewport of the current document</span>
+<span class="hljs-title function_">viewport</span>();
+
+<span class="hljs-comment">// Get the viewport of the current window</span>
+<span class="hljs-title function_">viewport</span>(<span class="hljs-variable language_">window</span>);
+
+<span class="hljs-comment">// Get the viewport of a given element</span>
+<span class="hljs-title function_">viewport</span>(someElementInSomeDocument);
+</code></pre> 
+									</details>
+									 
+									<details>
+										<summary>Types</summary>
+										<pre><code class="hljs language-ts"><span class="hljs-keyword">type</span> <span class="hljs-title class_">GeneralWindow</span> = <span class="hljs-title class_">Window</span> | ;
+</code></pre>
+									</details>
+									
+								</div>
+								
+							</div>
+							
+						</div>
+					</div>
+				</section>
+				
+				<section class="module" id="visible">
+					<div class="module-content">
+						<h1>
+							<a href="#visible"><b>#</b> visible</a>
+						</h1>
+
+						<div class="signatures">
+							
+							<div class="signature">
+								<div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">visible</span>(<span class="hljs-attr">elm</span>: <span class="hljs-title class_">HTMLElement</span>): <span class="hljs-built_in">boolean</span>
+</code></pre></div>
+
+								
+								<div class="signature-content">
+									
+									<div class="signature-description"><p>Test if a given DOM element is visible.</p>
+</div>
+									  
+								</div>
+								
+							</div>
+							
+						</div>
+					</div>
+				</section>
+				
+				<section class="module" id="wrap">
+					<div class="module-content">
+						<h1>
+							<a href="#wrap"><b>#</b> wrap</a>
+						</h1>
+
+						<div class="signatures">
+							
+							<div class="signature">
+								<div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">wrap</span>(<span class="hljs-attr">elm</span>: <span class="hljs-title class_">Element</span>, <span class="hljs-attr">html</span>: <span class="hljs-built_in">string</span>): <span class="hljs-title class_">Element</span>
+</code></pre></div>
+
+								
+							</div>
+							
+						</div>
+					</div>
+				</section>
+				
+			</article>
+		</main>
+
+		
+		<div class="tooltip" id="Tooltip-BoxModelMapping"><pre><code class="hljs language-ts"><span class="hljs-keyword">type</span> <span class="hljs-title class_">BoxModelMapping</span> = {
+  <span class="hljs-attr">border</span>: <span class="hljs-title class_">BoxModelSectionMapping</span>
+  <span class="hljs-attr">margin</span>: <span class="hljs-title class_">BoxModelSectionMapping</span>
+  <span class="hljs-attr">padding</span>: <span class="hljs-title class_">BoxModelSectionMapping</span>
+};
+</code></pre></div>
+		
+		<div class="tooltip" id="Tooltip-BoxModelSectionMapping"><pre><code class="hljs language-ts"><span class="hljs-keyword">type</span> <span class="hljs-title class_">BoxModelSectionMapping</span> = {
+  <span class="hljs-attr">bottom</span>: <span class="hljs-built_in">number</span>
+  <span class="hljs-attr">left</span>: <span class="hljs-built_in">number</span>
+  <span class="hljs-attr">right</span>: <span class="hljs-built_in">number</span>
+  <span class="hljs-attr">top</span>: <span class="hljs-built_in">number</span>
+};
+</code></pre></div>
+		
+		<div class="tooltip" id="Tooltip-Option"><pre><code class="hljs language-ts"><span class="hljs-keyword">type</span> <span class="hljs-title class_">Option</span> = <span class="hljs-built_in">string</span> | cnObj;
+</code></pre></div>
+		
+		<div class="tooltip" id="Tooltip-cnObj"><pre><code class="hljs language-ts"><span class="hljs-keyword">type</span> cnObj = ;
+</code></pre></div>
+		
+		<div class="tooltip" id="Tooltip-CSSStyleProperties"><pre><code class="hljs language-ts"><span class="hljs-keyword">type</span> <span class="hljs-title class_">CSSStyleProperties</span> = <span class="hljs-literal">undefined</span>;
+</code></pre></div>
+		
+		<div class="tooltip" id="Tooltip-DelegateEvent"><pre><code class="hljs language-ts"><span class="hljs-keyword">type</span> <span class="hljs-title class_">DelegateEvent</span> = <span class="hljs-title class_">Event</span> &amp; {
+  <span class="hljs-attr">delegateTarget</span>: <span class="hljs-title class_">HTMLElement</span>
+};
+</code></pre></div>
+		
+		<div class="tooltip" id="Tooltip-DelegateEventHandler"><pre><code class="hljs language-ts"><span class="hljs-keyword">type</span> <span class="hljs-title class_">DelegateEventHandler</span> = <span class="hljs-function">(<span class="hljs-params">e: DelegateEvent</span>) =&gt;</span> <span class="hljs-built_in">boolean</span> | <span class="hljs-literal">undefined</span>;
+</code></pre></div>
+		
+		<div class="tooltip" id="Tooltip-DelegateRemoveFunction"><pre><code class="hljs language-ts"><span class="hljs-keyword">type</span> <span class="hljs-title class_">DelegateRemoveFunction</span> = <span class="hljs-function">(<span class="hljs-params"><span class="hljs-literal">undefined</span></span>) =&gt;</span> <span class="hljs-title class_">ReturnType</span>&lt;&gt;;
+</code></pre></div>
+		
+		<div class="tooltip" id="Tooltip-PositionIndicator"><pre><code class="hljs language-ts"><span class="hljs-keyword">type</span> <span class="hljs-title class_">PositionIndicator</span> = {
+  <span class="hljs-comment">// Above the viewport area?</span>
+  <span class="hljs-attr">above</span>: <span class="hljs-built_in">boolean</span>
+  <span class="hljs-comment">// Below the viewport area?</span>
+  <span class="hljs-attr">below</span>: <span class="hljs-built_in">boolean</span>
+  <span class="hljs-comment">// Inside the viewport area?</span>
+  <span class="hljs-attr">inside</span>: <span class="hljs-built_in">boolean</span>
+  <span class="hljs-comment">// To the left of the viewport area?</span>
+  <span class="hljs-attr">left</span>: <span class="hljs-built_in">boolean</span>
+  <span class="hljs-comment">// To the right of the viewport area?</span>
+  <span class="hljs-attr">right</span>: <span class="hljs-built_in">boolean</span>
+};
+</code></pre></div>
+		
+		<div class="tooltip" id="Tooltip-OnceEventListenerOptions"><pre><code class="hljs language-ts"><span class="hljs-keyword">type</span> <span class="hljs-title class_">OnceEventListenerOptions</span> = <span class="hljs-title class_">AddEventListenerOptions</span> &amp; {
+  <span class="hljs-comment">// A function that returns a boolean to determine when the event should trigger</span>
+  when?: <span class="hljs-title class_">WhenFunction</span>
+};
+</code></pre></div>
+		
+		<div class="tooltip" id="Tooltip-WhenFunction"><pre><code class="hljs language-ts"><span class="hljs-keyword">type</span> <span class="hljs-title class_">WhenFunction</span> = <span class="hljs-function">(<span class="hljs-params">e: Event</span>) =&gt;</span> <span class="hljs-built_in">boolean</span>;
+</code></pre></div>
+		
+		<div class="tooltip" id="Tooltip-AttributeMapping"><pre><code class="hljs language-ts"><span class="hljs-keyword">type</span> <span class="hljs-title class_">AttributeMapping</span> = <span class="hljs-title class_">Record</span>&lt;<span class="hljs-built_in">string</span>, <span class="hljs-title class_">Set</span>&lt;<span class="hljs-built_in">string</span>&gt;&gt;;
+</code></pre></div>
+		
+		<div class="tooltip" id="Tooltip-Attributes"><pre><code class="hljs language-ts"><span class="hljs-keyword">type</span> <span class="hljs-title class_">Attributes</span> = <span class="hljs-title class_">Record</span>&lt;<span class="hljs-built_in">string</span>, <span class="hljs-built_in">string</span>&gt;;
+</code></pre></div>
+		
+		<div class="tooltip" id="Tooltip-SelectorParsing"><pre><code class="hljs language-ts"><span class="hljs-keyword">type</span> <span class="hljs-title class_">SelectorParsing</span> = {
+  <span class="hljs-attr">attributes</span>: <span class="hljs-title class_">Attributes</span>
+  <span class="hljs-attr">tagName</span>: <span class="hljs-built_in">string</span>
+};
+</code></pre></div>
+		
+		<div class="tooltip" id="Tooltip-Position"><pre><code class="hljs language-ts"><span class="hljs-keyword">type</span> <span class="hljs-title class_">Position</span> = {
+  <span class="hljs-attr">bottom</span>: <span class="hljs-built_in">number</span>
+  <span class="hljs-attr">left</span>: <span class="hljs-built_in">number</span>
+  <span class="hljs-attr">right</span>: <span class="hljs-built_in">number</span>
+  <span class="hljs-attr">top</span>: <span class="hljs-built_in">number</span>
+};
+</code></pre></div>
+		
+		<div class="tooltip" id="Tooltip-ScrollInfo"><pre><code class="hljs language-ts"><span class="hljs-keyword">type</span> <span class="hljs-title class_">ScrollInfo</span> = {
+  <span class="hljs-attr">x</span>: <span class="hljs-built_in">number</span>
+  <span class="hljs-attr">xMax</span>: <span class="hljs-built_in">number</span>
+  <span class="hljs-attr">xPct</span>: <span class="hljs-built_in">number</span>
+  <span class="hljs-attr">y</span>: <span class="hljs-built_in">number</span>
+  <span class="hljs-attr">yMax</span>: <span class="hljs-built_in">number</span>
+  <span class="hljs-attr">yPct</span>: <span class="hljs-built_in">number</span>
+};
+</code></pre></div>
+		
+		<div class="tooltip" id="Tooltip-Size"><pre><code class="hljs language-ts"><span class="hljs-keyword">type</span> <span class="hljs-title class_">Size</span> = {
+  <span class="hljs-attr">height</span>: <span class="hljs-built_in">number</span>
+  <span class="hljs-attr">width</span>: <span class="hljs-built_in">number</span>
+};
+</code></pre></div>
+		
+		<div class="tooltip" id="Tooltip-PrefixedPropMatch"><pre><code class="hljs language-ts"><span class="hljs-keyword">type</span> <span class="hljs-title class_">PrefixedPropMatch</span> = {
+  <span class="hljs-attr">prefix</span>: <span class="hljs-built_in">string</span>
+  <span class="hljs-attr">prop</span>: <span class="hljs-built_in">string</span>
+  <span class="hljs-attr">value</span>: <span class="hljs-built_in">string</span>
+};
+</code></pre></div>
+		
+		<div class="tooltip" id="Tooltip-CSSStyleKey"><pre><code class="hljs language-ts"><span class="hljs-keyword">type</span> <span class="hljs-title class_">CSSStyleKey</span> = <span class="hljs-title class_">Exclude</span>&lt;<span class="hljs-title class_">Exclude</span>&lt;, <span class="hljs-built_in">number</span>&gt;, <span class="hljs-string">&#x27;getPropertyPriority&#x27;</span> | <span class="hljs-string">&#x27;getPropertyValue&#x27;</span> | <span class="hljs-string">&#x27;item&#x27;</span> | <span class="hljs-string">&#x27;removeProperty&#x27;</span> | <span class="hljs-string">&#x27;setProperty&#x27;</span> | <span class="hljs-string">&#x27;length&#x27;</span> | <span class="hljs-string">&#x27;parentRule&#x27;</span>&gt;;
+</code></pre></div>
+		
+		<div class="tooltip" id="Tooltip-GeneralWindow"><pre><code class="hljs language-ts"><span class="hljs-keyword">type</span> <span class="hljs-title class_">GeneralWindow</span> = <span class="hljs-title class_">Window</span> | ;
+</code></pre></div>
+		
+		<div class="tooltip" id="Tooltip-Noop"><pre><code class="hljs language-ts"><span class="hljs-keyword">type</span> <span class="hljs-title class_">Noop</span> = <span class="hljs-function">(<span class="hljs-params"><span class="hljs-literal">undefined</span></span>) =&gt;</span> <span class="hljs-built_in">void</span>;
+</code></pre></div>
+		
+		<div class="tooltip" id="Tooltip-VendorPrefixing"><pre><code class="hljs language-ts"><span class="hljs-keyword">type</span> <span class="hljs-title class_">VendorPrefixing</span> = {
+  <span class="hljs-attr">css</span>: <span class="hljs-built_in">string</span>
+  <span class="hljs-attr">js</span>: <span class="hljs-built_in">string</span>
+  <span class="hljs-attr">prefix</span>: <span class="hljs-string">&#x27;webkit&#x27;</span> | <span class="hljs-string">&#x27;moz&#x27;</span> | <span class="hljs-string">&#x27;ms&#x27;</span> | <span class="hljs-string">&#x27;o&#x27;</span>
+};
+</code></pre></div>
+		 <script defer>
+	const Menu = document.getElementById('Menu');
+	[...document.getElementsByClassName('menu-trigger')].forEach((button) => {
+		button.addEventListener('click', () => Menu.classList.toggle('open'));
+	});
+
+	function onHashChange() {
+		const moduleName = location.hash.slice(1);
+		const current = document.querySelector('.menu-list-item.current');
+
+		if (moduleName) {
+			const menuItem = document.getElementById('Menu-' + moduleName);
+
+			if (menuItem === current) return;
+
+			menuItem?.classList.add('current');
+		}
+
+		current?.classList.remove('current');
+	}
+
+	window.addEventListener('hashchange', onHashChange);
+	onHashChange();
+</script>
+ <script defer>
+	[...document.querySelectorAll('.module .hljs-title.class_')].forEach((element) => {
+		const { innerHTML: id } = element;
+		const tooltip = document.getElementById('Tooltip-' + id.trim());
+		if (!tooltip) return;
+		if (element.previousElementSibling?.classList.contains('hljs-keyword')) return;
+
+		element.style.cursor = 'default';
+
+		element.addEventListener('mouseenter', () => {
+			tooltip.style.display = 'block';
+
+			const viewport = document.scrollingElement;
+			const tooltipH = tooltip.offsetHeight;
+			let tooltipW = tooltip.offsetWidth;
+
+			if (tooltipW + 30 > viewport.clientWidth) {
+				tooltipW = viewport.clientWidth - 30;
+				tooltip.style.maxWidth = tooltipW + 'px';
+			}
+
+			const { top, bottom, left } = element.getBoundingClientRect();
+
+			const refTop = top + viewport.scrollTop;
+			const refBottom = bottom + viewport.scrollTop;
+			const refLeft = left + viewport.scrollLeft;
+
+			let tooltipTop = refBottom;
+			let tooltipLeft = Math.round(refLeft + element.offsetWidth / 2 - tooltip.offsetWidth / 2);
+
+			if (bottom + tooltip.offsetHeight > viewport.clientHeight) {
+				tooltipTop = refTop - tooltipH;
+			}
+
+			const tooltipMaxRight = tooltipLeft + tooltipW + 15;
+			if (tooltipMaxRight > viewport.clientWidth) {
+				tooltipLeft -= tooltipMaxRight - viewport.clientWidth;
+			}
+
+			tooltip.style.left = tooltipLeft + 'px';
+			tooltip.style.top = tooltipTop + 'px';
+			tooltip.style.zIndex = 999;
+		});
+
+		element.addEventListener('mouseleave', () => {
+			tooltip.style.cssText = '';
+		});
+	});
+</script>
+
+	</body>
+</html>
