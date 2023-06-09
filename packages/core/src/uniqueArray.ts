@@ -1,5 +1,5 @@
 /**
- * Filter out unknown duplicate values from an array
+ * Filter out duplicate values from an array
  *
  * @param arr - Array to filter on
  * @param settings - Settings to use with the truncation

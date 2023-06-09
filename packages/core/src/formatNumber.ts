@@ -3,8 +3,11 @@ import limitDecimals from './limitDecimals';
 
 
 export type FormatNumberSettings = {
+  /** How many decimals to show */
   decimalCount?: number | string;
+  /** The thousand separator character */
   thousand?: string;
+  /** The decimal separator character */
   decimal?: string;
 }
 

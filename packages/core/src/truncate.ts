@@ -3,7 +3,9 @@ import isNumber from './isNumber';
 
 
 export type TruncateSettings = {
+  /** Max length of the given string */
   maxLength?: number;
+  /** What ending to give the truncated string (default is "...") */
   end?: string;
 }
 

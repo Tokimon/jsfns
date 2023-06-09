@@ -1,4 +1,5 @@
 export type PhrasifySettings = {
+  /** Separate numbers from words? */
   numbers?: boolean;
 }
 

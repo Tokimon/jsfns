@@ -14,13 +14,13 @@ import isFunction from './isFunction';
  * ```ts
  * function *gen() {}
  *
- * isGenerator(gen()); // -> true
- * isGenerator({ next() {}, throw() {} return() {} [Symbol.iterator]() {} }); // -> true
- * isGenerator(() => {}); // -> false
+ * isGeneratorLike(gen()); // -> true
+ * isGeneratorLike({ next() {}, throw() {} return() {} [Symbol.iterator]() {} }); // -> true
+ * isGeneratorLike(() => {}); // -> false
  * ```
  */
-// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types, @typescript-eslint/no-explicit-any
-export function isGenerator(x: any): x is Generator {
+// eslint-disable-next-line  @typescript-eslint/no-explicit-any
+export function isGeneratorLike(x: any): x is Generator {
   return x != null
     && isFunction(x.next)
     && isFunction(x.throw)
@@ -44,13 +44,15 @@ export function isGenerator(x: any): x is Generator {
  * @param x - Argument to test
  * @returns Whether the argument a Generator or not
  */
-// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types, @typescript-eslint/no-explicit-any
-export default function isGeneratorFunction(x: any): x is GeneratorFunction {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export function isGenerator(x: any): x is GeneratorFunction {
   if (!x || !x.constructor) { return false; }
 
   const { name, displayName, prototype } = x.constructor;
 
   return name === 'GeneratorFunction'
     || displayName === 'GeneratorFunction'
-    || isGenerator(prototype);
+    || isGeneratorLike(prototype);
 }
+
+export default isGenerator;
