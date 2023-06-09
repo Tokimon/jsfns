@@ -1,8 +1,8 @@
-import defaultCurrencyFormat, { currencyFormat } from '~core/currencyFormat';
+import defaultCurrencyFormat, { formatCurrency } from '~core/formatCurrency';
 
 
 
-describe('"currencyFormat"', () => {
+describe('"formatCurrency"', () => {
   const num = 1100.234;
 
   describe('Default export (default settings)', () => {
@@ -17,7 +17,7 @@ describe('"currencyFormat"', () => {
       'some string',
       '100,34'
     ])('Falls back to default format (euro), when thousand format is incorrect: "%s"', (template) => {
-      expect(currencyFormat(template)(num)).toBe('1.100,23 €');
+      expect(formatCurrency(template)(num)).toBe('1.100,23 €');
     });
 
     it.each([
@@ -26,7 +26,7 @@ describe('"currencyFormat"', () => {
       ['1000.000', '1100.234'],
       ['1000000', '1100234']
     ])('Format number to a specified format, "%s"', (template, output) => {
-      expect(currencyFormat(template)(num)).toBe(output);
+      expect(formatCurrency(template)(num)).toBe(output);
     });
   });
 });
