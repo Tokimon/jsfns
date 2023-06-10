@@ -24,14 +24,9 @@ typedoc_docs
 
 packages/*/src/index.ts
 
-packages/core/*.js
-packages/core/*.mjs
-packages/core/*.cjs
-packages/core/*.d.ts
-
-packages/web/*.js
-packages/web/*.mjs
-packages/web/*.cjs
-packages/web/*.d.ts
+packages/*/*.js
+packages/*/*.mjs
+packages/*/*.cjs
+packages/*/*.d.ts
 
 !jest.*.js
