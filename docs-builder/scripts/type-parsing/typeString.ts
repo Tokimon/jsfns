@@ -1,4 +1,4 @@
-import type { All_Types } from '~/scripts/types';
+import type { All_Types } from '../types';
 import { buildArray } from './buildArray';
 import { buildPredicate } from './buildPredicate';
 import { buildElement } from './buildProperty';

@@ -1,4 +1,4 @@
-import type { Type_Reference } from '~/scripts/types';
+import type { Type_Reference } from '../types';
 import type { TypeStringFunction } from './typeString';
 
 export function buildReference(typeString: TypeStringFunction, type: Type_Reference) {

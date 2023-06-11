@@ -1,7 +1,7 @@
-import type { TypeStringFunction } from './typeString';
-import type { Type_Reflection } from '~/scripts/types';
+import type { Type_Reflection } from '../types';
 import { buildFunctionType } from './buildFunctionType';
 import { buildObject } from './buildObject';
+import type { TypeStringFunction } from './typeString';
 
 export function buildReflection(typeString: TypeStringFunction, type: Type_Reflection) {
   const { children, signatures } = type.declaration;

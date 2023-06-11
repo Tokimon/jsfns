@@ -1,7 +1,7 @@
-import type { Summary } from '~/scripts/types';
+import type { Summary } from '../types';
 
 export const buildSummary = (summary: Summary[] = []) =>
-	summary
-		.map(({ text }) => text)
-		.join('\n\n')
-		.trim();
+  summary
+    .map(({ text }) => text)
+    .join('')
+    .trim();

@@ -1,4 +1,4 @@
-import type { Kind_TypeAlias } from '~/scripts/types';
+import type { Kind_TypeAlias } from '../types';
 import { createTypeString } from './typeString';
 
 export const buildTypeAlias = (type: Kind_TypeAlias) =>

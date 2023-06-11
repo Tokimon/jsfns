@@ -1,4 +1,4 @@
-import type { Kind_Property } from '~/scripts/types';
+import type { Kind_Property } from '../types';
 import { buildSummary } from './buildSummary';
 import { buildProperty } from './buildProperty';
 import type { TypeStringFunction } from './typeString';
