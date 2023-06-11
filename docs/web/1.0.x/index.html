@@ -5,47 +5,48 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>@js-fns/web v.1.0.x</title>
 		<style>
-	:root {
-		font-family: Arial, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu,
-			Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  :root {
+    font-family: Arial, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu,
+      Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 
-		font-size: 14px;
-	}
+    font-size: 14px;
+  }
 
-	body {
-		min-height: 100vh;
-		margin: 0;
-		background: #11181d;
-		color: whitesmoke;
-	}
+  body {
+    min-height: 100vh;
+    margin: 0;
+    background: #11181d;
+    color: whitesmoke;
+  }
 
-	pre {
-		margin: 0;
-	}
+  pre,
+  p,
+  ul,
+  h1,
+  h2,
+  h3 {
+    margin: 0;
+  }
 
-	* {
-		scrollbar-width: thin;
-		scroll-behavior: smooth;
-	}
+  * {
+    scrollbar-width: thin;
+    scroll-behavior: smooth;
+  }
 
-	::-webkit-scrollbar {
-		width: 8px;
-		height: 8px;
-	}
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
 
-	::-webkit-scrollbar-track {
-		background: transparent;
-		box-shadow: none;
-	}
+  ::-webkit-scrollbar-track {
+    background: transparent;
+    box-shadow: none;
+  }
 
-	::-webkit-scrollbar-thumb {
-		border-radius: 2px;
-		background: rgba(255, 255, 255, 0.15);
-	}
-
-	p {
-		margin: 0;
-	}
+  ::-webkit-scrollbar-thumb {
+    border-radius: 2px;
+    background: rgba(255, 255, 255, 0.15);
+  }
 </style>
  <style>
   table {
@@ -299,7 +300,8 @@
 
   .signature-definition {
     font-size: 14px;
-    border: 1px solid #444;
+    border: 0 solid #444;
+    border-width: 1px 0;
   }
 
   .signature-description {
@@ -392,8 +394,8 @@
 						<a href="#children">children</a>
 					</li>
 					
-					<li class="menu-list-item" id="Menu-classNames">
-						<a href="#classNames">classNames</a>
+					<li class="menu-list-item" id="Menu-classNameString">
+						<a href="#classNameString">classNameString</a>
 					</li>
 					
 					<li class="menu-list-item" id="Menu-create">
@@ -422,10 +424,6 @@
 					
 					<li class="menu-list-item" id="Menu-ensureHTML">
 						<a href="#ensureHTML">ensureHTML</a>
-					</li>
-					
-					<li class="menu-list-item" id="Menu-eventOptionsSupported">
-						<a href="#eventOptionsSupported">eventOptionsSupported</a>
 					</li>
 					
 					<li class="menu-list-item" id="Menu-find">
@@ -662,7 +660,14 @@
 									
 									<div class="signature-description"><p>Adds one or multiple class names to a DOM element</p>
 </div>
-									  
+									 
+									<details>
+										<summary>Examples</summary>
+										 <pre><code class="hljs language-ts"><span class="hljs-title function_">addClass</span>(<span class="hljs-title class_">MyNode</span>, <span class="hljs-string">&#x27;active&#x27;</span>) <span class="hljs-comment">// --&gt; &lt;div class=&quot;active&quot; /&gt;</span>
+<span class="hljs-title function_">addClass</span>(<span class="hljs-title class_">MyNode</span>, [<span class="hljs-string">&#x27;active&#x27;</span>, <span class="hljs-string">&#x27;open&#x27;</span>]) <span class="hljs-comment">// --&gt; &lt;div class=&quot;active open&quot; /&gt;</span>
+</code></pre> 
+									</details>
+									 
 								</div>
 								
 							</div>
@@ -688,7 +693,15 @@
 									
 									<div class="signature-description"><p>Append DOM element or plain HTML to the end of a given DOM element</p>
 </div>
-									  
+									 
+									<details>
+										<summary>Examples</summary>
+										 <pre><code class="hljs language-ts"><span class="hljs-title function_">append</span>(<span class="hljs-title class_">MyNode</span>, <span class="hljs-title class_">NodeToAppend</span>)
+<span class="hljs-title function_">append</span>(<span class="hljs-title class_">MyNode</span>, <span class="hljs-string">&#x27;&lt;span&gt;appended&lt;/span&gt;&#x27;</span>)
+<span class="hljs-title function_">append</span>(<span class="hljs-title class_">MyNode</span>, <span class="hljs-string">&#x27;.my-appended-element&#x27;</span>)
+</code></pre> 
+									</details>
+									 
 								</div>
 								
 							</div>
@@ -718,10 +731,14 @@
 									<details>
 										<summary>Examples</summary>
 										 <pre><code class="hljs language-ts"><span class="hljs-comment">// Get the value of an attribute</span>
-<span class="hljs-title function_">attr</span>(<span class="hljs-variable language_">document</span>.<span class="hljs-property">documentElement</span>, <span class="hljs-string">&#x27;lang&#x27;</span>);
+<span class="hljs-title function_">attr</span>(<span class="hljs-variable language_">document</span>.<span class="hljs-property">documentElement</span>, <span class="hljs-string">&#x27;lang&#x27;</span>); <span class="hljs-comment">// --&gt; eg. &#x27;en-US&#x27;</span>
 
 <span class="hljs-comment">// Set the value of an attribute</span>
-<span class="hljs-title function_">attr</span>(<span class="hljs-variable language_">document</span>.<span class="hljs-property">documentElement</span>, <span class="hljs-string">&#x27;lang&#x27;</span>, <span class="hljs-string">&#x27;da-DK&#x27;</span>);
+<span class="hljs-title function_">attr</span>(<span class="hljs-variable language_">document</span>.<span class="hljs-property">documentElement</span>, <span class="hljs-string">&#x27;lang&#x27;</span>, <span class="hljs-string">&#x27;da-DK&#x27;</span>); <span class="hljs-comment">// --&gt; &lt;html lang=&quot;da-DK&quot;&gt;</span>
+
+<span class="hljs-comment">// Set a boolean value</span>
+<span class="hljs-title function_">attr</span>(<span class="hljs-title class_">MyInput</span>, <span class="hljs-keyword">readonly</span>, <span class="hljs-literal">true</span>); <span class="hljs-comment">// --&gt; &lt;input readonly /&gt;</span>
+<span class="hljs-title function_">attr</span>(<span class="hljs-title class_">MyInput</span>, <span class="hljs-keyword">readonly</span>, <span class="hljs-literal">false</span>); <span class="hljs-comment">// --&gt; &lt;input /&gt;</span>
 </code></pre> 
 									</details>
 									 
@@ -807,18 +824,34 @@
 					</div>
 				</section>
 				
-				<section class="module" id="classNames">
+				<section class="module" id="classNameString">
 					<div class="module-content">
 						<h1>
-							<a href="#classNames"><b>#</b> classNames</a>
+							<a href="#classNameString"><b>#</b> classNameString</a>
 						</h1>
 
 						<div class="signatures">
 							
 							<div class="signature">
-								<div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">classNames</span>(<span class="hljs-attr">args</span>: <span class="hljs-literal">undefined</span>[]): <span class="hljs-built_in">string</span>
+								<div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">classNameString</span>(<span class="hljs-attr">args</span>: <span class="hljs-literal">undefined</span>[]): <span class="hljs-built_in">string</span>
 </code></pre></div>
 
+								
+								<div class="signature-content">
+									
+									<div class="signature-description"><p>Create a string of names that will be used as class names for a given element.</p>
+</div>
+									 
+									<details>
+										<summary>Examples</summary>
+										 <pre><code class="hljs language-ts"><span class="hljs-title function_">classNames</span>(<span class="hljs-string">&#x27;my-elm&#x27;</span>, <span class="hljs-string">&#x27;open&#x27;</span>, <span class="hljs-string">&#x27;active&#x27;</span>) <span class="hljs-comment">// --&gt; &quot;my-elm open active&quot;</span>
+<span class="hljs-title function_">classNames</span>([<span class="hljs-string">&#x27;my-elm&#x27;</span>, <span class="hljs-string">&#x27;open&#x27;</span>, <span class="hljs-string">&#x27;active&#x27;</span>]) <span class="hljs-comment">// --&gt; &quot;my-elm open active&quot;</span>
+<span class="hljs-title function_">classNames</span>(<span class="hljs-string">&#x27;my-elm&#x27;</span>, [<span class="hljs-string">&#x27;open&#x27;</span>, <span class="hljs-string">&#x27;active&#x27;</span>]) <span class="hljs-comment">// --&gt; &quot;my-elm open active&quot;</span>
+<span class="hljs-title function_">classNames</span>(<span class="hljs-string">&#x27;my-elm&#x27;</span>, { <span class="hljs-attr">open</span>: <span class="hljs-literal">true</span>, <span class="hljs-attr">active</span>: <span class="hljs-literal">true</span> }) <span class="hljs-comment">// --&gt; &quot;my-elm open active&quot;</span>
+</code></pre> 
+									</details>
+									 
+								</div>
 								
 							</div>
 							
@@ -847,16 +880,13 @@
 									<details>
 										<summary>Examples</summary>
 										 <pre><code class="hljs language-ts"><span class="hljs-comment">// Create a div</span>
-<span class="hljs-title function_">create</span>();
-<span class="hljs-comment">// -&gt; &lt;div /&gt;</span>
+<span class="hljs-title function_">create</span>(); <span class="hljs-comment">// -&gt; &lt;div /&gt;</span>
 
 <span class="hljs-comment">// Create an element</span>
-<span class="hljs-title function_">create</span>(<span class="hljs-string">&#x27;img&#x27;</span>);
-<span class="hljs-comment">// -&gt; &lt;img /&gt;</span>
+<span class="hljs-title function_">create</span>(<span class="hljs-string">&#x27;img&#x27;</span>); <span class="hljs-comment">// -&gt; &lt;img /&gt;</span>
 
 <span class="hljs-comment">// Create an element from a selector</span>
-<span class="hljs-title function_">create</span>(#<span class="hljs-title class_">MyElement</span>.<span class="hljs-property">active</span>);
-<span class="hljs-comment">// -&gt; &lt;div id=&quot;MyElement&quot; class=&quot;active&quot; /&gt;</span>
+<span class="hljs-title function_">create</span>(<span class="hljs-string">&#x27;#MyElement.active&#x27;</span>); <span class="hljs-comment">// -&gt; &lt;div id=&quot;MyElement&quot; class=&quot;active&quot; /&gt;</span>
 </code></pre> 
 									</details>
 									 
@@ -884,13 +914,18 @@
 								<div class="signature-content">
 									
 									<div class="signature-description"><p>Set multiple inline styling properties on a DOM element.</p>
-<h2>NOTE:</h2>
-<p><code>null</code></p>
-<h2> as value, removes the given property</h2>
-<p><code>!important</code></p>
-<p> in the value will be parsed and set correctly</p>
+<ul>
+<li><code>null</code> as value, removes the given property</li>
+<li><code>!important</code> in the value will be parsed and set correctly</li>
+</ul>
 </div>
-									  
+									 
+									<details>
+										<summary>Examples</summary>
+										 <pre><code class="hljs language-ts"><span class="hljs-title function_">css</span>(<span class="hljs-title class_">MyElm</span>, { <span class="hljs-attr">fontSize</span>: <span class="hljs-number">30</span>, <span class="hljs-attr">fontWeight</span>: <span class="hljs-string">&#x27;bold !important&#x27;</span> }) <span class="hljs-comment">// --&gt; All computed styles of MyElm</span>
+</code></pre> 
+									</details>
+									 
 									<details>
 										<summary>Types</summary>
 										<pre><code class="hljs language-ts"><span class="hljs-keyword">type</span> <span class="hljs-title class_">CSSStyleProperties</span> = <span class="hljs-literal">undefined</span>;
@@ -902,23 +937,28 @@
 							</div>
 							
 							<div class="signature">
-								<div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">css</span>(<span class="hljs-attr">elm</span>: <span class="hljs-title class_">HTMLElement</span>, <span class="hljs-attr">property</span>: <span class="hljs-title class_">CSSStyleKey</span>, value?: <span class="hljs-built_in">string</span> | <span class="hljs-built_in">number</span>): <span class="hljs-built_in">string</span> | <span class="hljs-built_in">number</span> | <span class="hljs-string">&#x27;null&#x27;</span>
+								<div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">css</span>(<span class="hljs-attr">elm</span>: <span class="hljs-title class_">HTMLElement</span>, <span class="hljs-attr">property</span>: <span class="hljs-title class_">CSSStyleKey</span>, value?: <span class="hljs-built_in">string</span> | <span class="hljs-built_in">number</span>): <span class="hljs-built_in">string</span> | <span class="hljs-built_in">number</span> | <span class="hljs-string">&#x27;null&#x27;</span> | <span class="hljs-title class_">CSSStyleDeclaration</span>
 </code></pre></div>
 
 								
 								<div class="signature-content">
 									
 									<div class="signature-description"><p>Get or set an inline style property on a DOM element.</p>
-<h2>NOTE:</h2>
-<p><code>null</code></p>
-<h2> removes the given property</h2>
-<p><code>!important</code></p>
-<p> added to the value, it will be parsed and set correctly</p>
 <ul>
+<li><code>null</code> removes the given property</li>
+<li><code>!important</code> added to the value, it will be parsed and set correctly</li>
 <li>Values that are pure numbers or pixel values will be converted to number before returned</li>
 </ul>
 </div>
-									  
+									 
+									<details>
+										<summary>Examples</summary>
+										 <pre><code class="hljs language-ts"><span class="hljs-title function_">css</span>(<span class="hljs-title class_">MyElm</span>, <span class="hljs-string">&#x27;fontSize&#x27;</span>, <span class="hljs-number">30</span>) <span class="hljs-comment">// --&gt; All computed styles of MyElm</span>
+<span class="hljs-title function_">css</span>(<span class="hljs-title class_">MyElm</span>, <span class="hljs-string">&#x27;fontSize&#x27;</span>) <span class="hljs-comment">// --&gt; 30</span>
+<span class="hljs-title function_">css</span>(<span class="hljs-title class_">MyElm</span>, <span class="hljs-string">&#x27;borderSize&#x27;</span>) <span class="hljs-comment">// --&gt; &#x27;1px&#x27;</span>
+</code></pre> 
+									</details>
+									 
 								</div>
 								
 							</div>
@@ -1004,8 +1044,7 @@
 								
 								<div class="signature-content">
 									
-									<div class="signature-description"><p>Creates a function that triggers the given handler if the current event target
-matches the given selector</p>
+									<div class="signature-description"><p>Creates a function that triggers the given handler if the current event target<br>matches the given selector</p>
 </div>
 									 
 									<details>
@@ -1062,6 +1101,13 @@ matches the given selector</p>
 </code></pre></div>
 
 								
+								<div class="signature-content">
+									
+									<div class="signature-description"><p>returns whether document ready state indicates that the document is ready to be manipulated</p>
+</div>
+									  
+								</div>
+								
 							</div>
 							
 						</div>
@@ -1081,12 +1127,35 @@ matches the given selector</p>
 </code></pre></div>
 
 								
+								<div class="signature-content">
+									
+									<div class="signature-description"><p>Inspired by jQuery&#39;s data method that stores data in memory associated with a given element.<br>If no data is given, the stored data for the given key is returned. If no key is given either<br>the entire data object will be returned.</p>
+<p>Note: data is stored in a WeakMap, so when an element is deleted, the associated data is deleted as well.</p>
+</div>
+									 
+									<details>
+										<summary>Examples</summary>
+										 <pre><code class="hljs language-ts"><span class="hljs-title function_">elementData</span>(<span class="hljs-title class_">MyElm</span>, <span class="hljs-string">&#x27;entry&#x27;</span>, { <span class="hljs-attr">count</span>: <span class="hljs-number">10</span> }) <span class="hljs-comment">// --&gt; { count: 10 }</span>
+<span class="hljs-title function_">elementData</span>(<span class="hljs-title class_">MyElm</span>, <span class="hljs-string">&#x27;entry&#x27;</span>) <span class="hljs-comment">// --&gt; &lt;What ever was stored under &quot;entry&quot;&gt;</span>
+<span class="hljs-title function_">elementData</span>(<span class="hljs-title class_">MyElm</span>) <span class="hljs-comment">// --&gt; everything was stored for the given element</span>
+</code></pre> 
+									</details>
+									 
+								</div>
+								
 							</div>
 							
 							<div class="signature">
 								<div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">resetCache</span>(<span class="hljs-literal">undefined</span>): <span class="hljs-built_in">void</span>
 </code></pre></div>
 
+								
+								<div class="signature-content">
+									
+									<div class="signature-description"><p>Resets ALL local data cache</p>
+</div>
+									  
+								</div>
 								
 							</div>
 							
@@ -1114,7 +1183,7 @@ matches the given selector</p>
 									 
 									<details>
 										<summary>Examples</summary>
-										 <pre><code class="hljs language-ts"><span class="hljs-title function_">elmIndex</span>(someDiv);
+										 <pre><code class="hljs language-ts"><span class="hljs-title function_">elmIndex</span>(someDiv); <span class="hljs-comment">// --&gt; 3</span>
 </code></pre> 
 									</details>
 									 
@@ -1141,8 +1210,7 @@ matches the given selector</p>
 								
 								<div class="signature-content">
 									
-									<div class="signature-description"><p>Parses a string to see if it is already HTML otherwise it assumes
-is a selector and parses it to HTML</p>
+									<div class="signature-description"><p>Parses a string to see if it is already HTML otherwise it assumes<br>is a selector and parses it to HTML</p>
 </div>
 									 
 									<details>
@@ -1156,32 +1224,6 @@ is a selector and parses it to HTML</p>
 </code></pre> 
 									</details>
 									 
-								</div>
-								
-							</div>
-							
-						</div>
-					</div>
-				</section>
-				
-				<section class="module" id="eventOptionsSupported">
-					<div class="module-content">
-						<h1>
-							<a href="#eventOptionsSupported"><b>#</b> eventOptionsSupported</a>
-						</h1>
-
-						<div class="signatures">
-							
-							<div class="signature">
-								<div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">eventOptionsSupported</span>(recheck?: <span class="hljs-built_in">boolean</span>): <span class="hljs-built_in">boolean</span>
-</code></pre></div>
-
-								
-								<div class="signature-content">
-									
-									<div class="signature-description"><p>Detect if options are supported by the add-/removeEventListener methods</p>
-</div>
-									  
 								</div>
 								
 							</div>
@@ -1205,13 +1247,19 @@ is a selector and parses it to HTML</p>
 								
 								<div class="signature-content">
 									
-									<div class="signature-description"><p>Find elements by a given selector. The selector will be lightly analysed to determine
-the appropriate </p>
-<p><code>findByXX</code></p>
-<p> function. This should be faster than just <a href="https://jsperf.com/queryselector-vs-selective-find/1">running querySelector(All)
-to find elements</a></p>
+									<div class="signature-description"><p>Find elements by a given selector. The selector will be lightly analyzed to determine<br>the appropriate <code>findByXX</code> function. This should be faster than just running querySelector(All)<br>to find elements.</p>
 </div>
-									  
+									 
+									<details>
+										<summary>Examples</summary>
+										 <pre><code class="hljs language-ts"><span class="hljs-title function_">find</span>(<span class="hljs-string">&#x27;#my-id&#x27;</span>) <span class="hljs-comment">// Uses getElementById()</span>
+<span class="hljs-title function_">find</span>(<span class="hljs-string">&#x27;.my-class&#x27;</span>) <span class="hljs-comment">// Uses getElementsByClassName()</span>
+<span class="hljs-title function_">find</span>(<span class="hljs-string">&#x27;div&#x27;</span>) <span class="hljs-comment">// Uses getElementsByTagName()</span>
+<span class="hljs-title function_">find</span>(<span class="hljs-string">&#x27;#my-id.my-class&#x27;</span>) <span class="hljs-comment">// Uses querySelectorAll()</span>
+<span class="hljs-title function_">find</span>(<span class="hljs-string">&#x27;#my-id &gt; .my-class + p&#x27;</span>) <span class="hljs-comment">// Uses querySelectorAll()</span>
+</code></pre> 
+									</details>
+									 
 								</div>
 								
 							</div>
@@ -1223,13 +1271,19 @@ to find elements</a></p>
 								
 								<div class="signature-content">
 									
-									<div class="signature-description"><p>Find elements by a given selector from a given element. The selector will be lightly analysed to determine
-the appropriate </p>
-<p><code>findByXX</code></p>
-<p> function. This should be faster than just <a href="https://jsperf.com/queryselector-vs-selective-find/1">running querySelector(All)
-to find elements</a></p>
+									<div class="signature-description"><p>Find elements by a given selector from a given element. The selector will be lightly analyzed to determine<br>the appropriate <code>findByXX</code> function. This should be faster than just running querySelector(All)<br>to find elements.</p>
 </div>
-									  
+									 
+									<details>
+										<summary>Examples</summary>
+										 <pre><code class="hljs language-ts"><span class="hljs-title function_">find</span>(myElm, <span class="hljs-string">&#x27;#my-id&#x27;</span>) <span class="hljs-comment">// Uses myElm.querySelectorAll()</span>
+<span class="hljs-title function_">find</span>(myElm, <span class="hljs-string">&#x27;.my-class&#x27;</span>) <span class="hljs-comment">// Uses myElm.getElementsByClassName()</span>
+<span class="hljs-title function_">find</span>(myElm, <span class="hljs-string">&#x27;div&#x27;</span>) <span class="hljs-comment">// Uses myElm.getElementsByTagName()</span>
+<span class="hljs-title function_">find</span>(myElm, <span class="hljs-string">&#x27;#my-id.my-class&#x27;</span>) <span class="hljs-comment">// Uses myElm.querySelectorAll()</span>
+<span class="hljs-title function_">find</span>(myElm, <span class="hljs-string">&#x27;#my-id &gt; .my-class + p&#x27;</span>) <span class="hljs-comment">// Uses myElm.querySelectorAll()</span>
+</code></pre> 
+									</details>
+									 
 								</div>
 								
 							</div>
@@ -1253,10 +1307,17 @@ to find elements</a></p>
 								
 								<div class="signature-content">
 									
-									<div class="signature-description"><p>Finds DOM elements with a given class name.
-Separate multiple selectors by comma. Separate multiple class names by space.</p>
+									<div class="signature-description"><p>Finds DOM elements with a given class name.<br>Separate multiple selectors by comma. Separate multiple class names by space.</p>
 </div>
-									  
+									 
+									<details>
+										<summary>Examples</summary>
+										 <pre><code class="hljs language-ts"><span class="hljs-title function_">findByClass</span>(<span class="hljs-string">&#x27;my-id&#x27;</span>) <span class="hljs-comment">// --&gt; all &quot;.my-elm&quot; elements</span>
+<span class="hljs-title function_">findByClass</span>(<span class="hljs-string">&#x27;my-id, my-other-elm&#x27;</span>) <span class="hljs-comment">// --&gt; all &quot;.my-elm&quot; and &quot;.my-other-elm&quot; elements</span>
+<span class="hljs-title function_">findByClass</span>(<span class="hljs-string">&#x27;my-id my-other-elm&#x27;</span>) <span class="hljs-comment">// --&gt; all &quot;.my-elm.my-other-elm&quot; elements</span>
+</code></pre> 
+									</details>
+									 
 								</div>
 								
 							</div>
@@ -1268,10 +1329,17 @@ Separate multiple selectors by comma. Separate multiple class names by space.</p
 								
 								<div class="signature-content">
 									
-									<div class="signature-description"><p>Finds DOM elements with a given class name from a given element.
-Separate multiple selectors by comma. Separate multiple class names by space.</p>
+									<div class="signature-description"><p>Finds DOM elements with a given class name from a given element.<br>Separate multiple selectors by comma. Separate multiple class names by space.</p>
 </div>
-									  
+									 
+									<details>
+										<summary>Examples</summary>
+										 <pre><code class="hljs language-ts"><span class="hljs-title function_">findByClass</span>(myElm, <span class="hljs-string">&#x27;my-id&#x27;</span>) <span class="hljs-comment">// --&gt; all &quot;.my-elm&quot; elements as descendant of myElm</span>
+<span class="hljs-title function_">findByClass</span>(myElm, <span class="hljs-string">&#x27;my-id, my-other-elm&#x27;</span>) <span class="hljs-comment">// --&gt; all &quot;.my-elm&quot; and &quot;.my-other-elm&quot; elements as descendant of myElm</span>
+<span class="hljs-title function_">findByClass</span>(myElm, <span class="hljs-string">&#x27;my-id my-other-elm&#x27;</span>) <span class="hljs-comment">// --&gt; all &quot;.my-elm.my-other-elm&quot; elements as descendant of myElm</span>
+</code></pre> 
+									</details>
+									 
 								</div>
 								
 							</div>
@@ -1297,7 +1365,14 @@ Separate multiple selectors by comma. Separate multiple class names by space.</p
 									
 									<div class="signature-description"><p>Find a DOM element with the given ID</p>
 </div>
-									  
+									 
+									<details>
+										<summary>Examples</summary>
+										 <pre><code class="hljs language-ts"><span class="hljs-title function_">findById</span>(<span class="hljs-string">&#x27;my-id&#x27;</span>) <span class="hljs-comment">// --&gt; &quot;#my-id&quot; element</span>
+<span class="hljs-title function_">findById</span>(<span class="hljs-string">&#x27;non-existing&#x27;</span>) <span class="hljs-comment">// --&gt; null</span>
+</code></pre> 
+									</details>
+									 
 								</div>
 								
 							</div>
@@ -1311,7 +1386,14 @@ Separate multiple selectors by comma. Separate multiple class names by space.</p
 									
 									<div class="signature-description"><p>Find a DOM elements from a list of IDs</p>
 </div>
-									  
+									 
+									<details>
+										<summary>Examples</summary>
+										 <pre><code class="hljs language-ts"><span class="hljs-title function_">findById</span>([<span class="hljs-string">&#x27;my-id&#x27;</span>, <span class="hljs-string">&#x27;my-other-id&#x27;</span>]) <span class="hljs-comment">// --&gt; &quot;#my-id&quot; and &quot;#my-other-elm&quot; elements</span>
+<span class="hljs-title function_">findById</span>([<span class="hljs-string">&#x27;non-existing&#x27;</span>, <span class="hljs-string">&#x27;non-existing-2&#x27;</span>]) <span class="hljs-comment">// --&gt; []</span>
+</code></pre> 
+									</details>
+									 
 								</div>
 								
 							</div>
@@ -1337,7 +1419,14 @@ Separate multiple selectors by comma. Separate multiple class names by space.</p
 									
 									<div class="signature-description"><p>Find DOM elements with the given name</p>
 </div>
-									  
+									 
+									<details>
+										<summary>Examples</summary>
+										 <pre><code class="hljs language-ts"><span class="hljs-title function_">findByName</span>(<span class="hljs-string">&#x27;my-element-name&#x27;</span>) <span class="hljs-comment">// --&gt; all &quot;[name=my-element-name]&quot; elements</span>
+<span class="hljs-title function_">findByName</span>([<span class="hljs-string">&#x27;my-element-name&#x27;</span>, <span class="hljs-string">&#x27;my-second-name&#x27;</span>]) <span class="hljs-comment">// --&gt; all &quot;[name=my-element-name]&quot; and &quot;[name=my-second-name]&quot; elements</span>
+</code></pre> 
+									</details>
+									 
 								</div>
 								
 							</div>
@@ -1363,7 +1452,13 @@ Separate multiple selectors by comma. Separate multiple class names by space.</p
 									
 									<div class="signature-description"><p>Find an element by given CSS selector</p>
 </div>
-									  
+									 
+									<details>
+										<summary>Examples</summary>
+										 <pre><code class="hljs language-ts"><span class="hljs-title function_">findByQuery</span>(<span class="hljs-string">&#x27;span.my-class&#x27;</span>, <span class="hljs-literal">true</span>) <span class="hljs-comment">// --&gt; First &quot;span.my-class&quot; elements</span>
+</code></pre> 
+									</details>
+									 
 								</div>
 								
 							</div>
@@ -1377,7 +1472,13 @@ Separate multiple selectors by comma. Separate multiple class names by space.</p
 									
 									<div class="signature-description"><p>Find an element by a given CSS selector from within a given element</p>
 </div>
-									  
+									 
+									<details>
+										<summary>Examples</summary>
+										 <pre><code class="hljs language-ts"><span class="hljs-title function_">findByQuery</span>(<span class="hljs-title class_">MyElm</span>, <span class="hljs-string">&#x27;span.my-class&#x27;</span>, <span class="hljs-literal">true</span>) <span class="hljs-comment">// --&gt; First &quot;span.my-class&quot; elements that are descendants of MyElm</span>
+</code></pre> 
+									</details>
+									 
 								</div>
 								
 							</div>
@@ -1391,7 +1492,13 @@ Separate multiple selectors by comma. Separate multiple class names by space.</p
 									
 									<div class="signature-description"><p>Find all elements matching a given CSS selector</p>
 </div>
-									  
+									 
+									<details>
+										<summary>Examples</summary>
+										 <pre><code class="hljs language-ts"><span class="hljs-title function_">findByQuery</span>(<span class="hljs-title class_">MyElm</span>, <span class="hljs-string">&#x27;span.my-class&#x27;</span>, <span class="hljs-literal">true</span>) <span class="hljs-comment">// --&gt; All &quot;span.my-class&quot; elements</span>
+</code></pre> 
+									</details>
+									 
 								</div>
 								
 							</div>
@@ -1405,7 +1512,13 @@ Separate multiple selectors by comma. Separate multiple class names by space.</p
 									
 									<div class="signature-description"><p>Find all elements matching a given CSS selector from within a given element</p>
 </div>
-									  
+									 
+									<details>
+										<summary>Examples</summary>
+										 <pre><code class="hljs language-ts"><span class="hljs-title function_">findByQuery</span>(<span class="hljs-title class_">MyElm</span>, <span class="hljs-string">&#x27;span.my-class&#x27;</span>, <span class="hljs-literal">true</span>) <span class="hljs-comment">// --&gt; All &quot;span.my-class&quot; elements that are descendants of MyElm</span>
+</code></pre> 
+									</details>
+									 
 								</div>
 								
 							</div>
@@ -1431,7 +1544,13 @@ Separate multiple selectors by comma. Separate multiple class names by space.</p
 									
 									<div class="signature-description"><p>Find elements by given tag name</p>
 </div>
-									  
+									 
+									<details>
+										<summary>Examples</summary>
+										 <pre><code class="hljs language-ts"><span class="hljs-title function_">findByTagName</span>(<span class="hljs-string">&#x27;div&#x27;</span>) <span class="hljs-comment">// --&gt; All &lt;div&gt; elements</span>
+</code></pre> 
+									</details>
+									 
 								</div>
 								
 							</div>
@@ -1445,7 +1564,13 @@ Separate multiple selectors by comma. Separate multiple class names by space.</p
 									
 									<div class="signature-description"><p>Find elements by given tag name</p>
 </div>
-									  
+									 
+									<details>
+										<summary>Examples</summary>
+										 <pre><code class="hljs language-ts"><span class="hljs-title function_">findByTagName</span>(<span class="hljs-title class_">MyElm</span>, <span class="hljs-string">&#x27;div&#x27;</span>) <span class="hljs-comment">// --&gt; All &lt;div&gt; elements that are descendants of MyElm</span>
+</code></pre> 
+									</details>
+									 
 								</div>
 								
 							</div>
@@ -1463,7 +1588,7 @@ Separate multiple selectors by comma. Separate multiple class names by space.</p
 						<div class="signatures">
 							
 							<div class="signature">
-								<div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">findUniqueNodeCollection</span>(<span class="hljs-attr">selector</span>: <span class="hljs-built_in">string</span> | <span class="hljs-built_in">string</span>[], <span class="hljs-attr">findElements</span>: <span class="hljs-function">(<span class="hljs-params">name: <span class="hljs-built_in">string</span></span>) =&gt;</span> <span class="hljs-title class_">HTMLCollectionOf</span>&lt;<span class="hljs-title class_">Element</span>&gt; | <span class="hljs-title class_">NodeListOf</span>&lt;<span class="hljs-title class_">HTMLElement</span>&gt;): <span class="hljs-title class_">Element</span>[]
+								<div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">findUniqueNodeCollection</span>(<span class="hljs-attr">selector</span>: <span class="hljs-built_in">string</span> | <span class="hljs-built_in">string</span>[], <span class="hljs-attr">findElements</span>: <span class="hljs-function">(<span class="hljs-params">name: <span class="hljs-built_in">string</span></span>) =&gt;</span> <span class="hljs-title class_">HTMLCollectionOf</span>&lt;<span class="hljs-title class_">Element</span>&gt; | <span class="hljs-title class_">NodeListOf</span>&lt;<span class="hljs-title class_">Element</span> | <span class="hljs-title class_">HTMLElement</span>&gt;): <span class="hljs-title class_">Element</span>[]
 </code></pre></div>
 
 								
@@ -1643,8 +1768,7 @@ Separate multiple selectors by comma. Separate multiple class names by space.</p
 								
 								<div class="signature-content">
 									
-									<div class="signature-description"><p>Gets the inner XML structure as a string from a XML element
-(like innerHTML but for XML elements - eg. in SVG)</p>
+									<div class="signature-description"><p>Gets the inner XML structure as a string from a XML element<br>(like innerHTML but for XML elements - eg. in SVG)</p>
 </div>
 									 
 									<details>
@@ -2115,8 +2239,7 @@ Separate multiple selectors by comma. Separate multiple class names by space.</p
 								
 								<div class="signature-content">
 									
-									<div class="signature-description"><p>Bind an event handler for one or more event names to </p>
-<p><code>document</code></p>
+									<div class="signature-description"><p>Bind an event handler for one or more event names to <code>document</code></p>
 </div>
 									  
 								</div>
@@ -2156,8 +2279,7 @@ Separate multiple selectors by comma. Separate multiple class names by space.</p
 								
 								<div class="signature-content">
 									
-									<div class="signature-description"><p>Bind an event handler for one or more event names to </p>
-<p><code>document</code></p>
+									<div class="signature-description"><p>Bind an event handler for one or more event names to <code>document</code></p>
 </div>
 									  
 								</div>
@@ -2183,10 +2305,7 @@ Separate multiple selectors by comma. Separate multiple class names by space.</p
 								
 								<div class="signature-content">
 									
-									<div class="signature-description"><p>Bind a single fire event handler for one or more event names on a DOM element.
-(Add </p>
-<p><code>when</code></p>
-<p> to the options to conditional trigger the event)</p>
+									<div class="signature-description"><p>Bind a single fire event handler for one or more event names on a DOM element.<br>(Add <code>when</code> to the options to conditional trigger the event)</p>
 </div>
 									  
 									<details>
@@ -2209,12 +2328,7 @@ Separate multiple selectors by comma. Separate multiple class names by space.</p
 								
 								<div class="signature-content">
 									
-									<div class="signature-description"><p>Bind a single fire event handler for one or more event names on </p>
-<p><code>document</code></p>
-<p>.
-(Add </p>
-<p><code>when</code></p>
-<p> to the options to conditional trigger the event)</p>
+									<div class="signature-description"><p>Bind a single fire event handler for one or more event names on <code>document</code>.<br>(Add <code>when</code> to the options to conditional trigger the event)</p>
 </div>
 									  
 									<details>
@@ -2284,9 +2398,7 @@ Separate multiple selectors by comma. Separate multiple class names by space.</p
 								
 								<div class="signature-content">
 									
-									<div class="signature-description"><p>Get the current position of a DOM element, either relative to the offsetParent
-or relative to the document. If the element is the viewport or the window, the
-position of the window is returned.</p>
+									<div class="signature-description"><p>Get the current position of a DOM element, either relative to the offsetParent<br>or relative to the document. If the element is the viewport or the window, the<br>position of the window is returned.</p>
 </div>
 									 
 									<details>
@@ -2443,8 +2555,7 @@ position of the window is returned.</p>
 								
 								<div class="signature-content">
 									
-									<div class="signature-description"><p>Creates a file with given content and triggers download.
-(if the browser doesn&#39;t support file downloads, this method does nothing)</p>
+									<div class="signature-description"><p>Creates a file with given content and triggers download.<br>(if the browser doesn&#39;t support file downloads, this method does nothing)</p>
 </div>
 									  
 								</div>
@@ -2543,8 +2654,7 @@ position of the window is returned.</p>
 								
 								<div class="signature-content">
 									
-									<div class="signature-description"><p>Converts a given CSS selector into HTML
-(No this is not an Emmet substitute, so it is limited to only one element)</p>
+									<div class="signature-description"><p>Converts a given CSS selector into HTML<br>(No this is not an Emmet substitute, so it is limited to only one element)</p>
 </div>
 									 
 									<details>
@@ -2893,8 +3003,7 @@ position of the window is returned.</p>
 								
 								<div class="signature-content">
 									
-									<div class="signature-description"><p>Detect wether or not the given css property (and/or) value is supported by
-the current browser</p>
+									<div class="signature-description"><p>Detect wether or not the given css property (and/or) value is supported by<br>the current browser</p>
 </div>
 									  
 									<details>

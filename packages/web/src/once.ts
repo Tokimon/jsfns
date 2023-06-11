@@ -1,4 +1,3 @@
-import eventOptionsSupported from './eventOptionsSupported';
 import isEventTarget from './isEventTarget';
 import off from './off';
 import on from './on';
@@ -37,11 +36,10 @@ function bind(
   handler: EventListenerOrEventListenerObject,
   options?: OnceEventListenerOptions
 ): () => ReturnType<typeof off> {
-  const noOptions = !eventOptionsSupported();
   const { when, ...eventOptions } = options || {};
   eventOptions.once = !when;
 
-  const eventHandler = when || noOptions
+  const eventHandler = when
     ? manuelOnce(elm, handler, when)
     : handler;
 

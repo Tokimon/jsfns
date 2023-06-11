@@ -1,7 +1,3 @@
-import isString from '@js-fns/core/isString';
-
-
-
 const byId = (id: string) => document.getElementById(id);
 
 
@@ -11,6 +7,13 @@ const byId = (id: string) => document.getElementById(id);
  *
  * @param ids - ID to find the element by
  * @returns The found element
+ *
+ * @example
+ *
+ * ```ts
+ * findById('my-id') // --> "#my-id" element
+ * findById('non-existing') // --> null
+ * ```
  */
  function findById(ids: string): HTMLElement | null
 
@@ -19,11 +22,18 @@ const byId = (id: string) => document.getElementById(id);
  *
  * @param ids - ID to find the element by
  * @returns The found elements
+ *
+ * @example
+ *
+ * ```ts
+ * findById(['my-id', 'my-other-id']) // --> "#my-id" and "#my-other-elm" elements
+ * findById(['non-existing', 'non-existing-2']) // --> []
+ * ```
  */
 function findById(ids: string[]): HTMLElement[]
 
 function findById(ids: string | string[]): HTMLElement | HTMLElement[] | null {
-  if (isString(ids)) { return byId(ids); }
+  if (!Array.isArray(ids)) return byId(ids);
 
   return ids.reduce((nodes, id) => {
     const node = byId(id);

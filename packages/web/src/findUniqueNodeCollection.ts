@@ -22,7 +22,7 @@ import isString from '@js-fns/core/isString';
  */
 export default function findUniqueNodeCollection(
   selector: string | string[],
-  findElements: (name: string) => HTMLCollectionOf<Element> | NodeListOf<HTMLElement>
+  findElements: (name: string) => HTMLCollectionOf<Element> | NodeListOf<HTMLElement | Element>
 ): Element[] {
   const selectors = isString(selector) ? [selector] : selector;
   const nodes = selectors.flatMap((s: string) => Array.from(findElements(s)));

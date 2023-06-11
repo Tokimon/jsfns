@@ -58,15 +58,15 @@ const handleSingleValue = (
 ) => {
   if (value !== undefined) {
     setValue(elm, property, value);
+    return window.getComputedStyle(elm);
   }
 
   // Get all computed styles as that gives a more correct value
   const val = window.getComputedStyle(elm)
     .getPropertyValue(kebabCase(property));
 
-  if (val.includes('px')) { return parseFloat(val); }
-
-  const numeric = Number(val);
+  // Ensure to return a numeric value if possible
+  const numeric = parseFloat(val);
   return !Number.isNaN(numeric) ? numeric : val;
 };
 
@@ -91,20 +91,24 @@ const handleMultipleValues = (
 /**
  * Set multiple inline styling properties on a DOM element.
  *
- * NOTE:
  * - `null` as value, removes the given property
  * - `!important` in the value will be parsed and set correctly
  *
  * @param elm - DOM element to set the style on
  * @param style - Styling to set on the element
  * @returns All styling on the element
+ *
+ * @example
+ *
+ * ```ts
+ * css(MyElm, { fontSize: 30, fontWeight: 'bold !important' }) // --> All computed styles of MyElm
+ * ```
  */
 function css(elm: HTMLElement, style?: CSSStyleProperties): CSSStyleDeclaration;
 
 /**
  * Get or set an inline style property on a DOM element.
  *
- * NOTE:
  * - `null` removes the given property
  * - `!important` added to the value, it will be parsed and set correctly
  * - Values that are pure numbers or pixel values will be converted to number before returned
@@ -112,18 +116,28 @@ function css(elm: HTMLElement, style?: CSSStyleProperties): CSSStyleDeclaration;
  * @param elm - DOM element to get/set the style on
  * @param style - Style property name
  * @param value - The new value
- * @returns The value of the property
+ * @returns All styling on the element or the value of the given style property
+ *
+ * @example
+ *
+ * ```ts
+ * css(MyElm, 'fontSize', 30) // --> All computed styles of MyElm
+ * css(MyElm, 'fontSize') // --> 30
+ * css(MyElm, 'borderSize') // --> '1px'
+ * ```
  */
-function css(elm: HTMLElement, property: CSSStyleKey, value?: string | number): string | number | null;
+function css(elm: HTMLElement, property: CSSStyleKey, value?: string | number): string | number | null | CSSStyleDeclaration;
 
 function css(
   elm: HTMLElement,
   property?: CSSStyleKey | CSSStyleProperties,
   value?: string | number | null
 ): CSSStyleDeclaration | string | number | null {
-  return isString(property)
+  isString(property)
     ? handleSingleValue(elm, property, value)
     : handleMultipleValues(elm, property);
+
+  return window.getComputedStyle(elm);
 }
 
 export default css;

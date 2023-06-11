@@ -12,7 +12,7 @@ import isDOMChildNode from './isDOMChildNode';
  * @example
  *
  * ```ts
- * elmIndex(someDiv);
+ * elmIndex(someDiv); // --> 3
  * ```
  */
 export default function elmIndex(elm: Element): number {

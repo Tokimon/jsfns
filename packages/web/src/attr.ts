@@ -10,10 +10,14 @@
  *
  * ```ts
  * // Get the value of an attribute
- * attr(document.documentElement, 'lang');
+ * attr(document.documentElement, 'lang'); // --> eg. 'en-US'
  *
  * // Set the value of an attribute
- * attr(document.documentElement, 'lang', 'da-DK');
+ * attr(document.documentElement, 'lang', 'da-DK'); // --> <html lang="da-DK">
+ *
+ * // Set a boolean value
+ * attr(MyInput, readonly, true); // --> <input readonly />
+ * attr(MyInput, readonly, false); // --> <input />
  * ```
  */
 export default function attr(

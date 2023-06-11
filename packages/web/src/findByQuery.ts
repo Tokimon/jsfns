@@ -1,5 +1,9 @@
 import isString from '@js-fns/core/isString';
+import findUniqueNodeCollection from './findUniqueNodeCollection';
 
+
+const qs = (elm: Document | Element, q: string) => elm.querySelector(q);
+const qsAll = (elm: Document | Element) => (q: string) => elm.querySelectorAll(q);
 
 
 /**
@@ -8,6 +12,12 @@ import isString from '@js-fns/core/isString';
  * @param queries - CSS selector to find elements by
  * @param first - Return only the first found element
  * @returns List of found DOM elements
+ *
+ * @example
+ *
+ * ```ts
+ * findByQuery('span.my-class', true) // --> First "span.my-class" elements
+ * ```
  */
  function findByQuery(
   queries: string | string[],
@@ -22,6 +32,12 @@ import isString from '@js-fns/core/isString';
  * @param queries - CSS selector to find elements by
  * @param first - Return only the first found element
  * @returns List of found DOM elements
+ *
+ * @example
+ *
+ * ```ts
+ * findByQuery(MyElm, 'span.my-class', true) // --> First "span.my-class" elements that are descendants of MyElm
+ * ```
  */
  function findByQuery(
   elm: Document | Element,
@@ -35,6 +51,12 @@ import isString from '@js-fns/core/isString';
  * @param queries - CSS selector to find elements by
  * @param first - Return only the first found element
  * @returns List of found DOM elements
+ *
+ * @example
+ *
+ * ```ts
+ * findByQuery(MyElm, 'span.my-class', true) // --> All "span.my-class" elements
+ * ```
  */
  function findByQuery(
   queries: string | string[],
@@ -48,6 +70,12 @@ import isString from '@js-fns/core/isString';
  * @param queries - CSS selector to find elements by
  * @param first - Return only the first found element
  * @returns List of found DOM elements
+ *
+ * @example
+ *
+ * ```ts
+ * findByQuery(MyElm, 'span.my-class', true) // --> All "span.my-class" elements that are descendants of MyElm
+ * ```
  */
 function findByQuery(
   elm: Document | Element,
@@ -68,15 +96,11 @@ function findByQuery(
     elm = document;
   }
 
-  if (Array.isArray(queries)) {
-    queries = queries.join(',');
-  }
+  if (Array.isArray(queries)) queries = queries.join(',');
 
   const q = queries as string;
 
-  return first
-    ? elm.querySelector(q)
-    : Array.from(elm.querySelectorAll(q));
+  return first ? qs(elm, q) : findUniqueNodeCollection(q, qsAll(elm));
 }
 
 export default findByQuery;

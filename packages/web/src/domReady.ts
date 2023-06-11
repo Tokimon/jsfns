@@ -3,7 +3,9 @@ import type { Noop } from './types';
 import once from './once';
 
 
-
+/**
+ * returns whether document ready state indicates that the document is ready to be manipulated
+ */
 export function docComplete(): boolean {
   const { readyState } = document;
   return readyState === 'interactive' || readyState === 'complete';

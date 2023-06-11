@@ -1,5 +1,4 @@
 import isEventTarget from './isEventTarget';
-import eventOptionsSupported from './eventOptionsSupported';
 
 
 
@@ -48,19 +47,13 @@ function on(
     elm = document;
   }
 
-  const opts: boolean | AddEventListenerOptions | undefined = eventOptionsSupported()
-    ? options
-    : !!(options && options.capture);
-
-  if (!Array.isArray(eventNames)) {
-    eventNames = [eventNames as string];
-  }
+  if (!Array.isArray(eventNames)) eventNames = [eventNames as string];
 
   eventNames.forEach(
     (evt) => (elm as EventTarget).addEventListener(
       evt,
       handler as EventListenerOrEventListenerObject,
-      opts
+      options
     )
   );
 
