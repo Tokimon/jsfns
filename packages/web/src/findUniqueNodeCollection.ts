@@ -1,4 +1,5 @@
 import isString from '@js-fns/core/isString';
+import uniqueArray from '@js-fns/core/uniqueArray';
 
 
 /**
@@ -17,14 +18,14 @@ import isString from '@js-fns/core/isString';
  * findUniqueNodeCollection('my-elements', byClassName);
  *
  * // Using multiple selectors
- * findUniqueNodeCollection(['my-elements', 'sone-other-elements'], byClassName);
+ * findUniqueNodeCollection(['.my-element', 'sone-other-elements'], byClassName);
  * ```
  */
 export default function findUniqueNodeCollection(
   selector: string | string[],
   findElements: (name: string) => HTMLCollectionOf<Element> | NodeListOf<HTMLElement | Element>
-): Element[] {
+): (HTMLElement | Element)[] {
   const selectors = isString(selector) ? [selector] : selector;
   const nodes = selectors.flatMap((s: string) => Array.from(findElements(s)));
-  return Array.from(new Set(nodes));
+  return uniqueArray(nodes);
 }
