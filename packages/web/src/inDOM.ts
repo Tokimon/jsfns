@@ -5,6 +5,13 @@ import getCurrentDocument from './getCurrentDocument';
  *
  * @param elm - The element to check
  * @returns Is it a DOM node in the DOM or not
+ *
+ * @example
+ *
+ * ```ts
+ * inDOM(document.getElementById('my-elm')) // --> true
+ * inDOM(document.createElement('div')) // --> false
+ * ```
  */
 export default function inDOM(elm: Node): boolean {
   const doc = getCurrentDocument(elm);

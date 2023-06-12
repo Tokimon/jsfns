@@ -16,9 +16,8 @@ const manualInnerXml = (XMLNode: Element) => {
  * @example
  *
  * ```ts
- * // String is already HTML so it is returned as is
- * innerXML(<svg><g><path /></g></svg>);
- * // -> '<g><path /></g>'
+ * innerXML(<div><span>my text</span></div>); // -> '<span>my text</span>'
+ * innerXML(<svg><g><path /></g></svg>); // -> '<g><path /></g>'
  * ```
  */
 export default function innerXML(XMLElement: Element): string {

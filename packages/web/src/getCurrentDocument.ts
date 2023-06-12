@@ -1,11 +1,24 @@
 import isDocument from './isDocument';
-import isDOMNode from './isDOMNode';
 import isWindow from './isWindow';
+import { GeneralWindow } from './types';
 
-export default function getCurrentDocument(obj: unknown): Document | null {
-  if (isDocument(obj)) { return obj as Document; }
-  if (isWindow(obj)) { return obj.document; }
-  if (!isDOMNode(obj)) { return null; }
+/**
+ * Determines the relevant owner `document` object from a give node
+ *
+ * @param node - The node to determine the document from
+ * @returns The owner document (if can be determined)
+ *
+ * @example
+ *
+ * ```ts
+ * getCurrentDocument(document) // --> `document` directly
+ * getCurrentDocument(window) // --> `window.document`
+ * getCurrentDocument(myNode) // --> The `document` in which myNode resides
+ * ```
+ */
+export default function getCurrentDocument(node: Document | GeneralWindow | Node): Document | null {
+  if (isDocument(node)) { return node; }
+  if (isWindow(node)) { return node.document; }
 
-  return obj.ownerDocument;
+  return node.ownerDocument;
 }

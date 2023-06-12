@@ -1,26 +1,37 @@
 import isString from '@js-fns/core/isString';
-
 import ensureHTML from './ensureHTML';
 import inDOM from './inDOM';
-import isDOMElement from './isDOMElement';
+import isDOMRoot from './isDOMRoot';
 
 
 
 /**
  * Inserts DOM element or plain HTML before a given DOM element
+ * (not possible for detached elements or the <html> element)
  *
  * @param elm - The DOM element to insert elements before
  * @param insertElm - DOM element or HTML (or selector) to insert
  * @returns The inserted element
+ *
+ * @example
+ *
+ * ```ts
+ * insertBefore(document.documentElement, myInsertElm) // --> null (not possible)
+ * insertBefore(document.createElement('div'), myInsertElm) // --> null (not possible)
+ *
+ * insertBefore(myElm, myInsertElm) // --> myInsertElement
+ * insertBefore(myElm, '<div />') // --> <div />
+ * insertBefore(myElm, '.inserted-element') // --> <div class="inserted-element" />
+ * ```
  */
 export default function insertBefore(elm: Element, insertElm: string | Element): Element | null {
-  if (!inDOM(elm) || isDOMElement(elm, 'html')) { return null; }
+  if (!inDOM(elm) || isDOMRoot(elm)) { return null; }
 
   if (isString(insertElm)) {
-    (elm as Element).insertAdjacentHTML('beforebegin', ensureHTML(insertElm));
+    elm.insertAdjacentHTML('beforebegin', ensureHTML(insertElm));
   } else {
-    (elm as Element).insertAdjacentElement('beforebegin', insertElm);
+    elm.insertAdjacentElement('beforebegin', insertElm);
   }
 
-  return (elm as Element).previousElementSibling;
+  return elm.previousElementSibling;
 }

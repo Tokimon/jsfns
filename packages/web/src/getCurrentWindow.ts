@@ -1,13 +1,24 @@
-import type { GeneralWindow } from './types';
-
 import getCurrentDocument from './getCurrentDocument';
 import isWindow from './isWindow';
+import type { GeneralWindow } from './types';
 
 
+/**
+ * Determines the relevant owner `window` object from a give node
+ *
+ * @param node - The node to determine the window from
+ * @returns The owner window (if can be determined)
+ *
+ * @example
+ *
+ * ```ts
+ * getCurrentWindow(document) // --> `window` the document belongs to
+ * getCurrentWindow(window) // --> `window` directly
+ * getCurrentWindow(myNode) // --> The `window` in which myNode resides
+ * ```
+ */
+export default function getCurrentWindow(node: Document | GeneralWindow | Node): null | GeneralWindow {
+  if (isWindow(node)) return node;
 
-export default function getCurrentWindow(obj: unknown): null | GeneralWindow {
-  if (isWindow(obj)) { return obj; }
-
-  const doc = getCurrentDocument(obj);
-  return doc && doc.defaultView;
+  return getCurrentDocument(node)?.defaultView ?? null;
 }

@@ -1,3 +1,4 @@
+import css from './css';
 import inDOM from './inDOM';
 
 
@@ -11,9 +12,18 @@ import inDOM from './inDOM';
  *
  * @param elm - DOM element to test
  * @returns Is the element technically hidden or not
+ *
+ * @example
+ *
+ * ```ts
+ * hidden(myNormalElement) // --> false
+ * hidden(myZeroHeightElement) // --> true
+ * hidden(myNoDisplayElement) // --> true
+ * hidden(myNoVisibilityElement) // --> true
+ * ```
  */
 export default function hidden(elm: HTMLElement): boolean {
   return !inDOM(elm)
     || (!elm.offsetHeight && !elm.offsetWidth)
-    || getComputedStyle(elm).visibility === 'hidden';
+    || css(elm, 'visibility') === 'hidden';
 }
