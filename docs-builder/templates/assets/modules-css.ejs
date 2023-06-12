@@ -47,13 +47,17 @@
     padding: 15px;
   }
 
+  code:not(.hljs) {
+    color: hotpink;
+  }
+
   .page {
     --header-hight: 50px;
 
     grid-template-areas:
       'header header'
       'nav content';
-    grid-template-columns: 200px 1fr;
+    grid-template-columns: 300px 1fr;
   }
 
   .header {
@@ -132,7 +136,7 @@
     grid-area: nav;
     position: fixed;
     z-index: 98;
-    width: 200px;
+    width: 300px;
     top: var(--header-hight);
     bottom: 0;
     left: 0;

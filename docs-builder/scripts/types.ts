@@ -153,7 +153,7 @@ export type Kind_Property = BaseProps & {
 
 export type Kind_Signature = BaseProps & {
   kind: ReflectionKind.CallSignature;
-  parameters: Kind_Param[];
+  parameters?: Kind_Param[];
   type: Basic_Types;
 };
 

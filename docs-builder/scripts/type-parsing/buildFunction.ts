@@ -7,7 +7,7 @@ export const buildFunction = (
   name: string,
   signature: Kind_Signature
 ) => {
-  const params = signature.parameters?.map((param) => buildProperty(typeString, param));
+  const params = signature.parameters?.map((param) => buildProperty(typeString, param)) || [];
 
-  return `${name}(${params?.join(', ')}): ${typeString(signature.type)}`;
+  return `${name}(${params.join(', ')}): ${typeString(signature.type)}`;
 };
