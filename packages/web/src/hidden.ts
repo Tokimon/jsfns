@@ -5,8 +5,9 @@ import inDOM from './inDOM';
 
 /**
  * Test if a given DOM element is technically hidden
+ *
  * - Not is DOM
- * - Collapsed
+ * - Collapsed (no width and height)
  * - display: none
  * - visibility: hidden.
  *
@@ -17,7 +18,7 @@ import inDOM from './inDOM';
  *
  * ```ts
  * hidden(myNormalElement) // --> false
- * hidden(myZeroHeightElement) // --> true
+ * hidden(myZeroWidthAndHeightElement) // --> true
  * hidden(myNoDisplayElement) // --> true
  * hidden(myNoVisibilityElement) // --> true
  * ```

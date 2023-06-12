@@ -63,6 +63,9 @@ export function delegateHandler(
  *
  * // Bind to multiple events
  * const removeDelegates = delegate(['click', 'mouseenter'], '.my-element', (e: Event) => {});
+ *
+ * // Only triggered once
+ * const removeDelegates = delegate('click', '.my-element', (e: Event) => {}, { once: true });
  * ```
  */
 function delegate(
@@ -79,6 +82,7 @@ function delegate(
  * @param eventNames - Event names to bind the handler to
  * @param selector - CSS Selector that matches the element to delegate the event to
  * @param handler - Handler to bind to the event
+ * @param options - Event listener options
  * @returns A function that removes the event selector handler again
  *
  * @example
@@ -89,6 +93,9 @@ function delegate(
  *
  * // Bind to multiple events
  * const removeDelegates = delegate(element, ['click', 'mouseenter'], '.my-element', (e: Event) => {});
+ *
+ * // Only triggered once
+ * const removeDelegates = delegate(element, 'click', '.my-element', (e: Event) => {}, { once: true });
  * ```
  */
 function delegate(

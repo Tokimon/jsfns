@@ -4,12 +4,12 @@ import { GeneralWindow } from './types';
 
 
 /**
- * Is the given object root node of the DOM (eg <html> for HTML documents og <svg> for SVG documents)
+ * Is the given object root node of the DOM (eg `<html>` for HTML documents og `<svg>` for SVG documents)
  *
- * @param obj - The object to check
+ * @param node - The object to check
  * @returns Is it the root node of the DOM or not
  */
-export default function isDOMRoot(obj: Document | GeneralWindow | Node): obj is HTMLElement {
-  const doc = getCurrentDocument(obj);
-  return !!doc && obj === doc.documentElement;
+export default function isDOMRoot(node: Document | GeneralWindow | Node): node is HTMLElement {
+  const doc = getCurrentDocument(node);
+  return !!doc && node === doc.documentElement;
 }

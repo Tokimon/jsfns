@@ -89,32 +89,64 @@ const handleMultipleValues = (
 
 
 /**
- * Set multiple inline styling properties on a DOM element.
+ * Get the computed styling of a DOM element.
  *
- * - `null` as value, removes the given property
- * - `!important` in the value will be parsed and set correctly
- *
- * @param elm - DOM element to set the style on
- * @param style - Styling to set on the element
+ * @param elm - DOM element to set the style of
  * @returns All styling on the element
  *
  * @example
  *
  * ```ts
- * css(MyElm, { fontSize: 30, fontWeight: 'bold !important' }) // --> All computed styles of MyElm
+ * css(MyElm) // --> All computed styles of MyElm
  * ```
  */
-function css(elm: HTMLElement, style?: CSSStyleProperties): CSSStyleDeclaration;
+function css(elm: HTMLElement): CSSStyleDeclaration;
 
 /**
- * Get or set an inline style property on a DOM element.
- *
- * - `null` removes the given property
- * - `!important` added to the value, it will be parsed and set correctly
- * - Values that are pure numbers or pixel values will be converted to number before returned
+ * Gets a given inline style property on a DOM element.
+ * Return values that are pure numbers or pixel values will be converted to pure number first
  *
  * @param elm - DOM element to get/set the style on
- * @param style - Style property name
+ * @param property - Style property name
+ * @returns All styling on the element or the value of the given style property
+ *
+ * @example
+ *
+ * ```ts
+ * css(MyElm, 'font-size') // --> 30
+ * css(MyElm, 'borderSize') // --> '1px'
+ * ```
+ */
+function css(elm: HTMLElement, property: CSSStyleKey): string | number | null;
+
+/**
+ * Set multiple inline styling properties on a DOM element.
+ *
+ * Notes on values:
+ * - `null` as value, removes the given property
+ * - `!important` in the value will be parsed and set correctly (eg. font-size: 15px !important)
+ *
+ * @param elm - DOM element to set the style on
+ * @param styles - Styling to set on the element
+ * @returns All styling on the element
+ *
+ * @example
+ *
+ * ```ts
+ * css(MyElm, { fontSize: 30, 'font-weight': 'bold !important' }) // --> All computed styles of MyElm
+ * ```
+ */
+function css(elm: HTMLElement, styles: CSSStyleProperties): CSSStyleDeclaration;
+
+/**
+ * Set a given inline style property on a DOM element.
+ *
+ * Notes on values:
+ * - `null` removes the given property
+ * - `!important` added to the value, it will be parsed and set correctly
+ *
+ * @param elm - DOM element to get/set the style on
+ * @param property - Style property name
  * @param value - The new value
  * @returns All styling on the element or the value of the given style property
  *
@@ -122,11 +154,9 @@ function css(elm: HTMLElement, style?: CSSStyleProperties): CSSStyleDeclaration;
  *
  * ```ts
  * css(MyElm, 'fontSize', 30) // --> All computed styles of MyElm
- * css(MyElm, 'fontSize') // --> 30
- * css(MyElm, 'borderSize') // --> '1px'
  * ```
  */
-function css(elm: HTMLElement, property: CSSStyleKey, value?: string | number): string | number | null | CSSStyleDeclaration;
+function css(elm: HTMLElement, property: CSSStyleKey, value: Exclude<CSSStyleProperties[CSSStyleKey], undefined>): CSSStyleDeclaration;
 
 function css(
   elm: HTMLElement,
