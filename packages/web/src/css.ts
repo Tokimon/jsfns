@@ -133,11 +133,9 @@ function css(
   property?: CSSStyleKey | CSSStyleProperties,
   value?: string | number | null
 ): CSSStyleDeclaration | string | number | null {
-  isString(property)
+  return isString(property)
     ? handleSingleValue(elm, property, value)
     : handleMultipleValues(elm, property);
-
-  return window.getComputedStyle(elm);
 }
 
 export default css;
