@@ -1,16 +1,17 @@
 /**
  * Filter out duplicate values from an array
  *
- * @param arr - Array to filter on
- * @param settings - Settings to use with the truncation
+ * @param arr - ArrayLike or Iterable collection to convert
  *
- * @returns The truncated string
+ * @returns A list with only unique items
  *
  * @example
  * ```ts
  * uniqueArray([1,2,3,1,4,5,3,7]); // -> [1,2,3,4,5,6,7]
+ * uniqueArray(document.querySelectorAll('.my-elm, .selected')); // -> unique array of elements (so .my-elm.selected will only be present once)
  * ```
  */
-export default function uniqueArray(arr: unknown[]): unknown[] {
-  return Array.from(new Set(arr));
+export default function uniqueArray<T>(arr: ArrayLike<T> | Iterable<T>): T[] {
+  const a = !Array.isArray(arr) ? Array.from(arr) : arr;
+  return Array.from<T>(new Set(a));
 }
