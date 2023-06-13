@@ -2,6 +2,21 @@ import isEventTarget from './isEventTarget';
 
 
 
+export type argsWithTarget = [
+  elm: EventTarget,
+  eventNames: string | string[],
+  handler: EventListenerOrEventListenerObject,
+  options?: AddEventListenerOptions
+]
+
+export type argsWithoutTarget = [
+  eventNames: string | string[],
+  handler: EventListenerOrEventListenerObject,
+  options?: AddEventListenerOptions
+]
+
+
+
 /**
  * Bind an event handler for one or more event names on a given DOM element.
  *
@@ -10,13 +25,16 @@ import isEventTarget from './isEventTarget';
  * @param handler - Handler to bind to the event
  * @param options - Options to pass to the 'removeEventListener'
  * @returns `elm`
+ *
+ * @example
+ *
+ * ```ts
+ * off(MyElm, 'click', () => {})
+ * off(MyElm, 'click', () => {}, { passive: true })
+ * off(MyElm, ['mouseenter', 'touchstart'], () => {})
+ * ```
  */
-function off(
-  elm: EventTarget,
-  eventNames: string | string[],
-  handler: EventListenerOrEventListenerObject,
-  options?: EventListenerOptions
-): EventTarget;
+function off<T extends argsWithTarget>(...args: T): T[0];
 
 /**
  * Bind an event handler for one or more event names to `document`
@@ -24,38 +42,30 @@ function off(
  * @param eventNames - Event names to bind the handler to
  * @param handler - Handler to bind to the event
  * @param options - Options to pass to the 'removeEventListener'
- * @return
+ * @return document
+ *
+ * @example
+ *
+ * ```ts
+ * off('click', () => {})
+ * off('click', () => {}, { passive: true })
+ * off(['mouseenter', 'touchstart'], () => {})
+ * ```
  */
-function off(
-  eventNames: string | string[],
-  handler: EventListenerOrEventListenerObject,
-  options?: EventListenerOptions
-): EventTarget;
+function off(...args: argsWithoutTarget): Document;
 
 
 
-function off(
-  elm: EventTarget | string | string[],
-  eventNames: string | string[] | EventListenerOrEventListenerObject,
-  handler?: EventListenerOrEventListenerObject | EventListenerOptions,
-  options?: EventListenerOptions
-): EventTarget {
-  if (!isEventTarget(elm)) {
-    options = handler as EventListenerOptions;
-    handler = eventNames as EventListenerOrEventListenerObject;
-    eventNames = elm;
-    elm = document;
+function off<T extends argsWithTarget | argsWithoutTarget>(...args: T): T[0] | Document {
+  if (!isEventTarget(args[0])) {
+    const [eventNames, handler, options] = args as argsWithoutTarget;
+    return off(document, eventNames, handler, options);
   }
 
-  if (!Array.isArray(eventNames)) eventNames = [eventNames as string];
+  const [elm, eventNames, handler, options] = args as argsWithTarget;
+  const events = (!Array.isArray(eventNames) ? [eventNames] : eventNames);
 
-  eventNames.forEach(
-    (evt) => (elm as EventTarget).removeEventListener(
-      evt,
-      handler as EventListenerOrEventListenerObject,
-      options
-    )
-  );
+  events.forEach((evt) => elm.removeEventListener(evt, handler, options));
 
   return elm;
 }
