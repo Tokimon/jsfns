@@ -1,5 +1,5 @@
 import getCurrentDocument from './getCurrentDocument';
-import { GeneralWindow } from './types';
+import isDOMNode from './isDOMNode';
 
 
 
@@ -8,8 +8,19 @@ import { GeneralWindow } from './types';
  *
  * @param node - The object to check
  * @returns Is it the root node of the DOM or not
+ *
+ * @example
+ *
+ * ```ts
+ * isDOMRoot(document.documentElement) // --> true
+ *
+ * isDOMRoot(document.body) // --> false
+ * isDOMRoot(document) // --> false
+ * isDOMRoot(window) // --> false
+ * ```
  */
-export default function isDOMRoot(node: Document | GeneralWindow | Node): node is HTMLElement {
+export default function isDOMRoot(node: unknown): node is HTMLElement {
+  if (!isDOMNode(node)) return false;
   const doc = getCurrentDocument(node);
   return !!doc && node === doc.documentElement;
 }

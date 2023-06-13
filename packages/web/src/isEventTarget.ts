@@ -3,9 +3,19 @@
  *
  * @param obj - The object to check
  * @returns Is it an Event Target or not
+ *
+ * @example
+ *
+ * ```ts
+ * isEventTarget(window) // --> true
+ * isEventTarget(document) // --> true
+ * isEventTarget(document.documentElement) // --> true
+ * isEventTarget(document.body) // --> true
+ * isEventTarget(new XMLHttpRequest()) // --> true
+ *
+ * isEventTarget({}) // --> false
+ * ```
  */
-export default (obj: unknown): obj is EventTarget =>
-  !!obj
-  && typeof (obj as EventTarget).addEventListener === 'function'
-  && typeof (obj as EventTarget).removeEventListener === 'function'
-  && typeof (obj as EventTarget).dispatchEvent === 'function';
+export default function isEventTarget(obj: unknown): obj is EventTarget {
+  return obj instanceof EventTarget;
+}

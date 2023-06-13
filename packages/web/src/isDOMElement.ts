@@ -6,6 +6,21 @@ import isDOMNode from './isDOMNode';
  * @param obj - The object to check
  * @param tags - Tag name to match
  * @returns Is it a DOM element node or not and optionally of the right type
+ *
+ * @example
+ *
+ * ```ts
+ * isDOMElement(document.createElement('p')) // --> true
+ * isDOMElement(document.documentElement) // --> true
+ * isDOMElement(document.body) // --> true
+ *
+ * isDOMContainer(window) // --> false
+ * isDOMContainer(document.createTextNode('')) // --> false
+ *
+ * // Is DOM element of a given type
+ * isDOMElement(document.createElement('p'), ['div', 'p']) // --> true
+ * isDOMElement(document.body, 'body') // --> true
+ * ```
  */
 export default function isDOMElement(obj: unknown, tags?: string | string[]): obj is Element {
   if (!isDOMNode(obj)) { return false; }

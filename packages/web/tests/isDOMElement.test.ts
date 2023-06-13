@@ -5,7 +5,7 @@ import isDOMElement from '~web/isDOMElement';
 
 
 describe('"isDOMElement"', () => {
-  describe('Returns `false` for DOM element:', () => {
+  describe('Returns `true` for DOM element:', () => {
     describe.each([
       ['<html> element', (doc: Document) => doc.documentElement],
       ['<body> element', (doc: Document) => doc.body],
