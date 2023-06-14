@@ -26,6 +26,13 @@ export function fileSavingSupported(): boolean {
  * @param content - The content of the file
  * @param name - The name to give the downloaded file
  * @param type - The content type of the file
+ *
+ * @example
+ *
+ * ```ts
+ * saveFile('<File content>', 'my-file.txt')
+ * saveFile(new Blob('<File content>'), 'my-file.txt')
+ * ```
  */
 export default function saveFile(
   content: Blob | string,
@@ -34,9 +41,7 @@ export default function saveFile(
 ): void {
   if (!fileSavingSupported()) { return; }
 
-  if (!isBlob(content)) {
-    content = new Blob([`${content}`], { type });
-  }
+  if (!isBlob(content)) content = new Blob([`${content}`], { type });
 
   if (MSSave) {
     navigator.msSaveBlob(content);

@@ -8,21 +8,35 @@ import viewport from './viewport';
  *
  * @param elm - The element whose scroll parent is determined
  * @returns The scroll parent or the viewport
+ *
+ * @example
+ *
+ * ```ts
+ * scrollParent(document.body) // --> `<html>`
+ *
+ * // <div style="overflow:auto"><p id="P" /></div>
+ * scrollParent(document.getElementById('P')) // --> `<div>`
+ *
+ * // <div style="overflow:auto"><p id="P" style="position: fixed" /></div>
+ * scrollParent(document.getElementById('P')) // --> `<html>`
+ *
+ * // <div style="overflow:auto"><p id="P" style="position: absolute" /></div>
+ * scrollParent(document.getElementById('P')) // --> `<html>`
+ *
+ * // <div style="overflow:auto; position: relative"><p id="P" style="position: absolute" /></div>
+ * scrollParent(document.getElementById('P')) // --> `<div>`
+ * ```
  */
 export default function scrollParent(elm: Element): Element | HTMLElement | null {
   const vp = viewport(elm);
 
-  if (!isDOMChildNode(elm) || elm === vp) {
-    return vp;
-  }
+  if (!isDOMChildNode(elm) || elm === vp) return vp;
 
-  const { position: elmPosition } = getComputedStyle(elm);
+  const { position } = getComputedStyle(elm);
 
-  if (elmPosition === 'fixed') {
-    return vp;
-  }
+  if (position === 'fixed') return vp;
 
-  const noStaticParent = elmPosition === 'absolute';
+  const noStaticParent = position === 'absolute';
   let parent: HTMLElement | null = elm.parentElement;
 
   while (parent && parent !== document.body) {

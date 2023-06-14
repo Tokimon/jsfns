@@ -85,7 +85,7 @@ const getElementPosition = (elm: HTMLElement): PositionData => {
  * position(document.body);
  *
  * // Get the position of a given element
- * position(someElement);
+ * position(MyElm);
  * ```
  */
 export default function position(elm?: HTMLElement | GeneralWindow | Document): Position | PositionData {

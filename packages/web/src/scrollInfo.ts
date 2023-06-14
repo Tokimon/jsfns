@@ -1,7 +1,7 @@
 import type { GeneralWindow } from './types';
 
+import isDOMElement from './isDOMElement';
 import viewport from './viewport';
-import isWindow from './isWindow';
 
 
 
@@ -21,11 +21,17 @@ export type ScrollInfo = {
  *
  * @param elm - The element to find the scrolling position from
  * @returns The scroll information
+ *
+ * @example
+ *
+ * ```ts
+ * scrollInfo(window)
+ * scrollInfo(document)
+ * scrollInfo(MyElmO)
+ * ```
  */
-export default function scrollInfo(elm: Element | GeneralWindow = window): ScrollInfo {
-  const _elm = isWindow(elm)
-    ? viewport(elm)
-    : elm;
+export default function scrollInfo(elm: Element | GeneralWindow | Document = window): ScrollInfo {
+  const _elm = !isDOMElement(elm) ? viewport(elm) : elm;
 
   const info = { x: 0, y: 0, xMax: 0, yMax: 0, xPct: 0, yPct: 0 };
 
