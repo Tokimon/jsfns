@@ -1,6 +1,6 @@
 import type { Noop } from './types';
 
-import once from './once';
+import on from './on';
 
 
 /**
@@ -27,5 +27,5 @@ export function docComplete(): boolean {
 export default function domReady(handler: Noop): void {
   docComplete()
     ? handler()
-    : once('readystatechange', handler, { when: docComplete });
+    : on('readystatechange', handler, { when: docComplete, once: true });
 }
