@@ -47,10 +47,7 @@ function delegateHandler(
 
     if (!target) return true;
 
-    const constructorStr = e.constructor.toString();
-    const constructorName = constructorStr.slice(9, constructorStr.indexOf('('));
-    const Constructor = window[constructorName as keyof Window];
-    const evt = new Constructor(e.type, e) as Event;
+    const evt = new window[e.constructor.name as keyof Window](e.type, e) as Event;
 
     Object.defineProperty(evt, 'currentTarget', {
       value: document.getElementById('notify-container'),
@@ -123,6 +120,7 @@ function whenHandler(
  * ```
  *
  * **A combination of options**
+ * ```ts
  * const removeEvent = on(MyElm, 'click', someHandler, {
  *   delegate: '.click-me',
  *   when: () => allowClick,
@@ -133,6 +131,7 @@ function whenHandler(
  * // but only if the condition of `when` returns true ("allowClick" is `true`) and the
  * // event will trigger only once (event will be removed when the conditions for when
  * // and delegate have been fulfilled).
+ * ```
  */
 function on<T extends argsWithTarget>(...args:T): () => T[0];
 
@@ -170,6 +169,7 @@ function on<T extends argsWithTarget>(...args:T): () => T[0];
  * ```
  *
  * **A combination of options**
+ * ```ts
  * const removeEvent = on('click', someHandler, {
  *   delegate: '.click-me',
  *   when: () => allowClick,
@@ -180,6 +180,7 @@ function on<T extends argsWithTarget>(...args:T): () => T[0];
  * // but only if the condition of `when` returns true ("allowClick" is `true`) and the
  * // event will trigger only once (event will be removed when the conditions for when
  * // and delegate have been fulfilled).
+ * ```
  */
 function on(...args: argsWithoutTarget): () => Document;
 
