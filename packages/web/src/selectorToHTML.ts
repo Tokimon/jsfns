@@ -16,17 +16,15 @@ const voidTags = ['area', 'base', 'br', 'col', 'embed', 'hr', 'img', 'input', 'k
  * @example
  *
  * ```ts
- * selectorToHTML('#id.class-name');
- * // -> '<div id="id" class="class-name" />'
+ * selectorToHTML('#id.class-name'); // -> '<div id="id" class="class-name" />'
  * ```
  */
 export default function selectorToHTML(selector: string): string {
-  const { tagName, attributes } = parseSelector(selector);
+  const { tagName, attributes, attributeList } = parseSelector(selector);
 
-  const atts = Object.entries(attributes)
-    .map(([att, value]) => ` ${att}${value ? `="${value}"` : ''}`)
+  const atts = attributeList
+    .map((att) => ` ${att}${attributes[att] ? `="${attributes[att]}"` : ''}`)
     .join('');
-
 
   const end = voidTags.includes(tagName) ? ' /' : `></${tagName}`;
 
