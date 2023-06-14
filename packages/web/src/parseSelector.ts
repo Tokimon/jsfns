@@ -7,36 +7,31 @@ const attrExp = new RegExp(`\\[(${nameExpStr})(?:=([^\\]]+))?]`, 'g');
 
 
 
-export type AttributeMapping = Record<string, Set<string>>;
-export type Attributes = Record<string, string>;
+export type AttributeMapping = Map<string, Set<string>>
 
 export type SelectorParsing = {
   tagName: string
-  attributes: Attributes
+  attributes: Record<string, string>;
+  attributeList: string[]
 }
 
 
 
-const addAttribute = (att: string, val: string | undefined, attributes: AttributeMapping): void => {
-  if (val == null) { return; }
+const addAttribute = (attributeName: string, value: string | undefined, attributes: AttributeMapping): void => {
+  if (value == null) return;
 
-  const isId = att === 'id';
+  const isId = attributeName === 'id';
+  const hasAttribute = attributes.has(attributeName);
 
   // ID Attributes are only added once
-  if (isId && attributes[att]) {
-    return;
-  }
+  if (isId && hasAttribute) return;
 
-  if (!attributes[att]) {
-    attributes[att] = new Set();
-  }
+  if (!hasAttribute) attributes.set(attributeName, new Set());
 
   // Clean class and ID values
-  if (att === 'class' || isId) {
-    val = val.replace(/[#.]/g, '');
-  }
+  if (attributeName === 'class' || isId) value = value.replace(/[#.]/g, '');
 
-  attributes[att].add(val);
+  attributes.get(attributeName)?.add(value);
 };
 
 
@@ -57,13 +52,18 @@ const parseAttribute = (selector: string, attributes: AttributeMapping) => {
 
 
 /**
- * Parses a selector string into a structured object
+ * Parses CSS a selector string into a structured object
  *
  * @param selector - The CSS selector to parse
  * @returns The attribute parsing mapping
+ *
+ * ```ts
+ * parseSelector('.my-elm[name=test]') // --> { tagName: 'div', attributes: { name: 'test', class: 'my-elm' }, attributeList: ['name', 'class'] }
+ * parseSelector('input[type=submit]') // --> { tagName: 'input', attributes: { type: 'submit' }, attributeList: ['type'] }
+ * ```
  */
 export default function parseSelector(selector: string): SelectorParsing {
-  const mapping = {} as AttributeMapping;
+  const mapping = new Map() as AttributeMapping;
 
   // Tag name
   const tagNameMatch = selector.match(elmExp);
@@ -75,28 +75,19 @@ export default function parseSelector(selector: string): SelectorParsing {
   // ID
   const idMatch = selector.includes('#') && selector.match(idExp);
 
-  if (idMatch) {
-    delete mapping.id;
-    addAttribute('id', idMatch[0].substr(1), mapping);
-  }
-
+  if (idMatch) addAttribute('id', idMatch[0].slice(1), mapping);
 
   // Class names
   const cnMatch = selector.includes('.') && selector.match(classExp);
 
-  if (cnMatch) {
-    cnMatch.forEach((cn) => addAttribute('class', cn.substr(1), mapping));
+  if (cnMatch) cnMatch.forEach((cn) => addAttribute('class', cn.slice(1), mapping));
+
+  const parsing: SelectorParsing = { tagName, attributes: {}, attributeList: [] };
+
+  for (const [name, values] of mapping.entries()) {
+    parsing.attributeList.push(name);
+    parsing.attributes[name] = Array.from(values).join(' ');
   }
 
-  // Transform array attributes into space separated strings
-  const attributes = Object.entries(mapping)
-    .reduce(
-      (atts, [name, val]) => {
-        atts[name] = Array.from(val).join(' ');
-        return atts;
-      },
-      {} as Attributes
-    );
-
-  return { tagName, attributes };
+  return parsing;
 }
