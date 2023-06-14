@@ -5,47 +5,48 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>@js-fns/core v.1.0.x</title>
 		<style>
-	:root {
-		font-family: Arial, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu,
-			Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  :root {
+    font-family: Arial, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu,
+      Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 
-		font-size: 14px;
-	}
+    font-size: 14px;
+  }
 
-	body {
-		min-height: 100vh;
-		margin: 0;
-		background: #11181d;
-		color: whitesmoke;
-	}
+  body {
+    min-height: 100vh;
+    margin: 0;
+    background: #11181d;
+    color: whitesmoke;
+  }
 
-	pre {
-		margin: 0;
-	}
+  pre,
+  p,
+  ul,
+  h1,
+  h2,
+  h3 {
+    margin: 0;
+  }
 
-	* {
-		scrollbar-width: thin;
-		scroll-behavior: smooth;
-	}
+  * {
+    scrollbar-width: thin;
+    scroll-behavior: smooth;
+  }
 
-	::-webkit-scrollbar {
-		width: 8px;
-		height: 8px;
-	}
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
 
-	::-webkit-scrollbar-track {
-		background: transparent;
-		box-shadow: none;
-	}
+  ::-webkit-scrollbar-track {
+    background: transparent;
+    box-shadow: none;
+  }
 
-	::-webkit-scrollbar-thumb {
-		border-radius: 2px;
-		background: rgba(255, 255, 255, 0.15);
-	}
-
-	p {
-		margin: 0;
-	}
+  ::-webkit-scrollbar-thumb {
+    border-radius: 2px;
+    background: rgba(255, 255, 255, 0.15);
+  }
 </style>
  <style>
   table {
@@ -96,13 +97,17 @@
     padding: 15px;
   }
 
+  code:not(.hljs) {
+    color: hotpink;
+  }
+
   .page {
     --header-hight: 50px;
 
     grid-template-areas:
       'header header'
       'nav content';
-    grid-template-columns: 200px 1fr;
+    grid-template-columns: 300px 1fr;
   }
 
   .header {
@@ -181,7 +186,7 @@
     grid-area: nav;
     position: fixed;
     z-index: 98;
-    width: 200px;
+    width: 300px;
     top: var(--header-hight);
     bottom: 0;
     left: 0;
@@ -299,7 +304,8 @@
 
   .signature-definition {
     font-size: 14px;
-    border: 1px solid #444;
+    border: 0 solid #444;
+    border-width: 1px 0;
   }
 
   .signature-description {
@@ -640,8 +646,7 @@
 								<div class="signature-content">
 									
 									<div class="signature-description"><p>Creates a function that formats a number to a given currency format (eg. 1000 -&gt; 1.000,00 €)</p>
-<p>The template string should be the number 1000 described with before and after<br>symbols (no numbers), a thousand separator and a decimal separator followed by<br>the number of decimals defined with zeroes: </p>
-<p><code>[before]1[thou.]000[dec.]00[after] -&gt; $ 1,000.00</code></p>
+<p>The template string should be the number 1000 described with before and after<br>symbols (no numbers), a thousand separator and a decimal separator followed by<br>the number of decimals defined with zeroes: <code>[before]1[thou.]000[dec.]00[after] -&gt; $ 1,000.00</code></p>
 </div>
 									 
 									<details>
@@ -694,11 +699,7 @@
 								
 								<div class="signature-content">
 									
-									<div class="signature-description"><p>Formats a number with defined thousand and decimal separator, and a decimal limit<br>(see </p>
-<p><code>limitDecimals</code></p>
-<p> for details on </p>
-<p><code>decimalCount</code></p>
-<p>)</p>
+									<div class="signature-description"><p>Formats a number with defined thousand and decimal separator, and a decimal limit<br>(see <code>limitDecimals</code> for details on <code>decimalCount</code>)</p>
 </div>
 									 
 									<details>
@@ -1195,9 +1196,7 @@
 								
 								<div class="signature-content">
 									
-									<div class="signature-description"><p>Limit decimals of a floating number to specified length. The length depends on </p>
-<p><code>decimals</code></p>
-<p>which can have the following settings (n = integer):</p>
+									<div class="signature-description"><p>Limit decimals of a floating number to specified length. The length depends on <code>decimals</code><br>which can have the following settings (n = integer):</p>
 <table>
 <thead>
 <tr>
@@ -1502,7 +1501,7 @@ action
 						<div class="signatures">
 							
 							<div class="signature">
-								<div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">randomHexColor</span>(<span class="hljs-literal">undefined</span>): <span class="hljs-built_in">string</span>
+								<div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">randomHexColor</span>(): <span class="hljs-built_in">string</span>
 </code></pre></div>
 
 								
@@ -1623,7 +1622,7 @@ action
 						<div class="signatures">
 							
 							<div class="signature">
-								<div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">randomRGBColor</span>(<span class="hljs-literal">undefined</span>): [<span class="hljs-attr">r</span>: <span class="hljs-built_in">number</span>, <span class="hljs-attr">g</span>: <span class="hljs-built_in">number</span>, <span class="hljs-attr">b</span>: <span class="hljs-built_in">number</span>]
+								<div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">randomRGBColor</span>(): [<span class="hljs-attr">r</span>: <span class="hljs-built_in">number</span>, <span class="hljs-attr">g</span>: <span class="hljs-built_in">number</span>, <span class="hljs-attr">b</span>: <span class="hljs-built_in">number</span>]
 </code></pre></div>
 
 								
@@ -1849,7 +1848,7 @@ newDate.<span class="hljs-title function_">setMonth</span>(<span class="hljs-num
 						<div class="signatures">
 							
 							<div class="signature">
-								<div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">uniqueArray</span>(<span class="hljs-attr">arr</span>: <span class="hljs-built_in">unknown</span>[]): <span class="hljs-built_in">unknown</span>[]
+								<div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">uniqueArray</span>(<span class="hljs-attr">arr</span>: <span class="hljs-title class_">ArrayLike</span>&lt;T&gt; | <span class="hljs-title class_">Iterable</span>&lt;T&gt;): T[]
 </code></pre></div>
 
 								
@@ -1861,9 +1860,16 @@ newDate.<span class="hljs-title function_">setMonth</span>(<span class="hljs-num
 									<details>
 										<summary>Examples</summary>
 										 <pre><code class="hljs language-ts"><span class="hljs-title function_">uniqueArray</span>([<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">1</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>,<span class="hljs-number">3</span>,<span class="hljs-number">7</span>]); <span class="hljs-comment">// -&gt; [1,2,3,4,5,6,7]</span>
+<span class="hljs-title function_">uniqueArray</span>(<span class="hljs-variable language_">document</span>.<span class="hljs-title function_">querySelectorAll</span>(<span class="hljs-string">&#x27;.my-elm, .selected&#x27;</span>)); <span class="hljs-comment">// -&gt; unique array of elements (so .my-elm.selected will only be present once)</span>
 </code></pre> 
 									</details>
 									 
+									<details>
+										<summary>Types</summary>
+										<pre><code class="hljs language-ts">
+</code></pre>
+									</details>
+									
 								</div>
 								
 							</div>

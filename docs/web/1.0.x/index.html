@@ -410,10 +410,6 @@
 						<a href="#css">css</a>
 					</li>
 					
-					<li class="menu-list-item" id="Menu-delegate">
-						<a href="#delegate">delegate</a>
-					</li>
-					
 					<li class="menu-list-item" id="Menu-domReady">
 						<a href="#domReady">domReady</a>
 					</li>
@@ -538,8 +534,8 @@
 						<a href="#isWindow">isWindow</a>
 					</li>
 					
-					<li class="menu-list-item" id="Menu-matches">
-						<a href="#matches">matches</a>
+					<li class="menu-list-item" id="Menu-nextSiblings">
+						<a href="#nextSiblings">nextSiblings</a>
 					</li>
 					
 					<li class="menu-list-item" id="Menu-off">
@@ -548,10 +544,6 @@
 					
 					<li class="menu-list-item" id="Menu-on">
 						<a href="#on">on</a>
-					</li>
-					
-					<li class="menu-list-item" id="Menu-once">
-						<a href="#once">once</a>
 					</li>
 					
 					<li class="menu-list-item" id="Menu-parseSelector">
@@ -564,6 +556,10 @@
 					
 					<li class="menu-list-item" id="Menu-prepend">
 						<a href="#prepend">prepend</a>
+					</li>
+					
+					<li class="menu-list-item" id="Menu-previousSiblings">
+						<a href="#previousSiblings">previousSiblings</a>
 					</li>
 					
 					<li class="menu-list-item" id="Menu-removeClass">
@@ -999,113 +995,6 @@
 </code></pre> 
 									</details>
 									 
-								</div>
-								
-							</div>
-							
-						</div>
-					</div>
-				</section>
-				
-				<section class="module" id="delegate">
-					<div class="module-content">
-						<h1>
-							<a href="#delegate"><b>#</b> delegate</a>
-						</h1>
-
-						<div class="signatures">
-							
-							<div class="signature">
-								<div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">delegate</span>(<span class="hljs-attr">eventNames</span>: <span class="hljs-built_in">string</span> | <span class="hljs-built_in">string</span>[], <span class="hljs-attr">selector</span>: <span class="hljs-built_in">string</span>, <span class="hljs-attr">handler</span>: <span class="hljs-title class_">DelegateEventHandler</span>, options?: <span class="hljs-title class_">EventListenerOptions</span>): <span class="hljs-title class_">DelegateRemoveFunction</span>
-</code></pre></div>
-
-								
-								<div class="signature-content">
-									
-									<div class="signature-description"><p>Bind a delegated event handler for one or more event names to document.</p>
-</div>
-									 
-									<details>
-										<summary>Examples</summary>
-										 <pre><code class="hljs language-ts"><span class="hljs-comment">// Bind to a single event</span>
-<span class="hljs-keyword">const</span> removeDelegate = <span class="hljs-title function_">delegate</span>(<span class="hljs-string">&#x27;click&#x27;</span>, <span class="hljs-string">&#x27;.my-element&#x27;</span>, <span class="hljs-function">(<span class="hljs-params">e: Event</span>) =&gt;</span> {});
-
-<span class="hljs-comment">// Bind to multiple events</span>
-<span class="hljs-keyword">const</span> removeDelegates = <span class="hljs-title function_">delegate</span>([<span class="hljs-string">&#x27;click&#x27;</span>, <span class="hljs-string">&#x27;mouseenter&#x27;</span>], <span class="hljs-string">&#x27;.my-element&#x27;</span>, <span class="hljs-function">(<span class="hljs-params">e: Event</span>) =&gt;</span> {});
-
-<span class="hljs-comment">// Only triggered once</span>
-<span class="hljs-keyword">const</span> removeDelegates = <span class="hljs-title function_">delegate</span>(<span class="hljs-string">&#x27;click&#x27;</span>, <span class="hljs-string">&#x27;.my-element&#x27;</span>, <span class="hljs-function">(<span class="hljs-params">e: Event</span>) =&gt;</span> {}, { <span class="hljs-attr">once</span>: <span class="hljs-literal">true</span> });
-</code></pre> 
-									</details>
-									 
-									<details>
-										<summary>Types</summary>
-										<pre><code class="hljs language-ts"><span class="hljs-keyword">type</span> <span class="hljs-title class_">DelegateEventHandler</span> = <span class="hljs-function">(<span class="hljs-params">e: DelegateEvent</span>) =&gt;</span> <span class="hljs-built_in">boolean</span> | <span class="hljs-literal">undefined</span>;
-<span class="hljs-keyword">type</span> <span class="hljs-title class_">DelegateRemoveFunction</span> = <span class="hljs-function">() =&gt;</span> <span class="hljs-title class_">ReturnType</span>&lt;&gt;;
-</code></pre>
-									</details>
-									
-								</div>
-								
-							</div>
-							
-							<div class="signature">
-								<div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">delegate</span>(<span class="hljs-attr">target</span>: <span class="hljs-title class_">EventTarget</span>, <span class="hljs-attr">eventNames</span>: <span class="hljs-built_in">string</span> | <span class="hljs-built_in">string</span>[], <span class="hljs-attr">selector</span>: <span class="hljs-built_in">string</span>, <span class="hljs-attr">handler</span>: <span class="hljs-title class_">DelegateEventHandler</span>, options?: <span class="hljs-title class_">EventListenerOptions</span>): <span class="hljs-title class_">DelegateRemoveFunction</span>
-</code></pre></div>
-
-								
-								<div class="signature-content">
-									
-									<div class="signature-description"><p>Bind a delegated event handler for one or more event names to a DOM element.</p>
-</div>
-									 
-									<details>
-										<summary>Examples</summary>
-										 <pre><code class="hljs language-ts"><span class="hljs-comment">// Bind to a single event</span>
-<span class="hljs-keyword">const</span> removeDelegate = <span class="hljs-title function_">delegate</span>(element, <span class="hljs-string">&#x27;click&#x27;</span>, <span class="hljs-string">&#x27;.my-element&#x27;</span>, <span class="hljs-function">(<span class="hljs-params">e: Event</span>) =&gt;</span> {});
-
-<span class="hljs-comment">// Bind to multiple events</span>
-<span class="hljs-keyword">const</span> removeDelegates = <span class="hljs-title function_">delegate</span>(element, [<span class="hljs-string">&#x27;click&#x27;</span>, <span class="hljs-string">&#x27;mouseenter&#x27;</span>], <span class="hljs-string">&#x27;.my-element&#x27;</span>, <span class="hljs-function">(<span class="hljs-params">e: Event</span>) =&gt;</span> {});
-
-<span class="hljs-comment">// Only triggered once</span>
-<span class="hljs-keyword">const</span> removeDelegates = <span class="hljs-title function_">delegate</span>(element, <span class="hljs-string">&#x27;click&#x27;</span>, <span class="hljs-string">&#x27;.my-element&#x27;</span>, <span class="hljs-function">(<span class="hljs-params">e: Event</span>) =&gt;</span> {}, { <span class="hljs-attr">once</span>: <span class="hljs-literal">true</span> });
-</code></pre> 
-									</details>
-									 
-									<details>
-										<summary>Types</summary>
-										<pre><code class="hljs language-ts"><span class="hljs-keyword">type</span> <span class="hljs-title class_">DelegateEventHandler</span> = <span class="hljs-function">(<span class="hljs-params">e: DelegateEvent</span>) =&gt;</span> <span class="hljs-built_in">boolean</span> | <span class="hljs-literal">undefined</span>;
-<span class="hljs-keyword">type</span> <span class="hljs-title class_">DelegateRemoveFunction</span> = <span class="hljs-function">() =&gt;</span> <span class="hljs-title class_">ReturnType</span>&lt;&gt;;
-</code></pre>
-									</details>
-									
-								</div>
-								
-							</div>
-							
-							<div class="signature">
-								<div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">delegateHandler</span>(<span class="hljs-attr">selector</span>: <span class="hljs-built_in">string</span>, <span class="hljs-attr">handler</span>: <span class="hljs-title class_">DelegateEventHandler</span>): <span class="hljs-title class_">EventListener</span>
-</code></pre></div>
-
-								
-								<div class="signature-content">
-									
-									<div class="signature-description"><p>Creates a function that triggers the given handler if the current event target<br>matches the given selector</p>
-</div>
-									 
-									<details>
-										<summary>Examples</summary>
-										 <pre><code class="hljs language-ts"><span class="hljs-keyword">const</span> handler = <span class="hljs-title function_">delegateHandler</span>(<span class="hljs-string">&#x27;.my-element&#x27;</span>, <span class="hljs-function">(<span class="hljs-params">e: Event</span>) =&gt;</span> {});
-<span class="hljs-variable language_">document</span>.<span class="hljs-title function_">addEventHandler</span>(<span class="hljs-string">&#x27;click&#x27;</span>, handler);
-</code></pre> 
-									</details>
-									 
-									<details>
-										<summary>Types</summary>
-										<pre><code class="hljs language-ts"><span class="hljs-keyword">type</span> <span class="hljs-title class_">DelegateEventHandler</span> = <span class="hljs-function">(<span class="hljs-params">e: DelegateEvent</span>) =&gt;</span> <span class="hljs-built_in">boolean</span> | <span class="hljs-literal">undefined</span>;
-</code></pre>
-									</details>
-									
 								</div>
 								
 							</div>
@@ -2108,7 +1997,15 @@
 									
 									<div class="signature-description"><p>Is the given object a Blob object</p>
 </div>
-									  
+									 
+									<details>
+										<summary>Examples</summary>
+										 <pre><code class="hljs language-ts"><span class="hljs-title function_">isBlob</span>(<span class="hljs-keyword">new</span> <span class="hljs-title class_">Blob</span>()) <span class="hljs-comment">// --&gt; true</span>
+
+<span class="hljs-title function_">isBlob</span>(<span class="hljs-string">&#x27;blob&#x27;</span>) <span class="hljs-comment">// --&gt; false</span>
+</code></pre> 
+									</details>
+									 
 								</div>
 								
 							</div>
@@ -2134,7 +2031,16 @@
 									
 									<div class="signature-description"><p>Is the given object a DOM document node</p>
 </div>
-									  
+									 
+									<details>
+										<summary>Examples</summary>
+										 <pre><code class="hljs language-ts"><span class="hljs-title function_">isDocument</span>(<span class="hljs-variable language_">window</span>.<span class="hljs-property">document</span>) <span class="hljs-comment">// --&gt; true</span>
+
+<span class="hljs-title function_">isDocument</span>(<span class="hljs-variable language_">window</span>) <span class="hljs-comment">// --&gt; false</span>
+<span class="hljs-title function_">isDocument</span>(<span class="hljs-variable language_">document</span>.<span class="hljs-property">body</span>) <span class="hljs-comment">// --&gt; false</span>
+</code></pre> 
+									</details>
+									 
 								</div>
 								
 							</div>
@@ -2160,7 +2066,17 @@
 									
 									<div class="signature-description"><p>Is the given object a DOM node child of a DOM element</p>
 </div>
-									  
+									 
+									<details>
+										<summary>Examples</summary>
+										 <pre><code class="hljs language-ts"><span class="hljs-title function_">isDOMChildNode</span>(<span class="hljs-variable language_">document</span>.<span class="hljs-property">body</span>) <span class="hljs-comment">// --&gt; true</span>
+<span class="hljs-title function_">isDOMChildNode</span>(<span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(<span class="hljs-string">&#x27;my-elm&#x27;</span>)) <span class="hljs-comment">// --&gt; true</span>
+<span class="hljs-title function_">isDOMChildNode</span>(<span class="hljs-title function_">createDetachedDocument</span>().<span class="hljs-property">body</span>) <span class="hljs-comment">// --&gt; true</span>
+
+<span class="hljs-title function_">isDOMChildNode</span>(<span class="hljs-variable language_">document</span>.<span class="hljs-property">documentElement</span>) <span class="hljs-comment">// --&gt; false</span>
+</code></pre> 
+									</details>
+									 
 								</div>
 								
 							</div>
@@ -2186,7 +2102,19 @@
 									
 									<div class="signature-description"><p>Is the given object a DOM node that can contain child DOM nodes</p>
 </div>
-									  
+									 
+									<details>
+										<summary>Examples</summary>
+										 <pre><code class="hljs language-ts"><span class="hljs-title function_">isDOMContainer</span>(<span class="hljs-variable language_">document</span>.<span class="hljs-property">documentElement</span>) <span class="hljs-comment">// --&gt; true</span>
+<span class="hljs-title function_">isDOMContainer</span>(<span class="hljs-variable language_">document</span>.<span class="hljs-property">body</span>) <span class="hljs-comment">// --&gt; true</span>
+<span class="hljs-title function_">isDOMContainer</span>(<span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(<span class="hljs-string">&#x27;my-elm&#x27;</span>)) <span class="hljs-comment">// --&gt; true</span>
+<span class="hljs-title function_">isDOMContainer</span>(<span class="hljs-variable language_">document</span>.<span class="hljs-title function_">createDocumentFragment</span>()) <span class="hljs-comment">// --&gt; true</span>
+
+<span class="hljs-title function_">isDOMContainer</span>(<span class="hljs-variable language_">document</span>) <span class="hljs-comment">// --&gt; false</span>
+<span class="hljs-title function_">isDOMContainer</span>(<span class="hljs-variable language_">document</span>.<span class="hljs-title function_">createTextNode</span>(<span class="hljs-string">&#x27;&#x27;</span>)) <span class="hljs-comment">// --&gt; false</span>
+</code></pre> 
+									</details>
+									 
 								</div>
 								
 							</div>
@@ -2212,7 +2140,22 @@
 									
 									<div class="signature-description"><p>Is the given object a DOM element node and optionally of a given type</p>
 </div>
-									  
+									 
+									<details>
+										<summary>Examples</summary>
+										 <pre><code class="hljs language-ts"><span class="hljs-title function_">isDOMElement</span>(<span class="hljs-variable language_">document</span>.<span class="hljs-title function_">createElement</span>(<span class="hljs-string">&#x27;p&#x27;</span>)) <span class="hljs-comment">// --&gt; true</span>
+<span class="hljs-title function_">isDOMElement</span>(<span class="hljs-variable language_">document</span>.<span class="hljs-property">documentElement</span>) <span class="hljs-comment">// --&gt; true</span>
+<span class="hljs-title function_">isDOMElement</span>(<span class="hljs-variable language_">document</span>.<span class="hljs-property">body</span>) <span class="hljs-comment">// --&gt; true</span>
+
+<span class="hljs-title function_">isDOMContainer</span>(<span class="hljs-variable language_">window</span>) <span class="hljs-comment">// --&gt; false</span>
+<span class="hljs-title function_">isDOMContainer</span>(<span class="hljs-variable language_">document</span>.<span class="hljs-title function_">createTextNode</span>(<span class="hljs-string">&#x27;&#x27;</span>)) <span class="hljs-comment">// --&gt; false</span>
+
+<span class="hljs-comment">// Is DOM element of a given type</span>
+<span class="hljs-title function_">isDOMElement</span>(<span class="hljs-variable language_">document</span>.<span class="hljs-title function_">createElement</span>(<span class="hljs-string">&#x27;p&#x27;</span>), [<span class="hljs-string">&#x27;div&#x27;</span>, <span class="hljs-string">&#x27;p&#x27;</span>]) <span class="hljs-comment">// --&gt; true</span>
+<span class="hljs-title function_">isDOMElement</span>(<span class="hljs-variable language_">document</span>.<span class="hljs-property">body</span>, <span class="hljs-string">&#x27;body&#x27;</span>) <span class="hljs-comment">// --&gt; true</span>
+</code></pre> 
+									</details>
+									 
 								</div>
 								
 							</div>
@@ -2238,7 +2181,17 @@
 									
 									<div class="signature-description"><p>Is the given object a Document Fragment</p>
 </div>
-									  
+									 
+									<details>
+										<summary>Examples</summary>
+										 <pre><code class="hljs language-ts"><span class="hljs-title function_">isDOMFragment</span>(<span class="hljs-variable language_">document</span>.<span class="hljs-title function_">createDocumentFragment</span>()) <span class="hljs-comment">// --&gt; true</span>
+
+<span class="hljs-title function_">isDOMContainer</span>(<span class="hljs-variable language_">document</span>.<span class="hljs-title function_">createElement</span>(<span class="hljs-string">&#x27;p&#x27;</span>)) <span class="hljs-comment">// --&gt; false</span>
+<span class="hljs-title function_">isDOMContainer</span>(<span class="hljs-variable language_">document</span>) <span class="hljs-comment">// --&gt; false</span>
+<span class="hljs-title function_">isDOMContainer</span>(<span class="hljs-variable language_">window</span>) <span class="hljs-comment">// --&gt; false</span>
+</code></pre> 
+									</details>
+									 
 								</div>
 								
 							</div>
@@ -2264,7 +2217,17 @@
 									
 									<div class="signature-description"><p>Is the given object a DOM Node</p>
 </div>
-									  
+									 
+									<details>
+										<summary>Examples</summary>
+										 <pre><code class="hljs language-ts"><span class="hljs-title function_">isDOMNode</span>(<span class="hljs-variable language_">document</span>.<span class="hljs-property">documentElement</span>) <span class="hljs-comment">// --&gt; true</span>
+<span class="hljs-title function_">isDOMContainer</span>(<span class="hljs-variable language_">document</span>.<span class="hljs-title function_">createTextNode</span>(<span class="hljs-string">&#x27;&#x27;</span>)) <span class="hljs-comment">// --&gt; true</span>
+<span class="hljs-title function_">isDOMContainer</span>(<span class="hljs-variable language_">document</span>.<span class="hljs-title function_">createComment</span>(<span class="hljs-string">&#x27;&#x27;</span>)) <span class="hljs-comment">// --&gt; true</span>
+
+<span class="hljs-title function_">isDOMContainer</span>(<span class="hljs-variable language_">window</span>) <span class="hljs-comment">// --&gt; false</span>
+</code></pre> 
+									</details>
+									 
 								</div>
 								
 							</div>
@@ -2282,7 +2245,7 @@
 						<div class="signatures">
 							
 							<div class="signature">
-								<div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">isDOMRoot</span>(<span class="hljs-attr">node</span>: <span class="hljs-title class_">Node</span> | <span class="hljs-title class_">Document</span> | <span class="hljs-title class_">GeneralWindow</span>): <span class="hljs-built_in">boolean</span> (node is <span class="hljs-title class_">HTMLElement</span>)
+								<div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">isDOMRoot</span>(<span class="hljs-attr">node</span>: <span class="hljs-built_in">unknown</span>): <span class="hljs-built_in">boolean</span> (node is <span class="hljs-title class_">HTMLElement</span>)
 </code></pre></div>
 
 								
@@ -2290,7 +2253,17 @@
 									
 									<div class="signature-description"><p>Is the given object root node of the DOM (eg <code>&lt;html&gt;</code> for HTML documents og <code>&lt;svg&gt;</code> for SVG documents)</p>
 </div>
-									  
+									 
+									<details>
+										<summary>Examples</summary>
+										 <pre><code class="hljs language-ts"><span class="hljs-title function_">isDOMRoot</span>(<span class="hljs-variable language_">document</span>.<span class="hljs-property">documentElement</span>) <span class="hljs-comment">// --&gt; true</span>
+
+<span class="hljs-title function_">isDOMRoot</span>(<span class="hljs-variable language_">document</span>.<span class="hljs-property">body</span>) <span class="hljs-comment">// --&gt; false</span>
+<span class="hljs-title function_">isDOMRoot</span>(<span class="hljs-variable language_">document</span>) <span class="hljs-comment">// --&gt; false</span>
+<span class="hljs-title function_">isDOMRoot</span>(<span class="hljs-variable language_">window</span>) <span class="hljs-comment">// --&gt; false</span>
+</code></pre> 
+									</details>
+									 
 								</div>
 								
 							</div>
@@ -2316,7 +2289,19 @@
 									
 									<div class="signature-description"><p>Is the given object a viable event target (implements the addEventListener function)</p>
 </div>
-									  
+									 
+									<details>
+										<summary>Examples</summary>
+										 <pre><code class="hljs language-ts"><span class="hljs-title function_">isEventTarget</span>(<span class="hljs-variable language_">window</span>) <span class="hljs-comment">// --&gt; true</span>
+<span class="hljs-title function_">isEventTarget</span>(<span class="hljs-variable language_">document</span>) <span class="hljs-comment">// --&gt; true</span>
+<span class="hljs-title function_">isEventTarget</span>(<span class="hljs-variable language_">document</span>.<span class="hljs-property">documentElement</span>) <span class="hljs-comment">// --&gt; true</span>
+<span class="hljs-title function_">isEventTarget</span>(<span class="hljs-variable language_">document</span>.<span class="hljs-property">body</span>) <span class="hljs-comment">// --&gt; true</span>
+<span class="hljs-title function_">isEventTarget</span>(<span class="hljs-keyword">new</span> <span class="hljs-title class_">XMLHttpRequest</span>()) <span class="hljs-comment">// --&gt; true</span>
+
+<span class="hljs-title function_">isEventTarget</span>({}) <span class="hljs-comment">// --&gt; false</span>
+</code></pre> 
+									</details>
+									 
 								</div>
 								
 							</div>
@@ -2342,7 +2327,16 @@
 									
 									<div class="signature-description"><p>Is the given object a Window object</p>
 </div>
-									  
+									 
+									<details>
+										<summary>Examples</summary>
+										 <pre><code class="hljs language-ts"><span class="hljs-title function_">isWindow</span>(<span class="hljs-variable language_">window</span>) <span class="hljs-comment">// --&gt; true</span>
+
+<span class="hljs-title function_">isWindow</span>(<span class="hljs-variable language_">document</span>) <span class="hljs-comment">// --&gt; false</span>
+<span class="hljs-title function_">isWindow</span>(<span class="hljs-variable language_">document</span>.<span class="hljs-property">body</span>) <span class="hljs-comment">// --&gt; false</span>
+</code></pre> 
+									</details>
+									 
 								</div>
 								
 							</div>
@@ -2351,24 +2345,30 @@
 					</div>
 				</section>
 				
-				<section class="module" id="matches">
+				<section class="module" id="nextSiblings">
 					<div class="module-content">
 						<h1>
-							<a href="#matches"><b>#</b> matches</a>
+							<a href="#nextSiblings"><b>#</b> nextSiblings</a>
 						</h1>
 
 						<div class="signatures">
 							
 							<div class="signature">
-								<div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">matches</span>(<span class="hljs-attr">elm</span>: <span class="hljs-title class_">Element</span>, <span class="hljs-attr">selector</span>: <span class="hljs-built_in">string</span> = <span class="hljs-string">&#x27;&#x27;</span>): <span class="hljs-built_in">boolean</span>
+								<div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">nextSiblings</span>(<span class="hljs-attr">elm</span>: <span class="hljs-title class_">Element</span>): <span class="hljs-title class_">Element</span>[]
 </code></pre></div>
 
 								
 								<div class="signature-content">
 									
-									<div class="signature-description"><p>Determines whether or not a DOM element matches a given CSS query selector</p>
+									<div class="signature-description"><p>Get all sibling elements after a given DOM element in the structure</p>
 </div>
-									  
+									 
+									<details>
+										<summary>Examples</summary>
+										 <pre><code class="hljs language-ts"><span class="hljs-title function_">nextSiblings</span>(someElement);
+</code></pre> 
+									</details>
+									 
 								</div>
 								
 							</div>
@@ -2386,7 +2386,7 @@
 						<div class="signatures">
 							
 							<div class="signature">
-								<div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">off</span>(<span class="hljs-attr">elm</span>: <span class="hljs-title class_">EventTarget</span>, <span class="hljs-attr">eventNames</span>: <span class="hljs-built_in">string</span> | <span class="hljs-built_in">string</span>[], <span class="hljs-attr">handler</span>: <span class="hljs-title class_">EventListenerOrEventListenerObject</span>, options?: <span class="hljs-title class_">EventListenerOptions</span>): <span class="hljs-title class_">EventTarget</span>
+								<div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">off</span>(<span class="hljs-attr">args</span>: T): <span class="hljs-literal">undefined</span>
 </code></pre></div>
 
 								
@@ -2394,13 +2394,21 @@
 									
 									<div class="signature-description"><p>Bind an event handler for one or more event names on a given DOM element.</p>
 </div>
-									  
+									 
+									<details>
+										<summary>Examples</summary>
+										 <pre><code class="hljs language-ts"><span class="hljs-title function_">off</span>(<span class="hljs-title class_">MyElm</span>, <span class="hljs-string">&#x27;click&#x27;</span>, <span class="hljs-function">() =&gt;</span> {})
+<span class="hljs-title function_">off</span>(<span class="hljs-title class_">MyElm</span>, <span class="hljs-string">&#x27;click&#x27;</span>, <span class="hljs-function">() =&gt;</span> {}, { <span class="hljs-attr">passive</span>: <span class="hljs-literal">true</span> })
+<span class="hljs-title function_">off</span>(<span class="hljs-title class_">MyElm</span>, [<span class="hljs-string">&#x27;mouseenter&#x27;</span>, <span class="hljs-string">&#x27;touchstart&#x27;</span>], <span class="hljs-function">() =&gt;</span> {})
+</code></pre> 
+									</details>
+									 
 								</div>
 								
 							</div>
 							
 							<div class="signature">
-								<div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">off</span>(<span class="hljs-attr">eventNames</span>: <span class="hljs-built_in">string</span> | <span class="hljs-built_in">string</span>[], <span class="hljs-attr">handler</span>: <span class="hljs-title class_">EventListenerOrEventListenerObject</span>, options?: <span class="hljs-title class_">EventListenerOptions</span>): <span class="hljs-title class_">EventTarget</span>
+								<div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">off</span>(<span class="hljs-attr">args</span>: argsWithoutTarget): <span class="hljs-title class_">Document</span>
 </code></pre></div>
 
 								
@@ -2408,7 +2416,21 @@
 									
 									<div class="signature-description"><p>Bind an event handler for one or more event names to <code>document</code></p>
 </div>
-									  
+									 
+									<details>
+										<summary>Examples</summary>
+										 <pre><code class="hljs language-ts"><span class="hljs-title function_">off</span>(<span class="hljs-string">&#x27;click&#x27;</span>, <span class="hljs-function">() =&gt;</span> {})
+<span class="hljs-title function_">off</span>(<span class="hljs-string">&#x27;click&#x27;</span>, <span class="hljs-function">() =&gt;</span> {}, { <span class="hljs-attr">passive</span>: <span class="hljs-literal">true</span> })
+<span class="hljs-title function_">off</span>([<span class="hljs-string">&#x27;mouseenter&#x27;</span>, <span class="hljs-string">&#x27;touchstart&#x27;</span>], <span class="hljs-function">() =&gt;</span> {})
+</code></pre> 
+									</details>
+									 
+									<details>
+										<summary>Types</summary>
+										<pre><code class="hljs language-ts"><span class="hljs-keyword">type</span> argsWithoutTarget = [<span class="hljs-attr">eventNames</span>: <span class="hljs-built_in">string</span> | <span class="hljs-built_in">string</span>[], <span class="hljs-attr">handler</span>: <span class="hljs-title class_">EventListenerOrEventListenerObject</span>, options?: <span class="hljs-title class_">AddEventListenerOptions</span>];
+</code></pre>
+									</details>
+									
 								</div>
 								
 							</div>
@@ -2426,7 +2448,7 @@
 						<div class="signatures">
 							
 							<div class="signature">
-								<div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">on</span>(<span class="hljs-attr">elm</span>: <span class="hljs-title class_">EventTarget</span>, <span class="hljs-attr">eventNames</span>: <span class="hljs-built_in">string</span> | <span class="hljs-built_in">string</span>[], <span class="hljs-attr">handler</span>: <span class="hljs-title class_">EventListenerOrEventListenerObject</span>, options?: <span class="hljs-title class_">AddEventListenerOptions</span>): <span class="hljs-title class_">EventTarget</span>
+								<div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">on</span>(<span class="hljs-attr">args</span>: T): <span class="hljs-function">() =&gt;</span> <span class="hljs-literal">undefined</span>
 </code></pre></div>
 
 								
@@ -2434,76 +2456,84 @@
 									
 									<div class="signature-description"><p>Bind an event handler for one or more event names on a given DOM element.</p>
 </div>
-									  
-								</div>
-								
-							</div>
-							
-							<div class="signature">
-								<div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">on</span>(<span class="hljs-attr">eventNames</span>: <span class="hljs-built_in">string</span> | <span class="hljs-built_in">string</span>[], <span class="hljs-attr">handler</span>: <span class="hljs-title class_">EventListenerOrEventListenerObject</span>, options?: <span class="hljs-title class_">AddEventListenerOptions</span>): <span class="hljs-title class_">EventTarget</span>
-</code></pre></div>
-
-								
-								<div class="signature-content">
-									
-									<div class="signature-description"><p>Bind an event handler for one or more event names to <code>document</code></p>
-</div>
-									  
-								</div>
-								
-							</div>
-							
-						</div>
-					</div>
-				</section>
-				
-				<section class="module" id="once">
-					<div class="module-content">
-						<h1>
-							<a href="#once"><b>#</b> once</a>
-						</h1>
-
-						<div class="signatures">
-							
-							<div class="signature">
-								<div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">once</span>(<span class="hljs-attr">elm</span>: <span class="hljs-title class_">EventTarget</span>, <span class="hljs-attr">eventNames</span>: <span class="hljs-built_in">string</span> | <span class="hljs-built_in">string</span>[], <span class="hljs-attr">handler</span>: <span class="hljs-title class_">EventListenerOrEventListenerObject</span>, options?: <span class="hljs-title class_">OnceEventListenerOptions</span>): <span class="hljs-title class_">ReturnType</span>&lt;&gt;
-</code></pre></div>
-
-								
-								<div class="signature-content">
-									
-									<div class="signature-description"><p>Bind a single fire event handler for one or more event names on a DOM element.<br>(Add <code>when</code> to the options to conditional trigger the event)</p>
-</div>
-									  
+									 
 									<details>
-										<summary>Types</summary>
-										<pre><code class="hljs language-ts"><span class="hljs-keyword">type</span> <span class="hljs-title class_">OnceEventListenerOptions</span> = <span class="hljs-title class_">AddEventListenerOptions</span> &amp; {
-  <span class="hljs-comment">// A function that returns a boolean to determine when the event should trigger</span>
-  when?: <span class="hljs-title class_">WhenFunction</span>
-};
-</code></pre>
+										<summary>Examples</summary>
+										 <pre><code class="hljs language-ts"><span class="hljs-keyword">const</span> removeEvent = <span class="hljs-title function_">on</span>(<span class="hljs-title class_">MyElm</span>, <span class="hljs-string">&#x27;click&#x27;</span>, someHandler)
+<span class="hljs-keyword">const</span> removeEvent = <span class="hljs-title function_">on</span>(<span class="hljs-title class_">MyElm</span>, <span class="hljs-string">&#x27;click&#x27;</span>, someHandler, { <span class="hljs-attr">passive</span>: <span class="hljs-literal">true</span> })
+<span class="hljs-keyword">const</span> removeEvent = <span class="hljs-title function_">on</span>(<span class="hljs-title class_">MyElm</span>, [<span class="hljs-string">&#x27;mouseenter&#x27;</span>, <span class="hljs-string">&#x27;touchstart&#x27;</span>], someHandler)
+</code></pre><p><strong>When using <code>options.when</code></strong></p>
+<pre><code class="hljs language-ts"><span class="hljs-keyword">let</span> allowClick = <span class="hljs-literal">false</span>;
+<span class="hljs-keyword">const</span> removeEvent = <span class="hljs-title function_">on</span>(<span class="hljs-title class_">MyElm</span>, <span class="hljs-string">&#x27;click&#x27;</span>, someHandler, { <span class="hljs-attr">when</span>: <span class="hljs-function">() =&gt;</span> allowClick });
+
+<span class="hljs-comment">// In this case the `click` event won&#x27;t trigger unless &quot;allowClick&quot; is `true`</span>
+</code></pre><p><strong>When using <code>options.delegate</code></strong></p>
+<pre><code class="hljs language-ts"><span class="hljs-keyword">const</span> removeEvent = <span class="hljs-title function_">on</span>(<span class="hljs-title class_">MyElm</span>, <span class="hljs-string">&#x27;click&#x27;</span>, someHandler, { <span class="hljs-attr">delegate</span>: <span class="hljs-string">&#x27;.click-me&#x27;</span> });
+
+<span class="hljs-comment">// Here we listen to the `click` on MyElm, but the event will only trigger</span>
+<span class="hljs-comment">// if the clicked target is a child of `MyElm` and matches the given selector (&#x27;.click-me&#x27;).</span>
+<span class="hljs-comment">// `this` and currentTarget, will match the current &quot;.click-me&quot; element</span>
+</code></pre><p><strong>A combination of options</strong></p>
+<pre><code class="hljs language-ts"><span class="hljs-keyword">const</span> removeEvent = <span class="hljs-title function_">on</span>(<span class="hljs-title class_">MyElm</span>, <span class="hljs-string">&#x27;click&#x27;</span>, someHandler, {
+  <span class="hljs-attr">delegate</span>: <span class="hljs-string">&#x27;.click-me&#x27;</span>,
+  <span class="hljs-attr">when</span>: <span class="hljs-function">() =&gt;</span> allowClick,
+  <span class="hljs-attr">once</span>: <span class="hljs-literal">true</span>
+});
+
+<span class="hljs-comment">// In this scenario a MyElm &#x27;.click-me&#x27; child element will trigger the event handler,</span>
+<span class="hljs-comment">// but only if the condition of `when` returns true (&quot;allowClick&quot; is `true`) and the</span>
+<span class="hljs-comment">// event will trigger only once (event will be removed when the conditions for when</span>
+<span class="hljs-comment">// and delegate have been fulfilled).</span>
+</code></pre> 
 									</details>
-									
+									 
 								</div>
 								
 							</div>
 							
 							<div class="signature">
-								<div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">once</span>(<span class="hljs-attr">eventNames</span>: <span class="hljs-built_in">string</span> | <span class="hljs-built_in">string</span>[], <span class="hljs-attr">handler</span>: <span class="hljs-title class_">EventListenerOrEventListenerObject</span>, options?: <span class="hljs-title class_">OnceEventListenerOptions</span>): <span class="hljs-title class_">ReturnType</span>&lt;&gt;
+								<div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">on</span>(<span class="hljs-attr">args</span>: argsWithoutTarget): <span class="hljs-function">() =&gt;</span> <span class="hljs-title class_">Document</span>
 </code></pre></div>
 
 								
 								<div class="signature-content">
 									
-									<div class="signature-description"><p>Bind a single fire event handler for one or more event names on <code>document</code>.<br>(Add <code>when</code> to the options to conditional trigger the event)</p>
+									<div class="signature-description"><p>Bind an event handler for one or more event names on <code>document</code>.</p>
 </div>
-									  
+									 
+									<details>
+										<summary>Examples</summary>
+										 <pre><code class="hljs language-ts"><span class="hljs-keyword">const</span> removeEvent = <span class="hljs-title function_">on</span>(<span class="hljs-string">&#x27;click&#x27;</span>, someHandler)
+<span class="hljs-keyword">const</span> removeEvent = <span class="hljs-title function_">on</span>(<span class="hljs-string">&#x27;click&#x27;</span>, someHandler, { <span class="hljs-attr">passive</span>: <span class="hljs-literal">true</span> })
+<span class="hljs-keyword">const</span> removeEvent = <span class="hljs-title function_">on</span>([<span class="hljs-string">&#x27;mouseenter&#x27;</span>, <span class="hljs-string">&#x27;touchstart&#x27;</span>], someHandler)
+</code></pre><p><strong>When using <code>options.when</code></strong></p>
+<pre><code class="hljs language-ts"><span class="hljs-keyword">let</span> allowClick = <span class="hljs-literal">false</span>;
+<span class="hljs-keyword">const</span> removeEvent = <span class="hljs-title function_">on</span>(<span class="hljs-string">&#x27;click&#x27;</span>, someHandler, { <span class="hljs-attr">when</span>: <span class="hljs-function">() =&gt;</span> allowClick });
+
+<span class="hljs-comment">// In this case the `click` event won&#x27;t trigger unless &quot;allowClick&quot; is `true`</span>
+</code></pre><p><strong>When using <code>options.delegate</code></strong></p>
+<pre><code class="hljs language-ts"><span class="hljs-keyword">const</span> removeEvent = <span class="hljs-title function_">on</span>(<span class="hljs-string">&#x27;click&#x27;</span>, someHandler, { <span class="hljs-attr">delegate</span>: <span class="hljs-string">&#x27;.click-me&#x27;</span> });
+
+<span class="hljs-comment">// Here we listen to the `click` on but the event will only trigger</span>
+<span class="hljs-comment">// if the clicked target matches the given selector (&#x27;.click-me&#x27;).</span>
+<span class="hljs-comment">// `this` and currentTarget, will match the current &quot;.click-me&quot; element</span>
+</code></pre><p><strong>A combination of options</strong></p>
+<pre><code class="hljs language-ts"><span class="hljs-keyword">const</span> removeEvent = <span class="hljs-title function_">on</span>(<span class="hljs-string">&#x27;click&#x27;</span>, someHandler, {
+  <span class="hljs-attr">delegate</span>: <span class="hljs-string">&#x27;.click-me&#x27;</span>,
+  <span class="hljs-attr">when</span>: <span class="hljs-function">() =&gt;</span> allowClick,
+  <span class="hljs-attr">once</span>: <span class="hljs-literal">true</span>
+});
+
+<span class="hljs-comment">// In this scenario a &#x27;.click-me&#x27; child element will trigger the event handler,</span>
+<span class="hljs-comment">// but only if the condition of `when` returns true (&quot;allowClick&quot; is `true`) and the</span>
+<span class="hljs-comment">// event will trigger only once (event will be removed when the conditions for when</span>
+<span class="hljs-comment">// and delegate have been fulfilled).</span>
+</code></pre> 
+									</details>
+									 
 									<details>
 										<summary>Types</summary>
-										<pre><code class="hljs language-ts"><span class="hljs-keyword">type</span> <span class="hljs-title class_">OnceEventListenerOptions</span> = <span class="hljs-title class_">AddEventListenerOptions</span> &amp; {
-  <span class="hljs-comment">// A function that returns a boolean to determine when the event should trigger</span>
-  when?: <span class="hljs-title class_">WhenFunction</span>
-};
+										<pre><code class="hljs language-ts"><span class="hljs-keyword">type</span> argsWithoutTarget = [<span class="hljs-attr">eventNames</span>: <span class="hljs-built_in">string</span> | <span class="hljs-built_in">string</span>[], <span class="hljs-attr">handler</span>: <span class="hljs-title class_">EventListenerOrEventListenerObject</span>, options?: <span class="hljs-title class_">AddEventListenerOptions</span>];
 </code></pre>
 									</details>
 									
@@ -2530,13 +2560,14 @@
 								
 								<div class="signature-content">
 									
-									<div class="signature-description"><p>Parses a selector string into a structured object</p>
+									<div class="signature-description"><p>Parses CSS a selector string into a structured object</p>
 </div>
 									  
 									<details>
 										<summary>Types</summary>
 										<pre><code class="hljs language-ts"><span class="hljs-keyword">type</span> <span class="hljs-title class_">SelectorParsing</span> = {
-  <span class="hljs-attr">attributes</span>: <span class="hljs-title class_">Attributes</span>
+  <span class="hljs-attr">attributeList</span>: <span class="hljs-built_in">string</span>[]
+  <span class="hljs-attr">attributes</span>: <span class="hljs-title class_">Record</span>&lt;<span class="hljs-built_in">string</span>, <span class="hljs-built_in">string</span>&gt;
   <span class="hljs-attr">tagName</span>: <span class="hljs-built_in">string</span>
 };
 </code></pre>
@@ -2579,7 +2610,7 @@
 <span class="hljs-title function_">position</span>(<span class="hljs-variable language_">document</span>.<span class="hljs-property">body</span>);
 
 <span class="hljs-comment">// Get the position of a given element</span>
-<span class="hljs-title function_">position</span>(someElement);
+<span class="hljs-title function_">position</span>(<span class="hljs-title class_">MyElm</span>);
 </code></pre> 
 									</details>
 									 
@@ -2620,7 +2651,47 @@
 									
 									<div class="signature-description"><p>Append DOM element or plain HTML to the beginning of a given DOM element</p>
 </div>
-									  
+									 
+									<details>
+										<summary>Examples</summary>
+										 <pre><code class="hljs language-ts"><span class="hljs-title function_">prepend</span>(<span class="hljs-title class_">MyNode</span>, <span class="hljs-title class_">NodeToPrepend</span>)
+<span class="hljs-title function_">prepend</span>(<span class="hljs-title class_">MyNode</span>, <span class="hljs-string">&#x27;&lt;span&gt;prepended&lt;/span&gt;&#x27;</span>)
+<span class="hljs-title function_">prepend</span>(<span class="hljs-title class_">MyNode</span>, <span class="hljs-string">&#x27;.my-prepended-element&#x27;</span>)
+</code></pre> 
+									</details>
+									 
+								</div>
+								
+							</div>
+							
+						</div>
+					</div>
+				</section>
+				
+				<section class="module" id="previousSiblings">
+					<div class="module-content">
+						<h1>
+							<a href="#previousSiblings"><b>#</b> previousSiblings</a>
+						</h1>
+
+						<div class="signatures">
+							
+							<div class="signature">
+								<div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">previousSiblings</span>(<span class="hljs-attr">elm</span>: <span class="hljs-title class_">Element</span>): <span class="hljs-title class_">Element</span>[]
+</code></pre></div>
+
+								
+								<div class="signature-content">
+									
+									<div class="signature-description"><p>Get all sibling elements before a given DOM element in the structure</p>
+</div>
+									 
+									<details>
+										<summary>Examples</summary>
+										 <pre><code class="hljs language-ts"><span class="hljs-title function_">previousSiblings</span>(someElement);
+</code></pre> 
+									</details>
+									 
 								</div>
 								
 							</div>
@@ -2646,7 +2717,15 @@
 									
 									<div class="signature-description"><p>Remove one or multiple class names from a DOM element</p>
 </div>
-									  
+									 
+									<details>
+										<summary>Examples</summary>
+										 <pre><code class="hljs language-ts"><span class="hljs-comment">// &lt;div class=&quot;active open&quot; /&gt;</span>
+<span class="hljs-title function_">removeClass</span>(<span class="hljs-title class_">MyNode</span>, <span class="hljs-string">&#x27;active&#x27;</span>) <span class="hljs-comment">// --&gt; &lt;div class=&quot;open&quot; /&gt;</span>
+<span class="hljs-title function_">removeClass</span>(<span class="hljs-title class_">MyNode</span>, [<span class="hljs-string">&#x27;active&#x27;</span>, <span class="hljs-string">&#x27;open&#x27;</span>]) <span class="hljs-comment">// --&gt; &lt;div class=&quot;&quot; /&gt;</span>
+</code></pre> 
+									</details>
+									 
 								</div>
 								
 							</div>
@@ -2672,7 +2751,16 @@
 									
 									<div class="signature-description"><p>Replaces css class with another on a DOM element.</p>
 </div>
-									  
+									 
+									<details>
+										<summary>Examples</summary>
+										 <pre><code class="hljs language-ts"><span class="hljs-comment">// &lt;div class=&quot;active open&quot; /&gt;</span>
+<span class="hljs-title function_">replaceClass</span>(<span class="hljs-title class_">MyNode</span>, <span class="hljs-string">&#x27;active&#x27;</span>, <span class="hljs-string">&#x27;inactive&#x27;</span>) <span class="hljs-comment">// --&gt; &lt;div class=&quot;inactive open&quot; /&gt;</span>
+<span class="hljs-title function_">replaceClass</span>(<span class="hljs-title class_">MyNode</span>, [<span class="hljs-string">&#x27;active&#x27;</span>, <span class="hljs-string">&#x27;open&#x27;</span>], [<span class="hljs-string">&#x27;inactive&#x27;</span>, <span class="hljs-string">&#x27;closed&#x27;</span>]) <span class="hljs-comment">// --&gt; &lt;div class=&quot;inactive closed&quot; /&gt;</span>
+<span class="hljs-title function_">replaceClass</span>(<span class="hljs-title class_">MyNode</span>, <span class="hljs-string">&#x27;active&#x27;</span>, [<span class="hljs-string">&#x27;inactive&#x27;</span>, <span class="hljs-string">&#x27;removed&#x27;</span>]) <span class="hljs-comment">// --&gt; &lt;div class=&quot;inactive removed open&quot; /&gt;</span>
+</code></pre> 
+									</details>
+									 
 								</div>
 								
 							</div>
@@ -2698,7 +2786,15 @@
 									
 									<div class="signature-description"><p>Replace a given DOM element with another DOM element or plain HTML string</p>
 </div>
-									  
+									 
+									<details>
+										<summary>Examples</summary>
+										 <pre><code class="hljs language-ts"><span class="hljs-comment">// &lt;div&gt;&lt;span id=&#x27;a&#x27; /&gt;&lt;/div&gt;</span>
+<span class="hljs-title function_">replaceNode</span>(<span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(<span class="hljs-string">&#x27;a&#x27;</span>), <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">createElement</span>(<span class="hljs-string">&#x27;p&#x27;</span>)) <span class="hljs-comment">// --&gt; &lt;div&gt;&lt;p /&gt;&lt;/div&gt;</span>
+<span class="hljs-title function_">replaceNode</span>(<span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(<span class="hljs-string">&#x27;a&#x27;</span>), <span class="hljs-string">&#x27;p.p&#x27;</span>) <span class="hljs-comment">// --&gt; &lt;div&gt;&lt;p class=&quot;p&quot; /&gt;&lt;/div&gt;</span>
+</code></pre> 
+									</details>
+									 
 								</div>
 								
 							</div>
@@ -2724,7 +2820,14 @@
 									
 									<div class="signature-description"><p>Creates a file with given content and triggers download.<br>(if the browser doesn&#39;t support file downloads, this method does nothing)</p>
 </div>
-									  
+									 
+									<details>
+										<summary>Examples</summary>
+										 <pre><code class="hljs language-ts"><span class="hljs-title function_">saveFile</span>(<span class="hljs-string">&#x27;&lt;File content&gt;&#x27;</span>, <span class="hljs-string">&#x27;my-file.txt&#x27;</span>)
+<span class="hljs-title function_">saveFile</span>(<span class="hljs-keyword">new</span> <span class="hljs-title class_">Blob</span>(<span class="hljs-string">&#x27;&lt;File content&gt;&#x27;</span>), <span class="hljs-string">&#x27;my-file.txt&#x27;</span>)
+</code></pre> 
+									</details>
+									 
 								</div>
 								
 							</div>
@@ -2749,7 +2852,7 @@
 						<div class="signatures">
 							
 							<div class="signature">
-								<div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">scrollInfo</span>(<span class="hljs-attr">elm</span>: <span class="hljs-title class_">Element</span> | <span class="hljs-title class_">GeneralWindow</span> = <span class="hljs-variable language_">window</span>): <span class="hljs-title class_">ScrollInfo</span>
+								<div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">scrollInfo</span>(<span class="hljs-attr">elm</span>: <span class="hljs-title class_">Element</span> | <span class="hljs-title class_">Document</span> | <span class="hljs-title class_">GeneralWindow</span> = <span class="hljs-variable language_">window</span>): <span class="hljs-title class_">ScrollInfo</span>
 </code></pre></div>
 
 								
@@ -2757,7 +2860,15 @@
 									
 									<div class="signature-description"><p>Gather the current scroll position information of a DOM element or the window</p>
 </div>
-									  
+									 
+									<details>
+										<summary>Examples</summary>
+										 <pre><code class="hljs language-ts"><span class="hljs-title function_">scrollInfo</span>(<span class="hljs-variable language_">window</span>)
+<span class="hljs-title function_">scrollInfo</span>(<span class="hljs-variable language_">document</span>)
+<span class="hljs-title function_">scrollInfo</span>(<span class="hljs-title class_">MyElmO</span>)
+</code></pre> 
+									</details>
+									 
 									<details>
 										<summary>Types</summary>
 										<pre><code class="hljs language-ts">
@@ -2797,7 +2908,25 @@
 									
 									<div class="signature-description"><p>Get the parent element that has scrolling</p>
 </div>
-									  
+									 
+									<details>
+										<summary>Examples</summary>
+										 <pre><code class="hljs language-ts"><span class="hljs-title function_">scrollParent</span>(<span class="hljs-variable language_">document</span>.<span class="hljs-property">body</span>) <span class="hljs-comment">// --&gt; `&lt;html&gt;`</span>
+
+<span class="hljs-comment">// &lt;div style=&quot;overflow:auto&quot;&gt;&lt;p id=&quot;P&quot; /&gt;&lt;/div&gt;</span>
+<span class="hljs-title function_">scrollParent</span>(<span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(<span class="hljs-string">&#x27;P&#x27;</span>)) <span class="hljs-comment">// --&gt; `&lt;div&gt;`</span>
+
+<span class="hljs-comment">// &lt;div style=&quot;overflow:auto&quot;&gt;&lt;p id=&quot;P&quot; style=&quot;position: fixed&quot; /&gt;&lt;/div&gt;</span>
+<span class="hljs-title function_">scrollParent</span>(<span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(<span class="hljs-string">&#x27;P&#x27;</span>)) <span class="hljs-comment">// --&gt; `&lt;html&gt;`</span>
+
+<span class="hljs-comment">// &lt;div style=&quot;overflow:auto&quot;&gt;&lt;p id=&quot;P&quot; style=&quot;position: absolute&quot; /&gt;&lt;/div&gt;</span>
+<span class="hljs-title function_">scrollParent</span>(<span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(<span class="hljs-string">&#x27;P&#x27;</span>)) <span class="hljs-comment">// --&gt; `&lt;html&gt;`</span>
+
+<span class="hljs-comment">// &lt;div style=&quot;overflow:auto; position: relative&quot;&gt;&lt;p id=&quot;P&quot; style=&quot;position: absolute&quot; /&gt;&lt;/div&gt;</span>
+<span class="hljs-title function_">scrollParent</span>(<span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(<span class="hljs-string">&#x27;P&#x27;</span>)) <span class="hljs-comment">// --&gt; `&lt;div&gt;`</span>
+</code></pre> 
+									</details>
+									 
 								</div>
 								
 							</div>
@@ -2826,8 +2955,7 @@
 									 
 									<details>
 										<summary>Examples</summary>
-										 <pre><code class="hljs language-ts"><span class="hljs-title function_">selectorToHTML</span>(<span class="hljs-string">&#x27;#id.class-name&#x27;</span>);
-<span class="hljs-comment">// -&gt; &#x27;&lt;div id=&quot;id&quot; class=&quot;class-name&quot; /&gt;&#x27;</span>
+										 <pre><code class="hljs language-ts"><span class="hljs-title function_">selectorToHTML</span>(<span class="hljs-string">&#x27;#id.class-name&#x27;</span>); <span class="hljs-comment">// -&gt; &#x27;&lt;div id=&quot;id&quot; class=&quot;class-name&quot; /&gt;&#x27;</span>
 </code></pre> 
 									</details>
 									 
@@ -2848,7 +2976,7 @@
 						<div class="signatures">
 							
 							<div class="signature">
-								<div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">siblings</span>(<span class="hljs-attr">elm</span>: <span class="hljs-string">&#x27;null&#x27;</span> | <span class="hljs-title class_">Node</span>): <span class="hljs-title class_">Element</span>[]
+								<div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">siblings</span>(<span class="hljs-attr">elm</span>: <span class="hljs-title class_">Element</span>): <span class="hljs-title class_">Element</span>[]
 </code></pre></div>
 
 								
@@ -2860,46 +2988,6 @@
 									<details>
 										<summary>Examples</summary>
 										 <pre><code class="hljs language-ts"><span class="hljs-title function_">siblings</span>(someElement);
-</code></pre> 
-									</details>
-									 
-								</div>
-								
-							</div>
-							
-							<div class="signature">
-								<div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">nextSiblings</span>(<span class="hljs-attr">elm</span>: <span class="hljs-string">&#x27;null&#x27;</span> | <span class="hljs-title class_">Node</span>): <span class="hljs-title class_">Element</span>[]
-</code></pre></div>
-
-								
-								<div class="signature-content">
-									
-									<div class="signature-description"><p>Get all sibling elements after a given DOM element in the structure</p>
-</div>
-									 
-									<details>
-										<summary>Examples</summary>
-										 <pre><code class="hljs language-ts"><span class="hljs-title function_">nextSiblings</span>(someElement);
-</code></pre> 
-									</details>
-									 
-								</div>
-								
-							</div>
-							
-							<div class="signature">
-								<div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">previousSiblings</span>(<span class="hljs-attr">elm</span>: <span class="hljs-string">&#x27;null&#x27;</span> | <span class="hljs-title class_">Node</span>): <span class="hljs-title class_">Element</span>[]
-</code></pre></div>
-
-								
-								<div class="signature-content">
-									
-									<div class="signature-description"><p>Get all sibling elements before a given DOM element in the structure</p>
-</div>
-									 
-									<details>
-										<summary>Examples</summary>
-										 <pre><code class="hljs language-ts"><span class="hljs-title function_">previousSiblings</span>(someElement);
 </code></pre> 
 									</details>
 									 
@@ -3459,17 +3547,6 @@
 		<div class="tooltip" id="Tooltip-CSSStyleProperties"><pre><code class="hljs language-ts"><span class="hljs-keyword">type</span> <span class="hljs-title class_">CSSStyleProperties</span> = <span class="hljs-literal">undefined</span>;
 </code></pre></div>
 		
-		<div class="tooltip" id="Tooltip-DelegateEvent"><pre><code class="hljs language-ts"><span class="hljs-keyword">type</span> <span class="hljs-title class_">DelegateEvent</span> = <span class="hljs-title class_">Event</span> &amp; {
-  <span class="hljs-attr">delegateTarget</span>: <span class="hljs-title class_">HTMLElement</span>
-};
-</code></pre></div>
-		
-		<div class="tooltip" id="Tooltip-DelegateEventHandler"><pre><code class="hljs language-ts"><span class="hljs-keyword">type</span> <span class="hljs-title class_">DelegateEventHandler</span> = <span class="hljs-function">(<span class="hljs-params">e: DelegateEvent</span>) =&gt;</span> <span class="hljs-built_in">boolean</span> | <span class="hljs-literal">undefined</span>;
-</code></pre></div>
-		
-		<div class="tooltip" id="Tooltip-DelegateRemoveFunction"><pre><code class="hljs language-ts"><span class="hljs-keyword">type</span> <span class="hljs-title class_">DelegateRemoveFunction</span> = <span class="hljs-function">() =&gt;</span> <span class="hljs-title class_">ReturnType</span>&lt;&gt;;
-</code></pre></div>
-		
 		<div class="tooltip" id="Tooltip-PositionIndicator"><pre><code class="hljs language-ts"><span class="hljs-keyword">type</span> <span class="hljs-title class_">PositionIndicator</span> = {
   <span class="hljs-comment">// Above the viewport area?</span>
   <span class="hljs-attr">above</span>: <span class="hljs-built_in">boolean</span>
@@ -3484,23 +3561,25 @@
 };
 </code></pre></div>
 		
-		<div class="tooltip" id="Tooltip-OnceEventListenerOptions"><pre><code class="hljs language-ts"><span class="hljs-keyword">type</span> <span class="hljs-title class_">OnceEventListenerOptions</span> = <span class="hljs-title class_">AddEventListenerOptions</span> &amp; {
-  <span class="hljs-comment">// A function that returns a boolean to determine when the event should trigger</span>
-  when?: <span class="hljs-title class_">WhenFunction</span>
+		<div class="tooltip" id="Tooltip-argsWithTarget"><pre><code class="hljs language-ts"><span class="hljs-keyword">type</span> argsWithTarget = [<span class="hljs-attr">elm</span>: <span class="hljs-title class_">EventTarget</span>, <span class="hljs-attr">eventNames</span>: <span class="hljs-built_in">string</span> | <span class="hljs-built_in">string</span>[], <span class="hljs-attr">handler</span>: <span class="hljs-title class_">EventListenerOrEventListenerObject</span>, options?: <span class="hljs-title class_">AddEventListenerOptions</span>];
+</code></pre></div>
+		
+		<div class="tooltip" id="Tooltip-argsWithoutTarget"><pre><code class="hljs language-ts"><span class="hljs-keyword">type</span> argsWithoutTarget = [<span class="hljs-attr">eventNames</span>: <span class="hljs-built_in">string</span> | <span class="hljs-built_in">string</span>[], <span class="hljs-attr">handler</span>: <span class="hljs-title class_">EventListenerOrEventListenerObject</span>, options?: <span class="hljs-title class_">AddEventListenerOptions</span>];
+</code></pre></div>
+		
+		<div class="tooltip" id="Tooltip-ExtendedAddEventListenerOptions"><pre><code class="hljs language-ts"><span class="hljs-keyword">type</span> <span class="hljs-title class_">ExtendedAddEventListenerOptions</span> = <span class="hljs-title class_">AddEventListenerOptions</span> &amp; {
+  <span class="hljs-comment">// A selector that defines which element is the actual target of the event</span>
+  delegate?: <span class="hljs-built_in">string</span>
+  when?: <span class="hljs-function">(<span class="hljs-params">event: Event</span>) =&gt;</span> <span class="hljs-built_in">boolean</span>
 };
 </code></pre></div>
 		
-		<div class="tooltip" id="Tooltip-WhenFunction"><pre><code class="hljs language-ts"><span class="hljs-keyword">type</span> <span class="hljs-title class_">WhenFunction</span> = <span class="hljs-function">(<span class="hljs-params">e: Event</span>) =&gt;</span> <span class="hljs-built_in">boolean</span>;
-</code></pre></div>
-		
-		<div class="tooltip" id="Tooltip-AttributeMapping"><pre><code class="hljs language-ts"><span class="hljs-keyword">type</span> <span class="hljs-title class_">AttributeMapping</span> = <span class="hljs-title class_">Record</span>&lt;<span class="hljs-built_in">string</span>, <span class="hljs-title class_">Set</span>&lt;<span class="hljs-built_in">string</span>&gt;&gt;;
-</code></pre></div>
-		
-		<div class="tooltip" id="Tooltip-Attributes"><pre><code class="hljs language-ts"><span class="hljs-keyword">type</span> <span class="hljs-title class_">Attributes</span> = <span class="hljs-title class_">Record</span>&lt;<span class="hljs-built_in">string</span>, <span class="hljs-built_in">string</span>&gt;;
+		<div class="tooltip" id="Tooltip-AttributeMapping"><pre><code class="hljs language-ts"><span class="hljs-keyword">type</span> <span class="hljs-title class_">AttributeMapping</span> = <span class="hljs-title class_">Map</span>&lt;<span class="hljs-built_in">string</span>, <span class="hljs-title class_">Set</span>&lt;<span class="hljs-built_in">string</span>&gt;&gt;;
 </code></pre></div>
 		
 		<div class="tooltip" id="Tooltip-SelectorParsing"><pre><code class="hljs language-ts"><span class="hljs-keyword">type</span> <span class="hljs-title class_">SelectorParsing</span> = {
-  <span class="hljs-attr">attributes</span>: <span class="hljs-title class_">Attributes</span>
+  <span class="hljs-attr">attributeList</span>: <span class="hljs-built_in">string</span>[]
+  <span class="hljs-attr">attributes</span>: <span class="hljs-title class_">Record</span>&lt;<span class="hljs-built_in">string</span>, <span class="hljs-built_in">string</span>&gt;
   <span class="hljs-attr">tagName</span>: <span class="hljs-built_in">string</span>
 };
 </code></pre></div>
