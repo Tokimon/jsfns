@@ -23,7 +23,7 @@ import getCurrentDocument from './getCurrentDocument';
  * viewport(someElementInSomeDocument);
  * ```
  */
-export default function viewport(elm?: Element | Document | GeneralWindow): Element | HTMLElement | null {
+export default function viewport(elm?: Element | Document | GeneralWindow) {
   const doc = getCurrentDocument(elm || document);
-  return doc && (doc.scrollingElement || doc.documentElement);
+  return doc && (doc.scrollingElement || doc.documentElement) as HTMLElement;
 }

@@ -16,6 +16,7 @@ import hidden from './hidden';
  *
  * ```ts
  * invisible(document.body) // --> false
+ * visible(MyNormalElement) // --> false
  * invisible(myZeroHeightElement) // --> true
  * invisible(myZeroWidthElement) // --> true
  * invisible(myNoDisplayElement) // --> true
