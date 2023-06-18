@@ -9,17 +9,18 @@ let div: HTMLDivElement;
 
 
 export type PrefixedPropMatch = {
-  prop: string;
-  value: string;
   prefix: string;
+  jsProp: string;
+  cssProp: string;
+  value?: string;
 }
 
 
 
-export function supportsProp(prop: CSSStyleKey, value: string): boolean {
+export function supportsProp(prop: CSSStyleKey, value?: string): boolean {
   if (!div) { div = document.createElement('div'); }
-  if (typeof div.style[prop] === 'undefined') { return false; }
-  if (!value) { return true; }
+  if (typeof div.style[prop] === 'undefined') return false;
+  if (!value) return true;
 
   div.style[prop] = value;
   return div.style[prop] === value;
@@ -34,34 +35,38 @@ export function supportsProp(prop: CSSStyleKey, value: string): boolean {
  * @param prop    - Property to test
  * @param value   - Value to test with the property
  * @returns Returns object if property is supported with prefix, otherwise a boolean is returned
+ *
+ * @example
+ *
+ * ```ts
+ * supportsCSS('appearance') // --> true
+ * supportsCSS('text-align-last') // --> false
+ *
+ * supportsCSS('user-drag', 'element')
+ * // --> { prefix: 'webkit', jsProp: 'webkitUserDrag', cssProp: '-webkit-user-drag', value: 'element' }
+ * ```
  */
-export default function supportsCSS(prop: CSSStyleKey, value: string): PrefixedPropMatch | boolean {
-  // Property (+ value) is supported natively as is
-  if (supportsProp(prop, value)) { return true; }
-
+export default function supportsCSS(prop: CSSStyleKey, value?: string): PrefixedPropMatch | boolean {
   // Testing prefixed values
   const props = vendorPrefixed(prop);
-  const values = vendorPrefixed(value);
+  const values = value ? vendorPrefixed(value) : undefined;
 
-  for (let i = 0; i < props.length; i++) {
-    const { prefix, js } = props[i];
+  // Property (+ value) is supported natively as is
+  if (supportsProp(props[0].js, values?.[0].css)) return true;
+
+  for (let i = 1; i < props.length; i++) {
+    const { prefix, js, css } = props[i];
     const prefixedProp = js as CSSStyleKey;
-    const prefixedValue = values[i].css;
+    const prefixedValue = values?.[i].css;
 
     // Prefixed prop
-    if (supportsProp(prefixedProp, value)) {
-      return { prop: prefixedProp, value, prefix };
-    }
+    if (supportsProp(prefixedProp, value)) return { prefix, jsProp: prefixedProp, cssProp: css, value };
 
     // Prefixed value
-    if (supportsProp(prop, prefixedValue)) {
-      return { prop, value: prefixedValue, prefix };
-    }
+    if (prefixedValue && supportsProp(prop, prefixedValue)) return { prefix, jsProp: prop, cssProp: css, value: prefixedValue };
 
     // Prefixed prop and value
-    if (supportsProp(prefixedProp, prefixedValue)) {
-      return { prop: prefixedProp, value: prefixedValue, prefix };
-    }
+    if (supportsProp(prefixedProp, prefixedValue)) return { prefix, jsProp: prefixedProp, cssProp: css, value: prefixedValue };
   }
 
   // No prefix support has been found
