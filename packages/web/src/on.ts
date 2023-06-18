@@ -192,7 +192,7 @@ function on<T extends argsWithTarget | argsWithoutTarget>(...args: T): () => T[0
   }
 
   let [elm, eventNames, handler, options] = args as argsWithTarget;
-  eventNames = (!Array.isArray(eventNames) ? [eventNames] : eventNames);
+  if (!Array.isArray(eventNames)) eventNames = [eventNames];
 
   if (options) {
     [handler, options] = whenHandler(elm, handler, options);

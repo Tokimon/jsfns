@@ -62,10 +62,10 @@ function off<T extends argsWithTarget | argsWithoutTarget>(...args: T): T[0] | D
     return off(document, eventNames, handler, options);
   }
 
-  const [elm, eventNames, handler, options] = args as argsWithTarget;
-  const events = (!Array.isArray(eventNames) ? [eventNames] : eventNames);
+  let [elm, eventNames, handler, options] = args as argsWithTarget;
+  if (!Array.isArray(eventNames)) eventNames = [eventNames];
 
-  events.forEach((evt) => elm.removeEventListener(evt, handler, options));
+  eventNames.forEach((evt) => elm.removeEventListener(evt, handler, options));
 
   return elm;
 }
