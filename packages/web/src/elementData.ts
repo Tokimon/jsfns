@@ -8,12 +8,13 @@ export const resetCache = () => { _cache = new WeakMap(); };
  * If no data is given, the stored data for the given key is returned. If no key is given either
  * the entire data object will be returned.
  *
- * Note: data is stored in a WeakMap, so when an element is deleted, the associated data is deleted as well.
- *
  * @param elm - Element to link the data to
  * @param key - Data key
  * @param data - Data to store
  * @returns The entire cache or the data for the given key
+*
+ * @remark
+ * Data is stored in a WeakMap, so when an element is deleted, the associated data is deleted as well.
  *
  * @example
  *
