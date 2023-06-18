@@ -1,15 +1,16 @@
+import { Kind_Module } from '~/types';
 import { buildFunction } from './buildFunction';
 import { buildSummary } from './buildSummary';
+import { findCustomTypes, getCustomTypes } from './findCustomTypes';
 import { getFunctions } from './getFunctions';
 import { TSCodeMarkdown, markdown } from './markdown';
-import { findCustomTypes, getCustomTypes } from './findCustomTypes';
 import { createTypeString } from './typeString';
-import { Kind_Module } from '~/types';
 
 type ModuleFunction = {
   definition: string; // markdown html
   comment: string; // markdown html
   examples: string[]; // markdown html
+  remarks: string[]; // markdown html
   typesMarkdown: string; // markdown html
 };
 
@@ -31,15 +32,19 @@ export function prepareModules(modules: Kind_Module[]) {
 
         const { comment } = signature;
 
-        const examples =
-          comment?.blockTags
-            ?.filter(({ tag }) => tag === '@example')
-            .map(({ content }) => markdown(buildSummary(content))) || [];
+        const examples: string[] = [];
+        const remarks: string[] = [];
+
+        for (const { tag, content } of comment?.blockTags || []) {
+          if (tag.startsWith('@example')) examples.push(markdown(buildSummary(content)));
+          else if (tag.startsWith('@remark')) examples.push(markdown(buildSummary(content)));
+        }
 
         return {
           definition: TSCodeMarkdown(buildFunction(typeString, func.name, signature)),
           comment: markdown(buildSummary(comment?.summary)),
           examples,
+          remarks,
           typesMarkdown: TSCodeMarkdown(types.map((type) => getCustomTypes()[type]).join('\n')),
         };
       });

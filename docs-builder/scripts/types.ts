@@ -22,7 +22,7 @@ export type Comment = {
   blockTags?: BlogTag[];
 };
 
-type BlogTag = {
+export type BlogTag = {
   tag: string;
   content: Summary[];
 };
