@@ -25,6 +25,7 @@ export interface ChildNodeWithParent extends ChildNode {
  * isDOMChildNode(document.documentElement) // --> false
  * ```
  */
-export default function isDOMChildNode(node: Node): node is ChildNodeWithParent {
-  return isDOMNode(node) && node.parentElement != null;
-}
+export const isDOMChildNode = (node: Node): node is ChildNodeWithParent => isDOMNode(node) && node.parentElement != null;
+
+export default isDOMChildNode;
+

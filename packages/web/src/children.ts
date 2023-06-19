@@ -10,6 +10,6 @@
  * children(someDiv);
  * ```
  */
-export default function children(elm: ParentNode): Element[] {
-  return Array.from(elm.children);
-}
+export const children = (elm: ParentNode): Element[] => Array.from(elm.children);
+
+export default children;

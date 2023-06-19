@@ -13,11 +13,13 @@ import viewport from './viewport';
  * @example
  *
  * ```ts
- * // <div style="width: 200px; height: 300px; margin: 10px; border: 2px solid;" />
- * contentSize(div) // --> { width: 224, height: 324 }
+ * // <div style="width: 200px; height: 200px; margin: 10px; border: 2px solid; overflow: scroll">
+ * //   <div style="height: 400px; width: 400px" />
+ * // </div>
+ * contentSize(div) // --> { width: 400, height: 400 }
  * ```
  */
-export default (elm: Document | GeneralWindow | HTMLElement) => {
+export function contentSize(elm: Document | GeneralWindow | HTMLElement) {
   if (isDocument(elm) || isWindow(elm)) {
     const vp = viewport(elm);
     if (!vp) return { width: 0, height: 0 };
@@ -30,4 +32,6 @@ export default (elm: Document | GeneralWindow | HTMLElement) => {
     width: elm.scrollWidth - padding.left - padding.right,
     height: elm.scrollHeight - padding.top - padding.bottom
   };
-};
+}
+
+export default contentSize;

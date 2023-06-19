@@ -42,4 +42,5 @@ function findById(ids: string | string[]): HTMLElement | HTMLElement[] | null {
   }, [] as HTMLElement[]);
 }
 
+export { findById };
 export default findById;

@@ -20,7 +20,7 @@ import create from './create';
  * replaceNode(document.getElementById('a'), 'p.p') // --> <div><p class="p" /></div>
  * ```
  */
-export default function replaceNode(elm: Node, replacement?: Node | string): Node | void {
+export function replaceNode(elm: Node, replacement?: Node | string): Node | void {
   if (!isDOMChildNode(elm)) return;
   if (!replacement) return elm.remove();
 
@@ -29,3 +29,5 @@ export default function replaceNode(elm: Node, replacement?: Node | string): Nod
   elm.replaceWith(replacement);
   return elm;
 }
+
+export default replaceNode;

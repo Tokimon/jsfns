@@ -84,4 +84,5 @@ function find(
   return findByQuery(elm, q);
 }
 
+export { find };
 export default find;

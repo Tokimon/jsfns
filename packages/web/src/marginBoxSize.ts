@@ -9,8 +9,15 @@ import viewport from './viewport';
  *
  * @param elm - The DOM element (or window) to find the size of
  * @returns Object describing width and height of the element
+ *
+ * @example
+ *
+ * ```ts
+ * // <div style="width: 200px; height: 300px; margin: 15px; padding: 10px; border-width: 2px;" />
+ * marginBoxSize(div) // --> { width: 254, height: 354 }
+ * ```
  */
-export default (elm: Document | GeneralWindow | HTMLElement) => {
+export function marginBoxSize(elm: Document | GeneralWindow | HTMLElement) {
   if (isDocument(elm) || isWindow(elm)) {
     const vp = viewport(elm);
     if (!vp) return { width: 0, height: 0 };
@@ -23,4 +30,6 @@ export default (elm: Document | GeneralWindow | HTMLElement) => {
     width: elm.offsetWidth + margin.left + margin.right,
     height: elm.offsetHeight + margin.top + margin.bottom
   };
-};
+}
+
+export default marginBoxSize;

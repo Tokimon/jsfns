@@ -14,8 +14,8 @@ import isDOMChildNode from './isDOMChildNode';
  * siblings(someElement);
  * ```
  */
-export default function siblings(elm: Element): Element[] {
-  if (!isDOMChildNode(elm)) { return []; }
+export function siblings(elm: Element): Element[] {
+  if (!isDOMChildNode(elm)) return [];
 
   const siblings = [];
 
@@ -28,4 +28,6 @@ export default function siblings(elm: Element): Element[] {
 
   return siblings;
 }
+
+export default siblings;
 

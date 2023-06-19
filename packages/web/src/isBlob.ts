@@ -12,6 +12,6 @@
  * isBlob('blob') // --> false
  * ```
  */
-export default function isBlob(obj: unknown): obj is Blob {
-  return obj instanceof Blob;
-}
+export const isBlob = (obj: unknown): obj is Blob => obj instanceof Blob;
+
+export default isBlob;

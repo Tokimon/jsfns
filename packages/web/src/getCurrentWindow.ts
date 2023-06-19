@@ -17,8 +17,10 @@ import type { GeneralWindow } from './types';
  * getCurrentWindow(myNode) // --> The `window` in which myNode resides
  * ```
  */
-export default function getCurrentWindow(node: Document | GeneralWindow | Node): null | GeneralWindow {
+export function getCurrentWindow(node: Document | GeneralWindow | Node): null | GeneralWindow {
   if (isWindow(node)) return node;
 
   return getCurrentDocument(node)?.defaultView ?? null;
 }
+
+export default getCurrentWindow;

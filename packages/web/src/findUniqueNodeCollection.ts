@@ -21,7 +21,7 @@ import uniqueArray from '@js-fns/core/uniqueArray';
  * findUniqueNodeCollection(['.my-element', 'sone-other-elements'], byClassName);
  * ```
  */
-export default function findUniqueNodeCollection(
+export function findUniqueNodes(
   selector: string | string[],
   findElements: (name: string) => HTMLCollectionOf<Element> | NodeListOf<HTMLElement | Element>
 ): (HTMLElement | Element)[] {
@@ -29,3 +29,5 @@ export default function findUniqueNodeCollection(
   const nodes = selectors.flatMap((s: string) => Array.from(findElements(s)));
   return uniqueArray(nodes);
 }
+
+export default findUniqueNodes;

@@ -19,10 +19,8 @@ import removeClass from './removeClass';
  * replaceClass(MyNode, 'active', ['inactive', 'removed']) // --> <div class="inactive removed open" />
  * ```
  */
-export default function replaceClass(
-  elm: Element,
-  classNames: string | string[],
-  replacements: string | string[]
-): Element {
+export function replaceClass(elm: Element, classNames: string | string[], replacements: string | string[]): Element {
   return addClass(removeClass(elm, classNames), replacements);
 }
+
+export default replaceClass;

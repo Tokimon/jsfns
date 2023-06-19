@@ -24,7 +24,7 @@ import isDOMRoot from './isDOMRoot';
  * insertBefore(myElm, '.inserted-element') // --> <div class="inserted-element" />
  * ```
  */
-export default function insertBefore(elm: Element, insertElm: string | Element): Element | null {
+export function insertBefore(elm: Element, insertElm: string | Element): Element | null {
   if (!inDOM(elm) || isDOMRoot(elm)) { return null; }
 
   if (isString(insertElm)) {
@@ -35,3 +35,5 @@ export default function insertBefore(elm: Element, insertElm: string | Element):
 
   return elm.previousElementSibling;
 }
+
+export default insertBefore;

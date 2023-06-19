@@ -20,8 +20,10 @@ import selectorToHTML from './selectorToHTML';
  * ensureHTML('.my-div'); // -> <div class="my-div" />
  * ```
  */
-export default function ensureHTML(htmlOrSelector: string): string {
+export function ensureHTML(htmlOrSelector: string): string {
   return htmlOrSelector.includes('<')
     ? htmlOrSelector
     : selectorToHTML(htmlOrSelector);
 }
+
+export default ensureHTML;

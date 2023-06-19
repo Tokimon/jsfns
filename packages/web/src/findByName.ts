@@ -1,4 +1,4 @@
-import findUniqueNodeCollection from './findUniqueNodeCollection';
+import findUniqueNodes from './findUniqueNodeCollection';
 
 
 
@@ -19,6 +19,6 @@ const byName = (name: string) => document.getElementsByName(name);
  * findByName(['my-element-name', 'my-second-name']) // --> all "[name=my-element-name]" and "[name=my-second-name]" elements
  * ```
  */
-export default function findByName(names: string | string[]): Element[] {
-  return findUniqueNodeCollection(names, byName);
-}
+export const findByName = (names: string | string[]): Element[] => findUniqueNodes(names, byName);
+
+export default findByName;

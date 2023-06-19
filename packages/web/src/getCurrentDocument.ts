@@ -16,9 +16,11 @@ import { GeneralWindow } from './types';
  * getCurrentDocument(myNode) // --> The `document` in which myNode resides
  * ```
  */
-export default function getCurrentDocument(node: Document | GeneralWindow | Node): Document | null {
+export function getCurrentDocument(node: Document | GeneralWindow | Node): Document | null {
   if (isDocument(node)) { return node; }
   if (isWindow(node)) { return node.document; }
 
   return node.ownerDocument;
 }
+
+export default getCurrentDocument;

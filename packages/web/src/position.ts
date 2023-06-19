@@ -4,7 +4,7 @@ import isWindow from './isWindow';
 import isDOMElement from './isDOMElement';
 import isDocument from './isDocument';
 import scrollInfo from './scrollInfo';
-import size from './size';
+import outerSize from './outerSize';
 
 
 
@@ -36,9 +36,9 @@ const getWindowPosition = (win: GeneralWindow): Position => {
 const getElementPosition = (elm: HTMLElement): PositionData => {
   const rect = elm.getBoundingClientRect();
   const vpScroll = scrollInfo();
-  const vpSize = size();
-  const elmSize = size(elm);
-  const parentSize = size(elm.offsetParent as HTMLElement || undefined);
+  const vpSize = outerSize(document);
+  const elmSize = outerSize(elm);
+  const parentSize = outerSize(elm.offsetParent as HTMLElement || undefined);
 
   return {
     top: rect.top + vpScroll.y,
@@ -88,7 +88,7 @@ const getElementPosition = (elm: HTMLElement): PositionData => {
  * position(MyElm);
  * ```
  */
-export default function position(elm?: HTMLElement | GeneralWindow | Document): Position | PositionData {
+export function position(elm?: HTMLElement | GeneralWindow | Document): Position | PositionData {
   let currElm: typeof elm | null = elm;
 
   // Fallback to document if the element is one of the root elements
@@ -103,3 +103,5 @@ export default function position(elm?: HTMLElement | GeneralWindow | Document): 
     ? getWindowPosition(currElm)
     : getElementPosition(currElm as HTMLElement);
 }
+
+export default position;

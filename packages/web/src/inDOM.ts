@@ -13,7 +13,9 @@ import getCurrentDocument from './getCurrentDocument';
  * inDOM(document.createElement('div')) // --> false
  * ```
  */
-export default function inDOM(elm: Node): boolean {
+export function inDOM(elm: Node): boolean {
   const doc = getCurrentDocument(elm);
   return !!doc && doc !== elm && doc.contains(elm);
 }
+
+export default inDOM;

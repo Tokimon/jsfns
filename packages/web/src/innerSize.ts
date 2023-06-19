@@ -18,7 +18,7 @@ import viewport from './viewport';
  * innerSize(div) // --> { width: 220, height: 320 }
  * ```
  */
-export default (elm: Document | GeneralWindow | HTMLElement) => {
+export function innerSize(elm: Document | GeneralWindow | HTMLElement) {
   if (isDocument(elm) || isWindow(elm)) {
     const vp = viewport(elm);
     if (!vp) return { width: 0, height: 0 };
@@ -26,4 +26,6 @@ export default (elm: Document | GeneralWindow | HTMLElement) => {
   }
 
   return { width: elm.clientWidth, height: elm.clientHeight };
-};
+}
+
+export default innerSize;

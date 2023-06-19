@@ -1,6 +1,6 @@
 import { insertHtml, removeElement, generateId } from './assets/helpers';
 
-import findUniqueNodeCollection from '~web/findUniqueNodeCollection';
+import findUniqueNodes from '~web/findUniqueNodeCollection';
 
 
 
@@ -25,7 +25,7 @@ describe('"findUniqueNodeCollection"', () => {
   afterAll(() => removeElement(testID));
 
   it('Finds unique element list from given selector', () => {
-    const nodes = findUniqueNodeCollection('special', find);
+    const nodes = findUniqueNodes('special', find);
 
     expect(nodes.map((n) => n.className)).toEqual([
       'two item special',
@@ -35,7 +35,7 @@ describe('"findUniqueNodeCollection"', () => {
   });
 
   it('Finds unique element list from given list of selectors', () => {
-    const nodes = findUniqueNodeCollection(['item', 'special'], find);
+    const nodes = findUniqueNodes(['item', 'special'], find);
 
     expect(nodes.map((n) => n.className)).toEqual([
       'one item',

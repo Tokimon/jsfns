@@ -24,7 +24,7 @@ export const resetCache = () => { _cache = new WeakMap(); };
  * elementData(MyElm) // --> everything was stored for the given element
  * ```
  */
-export default function elementData(elm: Node, key?: string, data?: unknown) {
+export function elementData(elm: Node, key?: string, data?: unknown) {
   let elmCache = _cache.get(elm);
 
   if (!key) { return elmCache; }
@@ -40,3 +40,5 @@ export default function elementData(elm: Node, key?: string, data?: unknown) {
 
   return elmCache?.[key];
 }
+
+export default elementData;

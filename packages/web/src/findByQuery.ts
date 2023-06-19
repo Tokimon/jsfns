@@ -1,5 +1,5 @@
 import isString from '@js-fns/core/isString';
-import findUniqueNodeCollection from './findUniqueNodeCollection';
+import findUniqueNodes from './findUniqueNodeCollection';
 
 
 const qs = (elm: Document | Element, q: string) => elm.querySelector(q);
@@ -100,7 +100,8 @@ function findByQuery(
 
   const q = queries as string;
 
-  return first ? qs(elm, q) : findUniqueNodeCollection(q, qsAll(elm));
+  return first ? qs(elm, q) : findUniqueNodes(q, qsAll(elm));
 }
 
+export { findByQuery };
 export default findByQuery;

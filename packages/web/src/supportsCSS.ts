@@ -46,7 +46,7 @@ export function supportsProp(prop: CSSStyleKey, value?: string): boolean {
  * // --> { prefix: 'webkit', jsProp: 'webkitUserDrag', cssProp: '-webkit-user-drag', value: 'element' }
  * ```
  */
-export default function supportsCSS(prop: CSSStyleKey, value?: string): PrefixedPropMatch | boolean {
+export function supportsCSS(prop: CSSStyleKey, value?: string): PrefixedPropMatch | boolean {
   // Testing prefixed values
   const props = vendorPrefixed(prop);
   const values = value ? vendorPrefixed(value) : undefined;
@@ -72,3 +72,5 @@ export default function supportsCSS(prop: CSSStyleKey, value?: string): Prefixed
   // No prefix support has been found
   return false;
 }
+
+export default supportsCSS;

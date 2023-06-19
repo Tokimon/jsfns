@@ -20,8 +20,10 @@ const manualInnerXml = (XMLNode: Element) => {
  * innerXML(<svg><g><path /></g></svg>); // -> '<g><path /></g>'
  * ```
  */
-export default function innerXML(XMLElement: Element): string {
+export function innerXML(XMLElement: Element): string {
   return XMLElement.innerHTML !== undefined
     ? XMLElement.innerHTML
     : manualInnerXml(XMLElement);
 }
+
+export default innerXML;

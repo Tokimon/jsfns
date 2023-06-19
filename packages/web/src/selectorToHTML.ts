@@ -19,7 +19,7 @@ const voidTags = ['area', 'base', 'br', 'col', 'embed', 'hr', 'img', 'input', 'k
  * selectorToHTML('#id.class-name'); // -> '<div id="id" class="class-name" />'
  * ```
  */
-export default function selectorToHTML(selector: string): string {
+export function selectorToHTML(selector: string): string {
   const { tagName, attributes, attributeList } = parseSelector(selector);
 
   const atts = attributeList
@@ -30,3 +30,5 @@ export default function selectorToHTML(selector: string): string {
 
   return `<${tagName}${atts}${end}>`;
 }
+
+export default selectorToHTML;

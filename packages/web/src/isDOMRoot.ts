@@ -19,8 +19,11 @@ import isDOMNode from './isDOMNode';
  * isDOMRoot(window) // --> false
  * ```
  */
-export default function isDOMRoot(node: unknown): node is HTMLElement {
+export function isDOMRoot(node: unknown): node is HTMLElement {
   if (!isDOMNode(node)) return false;
+
   const doc = getCurrentDocument(node);
   return !!doc && node === doc.documentElement;
 }
+
+export default isDOMRoot;

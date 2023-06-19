@@ -18,7 +18,7 @@ const combine = (base: string, cn: string) => base + (base && cn && ' ') + cn;
  * classNames('my-elm', { open: true, active: true }) // --> "my-elm open active"
  * ```
  */
-const classNameString = (...args: (Option | Option[])[]): string => {
+export const classNameString = (...args: (Option | Option[])[]): string => {
   let str = '';
 
   for (let i = 0; i < args.length; i++) {

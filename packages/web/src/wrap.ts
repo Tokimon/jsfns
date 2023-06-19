@@ -22,11 +22,13 @@ function findEmptyElm(elm: Element): Element {
  * wrap(MyElm, '.wrap-element') // --> true
  * ```
  */
-export default (elm: Element, wrapElm: Element | string) => {
+export function wrap(elm: Element, wrapElm: Element | string) {
   const wrapDom = insertAfter(elm, wrapElm);
   if (!wrapDom) return false;
 
   findEmptyElm(wrapDom).appendChild(elm);
 
   return true;
-};
+}
+
+export default wrap;

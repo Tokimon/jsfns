@@ -33,7 +33,7 @@ export type VendorPrefixing = [
  * // ]
  * ```
  */
-export default function vendorPrefixed(str: string): VendorPrefixing {
+export function vendorPrefixed(str: string): VendorPrefixing {
   const pascalStr = pascalCase(str);
   const kebabCaseStr = kebabCase(str);
 
@@ -45,3 +45,5 @@ export default function vendorPrefixed(str: string): VendorPrefixing {
     { prefix: 'o', js: `o${pascalStr}`, css: `-o-${kebabCaseStr}` }
   ];
 }
+
+export default vendorPrefixed;

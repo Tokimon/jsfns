@@ -168,4 +168,5 @@ function css(
     : handleMultipleValues(elm, property);
 }
 
+export { css };
 export default css;

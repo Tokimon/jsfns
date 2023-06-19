@@ -1,6 +1,6 @@
 import isString from '@js-fns/core/isString';
 
-import findUniqueNodeCollection from './findUniqueNodeCollection';
+import findUniqueNodes from './findUniqueNodeCollection';
 
 
 
@@ -53,10 +53,11 @@ function findByClass(
     [elm, classNames] = [document, elm];
   }
 
-  return findUniqueNodeCollection(
+  return findUniqueNodes(
     classNames as string | string[],
     byCn(elm)
   );
 }
 
+export { findByClass };
 export default findByClass;

@@ -70,5 +70,6 @@ function off<T extends argsWithTarget | argsWithoutTarget>(...args: T): T[0] | D
   return elm;
 }
 
+export { off };
 export default off;
 

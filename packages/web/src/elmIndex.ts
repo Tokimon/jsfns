@@ -15,8 +15,10 @@ import isDOMChildNode from './isDOMChildNode';
  * elmIndex(someDiv); // --> 3
  * ```
  */
-export default function elmIndex(elm: Element): number {
+export function elmIndex(elm: Element): number {
   return isDOMChildNode(elm)
     ? children(elm.parentNode).indexOf(elm)
     : -1;
 }
+
+export default elmIndex;

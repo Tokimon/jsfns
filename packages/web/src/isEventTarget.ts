@@ -16,6 +16,6 @@
  * isEventTarget({}) // --> false
  * ```
  */
-export default function isEventTarget(obj: unknown): obj is EventTarget {
-  return obj instanceof EventTarget;
-}
+export const isEventTarget = (obj: unknown): obj is EventTarget => obj instanceof EventTarget;
+
+export default isEventTarget;

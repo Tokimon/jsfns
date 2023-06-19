@@ -13,10 +13,12 @@
  * removeClass(MyNode, ['active', 'open']) // --> <div class="" />
  * ```
  */
-export default function removeClass(elm: Element, classNames: string | string[]): Element {
+export function removeClass(elm: Element, classNames: string | string[]): Element {
   if (!Array.isArray(classNames)) classNames = [classNames];
 
   elm.classList.remove(...classNames);
 
   return elm;
 }
+
+export default removeClass;

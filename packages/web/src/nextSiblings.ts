@@ -12,7 +12,7 @@ import isDOMChildNode from './isDOMChildNode';
  * nextSiblings(someElement);
  * ```
  */
-export default function previousSiblings(elm: Element): Element[] {
+export function previousSiblings(elm: Element): Element[] {
   if (!isDOMChildNode(elm)) return [];
 
   const siblings = [];
@@ -26,3 +26,5 @@ export default function previousSiblings(elm: Element): Element[] {
 
   return siblings;
 }
+
+export default previousSiblings;

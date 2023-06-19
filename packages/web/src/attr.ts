@@ -20,11 +20,7 @@
  * attr(MyInput, readonly, false); // --> <input />
  * ```
  */
-export default function attr(
-  elm: Element,
-  attrName: string,
-  value?: string | number | boolean
-): string | null {
+export function attr(elm: Element, attrName: string, value?: string | number | boolean): string | null {
   const currVal = elm.getAttribute(attrName);
 
   if (value === false) {
@@ -36,3 +32,5 @@ export default function attr(
 
   return currVal;
 }
+
+export default attr;

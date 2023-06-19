@@ -22,7 +22,7 @@
  * // -> <div><a>link</a></div>
  * ```
  */
-export default function toDOM(html: string): HTMLCollection | null {
+export function toDOM(html: string): HTMLCollection | null {
   if (/<(html|body|head|frame(set)?)\b/.test(html)) return null;
 
   const template = document.createElement('template');
@@ -30,3 +30,5 @@ export default function toDOM(html: string): HTMLCollection | null {
 
   return template.content.children;
 }
+
+export default toDOM;

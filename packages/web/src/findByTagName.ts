@@ -1,6 +1,6 @@
 import isString from '@js-fns/core/isString';
 
-import findUniqueNodeCollection from './findUniqueNodeCollection';
+import findUniqueNodes from './findUniqueNodeCollection';
 
 
 
@@ -38,8 +38,6 @@ function findByTagName(tagNames: string | string[]): Element[]
  */
 function findByTagName(elm: Document | Element, tagNames?: string | string[]): Element[]
 
-
-
 function findByTagName(
   elm: Document | Element | string | string[],
   tagNames?: string | string[]
@@ -48,10 +46,11 @@ function findByTagName(
     [elm, tagNames] = [document, elm];
   }
 
-  return findUniqueNodeCollection(
+  return findUniqueNodes(
     tagNames as string | string[],
     byTag(elm)
   );
 }
 
+export { findByTagName };
 export default findByTagName;

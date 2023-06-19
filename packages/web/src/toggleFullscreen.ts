@@ -13,15 +13,15 @@
  * toggleFullscreen(MyElm, { navigationUI: 'show' });
  * ```
  */
-export default async (elm: Element = document.documentElement, options?: FullscreenOptions) => {
+export async function toggleFullscreen(elm: Element = document.documentElement, options?: FullscreenOptions) {
   const { fullscreenElement } = document;
   const isFullscreenElement = elm === fullscreenElement;
 
-  if (fullscreenElement && !isFullscreenElement) {
-    await document.exitFullscreen();
-  }
+  if (fullscreenElement && !isFullscreenElement) await document.exitFullscreen();
 
   return !fullscreenElement && !isFullscreenElement
     ? elm.requestFullscreen(options)
     : document.exitFullscreen();
-};
+}
+
+export default toggleFullscreen;

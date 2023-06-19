@@ -27,7 +27,7 @@ import viewport from './viewport';
  * scrollParent(document.getElementById('P')) // --> `<div>`
  * ```
  */
-export default function scrollParent(elm: Element): Element | HTMLElement | null {
+export function scrollParent(elm: Element): Element | HTMLElement | null {
   const vp = viewport(elm);
 
   if (!isDOMChildNode(elm) || elm === vp) return vp;
@@ -54,3 +54,5 @@ export default function scrollParent(elm: Element): Element | HTMLElement | null
 
   return vp;
 }
+
+export default scrollParent;

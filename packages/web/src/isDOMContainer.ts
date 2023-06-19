@@ -21,6 +21,6 @@ import isDOMFragment from './isDOMFragment';
  * isDOMContainer(document.createTextNode('')) // --> false
  * ```
  */
-export default function isDOMContainer(obj: unknown): boolean {
-  return isDOMElement(obj) || isDOMFragment(obj);
-}
+export const isDOMContainer = (obj: unknown): boolean => isDOMElement(obj) || isDOMFragment(obj);
+
+export default isDOMContainer;

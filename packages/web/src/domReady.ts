@@ -24,8 +24,10 @@ export function docComplete(): boolean {
  * domReady((e: Event) => { alert('DOM Ready') });
  * ```
  */
-export default function domReady(handler: Noop): void {
+export function domReady(handler: Noop): void {
   docComplete()
     ? handler()
     : on('readystatechange', handler, { when: docComplete, once: true });
 }
+
+export default domReady;

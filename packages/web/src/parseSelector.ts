@@ -62,7 +62,7 @@ const parseAttribute = (selector: string, attributes: AttributeMapping) => {
  * parseSelector('input[type=submit]') // --> { tagName: 'input', attributes: { type: 'submit' }, attributeList: ['type'] }
  * ```
  */
-export default function parseSelector(selector: string): SelectorParsing {
+export function parseSelector(selector: string): SelectorParsing {
   const mapping = new Map() as AttributeMapping;
 
   // Tag name
@@ -91,3 +91,5 @@ export default function parseSelector(selector: string): SelectorParsing {
 
   return parsing;
 }
+
+export default parseSelector;

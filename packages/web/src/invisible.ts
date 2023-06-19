@@ -23,7 +23,7 @@ import hidden from './hidden';
  * invisible(myNoVisibilityElement) // --> true
  * ```
  */
-export default function invisible(elm: HTMLElement): boolean {
+export function invisible(elm: HTMLElement): boolean {
   let checkElm: HTMLElement | null = elm;
 
   while (checkElm && checkElm.tagName !== 'BODY') {
@@ -41,3 +41,5 @@ export default function invisible(elm: HTMLElement): boolean {
 
   return false;
 }
+
+export default invisible;

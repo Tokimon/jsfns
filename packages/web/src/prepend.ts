@@ -19,8 +19,8 @@ import ensureHTML from './ensureHTML';
  * prepend(MyNode, '.my-prepended-element')
  * ```
  */
-export default function prepend(elm: Element, insertElm: string | Node): Element | null {
-  if (!elm) { return null; }
+export function prepend(elm: Element, insertElm: string | Node): Element | null {
+  if (!elm) return null;
 
   if (isString(insertElm)) {
     elm.insertAdjacentHTML('afterbegin', ensureHTML(insertElm));
@@ -30,3 +30,5 @@ export default function prepend(elm: Element, insertElm: string | Node): Element
 
   return elm.firstElementChild;
 }
+
+export default prepend;

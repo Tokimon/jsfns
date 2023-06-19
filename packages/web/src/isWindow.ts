@@ -17,6 +17,6 @@ import type { GeneralWindow } from './types';
  * isWindow(document.body) // --> false
  * ```
  */
-export default function isWindow(obj: unknown): obj is GeneralWindow {
-  return obj instanceof Window && typeof (obj as GeneralWindow).self !== 'undefined';
-}
+export const isWindow = (obj: unknown): obj is GeneralWindow => obj instanceof Window && typeof (obj as GeneralWindow).self !== 'undefined';
+
+export default isWindow;

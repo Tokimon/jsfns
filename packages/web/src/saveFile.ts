@@ -34,11 +34,7 @@ export function fileSavingSupported(): boolean {
  * saveFile(new Blob('<File content>'), 'my-file.txt')
  * ```
  */
-export default function saveFile(
-  content: Blob | string,
-  name: string,
-  type = 'text/plain; charset=utf-8'
-): void {
+export function saveFile(content: Blob | string, name: string, type = 'text/plain; charset=utf-8'): void {
   if (!fileSavingSupported()) { return; }
 
   if (!isBlob(content)) content = new Blob([`${content}`], { type });
@@ -53,3 +49,5 @@ export default function saveFile(
     a.click();
   }
 }
+
+export default saveFile;

@@ -23,7 +23,9 @@ import getCurrentDocument from './getCurrentDocument';
  * viewport(someElementInSomeDocument);
  * ```
  */
-export default function viewport(elm?: Element | Document | GeneralWindow) {
+export function viewport(elm?: Element | Document | GeneralWindow) {
   const doc = getCurrentDocument(elm || document);
   return doc && (doc.scrollingElement || doc.documentElement) as HTMLElement;
 }
+
+export default viewport;

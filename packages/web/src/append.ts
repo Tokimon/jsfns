@@ -19,7 +19,7 @@ import ensureHTML from './ensureHTML';
  * append(MyNode, '.my-appended-element')
  * ```
  */
-export default function append(elm: Element, insertElm: string | Node): Element | null {
+export function append(elm: Element, insertElm: string | Node): Element | null {
   if (!elm) { return null; }
 
   if (isString(insertElm)) {
@@ -30,3 +30,5 @@ export default function append(elm: Element, insertElm: string | Node): Element 
 
   return elm.lastElementChild;
 }
+
+export default append;

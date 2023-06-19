@@ -30,7 +30,7 @@ export type ScrollInfo = {
  * scrollInfo(MyElmO)
  * ```
  */
-export default function scrollInfo(elm: Element | GeneralWindow | Document = window): ScrollInfo {
+export function scrollInfo(elm: Element | GeneralWindow | Document = window): ScrollInfo {
   const _elm = !isDOMElement(elm) ? viewport(elm) : elm;
 
   const info = { x: 0, y: 0, xMax: 0, yMax: 0, xPct: 0, yPct: 0 };
@@ -48,3 +48,5 @@ export default function scrollInfo(elm: Element | GeneralWindow | Document = win
 
   return info;
 }
+
+export default scrollInfo;

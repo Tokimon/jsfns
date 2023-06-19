@@ -41,7 +41,7 @@ export type PositionIndicator = {
  * const { inside } = inView(myElement, 30); // -> inside === true
  * ```
  */
-export default function inView(elm: HTMLElement, threshold = 0): PositionIndicator {
+export function inView(elm: HTMLElement, threshold = 0): PositionIndicator {
   if (!isDOMChildNode(elm) || hidden(elm)) {
     return { above: false, below: false, left: false, right: false, inside: false };
   }
@@ -58,3 +58,5 @@ export default function inView(elm: HTMLElement, threshold = 0): PositionIndicat
 
   return { above, below, left, right, inside };
 }
+
+export default inView;

@@ -16,7 +16,7 @@ import viewport from './viewport';
  * outerSize(div) // --> { width: 224, height: 324 }
  * ```
  */
-export default (elm: Document | GeneralWindow | HTMLElement) => {
+export function outerSize(elm: Document | GeneralWindow | HTMLElement) {
   if (isWindow(elm)) return { width: elm.outerWidth, height: elm.outerHeight };
   if (isDocument(elm)) {
     const vp = viewport(elm);
@@ -25,4 +25,6 @@ export default (elm: Document | GeneralWindow | HTMLElement) => {
   }
 
   return { width: elm.offsetWidth, height: elm.offsetHeight };
-};
+}
+
+export default outerSize;

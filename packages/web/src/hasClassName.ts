@@ -14,7 +14,7 @@
  * hasClass(myElm, ['open', 'shown'], true) // -> true if myElm has all given class names
  * ```
  */
-function hasClassName(elm: Element, classNames: string | string[], any?: boolean): boolean {
+export function hasClassName(elm: Element, classNames: string | string[], any?: boolean): boolean {
   const checkFn = any ? 'some' : 'every';
   const cns = !Array.isArray(classNames) ? [classNames] : classNames;
 

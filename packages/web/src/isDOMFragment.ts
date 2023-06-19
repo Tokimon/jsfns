@@ -16,6 +16,6 @@ import isDOMNode from './isDOMNode';
  * isDOMContainer(window) // --> false
  * ```
  */
-export default function isDOMFragment(obj: unknown): obj is DocumentFragment {
-  return isDOMNode(obj) && obj.nodeType === Node.DOCUMENT_FRAGMENT_NODE;
-}
+export const isDOMFragment = (obj: unknown): obj is DocumentFragment => isDOMNode(obj) && obj.nodeType === Node.DOCUMENT_FRAGMENT_NODE;
+
+export default isDOMFragment;

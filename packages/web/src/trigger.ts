@@ -70,4 +70,5 @@ function trigger<T extends argsWithTarget | argsWithoutTarget>(...args: T): Even
   return elm;
 }
 
+export { trigger };
 export default trigger;

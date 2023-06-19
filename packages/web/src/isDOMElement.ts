@@ -22,15 +22,17 @@ import isDOMNode from './isDOMNode';
  * isDOMElement(document.body, 'body') // --> true
  * ```
  */
-export default function isDOMElement(obj: unknown, tags?: string | string[]): obj is Element {
-  if (!isDOMNode(obj)) { return false; }
+export function isDOMElement(obj: unknown, tags?: string | string[]): obj is Element {
+  if (!isDOMNode(obj)) return false;
 
   const isElm = obj.nodeType === Node.ELEMENT_NODE;
 
-  if (!isElm || !tags) { return isElm; }
+  if (!isElm || !tags) return isElm;
 
-  if (!Array.isArray(tags)) { tags = [tags]; }
+  if (!Array.isArray(tags)) tags = [tags];
 
   const { tagName } = obj as Element;
   return tags.some((tag) => tag.toUpperCase() === tagName);
 }
+
+export default isDOMElement;

@@ -22,12 +22,10 @@ import toDOM from './toDOM';
  * create('#MyElement.active'); // -> <div id="MyElement" class="active" />
  * ```
  */
-export default function create(selector = 'div'): Element {
+export function createElement(selector = 'div'): Element {
   return /^[a-z]+$/i.test(selector)
     ? document.createElement(selector)
     : (toDOM(selectorToHTML(selector)) as HTMLCollection)[0];
 }
 
-
-
-create();
+export default createElement;

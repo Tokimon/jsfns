@@ -9,8 +9,15 @@ import viewport from './viewport';
  *
  * @param elm - The DOM element (or window) to find the size of
  * @returns Object describing width and height of the element
+ *
+ * @example
+ *
+ * ```ts
+ * // <div style="width: 200px; height: 300px; margin: 10px; border: 2px solid;" />
+ * contentBoxSize(div) // --> { width: 200, height: 300 }
+ * ```
  */
-export default (elm: Document | GeneralWindow | HTMLElement) => {
+export function contentBoxSize(elm: Document | GeneralWindow | HTMLElement) {
   if (isDocument(elm) || isWindow(elm)) {
     const vp = viewport(elm);
     if (!vp) return { width: 0, height: 0 };
@@ -23,4 +30,6 @@ export default (elm: Document | GeneralWindow | HTMLElement) => {
     width: elm.clientWidth - padding.left - padding.right,
     height: elm.clientHeight - padding.top - padding.bottom
   };
-};
+}
+
+export default contentBoxSize;

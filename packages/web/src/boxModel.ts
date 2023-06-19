@@ -29,7 +29,7 @@ const num = (n: string) => parseInt(n, 10);
  * boxModel(someDiv);
  * ```
  */
-export default function boxModel(elm: Element): BoxModelMapping {
+export function boxModel(elm: Element): BoxModelMapping {
   const style = window.getComputedStyle(elm);
 
   return {
@@ -55,3 +55,5 @@ export default function boxModel(elm: Element): BoxModelMapping {
     }
   };
 }
+
+export default boxModel;

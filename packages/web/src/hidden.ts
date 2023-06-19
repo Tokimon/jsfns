@@ -23,8 +23,10 @@ import inDOM from './inDOM';
  * hidden(myNoVisibilityElement) // --> true
  * ```
  */
-export default function hidden(elm: HTMLElement): boolean {
+export function hidden(elm: HTMLElement): boolean {
   return !inDOM(elm)
     || (!elm.offsetHeight && !elm.offsetWidth)
     || css(elm, 'visibility') === 'hidden';
 }
+
+export default hidden;

@@ -204,4 +204,5 @@ function on<T extends argsWithTarget | argsWithoutTarget>(...args: T): () => T[0
   return () => off(elm, eventNames, handler, options);
 }
 
+export { on };
 export default on;

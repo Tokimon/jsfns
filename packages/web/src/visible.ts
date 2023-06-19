@@ -17,6 +17,7 @@ import invisible from './invisible';
  * visible(myNoVisibilityElement) // --> false
  * ```
  */
-export default function visible(elm: HTMLElement): boolean {
-  return !invisible(elm);
-}
+export const visible = (elm: HTMLElement): boolean => !invisible(elm);
+
+export default visible;
+
