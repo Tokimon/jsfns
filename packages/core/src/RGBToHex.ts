@@ -58,4 +58,5 @@ function RGBToHex(r: number | RGBTuple, g?: number, b?: number, a?: number): str
   return hex;
 }
 
+export { RGBToHex };
 export default RGBToHex;

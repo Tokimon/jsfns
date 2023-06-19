@@ -13,6 +13,6 @@ import RGBToHex from './RGBToHex';
  * randomHexColor(); // -> eg. #f42c71
  * ```
  */
-export default function randomHexColor(): string {
-  return RGBToHex(randomRGBColor());
-}
+export const randomHexColor = (): string => RGBToHex(randomRGBColor());
+
+export default randomHexColor;

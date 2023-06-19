@@ -19,17 +19,17 @@ import hexToNumber from './hexToNumber';
  * hexToRGB('#2fd46680'); // -> [47, 212, 102, 0.5]
  * ```
  */
-export default function hexToRGB(hex: string): number[] {
-  if (!isString(hex) || !hex) { return [0, 0, 0]; }
+export function hexToRGB(hex: string): number[] {
+  if (!isString(hex) || !hex) return [0, 0, 0];
 
-  if (hex[0] === '#') { hex = hex.substr(1); }
+  if (hex[0] === '#') hex = hex.slice(1);
 
   const rgb = chunkString(hex, hex.length <= 4 ? 1 : 2)
     .map((c) => hexToNumber(c.length > 1 ? c : `${c}${c}`));
 
-  if (rgb.length > 3) {
-    rgb[3] = parseFloat((rgb[3] / 255).toFixed(2));
-  }
+  if (rgb.length > 3) rgb[3] = parseFloat((rgb[3] / 255).toFixed(2));
 
   return rgb;
 }
+
+export default hexToRGB;

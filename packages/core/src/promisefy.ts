@@ -25,7 +25,7 @@ export type PromisefiedFunction = (...args: any[]) => Promise<unknown>;
  *   .catch(() => 'Something went wrong');
  * ```
  */
-export default function promisefy(fn: PromisefyCallback): PromisefiedFunction {
+export function promisefy(fn: PromisefyCallback): PromisefiedFunction {
   return (...args: any[]) =>
     new Promise(
       (resolve, reject) => {
@@ -36,3 +36,5 @@ export default function promisefy(fn: PromisefyCallback): PromisefiedFunction {
       }
     );
 }
+
+export default promisefy;

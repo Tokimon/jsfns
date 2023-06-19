@@ -17,7 +17,7 @@ import isString from './isString';
  * isNumeric(Infinity); // -> false
  * ```
  */
-export default function isNumeric(x: unknown): boolean {
+export function isNumeric(x: unknown): boolean {
   if (isString(x)) {
     if (!x) return false;
     x = Number(x);
@@ -25,3 +25,5 @@ export default function isNumeric(x: unknown): boolean {
 
   return isNumber(x) && !Number.isNaN(x);
 }
+
+export default isNumeric;

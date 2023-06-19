@@ -26,7 +26,7 @@ export type TruncateSettings = {
  * truncate('With a max length to the string and a differnet ending', { maxLength: 10, end: ' <---' }); // -> With a max <---
  * ```
  */
-export default function truncate(str: string, settings: TruncateSettings = {}): string {
+export function truncate(str: string, settings: TruncateSettings = {}): string {
   const { maxLength, end = '...' } = settings;
 
   if (
@@ -37,5 +37,7 @@ export default function truncate(str: string, settings: TruncateSettings = {}): 
     return str;
   }
 
-  return `${str.substr(0, maxLength)}${end}`;
+  return `${str.slice(0, maxLength)}${end}`;
 }
+
+export default truncate;

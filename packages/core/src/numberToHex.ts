@@ -14,6 +14,6 @@ import leadingZero from './leadingZero';
  * numberToHex(180); // -> 'b4'
  * ```
  */
-export default function numberToHex(num: number): string {
-  return leadingZero(Math.round(num).toString(16), 2);
-}
+export const numberToHex = (num: number): string => leadingZero(Math.round(num).toString(16), 2);
+
+export default numberToHex;

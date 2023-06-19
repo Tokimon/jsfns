@@ -10,6 +10,6 @@
  * hexToNumber('ba'); // -> 186
  * ```
  */
-export default function hexToNumber(hex: string): number {
-  return hex ? parseInt(hex, 16) : 0;
-}
+export const hexToNumber = (hex: string): number => hex ? parseInt(hex, 16) : 0;
+
+export default hexToNumber;

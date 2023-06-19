@@ -11,7 +11,9 @@
  * uniqueArray(document.querySelectorAll('.my-elm, .selected')); // -> unique array of elements (so .my-elm.selected will only be present once)
  * ```
  */
-export default function uniqueArray<T>(arr: ArrayLike<T> | Iterable<T>): T[] {
+export function uniqueArray<T>(arr: ArrayLike<T> | Iterable<T>): T[] {
   const a = !Array.isArray(arr) ? Array.from(arr) : arr;
   return Array.from<T>(new Set(a));
 }
+
+export default uniqueArray;

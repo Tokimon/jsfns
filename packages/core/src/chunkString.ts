@@ -12,6 +12,6 @@
  * chunkString('abcdefghijkl', 4); // -> ['abcd', 'efgh', 'ijkl']
  * ```
  */
-export default function chunkString(str: string, size = 2): string[] {
-  return `${str || ''}`.match(new RegExp(`.{1,${size}}(?=\\B|$)`, 'g')) || [];
-}
+export const chunkString = (str: string, size = 2): string[] => `${str || ''}`.match(new RegExp(`.{1,${size}}(?=\\B|$)`, 'g')) || [];
+
+export default chunkString;

@@ -32,7 +32,7 @@ function randomInt(min: number, max: number): number;
  * ```ts
  * // Any random number
  * randomInt(); // -> a number between 0 and Number.MAX_SAFE_INTEGER
- * 
+ *
  * // With max number
  * randomInt(100); // -> a number between 0 and 100
  * ```
@@ -45,4 +45,6 @@ function randomInt(num = Number.MAX_SAFE_INTEGER, num2?: number): number {
     : range(num, num2);
 }
 
-export default randomInt
+
+export { randomInt };
+export default randomInt;

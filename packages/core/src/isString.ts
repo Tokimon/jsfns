@@ -11,6 +11,6 @@
  * isString(123); // -> false
  * ```
  */
-export default function isString(x: unknown): x is string {
-  return typeof x === 'string';
-}
+export const isString = (x: unknown): x is string => typeof x === 'string';
+
+export default isString;

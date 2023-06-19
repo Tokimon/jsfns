@@ -9,8 +9,10 @@
  * randomId(20); // -> eg. '3vsmrbxlh9at0vhcsf1xh'
  * ```
  */
-export default function randomId(length = 10): string {
+export function randomId(length = 10): string {
   let id = '';
-  while (id.length < length) { id += Math.random().toString(36).slice(2); }
+  while (id.length < length) id += Math.random().toString(36).slice(2);
   return id.slice(0, length);
 }
+
+export default randomId;

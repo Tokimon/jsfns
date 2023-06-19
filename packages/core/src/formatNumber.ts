@@ -39,7 +39,7 @@ const defaultSettings: FormatNumberSettings = {
  * formatNumber(123456, { decimalCount: '>3', thousand: '-', decimal: ':' }); // -> 123-456:000
  * ```
  */
-export default function formatNumber(num: number, settings?: FormatNumberSettings): string {
+export function formatNumber(num: number, settings?: FormatNumberSettings): string {
   const { decimalCount, thousand, decimal } = { ...defaultSettings, ...settings };
 
   // Format the number to the desired number of decimals and split.
@@ -51,3 +51,5 @@ export default function formatNumber(num: number, settings?: FormatNumberSetting
   // Join with decimal delimiter
   return parts.join(decimal);
 }
+
+export default formatNumber;

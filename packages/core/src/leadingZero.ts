@@ -13,10 +13,6 @@
  * leadingZero(123, 5); // -> '00123'
  * ```
  */
-export default function leadingZero(num: number | string, len = 2): string {
-  num = String(num);
+export const leadingZero = (num: number | string, len = 2): string => num.toString().padStart(len, '0');
 
-  return num.length > len
-    ? num
-    : `${'0'.repeat(len)}${num}`.substr(-len);
-}
+export default leadingZero;

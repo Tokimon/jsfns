@@ -22,12 +22,12 @@ const defaultSettings: PhrasifySettings = { numbers: false };
  * phrasify('dataVALUE2-input', { numbers: true }); // -> data VALUE 2 input
  * ```
  */
-function phrasify(input: string, settings?: PhrasifySettings): string {
+export function phrasify(input: string, settings?: PhrasifySettings): string {
   if (!input) { return ''; }
 
   settings = { ...defaultSettings, ...settings };
 
-  // Create space before uppercase letters (if it is an abbrivaition
+  // Create space before uppercase letters (if it is an abbreviation
   // - more than 1 letter - create space after as well)
   input = `${input}`.replace(/([A-Z])([a-z])/g, (m) => ` ${m}`);
   if (settings.numbers) { input = input.replace(/(\d+)/g, ' $1 '); }

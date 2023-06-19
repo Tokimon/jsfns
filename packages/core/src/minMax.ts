@@ -14,6 +14,6 @@
  * minMax(25, 10, 20); // -> 20
  * ```
  */
-export default function minMax(num: number, min: number, max: number): number {
-  return num < min ? min : (num > max ? max : num);
-}
+export const minMax = (num: number, min: number, max: number): number => num < min ? min : (num > max ? max : num);
+
+export default minMax;

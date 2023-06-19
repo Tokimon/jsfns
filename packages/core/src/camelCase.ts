@@ -37,7 +37,7 @@ export const defaultSettings: CamelCaseSettings = {
  * camelCase('data-VALUE2-input', settings); // -> DataVALUE2Input
  * ```
  */
-function camelCase(input: string, settings?: CamelCaseSettings): string {
+export function camelCase(input: string, settings?: CamelCaseSettings): string {
   if (!input) { return ''; }
 
   const { upper, abbr, numbers } = { ...defaultSettings, ...settings };

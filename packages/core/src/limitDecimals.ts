@@ -47,7 +47,7 @@ function minDecimals(num: number, decimals: number): string {
  * limitDecimals(123.456789, '>4') // -> 123.456789
  * ```
  */
-export default function limitDecimals(num: number, decimalCount: number | string = 2): string {
+export function limitDecimals(num: number, decimalCount: number | string = 2): string {
   if (isString(decimalCount)) {
     if (decimalCount.startsWith('<')) {
       return String(maxDecimals(num, Number(decimalCount.slice(1))));
@@ -72,3 +72,5 @@ export default function limitDecimals(num: number, decimalCount: number | string
 
   return num.toFixed(decimalCount);
 }
+
+export default limitDecimals;

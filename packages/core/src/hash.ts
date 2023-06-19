@@ -34,7 +34,9 @@ export function hashCode(str: string): number {
  * @param str - String to generate hash string from
  * @returns Hash string
  */
-export default function hash(str: string): string {
+export function hash(str: string): string {
   const code = hashCode(str);
   return code === 0 ? '' : code.toString(36);
 }
+
+export default hash;

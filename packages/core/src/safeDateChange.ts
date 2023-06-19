@@ -22,14 +22,14 @@
  * // newDate === "February 28 2017"
  * ```
  */
-export default function safeDateChange(from: Date, to: Date): Date {
+export function safeDateChange(from: Date, to: Date): Date {
   const d = from.getDate();
 
   // Compensate for going from the eg. 31st in a month
   // into a month that doesn't have that many days
-  if (d > 28 && to.getDate() !== d) {
-    to.setDate(0);
-  }
+  if (d > 28 && to.getDate() !== d) to.setDate(0);
 
   return to;
 }
+
+export default safeDateChange;

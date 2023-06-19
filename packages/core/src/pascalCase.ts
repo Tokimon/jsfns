@@ -25,8 +25,6 @@ export type PascalCaseSettings = Omit<CamelCaseSettings, 'upper'>;
  * pascalCase('data-VALUE2-input', settings); // -> DataVALUE2Input
  * ```
  */
-function pascalCase(input: string, settings?: PascalCaseSettings): string {
-  return camelCase(input, { ...settings, upper: true });
-}
+export const pascalCase = (input: string, settings?: PascalCaseSettings): string => camelCase(input, { ...settings, upper: true });
 
 export default pascalCase;

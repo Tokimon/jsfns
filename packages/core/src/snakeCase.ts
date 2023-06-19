@@ -21,8 +21,10 @@ export type SnakeCaseSettings = PhrasifySettings;
  * snakeCase('dash VERSION1 beta', { numbers: true }); // -> dash_version_1_beta
  * ```
  */
-export default function snakeCase(str: string, settings?: SnakeCaseSettings): string {
+export function snakeCase(str: string, settings?: SnakeCaseSettings): string {
   return phrasify(str, settings)
     .toLowerCase()
     .replace(/\s+/g, '_');
 }
+
+export default snakeCase;
