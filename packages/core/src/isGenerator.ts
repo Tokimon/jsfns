@@ -1,7 +1,5 @@
 import isFunction from './isFunction';
 
-
-
 /**
  * Determine if the given argument is a Generator object.
  * (A generator is the one created when calling a generator function)
@@ -21,14 +19,9 @@ import isFunction from './isFunction';
  */
 // eslint-disable-next-line  @typescript-eslint/no-explicit-any
 export function isGeneratorLike(x: any): x is Generator {
-  return x != null
-    && isFunction(x.next)
-    && isFunction(x.throw)
-    && isFunction(x.return);
+  return x != null && isFunction(x.next) && isFunction(x.throw) && isFunction(x.return);
   // && isFunction(x[Symbol.iterator]);
 }
-
-
 
 /**
  * Determine if the given argument is a Generator Function
@@ -46,13 +39,13 @@ export function isGeneratorLike(x: any): x is Generator {
  */
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function isGenerator(x: any): x is GeneratorFunction {
-  if (!x || !x.constructor) { return false; }
+  if (!x || !x.constructor) {
+    return false;
+  }
 
   const { name, displayName, prototype } = x.constructor;
 
-  return name === 'GeneratorFunction'
-    || displayName === 'GeneratorFunction'
-    || isGeneratorLike(prototype);
+  return name === 'GeneratorFunction' || displayName === 'GeneratorFunction' || isGeneratorLike(prototype);
 }
 
 export default isGenerator;

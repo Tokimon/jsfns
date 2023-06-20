@@ -2,12 +2,8 @@ import { byId, createElement, generateId, insertHtml, removeElement } from './as
 
 import insertBefore from '~web/insertBefore';
 
-
-
 const testID = generateId('InsertBefore');
 const nodeID = generateId('InsertBeforeNode');
-
-
 
 describe('"insertBefore"', () => {
   let testNode: HTMLElement;

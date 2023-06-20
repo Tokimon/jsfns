@@ -1,21 +1,17 @@
 import isEventTarget from './isEventTarget';
 
-
-
 export type argsWithTarget = [
   elm: EventTarget,
   eventNames: string | string[],
   handler: EventListenerOrEventListenerObject,
   options?: AddEventListenerOptions
-]
+];
 
 export type argsWithoutTarget = [
   eventNames: string | string[],
   handler: EventListenerOrEventListenerObject,
   options?: AddEventListenerOptions
-]
-
-
+];
 
 /**
  * Bind an event handler for one or more event names on a given DOM element.
@@ -54,8 +50,6 @@ function off<T extends argsWithTarget>(...args: T): T[0];
  */
 function off(...args: argsWithoutTarget): Document;
 
-
-
 function off<T extends argsWithTarget | argsWithoutTarget>(...args: T): T[0] | Document {
   if (!isEventTarget(args[0])) {
     const [eventNames, handler, options] = args as argsWithoutTarget;
@@ -72,4 +66,3 @@ function off<T extends argsWithTarget | argsWithoutTarget>(...args: T): T[0] | D
 
 export { off };
 export default off;
-

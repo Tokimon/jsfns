@@ -2,8 +2,6 @@ import isString from '@js-fns/core/isString';
 
 import ensureHTML from './ensureHTML';
 
-
-
 /**
  * Append DOM element or plain HTML to the end of a given DOM element
  *
@@ -20,7 +18,9 @@ import ensureHTML from './ensureHTML';
  * ```
  */
 export function append(elm: Element, insertElm: string | Node): Element | null {
-  if (!elm) { return null; }
+  if (!elm) {
+    return null;
+  }
 
   if (isString(insertElm)) {
     elm.insertAdjacentHTML('beforeend', ensureHTML(insertElm));

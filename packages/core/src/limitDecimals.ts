@@ -1,7 +1,5 @@
 import isString from './isString';
 
-
-
 function maxDecimals(num: number, decimals: number): number {
   const multiplier = 10 ** decimals;
   // toFixed is to avoid decimal imprecision (eg. 3.4500000003)
@@ -10,12 +8,8 @@ function maxDecimals(num: number, decimals: number): number {
 
 function minDecimals(num: number, decimals: number): string {
   const decLen = (String(num).split('.')[1] || '').length;
-  return decimals <= decLen
-    ? String(num)
-    : num.toFixed(decimals);
+  return decimals <= decLen ? String(num) : num.toFixed(decimals);
 }
-
-
 
 /**
  * Limit decimals of a floating number to specified length. The length depends on `decimals`
@@ -61,14 +55,15 @@ export function limitDecimals(num: number, decimalCount: number | string = 2): s
       const [minDec, maxDec] = decimalCount.split(/[, ]+/);
       let min = Number(minDec);
       let max = Number(maxDec);
-      if (max < min) { [min, max] = [max, min]; }
+      if (max < min) {
+        [min, max] = [max, min];
+      }
 
       return minDecimals(maxDecimals(num, max), min);
     }
 
     decimalCount = Number(decimalCount) || 0;
   }
-
 
   return num.toFixed(decimalCount);
 }

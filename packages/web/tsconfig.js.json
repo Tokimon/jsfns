@@ -5,7 +5,5 @@
     "outDir": ".",
     "noEmit": false
   },
-  "references": [
-    { "path": "../core/tsconfig.js.json" }
-  ]
+  "references": [{ "path": "../core/tsconfig.js.json" }]
 }

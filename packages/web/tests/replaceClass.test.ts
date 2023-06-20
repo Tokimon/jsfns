@@ -2,11 +2,7 @@ import { insertHtml, byId, removeElement, generateId } from './assets/helpers';
 
 import replaceClass from '~web/replaceClass';
 
-
-
 const testID = generateId('ReplaceClass');
-
-
 
 describe('"replaceClass"', () => {
   let testNode: HTMLElement;
@@ -16,7 +12,9 @@ describe('"replaceClass"', () => {
     testNode = byId(testID);
   });
 
-  beforeEach(() => { testNode.className = ''; });
+  beforeEach(() => {
+    testNode.className = '';
+  });
 
   afterAll(() => removeElement(testID));
 

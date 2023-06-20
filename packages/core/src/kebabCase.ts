@@ -1,10 +1,6 @@
 import phrasify, { PhrasifySettings } from './phrasify';
 
-
-
 export type KebabCaseSettings = PhrasifySettings;
-
-
 
 /**
  * Transform phrase into a dashed phrase
@@ -22,9 +18,7 @@ export type KebabCaseSettings = PhrasifySettings;
  * ```
  */
 export function dashed(str: string, settings?: KebabCaseSettings): string {
-  return phrasify(str, settings)
-    .toLowerCase()
-    .replace(/\s+/g, '-');
+  return phrasify(str, settings).toLowerCase().replace(/\s+/g, '-');
 }
 
 export default dashed;

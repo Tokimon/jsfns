@@ -2,20 +2,18 @@ import { generateId, insertHtml, removeElement } from './assets/helpers';
 
 import findByName from '~web/findByName';
 
-
-
 const testID = generateId('FindByName');
 
-
-
 describe('"findByName"', () => {
-  beforeAll(() => insertHtml(`
+  beforeAll(() =>
+    insertHtml(`
     <form id="${testID}">
       <meta name="meta">
       <input name="inputs" id="Input1">
       <input name="inputs" id="Input2">
     </form>
-  `));
+  `)
+  );
 
   afterAll(() => removeElement(testID));
 

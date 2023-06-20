@@ -1,7 +1,5 @@
 import minMax from '~core/minMax';
 
-
-
 describe('"minMax"', () => {
   it('Limits a number to the given minimum value', () => {
     expect(minMax(0, 10, 20)).toBe(10);

@@ -1,6 +1,5 @@
 import popIndex, { popIndexPure } from '~core/popIndex';
 
-
 describe('"popIndex"', () => {
   describe('"popIndex"', () => {
     it('Returns the value a the given index', () => {

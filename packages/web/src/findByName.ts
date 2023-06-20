@@ -1,10 +1,6 @@
 import findUniqueNodes from './findUniqueNodeCollection';
 
-
-
 const byName = (name: string) => document.getElementsByName(name);
-
-
 
 /**
  * Find DOM elements with the given name

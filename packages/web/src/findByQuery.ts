@@ -1,10 +1,8 @@
 import isString from '@js-fns/core/isString';
 import findUniqueNodes from './findUniqueNodeCollection';
 
-
 const qs = (elm: Document | Element, q: string) => elm.querySelector(q);
 const qsAll = (elm: Document | Element) => (q: string) => elm.querySelectorAll(q);
-
 
 /**
  * Find an element by given CSS selector
@@ -19,11 +17,7 @@ const qsAll = (elm: Document | Element) => (q: string) => elm.querySelectorAll(q
  * findByQuery('span.my-class', true) // --> First "span.my-class" elements
  * ```
  */
- function findByQuery(
-  queries: string | string[],
-  first: true
-): Element | null
-
+function findByQuery(queries: string | string[], first: true): Element | null;
 
 /**
  * Find an element by a given CSS selector from within a given element
@@ -39,11 +33,7 @@ const qsAll = (elm: Document | Element) => (q: string) => elm.querySelectorAll(q
  * findByQuery(MyElm, 'span.my-class', true) // --> First "span.my-class" elements that are descendants of MyElm
  * ```
  */
- function findByQuery(
-  elm: Document | Element,
-  queries: string | string[],
-  first: true
-): Element | null
+function findByQuery(elm: Document | Element, queries: string | string[], first: true): Element | null;
 
 /**
  * Find all elements matching a given CSS selector
@@ -58,10 +48,7 @@ const qsAll = (elm: Document | Element) => (q: string) => elm.querySelectorAll(q
  * findByQuery(MyElm, 'span.my-class', true) // --> All "span.my-class" elements
  * ```
  */
- function findByQuery(
-  queries: string | string[],
-  first?: false
-): Element[]
+function findByQuery(queries: string | string[], first?: false): Element[];
 
 /**
  * Find all elements matching a given CSS selector from within a given element
@@ -77,13 +64,7 @@ const qsAll = (elm: Document | Element) => (q: string) => elm.querySelectorAll(q
  * findByQuery(MyElm, 'span.my-class', true) // --> All "span.my-class" elements that are descendants of MyElm
  * ```
  */
-function findByQuery(
-  elm: Document | Element,
-  queries: string | string[],
-  first?: false
-): Element[]
-
-
+function findByQuery(elm: Document | Element, queries: string | string[], first?: false): Element[];
 
 function findByQuery(
   elm: Document | Element | string | string[],

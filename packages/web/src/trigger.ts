@@ -1,25 +1,16 @@
 import isEventTarget from './isEventTarget';
 
-
-
 const customEvent = (name: string, data?: unknown) => {
   const options: CustomEventInit = { bubbles: true };
-  if (typeof data !== 'undefined') { options.detail = data; }
+  if (typeof data !== 'undefined') {
+    options.detail = data;
+  }
   return new CustomEvent(name, options);
 };
 
+export type argsWithoutTarget = [eventNames: string | string[], data?: unknown];
 
-export type argsWithoutTarget = [
-  eventNames: string | string[],
-  data?: unknown
-]
-
-export type argsWithTarget = [
-  elm: EventTarget,
-  eventNames: string | string[],
-  data?: unknown
-];
-
+export type argsWithTarget = [elm: EventTarget, eventNames: string | string[], data?: unknown];
 
 /**
  * Trigger one or more events on a given DOM element.
@@ -36,7 +27,7 @@ export type argsWithTarget = [
  * trigger(MyElm, 'my-event', { SomeEntry: true })
  * ```
  */
-function trigger<T extends argsWithTarget>(...args:T): EventTarget
+function trigger<T extends argsWithTarget>(...args: T): EventTarget;
 
 /**
  * Trigger one or more events on Document.
@@ -52,9 +43,7 @@ function trigger<T extends argsWithTarget>(...args:T): EventTarget
  * trigger('my-event', { SomeEntry: true })
  * ```
  */
-function trigger(...args: argsWithoutTarget): EventTarget
-
-
+function trigger(...args: argsWithoutTarget): EventTarget;
 
 function trigger<T extends argsWithTarget | argsWithoutTarget>(...args: T): EventTarget {
   if (!isEventTarget(args[0])) {

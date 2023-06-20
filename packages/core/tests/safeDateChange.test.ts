@@ -1,9 +1,6 @@
 import safeDateChange from '~core/safeDateChange';
 
-
 const dateStr = (date: Date) => `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`;
-
-
 
 describe('"safeDateChange"', () => {
   it('Does not change the from date', () => {

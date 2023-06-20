@@ -1,20 +1,11 @@
 import parseSelector from '~web/parseSelector';
 
-
-
 describe('"parseSelector"', () => {
   it('Defaults "tagName" to a DIV when empty string is given', () => {
     expect(parseSelector('').tagName).toBe('div');
   });
 
-  it.each([
-    'div',
-    'span',
-    'custom',
-    'input',
-    'br',
-    'img'
-  ])('Parses HTML element: "%s"', (tag) => {
+  it.each(['div', 'span', 'custom', 'input', 'br', 'img'])('Parses HTML element: "%s"', (tag) => {
     expect(parseSelector(tag).tagName).toBe(tag);
   });
 
@@ -67,7 +58,7 @@ describe('"parseSelector"', () => {
 
     describe('Correctly parses quotes in quotes', () => {
       it('Single quotes inside single quotes', () => {
-        const { attributes } = parseSelector('[data-attr=\'should accept \'this\'\']');
+        const { attributes } = parseSelector("[data-attr='should accept 'this'']");
         expect(attributes['data-attr']).toBe("should accept 'this'");
       });
 
@@ -110,7 +101,7 @@ describe('"parseSelector"', () => {
         ['CamelCase', 'myAttribute'],
         ['With number', 'my2ndAttribute'],
         ['With dash', 'my-attribute'],
-        ['with underscore', 'my_attribute']
+        ['with underscore', 'my_attribute'],
       ])('%s', (_, x) => {
         const { attributes } = parseSelector(`[${x}="value = ok"]`);
         expect(attributes[x]).toBe('value = ok');
@@ -135,8 +126,8 @@ describe('"parseSelector"', () => {
       attributes: {
         id: 'id',
         class: 'class',
-        'data-attr': 'value'
-      }
+        'data-attr': 'value',
+      },
     });
   });
 
@@ -146,8 +137,8 @@ describe('"parseSelector"', () => {
       tagName: 'span',
       attributes: {
         class: 'class',
-        src: 'url.com'
-      }
+        src: 'url.com',
+      },
     });
   });
 
@@ -156,8 +147,8 @@ describe('"parseSelector"', () => {
     expect(result).toEqual({
       tagName: 'span',
       attributes: {
-        src: 'url.com#not-id'
-      }
+        src: 'url.com#not-id',
+      },
     });
   });
 });

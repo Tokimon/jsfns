@@ -30,7 +30,7 @@ export function contentSize(elm: Document | GeneralWindow | HTMLElement) {
 
   return {
     width: elm.scrollWidth - padding.left - padding.right,
-    height: elm.scrollHeight - padding.top - padding.bottom
+    height: elm.scrollHeight - padding.top - padding.bottom,
   };
 }
 

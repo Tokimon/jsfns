@@ -1,7 +1,5 @@
 import type { GeneralWindow } from './types';
 
-
-
 /**
  * Is the given object a Window object
  *

@@ -1,7 +1,5 @@
 import selectorToHTML from './selectorToHTML';
 
-
-
 /**
  * Parses a string to see if it is already HTML otherwise it assumes
  * is a selector and parses it to HTML
@@ -21,9 +19,7 @@ import selectorToHTML from './selectorToHTML';
  * ```
  */
 export function ensureHTML(htmlOrSelector: string): string {
-  return htmlOrSelector.includes('<')
-    ? htmlOrSelector
-    : selectorToHTML(htmlOrSelector);
+  return htmlOrSelector.includes('<') ? htmlOrSelector : selectorToHTML(htmlOrSelector);
 }
 
 export default ensureHTML;

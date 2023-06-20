@@ -27,12 +27,7 @@ export function invisible(elm: HTMLElement): boolean {
   let checkElm: HTMLElement | null = elm;
 
   while (checkElm && checkElm.tagName !== 'BODY') {
-    if (
-      hidden(checkElm)
-      || !checkElm.offsetHeight
-      || !checkElm.offsetWidth
-      || css(checkElm, 'opacity') === 0
-    ) {
+    if (hidden(checkElm) || !checkElm.offsetHeight || !checkElm.offsetWidth || css(checkElm, 'opacity') === 0) {
       return true;
     }
 

@@ -2,8 +2,6 @@ import { jest } from '@jest/globals';
 import type { SpyInstance } from 'jest-mock';
 import randomInt from '~core/randomInt';
 
-
-
 describe('"randomInt"', () => {
   let randomSpy: SpyInstance<typeof Math.random>;
 
@@ -14,8 +12,6 @@ describe('"randomInt"', () => {
   beforeEach(() => randomSpy.mockReset());
 
   afterAll(() => randomSpy.mockRestore());
-
-
 
   describe('As a direct integer', () => {
     describe.each([-200, 0, 200])('%i', (num) => {
@@ -34,12 +30,12 @@ describe('"randomInt"', () => {
         [-200, 200],
         [0, 200],
         [100, 200],
-        [-200, -100]
+        [-200, -100],
       ])('%i ... %i', (num, num2) => {
         it.each([
           [0, num],
           [0.5, (num + num2) / 2],
-          [1, num2]
+          [1, num2],
         ])('With random output: %s = %i', (rdn, result) => {
           randomSpy.mockReturnValue(rdn);
 
@@ -54,12 +50,12 @@ describe('"randomInt"', () => {
         [200, -200],
         [200, 0],
         [200, 100],
-        [-100, -200]
+        [-100, -200],
       ])('%i ... %i', (num, num2) => {
         it.each([
           [0, num2],
           [0.5, (num + num2) / 2],
-          [1, num]
+          [1, num],
         ])('With random output: %s = %i', (rdn, result) => {
           randomSpy.mockReturnValue(rdn);
 

@@ -1,8 +1,6 @@
 import css from './css';
 import inDOM from './inDOM';
 
-
-
 /**
  * Test if a given DOM element is technically hidden
  *
@@ -24,9 +22,7 @@ import inDOM from './inDOM';
  * ```
  */
 export function hidden(elm: HTMLElement): boolean {
-  return !inDOM(elm)
-    || (!elm.offsetHeight && !elm.offsetWidth)
-    || css(elm, 'visibility') === 'hidden';
+  return !inDOM(elm) || (!elm.offsetHeight && !elm.offsetWidth) || css(elm, 'visibility') === 'hidden';
 }
 
 export default hidden;

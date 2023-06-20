@@ -3,25 +3,9 @@ import { byId, generateId, insertHtml, removeElement } from './assets/helpers';
 import viewport from '~web/viewport';
 import * as sizeFns from '~web/size';
 
-
-
-const {
-  SizeType,
-  elmSize,
-  windowSize,
-  marginBoxSize,
-  outerSize,
-  innerSize,
-  contentSize,
-  contentBoxSize,
-  default: size
-} = sizeFns;
-
-
+const { SizeType, elmSize, windowSize, marginBoxSize, outerSize, innerSize, contentSize, contentBoxSize, default: size } = sizeFns;
 
 const testID = generateId('Size');
-
-
 
 describe('"size"', () => {
   let testNode: HTMLElement;
@@ -50,35 +34,35 @@ describe('"size"', () => {
     it('`type` = OUTER, returns the size including padding and border', () => {
       expect(elmSize(testNode, SizeType.OUTER)).toEqual({
         width: s,
-        height: s
+        height: s,
       });
     });
 
     it('`type` = INNER, returns the size including padding', () => {
       expect(elmSize(testNode, SizeType.INNER)).toEqual({
-        width: s - (b * 2),
-        height: s - (b * 2)
+        width: s - b * 2,
+        height: s - b * 2,
       });
     });
 
     it('`type` = CONTENT, returns the size of content excluding padding', () => {
       expect(elmSize(testNode, SizeType.CONTENT)).toEqual({
-        width: testNode.scrollWidth - (p * 2),
-        height: testNode.scrollHeight - (p * 2)
+        width: testNode.scrollWidth - p * 2,
+        height: testNode.scrollHeight - p * 2,
       });
     });
 
     it('`type` = CONTENT_BOX, returns the size excluding padding and border', () => {
       expect(elmSize(testNode, SizeType.CONTENT_BOX)).toEqual({
-        width: testNode.clientWidth - (p * 2),
-        height: testNode.clientHeight - (p * 2)
+        width: testNode.clientWidth - p * 2,
+        height: testNode.clientHeight - p * 2,
       });
     });
 
     it('`type` = MARGIN_BOX, returns the size including border, padding and margin', () => {
       expect(elmSize(testNode, SizeType.MARGIN_BOX)).toEqual({
-        width: s + (m * 2),
-        height: s + (m * 2)
+        width: s + m * 2,
+        height: s + m * 2,
       });
     });
 
@@ -105,28 +89,24 @@ describe('"size"', () => {
     it('`type` = OUTER, should return the outer size of the window', () => {
       expect(windowSize(window, SizeType.OUTER)).toEqual({
         width: window.outerWidth,
-        height: window.outerHeight
+        height: window.outerHeight,
       });
     });
 
     it('`type` = INNER, calls .elmSize, with the viewport element', () => {
-      expect(windowSize(window, SizeType.INNER))
-        .toEqual(elmSize(vp, SizeType.INNER));
+      expect(windowSize(window, SizeType.INNER)).toEqual(elmSize(vp, SizeType.INNER));
     });
 
     it('`type` = CONTENT, calls .elmSize, with the viewport element', () => {
-      expect(windowSize(window, SizeType.CONTENT))
-        .toEqual(elmSize(vp, SizeType.CONTENT));
+      expect(windowSize(window, SizeType.CONTENT)).toEqual(elmSize(vp, SizeType.CONTENT));
     });
 
     it('`type` = CONTENT_BOX, calls .elmSize, with the viewport element', () => {
-      expect(windowSize(window, SizeType.CONTENT_BOX))
-        .toEqual(elmSize(vp, SizeType.CONTENT_BOX));
+      expect(windowSize(window, SizeType.CONTENT_BOX)).toEqual(elmSize(vp, SizeType.CONTENT_BOX));
     });
 
     it('`type` = MARGIN_BOX, calls .elmSize, with the viewport element', () => {
-      expect(windowSize(window, SizeType.MARGIN_BOX))
-        .toEqual(elmSize(vp, SizeType.MARGIN_BOX));
+      expect(windowSize(window, SizeType.MARGIN_BOX)).toEqual(elmSize(vp, SizeType.MARGIN_BOX));
     });
 
     it('`type` defaults to OUTER', () => {
@@ -136,40 +116,33 @@ describe('"size"', () => {
 
   describe('.size', () => {
     it('Calls `windowSize` when elm is window', () => {
-      expect(size(window))
-        .toEqual(windowSize(window));
+      expect(size(window)).toEqual(windowSize(window));
     });
 
     it('Call `elmSize` when elm is a HTML Element', () => {
-      expect(size(testNode, SizeType.INNER))
-        .toEqual(elmSize(testNode, SizeType.INNER));
+      expect(size(testNode, SizeType.INNER)).toEqual(elmSize(testNode, SizeType.INNER));
     });
   });
 
   describe('Shortcut methods', () => {
     it('`.marginBoxSize` calls `elmSize` with MARGIN_BOX', () => {
-      expect(marginBoxSize(testNode))
-        .toEqual(elmSize(testNode, SizeType.MARGIN_BOX));
+      expect(marginBoxSize(testNode)).toEqual(elmSize(testNode, SizeType.MARGIN_BOX));
     });
 
     it('`.outerSize` calls `elmSize` with OUTER', () => {
-      expect(outerSize(testNode))
-        .toEqual(elmSize(testNode, SizeType.OUTER));
+      expect(outerSize(testNode)).toEqual(elmSize(testNode, SizeType.OUTER));
     });
 
     it('`.innerSize` calls `elmSize` with INNER', () => {
-      expect(innerSize(testNode))
-        .toEqual(elmSize(testNode, SizeType.INNER));
+      expect(innerSize(testNode)).toEqual(elmSize(testNode, SizeType.INNER));
     });
 
     it('`.contentSize` calls `elmSize` with CONTENT', () => {
-      expect(contentSize(testNode))
-        .toEqual(elmSize(testNode, SizeType.CONTENT));
+      expect(contentSize(testNode)).toEqual(elmSize(testNode, SizeType.CONTENT));
     });
 
     it('`.contentBoxSize` calls `elmSize` with CONTENT_BOX', () => {
-      expect(contentBoxSize(testNode))
-        .toEqual(elmSize(testNode, SizeType.CONTENT_BOX));
+      expect(contentBoxSize(testNode)).toEqual(elmSize(testNode, SizeType.CONTENT_BOX));
     });
   });
 });

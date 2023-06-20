@@ -61,9 +61,7 @@ async function build() {
   });
 
   console.log(
-    `${color.green('🗸')} ${color.blue(packageName + '/' + majorVersion + '/')}${color.yellow(
-      'index.html'
-    )} successfully generated`
+    `${color.green('🗸')} ${color.blue(packageName + '/' + majorVersion + '/')}${color.yellow('index.html')} successfully generated`
   );
 
   const versions = await getPackageVersions(docsPath);
@@ -89,9 +87,7 @@ async function build() {
   await Promise.all(indexes.map(renderIndex));
 
   console.log(
-    `${color.green('🗸')} ${color.blue(packageName + '/')} and ${color.blue('/')} ${color.yellow(
-      'index.html'
-    )} successfully generated`
+    `${color.green('🗸')} ${color.blue(packageName + '/')} and ${color.blue('/')} ${color.yellow('index.html')} successfully generated`
   );
 }
 

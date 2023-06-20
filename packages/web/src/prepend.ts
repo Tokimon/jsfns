@@ -2,8 +2,6 @@ import isString from '@js-fns/core/isString';
 
 import ensureHTML from './ensureHTML';
 
-
-
 /**
  * Append DOM element or plain HTML to the beginning of a given DOM element
  *

@@ -5,17 +5,13 @@ const idExp = new RegExp(`#${nameExpStr}`, 'i');
 const classExp = new RegExp(`\\.${nameExpStr}`, 'ig');
 const attrExp = new RegExp(`\\[(${nameExpStr})(?:=([^\\]]+))?]`, 'g');
 
-
-
-export type AttributeMapping = Map<string, Set<string>>
+export type AttributeMapping = Map<string, Set<string>>;
 
 export type SelectorParsing = {
-  tagName: string
+  tagName: string;
   attributes: Record<string, string>;
-  attributeList: string[]
-}
-
-
+  attributeList: string[];
+};
 
 const addAttribute = (attributeName: string, value: string | undefined, attributes: AttributeMapping): void => {
   if (value == null) return;
@@ -34,7 +30,6 @@ const addAttribute = (attributeName: string, value: string | undefined, attribut
   attributes.get(attributeName)?.add(value);
 };
 
-
 const parseAttribute = (selector: string, attributes: AttributeMapping) => {
   // This function detects the attribute from the selector,
   // and then removes it to avoid having to parse it again
@@ -44,12 +39,8 @@ const parseAttribute = (selector: string, attributes: AttributeMapping) => {
     return '';
   };
 
-  return selector.includes('[')
-    ? selector.replace(attrExp, replaceFn)
-    : selector;
+  return selector.includes('[') ? selector.replace(attrExp, replaceFn) : selector;
 };
-
-
 
 /**
  * Parses CSS a selector string into a structured object

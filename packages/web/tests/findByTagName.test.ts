@@ -2,21 +2,19 @@ import { byId, generateId, insertHtml, removeElement } from './assets/helpers';
 
 import findByTagName from '~web/findByTagName';
 
-
-
 const testID = generateId('FindByTagName');
 
-
-
 describe('"findByTagName"', () => {
-  beforeAll(() => insertHtml(`
+  beforeAll(() =>
+    insertHtml(`
     <div id="${testID}">
       <div></div>
       <div></div>
       <div></div>
       <span></span>
     </div>
-  `));
+  `)
+  );
 
   afterAll(() => removeElement(testID));
 

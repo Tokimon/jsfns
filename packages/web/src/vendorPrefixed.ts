@@ -2,17 +2,13 @@ import pascalCase from '@js-fns/core/pascalCase';
 import kebabCase from '@js-fns/core/kebabCase';
 import { CSSStyleKey } from './types';
 
-
-
 export type VendorPrefixing = [
-  { prefix: ''; js: CSSStyleKey; css: string;},
-  { prefix: 'webkit'; js: `webkit${string}`; css: `-webkit-${string}`;},
-  { prefix: 'moz'; js: `moz${string}`; css: `-moz-${string}`; },
-  { prefix: 'ms'; js: `ms${string}`; css: `-ms-${string}`; },
-  { prefix: 'o'; js: `o${string}`; css: `-o-${string}`; }
-]
-
-
+  { prefix: ''; js: CSSStyleKey; css: string },
+  { prefix: 'webkit'; js: `webkit${string}`; css: `-webkit-${string}` },
+  { prefix: 'moz'; js: `moz${string}`; css: `-moz-${string}` },
+  { prefix: 'ms'; js: `ms${string}`; css: `-ms-${string}` },
+  { prefix: 'o'; js: `o${string}`; css: `-o-${string}` }
+];
 
 /**
  * Add vendor prefixes to a string
@@ -42,7 +38,7 @@ export function vendorPrefixed(str: string): VendorPrefixing {
     { prefix: 'webkit', js: `webkit${pascalStr}`, css: `-webkit-${kebabCaseStr}` },
     { prefix: 'moz', js: `moz${pascalStr}`, css: `-moz-${kebabCaseStr}` },
     { prefix: 'ms', js: `ms${pascalStr}`, css: `-ms-${kebabCaseStr}` },
-    { prefix: 'o', js: `o${pascalStr}`, css: `-o-${kebabCaseStr}` }
+    { prefix: 'o', js: `o${pascalStr}`, css: `-o-${kebabCaseStr}` },
   ];
 }
 

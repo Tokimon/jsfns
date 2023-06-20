@@ -2,11 +2,7 @@ import { byId, createElement, generateId, insertHtml, removeElement } from './as
 
 import toggleFullscreen from '~web/toggleFullscreen';
 
-
-
 const testID = generateId('ToggleClass');
-
-
 
 describe('"toggleFullscreen"', () => {
   describe('Activates fullscreen', () => {

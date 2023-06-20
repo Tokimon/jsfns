@@ -3,12 +3,8 @@ import { surround } from './assets/surround';
 
 import snakeCase, { SnakeCaseSettings } from '~core/snakeCase';
 
-
-
 const emptyObj = {};
 const surround42 = surround('42', '_');
-
-
 
 const phrases: TestInput<SnakeCaseSettings>[] = [
   ['', ''],
@@ -31,7 +27,7 @@ const phrases: TestInput<SnakeCaseSettings>[] = [
   ['Name', 'name'],
 
   ['data-ABBR42number space', ({ numbers }) => `data_abbr${surround42(numbers)}number_space`],
-  ['Look! 99 ? ABBR #Test', 'look_99_abbr_test']
+  ['Look! 99 ? ABBR #Test', 'look_99_abbr_test'],
 ];
 
 describe('"snakeCase"', () => {
@@ -44,15 +40,10 @@ describe('"snakeCase"', () => {
   });
 
   describe('Passing a config object', () => {
-    describe.each([
-      emptyObj,
-      { numbers: true },
-      { numbers: false }
-    ] as SnakeCaseSettings[])('%s', (conf) => {
+    describe.each([emptyObj, { numbers: true }, { numbers: false }] as SnakeCaseSettings[])('%s', (conf) => {
       it.each(phrases)('"%s"', (input, output) => {
         expect(snakeCase(input, conf)).toBe(result(output, conf));
       });
     });
   });
 });
-

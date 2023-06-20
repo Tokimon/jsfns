@@ -1,13 +1,9 @@
 import isDOMNode from './isDOMNode';
 
-
-
 export interface ChildNodeWithParent extends ChildNode {
-  parentElement: HTMLElement,
-  parentNode: Node & ParentNode
+  parentElement: HTMLElement;
+  parentNode: Node & ParentNode;
 }
-
-
 
 /**
  * Is the given object a DOM node child of a DOM element
@@ -28,4 +24,3 @@ export interface ChildNodeWithParent extends ChildNode {
 export const isDOMChildNode = (node: Node): node is ChildNodeWithParent => isDOMNode(node) && node.parentElement != null;
 
 export default isDOMChildNode;
-

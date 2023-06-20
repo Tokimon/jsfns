@@ -1,7 +1,5 @@
 import isNumber from '~core/isNumber';
 
-
-
 describe('"isNumber"', () => {
   describe('Returns `true` for Number values', () => {
     it.each([
@@ -9,7 +7,7 @@ describe('"isNumber"', () => {
       9.5,
       Number('0'),
       // eslint-disable-next-line no-new-wrappers
-      new Number('5')
+      new Number('5'),
     ])('"%s"', (n) => {
       expect(isNumber(n)).toBe(true);
     });
@@ -25,7 +23,7 @@ describe('"isNumber"', () => {
       // eslint-disable-next-line no-new-wrappers
       new String(''),
       [],
-      {}
+      {},
     ])('"%s"', (n) => {
       expect(isNumber(n)).toBe(false);
     });

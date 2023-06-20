@@ -2,12 +2,8 @@ import { insertHtml, removeElement, byId, generateId } from './assets/helpers';
 
 import boxModel from '~web/boxModel';
 
-
-
 const testID = generateId('BoxModel');
 const styleID = generateId('BoxModelStyle');
-
-
 
 describe('"boxModel"', () => {
   let testNode: HTMLElement;
@@ -36,7 +32,7 @@ describe('"boxModel"', () => {
   describe.each([
     ['margin', 'marginLeft', [1, 2, 3, 4]] as const,
     ['padding', 'paddingLeft', [5, 6, 7, 8]] as const,
-    ['border', 'borderLeftWidth', [9, 10, 11, 12]] as const
+    ['border', 'borderLeftWidth', [9, 10, 11, 12]] as const,
   ])('Correctly retrieves the "%s" information of the given element', (prop, overrideProp, n) => {
     beforeEach(() => {
       testNode.style.cssText = '';

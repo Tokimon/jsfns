@@ -4,5 +4,5 @@
   "pretty": true,
   "cleanOutputDir": true,
   "readme": "none",
-  "exclude":["**/index.*"]
+  "exclude": ["**/index.*"]
 }

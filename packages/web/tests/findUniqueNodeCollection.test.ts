@@ -2,16 +2,13 @@ import { insertHtml, removeElement, generateId } from './assets/helpers';
 
 import findUniqueNodes from '~web/findUniqueNodeCollection';
 
-
-
 const testID = generateId('AddClass');
-
-
 
 describe('"findUniqueNodeCollection"', () => {
   const find = (cn: string) => document.getElementsByClassName(cn);
 
-  beforeAll(() => insertHtml(`
+  beforeAll(() =>
+    insertHtml(`
     <div id="${testID}">
       <div class="one item" />
       <div class="two item special" />
@@ -20,18 +17,15 @@ describe('"findUniqueNodeCollection"', () => {
       <div class="five special" />
       <div class="six item special" />
     </div>
-  `));
+  `)
+  );
 
   afterAll(() => removeElement(testID));
 
   it('Finds unique element list from given selector', () => {
     const nodes = findUniqueNodes('special', find);
 
-    expect(nodes.map((n) => n.className)).toEqual([
-      'two item special',
-      'five special',
-      'six item special'
-    ]);
+    expect(nodes.map((n) => n.className)).toEqual(['two item special', 'five special', 'six item special']);
   });
 
   it('Finds unique element list from given list of selectors', () => {
@@ -43,7 +37,7 @@ describe('"findUniqueNodeCollection"', () => {
       'three item',
       'four item',
       'six item special',
-      'five special'
+      'five special',
     ]);
   });
 });

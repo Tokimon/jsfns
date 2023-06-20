@@ -2,15 +2,13 @@ import { appendFrame, createDetachedDocument } from './assets/helpers';
 
 import isDOMContainer from '~web/isDOMContainer';
 
-
-
 describe('"isDOMContainer"', () => {
   describe('Returns `true` for', () => {
     describe.each([
       ['<html> element', (doc: Document) => doc.documentElement],
       ['<body> element', (doc: Document) => doc.body],
       ['<p> element', (doc: Document) => doc.createElement('p')],
-      ['Fragment', (doc: Document) => doc.createDocumentFragment()]
+      ['Fragment', (doc: Document) => doc.createDocumentFragment()],
     ])('%s', (_, getElm) => {
       it('In the current document', () => {
         expect(isDOMContainer(getElm(document))).toBe(true);
@@ -19,7 +17,7 @@ describe('"isDOMContainer"', () => {
       it('In a Frame', () => {
         const frame = appendFrame();
 
-        expect(isDOMContainer(getElm((frame.contentDocument as Document)))).toBe(true);
+        expect(isDOMContainer(getElm(frame.contentDocument as Document))).toBe(true);
 
         frame.remove();
       });
@@ -38,7 +36,7 @@ describe('"isDOMContainer"', () => {
       ['Text Node', document.createTextNode('')],
       ['Window', window],
       ['NULL', null],
-      ['Object', {}]
+      ['Object', {}],
     ])('%s', (_, elm) => {
       expect(isDOMContainer(elm)).toBe(false);
     });

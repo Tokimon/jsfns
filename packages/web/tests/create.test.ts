@@ -1,20 +1,11 @@
 import create from '~web/create';
 
-
-
 describe('"create"', () => {
   it('Creates a <div> element when no element is given', () => {
     expect(create().tagName).toBe('DIV');
   });
 
-  it.each([
-    'div',
-    'span',
-    'custom',
-    'input',
-    'br',
-    'img'
-  ])('Creates a named element: "%s"', (tagName) => {
+  it.each(['div', 'span', 'custom', 'input', 'br', 'img'])('Creates a named element: "%s"', (tagName) => {
     const elm = create(tagName);
     expect(elm.tagName).toBe(tagName.toUpperCase());
   });

@@ -1,21 +1,18 @@
 import siblings, { nextSiblings, previousSiblings } from '~web/siblings';
 import { byId, createElement, generateId, insertHtml, removeElement } from './assets/helpers';
 
-
-
 const testID = generateId('Siblings');
 
-
-
 describe('"siblings"', () => {
-  const nonChildNodes: ([string, Document | Element | null])[] = [
+  const nonChildNodes: [string, Document | Element | null][] = [
     ['Document', document],
     ['Unappended element', createElement('div')],
-    ['null', null]
+    ['null', null],
   ];
 
-  beforeAll(() => insertHtml(
-    `<div id="${testID}">
+  beforeAll(() =>
+    insertHtml(
+      `<div id="${testID}">
       <span id="FirstChild">
         <b id="LoneChild"></b>
       </span>
@@ -30,7 +27,8 @@ describe('"siblings"', () => {
       <button></button>
       <span id="LastChild"></span>
     </div>`
-  ));
+    )
+  );
 
   afterAll(() => removeElement(testID));
 

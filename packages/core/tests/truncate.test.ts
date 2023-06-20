@@ -1,7 +1,5 @@
 import truncate from '~core/truncate';
 
-
-
 describe('"truncate"', () => {
   describe('Returns the given entry as is, when "maxLength" is', () => {
     it('Not given', () => {

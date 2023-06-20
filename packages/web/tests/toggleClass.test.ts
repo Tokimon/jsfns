@@ -2,11 +2,7 @@ import { byId, createElement, generateId, insertHtml, removeElement } from './as
 
 import toggleClass from '~web/toggleClass';
 
-
-
 const testID = generateId('ToggleClass');
-
-
 
 describe('"toggleClass"', () => {
   let testNode: HTMLElement;
@@ -19,7 +15,9 @@ describe('"toggleClass"', () => {
     testNode = byId(testID);
   });
 
-  beforeEach(() => { testNode.className = ''; });
+  beforeEach(() => {
+    testNode.className = '';
+  });
 
   afterAll(() => removeElement(testID));
 

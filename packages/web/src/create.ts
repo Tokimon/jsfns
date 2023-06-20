@@ -1,8 +1,6 @@
 import selectorToHTML from './selectorToHTML';
 import toDOM from './toDOM';
 
-
-
 /**
  * Creates an element from a given CSS selector (restricted to only one element)
  *
@@ -23,9 +21,7 @@ import toDOM from './toDOM';
  * ```
  */
 export function createElement(selector = 'div'): Element {
-  return /^[a-z]+$/i.test(selector)
-    ? document.createElement(selector)
-    : (toDOM(selectorToHTML(selector)) as HTMLCollection)[0];
+  return /^[a-z]+$/i.test(selector) ? document.createElement(selector) : (toDOM(selectorToHTML(selector)) as HTMLCollection)[0];
 }
 
 export default createElement;

@@ -19,9 +19,7 @@ export async function toggleFullscreen(elm: Element = document.documentElement, 
 
   if (fullscreenElement && !isFullscreenElement) await document.exitFullscreen();
 
-  return !fullscreenElement && !isFullscreenElement
-    ? elm.requestFullscreen(options)
-    : document.exitFullscreen();
+  return !fullscreenElement && !isFullscreenElement ? elm.requestFullscreen(options) : document.exitFullscreen();
 }
 
 export default toggleFullscreen;

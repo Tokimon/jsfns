@@ -23,8 +23,6 @@ export function hasClassName(elm: Element, classNames: string | string[], any?: 
 
 export default hasClassName;
 
-
-
 /**
  * Does any of the listed class names exist in the DOM elements list of class names
  *

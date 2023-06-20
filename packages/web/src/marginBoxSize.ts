@@ -28,7 +28,7 @@ export function marginBoxSize(elm: Document | GeneralWindow | HTMLElement) {
 
   return {
     width: elm.offsetWidth + margin.left + margin.right,
-    height: elm.offsetHeight + margin.top + margin.bottom
+    height: elm.offsetHeight + margin.top + margin.bottom,
   };
 }
 

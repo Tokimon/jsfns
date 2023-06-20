@@ -1,7 +1,5 @@
 import randomId from '~core/randomId';
 
-
-
 describe('"randomId"', () => {
   it('Generates a random id of default length', () => {
     expect(randomId()).toMatch(/[a-z0-9]{10}/);

@@ -2,11 +2,7 @@ import { insertHtml, byId, removeElement, createElement, generateId } from './as
 
 import removeClass from '~web/removeClass';
 
-
-
 const testID = generateId('RemoveClass');
-
-
 
 describe('"removeClass"', () => {
   let testNode: HTMLElement;
@@ -16,7 +12,9 @@ describe('"removeClass"', () => {
     testNode = byId(testID);
   });
 
-  beforeEach(() => { testNode.className = 'class'; });
+  beforeEach(() => {
+    testNode.className = 'class';
+  });
 
   afterAll(() => removeElement(testID));
 

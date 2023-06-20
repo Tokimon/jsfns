@@ -1,7 +1,5 @@
 import RGBToHex from '~core/RGBToHex';
 
-
-
 describe('"RGBToHex"', () => {
   it('Generates a hex color from a RGB entries', () => {
     expect(RGBToHex(0, 0, 255)).toBe('#0000ff');
@@ -39,7 +37,7 @@ describe('"RGBToHex"', () => {
         [-1, '00'],
         [0, '00'],
         [0.5, '80'],
-        [1, 'ff']
+        [1, 'ff'],
       ])('Alpha: %i', (a, hexA) => {
         expect(RGBToHex([255, 0, 0, a])).toBe('#ff0000' + hexA);
       });

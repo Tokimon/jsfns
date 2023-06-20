@@ -4,5 +4,5 @@
     "outDir": ".",
     "noEmit": false
   },
-  "include": ["src"],
+  "include": ["src"]
 }

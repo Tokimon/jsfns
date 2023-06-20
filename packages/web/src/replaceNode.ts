@@ -3,8 +3,6 @@ import isString from '@js-fns/core/isString';
 import isDOMChildNode from './isDOMChildNode';
 import create from './create';
 
-
-
 /**
  * Replace a given DOM element with another DOM element or plain HTML string
  *

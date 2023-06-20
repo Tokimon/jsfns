@@ -3,12 +3,8 @@ import { surround } from './assets/surround';
 
 import kebabCase, { KebabCaseSettings } from '~core/kebabCase';
 
-
-
 const emptyObj = {};
 const surround42 = surround('42', '-');
-
-
 
 const phrases: TestInput<KebabCaseSettings>[] = [
   ['', ''],
@@ -31,7 +27,7 @@ const phrases: TestInput<KebabCaseSettings>[] = [
   ['Name', 'name'],
 
   ['data-ABBR42number space', ({ numbers }) => `data-abbr${surround42(numbers)}number-space`],
-  ['Look! 99 ? ABBR #Test', 'look-99-abbr-test']
+  ['Look! 99 ? ABBR #Test', 'look-99-abbr-test'],
 ];
 
 describe('"kebabCase"', () => {
@@ -44,15 +40,10 @@ describe('"kebabCase"', () => {
   });
 
   describe('Passing a config object', () => {
-    describe.each([
-      emptyObj,
-      { numbers: true },
-      { numbers: false }
-    ] as KebabCaseSettings[])('%s', (conf) => {
+    describe.each([emptyObj, { numbers: true }, { numbers: false }] as KebabCaseSettings[])('%s', (conf) => {
       it.each(phrases)('"%s"', (input, output) => {
         expect(kebabCase(input, conf)).toBe(result(output, conf));
       });
     });
   });
 });
-

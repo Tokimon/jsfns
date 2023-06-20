@@ -4,8 +4,6 @@ export type NodeLikeCallback = (err?: string | Error | null, data?: unknown) => 
 export type PromisefyCallback = (...args: any[]) => unknown;
 export type PromisefiedFunction = (...args: any[]) => Promise<unknown>;
 
-
-
 /**
  * Converts a callback based action into one returning a Promise instead.
  *
@@ -27,14 +25,11 @@ export type PromisefiedFunction = (...args: any[]) => Promise<unknown>;
  */
 export function promisefy(fn: PromisefyCallback): PromisefiedFunction {
   return (...args: any[]) =>
-    new Promise(
-      (resolve, reject) => {
-        const cb = (err?: string | Error | null, data?: unknown) =>
-          err ? reject(err) : resolve(data);
+    new Promise((resolve, reject) => {
+      const cb = (err?: string | Error | null, data?: unknown) => (err ? reject(err) : resolve(data));
 
-        fn(...args, cb);
-      }
-    );
+      fn(...args, cb);
+    });
 }
 
 export default promisefy;

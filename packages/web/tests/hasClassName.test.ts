@@ -2,11 +2,7 @@ import { byId, generateId, insertHtml, removeElement } from './assets/helpers';
 
 import hasClassName, { hasAnyClassName, hasAllClassNames } from '~web/hasClassName';
 
-
-
 const testID = generateId('HasClass');
-
-
 
 describe('"hasClassName"', () => {
   let testNode: HTMLElement;
@@ -16,7 +12,9 @@ describe('"hasClassName"', () => {
     testNode = byId(testID);
   });
 
-  beforeEach(() => { testNode.className = 'class1 class2'; });
+  beforeEach(() => {
+    testNode.className = 'class1 class2';
+  });
 
   afterAll(() => removeElement(testID));
 

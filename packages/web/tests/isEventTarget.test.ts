@@ -1,10 +1,6 @@
 import isEventTarget from '~web/isEventTarget';
 
-
-
 class Custom extends EventTarget {}
-
-
 
 describe('"isEventTarget"', () => {
   describe('Returns `false` for:', () => {
@@ -15,7 +11,7 @@ describe('"isEventTarget"', () => {
       ['Array', []],
       ['String', ''],
       ['Number', 123],
-      ['Boolean', true]
+      ['Boolean', true],
     ])('%s', (_, obj) => {
       expect(isEventTarget(obj)).toBe(false);
     });
@@ -29,7 +25,7 @@ describe('"isEventTarget"', () => {
       ['Text Node', document.createTextNode('')],
       ['Comment Node', document.createComment('')],
       ['XMLHttpRequest', new XMLHttpRequest()],
-      ['Object extending EventTarget', new Custom()]
+      ['Object extending EventTarget', new Custom()],
     ])('%s', (_, obj) => {
       expect(isEventTarget(obj)).toBe(true);
     });

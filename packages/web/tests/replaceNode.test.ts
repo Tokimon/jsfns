@@ -2,11 +2,7 @@ import { byId, createElement, generateId, getOne, insertHtml, removeElement } fr
 
 import replaceNode from '~web/replaceNode';
 
-
-
 const testID = generateId('ReplaceNode');
-
-
 
 describe('"replaceNode"', () => {
   let testNode: HTMLElement;
@@ -43,14 +39,14 @@ describe('"replaceNode"', () => {
   describe.each([
     ['HTML element', createElement('div')],
     ['Comment Node', document.createComment('Comment to replace')],
-    ['Text Node', document.createTextNode('Text to replace')]
+    ['Text Node', document.createTextNode('Text to replace')],
   ])('Replaces a given DOM node', (_, node) => {
     beforeEach(() => testNode.appendChild(node));
 
     it.each([
       ['HTML Element', createElement('div')],
       ['Comment Node', document.createComment('Replacement Comment')],
-      ['Text Node', document.createTextNode('Replacement Text')]
+      ['Text Node', document.createTextNode('Replacement Text')],
     ])('With a given DOM node: %s', (_, replacement) => {
       replaceNode(node, replacement);
 

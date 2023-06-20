@@ -6,14 +6,12 @@ import isDocument from './isDocument';
 import scrollInfo from './scrollInfo';
 import outerSize from './outerSize';
 
-
-
 export type Position = {
   top: number;
   left: number;
   right: number;
   bottom: number;
-}
+};
 
 export interface PositionData extends Position {
   /** Position relative to the offset parent */
@@ -21,8 +19,6 @@ export interface PositionData extends Position {
   /** Position relative to the viewport area */
   viewport: Position;
 }
-
-
 
 const getWindowPosition = (win: GeneralWindow): Position => {
   const top = win.screenLeft || win.screenX || 0;
@@ -38,7 +34,7 @@ const getElementPosition = (elm: HTMLElement): PositionData => {
   const vpScroll = scrollInfo();
   const vpSize = outerSize(document);
   const elmSize = outerSize(elm);
-  const parentSize = outerSize(elm.offsetParent as HTMLElement || undefined);
+  const parentSize = outerSize((elm.offsetParent as HTMLElement) || undefined);
 
   return {
     top: rect.top + vpScroll.y,
@@ -50,19 +46,17 @@ const getElementPosition = (elm: HTMLElement): PositionData => {
       top: elm.offsetTop,
       left: elm.offsetLeft,
       right: parentSize.width - elm.offsetLeft - elmSize.width,
-      bottom: parentSize.height - elm.offsetTop - elmSize.height
+      bottom: parentSize.height - elm.offsetTop - elmSize.height,
     },
 
     viewport: {
       top: rect.top,
       left: rect.left,
       right: vpSize.width - rect.right,
-      bottom: vpSize.height - rect.bottom
-    }
+      bottom: vpSize.height - rect.bottom,
+    },
   };
 };
-
-
 
 /**
  * Get the current position of a DOM element, either relative to the offsetParent
@@ -92,16 +86,18 @@ export function position(elm?: HTMLElement | GeneralWindow | Document): Position
   let currElm: typeof elm | null = elm;
 
   // Fallback to document if the element is one of the root elements
-  if (isDOMElement(currElm, ['html', 'body'])) { currElm = currElm.ownerDocument; }
+  if (isDOMElement(currElm, ['html', 'body'])) {
+    currElm = currElm.ownerDocument;
+  }
   // Fallback to window if the element is Document
-  if (isDocument(currElm)) { currElm = currElm.defaultView; }
+  if (isDocument(currElm)) {
+    currElm = currElm.defaultView;
+  }
 
   // If we have no element, fall back to window
   currElm = currElm || window;
 
-  return isWindow(currElm)
-    ? getWindowPosition(currElm)
-    : getElementPosition(currElm as HTMLElement);
+  return isWindow(currElm) ? getWindowPosition(currElm) : getElementPosition(currElm as HTMLElement);
 }
 
 export default position;

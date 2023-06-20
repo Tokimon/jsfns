@@ -2,7 +2,6 @@ import getCurrentDocument from './getCurrentDocument';
 import isWindow from './isWindow';
 import type { GeneralWindow } from './types';
 
-
 /**
  * Determines the relevant owner `window` object from a give node
  *

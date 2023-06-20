@@ -2,12 +2,8 @@ import inView from '~web/inView';
 import { byId, createElement, generateId, insertHtml, removeElement } from './assets/helpers';
 import { mockClientRect } from './assets/mocks';
 
-
-
 const testID = generateId('InView');
 const hiddenID = generateId('InView_hidden');
-
-
 
 describe('"inView"', () => {
   insertHtml(`
@@ -40,7 +36,7 @@ describe('"inView"', () => {
     it.each([
       ['Element not in the DOM', div],
       ['Child of element not in the DOM', div.firstElementChild as HTMLElement],
-      ['Hidden', byId('hidden')]
+      ['Hidden', byId('hidden')],
     ])('%s', (_, elm) => {
       const result = { inside: false, above: false, below: false, left: false, right: false };
       expect(inView(elm)).toEqual(result);
@@ -48,47 +44,41 @@ describe('"inView"', () => {
   });
 
   describe.each([0, 10, -10])('Indicates where the element is off screen (threshold: %i)', (threshold) => {
-    it.each([
-      'above',
-      'below',
-      'left',
-      'right',
-      'above, left',
-      'above, right',
-      'below, left',
-      'below, right'
-    ])('Indicates where the element is off the viewport area: "%s"', (places) => {
-      type Key = 'above' | 'below' | 'left' | 'right';
+    it.each(['above', 'below', 'left', 'right', 'above, left', 'above, right', 'below, left', 'below, right'])(
+      'Indicates where the element is off the viewport area: "%s"',
+      (places) => {
+        type Key = 'above' | 'below' | 'left' | 'right';
 
-      const keys = places.split(', ') as [Key] | [Key, Key];
-      const result = { inside: false, above: false, below: false, left: false, right: false };
-      const mock = { top: 100, left: 100, right: 100, bottom: 100 };
+        const keys = places.split(', ') as [Key] | [Key, Key];
+        const result = { inside: false, above: false, below: false, left: false, right: false };
+        const mock = { top: 100, left: 100, right: 100, bottom: 100 };
 
-      keys.forEach((key) => {
-        if (key === 'left') {
-          mock.right = threshold;
-        }
+        keys.forEach((key) => {
+          if (key === 'left') {
+            mock.right = threshold;
+          }
 
-        if (key === 'right') {
-          mock.left = window.innerWidth - threshold;
-        }
+          if (key === 'right') {
+            mock.left = window.innerWidth - threshold;
+          }
 
-        if (key === 'above') {
-          mock.bottom = threshold;
-        }
+          if (key === 'above') {
+            mock.bottom = threshold;
+          }
 
-        if (key === 'below') {
-          mock.top = window.innerHeight - threshold;
-        }
+          if (key === 'below') {
+            mock.top = window.innerHeight - threshold;
+          }
 
-        result[key] = true;
-      });
+          result[key] = true;
+        });
 
-      const restore = mockClientRect(mock);
+        const restore = mockClientRect(mock);
 
-      expect(inView(testNode, threshold || undefined)).toEqual(result);
+        expect(inView(testNode, threshold || undefined)).toEqual(result);
 
-      restore();
-    });
+        restore();
+      }
+    );
   });
 });

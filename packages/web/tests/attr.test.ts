@@ -2,11 +2,7 @@ import { byId, insertHtml, removeElement, generateId } from './assets/helpers';
 
 import attr from '~web/attr';
 
-
-
 const testID = generateId('Attr');
-
-
 
 describe('"attr"', () => {
   let testNode: HTMLElement;
@@ -14,7 +10,7 @@ describe('"attr"', () => {
   const attrs = {
     normal: ['title', 'title attribute'] as const,
     custom: ['custom', 'custom attribute'] as const,
-    data: ['data-attr', 'data attribute'] as const
+    data: ['data-attr', 'data attribute'] as const,
   };
 
   beforeAll(() => {
@@ -33,7 +29,7 @@ describe('"attr"', () => {
   it.each([
     ['normal', ...attrs.normal],
     ['custom', ...attrs.custom],
-    ['data', ...attrs.data]
+    ['data', ...attrs.data],
   ])('Retrieves the value of a "%s" attribute on a DOM element', (_, key, value) => {
     expect(attr(testNode, key)).toBe(value);
   });
@@ -41,9 +37,11 @@ describe('"attr"', () => {
   describe.each([
     ['normal', ...attrs.normal],
     ['custom', ...attrs.custom],
-    ['data', ...attrs.data]
+    ['data', ...attrs.data],
   ])('Setting the value of a "%s" attribute on a DOM element', (_, key, value) => {
-    beforeEach(() => { testNode.setAttribute(key, value); });
+    beforeEach(() => {
+      testNode.setAttribute(key, value);
+    });
 
     it('Sets the new value', () => {
       attr(testNode, key, 'new value');

@@ -2,12 +2,9 @@ import { appendFrame, createDetachedDocument, createElement } from './assets/hel
 
 import isDOMRoot from '~web/isDOMRoot';
 
-
-
 describe('"isDOMRoot"', () => {
   describe('Returns `true` for the `documentElement`', () => {
-    const test = (doc: Document) =>
-      expect(isDOMRoot(doc.documentElement)).toBe(true);
+    const test = (doc: Document) => expect(isDOMRoot(doc.documentElement)).toBe(true);
 
     it('In the current document', () => {
       test(document);
@@ -16,7 +13,7 @@ describe('"isDOMRoot"', () => {
     it('In a Frame', () => {
       const frame = appendFrame();
 
-      test((frame.contentDocument as Document));
+      test(frame.contentDocument as Document);
 
       frame.remove();
     });
@@ -37,7 +34,7 @@ describe('"isDOMRoot"', () => {
       ['Document Fragment', document.createDocumentFragment()],
       ['NULL', null],
       ['Object', {}],
-      ['Fake Element', { parentNode: { nodeType: 9 } }]
+      ['Fake Element', { parentNode: { nodeType: 9 } }],
     ])('%s', (_, val) => {
       expect(isDOMRoot(val)).toBe(false);
     });

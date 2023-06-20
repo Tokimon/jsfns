@@ -1,15 +1,9 @@
 import minMax from './minMax';
 import hex from './numberToHex';
 
-
-
 export type RGBTuple = [red: number, green: number, blue: number, alpha?: number];
 
-
-
 const hexStr = (color: number) => hex(minMax(color, 0, 255));
-
-
 
 /**
  * Converts an Array of R G B (A) colors into a hex color.

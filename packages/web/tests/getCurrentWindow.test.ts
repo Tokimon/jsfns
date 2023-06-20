@@ -2,8 +2,6 @@ import { appendFrame, createDetachedDocument, createElement } from './assets/hel
 
 import getCurrentWindow from '~web/getCurrentWindow';
 
-
-
 describe('"getCurrentWindow"', () => {
   it('Returns current Window from a given Frame (not `contentWindow`)', () => {
     const frame = appendFrame();
@@ -15,14 +13,7 @@ describe('"getCurrentWindow"', () => {
   });
 
   describe('Returns `null` when given value is', () => {
-    it.each([
-      undefined,
-      null,
-      {},
-      [],
-      true,
-      'String'
-    ])('Not a DOM Node: %s', (value) => {
+    it.each([undefined, null, {}, [], true, 'String'])('Not a DOM Node: %s', (value) => {
       const doc = getCurrentWindow(value);
       expect(doc).toBeNull();
     });

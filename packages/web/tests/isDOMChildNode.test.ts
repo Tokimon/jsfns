@@ -2,18 +2,16 @@ import { byId, createElement, appendFrame, generateId, insertHtml, removeElement
 
 import isDOMChildNode from '~web/isDOMChildNode';
 
-
-
 const testID = generateId('IsDOMChildNode');
 
-
-
 describe('"isDOMChildNode"', () => {
-  beforeAll(() => insertHtml(`
+  beforeAll(() =>
+    insertHtml(`
     <div id="${testID}">
       <span></span>
     </div>
-  `));
+  `)
+  );
 
   afterAll(() => removeElement(testID));
 
@@ -53,7 +51,7 @@ describe('"isDOMChildNode"', () => {
 
     it.each([
       ['Document', document],
-      ['<html> element', document.documentElement]
+      ['<html> element', document.documentElement],
     ])('DOM root elements', (_, elm) => {
       expect(isDOMChildNode(elm)).toBe(false);
     });

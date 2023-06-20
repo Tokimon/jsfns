@@ -1,4 +1,4 @@
-export type cnObj = { [key: string]: boolean; };
+export type cnObj = { [key: string]: boolean };
 export type Option = string | cnObj;
 
 const combine = (base: string, cn: string) => base + (base && cn && ' ') + cn;
@@ -26,8 +26,7 @@ export const classNameString = (...args: (Option | Option[])[]): string => {
 
     if (typeof input === 'string') str = combine(str, input);
     else if (Array.isArray(input)) str = combine(str, classNameString(...input));
-    else if (typeof input === 'object')
-      for (const key in input) str = combine(str, input[key] ? key : '');
+    else if (typeof input === 'object') for (const key in input) str = combine(str, input[key] ? key : '');
   }
 
   return str;

@@ -5,8 +5,6 @@ import findById from './findById';
 import findByTagName from './findByTagName';
 import findByQuery from './findByQuery';
 
-
-
 /**
  * Find elements by a given selector. The selector will be lightly analyzed to determine
  * the appropriate `findByXX` function. This should be faster than just running querySelector(All)
@@ -25,7 +23,7 @@ import findByQuery from './findByQuery';
  * find('#my-id > .my-class + p') // Uses querySelectorAll()
  * ```
  */
- function find(selector: string): HTMLElement | Element | Element[] | null;
+function find(selector: string): HTMLElement | Element | Element[] | null;
 
 /**
  * Find elements by a given selector from a given element. The selector will be lightly analyzed to determine
@@ -46,22 +44,21 @@ import findByQuery from './findByQuery';
  * find(myElm, '#my-id > .my-class + p') // Uses myElm.querySelectorAll()
  * ```
  */
-function find(
-  elm: Document | Element,
-  selector: string
-): HTMLElement | Element | Element[] | null;
+function find(elm: Document | Element, selector: string): HTMLElement | Element | Element[] | null;
 
-
-
-function find(
-  elm: Document | Element | string,
-  selector?: string
-): HTMLElement | Element | Element[] | null {
+function find(elm: Document | Element | string, selector?: string): HTMLElement | Element | Element[] | null {
   if (isString(elm)) [elm, selector] = [document, elm];
 
   const q = selector as string;
-  const isComplex = q.includes(' ') || q.includes('>') || q.includes('+') || q.includes('*')
-                    || q.includes('~') || q.includes(':') || q.includes('[') || q.includes(',');
+  const isComplex =
+    q.includes(' ') ||
+    q.includes('>') ||
+    q.includes('+') ||
+    q.includes('*') ||
+    q.includes('~') ||
+    q.includes(':') ||
+    q.includes('[') ||
+    q.includes(',');
 
   if (!isComplex) {
     const firstChar = q[0];

@@ -10,10 +10,8 @@ export const addCustomType = (type: Kind_TypeAlias) => {
 };
 
 export const getCustomTypes = () => store;
-export const getCustomTypesArray = () =>
-  Object.entries(store).map(([name, content]) => ({ name, markdown: TSCodeMarkdown(content) }));
+export const getCustomTypesArray = () => Object.entries(store).map(([name, content]) => ({ name, markdown: TSCodeMarkdown(content) }));
 
 export function findCustomTypes(module: Kind_Module) {
-  for (const child of module.children)
-    if (child.kind === ReflectionKind.TypeAlias) addCustomType(child);
+  for (const child of module.children) if (child.kind === ReflectionKind.TypeAlias) addCustomType(child);
 }

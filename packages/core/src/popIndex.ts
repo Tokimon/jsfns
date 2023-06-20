@@ -23,8 +23,6 @@ export function popIndexPure(list: unknown[], index: number): [unknown, unknown[
   return [value, list];
 }
 
-
-
 /**
  * Removes and returns an entry from a given array, at a designated index position.
  * WARNING: This is not a pure function and will alter the given array internally

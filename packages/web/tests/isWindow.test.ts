@@ -2,8 +2,6 @@ import { appendFrame, createDetachedDocument } from './assets/helpers';
 
 import isWindow from '~web/isWindow';
 
-
-
 describe('"isWindow"', () => {
   describe('Returns `true` for:', () => {
     it('The Window', () => {
@@ -38,7 +36,7 @@ describe('"isWindow"', () => {
       ['<html> element', document.documentElement],
       ['<body> element', document.body],
       ['NULL', null],
-      ['Object', {}]
+      ['Object', {}],
     ])('A non window element: %s', (_, elm) => {
       expect(isWindow(elm)).toBe(false);
     });

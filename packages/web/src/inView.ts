@@ -1,8 +1,6 @@
 import isDOMChildNode from './isDOMChildNode';
 import hidden from './hidden';
 
-
-
 export type PositionIndicator = {
   /** Inside the viewport area? */
   inside: boolean;
@@ -14,9 +12,7 @@ export type PositionIndicator = {
   left: boolean;
   /** To the right of the viewport area? */
   right: boolean;
-}
-
-
+};
 
 /**
  * Determines whether the element is in the area of the viewport or not.

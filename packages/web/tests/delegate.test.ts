@@ -2,11 +2,8 @@ import { jest } from '@jest/globals';
 import delegate, { delegateHandler, DelegateEventHandler } from '~web/delegate';
 import { byId, generateId, insertHtml, removeElement, triggerEvent } from './assets/helpers';
 
-
-
 const delegateID = generateId('Delegate');
 const childID = generateId('Child');
-
 
 describe('"delegate"', () => {
   describe('"delegateHandler"', () => {

@@ -26,7 +26,9 @@ export function attr(elm: Element, attrName: string, value?: string | number | b
   if (value === false) {
     elm.removeAttribute(attrName);
   } else if (value !== undefined) {
-    if (value === true) { value = ''; }
+    if (value === true) {
+      value = '';
+    }
     elm.setAttribute(attrName, String(value));
   }
 

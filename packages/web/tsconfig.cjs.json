@@ -6,7 +6,5 @@
     "module": "CommonJS",
     "outDir": "./build/cjs"
   },
-  "references": [
-    { "path": "../core/tsconfig.cjs.json" }
-  ]
+  "references": [{ "path": "../core/tsconfig.cjs.json" }]
 }

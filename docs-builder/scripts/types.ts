@@ -107,20 +107,9 @@ export type Element_NamedTupleMember = {
   defaultValue?: string;
 };
 
-type Basic_Types =
-  | Type_Intrinsic
-  | Type_Reference
-  | Type_Array
-  | Type_Tuple
-  | Type_Union
-  | Type_Literal;
+type Basic_Types = Type_Intrinsic | Type_Reference | Type_Array | Type_Tuple | Type_Union | Type_Literal;
 
-export type All_Types =
-  | Basic_Types
-  | Type_Intersection
-  | Type_Reflection
-  | Element_NamedTupleMember
-  | Type_Predicate;
+export type All_Types = Basic_Types | Type_Intersection | Type_Reflection | Element_NamedTupleMember | Type_Predicate;
 
 export type Kind_Project = BaseProps & {
   kind: ReflectionKind.Project;

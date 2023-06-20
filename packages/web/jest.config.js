@@ -9,6 +9,6 @@ export default {
   transformIgnorePatterns: ['node_modules/(?!@js-fns)'],
   moduleNameMapper: {
     '^~web/(.*)$': '<rootDir>/src/$1',
-    '^@js-fns/core/(.*)$': '<rootDir>/../core/src/$1'
-  }
+    '^@js-fns/core/(.*)$': '<rootDir>/../core/src/$1',
+  },
 };

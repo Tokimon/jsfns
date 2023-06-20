@@ -2,8 +2,6 @@ import { jest } from '@jest/globals';
 import domReady, { docComplete } from '~web/domReady';
 import { bind, triggerEvent, unbind } from './assets/helpers';
 
-
-
 function afterDomLoad() {
   return new Promise((resolve) => {
     if (docComplete()) {
@@ -21,16 +19,12 @@ function afterDomLoad() {
   });
 }
 
-
-
 describe('"domReady"', () => {
   it('Triggers the handler on the document ready event', async () => {
     await afterDomLoad();
 
     const domReadyCb = jest.fn();
-    const fakeReadyState = jest
-      .spyOn(document, 'readyState', 'get')
-      .mockReturnValue('loading');
+    const fakeReadyState = jest.spyOn(document, 'readyState', 'get').mockReturnValue('loading');
 
     domReady(domReadyCb);
     fakeReadyState.mockRestore();

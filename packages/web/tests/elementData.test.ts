@@ -2,11 +2,7 @@ import { insertHtml, removeElement, byId, generateId } from './assets/helpers';
 
 import elementData, { resetCache } from '~web/elementData';
 
-
-
 const testID = generateId('ElementData');
-
-
 
 describe('"elementData"', () => {
   let testNode: HTMLElement;
@@ -34,19 +30,12 @@ describe('"elementData"', () => {
       boolean: true,
       object: { a: 1 },
       array: [1],
-      null: null
+      null: null,
     });
   });
 
   describe('Stores given data under the given key for a given element', () => {
-    it.each([
-      null,
-      { a: 1 },
-      [1],
-      'string',
-      1,
-      true
-    ])('data: %s', (data) => {
+    it.each([null, { a: 1 }, [1], 'string', 1, true])('data: %s', (data) => {
       elementData(testNode, 'key', data);
       expect(elementData(testNode, 'key')).toBe(data);
     });

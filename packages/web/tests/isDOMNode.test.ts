@@ -2,8 +2,6 @@ import { appendFrame, createDetachedDocument } from './assets/helpers';
 
 import isDOMNode from '~web/isDOMNode';
 
-
-
 describe('"isDOMNode"', () => {
   describe('Returns `true` for', () => {
     describe.each([
@@ -13,7 +11,7 @@ describe('"isDOMNode"', () => {
       ['<body> element', (doc: Document) => doc.body],
       ['<p> element', (doc: Document) => doc.createElement('p')],
       ['Text Node', (doc: Document) => doc.createTextNode('')],
-      ['Comment Node', (doc: Document) => doc.createComment('')]
+      ['Comment Node', (doc: Document) => doc.createComment('')],
     ])('%s', (_, getElm) => {
       it('In the current document', () => {
         expect(isDOMNode(getElm(document))).toBe(true);
@@ -22,7 +20,7 @@ describe('"isDOMNode"', () => {
       it('In a Frame document', () => {
         const frame = appendFrame();
 
-        expect(isDOMNode(getElm((frame.contentDocument as Document)))).toBe(true);
+        expect(isDOMNode(getElm(frame.contentDocument as Document))).toBe(true);
 
         frame.remove();
       });
@@ -38,7 +36,7 @@ describe('"isDOMNode"', () => {
     it.each([
       ['Window', window],
       ['NULL', null],
-      ['Object', {}]
+      ['Object', {}],
     ])('%s', (_, elm) => {
       expect(isDOMNode(elm)).toBe(false);
     });

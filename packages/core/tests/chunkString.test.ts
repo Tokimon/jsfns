@@ -1,7 +1,5 @@
 import chunkString from '~core/chunkString';
 
-
-
 describe('"chunkString"', () => {
   it('Cuts up a string into chunks', () => {
     const chunks = chunkString('abcdef');

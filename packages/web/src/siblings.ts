@@ -1,7 +1,5 @@
 import isDOMChildNode from './isDOMChildNode';
 
-
-
 /**
  * Get all sibling elements of a given DOM element
  *
@@ -30,4 +28,3 @@ export function siblings(elm: Element): Element[] {
 }
 
 export default siblings;
-

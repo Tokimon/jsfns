@@ -3,18 +3,9 @@ import type { CSSStyleKey } from './types';
 import isString from '@js-fns/core/isString';
 import kebabCase from '@js-fns/core/kebabCase';
 
-
-
 export type CSSStyleProperties = { [key in CSSStyleKey]?: string | number | null };
 
-
-
-const applyValue = (
-  elm: HTMLElement,
-  property: CSSStyleKey,
-  value: string | number | null,
-  important: boolean
-) => {
+const applyValue = (elm: HTMLElement, property: CSSStyleKey, value: string | number | null, important: boolean) => {
   const val = value != null ? String(value) : '';
 
   if (important) {
@@ -32,11 +23,7 @@ const applyValue = (
   }
 };
 
-const setValue = (
-  elm: HTMLElement,
-  property: CSSStyleKey,
-  value: string | number | null
-): void => {
+const setValue = (elm: HTMLElement, property: CSSStyleKey, value: string | number | null): void => {
   let important = false;
 
   if (isString(value) && value.includes('!important')) {
@@ -51,19 +38,14 @@ const setValue = (
  * Get a given style property.
  * if value is set (not undefined), it will be set before returning
  */
-const handleSingleValue = (
-  elm: HTMLElement,
-  property: CSSStyleKey,
-  value?: string | number | null
-) => {
+const handleSingleValue = (elm: HTMLElement, property: CSSStyleKey, value?: string | number | null) => {
   if (value !== undefined) {
     setValue(elm, property, value);
     return window.getComputedStyle(elm);
   }
 
   // Get all computed styles as that gives a more correct value
-  const val = window.getComputedStyle(elm)
-    .getPropertyValue(kebabCase(property));
+  const val = window.getComputedStyle(elm).getPropertyValue(kebabCase(property));
 
   // Ensure to return a numeric value if possible
   const numeric = parseFloat(val);
@@ -73,20 +55,15 @@ const handleSingleValue = (
 /**
  * Traverse the `propertyMap` and set style on element accordingly
  */
-const handleMultipleValues = (
-  elm: HTMLElement,
-  properties?: CSSStyleProperties
-): CSSStyleDeclaration => {
+const handleMultipleValues = (elm: HTMLElement, properties?: CSSStyleProperties): CSSStyleDeclaration => {
   if (properties) {
-    (Object.entries(properties) as [CSSStyleKey, typeof properties[CSSStyleKey]][])
-      .forEach(([key, value]) => {
-        value && setValue(elm, key, value);
-      });
+    (Object.entries(properties) as [CSSStyleKey, (typeof properties)[CSSStyleKey]][]).forEach(([key, value]) => {
+      value && setValue(elm, key, value);
+    });
   }
 
   return window.getComputedStyle(elm);
 };
-
 
 /**
  * Get the computed styling of a DOM element.
@@ -163,9 +140,7 @@ function css(
   property?: CSSStyleKey | CSSStyleProperties,
   value?: string | number | null
 ): CSSStyleDeclaration | string | number | null {
-  return isString(property)
-    ? handleSingleValue(elm, property, value)
-    : handleMultipleValues(elm, property);
+  return isString(property) ? handleSingleValue(elm, property, value) : handleMultipleValues(elm, property);
 }
 
 export { css };

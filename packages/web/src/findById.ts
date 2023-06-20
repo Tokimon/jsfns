@@ -1,7 +1,5 @@
 const byId = (id: string) => document.getElementById(id);
 
-
-
 /**
  * Find a DOM element with the given ID
  *
@@ -15,7 +13,7 @@ const byId = (id: string) => document.getElementById(id);
  * findById('non-existing') // --> null
  * ```
  */
- function findById(ids: string): HTMLElement | null
+function findById(ids: string): HTMLElement | null;
 
 /**
  * Find a DOM elements from a list of IDs
@@ -30,7 +28,7 @@ const byId = (id: string) => document.getElementById(id);
  * findById(['non-existing', 'non-existing-2']) // --> []
  * ```
  */
-function findById(ids: string[]): HTMLElement[]
+function findById(ids: string[]): HTMLElement[];
 
 function findById(ids: string | string[]): HTMLElement | HTMLElement[] | null {
   if (!Array.isArray(ids)) return byId(ids);

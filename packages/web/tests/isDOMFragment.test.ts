@@ -2,8 +2,6 @@ import { createElement } from './assets/helpers';
 
 import isDOMFragment from '~web/isDOMFragment';
 
-
-
 describe('"isDOMFragment"', () => {
   describe('Returns `true` for:', () => {
     it('a Document Fragment', () => {
@@ -22,7 +20,7 @@ describe('"isDOMFragment"', () => {
       ['Window', window],
       ['NULL', null],
       ['Object', {}],
-      ['Fake Element', { nodeType: 1 }]
+      ['Fake Element', { nodeType: 1 }],
     ])('%s', (_, elm) => {
       expect(isDOMFragment(elm)).toBe(false);
     });

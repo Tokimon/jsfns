@@ -2,8 +2,6 @@ import { jest } from '@jest/globals';
 import trigger from '~web/trigger';
 import { bind, unbind } from './assets/helpers';
 
-
-
 describe('"Trigger"', () => {
   function suite(elm?: Element | Window) {
     const cb = jest.fn();
@@ -11,10 +9,7 @@ describe('"Trigger"', () => {
     const eventName = 'test';
     const eventNames = [1, 2, 3].map((n) => eventName + n);
 
-    const _trigger = (...args: [
-      eventNames: string | string[],
-      data?: unknown
-    ]) => elm ? trigger(elm, ...args) : trigger(...args);
+    const _trigger = (...args: [eventNames: string | string[], data?: unknown]) => (elm ? trigger(elm, ...args) : trigger(...args));
 
     const target = elm || document;
 
@@ -26,13 +21,13 @@ describe('"Trigger"', () => {
       expect(_trigger(eventName)).toBe(target);
     });
 
-    it.each(
-      ['', '_', '-', '.', ':']
-    )('Triggers event with separator: "%s"', (separator) => {
+    it.each(['', '_', '-', '.', ':'])('Triggers event with separator: "%s"', (separator) => {
       const cb = jest.fn();
 
       let e = 'test';
-      if (separator) { e += separator + 'part'; }
+      if (separator) {
+        e += separator + 'part';
+      }
 
       bind(target, e, cb);
 
@@ -58,7 +53,7 @@ describe('"Trigger"', () => {
     it.each([
       ['Object', { extra: 'test' }],
       ['Function', () => undefined],
-      ['String', 'test']
+      ['String', 'test'],
     ])('Triggers given event with extra data: %s', (_, val) => {
       bind(target, eventName, cb);
 
@@ -66,7 +61,7 @@ describe('"Trigger"', () => {
 
       expect(cb).toHaveBeenLastCalledWith(
         expect.objectContaining({
-          detail: val
+          detail: val,
         })
       );
 

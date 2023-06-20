@@ -1,10 +1,4 @@
-import type {
-  All_Types,
-  Element_NamedTupleMember,
-  Flags,
-  Kind_Param,
-  Kind_Property,
-} from '../types';
+import type { All_Types, Element_NamedTupleMember, Flags, Kind_Param, Kind_Property } from '../types';
 import type { TypeStringFunction } from './typeString';
 
 export function buildProperty(typeString: TypeStringFunction, prop: Kind_Property | Kind_Param) {

@@ -1,14 +1,8 @@
 import formatNumber, { type FormatNumberSettings } from './formatNumber';
 
-
-
 export type CurrencyFormatter = (num: number) => string;
 
-
-
 const thousandRegExp = /^(\D*)1(\D*)000(\D*)(\d*)(\D*)$/;
-
-
 
 /**
  * Creates a function that formats a number to a given currency format (eg. 1000 -> 1.000,00 €)

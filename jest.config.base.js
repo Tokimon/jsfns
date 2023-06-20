@@ -5,6 +5,6 @@ export default {
   coverageDirectory: '<rootDir>/coverage/',
   extensionsToTreatAsEsm: ['.ts'],
   transform: {
-    '^.+\\.ts$' : ['ts-jest', { useESM: true, tsconfig: '<rootDir>/tsconfig.test.json' }]
-  }
+    '^.+\\.ts$': ['ts-jest', { useESM: true, tsconfig: '<rootDir>/tsconfig.test.json' }],
+  },
 };

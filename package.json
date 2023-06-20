@@ -8,30 +8,7 @@
   "scripts": {
     "prepublishOnly": "npm run build",
     "postpublish": "npm run clean",
-    "test": "npm test --workspaces",
-    "test:core": "npm test -w @js-fns/core",
-    "test:web": "npm test -w @js-fns/web",
-    "test:coverage": "npm run test:coverage --workspaces",
-    "types": "npm run types --workspaces",
-    "types:core": "npm run types -w @js-fns/core",
-    "types:web": "npm run types -w @js-fns/web",
-    "build": "npm run build --workspaces",
-    "build:core": "npm run build -w @js-fns/core",
-    "build:web": "npm run build -w @js-fns/web",
-    "clean": "npm run clean --workspaces",
-    "clean:core": "npm run clean -w @js-fns/core",
-    "clean:web": "npm run clean -w @js-fns/web",
-    "missing": "npm run missing --workspaces",
-    "missing:core": "npm run missing -w @js-fns/core",
-    "missing:web": "npm run missing -w @js-fns/web",
-    "lint": "npm run lint --workspaces",
-    "lint:core": "npm run lint -w @js-fns/core",
-    "lint:web": "npm run lint -w @js-fns/web",
-    "coveralls": "cat ./coverage/lcov.info | node node_modules/.bin/coveralls",
-    "coveralls:win": "type ./coverage/lcov.info | node node_modules/.bin/coveralls",
-    "docs": "npm run docs --workspaces",
-    "docs:core": "npm run docs -w @js-fns/core",
-    "docs:web": "npm run docs -w @js-fns/web"
+    "prettier": "prettier --write ."
   },
   "repository": {
     "type": "git",
@@ -44,5 +21,16 @@
     "url": "https://github.com/Tokimon/js-fns/issues"
   },
   "homepage": "https://github.com/Tokimon/js-fns#readme",
-  "devDependencies": {}
+  "devDependencies": {
+    "prettier": "^2.8.8",
+    "eslint": "^8.43.0",
+    "eslint-config-prettier": "^8.8.0",
+    "eslint-config-standard": "^17.1.0",
+    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-jest": "^27.2.2",
+    "eslint-plugin-n": "^16.0.0",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^6.1.1",
+    "typescript": "^5.1.3"
+  }
 }

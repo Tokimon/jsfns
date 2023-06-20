@@ -1,8 +1,6 @@
 import viewport from '~web/viewport';
 import { appendFrame, createDetachedDocument } from './assets/helpers';
 
-
-
 describe('"viewport"', () => {
   describe('Returns the <html> element for', () => {
     const docElm = (doc: Document) => doc.documentElement;
@@ -11,7 +9,7 @@ describe('"viewport"', () => {
       ['Standard Element', (doc: Document) => doc.createElement('div')],
       ['<body>', (doc: Document) => doc.body],
       ['Document', (doc: Document) => doc],
-      ['Window', (doc: Document) => doc.defaultView || window]
+      ['Window', (doc: Document) => doc.defaultView || window],
     ])('when given element is: %s', (type, getElm) => {
       it('In the current document', () => {
         const doc = document;

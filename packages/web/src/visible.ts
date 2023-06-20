@@ -20,4 +20,3 @@ import invisible from './invisible';
 export const visible = (elm: HTMLElement): boolean => !invisible(elm);
 
 export default visible;
-

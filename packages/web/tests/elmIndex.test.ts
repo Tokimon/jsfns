@@ -2,12 +2,8 @@ import { insertHtml, removeElement, byId, generateId, createElement } from './as
 
 import elmIndex from '~web/elmIndex';
 
-
-
 const testID = generateId('ElmIndex');
 const SubNodeID = generateId('SubNode');
-
-
 
 describe('"elmIndex"', () => {
   beforeAll(() => insertHtml(`<div id="${testID}"><b></b><b id='${SubNodeID}'></b><b><b></div>`));

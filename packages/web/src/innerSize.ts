@@ -3,8 +3,6 @@ import isWindow from './isWindow';
 import { GeneralWindow } from './types';
 import viewport from './viewport';
 
-
-
 /**
  * Find the size of a DOM element, document or window excluding borders, margins and scrollbars
  *

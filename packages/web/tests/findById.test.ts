@@ -2,21 +2,19 @@ import { generateId, insertHtml, removeElement } from './assets/helpers';
 
 import findById from '~web/findById';
 
-
-
 const testID = generateId('FindByIDTest');
 
-
-
 describe('"findById"', () => {
-  beforeAll(() => insertHtml(`
+  beforeAll(() =>
+    insertHtml(`
     <div id="${testID}"></div>
     <div id="Duplicate" class="first"></div>
     <div id="Duplicate" class="second">
       <div id='Child'></div>
       <div id='SecondChild'></div>
     </div>
-  `));
+  `)
+  );
 
   afterAll(() => [testID, 'Duplicate', 'Duplicate'].forEach((id) => removeElement(id)));
 

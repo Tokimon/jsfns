@@ -1,23 +1,16 @@
 import isBlob from './isBlob';
 
-
-declare global{
+declare global {
   interface Navigator {
-    msSaveBlob:(blob: Blob, defaultName?: string) => boolean
+    msSaveBlob: (blob: Blob, defaultName?: string) => boolean;
   }
 }
 
-
-
 const MSSave = 'msSaveBlob' in navigator;
-
-
 
 export function fileSavingSupported(): boolean {
   return 'Blob' in window && (MSSave || 'download' in HTMLAnchorElement.prototype);
 }
-
-
 
 /**
  * Creates a file with given content and triggers download.
@@ -35,7 +28,9 @@ export function fileSavingSupported(): boolean {
  * ```
  */
 export function saveFile(content: Blob | string, name: string, type = 'text/plain; charset=utf-8'): void {
-  if (!fileSavingSupported()) { return; }
+  if (!fileSavingSupported()) {
+    return;
+  }
 
   if (!isBlob(content)) content = new Blob([`${content}`], { type });
 

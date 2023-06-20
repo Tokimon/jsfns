@@ -6,7 +6,5 @@
     "target": "ES2021",
     "outDir": "./build/mjs"
   },
-  "references": [
-    { "path": "../core/tsconfig.mjs.json" }
-  ]
+  "references": [{ "path": "../core/tsconfig.mjs.json" }]
 }

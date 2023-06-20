@@ -1,15 +1,11 @@
 import isNumber from './isNumber';
 
-
-
 export type TruncateSettings = {
   /** Max length of the given string */
   maxLength?: number;
   /** What ending to give the truncated string (default is "...") */
   end?: string;
-}
-
-
+};
 
 /**
  * Limits a string to a given number of characters and adds '...' in the end
@@ -29,11 +25,7 @@ export type TruncateSettings = {
 export function truncate(str: string, settings: TruncateSettings = {}): string {
   const { maxLength, end = '...' } = settings;
 
-  if (
-    !isNumber(maxLength)
-    || (maxLength as number) < 0
-    || str.length <= (maxLength as number)
-  ) {
+  if (!isNumber(maxLength) || (maxLength as number) < 0 || str.length <= (maxLength as number)) {
     return str;
   }
 

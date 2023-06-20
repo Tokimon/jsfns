@@ -2,12 +2,8 @@ import { insertHtml, removeElement, generateId, byId } from './assets/helpers';
 
 import css from '~web/css';
 
-
-
 const testID = generateId('CSS');
 const styleID = generateId('CSS_style');
-
-
 
 describe('"css"', () => {
   let testNode: HTMLElement;

@@ -4,8 +4,6 @@ import eventOptionsSupported from '~web/eventOptionsSupported';
 import off from '~web/off';
 import { bind, triggerEvent } from './assets/helpers';
 
-
-
 describe('"off"', () => {
   function suite(elm?: HTMLElement | Window) {
     let removeEventListenerSpy: SpyInstance<typeof document.removeEventListener>;
@@ -14,11 +12,8 @@ describe('"off"', () => {
     const eventName = 'test';
     const eventNames = [1, 2, 3].map((n) => eventName + n);
 
-    const _off = (...args: [
-      string | string[],
-      EventListenerOrEventListenerObject,
-      EventListenerOptions?
-    ]) => elm ? off(elm, ...args) : off(...args);
+    const _off = (...args: [string | string[], EventListenerOrEventListenerObject, EventListenerOptions?]) =>
+      elm ? off(elm, ...args) : off(...args);
 
     const target = elm || document;
 
@@ -36,11 +31,11 @@ describe('"off"', () => {
 
     afterAll(() => removeEventListenerSpy.mockRestore());
 
-    it.each(
-      ['', '_', '-', '.', ':']
-    )('Removes event with separator: "%s"', (separator) => {
+    it.each(['', '_', '-', '.', ':'])('Removes event with separator: "%s"', (separator) => {
       let e = eventName;
-      if (separator) { e += separator + 'part'; }
+      if (separator) {
+        e += separator + 'part';
+      }
 
       _off(e, cb);
 
@@ -68,8 +63,9 @@ describe('"off"', () => {
 
     describe('When EventTarget is not supported, third argument in "removeEventListener" is', () => {
       beforeEach(() => {
-        const supportSpy = jest.spyOn(document, 'addEventListener')
-          .mockImplementation(() => { throw new Error('nope'); });
+        const supportSpy = jest.spyOn(document, 'addEventListener').mockImplementation(() => {
+          throw new Error('nope');
+        });
 
         const supported = eventOptionsSupported(true);
         expect(supported).toBe(false);
@@ -77,7 +73,9 @@ describe('"off"', () => {
         supportSpy.mockRestore();
       });
 
-      afterEach(() => { eventOptionsSupported(true); });
+      afterEach(() => {
+        eventOptionsSupported(true);
+      });
 
       it('`false` when no options are given', () => {
         _off(eventName, cb);
@@ -102,7 +100,7 @@ describe('"off"', () => {
   describe.each([
     ['no Element (falls back to Document)', undefined],
     ['a HTML element', document.body],
-    ['Window', window]
+    ['Window', window],
   ])('With %s', (_, elm) => {
     suite(elm);
   });

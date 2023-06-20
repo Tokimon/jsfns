@@ -1,8 +1,6 @@
 import getCurrentDocument from './getCurrentDocument';
 import isDOMNode from './isDOMNode';
 
-
-
 /**
  * Is the given object root node of the DOM (eg `<html>` for HTML documents og `<svg>` for SVG documents)
  *

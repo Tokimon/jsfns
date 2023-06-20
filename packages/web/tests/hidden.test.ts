@@ -2,17 +2,14 @@ import { byId, createElement, generateId, insertHtml, removeElement } from './as
 
 import hidden from '~web/hidden';
 
-
-
 const testID = generateId('Hidden');
 
 const sizeStyle = 'width: 10px; height: 10px;';
 const visibleStyle = `${sizeStyle} opacity: 1;`;
 
-
-
 describe('"hidden"', () => {
-  beforeAll(() => insertHtml(`
+  beforeAll(() =>
+    insertHtml(`
     <div id="${testID}">
       <style id="Style">
         #NoDisplay { display: none; }
@@ -25,7 +22,8 @@ describe('"hidden"', () => {
       <div id="NotVisible" style="${visibleStyle}"><div id="ChildVisibility"></div></div>
       <div id="NoSize"></div>
     </div>
-  `));
+  `)
+  );
 
   afterAll(() => {
     removeElement(testID);

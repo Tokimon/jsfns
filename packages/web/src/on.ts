@@ -2,26 +2,22 @@ import isFunction from '@js-fns/core/isFunction';
 import isEventTarget from './isEventTarget';
 import off from './off';
 
-
-
 export type ExtendedAddEventListenerOptions = AddEventListenerOptions & {
   /**
    * A method that returns true when the event should trigger
    * Combined with `once`, it will only remove the handler if the handler has triggered (when resolves to true)
    */
-  when?: (event: Event) => boolean,
+  when?: (event: Event) => boolean;
 
   /** A selector that defines which element is the actual target of the event */
-  delegate?: string
-}
-
-
+  delegate?: string;
+};
 
 export type argsWithoutTarget = [
   eventNames: string | string[],
   handler: EventListenerOrEventListenerObject,
   options?: ExtendedAddEventListenerOptions
-]
+];
 
 export type argsWithTarget = [
   elm: EventTarget,
@@ -30,11 +26,7 @@ export type argsWithTarget = [
   options?: ExtendedAddEventListenerOptions
 ];
 
-
-function delegateHandler(
-  handler: EventListenerOrEventListenerObject,
-  options: ExtendedAddEventListenerOptions
-) {
+function delegateHandler(handler: EventListenerOrEventListenerObject, options: ExtendedAddEventListenerOptions) {
   const { delegate, ...rest } = options;
   if (!delegate) return [handler, options] as [EventListenerOrEventListenerObject, ExtendedAddEventListenerOptions];
 
@@ -53,7 +45,7 @@ function delegateHandler(
       value: document.getElementById('notify-container'),
       writable: false,
       enumerable: true,
-      configurable: true
+      configurable: true,
     });
 
     return orgHandler.call(target, evt);
@@ -62,12 +54,7 @@ function delegateHandler(
   return [eventHandler, rest] as [EventListener, Omit<ExtendedAddEventListenerOptions, 'delegate'>];
 }
 
-
-function whenHandler(
-  elm: EventTarget,
-  handler: EventListenerOrEventListenerObject,
-  options: ExtendedAddEventListenerOptions
-) {
+function whenHandler(elm: EventTarget, handler: EventListenerOrEventListenerObject, options: ExtendedAddEventListenerOptions) {
   const { when, once, ...rest } = options;
   if (!when) return [handler, options] as [EventListenerOrEventListenerObject, ExtendedAddEventListenerOptions];
 
@@ -79,11 +66,9 @@ function whenHandler(
       if (once) off(elm, e.type, handler, options);
       return orgHandler(e);
     },
-    rest
+    rest,
   ] as [EventListener, Omit<ExtendedAddEventListenerOptions, 'when' | 'once'>];
 }
-
-
 
 /**
  * Bind an event handler for one or more event names on a given DOM element.
@@ -133,7 +118,7 @@ function whenHandler(
  * // and delegate have been fulfilled).
  * ```
  */
-function on<T extends argsWithTarget>(...args:T): () => T[0];
+function on<T extends argsWithTarget>(...args: T): () => T[0];
 
 /**
  * Bind an event handler for one or more event names on `document`.
@@ -183,7 +168,6 @@ function on<T extends argsWithTarget>(...args:T): () => T[0];
  * ```
  */
 function on(...args: argsWithoutTarget): () => Document;
-
 
 function on<T extends argsWithTarget | argsWithoutTarget>(...args: T): () => T[0] | Document {
   if (!isEventTarget(args[0])) {

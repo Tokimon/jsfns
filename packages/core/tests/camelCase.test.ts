@@ -4,12 +4,8 @@ import { result, TestInput } from './assets/result';
 
 import camelCase, { CamelCaseSettings, defaultSettings } from '~core/camelCase';
 
-
-
 const emptyObj = {};
 const settingsKeys = Object.keys(defaultSettings) as (keyof CamelCaseSettings)[];
-
-
 
 const afterNum = (str: string, numbers?: boolean) => {
   str = str.toLowerCase();
@@ -18,13 +14,13 @@ const afterNum = (str: string, numbers?: boolean) => {
 
 const abbrev = (abbr?: boolean, inBeginning?: true) => {
   let str = 'ABBR';
-  if (abbr) { return str; }
+  if (abbr) {
+    return str;
+  }
 
   str = str.toLowerCase();
   return inBeginning ? str : firstUpper(str);
 };
-
-
 
 const phrases: TestInput<CamelCaseSettings>[] = [
   ['', ''],
@@ -49,10 +45,8 @@ const phrases: TestInput<CamelCaseSettings>[] = [
   ['Name', 'name'],
 
   ['data-ABBR42number space', ({ numbers = true, abbr }) => `data${abbrev(abbr)}42${afterNum('number', numbers)}Space`],
-  ['Look! 99 ? ABBR #Test', ({ abbr }) => `look99${abbrev(abbr)}Test`]
+  ['Look! 99 ? ABBR #Test', ({ abbr }) => `look99${abbrev(abbr)}Test`],
 ];
-
-
 
 describe('"camelCase"', () => {
   describe('Passing a string directly', () => {
@@ -64,15 +58,14 @@ describe('"camelCase"', () => {
   });
 
   describe('Passing a config object', () => {
-    describe.each([
-      emptyObj,
-      ...createBooleanSettings<CamelCaseSettings>(settingsKeys)
-    ] as CamelCaseSettings[])('%s', (conf) => {
+    describe.each([emptyObj, ...createBooleanSettings<CamelCaseSettings>(settingsKeys)] as CamelCaseSettings[])('%s', (conf) => {
       const settings = emptyObj === conf ? defaultSettings : conf;
 
       it.each(phrases)('"%s"', (input, output) => {
         let out = result(output, settings);
-        if (conf.upper) { out = firstUpper(out); }
+        if (conf.upper) {
+          out = firstUpper(out);
+        }
 
         expect(camelCase(input, settings)).toBe(out);
       });

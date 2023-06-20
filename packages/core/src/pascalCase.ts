@@ -1,10 +1,6 @@
 import camelCase, { CamelCaseSettings } from './camelCase';
 
-
-
 export type PascalCaseSettings = Omit<CamelCaseSettings, 'upper'>;
-
-
 
 /**
  * Transform a string into a PascalCased word (eg. 'pascal case' -> 'PascalCase')

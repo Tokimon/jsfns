@@ -2,14 +2,12 @@ import { appendFrame, createDetachedDocument } from './assets/helpers';
 
 import isDOMElement from '~web/isDOMElement';
 
-
-
 describe('"isDOMElement"', () => {
   describe('Returns `true` for DOM element:', () => {
     describe.each([
       ['<html> element', (doc: Document) => doc.documentElement],
       ['<body> element', (doc: Document) => doc.body],
-      ['<p> element', (doc: Document) => doc.createElement('p')]
+      ['<p> element', (doc: Document) => doc.createElement('p')],
     ])('%s', (_, getElm) => {
       it('In the current document', () => {
         expect(isDOMElement(getElm(document))).toBe(true);
@@ -18,7 +16,7 @@ describe('"isDOMElement"', () => {
       it('In a Frame', () => {
         const frame = appendFrame();
 
-        expect(isDOMElement(getElm((frame.contentDocument as Document)))).toBe(true);
+        expect(isDOMElement(getElm(frame.contentDocument as Document))).toBe(true);
 
         frame.remove();
       });
@@ -38,7 +36,7 @@ describe('"isDOMElement"', () => {
       ['Comment Node', document.createComment('')],
       ['Window', window],
       ['NULL', null],
-      ['Object', {}]
+      ['Object', {}],
     ])('%s', (_, elm) => {
       expect(isDOMElement(elm)).toBe(false);
     });

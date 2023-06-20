@@ -25,10 +25,10 @@ function getBorder(style) {
     bL = bw[3] ? parseInt(bw[3]) : bR;
   }
 
-  if (borderTopWidth) { bT = parseInt(borderTopWidth); }
-  if (borderLeftWidth) { bL = parseInt(borderLeftWidth); }
-  if (borderRightWidth) { bR = parseInt(borderRightWidth); }
-  if (borderBottomWidth) { bB = parseInt(borderBottomWidth); }
+  if (borderTopWidth) bT = parseInt(borderTopWidth);
+  if (borderLeftWidth) bL = parseInt(borderLeftWidth);
+  if (borderRightWidth) bR = parseInt(borderRightWidth);
+  if (borderBottomWidth) bB = parseInt(borderBottomWidth);
 
   return { bT, bR, bB, bL };
 }
@@ -41,33 +41,37 @@ Object.defineProperties(window.HTMLElement.prototype, {
   //   get() { return parseFloat(this.style.marginTop) || 0; }
   // },
   offsetHeight: {
-    get() { return parseInt(this.style.height) || 0; }
+    get() {
+      return parseInt(this.style.height) || 0;
+    },
   },
   offsetWidth: {
-    get() { return parseInt(this.style.width) || 0; }
+    get() {
+      return parseInt(this.style.width) || 0;
+    },
   },
 
   clientHeight: {
     get() {
       const { bT, bB } = getBorder(this.style);
       return this.offsetHeight - bT - bB;
-    }
+    },
   },
   clientWidth: {
     get() {
       const { bR, bL } = getBorder(this.style);
       return this.offsetWidth - bR - bL;
-    }
+    },
   },
 
   scrollHeight: {
     get() {
       return this.clientHeight + 50;
-    }
+    },
   },
   scrollWidth: {
     get() {
       return this.clientWidth + 50;
-    }
-  }
+    },
+  },
 });

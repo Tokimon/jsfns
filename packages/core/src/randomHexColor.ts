@@ -1,8 +1,6 @@
 import randomRGBColor from './randomRGBColor';
 import RGBToHex from './RGBToHex';
 
-
-
 /**
  * Generate a random HEX color
  *

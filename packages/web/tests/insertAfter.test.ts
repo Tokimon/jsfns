@@ -2,12 +2,8 @@ import { byId, createElement, generateId, insertHtml, removeElement } from './as
 
 import insertAfter from '~web/insertAfter';
 
-
-
 const testID = generateId('InsertAfter');
 const nodeID = generateId('InsertAfterNode');
-
-
 
 describe('"insertAfter"', () => {
   let testNode: HTMLElement;

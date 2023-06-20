@@ -11,10 +11,6 @@
  * capitalize('capitalize-This-phrase'); // -> Capitalize-This-Phrase
  * ```
  */
-export const capitalize = (str: string): string => str.replace(
-  /(^|[\s-])(\w)/g,
-  (_, before, char) => before + char.toUpperCase()
-);
-
+export const capitalize = (str: string): string => str.replace(/(^|[\s-])(\w)/g, (_, before, char) => before + char.toUpperCase());
 
 export default capitalize;

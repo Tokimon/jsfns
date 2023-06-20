@@ -1,7 +1,5 @@
 import selectorToHTML from '~web/selectorToHTML';
 
-
-
 describe('"selectorToHTML"', () => {
   it('Correctly converts non-void tag selector', () => {
     const html = selectorToHTML('span[disabled][data-index=99].my-item#unique');

@@ -1,7 +1,5 @@
 import randomInt from './randomInt';
 
-
-
 /**
  * Generate a random RGB color
  *

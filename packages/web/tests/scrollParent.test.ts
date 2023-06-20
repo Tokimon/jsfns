@@ -2,20 +2,16 @@ import { appendFrame, byId, createDetachedDocument, generateId, getOne, insertHt
 
 import scrollParent from '~web/scrollParent';
 
-
-
 const scrollerID = generateId('scroller');
 const childID = generateId('child');
 const style = 'with: 10px; height: 10px;';
-
-
 
 describe('"scrollParent', () => {
   const scrollElm = (doc: Document) => doc.documentElement;
 
   describe.each([
     ['<html> element', (doc: Document) => doc.documentElement],
-    ['<body> element', (doc: Document) => doc.body]
+    ['<body> element', (doc: Document) => doc.body],
   ])('%s, Returns document.scrollingElement (viewport)', (_, getElm) => {
     it('In the current document', () => {
       const doc = document;
@@ -40,30 +36,42 @@ describe('"scrollParent', () => {
   describe.each([
     ['Single element', `<div class="root" id="${childID}" style="${style}" />`],
     ['"fixed" Element', `<div class="root" id="${childID}" style="${style}position: fixed"></div>`],
-    ['Element inside "overflow: hidden;" element', `
+    [
+      'Element inside "overflow: hidden;" element',
+      `
       <div class="root" style="${style}position: relative; overflow: hidden">
         <div id="${childID}" />
       </div>
-    `],
-    ['Element inside "relative" Element', `
+    `,
+    ],
+    [
+      'Element inside "relative" Element',
+      `
       <div class="root" style="${style}">
         <div style="position: relative">
           <div id="${childID}" />
         </div>
       </div>
-    `],
-    ['"absolute" Element inside an Element with "overflow"', `
+    `,
+    ],
+    [
+      '"absolute" Element inside an Element with "overflow"',
+      `
       <div class="root" style="${style}">
         <div style="${style}position: static; overflow: auto">
           <div id="${childID}" style="${style}position: absolute" />
         </div>
       </div>
-    `],
-    ['"fixed" Element inside an Element with "overflow"', `
+    `,
+    ],
+    [
+      '"fixed" Element inside an Element with "overflow"',
+      `
       <div class="root" style="${style}overflow: auto">
         <div id="${childID}" style="${style}position: fixed" />
       </div>
-    `]
+    `,
+    ],
   ])('%s: Returns document.scrollingElement (viewport)', (_, HTML) => {
     function suite(doc: Document) {
       insertHtml(HTML, doc.body);
@@ -94,26 +102,37 @@ describe('"scrollParent', () => {
 
   describe('Returns the nearest element with scrolling overflow when', () => {
     describe.each([
-      ['Element is direct child', `
+      [
+        'Element is direct child',
+        `
       <div class="root" id="${scrollerID}" style="${style}">
         <div id="${childID}" style="${style}" />
       </div>
-    `],
-      ['Element is child of "relative" child', `
+    `,
+      ],
+      [
+        'Element is child of "relative" child',
+        `
       <div class="root" id="${scrollerID}">
         <div style="${style}position: relative">
           <div id="${childID}" style="${style}" />
         <div>
       </div>
-    `],
-      ['It is "relative" and element is "absolute"', `
+    `,
+      ],
+      [
+        'It is "relative" and element is "absolute"',
+        `
       <div class="root" id="${scrollerID}" style="${style}position: relative">
         <div style="${style}position: static; overflow: auto">
           <div id="${childID}" style="${style}position: absolute" />
         <div>
       </div>
-    `],
-      ['It is "relative" and element is "absolute" (skipping no scrolling "relative" parent)', `
+    `,
+      ],
+      [
+        'It is "relative" and element is "absolute" (skipping no scrolling "relative" parent)',
+        `
       <div class="root" id="${scrollerID}" style="${style}position: relative">
         <div style="${style}position: static; overflow: auto">
           <div style="${style}position: relative">
@@ -121,8 +140,11 @@ describe('"scrollParent', () => {
           </div>
         <div>
       </div>
-    `],
-      ['Itself is a child of a relative scrolling element', `
+    `,
+      ],
+      [
+        'Itself is a child of a relative scrolling element',
+        `
       <div class="root">
         <div style="${style}position: relative; overflow: auto">
           <div id="${scrollerID}" style="${style}position: relative">
@@ -130,7 +152,8 @@ describe('"scrollParent', () => {
           </div>
         <div>
       </div>
-    `]
+    `,
+      ],
     ])('%s', (_, HTML) => {
       let scroller: HTMLElement;
       let child: HTMLElement;

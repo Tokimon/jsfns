@@ -5,8 +5,6 @@ import type { OnceEventListenerOptions, WhenFunction } from '~web/once';
 import once from '~web/once';
 import { triggerEvent } from './assets/helpers';
 
-
-
 describe('"once"', () => {
   function suite(elm?: HTMLElement | Window) {
     const cb = jest.fn();
@@ -14,11 +12,8 @@ describe('"once"', () => {
     const eventName = 'test';
     const eventNames = [1, 2, 3].map((n) => eventName + n);
 
-    const _once = (...args: [
-      string | string[],
-      EventListenerOrEventListenerObject,
-      OnceEventListenerOptions?
-    ]): ReturnType<typeof once> => elm ? once(elm, ...args) : once(...args);
+    const _once = (...args: [string | string[], EventListenerOrEventListenerObject, OnceEventListenerOptions?]): ReturnType<typeof once> =>
+      elm ? once(elm, ...args) : once(...args);
 
     const target = elm || document;
 
@@ -55,11 +50,11 @@ describe('"once"', () => {
 
       afterAll(() => addEventListenerSpy.mockRestore());
 
-      it.each(
-        ['', '_', '-', '.', ':']
-      )('with separator: "%s"', (separator) => {
+      it.each(['', '_', '-', '.', ':'])('with separator: "%s"', (separator) => {
         let e = eventName;
-        if (separator) { e += separator + 'part'; }
+        if (separator) {
+          e += separator + 'part';
+        }
 
         const unbind = _once(e, cb);
 
@@ -80,17 +75,16 @@ describe('"once"', () => {
         const anyFunc = expect.any(Function);
 
         beforeEach(() => {
-          const supportSpy = jest.spyOn(document, 'addEventListener')
-            .mockImplementation(() => { throw new Error('nope'); });
+          const supportSpy = jest.spyOn(document, 'addEventListener').mockImplementation(() => {
+            throw new Error('nope');
+          });
 
           const supported = eventOptionsSupported(true);
           expect(supported).toBe(false);
 
           // Since we are re-mocking the "document.addEventListener" above,
           // we only "reset" when the target is the document, instead of restoring
-          target === document
-            ? supportSpy.mockReset()
-            : supportSpy.mockRestore();
+          target === document ? supportSpy.mockReset() : supportSpy.mockRestore();
         });
 
         afterEach(() => {
@@ -136,9 +130,7 @@ describe('"once"', () => {
       });
 
       it('Trigger given event the first time the "when" option is fulfilled', () => {
-        const when = jest.fn<WhenFunction>()
-          .mockReturnValue(true)
-          .mockReturnValueOnce(false);
+        const when = jest.fn<WhenFunction>().mockReturnValue(true).mockReturnValueOnce(false);
 
         const unbind = _once(eventName, cb, { when });
 

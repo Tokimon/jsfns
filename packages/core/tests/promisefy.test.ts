@@ -1,13 +1,8 @@
 import promisefy, { NodeLikeCallback } from '~core/promisefy';
 
-
-
 describe('"promisefy"', () => {
   const err = new Error('error');
-  const callback = (ok: boolean, cb: NodeLikeCallback) =>
-    ok
-      ? cb(null, 'success')
-      : cb(err);
+  const callback = (ok: boolean, cb: NodeLikeCallback) => (ok ? cb(null, 'success') : cb(err));
 
   it('It resolves the promise on success', () => {
     const promised = promisefy(callback);

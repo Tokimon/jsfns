@@ -1,8 +1,6 @@
 import isDOMChildNode from './isDOMChildNode';
 import viewport from './viewport';
 
-
-
 /**
  * Get the parent element that has scrolling
  *
@@ -42,10 +40,7 @@ export function scrollParent(elm: Element): Element | HTMLElement | null {
   while (parent && parent !== document.body) {
     const { position, overflow, overflowX, overflowY } = getComputedStyle(parent);
 
-    if (
-      !(noStaticParent && position === 'static')
-      && /(auto|scroll)/.test(overflow + overflowY + overflowX)
-    ) {
+    if (!(noStaticParent && position === 'static') && /(auto|scroll)/.test(overflow + overflowY + overflowX)) {
       return parent;
     }
 

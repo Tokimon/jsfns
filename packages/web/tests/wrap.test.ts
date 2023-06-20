@@ -2,8 +2,6 @@ import { generateId, removeElement, byId, insertHtml } from './assets/helpers';
 
 import wrap from '~web/wrap';
 
-
-
 const testID = generateId('Wrap');
 const elmID = generateId('Wrap_Elm');
 
@@ -35,11 +33,14 @@ describe('wrap', () => {
   it('Inserts the given element after the text in the wrap', () => {
     const elm = byId(elmID);
 
-    wrap(elm, `
+    wrap(
+      elm,
+      `
       <div class="wrapper">
         some text here
       </div>
-    `);
+    `
+    );
 
     expect(elm.previousSibling?.nodeValue?.trim()).toBe('some text here');
   });
@@ -48,13 +49,16 @@ describe('wrap', () => {
     it('Wraps the element in the deepest child', () => {
       const elm = byId(elmID);
 
-      wrap(elm, `
+      wrap(
+        elm,
+        `
         <div class="root">
           <div class="level1">
             <div class="wrapper"></div>
           </div>
         </div>
-      `);
+      `
+      );
 
       expect(elm.parentElement?.className).toBe('wrapper');
       expect(elm.parentElement?.parentElement?.parentElement?.className).toBe('root');
@@ -63,12 +67,15 @@ describe('wrap', () => {
     it('Wraps the element in the first child', () => {
       const elm = byId(elmID);
 
-      wrap(elm, `
+      wrap(
+        elm,
+        `
         <div class="root">
           <div class="wrapper"></div>
           <div class="not-the-wrapper"></div>
         </div>
-      `);
+      `
+      );
 
       expect(elm.parentElement?.className).toBe('wrapper');
       expect(elm.parentElement?.parentElement?.className).toBe('root');

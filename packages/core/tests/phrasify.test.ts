@@ -3,12 +3,8 @@ import { surround } from './assets/surround';
 
 import phrasify, { PhrasifySettings } from '~core/phrasify';
 
-
-
 const emptyObj = {};
 const space42 = surround('42', ' ');
-
-
 
 const phrases: TestInput<PhrasifySettings>[] = [
   ['', ''],
@@ -32,7 +28,7 @@ const phrases: TestInput<PhrasifySettings>[] = [
   ['Name', 'Name'],
 
   ['data-ABBR42number space', ({ numbers }) => `data ABBR${space42(numbers)}number space`],
-  ['Look! 99 ? ABBR #Test', 'Look 99 ABBR Test']
+  ['Look! 99 ? ABBR #Test', 'Look 99 ABBR Test'],
 ];
 
 describe('"phrasify"', () => {
@@ -45,11 +41,7 @@ describe('"phrasify"', () => {
   });
 
   describe('Passing a config object', () => {
-    describe.each([
-      emptyObj,
-      { numbers: true },
-      { numbers: false }
-    ] as PhrasifySettings[])('%s', (conf) => {
+    describe.each([emptyObj, { numbers: true }, { numbers: false }] as PhrasifySettings[])('%s', (conf) => {
       it.each(phrases)('"%s"', (input, output) => {
         expect(phrasify(input, conf)).toBe(result(output, conf));
       });

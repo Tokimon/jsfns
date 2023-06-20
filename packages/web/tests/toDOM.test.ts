@@ -1,15 +1,7 @@
 import toDOM from '~web/toDOM';
 
-
-
 describe('"toDOM"', () => {
-  it.each([
-    '<html />',
-    '<head />',
-    '<body />',
-    '<frame />',
-    '<frameset />'
-  ])('Tag "%s" is unsupported and is returned as string', (val) => {
+  it.each(['<html />', '<head />', '<body />', '<frame />', '<frameset />'])('Tag "%s" is unsupported and is returned as string', (val) => {
     expect(toDOM(val)).toBe(val);
   });
 
@@ -114,7 +106,7 @@ describe('"toDOM"', () => {
     '<ul />',
     '<var />',
     '<video />',
-    '<wbr />'
+    '<wbr />',
   ])('Tag "%s" is converted to a dom element', (tag) => {
     const tagName = tag.slice(1, tag.length - 3).toUpperCase();
     expect((toDOM(tag) as HTMLCollection)[0].tagName).toBe(tagName);

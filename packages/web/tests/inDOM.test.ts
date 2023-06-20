@@ -2,8 +2,6 @@ import { appendFrame, createDetachedDocument, createElement } from './assets/hel
 
 import inDOM from '~web/inDOM';
 
-
-
 describe('"inDOM"', () => {
   describe('Returns `true` for DOM elements found in the DOM tree', () => {
     function suite(doc: Document) {

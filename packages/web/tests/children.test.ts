@@ -2,21 +2,19 @@ import { insertHtml, removeElement, createElement, byId, generateId } from './as
 
 import children from '~web/children';
 
-
-
 const testID = generateId('Children');
 
-
-
 describe('"children"', () => {
-  beforeAll(() => insertHtml(`
+  beforeAll(() =>
+    insertHtml(`
     <div id="${testID}">
       <span><b></b></span>
       text
       <br>
       <span><i></i><span>
     </div>
-  `));
+  `)
+  );
 
   afterAll(() => removeElement(testID));
 

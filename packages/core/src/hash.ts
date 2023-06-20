@@ -15,13 +15,11 @@ export function hashCode(str: string): number {
   let h = 0;
 
   for (let i = 0; i < l; i++) {
-    h = (((h << 5) - h) + str.charCodeAt(i)) | 0;
+    h = ((h << 5) - h + str.charCodeAt(i)) | 0;
   }
 
-  return (h >>> 0);
+  return h >>> 0;
 }
-
-
 
 /**
  * Generates a unique hash (DJB2) string from a string

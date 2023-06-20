@@ -1,7 +1,6 @@
 import isString from '@js-fns/core/isString';
 import uniqueArray from '@js-fns/core/uniqueArray';
 
-
 /**
  * Make a unique list of Elements from a list of selectors and and function to use that selector.
  *

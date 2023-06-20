@@ -3,19 +3,15 @@ export type BoxModelSectionMapping = {
   left: number;
   bottom: number;
   right: number;
-}
+};
 
 export type BoxModelMapping = {
-  margin: BoxModelSectionMapping
-  padding: BoxModelSectionMapping
-  border: BoxModelSectionMapping
-}
-
-
+  margin: BoxModelSectionMapping;
+  padding: BoxModelSectionMapping;
+  border: BoxModelSectionMapping;
+};
 
 const num = (n: string) => parseInt(n, 10);
-
-
 
 /**
  * Parses the box model numbers of an given Element (margin, padding and border widths)
@@ -37,22 +33,22 @@ export function boxModel(elm: Element): BoxModelMapping {
       top: num(style.marginTop),
       left: num(style.marginLeft),
       bottom: num(style.marginBottom),
-      right: num(style.marginRight)
+      right: num(style.marginRight),
     },
 
     padding: {
       top: num(style.paddingTop),
       left: num(style.paddingLeft),
       bottom: num(style.paddingBottom),
-      right: num(style.paddingRight)
+      right: num(style.paddingRight),
     },
 
     border: {
       top: num(style.borderTopWidth),
       left: num(style.borderLeftWidth),
       bottom: num(style.borderBottomWidth),
-      right: num(style.borderRightWidth)
-    }
+      right: num(style.borderRightWidth),
+    },
   };
 }
 

@@ -2,16 +2,16 @@ import { byId, insertHtml, removeElement } from './assets/helpers';
 
 import findByQuery from '~web/findByQuery';
 
-
-
 describe('"findByQuery"', () => {
-  beforeAll(() => insertHtml(`
+  beforeAll(() =>
+    insertHtml(`
     <div id='Item1' class="item"></div>
     <div id='Item2' class="item second">
       <div class='item child'></div>
       <div class='item child second-child'></div>
     </div>
-  `));
+  `)
+  );
 
   afterAll(() => ['Item1', 'Item2'].forEach((id) => removeElement(id)));
 

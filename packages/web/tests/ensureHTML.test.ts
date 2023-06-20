@@ -1,7 +1,5 @@
 import ensureHTML from '~web/ensureHTML';
 
-
-
 describe('"findUniqueNodeCollection"', () => {
   it('Returns string containing "<" directly', () => {
     expect(ensureHTML('<')).toBe('<');

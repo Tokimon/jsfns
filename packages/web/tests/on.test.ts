@@ -3,8 +3,6 @@ import type { SpyInstance } from 'jest-mock';
 import on, { type argsWithoutTarget } from '~web/on';
 import { unbind } from './assets/helpers';
 
-
-
 describe('"on"', () => {
   function suite(elm?: HTMLElement | Window) {
     let addEventListenerSpy: SpyInstance<typeof document.addEventListener>;
@@ -13,7 +11,7 @@ describe('"on"', () => {
     const eventName = 'test';
     const eventNames = [1, 2, 3].map((n) => eventName + n);
 
-    const _on = (...args: argsWithoutTarget) => elm ? on(elm, ...args) : on(...args);
+    const _on = (...args: argsWithoutTarget) => (elm ? on(elm, ...args) : on(...args));
 
     const target = elm || document;
 
@@ -32,11 +30,11 @@ describe('"on"', () => {
 
     afterAll(() => addEventListenerSpy.mockRestore());
 
-    it.each(
-      ['', '_', '-', '.', ':']
-    )('Adds event with separator: "%s"', (separator) => {
+    it.each(['', '_', '-', '.', ':'])('Adds event with separator: "%s"', (separator) => {
       let e = eventName;
-      if (separator) { e += separator + 'part'; }
+      if (separator) {
+        e += separator + 'part';
+      }
 
       const off = _on(e, cb);
 

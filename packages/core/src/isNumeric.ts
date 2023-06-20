@@ -1,8 +1,6 @@
 import isNumber from './isNumber';
 import isString from './isString';
 
-
-
 /**
  * Is the given argument is a finite numeric value (number as string or number directly) or not.
  *

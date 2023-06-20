@@ -2,31 +2,25 @@ import type { CSSStyleKey } from './types';
 
 import vendorPrefixed from './vendorPrefixed';
 
-
-
 let div: HTMLDivElement;
-
-
 
 export type PrefixedPropMatch = {
   prefix: string;
   jsProp: string;
   cssProp: string;
   value?: string;
-}
-
-
+};
 
 export function supportsProp(prop: CSSStyleKey, value?: string): boolean {
-  if (!div) { div = document.createElement('div'); }
+  if (!div) {
+    div = document.createElement('div');
+  }
   if (typeof div.style[prop] === 'undefined') return false;
   if (!value) return true;
 
   div.style[prop] = value;
   return div.style[prop] === value;
 }
-
-
 
 /**
  * Detect wether or not the given css property (and/or) value is supported by

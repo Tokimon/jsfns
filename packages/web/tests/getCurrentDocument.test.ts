@@ -2,8 +2,6 @@ import { appendFrame, createDetachedDocument, createElement } from './assets/hel
 
 import getCurrentDocument from '~web/getCurrentDocument';
 
-
-
 describe('"getCurrentDocument"', () => {
   it('Returns current Document from a given Frame (not `contentDocument`)', () => {
     const frame = appendFrame();
@@ -15,14 +13,7 @@ describe('"getCurrentDocument"', () => {
   });
 
   describe('Returns `null` when given value is', () => {
-    it.each([
-      undefined,
-      null,
-      {},
-      [],
-      true,
-      'String'
-    ])('Not a DOM Node: %s', (value) => {
+    it.each([undefined, null, {}, [], true, 'String'])('Not a DOM Node: %s', (value) => {
       const doc = getCurrentDocument(value);
       expect(doc).toBeNull();
     });

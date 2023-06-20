@@ -28,7 +28,7 @@ export function contentBoxSize(elm: Document | GeneralWindow | HTMLElement) {
 
   return {
     width: elm.clientWidth - padding.left - padding.right,
-    height: elm.clientHeight - padding.top - padding.bottom
+    height: elm.clientHeight - padding.top - padding.bottom,
   };
 }
 

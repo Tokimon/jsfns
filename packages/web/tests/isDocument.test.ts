@@ -2,8 +2,6 @@ import { appendFrame, createDetachedDocument } from './assets/helpers';
 
 import isDocument from '~web/isDocument';
 
-
-
 describe('"isDocument"', () => {
   describe('Returns `true` for', () => {
     it('Document node', () => {
@@ -29,7 +27,7 @@ describe('"isDocument"', () => {
       ['<body> element', document.body],
       ['Window', window],
       ['NULL', null],
-      ['Object', {}]
+      ['Object', {}],
     ])('%s', (_, elm) => {
       expect(isDocument(elm)).toBe(false);
     });

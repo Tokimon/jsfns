@@ -1,8 +1,6 @@
 import isDOMElement from './isDOMElement';
 import isDOMFragment from './isDOMFragment';
 
-
-
 /**
  * Is the given object a DOM node that can contain child DOM nodes
  *

@@ -2,12 +2,8 @@ import { insertHtml, byId, removeElement, createElement, generateId } from './as
 
 import prepend from '~web/prepend';
 
-
-
 const testID = generateId('Prepend');
 const insertHTML = '<div class="inserted"></div>';
-
-
 
 describe('"prepend"', () => {
   let testNode: HTMLElement;
@@ -17,7 +13,9 @@ describe('"prepend"', () => {
     testNode = byId(testID);
   });
 
-  beforeEach(() => { testNode.innerHTML = '<span></span>'; });
+  beforeEach(() => {
+    testNode.innerHTML = '<span></span>';
+  });
 
   afterAll(() => removeElement(testID));
 

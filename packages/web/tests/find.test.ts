@@ -2,8 +2,6 @@ import { jest } from '@jest/globals';
 import type { SpyInstance } from 'jest-mock';
 import find from '~web/find';
 
-
-
 describe('"Find"', () => {
   describe('With only selector defined', () => {
     it('Uses `getElementsByTagName` when selector is a tag name ', () => {
@@ -70,11 +68,7 @@ describe('"Find"', () => {
       it('Contains `[` (attribute selector)', () => testQuery('div[name="test"]'));
       it('Contains `,` (multiple selectors)', () => testQuery('div, p'));
 
-      it.each([
-        '#MyId.item',
-        'div.item',
-        '.item#MyId'
-      ])('Mixed selector: %s', (selector) => {
+      it.each(['#MyId.item', 'div.item', '.item#MyId'])('Mixed selector: %s', (selector) => {
         testQuery(selector);
       });
     });
@@ -147,11 +141,7 @@ describe('"Find"', () => {
       it('Contains `[` (attribute selector)', () => testQuery('div[name="test"]'));
       it('Contains `,` (multiple selectors)', () => testQuery('div, p'));
 
-      it.each([
-        '#MyId.item',
-        'div.item',
-        '.item#MyId'
-      ])('Mixed selector: %s', (selector) => {
+      it.each(['#MyId.item', 'div.item', '.item#MyId'])('Mixed selector: %s', (selector) => {
         testQuery(selector);
       });
     });

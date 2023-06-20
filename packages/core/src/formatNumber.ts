@@ -1,7 +1,5 @@
 import limitDecimals from './limitDecimals';
 
-
-
 export type FormatNumberSettings = {
   /** How many decimals to show */
   decimalCount?: number | string;
@@ -9,17 +7,13 @@ export type FormatNumberSettings = {
   thousand?: string;
   /** The decimal separator character */
   decimal?: string;
-}
-
-
+};
 
 const defaultSettings: FormatNumberSettings = {
   decimalCount: 2,
   thousand: '.',
-  decimal: ','
+  decimal: ',',
 };
-
-
 
 /**
  * Formats a number with defined thousand and decimal separator, and a decimal limit

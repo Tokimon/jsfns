@@ -5,7 +5,6 @@ const range = (num: number, num2: number): number => {
   return random(num2 - num) + num;
 };
 
-
 /**
  * Returns a random integer from a base number or range of numbers
  *
@@ -40,11 +39,8 @@ function randomInt(min: number, max: number): number;
 function randomInt(max?: number): number;
 
 function randomInt(num = Number.MAX_SAFE_INTEGER, num2?: number): number {
-  return num2 === undefined
-    ? random(num)
-    : range(num, num2);
+  return num2 === undefined ? random(num) : range(num, num2);
 }
-
 
 export { randomInt };
 export default randomInt;
