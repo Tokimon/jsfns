@@ -7,8 +7,5 @@
       "@js-fns/core/*": ["../core/src/*"]
     }
   },
-  "include": ["src", "tests"],
-  "references": [
-    { "path": "../core" },
-  ]
+  "include": ["src", "tests"]
 }

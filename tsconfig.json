@@ -1,10 +1,13 @@
 {
+  "$schema": "https://json.schemastore.org/tsconfig",
   "compilerOptions": {
-    "lib": ["dom", "es2021"],
+    "lib": ["es2022"],
     "moduleResolution": "Node",
     "module": "ESNext",
     "target": "es6",
+    "noEmit": true,
     "declaration": true,
+    "skipLibCheck": true,
     "noImplicitAny": true,
     "sourceMap": false,
     "allowJs": false,
@@ -12,13 +15,6 @@
     "strictNullChecks": true,
     "strict": true,
     "forceConsistentCasingInFileNames": true,
-    "esModuleInterop": true,
-    "composite": true,
-    "baseUrl": ".",
-    "paths": {
-      "~web/*": ["./packages/web/src/*"],
-      "~core/*": ["./packages/core/src/*"],
-      "@js-fns/core/*": ["./packages/core/src/*"]
-    }
+    "esModuleInterop": true
   }
 }

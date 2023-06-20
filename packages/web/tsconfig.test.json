@@ -1,6 +1,7 @@
 {
   "extends": "./tsconfig.json",
   "compilerOptions": {
+    "declaration": false,
     "target": "ES2021",
     "outDir": "./build/tests",
     "sourceMap": true,
