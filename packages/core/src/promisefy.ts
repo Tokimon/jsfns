@@ -1,6 +1,8 @@
 export type NodeLikeCallback = (err?: string | Error | null, data?: unknown) => unknown;
-export type PromisefyCallback = (...args: unknown[]) => unknown;
-export type PromisefiedFunction = (...args: unknown[]) => Promise<unknown>;
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export type PromisefyCallback = (...args: any[]) => any;
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export type PromisefiedFunction = (...args: any[]) => Promise<any>;
 
 /**
  * Converts a callback based action into one returning a Promise instead.

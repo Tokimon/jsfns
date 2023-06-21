@@ -1,4 +1,4 @@
-function createBooleanSettings<T>(keys: (keyof T)[], prev: T = {} as T): T[] {
+export function createBooleanSettings<T>(keys: (keyof T)[], prev: T = {} as T): T[] {
   const x: T[] = [];
 
   // eslint-disable-next-line no-unmodified-loop-condition
@@ -16,5 +16,3 @@ function createBooleanSettings<T>(keys: (keyof T)[], prev: T = {} as T): T[] {
 
   return x;
 }
-
-export default createBooleanSettings;

@@ -1,4 +1,4 @@
-import chunkString from '@js-fns/core/chunkString';
+import { chunkString } from '@js-fns/core/chunkString';
 
 describe('"chunkString"', () => {
   it('Cuts up a string into chunks', () => {

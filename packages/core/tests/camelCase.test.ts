@@ -1,7 +1,7 @@
-import camelCase, { CamelCaseSettings, defaultSettings } from '@js-fns/core/camelCase';
-import createBooleanSettings from './assets/createBooleanSettings';
-import firstUpper from './assets/firstUpper';
-import { TestInput, result } from './assets/result';
+import { type CamelCaseSettings, camelCase, defaultSettings } from '@js-fns/core/camelCase';
+import { createBooleanSettings } from './assets/createBooleanSettings';
+import { firstUpper } from './assets/firstUpper';
+import { type TestInput, result } from './assets/result';
 
 const emptyObj = {};
 const settingsKeys = Object.keys(defaultSettings) as (keyof CamelCaseSettings)[];

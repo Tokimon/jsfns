@@ -1,4 +1,4 @@
-import isNumber from '@js-fns/core/isNumber';
+import { isNumber } from '@js-fns/core/isNumber';
 
 describe('"isNumber"', () => {
   describe('Returns `true` for Number values', () => {

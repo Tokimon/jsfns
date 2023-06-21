@@ -1,4 +1,4 @@
-import numberToHex from '@js-fns/core/numberToHex';
+import { numberToHex } from '@js-fns/core/numberToHex';
 
 describe('"numberToHex"', () => {
   it('Generates a hexadecimal from a number', () => {

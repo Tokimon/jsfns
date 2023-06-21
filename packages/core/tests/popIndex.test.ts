@@ -1,4 +1,4 @@
-import popIndex, { popIndexPure } from '@js-fns/core/popIndex';
+import { popIndex, popIndexPure } from '@js-fns/core/popIndex';
 
 describe('"popIndex"', () => {
   describe('"popIndex"', () => {

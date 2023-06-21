@@ -1,4 +1,4 @@
-import formatNumber, { type FormatNumberSettings } from './formatNumber';
+import { type FormatNumberSettings, formatNumber } from './formatNumber';
 
 export type CurrencyFormatter = (num: number) => string;
 

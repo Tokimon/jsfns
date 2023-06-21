@@ -1,4 +1,4 @@
-import capitalize from '@js-fns/core/capitalize';
+import { capitalize } from '@js-fns/core/capitalize';
 
 describe('"capitalize"', () => {
   it.each([

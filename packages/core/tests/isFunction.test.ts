@@ -1,4 +1,4 @@
-import isFunction from '@js-fns/core/isFunction';
+import { isFunction } from '@js-fns/core/isFunction';
 
 describe('"isFunction"', () => {
   describe('Returns `true` for Function values', () => {

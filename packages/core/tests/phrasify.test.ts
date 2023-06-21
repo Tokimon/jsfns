@@ -1,5 +1,5 @@
-import phrasify, { PhrasifySettings } from '@js-fns/core/phrasify';
-import { TestInput, result } from './assets/result';
+import { type PhrasifySettings, phrasify } from '@js-fns/core/phrasify';
+import { type TestInput, result } from './assets/result';
 import { surround } from './assets/surround';
 
 const emptyObj = {};

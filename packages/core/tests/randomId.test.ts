@@ -1,4 +1,4 @@
-import randomId from '@js-fns/core/randomId';
+import { randomId } from '@js-fns/core/randomId';
 
 describe('"randomId"', () => {
   it('Generates a random id of default length', () => {

@@ -1,5 +1,5 @@
 import { jest } from '@jest/globals';
-import randomRGBColor from '@js-fns/core/randomRGBColor';
+import { randomRGBColor } from '@js-fns/core/randomRGBColor';
 
 describe('"randomRGBColor"', () => {
   it('Generates a random RGB color', () => {

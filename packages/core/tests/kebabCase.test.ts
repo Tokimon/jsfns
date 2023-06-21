@@ -1,4 +1,4 @@
-import kebabCase, { KebabCaseSettings } from '@js-fns/core/kebabCase';
+import { KebabCaseSettings, kebabCase } from '@js-fns/core/kebabCase';
 import { TestInput, result } from './assets/result';
 import { surround } from './assets/surround';
 

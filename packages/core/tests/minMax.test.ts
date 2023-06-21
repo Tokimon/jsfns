@@ -1,4 +1,4 @@
-import minMax from '@js-fns/core/minMax';
+import { minMax } from '@js-fns/core/minMax';
 
 describe('"minMax"', () => {
   it('Limits a number to the given minimum value', () => {

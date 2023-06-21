@@ -1,4 +1,4 @@
-import truncate from '@js-fns/core/truncate';
+import { truncate } from '@js-fns/core/truncate';
 
 describe('"truncate"', () => {
   describe('Returns the given entry as is, when "maxLength" is', () => {
