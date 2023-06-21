@@ -1,9 +1,9 @@
-import { siblings } from '@js-fns/web/siblings';
+import { previousSiblings } from '@js-fns/web/previousSiblings';
 import { byId, createElement, generateId, insertHtml, removeElement } from './assets/helpers';
 
-const testID = generateId('Siblings');
+const testID = generateId('previousSiblings');
 
-describe('"siblings"', () => {
+describe('"previousSiblings"', () => {
   beforeAll(() =>
     insertHtml(
       `<div id="${testID}">
@@ -26,25 +26,24 @@ describe('"siblings"', () => {
 
   afterAll(() => removeElement(testID));
 
-  describe('.siblings', () => {
-    it('Returns an array of siblings of the element', () => {
+  describe('.previousSiblings', () => {
+    it('Returns an array of all siblings after the given element', () => {
       const elm = byId('MiddleChild');
-      const elms = siblings(elm);
+      const elms = previousSiblings(elm);
 
-      expect(elms).toHaveLength(8);
+      expect(elms).toHaveLength(4);
       expect(elms.every((node) => node !== elm)).toBe(true);
-      expect(elms[0].id).toBe('FirstChild');
-      expect(elms[elms.length - 1].id).toBe('LastChild');
+      expect(elms[elms.length - 1].id).toBe('FirstChild');
     });
 
     describe('Returns an empty array when', () => {
       it('The given node is not a child in the DOM', () => {
-        expect(siblings(createElement('div'))).toHaveLength(0);
+        expect(previousSiblings(createElement('div'))).toHaveLength(0);
       });
 
       it('The element has no siblings', () => {
         const elm = byId('LoneChild');
-        const elms = siblings(elm);
+        const elms = previousSiblings(elm);
 
         expect(elms).toHaveLength(0);
       });
