@@ -7,7 +7,7 @@ describe('"isFunction"', () => {
         return undefined;
       },
       () => undefined,
-      // eslint-disable-next-line no-new-func
+      // eslint-disable-next-line no-new-func, @typescript-eslint/no-implied-eval
       new Function(),
     ])('"%s"', (fn) => {
       expect(isFunction(fn)).toBe(true);
