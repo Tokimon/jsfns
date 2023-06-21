@@ -1,10 +1,14 @@
-import isWindow from '@js-fns/web/isWindow';
+import { isWindow } from '@js-fns/web/isWindow';
 import { appendFrame, createDetachedDocument } from './assets/helpers';
 
 describe('"isWindow"', () => {
   describe('Returns `true` for:', () => {
     it('The Window', () => {
       expect(isWindow(window)).toBe(true);
+    });
+
+    it('The globalThis', () => {
+      expect(isWindow(globalThis)).toBe(true);
     });
 
     it('The Window of a Frame', () => {

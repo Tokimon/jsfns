@@ -1,4 +1,4 @@
-import isDocument from '@js-fns/web/isDocument';
+import { isDocument } from '@js-fns/web/isDocument';
 import { appendFrame, createDetachedDocument } from './assets/helpers';
 
 describe('"isDocument"', () => {

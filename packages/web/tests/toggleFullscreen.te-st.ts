@@ -1,4 +1,4 @@
-import toggleFullscreen from '@js-fns/web/toggleFullscreen';
+import { toggleFullscreen } from '@js-fns/web/toggleFullscreen';
 import { byId, createElement, generateId, insertHtml, removeElement } from './assets/helpers';
 
 const testID = generateId('ToggleClass');

@@ -1,6 +1,6 @@
 import { jest } from '@jest/globals';
 import type { SpyInstance } from 'jest-mock';
-import innerXML from '@js-fns/web/innerXML';
+import { innerXML } from '@js-fns/web/innerXML';
 
 describe('"innerXML"', () => {
   describe('Returns the inner XML code of an XML element', () => {

@@ -1,4 +1,4 @@
-import hidden from '@js-fns/web/hidden';
+import { hidden } from '@js-fns/web/hidden';
 import { byId, createElement, generateId, insertHtml, removeElement } from './assets/helpers';
 
 const testID = generateId('Hidden');

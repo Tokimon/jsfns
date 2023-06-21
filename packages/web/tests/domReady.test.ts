@@ -1,5 +1,5 @@
 import { jest } from '@jest/globals';
-import domReady, { docComplete } from '@js-fns/web/domReady';
+import { docComplete, domReady } from '@js-fns/web/domReady';
 import { bind, triggerEvent, unbind } from './assets/helpers';
 
 function afterDomLoad() {

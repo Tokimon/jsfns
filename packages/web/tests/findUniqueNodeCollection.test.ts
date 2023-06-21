@@ -1,4 +1,4 @@
-import findUniqueNodes from '@js-fns/web/findUniqueNodeCollection';
+import { findUniqueNodes } from '@js-fns/web/findUniqueNodeCollection';
 import { generateId, insertHtml, removeElement } from './assets/helpers';
 
 const testID = generateId('AddClass');

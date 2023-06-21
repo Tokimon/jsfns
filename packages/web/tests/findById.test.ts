@@ -1,4 +1,4 @@
-import findById from '@js-fns/web/findById';
+import { findById } from '@js-fns/web/findById';
 import { generateId, insertHtml, removeElement } from './assets/helpers';
 
 const testID = generateId('FindByIDTest');
@@ -30,13 +30,11 @@ describe('"findById"', () => {
     expect(elm.className).toBe('first');
   });
 
-  describe('', () => {
-    it('Finds multiple DOM elements with a given IDs from a list', () => {
-      const nodes = findById([testID, 'Duplicate']);
+  it('Finds multiple DOM elements with a given IDs from a list', () => {
+    const nodes = findById([testID, 'Duplicate']);
 
-      expect(nodes).toHaveLength(2);
-      expect(nodes[0].id).toBe(testID);
-      expect(nodes[1].id).toBe('Duplicate');
-    });
+    expect(nodes).toHaveLength(2);
+    expect(nodes[0].id).toBe(testID);
+    expect(nodes[1].id).toBe('Duplicate');
   });
 });

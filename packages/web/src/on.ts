@@ -177,6 +177,7 @@ function on<T extends argsWithTarget | argsWithoutTarget>(...args: T): () => T[0
     return on(document, eventNames, handler, options);
   }
 
+  // eslint-disable-next-line prefer-const
   let [elm, eventNames, handler, options] = args as argsWithTarget;
   if (!Array.isArray(eventNames)) eventNames = [eventNames];
 

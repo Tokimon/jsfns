@@ -1,4 +1,4 @@
-import scrollInfo from '@js-fns/web/scrollInfo';
+import { scrollInfo } from '@js-fns/web/scrollInfo';
 import { byId, generateId, insertHtml, removeElement } from './assets/helpers';
 
 const testID = generateId('ScrollInfo');

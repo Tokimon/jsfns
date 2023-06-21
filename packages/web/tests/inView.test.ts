@@ -1,4 +1,4 @@
-import inView from '@js-fns/web/inView';
+import { inView } from '@js-fns/web/inView';
 import { byId, createElement, generateId, insertHtml, removeElement } from './assets/helpers';
 import { mockClientRect } from './assets/mocks';
 
@@ -54,21 +54,10 @@ describe('"inView"', () => {
         const mock = { top: 100, left: 100, right: 100, bottom: 100 };
 
         keys.forEach((key) => {
-          if (key === 'left') {
-            mock.right = threshold;
-          }
-
-          if (key === 'right') {
-            mock.left = window.innerWidth - threshold;
-          }
-
-          if (key === 'above') {
-            mock.bottom = threshold;
-          }
-
-          if (key === 'below') {
-            mock.top = window.innerHeight - threshold;
-          }
+          if (key === 'left') mock.right = threshold;
+          if (key === 'right') mock.left = window.innerWidth - threshold;
+          if (key === 'above') mock.bottom = threshold;
+          if (key === 'below') mock.top = window.innerHeight - threshold;
 
           result[key] = true;
         });

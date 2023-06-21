@@ -1,6 +1,6 @@
 import isDocument from './isDocument';
 import isWindow from './isWindow';
-import { GeneralWindow } from './types';
+import type { GeneralWindow } from './types';
 
 /**
  * Determines the relevant owner `document` object from a give node
@@ -16,13 +16,10 @@ import { GeneralWindow } from './types';
  * getCurrentDocument(myNode) // --> The `document` in which myNode resides
  * ```
  */
-export function getCurrentDocument(node: Document | GeneralWindow | Node): Document | null {
-  if (isDocument(node)) {
-    return node;
-  }
-  if (isWindow(node)) {
-    return node.document;
-  }
+export function getCurrentDocument(node: Document | GeneralWindow | Node | null): Document | null {
+  if (!node) return null;
+  if (isDocument(node)) return node;
+  if (isWindow(node)) return node.document;
 
   return node.ownerDocument;
 }

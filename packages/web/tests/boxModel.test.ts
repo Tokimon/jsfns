@@ -1,4 +1,4 @@
-import boxModel from '@js-fns/web/boxModel';
+import { boxModel } from '@js-fns/web/boxModel';
 import { byId, generateId, insertHtml, removeElement } from './assets/helpers';
 
 const testID = generateId('BoxModel');
@@ -32,7 +32,7 @@ describe('"boxModel"', () => {
     ['margin', 'marginLeft', [1, 2, 3, 4]] as const,
     ['padding', 'paddingLeft', [5, 6, 7, 8]] as const,
     ['border', 'borderLeftWidth', [9, 10, 11, 12]] as const,
-  ])('Correctly retrieves the "%s" information of the given element', (prop, overrideProp, n) => {
+  ])('Correctly retrieves the "%s" information of the given element', (prop, leftProp, n) => {
     beforeEach(() => {
       testNode.style.cssText = '';
     });
@@ -43,7 +43,7 @@ describe('"boxModel"', () => {
     });
 
     it('When a inline style override has been set', () => {
-      testNode.style[overrideProp] = '40px';
+      testNode.style[leftProp] = '40px';
       const bm = boxModel(testNode);
 
       expect(bm[prop]).toEqual({ top: n[0], right: n[1], bottom: n[2], left: 40 });

@@ -1,4 +1,4 @@
-import attr from '@js-fns/web/attr';
+import { attr } from '@js-fns/web/attr';
 import { byId, generateId, insertHtml, removeElement } from './assets/helpers';
 
 const testID = generateId('Attr');
@@ -50,24 +50,24 @@ describe('"attr"', () => {
     it('Returns the old value', () => {
       expect(attr(testNode, key, 'new value')).toBe(value);
     });
+
+    it('Sets an empty attribute on a DOM element when value is true', () => {
+      attr(testNode, key, true);
+      expect(testNode.getAttribute(key)).toBe('');
+    });
   });
 
-  describe('Boolean values', () => {
-    it('Sets an empty attribute on a DOM element when value is true', () => {
-      attr(testNode, 'boolean', true);
-      expect(testNode.getAttribute('boolean')).toBe('');
-    });
-
-    it('Removes the attribute from a DOM element when value is false', () => {
+  describe('Removes the attribute from a DOM element when value is', () => {
+    it.each([false, null])('%s', (value) => {
       const initialValue = 'To Remove';
-      testNode.setAttribute('toremove', initialValue);
+      testNode.setAttribute('toRemove', initialValue);
 
-      expect(testNode.getAttribute('toremove')).toBe(initialValue);
+      expect(testNode.getAttribute('toRemove')).toBe(initialValue);
 
-      const oldValue = attr(testNode, 'toremove', false);
+      const oldValue = attr(testNode, 'toRemove', value);
 
       expect(oldValue).toBe(initialValue);
-      expect(testNode.getAttribute('toremove')).toBeNull();
+      expect(testNode.getAttribute('toRemove')).toBeNull();
     });
   });
 });

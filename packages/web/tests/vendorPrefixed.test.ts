@@ -1,16 +1,11 @@
-import vendorPrefixed, { VendorPrefixing } from '@js-fns/web/vendorPrefixed';
+import { type VendorPrefixing, vendorPrefixed } from '@js-fns/web/vendorPrefixed';
 
-const result = (prefix: 'webkit' | 'moz' | 'ms' | 'o', js: string, css: string): VendorPrefixing => ({
-  css: `-${prefix}-${css}`,
-  js: `${prefix}${js}`,
-  prefix,
-});
-
-const resultArray = (js: string, css: string): VendorPrefixing[] => [
-  result('webkit', js, css),
-  result('moz', js, css),
-  result('ms', js, css),
-  result('o', js, css),
+const resultArray = (js: string, css: string): VendorPrefixing => [
+  { prefix: '', js, css },
+  { prefix: 'webkit', js: `webkit${js}`, css: `-webkit-${css}` },
+  { prefix: 'moz', js: `moz${js}`, css: `-moz-${css}` },
+  { prefix: 'ms', js: `ms${js}`, css: `-ms-${css}` },
+  { prefix: 'o', js: `o${js}`, css: `-o-${css}` },
 ];
 
 describe('"vendorPrefixed"', () => {

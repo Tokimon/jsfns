@@ -1,4 +1,4 @@
-import insertAfter from '@js-fns/web/insertAfter';
+import { insertAfter } from '@js-fns/web/insertAfter';
 import { byId, createElement, generateId, insertHtml, removeElement } from './assets/helpers';
 
 const testID = generateId('InsertAfter');

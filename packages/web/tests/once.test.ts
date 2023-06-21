@@ -1,8 +1,8 @@
 import { jest } from '@jest/globals';
 import type { SpyInstance } from 'jest-mock';
-import eventOptionsSupported from '@js-fns/web/eventOptionsSupported';
+import { eventOptionsSupported } from '@js-fns/web/eventOptionsSupported';
 import type { OnceEventListenerOptions, WhenFunction } from '@js-fns/web/once';
-import once from '@js-fns/web/once';
+import { once } from '@js-fns/web/once';
 import { triggerEvent } from './assets/helpers';
 
 describe('"once"', () => {

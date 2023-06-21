@@ -1,4 +1,4 @@
-import prepend from '@js-fns/web/prepend';
+import { prepend } from '@js-fns/web/prepend';
 import { byId, createElement, generateId, insertHtml, removeElement } from './assets/helpers';
 
 const testID = generateId('Prepend');

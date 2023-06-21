@@ -1,4 +1,4 @@
-import elementData, { resetCache } from '@js-fns/web/elementData';
+import { elementData, resetCache } from '@js-fns/web/elementData';
 import { byId, generateId, insertHtml, removeElement } from './assets/helpers';
 
 const testID = generateId('ElementData');
@@ -15,37 +15,47 @@ describe('"elementData"', () => {
 
   afterAll(() => removeElement(testNode));
 
-  it('Returns an object with all data stored for the given element, when no key is given', () => {
-    elementData(testNode, 'string', 'data');
-    elementData(testNode, 'number', 1);
-    elementData(testNode, 'boolean', true);
-    elementData(testNode, 'object', { a: 1 });
-    elementData(testNode, 'array', [1]);
-    elementData(testNode, 'null', null);
-
-    expect(elementData(testNode)).toEqual({
-      string: 'data',
-      number: 1,
-      boolean: true,
-      object: { a: 1 },
-      array: [1],
-      null: null,
-    });
-  });
-
   describe('Stores given data under the given key for a given element', () => {
-    it.each([null, { a: 1 }, [1], 'string', 1, true])('data: %s', (data) => {
-      elementData(testNode, 'key', data);
-      expect(elementData(testNode, 'key')).toBe(data);
+    const data = [
+      ['null', null],
+      ['object', { a: 1 }],
+      ['array', [1]],
+      ['string', 'string'],
+      ['number', 1],
+      ['boolean', true],
+    ] as const;
+
+    beforeAll(() => {
+      resetCache();
+      data.forEach(([key, value]) => elementData(testNode, key, value));
+    });
+
+    afterAll(resetCache);
+
+    test('Get all stored data', () => {
+      const obj = data.reduce<Record<string, unknown>>((o, [key, value]) => {
+        o[key] = value;
+        return o;
+      }, {});
+
+      expect(elementData(testNode)).toBe(obj);
+    });
+
+    test.each(data)('Retrieves data for the given key: %s', (key, value) => {
+      expect(elementData(testNode, key)).toBe(value);
     });
   });
 
   describe('Returns undefined when', () => {
+    beforeAll(resetCache);
+    afterAll(resetCache);
+
     it('No data is stored for the given element', () => {
       expect(elementData(testNode)).toBeUndefined();
     });
 
-    it('No data is stored for the given element, under the given key', () => {
+    it('No data is stored with the given key for the given element', () => {
+      elementData(testNode, 'stuff', 'value');
       expect(elementData(testNode, 'key')).toBeUndefined();
     });
   });

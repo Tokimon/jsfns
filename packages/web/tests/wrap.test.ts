@@ -1,5 +1,5 @@
-import wrap from '@js-fns/web/wrap';
-import { byId, generateId, insertHtml, removeElement } from './assets/helpers';
+import { wrap } from '@js-fns/web/wrap';
+import { byId, createElement, generateId, insertHtml, removeElement } from './assets/helpers';
 
 const testID = generateId('Wrap');
 const elmID = generateId('Wrap_Elm');
@@ -15,24 +15,35 @@ describe('wrap', () => {
 
   afterEach(() => removeElement(testID));
 
-  it('Does nothing when no HTML given', () => {
+  it('Returns false when wrapper element is not in the dom', () => {
     const elm = byId(elmID);
-    wrap(elm, '');
+    const result = wrap(elm, createElement('div'));
+
+    expect(result).toBe(false);
     expect(elm.parentElement?.id).toBe(testID);
   });
 
-  it('Wraps an element in given HTML', () => {
+  it('Returns false when no HTML given', () => {
+    const elm = byId(elmID);
+    const result = wrap(elm, '');
+
+    expect(result).toBe(false);
+    expect(elm.parentElement?.id).toBe(testID);
+  });
+
+  it('Returns true when element is successfully wrapped', () => {
     const elm = byId(elmID);
 
-    wrap(elm, '<div class="wrapper"></div>');
+    const result = wrap(elm, '<div class="wrapper"></div>');
 
+    expect(result).toBe(true);
     expect(elm.parentElement?.className).toBe('wrapper');
   });
 
   it('Inserts the given element after the text in the wrap', () => {
     const elm = byId(elmID);
 
-    wrap(
+    const result = wrap(
       elm,
       `
       <div class="wrapper">
@@ -41,6 +52,7 @@ describe('wrap', () => {
     `
     );
 
+    expect(result).toBe(true);
     expect(elm.previousSibling?.nodeValue?.trim()).toBe('some text here');
   });
 
@@ -48,7 +60,7 @@ describe('wrap', () => {
     it('Wraps the element in the deepest child', () => {
       const elm = byId(elmID);
 
-      wrap(
+      const result = wrap(
         elm,
         `
         <div class="root">
@@ -59,6 +71,7 @@ describe('wrap', () => {
       `
       );
 
+      expect(result).toBe(true);
       expect(elm.parentElement?.className).toBe('wrapper');
       expect(elm.parentElement?.parentElement?.parentElement?.className).toBe('root');
     });
@@ -66,7 +79,7 @@ describe('wrap', () => {
     it('Wraps the element in the first child', () => {
       const elm = byId(elmID);
 
-      wrap(
+      const result = wrap(
         elm,
         `
         <div class="root">
@@ -76,6 +89,7 @@ describe('wrap', () => {
       `
       );
 
+      expect(result).toBe(true);
       expect(elm.parentElement?.className).toBe('wrapper');
       expect(elm.parentElement?.parentElement?.className).toBe('root');
     });

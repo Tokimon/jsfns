@@ -1,4 +1,4 @@
-import css from '@js-fns/web/css';
+import { css } from '@js-fns/web/css';
 import { byId, generateId, insertHtml, removeElement } from './assets/helpers';
 
 const testID = generateId('CSS');
@@ -44,31 +44,46 @@ describe('"css"', () => {
       expect(css(testNode, 'fontSize')).toBe(15);
     });
 
+    it('Name can be snake-case', () => {
+      expect(css(testNode, 'font-size')).toBe(15);
+    });
+
     describe('And `value`', () => {
       it('Returns the newly set value', () => {
-        const value = '20px';
-        const result = css(testNode, 'fontSize', value);
+        const result = css(testNode, 'fontSize', '20px');
         expect(result).toBe(20);
       });
 
       it('Applies the value to the property as inline style', () => {
-        css(testNode, 'fontSize', '20px');
-        expect(testNode.style.cssText).toBe('font-size: 20px;');
+        css(testNode, 'fontSize', '20em');
+        expect(testNode.style.cssText).toBe('font-size: 20em;');
       });
 
       it('Applies `px` to numeric values for properties that need units', () => {
         css(testNode, 'fontSize', 20);
-        expect(testNode.style.fontSize).toBe('20px');
+        expect(testNode.style.cssText).toBe('font-size: 20px;');
       });
 
       it('Does not apply `px` to numeric values for properties that does not need units', () => {
         css(testNode, 'lineHeight', 2);
-        expect(testNode.style.lineHeight).toBe('2');
+        expect(testNode.style.cssText).toBe('line-height: 2;');
       });
 
-      it('When value includes `!important` it is taken into account', () => {
-        css(testNode, 'fontSize', '20em !important');
-        expect(testNode.style.cssText).toBe('font-size: 20em !important;');
+      describe('When value includes `!important` it is taken into account', () => {
+        it('Applies the value to the property as inline style', () => {
+          css(testNode, 'fontSize', '20em !important');
+          expect(testNode.style.cssText).toBe('font-size: 20em;');
+        });
+
+        it('Applies `px` to numeric values for properties that need units', () => {
+          css(testNode, 'fontSize', '20 !important');
+          expect(testNode.style.cssText).toBe('font-size: 20px !important;');
+        });
+
+        it('Does not apply `px` to numeric values for properties that does not need units', () => {
+          css(testNode, 'lineHeight', '2 !important');
+          expect(testNode.style.cssText).toBe('line-height: 2 !important;');
+        });
       });
     });
   });
@@ -81,12 +96,12 @@ describe('"css"', () => {
 
     it('Applies `px` to numeric values for properties that need units', () => {
       css(testNode, { fontSize: 20 });
-      expect(testNode.style.fontSize).toBe('20px');
+      expect(testNode.style.cssText).toBe('font-size: 20px;');
     });
 
     it('Does not apply `px` to numeric values for properties that does not need units', () => {
       css(testNode, { lineHeight: 2 });
-      expect(testNode.style.lineHeight).toBe('2');
+      expect(testNode.style.cssText).toBe('line-height: 2;');
     });
 
     it('When value includes `!important` it is taken into account', () => {

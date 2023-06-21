@@ -1,5 +1,5 @@
 import { jest } from '@jest/globals';
-import trigger from '@js-fns/web/trigger';
+import { trigger } from '@js-fns/web/trigger';
 import { bind, unbind } from './assets/helpers';
 
 describe('"Trigger"', () => {

@@ -1,4 +1,4 @@
-import viewport from '@js-fns/web/viewport';
+import { viewport } from '@js-fns/web/viewport';
 import { appendFrame, createDetachedDocument } from './assets/helpers';
 
 describe('"viewport"', () => {

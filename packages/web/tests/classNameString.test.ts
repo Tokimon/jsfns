@@ -1,6 +1,6 @@
-import classNameString from '@js-fns/web/classNameString';
+import { classNameString } from '@js-fns/web/classNameString';
 
-describe('"classNames"', () => {
+describe('"classNameString"', () => {
   it('Return a given string directly', () => {
     expect(classNameString('class')).toBe('class');
   });
@@ -17,7 +17,7 @@ describe('"classNames"', () => {
     expect(classNameString({ class1: true, class2: false, class3: true })).toBe('class1 class3');
   });
 
-  it('Combines class names from a mixture of inputs', () => {
+  it('Combines class names from a combination of inputs', () => {
     expect(classNameString('class', { class1: true, class2: false, class3: true }, ['class12', { class13: true, class14: false }])).toBe(
       'class class1 class3 class12 class13'
     );

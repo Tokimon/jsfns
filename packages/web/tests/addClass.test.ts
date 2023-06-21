@@ -1,4 +1,4 @@
-import addClass from '@js-fns/web/addClass';
+import { addClass } from '@js-fns/web/addClass';
 import { byId, createElement, generateId, insertHtml, removeElement } from './assets/helpers';
 
 const testID = generateId('AddClass');

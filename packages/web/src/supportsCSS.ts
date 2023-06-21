@@ -1,7 +1,4 @@
-import type { CSSStyleKey } from './types';
 import vendorPrefixed from './vendorPrefixed';
-
-let div: HTMLDivElement;
 
 export type PrefixedPropMatch = {
   prefix: string;
@@ -9,17 +6,6 @@ export type PrefixedPropMatch = {
   cssProp: string;
   value?: string;
 };
-
-export function supportsProp(prop: CSSStyleKey, value?: string): boolean {
-  if (!div) {
-    div = document.createElement('div');
-  }
-  if (typeof div.style[prop] === 'undefined') return false;
-  if (!value) return true;
-
-  div.style[prop] = value;
-  return div.style[prop] === value;
-}
 
 /**
  * Detect wether or not the given css property (and/or) value is supported by
@@ -39,27 +25,27 @@ export function supportsProp(prop: CSSStyleKey, value?: string): boolean {
  * // --> { prefix: 'webkit', jsProp: 'webkitUserDrag', cssProp: '-webkit-user-drag', value: 'element' }
  * ```
  */
-export function supportsCSS(prop: CSSStyleKey, value?: string): PrefixedPropMatch | boolean {
+export function supportsCSS(prop: string, value: string): PrefixedPropMatch | boolean {
   // Testing prefixed values
   const props = vendorPrefixed(prop);
-  const values = value ? vendorPrefixed(value) : undefined;
+  const values = vendorPrefixed(value);
 
   // Property (+ value) is supported natively as is
-  if (supportsProp(props[0].js, values?.[0].css)) return true;
+  if (CSS.supports(props[0].js, values[0].css)) return true;
 
   for (let i = 1; i < props.length; i++) {
     const { prefix, js, css } = props[i];
-    const prefixedProp = js as CSSStyleKey;
-    const prefixedValue = values?.[i].css;
+    const prefixedProp = js;
+    const prefixedValue = values[i].css;
 
     // Prefixed prop
-    if (supportsProp(prefixedProp, value)) return { prefix, jsProp: prefixedProp, cssProp: css, value };
+    if (CSS.supports(prefixedProp, value)) return { prefix, jsProp: prefixedProp, cssProp: css, value };
 
     // Prefixed value
-    if (prefixedValue && supportsProp(prop, prefixedValue)) return { prefix, jsProp: prop, cssProp: css, value: prefixedValue };
+    if (CSS.supports(prop, prefixedValue)) return { prefix, jsProp: prop, cssProp: css, value: prefixedValue };
 
     // Prefixed prop and value
-    if (supportsProp(prefixedProp, prefixedValue)) return { prefix, jsProp: prefixedProp, cssProp: css, value: prefixedValue };
+    if (CSS.supports(prefixedProp, prefixedValue)) return { prefix, jsProp: prefixedProp, cssProp: css, value: prefixedValue };
   }
 
   // No prefix support has been found

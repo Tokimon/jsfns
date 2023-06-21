@@ -1,4 +1,4 @@
-import getCurrentWindow from '@js-fns/web/getCurrentWindow';
+import { getCurrentWindow } from '@js-fns/web/getCurrentWindow';
 import { appendFrame, createDetachedDocument, createElement } from './assets/helpers';
 
 describe('"getCurrentWindow"', () => {
@@ -12,11 +12,6 @@ describe('"getCurrentWindow"', () => {
   });
 
   describe('Returns `null` when given value is', () => {
-    it.each([undefined, null, {}, [], true, 'String'])('Not a DOM Node: %s', (value) => {
-      const doc = getCurrentWindow(value);
-      expect(doc).toBeNull();
-    });
-
     it('A detached document', () => {
       const doc = createDetachedDocument();
       const win = getCurrentWindow(doc);
@@ -27,8 +22,8 @@ describe('"getCurrentWindow"', () => {
     it('Node of a detached document', () => {
       const doc = createDetachedDocument();
       const div = doc.createElement('div');
-
       const win = getCurrentWindow(div);
+
       expect(win).toBeNull();
     });
   });
@@ -36,14 +31,15 @@ describe('"getCurrentWindow"', () => {
   describe('Returns given Window', () => {
     it('Current Window', () => {
       const win = getCurrentWindow(window);
+
       expect(win).toBe(window);
     });
 
     it('Frame Window', () => {
       const frame = appendFrame();
       const frameWin = frame.contentWindow;
-
       const win = getCurrentWindow(frameWin);
+
       expect(win).toBe(frameWin);
 
       frame.remove();

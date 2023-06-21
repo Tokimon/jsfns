@@ -1,26 +1,21 @@
 import isString from '@js-fns/core/isString';
 import findUniqueNodes from './findUniqueNodeCollection';
 
-const qs = (elm: Document | Element, q: string) => elm.querySelector(q);
+const qs = (elm: Document | Element, q: string): Element | null => elm.querySelector(q);
 const qsAll = (elm: Document | Element) => (q: string) => elm.querySelectorAll(q);
 
-/**
- * Find an element by given CSS selector
- *
- * @param queries - CSS selector to find elements by
- * @param first - Return only the first found element
- * @returns List of found DOM elements
- *
- * @example
- *
- * ```ts
- * findByQuery('span.my-class', true) // --> First "span.my-class" elements
- * ```
- */
-function findByQuery(queries: string | string[], first: true): Element | null;
+export type argsWithoutTarget = [queries: string | string[], first?: boolean];
+export type argsWithTarget = [elm: Document | Element, queries: string | string[], first?: boolean];
+export type ReturnValue<T extends argsWithoutTarget | argsWithTarget> = T extends argsWithTarget
+  ? T[2] extends true
+    ? Element | null
+    : Element[]
+  : T[1] extends true
+  ? Element | null
+  : Element[];
 
 /**
- * Find an element by a given CSS selector from within a given element
+ * Find all elements matching a given CSS selector from a given element
  *
  * @param elm - The DOM element to start the search from
  * @param queries - CSS selector to find elements by
@@ -30,10 +25,11 @@ function findByQuery(queries: string | string[], first: true): Element | null;
  * @example
  *
  * ```ts
+ * findByQuery(MyElm, 'span.my-class') // --> All "span.my-class" elements that are descendants of MyElm
  * findByQuery(MyElm, 'span.my-class', true) // --> First "span.my-class" elements that are descendants of MyElm
  * ```
  */
-function findByQuery(elm: Document | Element, queries: string | string[], first: true): Element | null;
+function findByQuery<T extends argsWithTarget>(...args: T): ReturnValue<T>;
 
 /**
  * Find all elements matching a given CSS selector
@@ -45,39 +41,23 @@ function findByQuery(elm: Document | Element, queries: string | string[], first:
  * @example
  *
  * ```ts
- * findByQuery(MyElm, 'span.my-class', true) // --> All "span.my-class" elements
+ * findByQuery(MyElm, 'span.my-class') // --> All "span.my-class" elements that are descendants of MyElm
+ * findByQuery(MyElm, 'span.my-class', true) // --> First "span.my-class" elements that are descendants of MyElm
  * ```
  */
-function findByQuery(queries: string | string[], first?: false): Element[];
+function findByQuery<T extends argsWithoutTarget>(...args: T): ReturnValue<T>;
 
-/**
- * Find all elements matching a given CSS selector from within a given element
- *
- * @param elm - The DOM element to start the search from
- * @param queries - CSS selector to find elements by
- * @param first - Return only the first found element
- * @returns List of found DOM elements
- *
- * @example
- *
- * ```ts
- * findByQuery(MyElm, 'span.my-class', true) // --> All "span.my-class" elements that are descendants of MyElm
- * ```
- */
-function findByQuery(elm: Document | Element, queries: string | string[], first?: false): Element[];
+function findByQuery<T extends argsWithTarget | argsWithoutTarget>(...args: T): Element[] | Element | null {
+  if (isString(args[0]) || Array.isArray(args[0])) {
+    const [queries, first] = args as argsWithoutTarget;
+    return findByQuery(document, queries, !!first);
+  }
 
-function findByQuery(
-  elm: Document | Element | string | string[],
-  queries?: string | string[] | boolean,
-  first?: boolean
-): Element | Element[] | null {
-  if (isString(elm) || Array.isArray(elm)) return findByQuery(document, elm, !!queries);
-
+  // eslint-disable-next-line prefer-const
+  let [elm, queries, first] = args as argsWithTarget;
   if (Array.isArray(queries)) queries = queries.join(',');
 
-  const q = queries as string;
-
-  return first ? qs(elm, q) : findUniqueNodes(q, qsAll(elm));
+  return first ? qs(elm, queries) : (findUniqueNodes(queries, qsAll(elm)) as Element[]);
 }
 
 export { findByQuery };

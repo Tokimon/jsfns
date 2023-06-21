@@ -1,4 +1,4 @@
-import isDOMNode from '@js-fns/web/isDOMNode';
+import { isDOMNode } from '@js-fns/web/isDOMNode';
 import { appendFrame, createDetachedDocument } from './assets/helpers';
 
 describe('"isDOMNode"', () => {

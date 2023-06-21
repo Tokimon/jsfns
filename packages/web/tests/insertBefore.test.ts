@@ -1,4 +1,4 @@
-import insertBefore from '@js-fns/web/insertBefore';
+import { insertBefore } from '@js-fns/web/insertBefore';
 import { byId, createElement, generateId, insertHtml, removeElement } from './assets/helpers';
 
 const testID = generateId('InsertBefore');

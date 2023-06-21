@@ -1,4 +1,4 @@
-import children from '@js-fns/web/children';
+import { children } from '@js-fns/web/children';
 import { byId, createElement, generateId, insertHtml, removeElement } from './assets/helpers';
 
 const testID = generateId('Children');

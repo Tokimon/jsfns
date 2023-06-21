@@ -1,4 +1,4 @@
-import isDOMChildNode from '@js-fns/web/isDOMChildNode';
+import { isDOMChildNode } from '@js-fns/web/isDOMChildNode';
 import { appendFrame, byId, createDetachedDocument, createElement, generateId, insertHtml, removeElement } from './assets/helpers';
 
 const testID = generateId('IsDOMChildNode');

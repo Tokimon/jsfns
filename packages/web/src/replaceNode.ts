@@ -1,5 +1,5 @@
 import isString from '@js-fns/core/isString';
-import create from './create';
+import create from './createElement';
 import isDOMChildNode from './isDOMChildNode';
 
 /**

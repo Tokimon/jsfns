@@ -1,4 +1,4 @@
-import append from '@js-fns/web/append';
+import { append } from '@js-fns/web/append';
 import { byId, createElement, generateId, getOne, insertHtml, removeElement } from './assets/helpers';
 
 const testID = generateId('Append');
@@ -48,8 +48,8 @@ describe('"append"', () => {
   it('Moves element from one DOM element to another', () => {
     testNode.innerHTML = '<div class="insert-container"></div><div class="moved"></div>';
 
-    const insertContainer = getOne('.insert-container', testNode) as Element;
-    const moved = getOne('.moved', testNode) as Element;
+    const insertContainer = getOne('.insert-container', testNode);
+    const moved = getOne('.moved', testNode);
 
     append(insertContainer, moved);
 
