@@ -1,7 +1,6 @@
+import * as sizeFns from '@js-fns/web/size';
+import viewport from '@js-fns/web/viewport';
 import { byId, generateId, insertHtml, removeElement } from './assets/helpers';
-
-import viewport from '~web/viewport';
-import * as sizeFns from '~web/size';
 
 const { SizeType, elmSize, windowSize, marginBoxSize, outerSize, innerSize, contentSize, contentBoxSize, default: size } = sizeFns;
 

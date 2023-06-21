@@ -1,7 +1,6 @@
-import type { CSSStyleKey } from './types';
-
 import isString from '@js-fns/core/isString';
 import kebabCase from '@js-fns/core/kebabCase';
+import type { CSSStyleKey } from './types';
 
 export type CSSStyleProperties = { [key in CSSStyleKey]?: string | number | null };
 
@@ -19,7 +18,7 @@ const applyValue = (elm: HTMLElement, property: CSSStyleKey, value: string | num
   // but the property can't accept just a numeric value,
   // so "px" has to be added
   if (!Number.isNaN(Number(val)) && elm.style[property] !== val) {
-    applyValue(elm, property, value + 'px', important);
+    applyValue(elm, property, val + 'px', important);
   }
 };
 

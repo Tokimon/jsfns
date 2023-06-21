@@ -1,4 +1,4 @@
-import limitDecimals from '~core/limitDecimals';
+import limitDecimals from '@js-fns/core/limitDecimals';
 
 describe('"limitDecimals"', () => {
   it('Cuts decimals completely when decimal indication is not defined correctly', () => {

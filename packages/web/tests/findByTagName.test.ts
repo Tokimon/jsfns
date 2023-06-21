@@ -1,6 +1,5 @@
+import findByTagName from '@js-fns/web/findByTagName';
 import { byId, generateId, insertHtml, removeElement } from './assets/helpers';
-
-import findByTagName from '~web/findByTagName';
 
 const testID = generateId('FindByTagName');
 

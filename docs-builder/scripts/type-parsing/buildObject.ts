@@ -1,6 +1,6 @@
 import type { Kind_Property } from '../types';
-import { buildSummary } from './buildSummary';
 import { buildProperty } from './buildProperty';
+import { buildSummary } from './buildSummary';
 import type { TypeStringFunction } from './typeString';
 
 export function buildObject(typeString: TypeStringFunction, properties: Kind_Property[]) {

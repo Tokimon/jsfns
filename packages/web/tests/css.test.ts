@@ -1,6 +1,5 @@
-import { insertHtml, removeElement, generateId, byId } from './assets/helpers';
-
-import css from '~web/css';
+import css from '@js-fns/web/css';
+import { byId, generateId, insertHtml, removeElement } from './assets/helpers';
 
 const testID = generateId('CSS');
 const styleID = generateId('CSS_style');

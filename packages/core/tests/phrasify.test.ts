@@ -1,7 +1,6 @@
-import { result, TestInput } from './assets/result';
+import phrasify, { PhrasifySettings } from '@js-fns/core/phrasify';
+import { TestInput, result } from './assets/result';
 import { surround } from './assets/surround';
-
-import phrasify, { PhrasifySettings } from '~core/phrasify';
 
 const emptyObj = {};
 const space42 = surround('42', ' ');

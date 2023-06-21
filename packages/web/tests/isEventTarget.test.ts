@@ -1,4 +1,4 @@
-import isEventTarget from '~web/isEventTarget';
+import isEventTarget from '@js-fns/web/isEventTarget';
 
 class Custom extends EventTarget {}
 

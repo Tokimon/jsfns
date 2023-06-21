@@ -1,6 +1,5 @@
+import insertAfter from '@js-fns/web/insertAfter';
 import { byId, createElement, generateId, insertHtml, removeElement } from './assets/helpers';
-
-import insertAfter from '~web/insertAfter';
 
 const testID = generateId('InsertAfter');
 const nodeID = generateId('InsertAfterNode');

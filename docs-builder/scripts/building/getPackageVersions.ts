@@ -19,6 +19,7 @@ export async function getPackageVersions(root: string) {
 
     return structure;
   } catch (err) {
+    // eslint-disable-next-line no-console
     console.error(err);
     return structure;
   }

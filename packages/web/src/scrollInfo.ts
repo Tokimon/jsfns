@@ -1,6 +1,5 @@
-import type { GeneralWindow } from './types';
-
 import isDOMElement from './isDOMElement';
+import type { GeneralWindow } from './types';
 import viewport from './viewport';
 
 export type ScrollInfo = {

@@ -1,6 +1,5 @@
-import { insertHtml, removeElement, byId } from './assets/helpers';
-
-import findByClass from '~web/findByClass';
+import findByClass from '@js-fns/web/findByClass';
+import { byId, insertHtml, removeElement } from './assets/helpers';
 
 describe('"findByClass"', () => {
   beforeAll(() =>

@@ -1,5 +1,5 @@
-import isDOMChildNode from './isDOMChildNode';
 import hidden from './hidden';
+import isDOMChildNode from './isDOMChildNode';
 
 export type PositionIndicator = {
   /** Inside the viewport area? */

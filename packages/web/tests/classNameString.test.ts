@@ -1,4 +1,4 @@
-import classNameString from '~web/classNameString';
+import classNameString from '@js-fns/web/classNameString';
 
 describe('"classNames"', () => {
   it('Return a given string directly', () => {

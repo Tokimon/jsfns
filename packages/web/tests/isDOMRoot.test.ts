@@ -1,6 +1,5 @@
+import isDOMRoot from '@js-fns/web/isDOMRoot';
 import { appendFrame, createDetachedDocument, createElement } from './assets/helpers';
-
-import isDOMRoot from '~web/isDOMRoot';
 
 describe('"isDOMRoot"', () => {
   describe('Returns `true` for the `documentElement`', () => {

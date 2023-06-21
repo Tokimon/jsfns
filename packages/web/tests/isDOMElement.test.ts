@@ -1,6 +1,5 @@
+import isDOMElement from '@js-fns/web/isDOMElement';
 import { appendFrame, createDetachedDocument } from './assets/helpers';
-
-import isDOMElement from '~web/isDOMElement';
 
 describe('"isDOMElement"', () => {
   describe('Returns `true` for DOM element:', () => {

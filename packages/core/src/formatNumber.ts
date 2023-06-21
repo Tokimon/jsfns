@@ -40,7 +40,7 @@ export function formatNumber(num: number, settings?: FormatNumberSettings): stri
   const parts = limitDecimals(num, decimalCount).split('.');
 
   // Insert separator
-  parts[0] = parts[0].replace(/(\d)(?=(\d{3})+$)/g, `$1${thousand}`);
+  parts[0] = parts[0].replace(/(\d)(?=(\d{3})+$)/g, `$1${thousand ?? ''}`);
 
   // Join with decimal delimiter
   return parts.join(decimal);

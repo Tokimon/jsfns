@@ -30,7 +30,7 @@ function delegateHandler(handler: EventListenerOrEventListenerObject, options: E
   const { delegate, ...rest } = options;
   if (!delegate) return [handler, options] as [EventListenerOrEventListenerObject, ExtendedAddEventListenerOptions];
 
-  const orgHandler = isFunction(handler) ? handler : handler.handleEvent;
+  const orgHandler = isFunction(handler) ? handler : (handler as EventListenerObject).handleEvent.bind(handler);
 
   const eventHandler: EventListener = (e) => {
     let target: HTMLElement | null = e.target as HTMLElement;
@@ -39,7 +39,9 @@ function delegateHandler(handler: EventListenerOrEventListenerObject, options: E
 
     if (!target) return true;
 
-    const evt = new window[e.constructor.name as keyof Window](e.type, e) as Event;
+    const evtType = e.constructor.name as keyof Window;
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-call
+    const evt = new window[evtType](e.type, e) as Event;
 
     Object.defineProperty(evt, 'currentTarget', {
       value: document.getElementById('notify-container'),
@@ -58,7 +60,7 @@ function whenHandler(elm: EventTarget, handler: EventListenerOrEventListenerObje
   const { when, once, ...rest } = options;
   if (!when) return [handler, options] as [EventListenerOrEventListenerObject, ExtendedAddEventListenerOptions];
 
-  const orgHandler = isFunction(handler) ? handler : handler.handleEvent;
+  const orgHandler = isFunction(handler) ? handler : (handler as EventListenerObject).handleEvent.bind(handler);
 
   return [
     (e) => {

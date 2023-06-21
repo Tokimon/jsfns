@@ -1,6 +1,5 @@
+import getCurrentDocument from '@js-fns/web/getCurrentDocument';
 import { appendFrame, createDetachedDocument, createElement } from './assets/helpers';
-
-import getCurrentDocument from '~web/getCurrentDocument';
 
 describe('"getCurrentDocument"', () => {
   it('Returns current Document from a given Frame (not `contentDocument`)', () => {

@@ -1,5 +1,5 @@
 import { jest } from '@jest/globals';
-import delegate, { delegateHandler, DelegateEventHandler } from '~web/delegate';
+import delegate, { DelegateEventHandler, delegateHandler } from '@js-fns/web/delegate';
 import { byId, generateId, insertHtml, removeElement, triggerEvent } from './assets/helpers';
 
 const delegateID = generateId('Delegate');

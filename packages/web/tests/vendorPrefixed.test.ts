@@ -1,4 +1,4 @@
-import vendorPrefixed, { VendorPrefixing } from '~web/vendorPrefixed';
+import vendorPrefixed, { VendorPrefixing } from '@js-fns/web/vendorPrefixed';
 
 const result = (prefix: 'webkit' | 'moz' | 'ms' | 'o', js: string, css: string): VendorPrefixing => ({
   css: `-${prefix}-${css}`,

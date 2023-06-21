@@ -71,11 +71,7 @@ function findByQuery(
   queries?: string | string[] | boolean,
   first?: boolean
 ): Element | Element[] | null {
-  if (isString(elm) || Array.isArray(elm)) {
-    first = queries as boolean;
-    queries = elm as string | string[];
-    elm = document;
-  }
+  if (isString(elm) || Array.isArray(elm)) return findByQuery(document, elm, !!queries);
 
   if (Array.isArray(queries)) queries = queries.join(',');
 

@@ -1,18 +1,7 @@
 {
+  "extends": "../tsconfig.json",
   "compilerOptions": {
-    "resolveJsonModule": true,
-    "module": "ESNext",
-    "moduleResolution": "node",
-    "strict": true,
-    "allowJs": true,
-    "esModuleInterop": true,
-    "isolatedModules": true,
-    "lib": ["esnext"],
-    "target": "esnext",
-
-    "baseUrl": "./",
-    "paths": {
-      "~/*": ["./scripts/*"]
-    }
-  }
+    "allowJs": true
+  },
+  "include": ["scripts"]
 }

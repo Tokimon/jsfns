@@ -1,4 +1,4 @@
-import hash, { hashCode } from '~core/hash';
+import hash, { hashCode } from '@js-fns/core/hash';
 
 describe('"hash"', () => {
   describe('"hashCode"', () => {

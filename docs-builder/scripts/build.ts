@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import { mkdir } from 'node:fs/promises';
 import { dirname, join } from 'path';
 import { buildTypedoc } from './building/buildTypedoc';
@@ -33,10 +34,9 @@ async function build() {
   const packagePath = join(root, 'packages', packageName);
   const docsPath = join(root, 'docs');
 
-  const [{ default: pkgJson }, highlightCss] = await Promise.all([
-    import('file://' + join(packagePath, 'package.json'), { assert: { type: 'json' } }),
-    getHighlighCss(),
-  ]);
+  // eslint-disable-next-line @typescript-eslint/no-var-requires
+  const pkgJson = require(join(packagePath, 'package.json')) as { name: string; version: string };
+  const highlightCss = await getHighlighCss();
 
   const docs = buildTypedoc(packagePath) as unknown as Kind_Project;
   console.log(`${color.green('🗸')} types parsed`);
@@ -70,7 +70,7 @@ async function build() {
     {
       template: 'package',
       path: join(docsPath, packageName),
-      data: { packageName, version: versions[packageName as keyof typeof versions][0] },
+      data: { packageName, version: versions[packageName][0] },
     },
     {
       template: 'landing',

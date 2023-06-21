@@ -1,4 +1,4 @@
-import promisefy, { NodeLikeCallback } from '~core/promisefy';
+import promisefy, { NodeLikeCallback } from '@js-fns/core/promisefy';
 
 describe('"promisefy"', () => {
   const err = new Error('error');

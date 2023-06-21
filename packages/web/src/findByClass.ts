@@ -1,5 +1,4 @@
 import isString from '@js-fns/core/isString';
-
 import findUniqueNodes from './findUniqueNodeCollection';
 
 const byCn = (elm: Document | Element) => (cn: string) => elm.getElementsByClassName(cn);

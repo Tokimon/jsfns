@@ -1,5 +1,5 @@
-import pascalCase from '@js-fns/core/pascalCase';
 import kebabCase from '@js-fns/core/kebabCase';
+import pascalCase from '@js-fns/core/pascalCase';
 import { CSSStyleKey } from './types';
 
 export type VendorPrefixing = [

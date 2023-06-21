@@ -1,6 +1,5 @@
-import { insertHtml, removeElement, byId, generateId } from './assets/helpers';
-
-import boxModel from '~web/boxModel';
+import boxModel from '@js-fns/web/boxModel';
+import { byId, generateId, insertHtml, removeElement } from './assets/helpers';
 
 const testID = generateId('BoxModel');
 const styleID = generateId('BoxModelStyle');

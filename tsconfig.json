@@ -15,6 +15,13 @@
     "strictNullChecks": true,
     "strict": true,
     "forceConsistentCasingInFileNames": true,
-    "esModuleInterop": true
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "baseUrl": ".",
+    "paths": {
+      "~docs-builder/*": ["./docs-builder/scripts/*"],
+      "@js-fns/core/*": ["./packages/core/src/*"],
+      "@js-fns/web/*": ["./packages/web/src/*"]
+    }
   }
 }

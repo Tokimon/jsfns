@@ -1,6 +1,5 @@
+import isDOMFragment from '@js-fns/web/isDOMFragment';
 import { createElement } from './assets/helpers';
-
-import isDOMFragment from '~web/isDOMFragment';
 
 describe('"isDOMFragment"', () => {
   describe('Returns `true` for:', () => {

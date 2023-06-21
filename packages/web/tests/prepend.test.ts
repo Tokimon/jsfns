@@ -1,6 +1,5 @@
-import { insertHtml, byId, removeElement, createElement, generateId } from './assets/helpers';
-
-import prepend from '~web/prepend';
+import prepend from '@js-fns/web/prepend';
+import { byId, createElement, generateId, insertHtml, removeElement } from './assets/helpers';
 
 const testID = generateId('Prepend');
 const insertHTML = '<div class="inserted"></div>';

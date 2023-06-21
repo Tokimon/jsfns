@@ -1,6 +1,5 @@
-import { insertHtml, removeElement, byId, generateId, createElement } from './assets/helpers';
-
-import elmIndex from '~web/elmIndex';
+import elmIndex from '@js-fns/web/elmIndex';
+import { byId, createElement, generateId, insertHtml, removeElement } from './assets/helpers';
 
 const testID = generateId('ElmIndex');
 const SubNodeID = generateId('SubNode');

@@ -1,5 +1,5 @@
 import { jest } from '@jest/globals';
-import trigger from '~web/trigger';
+import trigger from '@js-fns/web/trigger';
 import { bind, unbind } from './assets/helpers';
 
 describe('"Trigger"', () => {
@@ -7,7 +7,7 @@ describe('"Trigger"', () => {
     const cb = jest.fn();
 
     const eventName = 'test';
-    const eventNames = [1, 2, 3].map((n) => eventName + n);
+    const eventNames = [1, 2, 3].map((n) => `${eventName}${n}`);
 
     const _trigger = (...args: [eventNames: string | string[], data?: unknown]) => (elm ? trigger(elm, ...args) : trigger(...args));
 

@@ -1,4 +1,4 @@
-import isBoolean from '~core/isBoolean';
+import isBoolean from '@js-fns/core/isBoolean';
 
 describe('"isBoolean"', () => {
   describe('Returns `true` for Boolean values', () => {

@@ -1,6 +1,5 @@
+import isWindow from '@js-fns/web/isWindow';
 import { appendFrame, createDetachedDocument } from './assets/helpers';
-
-import isWindow from '~web/isWindow';
 
 describe('"isWindow"', () => {
   describe('Returns `true` for:', () => {

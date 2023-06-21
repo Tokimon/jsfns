@@ -1,5 +1,4 @@
 import isString from '@js-fns/core/isString';
-
 import ensureHTML from './ensureHTML';
 
 /**

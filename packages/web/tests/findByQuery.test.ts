@@ -1,6 +1,5 @@
+import findByQuery from '@js-fns/web/findByQuery';
 import { byId, insertHtml, removeElement } from './assets/helpers';
-
-import findByQuery from '~web/findByQuery';
 
 describe('"findByQuery"', () => {
   beforeAll(() =>

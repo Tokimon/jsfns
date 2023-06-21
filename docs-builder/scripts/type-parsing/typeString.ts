@@ -1,11 +1,11 @@
 import type { All_Types } from '../types';
 import { buildArray } from './buildArray';
+import { buildLiteral } from './buildLiteral';
 import { buildPredicate } from './buildPredicate';
 import { buildElement } from './buildProperty';
+import { buildReference } from './buildReference';
 import { buildReflection } from './buildReflection';
 import { buildTuple } from './buildTuple';
-import { buildLiteral } from './buildLiteral';
-import { buildReference } from './buildReference';
 
 export type TypeStringFunction = (type: All_Types) => string;
 

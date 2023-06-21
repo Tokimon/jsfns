@@ -1,6 +1,6 @@
 import { jest } from '@jest/globals';
 import type { SpyInstance } from 'jest-mock';
-import on, { type argsWithoutTarget } from '~web/on';
+import on, { type argsWithoutTarget } from '@js-fns/web/on';
 import { unbind } from './assets/helpers';
 
 describe('"on"', () => {

@@ -1,7 +1,7 @@
 import { jest } from '@jest/globals';
 import type { SpyInstance } from 'jest-mock';
-import eventOptionsSupported from '~web/eventOptionsSupported';
-import off from '~web/off';
+import eventOptionsSupported from '@js-fns/web/eventOptionsSupported';
+import off from '@js-fns/web/off';
 import { bind, triggerEvent } from './assets/helpers';
 
 describe('"off"', () => {

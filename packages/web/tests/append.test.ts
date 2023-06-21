@@ -1,6 +1,5 @@
-import { getOne, insertHtml, byId, removeElement, createElement, generateId } from './assets/helpers';
-
-import append from '~web/append';
+import append from '@js-fns/web/append';
+import { byId, createElement, generateId, getOne, insertHtml, removeElement } from './assets/helpers';
 
 const testID = generateId('Append');
 const insertHTML = '<div class="inserted"></div>';

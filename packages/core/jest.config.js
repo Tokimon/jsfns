@@ -1,4 +1,3 @@
-// eslint-disable-next-line @typescript-eslint/no-var-requires
 import baseConfig from '../../jest.config.base.js';
 
 export default {

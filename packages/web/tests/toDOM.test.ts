@@ -1,4 +1,4 @@
-import toDOM from '~web/toDOM';
+import toDOM from '@js-fns/web/toDOM';
 
 describe('"toDOM"', () => {
   it.each(['<html />', '<head />', '<body />', '<frame />', '<frameset />'])('Tag "%s" is unsupported and is returned as string', (val) => {

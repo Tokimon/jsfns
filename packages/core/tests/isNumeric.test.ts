@@ -1,4 +1,4 @@
-import isNumeric from '~core/isNumeric';
+import isNumeric from '@js-fns/core/isNumeric';
 
 describe('"isNumeric"', () => {
   describe('Returns `true` for numeric values', () => {

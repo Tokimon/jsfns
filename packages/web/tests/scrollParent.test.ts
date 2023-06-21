@@ -1,6 +1,5 @@
+import scrollParent from '@js-fns/web/scrollParent';
 import { appendFrame, byId, createDetachedDocument, generateId, getOne, insertHtml, removeElement } from './assets/helpers';
-
-import scrollParent from '~web/scrollParent';
 
 const scrollerID = generateId('scroller');
 const childID = generateId('child');

@@ -1,4 +1,4 @@
-import ensureHTML from '~web/ensureHTML';
+import ensureHTML from '@js-fns/web/ensureHTML';
 
 describe('"findUniqueNodeCollection"', () => {
   it('Returns string containing "<" directly', () => {

@@ -1,4 +1,4 @@
-import hexToNumber from '~core/hexToNumber';
+import hexToNumber from '@js-fns/core/hexToNumber';
 
 describe('"hexToNumber"', () => {
   it('Returns 0 on empty strings', () => {

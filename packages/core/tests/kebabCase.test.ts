@@ -1,7 +1,6 @@
-import { result, TestInput } from './assets/result';
+import kebabCase, { KebabCaseSettings } from '@js-fns/core/kebabCase';
+import { TestInput, result } from './assets/result';
 import { surround } from './assets/surround';
-
-import kebabCase, { KebabCaseSettings } from '~core/kebabCase';
 
 const emptyObj = {};
 const surround42 = surround('42', '-');

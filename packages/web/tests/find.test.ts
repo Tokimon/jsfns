@@ -1,6 +1,6 @@
 import { jest } from '@jest/globals';
 import type { SpyInstance } from 'jest-mock';
-import find from '~web/find';
+import find from '@js-fns/web/find';
 
 describe('"Find"', () => {
   describe('With only selector defined', () => {

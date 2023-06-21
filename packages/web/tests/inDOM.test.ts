@@ -1,6 +1,5 @@
+import inDOM from '@js-fns/web/inDOM';
 import { appendFrame, createDetachedDocument, createElement } from './assets/helpers';
-
-import inDOM from '~web/inDOM';
 
 describe('"inDOM"', () => {
   describe('Returns `true` for DOM elements found in the DOM tree', () => {

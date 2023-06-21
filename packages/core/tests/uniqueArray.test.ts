@@ -1,4 +1,4 @@
-import uniqueArray from '~core/uniqueArray';
+import uniqueArray from '@js-fns/core/uniqueArray';
 
 describe('"uniqueArray"', () => {
   const obj = {};

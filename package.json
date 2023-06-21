@@ -8,7 +8,8 @@
   "scripts": {
     "prepublishOnly": "npm run build",
     "postpublish": "npm run clean",
-    "prettier": "prettier --write ."
+    "prettier": "prettier --write .",
+    "lint": "eslint . --max-warnings=0"
   },
   "repository": {
     "type": "git",
@@ -22,15 +23,20 @@
   },
   "homepage": "https://github.com/Tokimon/js-fns#readme",
   "devDependencies": {
-    "prettier": "^2.8.8",
+    "@trivago/prettier-plugin-sort-imports": "^4.1.1",
+    "@types/jest": "~29.5.2",
+    "@types/node": "^20.3.1",
     "eslint": "^8.43.0",
     "eslint-config-prettier": "^8.8.0",
     "eslint-config-standard": "^17.1.0",
     "eslint-plugin-import": "^2.27.5",
     "eslint-plugin-jest": "^27.2.2",
+    "eslint-plugin-jsdoc": "^46.2.6",
     "eslint-plugin-n": "^16.0.0",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^6.1.1",
+    "globals": "^13.20.0",
+    "prettier": "^2.8.8",
     "typescript": "^5.1.3"
   }
 }

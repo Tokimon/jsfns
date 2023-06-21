@@ -1,6 +1,5 @@
-import { generateId, removeElement, byId, insertHtml } from './assets/helpers';
-
-import wrap from '~web/wrap';
+import wrap from '@js-fns/web/wrap';
+import { byId, generateId, insertHtml, removeElement } from './assets/helpers';
 
 const testID = generateId('Wrap');
 const elmID = generateId('Wrap_Elm');

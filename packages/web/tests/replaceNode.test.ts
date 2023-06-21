@@ -1,6 +1,5 @@
+import replaceNode from '@js-fns/web/replaceNode';
 import { byId, createElement, generateId, getOne, insertHtml, removeElement } from './assets/helpers';
-
-import replaceNode from '~web/replaceNode';
 
 const testID = generateId('ReplaceNode');
 

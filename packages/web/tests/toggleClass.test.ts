@@ -1,6 +1,5 @@
+import toggleClass from '@js-fns/web/toggleClass';
 import { byId, createElement, generateId, insertHtml, removeElement } from './assets/helpers';
-
-import toggleClass from '~web/toggleClass';
 
 const testID = generateId('ToggleClass');
 

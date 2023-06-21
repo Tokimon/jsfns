@@ -1,7 +1,6 @@
-import { result, TestInput } from './assets/result';
+import snakeCase, { SnakeCaseSettings } from '@js-fns/core/snakeCase';
+import { TestInput, result } from './assets/result';
 import { surround } from './assets/surround';
-
-import snakeCase, { SnakeCaseSettings } from '~core/snakeCase';
 
 const emptyObj = {};
 const surround42 = surround('42', '_');

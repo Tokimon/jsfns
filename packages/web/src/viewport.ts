@@ -1,6 +1,5 @@
-import type { GeneralWindow } from './types';
-
 import getCurrentDocument from './getCurrentDocument';
+import type { GeneralWindow } from './types';
 
 /**
  * Get the current viewport element (scrolling element) of the current document, from a given element

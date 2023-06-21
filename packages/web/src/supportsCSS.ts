@@ -1,5 +1,4 @@
 import type { CSSStyleKey } from './types';
-
 import vendorPrefixed from './vendorPrefixed';
 
 let div: HTMLDivElement;

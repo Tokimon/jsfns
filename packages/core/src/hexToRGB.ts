@@ -1,6 +1,6 @@
-import isString from './isString';
 import chunkString from './chunkString';
 import hexToNumber from './hexToNumber';
+import isString from './isString';
 
 /**
  * Converts a Hexadecimal color to a RGB(A) color array

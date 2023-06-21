@@ -1,5 +1,5 @@
 import { ReflectionKind } from 'typedoc';
-import type { Kind_Module, Kind_TypeAlias } from '~/types';
+import type { Kind_Module, Kind_TypeAlias } from '~docs-builder/types';
 import { buildTypeAlias } from './buildTypeAlias';
 import { TSCodeMarkdown } from './markdown';
 

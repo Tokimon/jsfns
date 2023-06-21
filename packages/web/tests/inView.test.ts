@@ -1,4 +1,4 @@
-import inView from '~web/inView';
+import inView from '@js-fns/web/inView';
 import { byId, createElement, generateId, insertHtml, removeElement } from './assets/helpers';
 import { mockClientRect } from './assets/mocks';
 

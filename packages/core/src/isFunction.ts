@@ -11,7 +11,6 @@
  * isFunction('string'); // -> false
  * ```
  */
-// eslint-disable-next-line @typescript-eslint/ban-types
-export const isFunction = (x: unknown): x is Function => typeof x === 'function';
+export const isFunction = (x: unknown): x is (...args: unknown[]) => unknown => typeof x === 'function';
 
 export default isFunction;

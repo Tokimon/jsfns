@@ -1,6 +1,5 @@
-import { insertHtml, byId, removeElement, generateId } from './assets/helpers';
-
-import scrollInfo from '~web/scrollInfo';
+import scrollInfo from '@js-fns/web/scrollInfo';
+import { byId, generateId, insertHtml, removeElement } from './assets/helpers';
 
 const testID = generateId('ScrollInfo');
 

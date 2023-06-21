@@ -1,6 +1,5 @@
-import { insertHtml, byId, removeElement, generateId } from './assets/helpers';
-
-import replaceClass from '~web/replaceClass';
+import replaceClass from '@js-fns/web/replaceClass';
+import { byId, generateId, insertHtml, removeElement } from './assets/helpers';
 
 const testID = generateId('ReplaceClass');
 

@@ -1,6 +1,5 @@
+import isDOMContainer from '@js-fns/web/isDOMContainer';
 import { appendFrame, createDetachedDocument } from './assets/helpers';
-
-import isDOMContainer from '~web/isDOMContainer';
 
 describe('"isDOMContainer"', () => {
   describe('Returns `true` for', () => {

@@ -1,6 +1,5 @@
-import type { Noop } from './types';
-
 import on from './on';
+import type { Noop } from './types';
 
 /**
  * returns whether document ready state indicates that the document is ready to be manipulated

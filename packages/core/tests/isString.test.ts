@@ -1,4 +1,4 @@
-import isString from '~core/isString';
+import isString from '@js-fns/core/isString';
 
 describe('"isString"', () => {
   describe('Returns `true` for String values', () => {

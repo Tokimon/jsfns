@@ -1,9 +1,8 @@
 import isString from '@js-fns/core/isString';
-
 import findByClass from './findByClass';
 import findById from './findById';
-import findByTagName from './findByTagName';
 import findByQuery from './findByQuery';
+import findByTagName from './findByTagName';
 
 /**
  * Find elements by a given selector. The selector will be lightly analyzed to determine

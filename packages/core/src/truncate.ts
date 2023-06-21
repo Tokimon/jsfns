@@ -19,15 +19,13 @@ export type TruncateSettings = {
  * ```ts
  * truncate('No max length to the string'); // -> No max limit to the string length
  * truncate('With a max length to the string', { maxLength: 10 }); // -> With a max...
- * truncate('With a max length to the string and a differnet ending', { maxLength: 10, end: ' <---' }); // -> With a max <---
+ * truncate('With a max length to the string and a different ending', { maxLength: 10, end: ' <---' }); // -> With a max <---
  * ```
  */
 export function truncate(str: string, settings: TruncateSettings = {}): string {
   const { maxLength, end = '...' } = settings;
 
-  if (!isNumber(maxLength) || (maxLength as number) < 0 || str.length <= (maxLength as number)) {
-    return str;
-  }
+  if (!isNumber(maxLength) || maxLength < 0 || str.length <= maxLength) return str;
 
   return `${str.slice(0, maxLength)}${end}`;
 }

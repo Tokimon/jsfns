@@ -17,10 +17,13 @@ import isFunction from './isFunction';
  * isGeneratorLike(() => {}); // -> false
  * ```
  */
-// eslint-disable-next-line  @typescript-eslint/no-explicit-any
-export function isGeneratorLike(x: any): x is Generator {
-  return x != null && isFunction(x.next) && isFunction(x.throw) && isFunction(x.return);
-  // && isFunction(x[Symbol.iterator]);
+export function isGeneratorLike(x: unknown): x is Generator {
+  if (x == null) return false;
+
+  const i = x as Iterator<unknown>;
+
+  // eslint-disable-next-line @typescript-eslint/unbound-method
+  return isFunction(i.next) && isFunction(i.throw) && isFunction(i.return);
 }
 
 /**
@@ -37,15 +40,10 @@ export function isGeneratorLike(x: any): x is Generator {
  * @param x - Argument to test
  * @returns Whether the argument a Generator or not
  */
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export function isGenerator(x: any): x is GeneratorFunction {
-  if (!x || !x.constructor) {
-    return false;
-  }
+export function isGenerator(x: unknown): x is GeneratorFunction {
+  if (!x?.constructor) return false;
 
-  const { name, displayName, prototype } = x.constructor;
-
-  return name === 'GeneratorFunction' || displayName === 'GeneratorFunction' || isGeneratorLike(prototype);
+  return x.constructor.name === 'GeneratorFunction' || isGeneratorLike(Object.getPrototypeOf(x.constructor));
 }
 
 export default isGenerator;

@@ -1,4 +1,4 @@
-import hexToRGB from '~core/hexToRGB';
+import hexToRGB from '@js-fns/core/hexToRGB';
 
 describe('"hexToRGB"', () => {
   it('Generates a RGB array from empty string', () => {
