@@ -1,6 +1,6 @@
 import isDocument from './isDocument';
 import isWindow from './isWindow';
-import { GeneralWindow } from './types';
+import { type GeneralWindow } from './types';
 import viewport from './viewport';
 
 /**
@@ -18,6 +18,7 @@ import viewport from './viewport';
  */
 export function outerSize(elm: Document | GeneralWindow | HTMLElement) {
   if (isWindow(elm)) return { width: elm.outerWidth, height: elm.outerHeight };
+
   if (isDocument(elm)) {
     const vp = viewport(elm);
     if (!vp) return { width: 0, height: 0 };

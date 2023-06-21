@@ -1,6 +1,6 @@
 import isDocument from './isDocument';
 import isWindow from './isWindow';
-import { GeneralWindow } from './types';
+import { type GeneralWindow } from './types';
 import viewport from './viewport';
 
 /**
