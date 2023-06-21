@@ -37,6 +37,15 @@ export default [
       ...prettierConfig.rules,
       'no-console': 2,
       'no-duplicate-imports': 2,
+      'prefer-const': 2,
+      '@typescript-eslint/consistent-type-imports': [
+        2,
+        {
+          prefer: 'type-imports',
+          disallowTypeAnnotations: true,
+          fixStyle: 'inline-type-imports',
+        },
+      ],
     },
   },
 ];
