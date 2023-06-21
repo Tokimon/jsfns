@@ -4,6 +4,6 @@ export default {
   ...baseConfig,
   testMatch: ['**/core/tests/*.test.ts'],
   moduleNameMapper: {
-    '^~core/(.*)$': '<rootDir>/src/$1',
+    '^@js-fns/core/(.*)$': '<rootDir>/src/$1',
   },
 };
