@@ -1,7 +1,8 @@
-import isString from '@js-fns/core/isString';
-import findUniqueNodes from './findUniqueNodeCollection';
+import { isString } from '@js-fns/core/isString';
+import { uniqueNodeList } from './uniqueNodeList';
 
-const byCn = (elm: Document | Element) => (cn: string) => elm.getElementsByClassName(cn);
+export type argsWithoutTarget = [classNames: string | string[]];
+export type argsWithTarget = [elm: Document | Element, classNames: string | string[]];
 
 /**
  * Finds DOM elements with a given class name.
@@ -38,12 +39,14 @@ function findByClass(classNames: string | string[]): Element[];
  */
 function findByClass(elm: Document | Element, classNames: string | string[]): Element[];
 
-function findByClass(elm: Document | Element | string | string[], classNames?: string | string[]): Element[] {
-  if (isString(elm) || Array.isArray(elm)) {
-    [elm, classNames] = [document, elm];
-  }
+function findByClass<T extends argsWithTarget | argsWithoutTarget>(...args: T): Element[] {
+  if (isString(args[0]) || Array.isArray(args[0])) return findByClass(document, args[0]);
 
-  return findUniqueNodes(classNames as string | string[], byCn(elm));
+  // eslint-disable-next-line prefer-const
+  let [elm, classNames] = args as argsWithTarget;
+  if (!Array.isArray(classNames)) classNames = [classNames];
+
+  return uniqueNodeList(...classNames.map((cn) => elm.getElementsByClassName(cn)));
 }
 
 export { findByClass };

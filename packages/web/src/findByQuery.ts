@@ -1,8 +1,5 @@
-import isString from '@js-fns/core/isString';
-import findUniqueNodes from './findUniqueNodeCollection';
-
-const qs = (elm: Document | Element, q: string): Element | null => elm.querySelector(q);
-const qsAll = (elm: Document | Element) => (q: string) => elm.querySelectorAll(q);
+import { isString } from '@js-fns/core/isString';
+import { uniqueNodeList } from './uniqueNodeList';
 
 export type argsWithoutTarget = [queries: string | string[], first?: boolean];
 export type argsWithTarget = [elm: Document | Element, queries: string | string[], first?: boolean];
@@ -57,7 +54,7 @@ function findByQuery<T extends argsWithTarget | argsWithoutTarget>(...args: T): 
   let [elm, queries, first] = args as argsWithTarget;
   if (Array.isArray(queries)) queries = queries.join(',');
 
-  return first ? qs(elm, queries) : (findUniqueNodes(queries, qsAll(elm)) as Element[]);
+  return first ? elm.querySelector(queries) : uniqueNodeList(elm.querySelectorAll(queries));
 }
 
 export { findByQuery };

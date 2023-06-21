@@ -1,6 +1,4 @@
-import findUniqueNodes from './findUniqueNodeCollection';
-
-const byName = (name: string) => document.getElementsByName(name);
+import { uniqueNodeList } from './uniqueNodeList';
 
 /**
  * Find DOM elements with the given name
@@ -15,6 +13,9 @@ const byName = (name: string) => document.getElementsByName(name);
  * findByName(['my-element-name', 'my-second-name']) // --> all "[name=my-element-name]" and "[name=my-second-name]" elements
  * ```
  */
-export const findByName = (names: string | string[]): Element[] => findUniqueNodes(names, byName);
+export const findByName = (names: string | string[]): Element[] => {
+  if (!Array.isArray(names)) names = [names];
+  return uniqueNodeList(...names.map((n) => document.getElementsByName(n)));
+};
 
 export default findByName;

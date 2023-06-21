@@ -1,4 +1,4 @@
-const byId = (id: string) => document.getElementById(id);
+import { uniqueNodeList } from './uniqueNodeList';
 
 /**
  * Find a DOM element with the given ID
@@ -31,13 +31,8 @@ function findById(ids: string): HTMLElement | null;
 function findById(ids: string[]): HTMLElement[];
 
 function findById(ids: string | string[]): HTMLElement | HTMLElement[] | null {
-  if (!Array.isArray(ids)) return byId(ids);
-
-  return ids.reduce((nodes, id) => {
-    const node = byId(id);
-    node && nodes.push(node);
-    return nodes;
-  }, [] as HTMLElement[]);
+  if (!Array.isArray(ids)) return document.getElementById(ids);
+  return uniqueNodeList(...ids.map((id) => document.getElementById(id))) as HTMLElement[];
 }
 
 export { findById };
