@@ -1,8 +1,10 @@
-import isFunction from '@js-fns/core/isFunction';
-import isEventTarget from './isEventTarget';
-import off from './off';
+import { isFunction } from '@js-fns/core/isFunction';
+import { copyEvent } from './copyEvent';
+import isDOMElement from './isDOMElement';
+import { isEventTarget } from './isEventTarget';
+import { off } from './off';
 
-export type ExtendedAddEventListenerOptions = AddEventListenerOptions & {
+export type OnOptions = AddEventListenerOptions & {
   /**
    * A method that returns true when the event should trigger
    * Combined with `once`, it will only remove the handler if the handler has triggered (when resolves to true)
@@ -13,63 +15,47 @@ export type ExtendedAddEventListenerOptions = AddEventListenerOptions & {
   delegate?: string;
 };
 
-export type argsWithoutTarget = [
-  eventNames: string | string[],
-  handler: EventListenerOrEventListenerObject,
-  options?: ExtendedAddEventListenerOptions
-];
+export type argsWithoutTarget = [eventNames: string | string[], handler: EventListenerOrEventListenerObject, options?: OnOptions];
 
 export type argsWithTarget = [
   elm: EventTarget,
   eventNames: string | string[],
   handler: EventListenerOrEventListenerObject,
-  options?: ExtendedAddEventListenerOptions
+  options?: OnOptions
 ];
 
-function delegateHandler(handler: EventListenerOrEventListenerObject, options: ExtendedAddEventListenerOptions) {
-  const { delegate, ...rest } = options;
-  if (!delegate) return [handler, options] as [EventListenerOrEventListenerObject, ExtendedAddEventListenerOptions];
+const getDelegateTarget = (event: Event, delegate: string) => {
+  let target = event.target;
+
+  while (isDOMElement(target)) {
+    if (target.matches(delegate)) return [target, copyEvent(event, target)] as const;
+    target = target.parentElement;
+  }
+};
+
+function onOptionsHandler(elm: EventTarget, handler: EventListenerOrEventListenerObject, options: OnOptions) {
+  const { when, once, delegate, ...rest } = options;
+  if (!when && !delegate) return [handler, options] as const;
 
   const orgHandler = isFunction(handler) ? handler : (handler as EventListenerObject).handleEvent.bind(handler);
 
-  const eventHandler: EventListener = (e) => {
-    let target: HTMLElement | null = e.target as HTMLElement;
+  const eventHandler: typeof handler = (e) => {
+    if (when && when(e) !== true) return;
 
-    while (target && !target.matches(delegate)) target = target.parentElement;
+    const remove = () => off(elm, e.type, eventHandler, options);
 
-    if (!target) return true;
+    if (!delegate) {
+      if (once) remove();
+      return orgHandler(e);
+    }
 
-    const evtType = e.constructor.name as keyof Window;
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-call
-    const evt = new window[evtType](e.type, e) as Event;
-
-    Object.defineProperty(evt, 'currentTarget', {
-      value: document.getElementById('notify-container'),
-      writable: false,
-      enumerable: true,
-      configurable: true,
-    });
-
-    return orgHandler.call(target, evt);
+    const foundDelegate = getDelegateTarget(e, delegate);
+    if (!foundDelegate) return;
+    if (once) remove();
+    return orgHandler.call(...foundDelegate);
   };
 
-  return [eventHandler, rest] as [EventListener, Omit<ExtendedAddEventListenerOptions, 'delegate'>];
-}
-
-function whenHandler(elm: EventTarget, handler: EventListenerOrEventListenerObject, options: ExtendedAddEventListenerOptions) {
-  const { when, once, ...rest } = options;
-  if (!when) return [handler, options] as [EventListenerOrEventListenerObject, ExtendedAddEventListenerOptions];
-
-  const orgHandler = isFunction(handler) ? handler : (handler as EventListenerObject).handleEvent.bind(handler);
-
-  return [
-    (e) => {
-      if (when(e) !== true) return true;
-      if (once) off(elm, e.type, handler, options);
-      return orgHandler(e);
-    },
-    rest,
-  ] as [EventListener, Omit<ExtendedAddEventListenerOptions, 'when' | 'once'>];
+  return [eventHandler, rest] as [EventListener, Omit<OnOptions, 'when' | 'once' | 'delegate'>];
 }
 
 /**
@@ -182,8 +168,7 @@ function on<T extends argsWithTarget | argsWithoutTarget>(...args: T): () => T[0
   if (!Array.isArray(eventNames)) eventNames = [eventNames];
 
   if (options) {
-    [handler, options] = whenHandler(elm, handler, options);
-    [handler, options] = delegateHandler(handler, options);
+    [handler, options] = onOptionsHandler(elm, handler, options);
   }
 
   eventNames.forEach((evt) => elm.addEventListener(evt, handler, options));
