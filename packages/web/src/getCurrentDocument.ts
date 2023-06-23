@@ -1,5 +1,5 @@
-import isDocument from './isDocument';
-import isWindow from './isWindow';
+import { isDocument } from './isDocument';
+import { isWindow } from './isWindow';
 import type { GeneralWindow } from './types';
 
 /**

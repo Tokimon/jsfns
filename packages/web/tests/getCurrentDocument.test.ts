@@ -2,7 +2,7 @@ import { getCurrentDocument } from '@js-fns/web/getCurrentDocument';
 import { appendFrame, createDetachedDocument, createElement } from './assets/helpers';
 
 describe('"getCurrentDocument"', () => {
-  it('Returns current Document from a given Frame (not `contentDocument`)', () => {
+  it('Returns the Document that a given Frame is placed in', () => {
     const frame = appendFrame();
 
     const doc = getCurrentDocument(frame);
