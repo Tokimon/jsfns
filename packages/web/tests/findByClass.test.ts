@@ -6,6 +6,7 @@ describe('"findByClass"', () => {
     insertHtml(`
     <div id='Item1' class="item"></div>
     <div id='Item2' class="item second">
+      <div class='item'></div>
       <div class='item child'></div>
       <div class='item child second-child'></div>
     </div>
@@ -17,7 +18,7 @@ describe('"findByClass"', () => {
   it('Finds DOM elements with a given class name', () => {
     const nodes = findByClass('item');
 
-    expect(nodes).toHaveLength(4);
+    expect(nodes).toHaveLength(5);
     expect(nodes[1].id).toBe('Item2');
   });
 
@@ -32,8 +33,9 @@ describe('"findByClass"', () => {
     it('Finds a unique DOM element collection from a list of classnames', () => {
       const nodes = findByClass(['item', 'item child']);
 
-      expect(nodes).toHaveLength(4);
-      expect(nodes[3].className).toBe('item child second-child');
+      expect(nodes).toHaveLength(5);
+      expect(nodes[2].className).toBe('item');
+      expect(nodes[4].className).toBe('item child second-child');
     });
   });
 
@@ -47,8 +49,8 @@ describe('"findByClass"', () => {
     it('Finds DOM elements with a given class name', () => {
       const nodes = findByClass(elm, 'item');
 
-      expect(nodes).toHaveLength(2);
-      expect(nodes[1].id).toBe('Item2');
+      expect(nodes).toHaveLength(3);
+      expect(nodes[0].className).toBe('item');
     });
 
     it('Finds DOM elements with all given class names', () => {
@@ -62,8 +64,9 @@ describe('"findByClass"', () => {
       it('Finds a unique DOM element collection from a list of classnames', () => {
         const nodes = findByClass(elm, ['item', 'item child']);
 
-        expect(nodes).toHaveLength(4);
-        expect(nodes[3].className).toBe('item child second-child');
+        expect(nodes).toHaveLength(3);
+        expect(nodes[0].className).toBe('item');
+        expect(nodes[2].className).toBe('item child second-child');
       });
     });
   });

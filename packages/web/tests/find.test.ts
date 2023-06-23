@@ -3,30 +3,21 @@ import type { SpyInstance } from 'jest-mock';
 import { find } from '@js-fns/web/find';
 
 describe('"find"', () => {
-  function suite(findCall: (selector: string) => ReturnType<typeof find>, elm: Document | HTMLElement) {
+  function suite(target: Document | HTMLElement) {
     it('Uses `getElementsByTagName` when selector is a tag name ', () => {
-      const tagNameSpy = jest.spyOn(elm, 'getElementsByTagName');
+      const tagNameSpy = jest.spyOn(target, 'getElementsByTagName');
 
-      findCall('div');
+      find(target, 'div');
       expect(tagNameSpy).toHaveBeenCalledWith('div');
 
       tagNameSpy.mockRestore();
     });
 
-    it('Uses `getElementById` when selector is an ID', () => {
-      const idSpy = jest.spyOn(document, 'getElementById');
-
-      findCall('#MyId');
-      expect(idSpy).toHaveBeenCalledWith('MyId');
-
-      idSpy.mockRestore();
-    });
-
     describe('Uses `getElementsByClassName` when selector is:', () => {
-      let classSpy: SpyInstance<typeof elm.getElementsByClassName>;
+      let classSpy: SpyInstance<typeof target.getElementsByClassName>;
 
       beforeAll(() => {
-        classSpy = jest.spyOn(elm, 'getElementsByClassName');
+        classSpy = jest.spyOn(target, 'getElementsByClassName');
       });
 
       beforeEach(() => classSpy.mockClear());
@@ -34,27 +25,27 @@ describe('"find"', () => {
       afterAll(() => classSpy.mockRestore());
 
       it('Single class selector', () => {
-        findCall('.item');
+        find(target, '.item');
         expect(classSpy).toHaveBeenCalledWith('item');
       });
 
       it('Multi class selector', () => {
-        findCall('.item.first');
+        find(target, '.item.first');
         expect(classSpy).toHaveBeenCalledWith('item first');
       });
     });
 
     describe('Uses `querySelectorAll` when selector:', () => {
-      let querySpy: SpyInstance<typeof elm.querySelectorAll>;
+      let querySpy: SpyInstance<typeof target.querySelectorAll>;
 
       const testQuery = (query: string) => {
         querySpy.mockClear();
-        findCall(query);
+        find(target, query);
         expect(querySpy).toHaveBeenCalledWith(query);
       };
 
       beforeAll(() => {
-        querySpy = jest.spyOn(elm, 'querySelectorAll');
+        querySpy = jest.spyOn(target, 'querySelectorAll');
       });
 
       afterAll(() => querySpy.mockRestore());
@@ -67,17 +58,66 @@ describe('"find"', () => {
       it('Contains `[` (attribute selector)', () => testQuery('div[name="test"]'));
       it('Contains `,` (multiple selectors)', () => testQuery('div, p'));
 
-      it.each(['#MyId.item', 'div.item', '.item#MyId', '.item .child'])('Mixed selector: %s', (selector) => {
-        testQuery(selector);
+      describe('Is a mixed selector:', () => {
+        it.each(['#MyId.item', 'div.item', 'div .item', '.item div', '#MyId .item div', '.item#MyId', '.item .child'])('%s', (selector) => {
+          testQuery(selector);
+        });
       });
     });
   }
 
-  describe('With only selector defined', () => {
-    suite((selector) => find(selector), document);
+  describe('With document and selector defined', () => {
+    describe('Falls back to document when no element is given', () => {
+      it('.getElementsByClassName', () => {
+        const classSpy = jest.spyOn(document, 'getElementsByClassName');
+
+        find('.item.first');
+        expect(classSpy).toHaveBeenCalledWith('item first');
+
+        classSpy.mockRestore();
+      });
+
+      it('.getElementsByTagName', () => {
+        const tagNameSpy = jest.spyOn(document, 'getElementsByTagName');
+
+        find('div');
+        expect(tagNameSpy).toHaveBeenCalledWith('div');
+
+        tagNameSpy.mockRestore();
+      });
+
+      it('.querySelectorAll', () => {
+        const querySpy = jest.spyOn(document, 'querySelectorAll');
+
+        find('.item div');
+        expect(querySpy).toHaveBeenCalledWith('.item div');
+
+        querySpy.mockRestore();
+      });
+    });
+
+    it('Uses `getElementById` when selector is an ID', () => {
+      const idSpy = jest.spyOn(document, 'getElementById');
+
+      find(document, '#MyId');
+      expect(idSpy).toHaveBeenCalledWith('MyId');
+
+      idSpy.mockRestore();
+    });
+
+    suite(document);
   });
 
   describe('With element and selector defined', () => {
-    suite((selector) => find(document.body, selector), document.body);
+    it('Uses `querySelector` when element is given and selector is an ID', () => {
+      const querySpy = jest.spyOn(document.body, 'querySelector');
+
+      find(document.body, '#MyId');
+      expect(querySpy).toHaveBeenCalledWith('#MyId');
+
+      querySpy.mockRestore();
+    });
+
+    suite(document.body);
   });
 });

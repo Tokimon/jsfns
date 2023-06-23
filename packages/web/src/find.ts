@@ -69,10 +69,10 @@ function find(elm: Document | Element | string, selector?: string): HTMLElement 
     const hasId = rest.includes('#');
 
     if (isId) {
-      if (!hasClass && elm === document) return findById(rest);
+      if (!hasClass) return elm === document ? findById(rest) : findByQuery(elm, q, true);
     } else if (isClass) {
       if (!hasId) return findByClass(elm, rest.split('.').join(' '));
-    } else if (hasId || hasClass) {
+    } else if (!hasId && !hasClass) {
       return findByTagName(elm, selector);
     }
   }
