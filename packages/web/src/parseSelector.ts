@@ -1,3 +1,5 @@
+import { isString } from '@js-fns/core/isString';
+
 const elmExp = /^[a-z]+/;
 const nameExp = /[a-z][\w\d-]*/i;
 const nameExpStr = nameExp.source;
@@ -5,29 +7,32 @@ const idExp = new RegExp(`#${nameExpStr}`, 'i');
 const classExp = new RegExp(`\\.${nameExpStr}`, 'ig');
 const attrExp = new RegExp(`\\[(${nameExpStr})(?:=([^\\]]+))?]`, 'g');
 
-export type AttributeMapping = Map<string, Set<string>>;
+export type AttributeMapping = {
+  class?: Set<string>;
+  [attr: string]: string | Set<string> | true | undefined;
+};
 
 export type SelectorParsing = {
   tagName: string;
-  attributes: Record<string, string>;
+  attributes: Record<string, string | true>;
   attributeList: string[];
 };
 
-const addAttribute = (attributeName: string, value: string | undefined, attributes: AttributeMapping): void => {
+const addAttribute = (attributeName: string, value: string | undefined, attributes: AttributeMapping, override?: boolean): void => {
   if (value == null) return;
 
-  const isId = attributeName === 'id';
-  const hasAttribute = attributes.has(attributeName);
+  if (attributeName === 'class') {
+    if (!value) return;
+    if (!attributes.class) attributes.class = new Set();
+    value.split('.').forEach((cn) => cn && (attributes.class as Set<string>).add(cn));
+  } else {
+    if (attributeName === 'id') {
+      value = value.replaceAll('#', '');
+      if (!value) return;
+    }
 
-  // ID Attributes are only added once
-  if (isId && hasAttribute) return;
-
-  if (!hasAttribute) attributes.set(attributeName, new Set());
-
-  // Clean class and ID values
-  if (attributeName === 'class' || isId) value = value.replace(/[#.]/g, '');
-
-  attributes.get(attributeName)?.add(value);
+    if (override || !attributes[attributeName] || attributes[attributeName] === true) attributes[attributeName] = value || true;
+  }
 };
 
 const parseAttribute = (selector: string, attributes: AttributeMapping) => {
@@ -54,7 +59,7 @@ const parseAttribute = (selector: string, attributes: AttributeMapping) => {
  * ```
  */
 export function parseSelector(selector: string): SelectorParsing {
-  const mapping = new Map() as AttributeMapping;
+  const mapping: AttributeMapping = {};
 
   // Tag name
   const tagNameMatch = selector.match(elmExp);
@@ -66,7 +71,7 @@ export function parseSelector(selector: string): SelectorParsing {
   // ID
   const idMatch = selector.includes('#') && selector.match(idExp);
 
-  if (idMatch) addAttribute('id', idMatch[0].slice(1), mapping);
+  if (idMatch) addAttribute('id', idMatch[0].slice(1), mapping, true);
 
   // Class names
   const cnMatch = selector.includes('.') && selector.match(classExp);
@@ -75,9 +80,11 @@ export function parseSelector(selector: string): SelectorParsing {
 
   const parsing: SelectorParsing = { tagName, attributes: {}, attributeList: [] };
 
-  for (const [name, values] of mapping.entries()) {
+  for (const [name, value] of Object.entries(mapping)) {
+    if (!value) continue;
+
     parsing.attributeList.push(name);
-    parsing.attributes[name] = Array.from(values).join(' ');
+    parsing.attributes[name] = value === true ? '' : isString(value) ? value : Array.from(value).join(' ');
   }
 
   return parsing;

@@ -17,6 +17,21 @@ describe('"parseSelector"', () => {
     it('Takes only the first of multiple given IDs', () => {
       expect(parseSelector('#id#id2').attributes.id).toBe('id');
     });
+
+    it('Accepts "id" as mixed expressions (standard `#` expression takes precedence)', () => {
+      const { attributes } = parseSelector('[id="attrId"]#normalId');
+      expect(attributes.id).toBe('normalId');
+    });
+
+    it('Attributes containing "id" is not interpreted as id', () => {
+      const { attributes } = parseSelector('[splendid="oh my"][id-3="vw"][ideology="great"][my-id="mine"]');
+      expect(attributes).toEqual({ splendid: 'oh my', 'id-3': 'vw', ideology: 'great', 'my-id': 'mine' });
+    });
+
+    it('Empty "id" attributes are ignored', () => {
+      const { attributeList } = parseSelector('[id]');
+      expect(attributeList).toHaveLength(0);
+    });
   });
 
   describe('Parsing class name', () => {
@@ -27,6 +42,21 @@ describe('"parseSelector"', () => {
     it('Multiple class names', () => {
       const { attributes } = parseSelector('.dash-class.underscore_class');
       expect(attributes.class).toBe('dash-class underscore_class');
+    });
+
+    it('Accepts "class" as mixed expressions', () => {
+      const { attributes } = parseSelector('[class="attr-class"][class="attr-class2"].normal-class.another-class');
+      expect(attributes.class).toBe('attr-class attr-class2 normal-class another-class');
+    });
+
+    it('Attributes containing "class" is not interpreted as class', () => {
+      const { attributes } = parseSelector('[myclass="my"][class-ish="ish"][classy="classy"][first-class="top"]');
+      expect(attributes).toEqual({ myclass: 'my', 'class-ish': 'ish', classy: 'classy', 'first-class': 'top' });
+    });
+
+    it('Empty "class" attributes are ignored', () => {
+      const { attributeList } = parseSelector('[class]');
+      expect(attributeList).toHaveLength(0);
     });
   });
 
@@ -51,9 +81,8 @@ describe('"parseSelector"', () => {
       expect(parseSelector('[custom]').attributes.custom).toBe('');
     });
 
-    it('Combines multiple expressions of same name', () => {
-      const { attributes } = parseSelector('[data-attr="value 1"][data-attr="value 2"]');
-      expect(attributes['data-attr']).toBe('value 1 value 2');
+    it('Takes only the first value of multiple expressions of same name', () => {
+      expect(parseSelector('[attr="value"][attr="value2"][attr="value3"]').attributes.attr).toBe('value');
     });
 
     describe('Correctly parses quotes in quotes', () => {
@@ -78,24 +107,6 @@ describe('"parseSelector"', () => {
       });
     });
 
-    describe('Eliminates indicators inside class/id attributes', () => {
-      describe.each(['class', 'id'])('`%s` attribute', (attr) => {
-        it.each(['.', '#'])('`%s` indicator', (x) => {
-          const { attributes } = parseSelector(`[${attr}="${x}value"]`);
-          expect(attributes[attr]).toBe('value');
-        });
-      });
-
-      describe.each(['class', 'id'])('For an attribute that contains `%s`, the indicator is not removed', (attr) => {
-        const a = attr + 'ish';
-
-        it.each(['.', '#'])('`%s` indicator', (x) => {
-          const { attributes } = parseSelector(`[${a}="${x}value"]`);
-          expect(attributes[a]).toBe(`${x}value`);
-        });
-      });
-    });
-
     describe('Parses custom attributes', () => {
       it.each([
         ['CamelCase', 'myAttribute'],
@@ -109,20 +120,11 @@ describe('"parseSelector"', () => {
     });
   });
 
-  it('Accepts "class" as mixed expressions', () => {
-    const { attributes } = parseSelector('[class="attr-class"].normal-class');
-    expect(attributes.class).toBe('attr-class normal-class');
-  });
-
-  it('Accepts "id" as mixed expressions (standard `#` expression takes precedence)', () => {
-    const { attributes } = parseSelector('[id="attrId"]#normalId');
-    expect(attributes.id).toBe('normalId');
-  });
-
   it('Parses full selector', () => {
     const result = parseSelector('span#id.class[data-attr="value"]');
     expect(result).toEqual({
       tagName: 'span',
+      attributeList: ['data-attr', 'id', 'class'],
       attributes: {
         id: 'id',
         class: 'class',
@@ -135,9 +137,10 @@ describe('"parseSelector"', () => {
     const result = parseSelector('span[src="url.com"].class');
     expect(result).toEqual({
       tagName: 'span',
+      attributeList: ['src', 'class'],
       attributes: {
-        class: 'class',
         src: 'url.com',
+        class: 'class',
       },
     });
   });
@@ -146,6 +149,7 @@ describe('"parseSelector"', () => {
     const result = parseSelector('span[src="url.com#not-id"]');
     expect(result).toEqual({
       tagName: 'span',
+      attributeList: ['src'],
       attributes: {
         src: 'url.com#not-id',
       },
