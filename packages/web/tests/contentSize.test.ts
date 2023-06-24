@@ -1,5 +1,5 @@
 import { contentSize } from '@js-fns/web/contentSize';
-import viewport from '@js-fns/web/viewport';
+import { viewport } from '@js-fns/web/viewport';
 import { byId, generateId, insertHtml, removeElement } from './assets/helpers';
 
 const testID = generateId('contentSize');
@@ -20,8 +20,8 @@ describe('contentSize', () => {
     insertHtml(`
       <div
         id="${testID}"
-        style="width: ${width}px; height: ${height}px; border: ${border}px solid; margin: ${margin}px; padding: ${padding}px;"
-      ><div style="width: ${innerWidth}px; height: ${innerHeight}px"/></div>
+        style="width: ${width}px; height: ${height}px; border: ${border}px solid; margin: ${margin}px; padding: ${padding}px; overflow: scroll"
+      ></div>
     `);
 
     testNode = byId(testID);
@@ -32,7 +32,17 @@ describe('contentSize', () => {
   });
 
   it('Returns the size of the content of a given element, excluding element padding', () => {
-    expect(contentSize(testNode)).toEqual({
+    // NOTE: I have to do it like this since jsDom doesn't render/calculates overflow correctly
+    const MockElement = new Proxy(testNode, {
+      get(target, property) {
+        if (property === 'scrollWidth') return innerWidth + padding * 2;
+        if (property === 'scrollHeight') return innerHeight + padding * 2;
+
+        return target[property as keyof HTMLElement];
+      },
+    });
+
+    expect(contentSize(MockElement)).toEqual({
       width: innerWidth,
       height: innerHeight,
     });

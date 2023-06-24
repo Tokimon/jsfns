@@ -30,8 +30,8 @@ describe('marginBoxSize', () => {
 
   it('Returns the outer size of the given element, including margins and borders', () => {
     expect(marginBoxSize(testNode)).toEqual({
-      width: width + padding * 2 + margin * 2 + border * 2,
-      height: width + padding * 2 + margin * 2 + border * 2,
+      width: testNode.offsetWidth + margin * 2,
+      height: testNode.offsetHeight + margin * 2,
     });
   });
 

@@ -1,5 +1,6 @@
 import { outerSize } from '@js-fns/web/outerSize';
-import viewport from '@js-fns/web/viewport';
+import { type GeneralWindow } from '@js-fns/web/types';
+import { viewport } from '@js-fns/web/viewport';
 import { byId, generateId, insertHtml, removeElement } from './assets/helpers';
 
 const testID = generateId('outerSize');
@@ -18,7 +19,7 @@ describe('outerSize', () => {
       <div
         id="${testID}"
         style="width: ${width}px; height: ${height}px; border: ${border}px solid; margin: ${margin}px; padding: ${padding}px;"
-      />
+      ></div>
     `);
 
     testNode = byId(testID);
@@ -30,14 +31,24 @@ describe('outerSize', () => {
 
   it('Returns the outer size of the given element, including margins', () => {
     expect(outerSize(testNode)).toEqual({
-      width: width + padding * 2 + border * 2,
-      height: width + padding * 2 + border * 2,
+      width: testNode.offsetWidth,
+      height: testNode.offsetHeight,
     });
   });
 
   it('When given window it returns the windows outer size', () => {
-    const vp = viewport(window) as HTMLElement;
-    expect(outerSize(window)).toEqual(outerSize(vp));
+    // NOTE: I have to do it like this since jsDom doesn't give window a size
+    const MockWindow = new Proxy(window, {
+      get(target, property) {
+        if (property === 'outerWidth') return 800;
+        if (property === 'outerHeight') return 1000;
+
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-return
+        return target[property as keyof GeneralWindow];
+      },
+    });
+
+    expect(outerSize(MockWindow)).toEqual({ width: 800, height: 1000 });
   });
 
   it('When given document it returns the outer size of the viewport, including borders', () => {

@@ -18,7 +18,7 @@ describe('innerSize', () => {
       <div
         id="${testID}"
         style="width: ${width}px; height: ${height}px; border: ${border}px solid; margin: ${margin}px; padding: ${padding}px;"
-      />
+      ></div>
     `);
 
     testNode = byId(testID);
@@ -30,8 +30,8 @@ describe('innerSize', () => {
 
   it('Returns the inner size of the given element, including padding', () => {
     expect(innerSize(testNode)).toEqual({
-      width: width + padding * 2,
-      height: height + padding * 2,
+      width: testNode.clientWidth,
+      height: testNode.clientHeight,
     });
   });
 

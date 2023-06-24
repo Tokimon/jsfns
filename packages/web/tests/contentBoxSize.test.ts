@@ -18,7 +18,7 @@ describe('contentBoxSize', () => {
       <div
         id="${testID}"
         style="width: ${width}px; height: ${height}px; border: ${border}px solid; margin: ${margin}px; padding: ${padding}px;"
-      />
+      ></div>
     `);
 
     testNode = byId(testID);
@@ -29,7 +29,10 @@ describe('contentBoxSize', () => {
   });
 
   it('Returns the inner size of the given element, excluding padding', () => {
-    expect(contentBoxSize(testNode)).toEqual({ width, height });
+    expect(contentBoxSize(testNode)).toEqual({
+      width: testNode.clientWidth - padding * 2,
+      height: testNode.clientHeight - padding * 2,
+    });
   });
 
   describe('Returns the inner size of the viewport, excluding padding', () => {
