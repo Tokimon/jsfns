@@ -33,13 +33,13 @@ describe('"scrollParent', () => {
   });
 
   describe.each([
-    ['Single element', `<div class="root" id="${childID}" style="${style}" />`],
+    ['Single element', `<div class="root" id="${childID}" style="${style}"></div>`],
     ['"fixed" Element', `<div class="root" id="${childID}" style="${style}position: fixed"></div>`],
     [
       'Element inside "overflow: hidden;" element',
       `
       <div class="root" style="${style}position: relative; overflow: hidden">
-        <div id="${childID}" />
+        <div id="${childID}"></div>
       </div>
     `,
     ],
@@ -48,7 +48,7 @@ describe('"scrollParent', () => {
       `
       <div class="root" style="${style}">
         <div style="position: relative">
-          <div id="${childID}" />
+          <div id="${childID}"></div>
         </div>
       </div>
     `,
@@ -58,7 +58,7 @@ describe('"scrollParent', () => {
       `
       <div class="root" style="${style}">
         <div style="${style}position: static; overflow: auto">
-          <div id="${childID}" style="${style}position: absolute" />
+          <div id="${childID}" style="${style}position: absolute"></div>
         </div>
       </div>
     `,
@@ -67,7 +67,7 @@ describe('"scrollParent', () => {
       '"fixed" Element inside an Element with "overflow"',
       `
       <div class="root" style="${style}overflow: auto">
-        <div id="${childID}" style="${style}position: fixed" />
+        <div id="${childID}" style="${style}position: fixed"></div>
       </div>
     `,
     ],
@@ -105,7 +105,7 @@ describe('"scrollParent', () => {
         'Element is direct child',
         `
       <div class="root" id="${scrollerID}" style="${style}">
-        <div id="${childID}" style="${style}" />
+        <div id="${childID}" style="${style}"></div>
       </div>
     `,
       ],
@@ -114,7 +114,7 @@ describe('"scrollParent', () => {
         `
       <div class="root" id="${scrollerID}">
         <div style="${style}position: relative">
-          <div id="${childID}" style="${style}" />
+          <div id="${childID}" style="${style}"></div>
         <div>
       </div>
     `,
@@ -124,7 +124,7 @@ describe('"scrollParent', () => {
         `
       <div class="root" id="${scrollerID}" style="${style}position: relative">
         <div style="${style}position: static; overflow: auto">
-          <div id="${childID}" style="${style}position: absolute" />
+          <div id="${childID}" style="${style}position: absolute"></div>
         <div>
       </div>
     `,
@@ -135,7 +135,7 @@ describe('"scrollParent', () => {
       <div class="root" id="${scrollerID}" style="${style}position: relative">
         <div style="${style}position: static; overflow: auto">
           <div style="${style}position: relative">
-            <div id="${childID}" style="${style}position: absolute" />
+            <div id="${childID}" style="${style}position: absolute"></div>
           </div>
         <div>
       </div>
@@ -147,7 +147,7 @@ describe('"scrollParent', () => {
       <div class="root">
         <div style="${style}position: relative; overflow: auto">
           <div id="${scrollerID}" style="${style}position: relative">
-            <div id="${childID}" style="${style}position: absolute" />
+            <div id="${childID}" style="${style}position: absolute"></div>
           </div>
         <div>
       </div>

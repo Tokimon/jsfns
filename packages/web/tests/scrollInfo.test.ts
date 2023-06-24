@@ -9,7 +9,7 @@ describe('"scrollInfo"', () => {
   beforeAll(() => {
     insertHtml(`
       <div id="${testID}" style="width: 100px; hight: 100px; overflow: scroll">
-        <div style="width: 10px; height: 10px; margin: 100px;" />
+        <div style="width: 10px; height: 10px; margin: 100px;"></div>
       </div>
     `);
 
