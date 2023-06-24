@@ -9,7 +9,7 @@ function findEmptyElm(elm: Element): Element {
  * Wrap a given element in the given HTML, selector or element
  *
  * @param elm - DOM element to wrap with the given HTML
- * @param wrapElm - The HTML, selector or element to wrap the given element with
+ * @param wrapping - The HTML, selector or element to wrap the given element with
  * @return If the wrapping was successful or not
  *
  * @example
@@ -22,13 +22,15 @@ function findEmptyElm(elm: Element): Element {
  * wrap(MyElm, '.wrap-element') // --> true
  * ```
  */
-export function wrap(elm: Element, wrapElm: Element | string) {
-  const wrapDom = insertAfter(elm, wrapElm);
-  if (!wrapDom) return false;
+export function wrap(elm: Element, wrapping: Element | string) {
+  if (!wrapping) return null;
+
+  const wrapDom = insertAfter(elm, wrapping);
+  if (!wrapDom) return null;
 
   findEmptyElm(wrapDom).appendChild(elm);
 
-  return true;
+  return wrapDom;
 }
 
 export default wrap;

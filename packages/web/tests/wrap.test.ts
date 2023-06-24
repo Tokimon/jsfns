@@ -15,28 +15,29 @@ describe('wrap', () => {
 
   afterEach(() => removeElement(testID));
 
-  it('Returns false when wrapper element is not in the dom', () => {
-    const elm = byId(elmID);
-    const result = wrap(elm, createElement('div'));
-
-    expect(result).toBe(false);
-    expect(elm.parentElement?.id).toBe(testID);
-  });
-
-  it('Returns false when no HTML given', () => {
+  it('Returns null when no HTML given', () => {
     const elm = byId(elmID);
     const result = wrap(elm, '');
 
-    expect(result).toBe(false);
+    expect(result).toBeNull();
     expect(elm.parentElement?.id).toBe(testID);
   });
 
-  it('Returns true when element is successfully wrapped', () => {
+  it('Returns wrapper element when element is successfully wrapped', () => {
+    const elm = byId(elmID);
+    const wrapperElm = createElement('div');
+    const result = wrap(elm, wrapperElm);
+
+    expect(result).toBe(wrapperElm);
+    expect(elm.parentElement).toBe(wrapperElm);
+  });
+
+  it('Wraps element with given HTML', () => {
     const elm = byId(elmID);
 
     const result = wrap(elm, '<div class="wrapper"></div>');
 
-    expect(result).toBe(true);
+    expect(result?.className).toBe('wrapper');
     expect(elm.parentElement?.className).toBe('wrapper');
   });
 
@@ -49,10 +50,10 @@ describe('wrap', () => {
       <div class="wrapper">
         some text here
       </div>
-    `
+      `
     );
 
-    expect(result).toBe(true);
+    expect(result?.className).toBe('wrapper');
     expect(elm.previousSibling?.nodeValue?.trim()).toBe('some text here');
   });
 
@@ -71,7 +72,7 @@ describe('wrap', () => {
       `
       );
 
-      expect(result).toBe(true);
+      expect(result?.className).toBe('root');
       expect(elm.parentElement?.className).toBe('wrapper');
       expect(elm.parentElement?.parentElement?.parentElement?.className).toBe('root');
     });
@@ -89,7 +90,7 @@ describe('wrap', () => {
       `
       );
 
-      expect(result).toBe(true);
+      expect(result?.className).toBe('root');
       expect(elm.parentElement?.className).toBe('wrapper');
       expect(elm.parentElement?.parentElement?.className).toBe('root');
     });
