@@ -15,11 +15,11 @@
  *
  * ```ts
  * // HTML cannot be parsed easily
- * toDOM('<html><body><div /></body></html>'); // -> null
+ * toDOM('<html><body><div /></body></html>'); // --> null
  *
  * // Convert a given HTML string to HTML
  * toDOM('<div><a>link</a></div>')
- * // -> <div><a>link</a></div>
+ * // --> <div><a>link</a></div>
  * ```
  */
 export function toDOM(html: string): HTMLCollection | null {

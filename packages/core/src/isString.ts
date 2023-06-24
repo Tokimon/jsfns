@@ -7,8 +7,8 @@
  *
  * @example
  * ```ts
- * isString('string'); // -> true
- * isString(123); // -> false
+ * isString('string'); // --> true
+ * isString(123); // --> false
  * ```
  */
 export const isString = (x: unknown): x is string => typeof x === 'string';

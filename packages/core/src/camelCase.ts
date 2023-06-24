@@ -24,13 +24,13 @@ export const defaultSettings: CamelCaseSettings = {
  *
  * @example
  * ```ts
- * camelCase('data-value2-input'); // -> dataValue2input
- * camelCase('XML data input'); // -> XmlDataInput
+ * camelCase('data-value2-input'); // --> dataValue2input
+ * camelCase('XML data input'); // --> XmlDataInput
  *
  * // With settings
  * const settings = { abbr: true, numbers: true, upper: true };
  *
- * camelCase('data-VALUE2-input', settings); // -> DataVALUE2Input
+ * camelCase('data-VALUE2-input', settings); // --> DataVALUE2Input
  * ```
  */
 export function camelCase(input: string, settings?: CamelCaseSettings): string {

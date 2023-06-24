@@ -19,20 +19,20 @@ const thousandRegExp = /^(\D*)1(\D*)000(\D*)(\d*)(\D*)$/;
  * ```ts
  * // Format number to default currency format (euro)
  * const euro = formatCurrency();
- * euro(2345234.678); // -> '2.345.234,68 €'
+ * euro(2345234.678); // --> '2.345.234,68 €'
  *
  * // Format number to USD currency format
  * const usd = formatCurrency('$ 1,000.00');
- * usd(2345234.678); // -> '$ 2,345,234.68'
+ * usd(2345234.678); // --> '$ 2,345,234.68'
  *
  * // Format number to custom currency format
  * const custom = formatCurrency('# 1-000;00 ¤');
- * custom(2345234.678); // -> '# 2-345-234;68 ¤'
+ * custom(2345234.678); // --> '# 2-345-234;68 ¤'
  *
  * // Specifying number of decimals
  * const sixDecimals = formatCurrency('$ 1,000.000000');
- * sixDecimals(2345234.678); // -> '$ 2,345,234.678000'
- * sixDecimals(234.12345678); // -> '$ 234.123457'
+ * sixDecimals(2345234.678); // --> '$ 2,345,234.678000'
+ * sixDecimals(234.12345678); // --> '$ 234.123457'
  * ```
  */
 export function formatCurrency(thousandTemplate = '1.000,00 €'): CurrencyFormatter {

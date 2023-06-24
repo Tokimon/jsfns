@@ -14,8 +14,8 @@ const manualInnerXml = (XMLNode: Element) => {
  * @example
  *
  * ```ts
- * innerXML(<div><span>my text</span></div>); // -> '<span>my text</span>'
- * innerXML(<svg><g><path /></g></svg>); // -> '<g><path /></g>'
+ * innerXML(<div><span>my text</span></div>); // --> '<span>my text</span>'
+ * innerXML(<svg><g><path /></g></svg>); // --> '<g><path /></g>'
  * ```
  */
 export function innerXML(XMLElement: Element): string {

@@ -15,7 +15,7 @@ const range = (num: number, num2: number): number => {
  *
  * @example
  * ```ts
- * randomInt(100, 200); // -> a number between 100 and 200
+ * randomInt(100, 200); // --> a number between 100 and 200
  * ```
  */
 function randomInt(min: number, max: number): number;
@@ -30,10 +30,10 @@ function randomInt(min: number, max: number): number;
  * @example
  * ```ts
  * // Any random number
- * randomInt(); // -> a number between 0 and Number.MAX_SAFE_INTEGER
+ * randomInt(); // --> a number between 0 and Number.MAX_SAFE_INTEGER
  *
  * // With max number
- * randomInt(100); // -> a number between 0 and 100
+ * randomInt(100); // --> a number between 0 and 100
  * ```
  */
 function randomInt(max?: number): number;

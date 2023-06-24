@@ -9,9 +9,9 @@
  * ```ts
  * class Obj {}
  *
- * isObject({}); // -> true
- * isObject(new Obj()); // -> true
- * isObject('123'); // -> false
+ * isObject({}); // --> true
+ * isObject(new Obj()); // --> true
+ * isObject('123'); // --> false
  * ```
  */
 export const isObject = (x: unknown): x is object => x != null && typeof x === 'object' && !Array.isArray(x) && Object(x) === x;

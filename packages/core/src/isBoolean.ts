@@ -7,8 +7,8 @@
  *
  * @example
  * ```ts
- * isBoolean(false); // -> true
- * isBoolean('string'); // -> false
+ * isBoolean(false); // --> true
+ * isBoolean('string'); // --> false
  * ```
  */
 export const isBoolean = (x: unknown): x is boolean => x === true || x === false || x instanceof Boolean;

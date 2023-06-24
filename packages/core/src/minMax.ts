@@ -9,9 +9,9 @@
  *
  * @example
  * ```ts
- * minMax(5, 10, 20); // -> 10
- * minMax(15, 10, 20); // -> 15
- * minMax(25, 10, 20); // -> 20
+ * minMax(5, 10, 20); // --> 10
+ * minMax(15, 10, 20); // --> 15
+ * minMax(25, 10, 20); // --> 20
  * ```
  */
 export const minMax = (num: number, min: number, max: number): number => (num < min ? min : num > max ? max : num);

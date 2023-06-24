@@ -13,8 +13,8 @@ export type SnakeCaseSettings = PhrasifySettings;
  *
  * @example
  * ```ts
- * snakeCase('Convert This phrase'); // -> convert_this_phrase
- * snakeCase('dash VERSION1 beta', { numbers: true }); // -> dash_version_1_beta
+ * snakeCase('Convert This phrase'); // --> convert_this_phrase
+ * snakeCase('dash VERSION1 beta', { numbers: true }); // --> dash_version_1_beta
  * ```
  */
 export function snakeCase(str: string, settings?: SnakeCaseSettings): string {

@@ -11,13 +11,13 @@ import toDOM from './toDOM';
  *
  * ```ts
  * // Create a div
- * create(); // -> <div />
+ * create(); // --> <div />
  *
  * // Create an element
- * create('img'); // -> <img />
+ * create('img'); // --> <img />
  *
  * // Create an element from a selector
- * create('#MyElement.active'); // -> <div id="MyElement" class="active" />
+ * create('#MyElement.active'); // --> <div id="MyElement" class="active" />
  * ```
  */
 export function createElement(selector = 'div'): Element {

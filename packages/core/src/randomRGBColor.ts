@@ -7,7 +7,7 @@ import randomInt from './randomInt';
  *
  * @example
  * ```ts
- * randomRGBColor(); // -> eg. [169, 100, 52]
+ * randomRGBColor(); // --> eg. [169, 100, 52]
  * ```
  */
 export const randomRGBColor = (): [r: number, g: number, b: number] => [randomInt(255), randomInt(255), randomInt(255)];

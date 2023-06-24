@@ -9,7 +9,7 @@ import leadingZero from './leadingZero';
  *
  * @example
  * ```ts
- * numberToHex(180); // -> 'b4'
+ * numberToHex(180); // --> 'b4'
  * ```
  */
 export const numberToHex = (num: number): string => leadingZero(Math.round(num).toString(16), 2);

@@ -10,8 +10,8 @@
  *
  * ```ts
  * hasClass(myElm, 'open') // --> true if myElm has the "open" class name
- * hasClass(myElm, ['open', 'shown']) // -> true if myElm has some or all given class names
- * hasClass(myElm, ['open', 'shown'], true) // -> true if myElm has all given class names
+ * hasClass(myElm, ['open', 'shown']) // --> true if myElm has some or all given class names
+ * hasClass(myElm, ['open', 'shown'], true) // --> true if myElm has all given class names
  * ```
  */
 export function hasClassName(elm: Element, classNames: string | string[], any?: boolean): boolean {
@@ -34,7 +34,7 @@ export default hasClassName;
  *
  * ```ts
  * hasAnyClassName(myElm, 'open') // --> true if myElm has the "open" class name
- * hasAnyClassName(myElm, ['open', 'shown']) // -> true if myElm has at least one of the given class names
+ * hasAnyClassName(myElm, ['open', 'shown']) // --> true if myElm has at least one of the given class names
  * ```
  */
 export function hasAnyClassName(elm: Element, classNames: string | string[]): boolean {
@@ -52,7 +52,7 @@ export function hasAnyClassName(elm: Element, classNames: string | string[]): bo
  *
  * ```ts
  * hasAllClassNames(myElm, 'open') // --> true if myElm has the "open" class name
- * hasAllClassNames(myElm, ['open', 'shown']) // -> true if myElm has all given class names
+ * hasAllClassNames(myElm, ['open', 'shown']) // --> true if myElm has all given class names
  * ```
  */
 export function hasAllClassNames(elm: Element, classNames: string | string[]): boolean {

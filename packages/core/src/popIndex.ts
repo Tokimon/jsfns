@@ -10,7 +10,7 @@
  *
  * @example
  * ```ts
- * popIndexPure([1,2,3], 1); // -> 2 (array will then be [1, 3])
+ * popIndexPure([1,2,3], 1); // --> 2 (array will then be [1, 3])
  * ```
  */
 export function popIndexPure(list: unknown[], index: number): [unknown, unknown[]] {
@@ -32,7 +32,7 @@ export function popIndexPure(list: unknown[], index: number): [unknown, unknown[
  *
  * @example
  * ```ts
- * popIndex([1,2,3], 1); // -> 2 (array will then be [1, 3])
+ * popIndex([1,2,3], 1); // --> 2 (array will then be [1, 3])
  * ```
  */
 export function popIndex<T>(list: T[], index: number): T | undefined {

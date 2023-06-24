@@ -8,9 +8,9 @@
  *
  * @example
  * ```ts
- * leadingZero(1); // -> '01'
- * leadingZero(123); // -> '123'
- * leadingZero(123, 5); // -> '00123'
+ * leadingZero(1); // --> '01'
+ * leadingZero(123); // --> '123'
+ * leadingZero(123, 5); // --> '00123'
  * ```
  */
 export const leadingZero = (num: number | string, len = 2): string => num.toString().padStart(len, '0');

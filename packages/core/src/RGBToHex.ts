@@ -14,10 +14,10 @@ const hexStr = (color: number) => hex(minMax(color, 0, 255));
  *
  * @example
  * ```ts
- * RGBToHex([123, 123, 123]) // -> #7b7b7b
+ * RGBToHex([123, 123, 123]) // --> #7b7b7b
  *
  * // With alpha channel
- * RGBToHex([123, 123, 123, 0.5]) // -> #7b7b7b80
+ * RGBToHex([123, 123, 123, 0.5]) // --> #7b7b7b80
  * ```
  */
 function RGBToHex(rgb: RGBTuple): string;
@@ -35,10 +35,10 @@ function RGBToHex(rgb: RGBTuple): string;
  * @example
  * ```ts
  * // RGB as arguments
- * RGBToHex( 123, 123, 123 ) // -> #7b7b7b80
+ * RGBToHex( 123, 123, 123 ) // --> #7b7b7b80
  *
  * // With alpha channel
- * RGBToHex( 123, 123, 123, 0.5 ) // -> #7b7b7b80
+ * RGBToHex( 123, 123, 123, 0.5 ) // --> #7b7b7b80
  * ```
  */
 function RGBToHex(r: number, g: number, b: number, a?: number): string;

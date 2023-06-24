@@ -15,7 +15,7 @@ import selectorToHTML from './selectorToHTML';
  * ensureHTML('<div />');
  *
  * // String is a selector, to is is parsed before it is returned
- * ensureHTML('.my-div'); // -> <div class="my-div" />
+ * ensureHTML('.my-div'); // --> <div class="my-div" />
  * ```
  */
 export const ensureHTML = (htmlOrSelector: string): string =>

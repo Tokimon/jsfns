@@ -11,10 +11,10 @@ import isString from './isString';
  *
  * @example
  * ```ts
- * hexToRGB('#2fd466'); // -> [47, 212, 102]
+ * hexToRGB('#2fd466'); // --> [47, 212, 102]
  *
  * // And with alpha channel
- * hexToRGB('#2fd46680'); // -> [47, 212, 102, 0.5]
+ * hexToRGB('#2fd46680'); // --> [47, 212, 102, 0.5]
  * ```
  */
 export function hexToRGB(hex: string): number[] {

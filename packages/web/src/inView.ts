@@ -28,13 +28,13 @@ export type PositionIndicator = {
  *
  * ```ts
  * // Element inside viewport
- * const { inside } = inView(myElement); // -> inside === true
+ * const { inside } = inView(myElement); // --> inside === true
  *
  * // Element outside viewport
- * const { inside, below } = inView(myElement); // -> inside === false; below === true
+ * const { inside, below } = inView(myElement); // --> inside === false; below === true
  *
  * // With a threshold
- * const { inside } = inView(myElement, 30); // -> inside === true
+ * const { inside } = inView(myElement, 30); // --> inside === true
  * ```
  */
 export function inView(elm: HTMLElement, threshold = 0): PositionIndicator {

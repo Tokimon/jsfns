@@ -7,7 +7,7 @@
  *
  * @example
  * ```ts
- * hashCode('Hash this string'); // -> 1720121313
+ * hashCode('Hash this string'); // --> 1720121313
  * ```
  */
 export function hashCode(str: string): number {
@@ -26,7 +26,7 @@ export function hashCode(str: string): number {
  *
  * @example
  * ```ts
- * hash('Hash this string'); // -> sg463l
+ * hash('Hash this string'); // --> sg463l
  * ```
  *
  * @param str - String to generate hash string from

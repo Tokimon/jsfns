@@ -15,8 +15,8 @@ const defaultSettings: PhrasifySettings = { numbers: false };
  *
  * @example
  * ```ts
- * phrasify('XMLDataInput'); // -> XML data input
- * phrasify('dataVALUE2-input', { numbers: true }); // -> data VALUE 2 input
+ * phrasify('XMLDataInput'); // --> XML data input
+ * phrasify('dataVALUE2-input', { numbers: true }); // --> data VALUE 2 input
  * ```
  */
 export function phrasify(input: string, settings?: PhrasifySettings): string {

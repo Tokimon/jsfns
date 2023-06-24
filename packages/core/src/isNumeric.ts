@@ -10,9 +10,9 @@ import isString from './isString';
  *
  * @example
  * ```ts
- * isNumeric(123); // -> true
- * isNumeric('123'); // -> true
- * isNumeric(Infinity); // -> false
+ * isNumeric(123); // --> true
+ * isNumeric('123'); // --> true
+ * isNumeric(Infinity); // --> false
  * ```
  */
 export function isNumeric(x: unknown): boolean {

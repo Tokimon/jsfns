@@ -27,10 +27,10 @@ const defaultSettings: FormatNumberSettings = {
  * @example
  * ```ts
  * // Default format
- * formatNumber(123456); // -> 123.456,00
+ * formatNumber(123456); // --> 123.456,00
  *
  * // Custom format
- * formatNumber(123456, { decimalCount: '>3', thousand: '-', decimal: ':' }); // -> 123-456:000
+ * formatNumber(123456, { decimalCount: '>3', thousand: '-', decimal: ':' }); // --> 123-456:000
  * ```
  */
 export function formatNumber(num: number, settings?: FormatNumberSettings): string {

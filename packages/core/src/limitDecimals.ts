@@ -29,16 +29,16 @@ function minDecimals(num: number, decimals: number): string {
  * @example
  * ```ts
  * // Exact number of decimals
- * limitDecimals(123.4567) // -> 123.46
- * limitDecimals(123, 5) // -> 123.00000
+ * limitDecimals(123.4567) // --> 123.46
+ * limitDecimals(123, 5) // --> 123.00000
  *
  * // Max number of decimals
- * limitDecimals(123.4567, '<3') // -> 123.457
- * limitDecimals(123, '<3') // -> 123
+ * limitDecimals(123.4567, '<3') // --> 123.457
+ * limitDecimals(123, '<3') // --> 123
  *
  * // Min number decimals
- * limitDecimals(123.4, '>4') // -> 123.4000
- * limitDecimals(123.456789, '>4') // -> 123.456789
+ * limitDecimals(123.4, '>4') // --> 123.4000
+ * limitDecimals(123.456789, '>4') // --> 123.456789
  * ```
  */
 export function limitDecimals(num: number, decimalCount: number | string = 2): string {

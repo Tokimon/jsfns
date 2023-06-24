@@ -17,9 +17,9 @@ export type TruncateSettings = {
  *
  * @example
  * ```ts
- * truncate('No max length to the string'); // -> No max limit to the string length
- * truncate('With a max length to the string', { maxLength: 10 }); // -> With a max...
- * truncate('With a max length to the string and a different ending', { maxLength: 10, end: ' <---' }); // -> With a max <---
+ * truncate('No max length to the string'); // --> No max limit to the string length
+ * truncate('With a max length to the string', { maxLength: 10 }); // --> With a max...
+ * truncate('With a max length to the string and a different ending', { maxLength: 10, end: ' <---' }); // --> With a max <---
  * ```
  */
 export function truncate(str: string, settings: TruncateSettings = {}): string {

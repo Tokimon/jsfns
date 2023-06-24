@@ -7,8 +7,8 @@
  *
  * @example
  * ```ts
- * isFunction(() => {}); // -> true
- * isFunction('string'); // -> false
+ * isFunction(() => {}); // --> true
+ * isFunction('string'); // --> false
  * ```
  */
 export const isFunction = (x: unknown): x is (...args: unknown[]) => unknown => typeof x === 'function';

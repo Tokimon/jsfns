@@ -7,7 +7,7 @@
  *
  * @example
  * ```ts
- * hexToNumber('ba'); // -> 186
+ * hexToNumber('ba'); // --> 186
  * ```
  */
 export const hexToNumber = (hex: string): number => (hex ? parseInt(hex, 16) : 0);

@@ -8,7 +8,7 @@ import randomRGBColor from './randomRGBColor';
  *
  * @example
  * ```ts
- * randomHexColor(); // -> eg. #f42c71
+ * randomHexColor(); // --> eg. #f42c71
  * ```
  */
 export const randomHexColor = (): string => RGBToHex(randomRGBColor());

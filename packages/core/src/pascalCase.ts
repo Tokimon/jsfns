@@ -12,13 +12,13 @@ export type PascalCaseSettings = Omit<CamelCaseSettings, 'upper'>;
  *
  * @example
  * ```ts
- * pascalCase('data-value2-input'); // -> DataValue2input
- * pascalCase('XML data input'); // -> XmlDataInput
+ * pascalCase('data-value2-input'); // --> DataValue2input
+ * pascalCase('XML data input'); // --> XmlDataInput
  *
  * // With settings
  * const settings = { abbr: true, numbers: true };
  *
- * pascalCase('data-VALUE2-input', settings); // -> DataVALUE2Input
+ * pascalCase('data-VALUE2-input', settings); // --> DataVALUE2Input
  * ```
  */
 export const pascalCase = (input: string, settings?: PascalCaseSettings): string => camelCase(input, { ...settings, upper: true });

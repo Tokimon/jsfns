@@ -6,8 +6,8 @@
  *
  * @example
  * ```ts
- * randomId(); // -> eg. 'efuc6f1n4xf'
- * randomId(20); // -> eg. '3vsmrbxlh9at0vhcsf1xh'
+ * randomId(); // --> eg. 'efuc6f1n4xf'
+ * randomId(20); // --> eg. '3vsmrbxlh9at0vhcsf1xh'
  * ```
  */
 export function randomId(length = 10): string {

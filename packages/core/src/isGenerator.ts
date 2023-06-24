@@ -12,9 +12,9 @@ import isFunction from './isFunction';
  * ```ts
  * function *gen() {}
  *
- * isGeneratorLike(gen()); // -> true
- * isGeneratorLike({ next() {}, throw() {} return() {} [Symbol.iterator]() {} }); // -> true
- * isGeneratorLike(() => {}); // -> false
+ * isGeneratorLike(gen()); // --> true
+ * isGeneratorLike({ next() {}, throw() {} return() {} [Symbol.iterator]() {} }); // --> true
+ * isGeneratorLike(() => {}); // --> false
  * ```
  */
 export function isGeneratorLike(x: unknown): x is Generator {
@@ -33,8 +33,8 @@ export function isGeneratorLike(x: unknown): x is Generator {
  * ```ts
  * function* gen() {}
  *
- * isGeneratorFunction(gen); // -> true
- * isGeneratorFunction(() => {}); // -> false
+ * isGeneratorFunction(gen); // --> true
+ * isGeneratorFunction(() => {}); // --> false
  * ```
  *
  * @param x - Argument to test

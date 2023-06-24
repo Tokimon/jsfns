@@ -8,8 +8,8 @@
  *
  * @example
  * ```ts
- * chunkString('abcdefghijkl'); // -> ['ab', 'cd', 'ef', 'gh', 'ij', 'kl']
- * chunkString('abcdefghijkl', 4); // -> ['abcd', 'efgh', 'ijkl']
+ * chunkString('abcdefghijkl'); // --> ['ab', 'cd', 'ef', 'gh', 'ij', 'kl']
+ * chunkString('abcdefghijkl', 4); // --> ['abcd', 'efgh', 'ijkl']
  * ```
  */
 export const chunkString = (str: string, size = 2): string[] => `${str || ''}`.match(new RegExp(`.{1,${size}}(?=\\B|$)`, 'g')) || [];

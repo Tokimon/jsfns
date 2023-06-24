@@ -7,8 +7,8 @@
  *
  * @example
  * ```ts
- * capitalize('capitalize this phrase'); // -> Capitalize This Phrase
- * capitalize('capitalize-This-phrase'); // -> Capitalize-This-Phrase
+ * capitalize('capitalize this phrase'); // --> Capitalize This Phrase
+ * capitalize('capitalize-This-phrase'); // --> Capitalize-This-Phrase
  * ```
  */
 export const capitalize = (str: string): string =>

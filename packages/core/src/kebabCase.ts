@@ -13,8 +13,8 @@ export type KebabCaseSettings = PhrasifySettings;
  *
  * @example
  * ```ts
- * dashed('some dashed phrase'); // -> some-dashed-phrase
- * dasher('dash version1 beta', { numbers: true }); // -> dash-version-1-beta
+ * dashed('some dashed phrase'); // --> some-dashed-phrase
+ * dasher('dash version1 beta', { numbers: true }); // --> dash-version-1-beta
  * ```
  */
 export function dashed(str: string, settings?: KebabCaseSettings): string {

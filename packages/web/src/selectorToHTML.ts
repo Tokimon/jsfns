@@ -12,7 +12,7 @@ const voidTags = ['area', 'base', 'br', 'col', 'embed', 'hr', 'img', 'input', 'k
  * @example
  *
  * ```ts
- * selectorToHTML('#id.class-name'); // -> '<div id="id" class="class-name" />'
+ * selectorToHTML('#id.class-name'); // --> '<div id="id" class="class-name" />'
  * ```
  */
 export function selectorToHTML(selector: string): string {
