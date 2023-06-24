@@ -11,12 +11,12 @@ describe('"uniqueNodeList"', () => {
   beforeAll(() => {
     insertHtml(`
       <div id="${testID}">
-        <div class="one item" />
-        <div class="two item special" />
-        <div class="three" />
-        <div class="four item" />
-        <div class="five special" />
-        <div class="six item special" />
+        <div class="one item"></div>
+        <div class="two item special"></div>
+        <div class="three"></div>
+        <div class="four item"></div>
+        <div class="five special"></div>
+        <div class="six item special"></div>
       </div>
     `);
 
