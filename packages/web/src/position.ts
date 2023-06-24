@@ -1,8 +1,8 @@
-import isDOMElement from './isDOMElement';
-import isDocument from './isDocument';
-import isWindow from './isWindow';
-import outerSize from './outerSize';
-import scrollInfo from './scrollInfo';
+import { isDOMElement } from './isDOMElement';
+import { isDocument } from './isDocument';
+import { isWindow } from './isWindow';
+import { outerSize } from './outerSize';
+import { scrollInfo } from './scrollInfo';
 import type { GeneralWindow } from './types';
 
 export type Position = {

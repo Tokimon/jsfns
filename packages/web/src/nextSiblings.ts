@@ -1,4 +1,4 @@
-import isDOMChildNode from './isDOMChildNode';
+import { isDOMChildNode } from './isDOMChildNode';
 
 /**
  * Get all sibling elements after a given DOM element in the structure

@@ -1,8 +1,8 @@
 import { defaultSettings } from '@js-fns/core/camelCase';
-import { PascalCaseSettings, pascalCase } from '@js-fns/core/pascalCase';
+import { type PascalCaseSettings, pascalCase } from '@js-fns/core/pascalCase';
 import { createBooleanSettings } from './assets/createBooleanSettings';
 import { firstUpper } from './assets/firstUpper';
-import { TestInput, result } from './assets/result';
+import { type TestInput, result } from './assets/result';
 
 const emptyObj = {};
 

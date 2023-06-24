@@ -1,4 +1,4 @@
-import phrasify, { PhrasifySettings } from './phrasify';
+import { type PhrasifySettings, phrasify } from './phrasify';
 
 export type SnakeCaseSettings = PhrasifySettings;
 

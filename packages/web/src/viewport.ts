@@ -1,4 +1,4 @@
-import getCurrentDocument from './getCurrentDocument';
+import { getCurrentDocument } from './getCurrentDocument';
 import type { GeneralWindow } from './types';
 
 /**

@@ -1,4 +1,4 @@
-import phrasify, { PhrasifySettings } from './phrasify';
+import { type PhrasifySettings, phrasify } from './phrasify';
 
 /** Settings for how to format the Camel Case */
 export type CamelCaseSettings = PhrasifySettings & {

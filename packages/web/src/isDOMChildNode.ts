@@ -1,4 +1,4 @@
-import isDOMNode from './isDOMNode';
+import { isDOMNode } from './isDOMNode';
 
 export interface ChildNodeWithParent extends ChildNode {
   parentElement: HTMLElement;

@@ -1,4 +1,4 @@
-import isEventTarget from './isEventTarget';
+import { isEventTarget } from './isEventTarget';
 
 const customEvent = (name: string, data?: unknown) => {
   const options: CustomEventInit = { bubbles: true };
@@ -51,6 +51,7 @@ function trigger<T extends argsWithTarget | argsWithoutTarget>(...args: T): Even
     return trigger(document, eventNames, data);
   }
 
+  // eslint-disable-next-line prefer-const
   let [elm, eventNames, data] = args as argsWithTarget;
   if (!Array.isArray(eventNames)) eventNames = [eventNames];
 

@@ -1,5 +1,5 @@
-import selectorToHTML from './selectorToHTML';
-import toDOM from './toDOM';
+import { selectorToHTML } from './selectorToHTML';
+import { toDOM } from './toDOM';
 
 /**
  * Creates an element from a given CSS selector (restricted to only one element)

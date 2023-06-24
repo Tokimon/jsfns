@@ -14,7 +14,7 @@ export type AttributeMapping = {
 
 export type SelectorParsing = {
   tagName: string;
-  attributes: Record<string, string | true>;
+  attributes: Record<string, string>;
   attributeList: string[];
 };
 

@@ -1,5 +1,5 @@
-import isString from '@js-fns/core/isString';
-import ensureHTML from './ensureHTML';
+import { isString } from '@js-fns/core/isString';
+import { ensureHTML } from './ensureHTML';
 
 /**
  * Append DOM element or plain HTML to the end of a given DOM element

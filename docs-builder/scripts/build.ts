@@ -7,7 +7,7 @@ import { getPackageVersions } from './building/getPackageVersions';
 import { renderIndex } from './building/renderHtml';
 import { getCustomTypesArray } from './type-parsing/findCustomTypes';
 import { prepareModules } from './type-parsing/prepareModules';
-import { Kind_Project } from './types';
+import { type Kind_Project } from './types';
 
 const RESET = '\x1b[0m';
 const BLUE = '\x1b[36m';

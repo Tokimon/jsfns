@@ -1,5 +1,5 @@
 import { innerSize } from '@js-fns/web/innerSize';
-import viewport from '@js-fns/web/viewport';
+import { viewport } from '@js-fns/web/viewport';
 import { byId, generateId, insertHtml, removeElement } from './assets/helpers';
 
 const testID = generateId('innerSize');

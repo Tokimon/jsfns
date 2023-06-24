@@ -1,5 +1,5 @@
 import { contentBoxSize } from '@js-fns/web/contentBoxSize';
-import viewport from '@js-fns/web/viewport';
+import { viewport } from '@js-fns/web/viewport';
 import { byId, generateId, insertHtml, removeElement } from './assets/helpers';
 
 const testID = generateId('contentBoxSize');

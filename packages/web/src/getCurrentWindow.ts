@@ -1,5 +1,5 @@
-import getCurrentDocument from './getCurrentDocument';
-import isWindow from './isWindow';
+import { getCurrentDocument } from './getCurrentDocument';
+import { isWindow } from './isWindow';
 import type { GeneralWindow } from './types';
 
 /**

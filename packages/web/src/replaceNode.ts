@@ -1,6 +1,6 @@
-import isString from '@js-fns/core/isString';
-import create from './createElement';
-import isDOMChildNode from './isDOMChildNode';
+import { isString } from '@js-fns/core/isString';
+import { createElement } from './createElement';
+import { isDOMChildNode } from './isDOMChildNode';
 
 /**
  * Replace a given DOM element with another DOM element or plain HTML string
@@ -21,7 +21,7 @@ export function replaceNode(elm: Node, replacement?: Node | string): Node | void
   if (!isDOMChildNode(elm)) return;
   if (!replacement) return elm.remove();
 
-  if (isString(replacement)) replacement = create(replacement);
+  if (isString(replacement)) replacement = createElement(replacement);
 
   elm.replaceWith(replacement);
   return elm;

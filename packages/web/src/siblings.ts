@@ -1,4 +1,4 @@
-import isDOMChildNode from './isDOMChildNode';
+import { isDOMChildNode } from './isDOMChildNode';
 
 /**
  * Get all sibling elements of a given DOM element

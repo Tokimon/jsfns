@@ -1,5 +1,5 @@
-import { SnakeCaseSettings, snakeCase } from '@js-fns/core/snakeCase';
-import { TestInput, result } from './assets/result';
+import { type SnakeCaseSettings, snakeCase } from '@js-fns/core/snakeCase';
+import { type TestInput, result } from './assets/result';
 import { surround } from './assets/surround';
 
 const emptyObj = {};

@@ -1,4 +1,4 @@
-import { Type_Literal } from '../types';
+import { type Type_Literal } from '../types';
 
 export function buildLiteral({ value }: Type_Literal) {
   const float = parseFloat(value);

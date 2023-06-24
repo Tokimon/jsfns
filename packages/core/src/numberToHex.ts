@@ -1,4 +1,4 @@
-import leadingZero from './leadingZero';
+import { leadingZero } from './leadingZero';
 
 /**
  * Convert a number to a Hexadecimal representation (eg. 180 => b4)

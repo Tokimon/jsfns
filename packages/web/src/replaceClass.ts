@@ -1,5 +1,5 @@
-import addClass from './addClass';
-import removeClass from './removeClass';
+import { addClass } from './addClass';
+import { removeClass } from './removeClass';
 
 /**
  * Replaces css class with another on a DOM element.

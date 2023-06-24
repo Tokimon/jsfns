@@ -1,4 +1,4 @@
-import invisible from './invisible';
+import { invisible } from './invisible';
 
 /**
  * Test if a given DOM element is visible.

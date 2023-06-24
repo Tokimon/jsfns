@@ -1,4 +1,4 @@
-import phrasify, { PhrasifySettings } from './phrasify';
+import { type PhrasifySettings, phrasify } from './phrasify';
 
 export type KebabCaseSettings = PhrasifySettings;
 
@@ -13,12 +13,10 @@ export type KebabCaseSettings = PhrasifySettings;
  *
  * @example
  * ```ts
- * dashed('some dashed phrase'); // --> some-dashed-phrase
- * dasher('dash version1 beta', { numbers: true }); // --> dash-version-1-beta
+ * kebabCase('some dashed phrase'); // --> some-dashed-phrase
+ * kebabCase('dash version1 beta', { numbers: true }); // --> dash-version-1-beta
  * ```
  */
-export function dashed(str: string, settings?: KebabCaseSettings): string {
-  return phrasify(str, settings).toLowerCase().replace(/\s+/g, '-');
-}
+export const kebabCase = (str: string, settings?: KebabCaseSettings) => phrasify(str, settings).toLowerCase().replace(/\s+/g, '-');
 
-export default dashed;
+export default kebabCase;

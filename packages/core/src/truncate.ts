@@ -1,4 +1,4 @@
-import isNumber from './isNumber';
+import { isNumber } from './isNumber';
 
 export type TruncateSettings = {
   /** Max length of the given string */

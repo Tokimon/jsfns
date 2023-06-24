@@ -1,5 +1,5 @@
-import css from './css';
-import hidden from './hidden';
+import { css } from './css';
+import { hidden } from './hidden';
 
 /**
  * Test if a given DOM element is invisible.

@@ -1,5 +1,5 @@
-import isString from '@js-fns/core/isString';
-import kebabCase from '@js-fns/core/kebabCase';
+import { isString } from '@js-fns/core/isString';
+import { kebabCase } from '@js-fns/core/kebabCase';
 
 export type CSSStyleProperties = Record<string, string | number | null | undefined>;
 

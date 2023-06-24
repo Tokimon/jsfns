@@ -1,7 +1,7 @@
-import isString from '@js-fns/core/isString';
-import ensureHTML from './ensureHTML';
-import inDOM from './inDOM';
-import isDOMRoot from './isDOMRoot';
+import { isString } from '@js-fns/core/isString';
+import { ensureHTML } from './ensureHTML';
+import { inDOM } from './inDOM';
+import { isDOMRoot } from './isDOMRoot';
 
 /**
  * Inserts DOM element or plain HTML before a given DOM element

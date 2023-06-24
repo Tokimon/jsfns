@@ -1,5 +1,5 @@
-import css from './css';
-import inDOM from './inDOM';
+import { css } from './css';
+import { inDOM } from './inDOM';
 
 /**
  * Test if a given DOM element is technically hidden

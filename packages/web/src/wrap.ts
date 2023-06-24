@@ -1,4 +1,4 @@
-import insertAfter from './insertAfter';
+import { insertAfter } from './insertAfter';
 
 function findEmptyElm(elm: Element): Element {
   const child = elm?.firstElementChild;

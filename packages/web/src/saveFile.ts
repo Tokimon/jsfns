@@ -1,4 +1,4 @@
-import isBlob from './isBlob';
+import { isBlob } from './isBlob';
 
 declare global {
   interface Navigator {

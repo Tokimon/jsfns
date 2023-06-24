@@ -1,4 +1,4 @@
-import { ReflectionKind } from 'typedoc';
+import { type ReflectionKind } from 'typedoc';
 
 type BaseProps = {
   id: number;

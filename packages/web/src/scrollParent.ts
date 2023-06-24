@@ -1,5 +1,5 @@
-import isDOMChildNode from './isDOMChildNode';
-import viewport from './viewport';
+import { isDOMChildNode } from './isDOMChildNode';
+import { viewport } from './viewport';
 
 /**
  * Get the parent element that has scrolling

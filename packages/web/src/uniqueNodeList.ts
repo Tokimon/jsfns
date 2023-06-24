@@ -1,4 +1,4 @@
-import isDOMNode from './isDOMNode';
+import { isDOMNode } from './isDOMNode';
 
 /**
  * Make a unique list of Elements from on or multiple Element collections

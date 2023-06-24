@@ -1,3 +1,3 @@
-import { Type_Array } from '../types';
+import { type Type_Array } from '../types';
 
 export const buildArray = (type: Type_Array) => type.elementType.name + '[]';

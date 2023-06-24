@@ -3,7 +3,7 @@ import { leadingZero } from '@js-fns/core/leadingZero';
 describe('"leadingZero"', () => {
   describe('Adds a zero to a value of just one character', () => {
     it.each([1, '2', '|'])('%s', (input) => {
-      expect(leadingZero(input)).toBe('0' + input);
+      expect(leadingZero(input)).toBe('0' + input.toString());
     });
   });
 

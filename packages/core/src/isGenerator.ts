@@ -1,4 +1,4 @@
-import isFunction from './isFunction';
+import { isFunction } from './isFunction';
 
 /**
  * Determine if the given argument is a Generator object.

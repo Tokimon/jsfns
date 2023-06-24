@@ -1,4 +1,4 @@
-import vendorPrefixed from './vendorPrefixed';
+import { vendorPrefixed } from './vendorPrefixed';
 
 export type PrefixedPropMatch = {
   prefix: string;

@@ -1,4 +1,4 @@
-import randomInt from './randomInt';
+import { randomInt } from './randomInt';
 
 /**
  * Generate a random RGB color

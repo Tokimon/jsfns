@@ -1,4 +1,4 @@
-import limitDecimals from './limitDecimals';
+import { limitDecimals } from './limitDecimals';
 
 export type FormatNumberSettings = {
   /** How many decimals to show */

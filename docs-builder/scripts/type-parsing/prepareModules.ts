@@ -1,4 +1,4 @@
-import { Kind_Module } from '~docs-builder/types';
+import { type Kind_Module } from '~docs-builder/types';
 import { buildFunction } from './buildFunction';
 import { buildSummary } from './buildSummary';
 import { findCustomTypes, getCustomTypes } from './findCustomTypes';

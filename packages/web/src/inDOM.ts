@@ -1,4 +1,4 @@
-import getCurrentDocument from './getCurrentDocument';
+import { getCurrentDocument } from './getCurrentDocument';
 
 /**
  * Is the given DOM node inserted into the DOM

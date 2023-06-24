@@ -1,8 +1,8 @@
-import boxModel from './boxModel';
-import isDocument from './isDocument';
-import isWindow from './isWindow';
+import { boxModel } from './boxModel';
+import { isDocument } from './isDocument';
+import { isWindow } from './isWindow';
 import { type GeneralWindow } from './types';
-import viewport from './viewport';
+import { viewport } from './viewport';
 
 /**
  * Find the size of a DOM element, document or window excluding borders, margins and padding

@@ -47,4 +47,4 @@ export function formatCurrency(thousandTemplate = '1.000,00 €'): CurrencyForma
   return (num: number) => `${before}${formatNumber(num, settings)}${after}`;
 }
 
-export default formatCurrency();
+export default formatCurrency;
