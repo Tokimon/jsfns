@@ -21,7 +21,7 @@
 export function randomCryptoId(length = 10): string {
   length = Math.max(2, length);
 
-  const UiArr = new Uint32Array(Math.ceil(Math.max(1, length / 10)));
+  const UiArr = new Uint32Array(Math.ceil(Math.max(1, length / 6)));
   const numbers = globalThis.crypto.getRandomValues(UiArr);
 
   return numbers.reduce((str, n) => str + n.toString(36), '').slice(0, length);
