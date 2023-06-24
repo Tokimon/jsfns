@@ -49,9 +49,9 @@ describe('"css"', () => {
     });
 
     describe('And `value`', () => {
-      it('Returns the newly set value', () => {
+      it('Returns all computed css values', () => {
         const result = css(testNode, 'fontSize', '20px');
-        expect(result).toBe(20);
+        expect(result.toString()).toBe(window.getComputedStyle(testNode).toString());
       });
 
       it('Applies the value to the property as inline style', () => {
@@ -72,7 +72,7 @@ describe('"css"', () => {
       describe('When value includes `!important` it is taken into account', () => {
         it('Applies the value to the property as inline style', () => {
           css(testNode, 'fontSize', '20em !important');
-          expect(testNode.style.cssText).toBe('font-size: 20em;');
+          expect(testNode.style.cssText).toBe('font-size: 20em !important;');
         });
 
         it('Applies `px` to numeric values for properties that need units', () => {
@@ -89,6 +89,11 @@ describe('"css"', () => {
   });
 
   describe('With `property mapping` given', () => {
+    it('Returns all computed css values', () => {
+      const result = css(testNode, { fontSize: '20px' });
+      expect(result.toString()).toBe(window.getComputedStyle(testNode).toString());
+    });
+
     it('Applies the value to the property as inline style', () => {
       css(testNode, { fontSize: '20px' });
       expect(testNode.style.cssText).toBe('font-size: 20px;');
