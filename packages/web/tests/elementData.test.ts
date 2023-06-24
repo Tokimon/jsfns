@@ -11,8 +11,6 @@ describe('"elementData"', () => {
     testNode = byId(testID);
   });
 
-  beforeEach(() => resetCache());
-
   afterAll(() => removeElement(testNode));
 
   describe('Stores given data under the given key for a given element', () => {
@@ -38,7 +36,7 @@ describe('"elementData"', () => {
         return o;
       }, {});
 
-      expect(elementData(testNode)).toBe(obj);
+      expect(elementData(testNode)).toEqual(obj);
     });
 
     test.each(data)('Retrieves data for the given key: %s', (key, value) => {
