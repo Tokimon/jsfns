@@ -1,3 +1,16 @@
+/**
+ * Copies a given event and optionally changes the `currentTarget`
+ *
+ * @param event - The event to copy
+ * @param currentTarget - Element to define as currentTarget (falls back to the event currentTarget if not defined)
+ * @returns The copied event
+ *
+ * @examples
+ *
+ * ```ts
+ * copyEvent(SomeEvent, MyNewCurrentTargetElement)
+ * ```
+ */
 export const copyEvent = (event: Event, currentTarget?: EventTarget) => {
   const evtType = event.constructor.name as keyof Window;
   // eslint-disable-next-line @typescript-eslint/no-unsafe-call
