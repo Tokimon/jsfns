@@ -1,7 +1,11 @@
 {
+  "$schema": "https://json.schemastore.org/tsconfig",
   "extends": "../tsconfig.json",
   "compilerOptions": {
-    "allowJs": true
+    "baseUrl": ".",
+    "paths": {
+      "~docs-builder/*": ["./scripts/*"]
+    }
   },
-  "include": ["scripts"]
+  "include": ["./scripts"]
 }
