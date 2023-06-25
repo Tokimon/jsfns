@@ -1,4 +1,4 @@
-import { isGenerator, isGeneratorFunction } from '@js-fns/core/isGenerator';
+import { isGenerator, isGeneratorLike } from '@js-fns/core/isGenerator';
 
 describe('"isGenerator"', () => {
   const generatorMock = {
@@ -8,10 +8,10 @@ describe('"isGenerator"', () => {
     // [Symbol.iterator]: () => undefined
   };
 
-  describe('Default export', () => {
+  describe('"isGenerator', () => {
     it('Returns `true` for Generator', () => {
       expect(
-        isGeneratorFunction(function* () {
+        isGenerator(function* () {
           yield '';
         })
       ).toBe(true);
@@ -30,16 +30,16 @@ describe('"isGenerator"', () => {
         ['Object containing "next"', { next: (): void => undefined }],
         ['Object containing "throw"', { throw: (): void => undefined }],
       ])('%s', (_, fn) => {
-        expect(isGeneratorFunction(fn)).toBe(false);
+        expect(isGenerator(fn)).toBe(false);
       });
     });
   });
 
-  describe('"isGenerator"', () => {
+  describe('"isGeneratorLike"', () => {
     describe('Returns `true` for', () => {
       it('An activated generator', () => {
         expect(
-          isGenerator(
+          isGeneratorLike(
             (function* () {
               yield '';
             })()
@@ -48,7 +48,7 @@ describe('"isGenerator"', () => {
       });
 
       it('Objects that implements `next` and `throw` functions', () => {
-        expect(isGenerator(generatorMock)).toBe(true);
+        expect(isGeneratorLike(generatorMock)).toBe(true);
       });
     });
 
@@ -64,7 +64,7 @@ describe('"isGenerator"', () => {
         ['Object containing "next"', { next: (): void => undefined }],
         ['Object containing "throw"', { throw: (): void => undefined }],
       ])('%s', (_, fn) => {
-        expect(isGenerator(fn)).toBe(false);
+        expect(isGeneratorLike(fn)).toBe(false);
       });
     });
   });

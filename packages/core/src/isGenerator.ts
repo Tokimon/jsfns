@@ -33,8 +33,8 @@ export function isGeneratorLike(x: unknown): x is Generator {
  * ```ts
  * function* gen() {}
  *
- * isGeneratorFunction(gen); // --> true
- * isGeneratorFunction(() => {}); // --> false
+ * isGenerator(gen); // --> true
+ * isGenerator(() => {}); // --> false
  * ```
  *
  * @param x - Argument to test
