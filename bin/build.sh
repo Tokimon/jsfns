@@ -48,8 +48,8 @@ build_index() {
   for file in $PWD/src/*.ts; do
     name=$(basename $file .ts)
 
-    if [[ ! "$name" =~ \.d ]]; then
-      echo "export { default as $name } from './$name';" >> $PWD/src/index.ts
+    if [[ ! "$name" =~ \.d ]] && [[ ! "$name" = "index" ]]; then
+      echo "export { $name } from './$name';" >> $PWD/src/index.ts
     fi
   done
 
