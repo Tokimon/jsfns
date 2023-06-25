@@ -1,9 +1,10 @@
 {
   "extends": "./tsconfig.json",
-  "include": ["src"],
   "compilerOptions": {
     "outDir": ".",
     "noEmit": false
   },
+  "exclude": [],
+  "include": ["./src"],
   "references": [{ "path": "../core/tsconfig.js.json" }]
 }
