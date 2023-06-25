@@ -10,6 +10,16 @@ print_building() {
   printf "  \e[1;33m$1\e[0m ... "
 }
 
+get_build_dir() {
+  buildDir=$PWD/build/$1/$workspaceName/src
+
+  if [ ! -d "$buildDir" ]; then
+    buildDir=$PWD/build/$1
+  fi
+
+  echo $buildDir
+}
+
 build() {
   tsconfig="tsconfig.$1.json"
 
@@ -19,8 +29,12 @@ build() {
   npx tsc --build $PWD/$tsconfig
   wait
 
-  # Move build files to the root of the project
-  for file in $PWD/build/$1/src/*.js; do
+  buildDir=$(get_build_dir $1)
+
+  echo $buildDir
+
+  # # Move build files to the root of the project
+  for file in $buildDir/*.js; do
     dest=$PWD/$(basename $file .js).$1
     mv -u $file $dest
   done
@@ -31,7 +45,9 @@ build() {
 move_dts_files() {
   print_building '.d.ts'
 
-  for file in $PWD/build/$1/src/*.d.ts; do
+  jsBuildDir=$(get_build_dir js)
+
+  for file in $jsBuildDir/*.d.ts; do
     dest=$PWD/$(basename $file)
     mv -u "$file" "$dest"
   done
@@ -66,7 +82,7 @@ build_index
 build mjs
 build cjs
 build js
-move_dts_files js
+move_dts_files
 
 # Remove old build folder
 rm -rf $PWD/build

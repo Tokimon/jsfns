@@ -5,6 +5,5 @@
     "target": "ES2021",
     "outDir": "./build/tests",
     "sourceMap": true
-  },
-  "references": [{ "path": "../core/tsconfig.test.json" }]
+  }
 }

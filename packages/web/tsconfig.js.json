@@ -1,10 +1,9 @@
 {
   "extends": "./tsconfig.json",
   "compilerOptions": {
-    "outDir": ".",
+    "outDir": "./build/js",
     "noEmit": false
   },
   "exclude": [],
-  "include": ["./src"],
-  "references": [{ "path": "../core/tsconfig.js.json" }]
+  "include": ["./src"]
 }

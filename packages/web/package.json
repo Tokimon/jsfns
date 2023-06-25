@@ -36,8 +36,8 @@
     "lint": "eslint . --max-warnings=0",
     "validate": "pnpm lint && pnpm types && pnpm test"
   },
-  "directories": {
-    "test": "tests"
+  "peerDependencies": {
+    "@js-fns/core": "workspace:*"
   },
   "devDependencies": {
     "@js-fns/core": "workspace:*",
