@@ -1,5 +1,4 @@
 import { on } from './on';
-import type { Noop } from './types';
 
 /**
  * returns whether document ready state indicates that the document is ready to be manipulated
@@ -20,7 +19,7 @@ export function docComplete(): boolean {
  * domReady((e: Event) => { alert('DOM Ready') });
  * ```
  */
-export function domReady(handler: Noop): void {
+export function domReady(handler: () => void): void {
   docComplete() ? handler() : on('readystatechange', handler, { when: docComplete, once: true });
 }
 
