@@ -1,5 +1,6 @@
 /**
- * Generate a random id of designated length - using cryptographic secure random numbers
+ * Generate a random id of designated length - using cryptographic secure random numbers,
+ * so it is a bit slower than `randomId`
  *
  * @remark
  *

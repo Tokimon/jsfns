@@ -9,7 +9,9 @@ describe('"randomId"', () => {
     expect(randomId(100)).toMatch(/[a-z0-9]{100}/);
   });
 
-  it('Generates an empty id when a negative length is given', () => {
-    expect(randomId(-100)).toBe('');
+  it('Always generate and id with a length of minimum 2', () => {
+    expect(randomId(1)).toMatch(/^[a-z0-9]{2}$/);
+    expect(randomId(0)).toMatch(/^[a-z0-9]{2}$/);
+    expect(randomId(-100)).toMatch(/^[a-z0-9]{2}$/);
   });
 });
