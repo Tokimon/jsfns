@@ -928,8 +928,8 @@
                     <summary>Examples</summary>
                      <pre><code class="hljs language-ts"><span class="hljs-keyword">function</span>* <span class="hljs-title function_">gen</span>(<span class="hljs-params"></span>) {}
 
-<span class="hljs-title function_">isGeneratorFunction</span>(gen); <span class="hljs-comment">// --&gt; true</span>
-<span class="hljs-title function_">isGeneratorFunction</span>(<span class="hljs-function">() =&gt;</span> {}); <span class="hljs-comment">// --&gt; false</span>
+<span class="hljs-title function_">isGenerator</span>(gen); <span class="hljs-comment">// --&gt; true</span>
+<span class="hljs-title function_">isGenerator</span>(<span class="hljs-function">() =&gt;</span> {}); <span class="hljs-comment">// --&gt; false</span>
 </code></pre> 
                   </details>
                    
@@ -1463,7 +1463,7 @@ action
 
                 <div class="signature-content">
                   
-                  <div class="signature-description"><p>Generate a random id of designated length - using cryptographic secure random numbers</p>
+                  <div class="signature-description"><p>Generate a random id of designated length - using cryptographic secure random numbers,<br>so it is a bit slower than <code>randomId</code></p>
 </div>
                     
                   <details>
