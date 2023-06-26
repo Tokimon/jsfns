@@ -1,13 +1,11 @@
 {
   "name": "js-fns",
-  "version": "1.0.0",
+  "version": "0.0.0",
   "description": "Simple, no dependency, JS utility functions",
   "main": "index.js",
   "private": true,
   "type": "module",
   "scripts": {
-    "prepublishOnly": "npm run build",
-    "postpublish": "npm run clean",
     "prettier": "prettier --write .",
     "lint": "eslint . --max-warnings=0",
     "lerna": "lerna run",

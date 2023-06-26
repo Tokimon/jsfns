@@ -1,6 +1,6 @@
 {
   "name": "@js-fns/core",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "Simple, no dependency, JS utility functions",
   "author": "Toke Voltelen",
   "license": "MIT",
