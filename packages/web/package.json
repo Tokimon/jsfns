@@ -1,6 +1,6 @@
 {
   "name": "@js-fns/web",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "Simple, no dependency, JS utility functions for use in a browser environment",
   "author": "Toke Voltelen",
   "license": "MIT",
