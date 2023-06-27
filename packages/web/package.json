@@ -1,6 +1,6 @@
 {
   "name": "@js-fns/web",
-  "version": "1.0.0",
+  "version": "0.0.0",
   "description": "Simple, no dependency, JS utility functions for use in a browser environment",
   "author": "Toke Voltelen",
   "license": "MIT",
@@ -26,7 +26,7 @@
   },
   "homepage": "https://github.com/Tokimon/js-fns#readme",
   "scripts": {
-    "prepublishOnly": "pnpm run build",
+    "prepublishOnly": "pnpm run validate && pnpm run build && pnpm run docs",
     "postpublish": "pnpm run clean",
     "build": "../../bin/build.sh",
     "clean": "../../bin/clean.sh",

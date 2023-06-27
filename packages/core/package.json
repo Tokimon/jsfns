@@ -1,6 +1,6 @@
 {
   "name": "@js-fns/core",
-  "version": "1.0.0",
+  "version": "0.0.0",
   "description": "Simple, no dependency, JS utility functions",
   "author": "Toke Voltelen",
   "license": "MIT",
@@ -25,12 +25,11 @@
   },
   "homepage": "https://github.com/Tokimon/js-fns#readme",
   "scripts": {
-    "prepublishOnly": "pnpm run build",
+    "prepublishOnly": "pnpm run validate && pnpm run build && pnpm run docs",
     "postpublish": "pnpm run clean",
     "build": "../../bin/build.sh",
     "clean": "../../bin/clean.sh",
     "missing": "../../bin/missing.sh",
-    "docs-old": "../../bin/docs.sh",
     "docs": "npm run --prefix ../../docs-builder build core",
     "types": "tsc -p tsconfig.json",
     "test": "NODE_OPTIONS=--experimental-vm-modules jest",
