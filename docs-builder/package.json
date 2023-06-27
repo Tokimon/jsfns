@@ -3,15 +3,16 @@
   "version": "0.0.1",
   "scripts": {
     "build": "esrun ./scripts/build.ts",
-    "prettier": "prettier --write ."
+    "prettier": "prettier --write .",
+    "lint": "eslint . --max-warnings=0"
   },
   "devDependencies": {
     "@digitak/esrun": "^3.2.24",
     "@types/ejs": "^3.1.2",
     "@types/marked": "^5.0.0",
-    "ejs": "^3.1.9",
     "highlight.js": "^11.8.0",
-    "marked": "^5.0.5",
+    "ejs": "^3.1.9",
+    "marked": "^5.1.0",
     "marked-highlight": "^2.0.1",
     "typedoc": "^0.24.8",
     "typescript": "^5.1.3"
