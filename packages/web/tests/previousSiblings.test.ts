@@ -1,4 +1,4 @@
-import { previousSiblings } from '@js-fns/web/previousSiblings';
+import { previousSiblings } from '@jsfns/web/previousSiblings';
 import { byId, createElement, generateId, insertHtml, removeElement } from './assets/helpers';
 
 const testID = generateId('previousSiblings');

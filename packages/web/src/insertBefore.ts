@@ -1,4 +1,4 @@
-import { isString } from '@js-fns/core/isString';
+import { isString } from '@jsfns/core/isString';
 import { ensureHTML } from './ensureHTML';
 import { inDOM } from './inDOM';
 import { isDOMRoot } from './isDOMRoot';

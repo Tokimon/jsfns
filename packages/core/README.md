@@ -1,6 +1,6 @@
-# @js-fns/core
+# @jsfns/core
 
-## [@js-fns/core Docs](https://tokimon.github.io/js-fns/core)
+## [@jsfns/core Docs](https://tokimon.github.io/js-fns/core)
 
 This is a collection of simple, no dependency, JavaScript snippets with the aim
 of making it easier to work with vanilla JavaScript.
@@ -14,7 +14,7 @@ All helpers are written in TypeScript and converted into various JS versions sui
 
 ## Browser specific helpers
 
-Searching for browser specific methods? Check out: [@js-fns/web](https://tokimon.github.io/js-fns/web)
+Searching for browser specific methods? Check out: [@jsfns/web](https://tokimon.github.io/js-fns/web)
 
 ## ES version support
 
@@ -34,28 +34,28 @@ enable auto detection of polyfills.
 ## Installation
 
 ```
-npm i @js-fns/core
+npm i @jsfns/core
 ```
 
 ```
-yarn add @js-fns/core
+yarn add @jsfns/core
 ```
 
 ```
-pnpm i @js-fns/core
+pnpm i @jsfns/core
 ```
 
 ## Usage
 
 ```js
 // JS + MJS Modules
-import { camelCase } from '@js-fns/core/camelCase';
+import { camelCase } from '@jsfns/core/camelCase';
 camelCase('Camel cased phrase'); // camelCasedPhrase
 ```
 
 ```js
 // CommonJS Require Modules
-const { camelCase } = require('@js-fns/core/camelCase');
+const { camelCase } = require('@jsfns/core/camelCase');
 camelCase('Camel cased phrase'); // camelCasedPhrase
 ```
 

@@ -1,5 +1,5 @@
 import { jest } from '@jest/globals';
-import { findByQuery } from '@js-fns/web/findByQuery';
+import { findByQuery } from '@jsfns/web/findByQuery';
 import { byId, insertHtml, removeElement } from './assets/helpers';
 
 const testID = 'findByQuery';

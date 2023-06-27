@@ -1,6 +1,6 @@
 import { jest } from '@jest/globals';
+import { type OnOptions, on } from '@jsfns/web/on';
 import type { SpyInstance } from 'jest-mock';
-import { type OnOptions, on } from '@js-fns/web/on';
 import { byId, insertHtml, triggerEvent } from './assets/helpers';
 
 const testID = 'onEvents';

@@ -1,4 +1,4 @@
-import { elementData, resetCache } from '@js-fns/web/elementData';
+import { elementData, resetCache } from '@jsfns/web/elementData';
 import { byId, generateId, insertHtml, removeElement } from './assets/helpers';
 
 const testID = generateId('ElementData');

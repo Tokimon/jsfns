@@ -1,4 +1,4 @@
-import { safeDateChange } from '@js-fns/core/safeDateChange';
+import { safeDateChange } from '@jsfns/core/safeDateChange';
 
 const dateStr = (date: Date) => `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`;
 

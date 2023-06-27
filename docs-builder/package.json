@@ -1,5 +1,5 @@
 {
-  "name": "@js-fns/docs",
+  "name": "@jsfns/docs",
   "version": "0.0.1",
   "scripts": {
     "build": "esrun ./scripts/build.ts",

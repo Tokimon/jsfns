@@ -1,5 +1,5 @@
 import { jest } from '@jest/globals';
-import { randomHexColor } from '@js-fns/core/randomHexColor';
+import { randomHexColor } from '@jsfns/core/randomHexColor';
 
 describe('"randomHexColor"', () => {
   it('Generates a random Hex color', () => {

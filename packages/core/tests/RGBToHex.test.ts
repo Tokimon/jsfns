@@ -1,4 +1,4 @@
-import { RGBToHex } from '@js-fns/core/RGBToHex';
+import { RGBToHex } from '@jsfns/core/RGBToHex';
 
 describe('"RGBToHex"', () => {
   it('Generates a hex color from a RGB entries', () => {

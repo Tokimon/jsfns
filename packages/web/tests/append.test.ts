@@ -1,4 +1,4 @@
-import { append } from '@js-fns/web/append';
+import { append } from '@jsfns/web/append';
 import { byId, createElement, generateId, getOne, insertHtml, removeElement } from './assets/helpers';
 
 const testID = generateId('Append');

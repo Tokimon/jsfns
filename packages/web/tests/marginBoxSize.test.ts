@@ -1,5 +1,5 @@
-import { marginBoxSize } from '@js-fns/web/marginBoxSize';
-import { viewport } from '@js-fns/web/viewport';
+import { marginBoxSize } from '@jsfns/web/marginBoxSize';
+import { viewport } from '@jsfns/web/viewport';
 import { byId, generateId, insertHtml, removeElement } from './assets/helpers';
 
 const testID = generateId('marginBoxSize');

@@ -1,4 +1,4 @@
-import { inDOM } from '@js-fns/web/inDOM';
+import { inDOM } from '@jsfns/web/inDOM';
 import { appendFrame, createDetachedDocument, createElement } from './assets/helpers';
 
 describe('"inDOM"', () => {

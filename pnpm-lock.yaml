@@ -80,8 +80,8 @@ importers:
 
   packages/web:
     dependencies:
-      '@js-fns/core':
-        specifier: workspace:*
+      '@jsfns/core':
+        specifier: 1.0.0-alpha.0
         version: link:../core
     devDependencies:
       '@types/jest':

@@ -1,4 +1,4 @@
-import { isFunction } from '@js-fns/core/isFunction';
+import { isFunction } from '@jsfns/core/isFunction';
 import { copyEvent } from './copyEvent';
 import { isDOMElement } from './isDOMElement';
 import { isEventTarget } from './isEventTarget';

@@ -1,4 +1,4 @@
-import { wrap } from '@js-fns/web/wrap';
+import { wrap } from '@jsfns/web/wrap';
 import { byId, createElement, generateId, insertHtml, removeElement } from './assets/helpers';
 
 const testID = generateId('Wrap');

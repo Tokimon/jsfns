@@ -1,4 +1,4 @@
-import { isBlob } from '@js-fns/web/isBlob';
+import { isBlob } from '@jsfns/web/isBlob';
 
 describe('"isBlob"', () => {
   it('Returns `true` for Blob objects', () => {

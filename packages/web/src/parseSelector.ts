@@ -1,4 +1,4 @@
-import { isString } from '@js-fns/core/isString';
+import { isString } from '@jsfns/core/isString';
 
 const elmExp = /^[a-z]+/;
 const nameExp = /[a-z][\w\d-]*/i;

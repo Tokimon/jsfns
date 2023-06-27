@@ -1,4 +1,4 @@
-import { isDOMFragment } from '@js-fns/web/isDOMFragment';
+import { isDOMFragment } from '@jsfns/web/isDOMFragment';
 import { createElement } from './assets/helpers';
 
 describe('"isDOMFragment"', () => {

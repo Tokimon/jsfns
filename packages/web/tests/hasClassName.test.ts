@@ -1,4 +1,4 @@
-import { hasAllClassNames, hasAnyClassName, hasClassName } from '@js-fns/web/hasClassName';
+import { hasAllClassNames, hasAnyClassName, hasClassName } from '@jsfns/web/hasClassName';
 import { byId, generateId, insertHtml, removeElement } from './assets/helpers';
 
 const testID = generateId('HasClass');

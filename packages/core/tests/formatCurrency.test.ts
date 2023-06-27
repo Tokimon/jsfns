@@ -1,4 +1,4 @@
-import { formatCurrency } from '@js-fns/core/formatCurrency';
+import { formatCurrency } from '@jsfns/core/formatCurrency';
 
 describe('"formatCurrency"', () => {
   const num = 1100.234;

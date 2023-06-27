@@ -1,4 +1,4 @@
-import { type KebabCaseSettings, kebabCase } from '@js-fns/core/kebabCase';
+import { type KebabCaseSettings, kebabCase } from '@jsfns/core/kebabCase';
 import { type TestInput, result } from './assets/result';
 import { surround } from './assets/surround';
 

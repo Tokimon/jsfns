@@ -1,4 +1,4 @@
-import { elmIndex } from '@js-fns/web/elmIndex';
+import { elmIndex } from '@jsfns/web/elmIndex';
 import { byId, createElement, generateId, insertHtml, removeElement } from './assets/helpers';
 
 const testID = generateId('ElmIndex');

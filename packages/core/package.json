@@ -1,5 +1,5 @@
 {
-  "name": "@js-fns/core",
+  "name": "@jsfns/core",
   "version": "0.0.0",
   "description": "Simple, no dependency, JS utility functions",
   "private": false,

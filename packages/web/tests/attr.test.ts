@@ -1,4 +1,4 @@
-import { attr } from '@js-fns/web/attr';
+import { attr } from '@jsfns/web/attr';
 import { byId, generateId, insertHtml, removeElement } from './assets/helpers';
 
 const testID = generateId('Attr');

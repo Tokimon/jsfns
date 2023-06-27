@@ -1,4 +1,4 @@
-import { isGenerator, isGeneratorLike } from '@js-fns/core/isGenerator';
+import { isGenerator, isGeneratorLike } from '@jsfns/core/isGenerator';
 
 describe('"isGenerator"', () => {
   const generatorMock = {

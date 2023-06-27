@@ -1,4 +1,4 @@
-import { type PhrasifySettings, phrasify } from '@js-fns/core/phrasify';
+import { type PhrasifySettings, phrasify } from '@jsfns/core/phrasify';
 import { type TestInput, result } from './assets/result';
 import { surround } from './assets/surround';
 

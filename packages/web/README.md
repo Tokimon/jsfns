@@ -1,6 +1,6 @@
-# @js-fns/web
+# @jsfns/web
 
-## [@js-fns/web Docs](https://tokimon.github.io/js-fns/web)
+## [@jsfns/web Docs](https://tokimon.github.io/js-fns/web)
 
 This is a collection of simple, no dependency, JavaScript snippets with the aim
 of making it easier to work with vanilla JavaScript in the browser.
@@ -14,7 +14,7 @@ All helpers are written in TypeScript and converted into various JS versions sui
 
 ## Environment agnostic helpers
 
-Searching for more basic, environment agnostic JavaScript methods? Check out: [@js-fns/core](https://tokimon.github.io/js-fns/core)
+Searching for more basic, environment agnostic JavaScript methods? Check out: [@jsfns/core](https://tokimon.github.io/js-fns/core)
 
 ## ES version support
 
@@ -34,28 +34,28 @@ enable auto detection of polyfills.
 ## Installation
 
 ```
-npm i @js-fns/web
+npm i @jsfns/web
 ```
 
 ```
-yarn add @js-fns/web
+yarn add @jsfns/web
 ```
 
 ```
-pnpm i @js-fns/web
+pnpm i @jsfns/web
 ```
 
 ## Usage
 
 ```js
 // JS + MJS Modules
-import { append } from '@js-fns/web/append';
+import { append } from '@jsfns/web/append';
 append(document.body, '<span>Appended content</span>');
 ```
 
 ```js
 // CommonJS Require Modules
-const { append } = require('@js-fns/web/append');
+const { append } = require('@jsfns/web/append');
 append(document.body, '<span>Appended content</span>');
 ```
 

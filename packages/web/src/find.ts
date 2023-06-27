@@ -1,4 +1,4 @@
-import { isString } from '@js-fns/core/isString';
+import { isString } from '@jsfns/core/isString';
 import { findByClass } from './findByClass';
 import { findById } from './findById';
 import { findByQuery } from './findByQuery';

@@ -6,7 +6,7 @@ export default {
   testEnvironment: 'jest-environment-jsdom',
   setupFilesAfterEnv: ['./jest.setup.js'],
   moduleNameMapper: {
-    '^@js-fns/web/(.*)$': '<rootDir>/src/$1',
-    '^@js-fns/core/(.*)$': '<rootDir>/../core/src/$1',
+    '^@jsfns/web/(.*)$': '<rootDir>/src/$1',
+    '^@jsfns/core/(.*)$': '<rootDir>/../core/src/$1',
   },
 };

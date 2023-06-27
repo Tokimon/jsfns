@@ -1,4 +1,4 @@
-import { selectorToHTML } from '@js-fns/web/selectorToHTML';
+import { selectorToHTML } from '@jsfns/web/selectorToHTML';
 
 describe('"selectorToHTML"', () => {
   it('Correctly converts non-void tag selector', () => {

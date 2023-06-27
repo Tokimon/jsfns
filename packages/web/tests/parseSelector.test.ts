@@ -1,4 +1,4 @@
-import { parseSelector } from '@js-fns/web/parseSelector';
+import { parseSelector } from '@jsfns/web/parseSelector';
 
 describe('"parseSelector"', () => {
   it('Defaults "tagName" to a DIV when empty string is given', () => {

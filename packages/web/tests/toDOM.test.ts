@@ -1,4 +1,4 @@
-import { toDOM } from '@js-fns/web/toDOM';
+import { toDOM } from '@jsfns/web/toDOM';
 
 describe('"toDOM"', () => {
   it('Return a HTMLCollection of all root elements converted', () => {

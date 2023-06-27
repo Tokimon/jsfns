@@ -1,4 +1,4 @@
-import { isString } from '@js-fns/core/isString';
+import { isString } from '@jsfns/core/isString';
 import { createElement } from './createElement';
 import { isDOMChildNode } from './isDOMChildNode';
 

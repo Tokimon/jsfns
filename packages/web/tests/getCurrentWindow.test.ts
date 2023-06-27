@@ -1,4 +1,4 @@
-import { getCurrentWindow } from '@js-fns/web/getCurrentWindow';
+import { getCurrentWindow } from '@jsfns/web/getCurrentWindow';
 import { appendFrame, createDetachedDocument, createElement } from './assets/helpers';
 
 describe('"getCurrentWindow"', () => {

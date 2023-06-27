@@ -1,5 +1,5 @@
-import { defaultSettings } from '@js-fns/core/camelCase';
-import { type PascalCaseSettings, pascalCase } from '@js-fns/core/pascalCase';
+import { defaultSettings } from '@jsfns/core/camelCase';
+import { type PascalCaseSettings, pascalCase } from '@jsfns/core/pascalCase';
 import { createBooleanSettings } from './assets/createBooleanSettings';
 import { firstUpper } from './assets/firstUpper';
 import { type TestInput, result } from './assets/result';

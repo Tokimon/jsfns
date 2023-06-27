@@ -31,8 +31,6 @@ build() {
 
   buildDir=$(get_build_dir $1)
 
-  echo $buildDir
-
   # # Move build files to the root of the project
   for file in $buildDir/*.js; do
     dest=$PWD/$(basename $file .js).$1

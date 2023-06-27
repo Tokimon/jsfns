@@ -1,4 +1,4 @@
-import { getCurrentDocument } from '@js-fns/web/getCurrentDocument';
+import { getCurrentDocument } from '@jsfns/web/getCurrentDocument';
 import { appendFrame, createDetachedDocument, createElement } from './assets/helpers';
 
 describe('"getCurrentDocument"', () => {

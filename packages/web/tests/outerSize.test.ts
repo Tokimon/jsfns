@@ -1,6 +1,6 @@
-import { outerSize } from '@js-fns/web/outerSize';
-import { type GeneralWindow } from '@js-fns/web/types';
-import { viewport } from '@js-fns/web/viewport';
+import { outerSize } from '@jsfns/web/outerSize';
+import { type GeneralWindow } from '@jsfns/web/types';
+import { viewport } from '@jsfns/web/viewport';
 import { byId, generateId, insertHtml, removeElement } from './assets/helpers';
 
 const testID = generateId('outerSize');

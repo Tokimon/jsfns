@@ -1,6 +1,6 @@
 import { jest } from '@jest/globals';
+import { find } from '@jsfns/web/find';
 import type { SpyInstance } from 'jest-mock';
-import { find } from '@js-fns/web/find';
 
 describe('"find"', () => {
   function suite(target: Document | HTMLElement) {

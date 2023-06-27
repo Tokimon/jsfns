@@ -1,4 +1,4 @@
-import { type CamelCaseSettings, camelCase, defaultSettings } from '@js-fns/core/camelCase';
+import { type CamelCaseSettings, camelCase, defaultSettings } from '@jsfns/core/camelCase';
 import { createBooleanSettings } from './assets/createBooleanSettings';
 import { firstUpper } from './assets/firstUpper';
 import { type TestInput, result } from './assets/result';

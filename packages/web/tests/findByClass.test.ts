@@ -1,4 +1,4 @@
-import { findByClass } from '@js-fns/web/findByClass';
+import { findByClass } from '@jsfns/web/findByClass';
 import { byId, insertHtml, removeElement } from './assets/helpers';
 
 describe('"findByClass"', () => {

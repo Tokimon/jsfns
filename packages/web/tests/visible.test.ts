@@ -1,4 +1,4 @@
-import { visible } from '@js-fns/web/visible';
+import { visible } from '@jsfns/web/visible';
 import { byId, createElement, generateId, insertHtml, removeElement } from './assets/helpers';
 
 const testID = generateId('Visible');

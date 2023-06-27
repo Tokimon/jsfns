@@ -1,5 +1,5 @@
-import { kebabCase } from '@js-fns/core/kebabCase';
-import { pascalCase } from '@js-fns/core/pascalCase';
+import { kebabCase } from '@jsfns/core/kebabCase';
+import { pascalCase } from '@jsfns/core/pascalCase';
 
 export type VendorPrefixing = [
   { prefix: ''; js: string; css: string },

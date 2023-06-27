@@ -1,4 +1,4 @@
-import { type SnakeCaseSettings, snakeCase } from '@js-fns/core/snakeCase';
+import { type SnakeCaseSettings, snakeCase } from '@jsfns/core/snakeCase';
 import { type TestInput, result } from './assets/result';
 import { surround } from './assets/surround';
 

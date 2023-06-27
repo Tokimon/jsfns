@@ -1,4 +1,4 @@
-import { leadingZero } from '@js-fns/core/leadingZero';
+import { leadingZero } from '@jsfns/core/leadingZero';
 
 describe('"leadingZero"', () => {
   describe('Adds a zero to a value of just one character', () => {

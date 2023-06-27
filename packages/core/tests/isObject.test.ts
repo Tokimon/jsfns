@@ -1,4 +1,4 @@
-import { isObject } from '@js-fns/core/isObject';
+import { isObject } from '@jsfns/core/isObject';
 
 class TestObj {
   name = '';

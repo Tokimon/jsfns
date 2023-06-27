@@ -1,4 +1,4 @@
-import { ensureHTML } from '@js-fns/web/ensureHTML';
+import { ensureHTML } from '@jsfns/web/ensureHTML';
 
 describe('"ensureHTML"', () => {
   it('Returns string containing "<" directly', () => {

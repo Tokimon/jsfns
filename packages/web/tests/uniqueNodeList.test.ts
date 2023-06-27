@@ -1,4 +1,4 @@
-import { uniqueNodeList } from '@js-fns/web/uniqueNodeList';
+import { uniqueNodeList } from '@jsfns/web/uniqueNodeList';
 import { byId, generateId, insertHtml, removeElement } from './assets/helpers';
 
 const testID = generateId('uniqueNodeList');

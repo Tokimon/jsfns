@@ -1,4 +1,4 @@
-import { copyEvent } from '@js-fns/web/copyEvent';
+import { copyEvent } from '@jsfns/web/copyEvent';
 import { createElement, triggerEvent } from './assets/helpers';
 
 describe('"copyEvent"', () => {

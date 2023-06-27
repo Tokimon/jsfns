@@ -1,4 +1,4 @@
-import { createElement } from '@js-fns/web/createElement';
+import { createElement } from '@jsfns/web/createElement';
 
 describe('"createElement"', () => {
   it('Creates a <div> element when no element is given', () => {

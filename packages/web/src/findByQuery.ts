@@ -1,4 +1,4 @@
-import { isString } from '@js-fns/core/isString';
+import { isString } from '@jsfns/core/isString';
 import { uniqueNodeList } from './uniqueNodeList';
 
 export type argsWithoutTarget = [queries: string | string[], first?: boolean];

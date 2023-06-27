@@ -1,4 +1,4 @@
-import { formatNumber } from '@js-fns/core/formatNumber';
+import { formatNumber } from '@jsfns/core/formatNumber';
 
 describe('"formatNumber"', () => {
   const num = 1100.254;

@@ -1,7 +1,7 @@
 {
   "$schema": "https://json.schemastore.org/tsconfig",
   "compilerOptions": {
-    "lib": ["es2022"],
+    "lib": ["es2022", "DOM"],
     "moduleResolution": "Node",
     "module": "ESNext",
     "target": "es6",
@@ -20,8 +20,8 @@
     "baseUrl": ".",
     "paths": {
       "~docs-builder/*": ["./docs-builder/scripts/*"],
-      "@js-fns/core/*": ["./packages/core/src/*"],
-      "@js-fns/web/*": ["./packages/web/src/*"]
+      "@jsfns/core/*": ["./packages/core/src/*"],
+      "@jsfns/web/*": ["./packages/web/src/*"]
     }
   }
 }
