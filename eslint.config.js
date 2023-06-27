@@ -1,4 +1,4 @@
-import typescript from '@typescript-eslint/eslint-plugin';
+import typescriptEslint from '@typescript-eslint/eslint-plugin';
 import typescriptParser from '@typescript-eslint/parser';
 import prettierConfig from 'eslint-config-prettier';
 import jest from 'eslint-plugin-jest';
@@ -28,12 +28,12 @@ export default [
     plugins: {
       jsdoc,
       jest,
-      '@typescript-eslint': typescript,
+      '@typescript-eslint': typescriptEslint,
     },
 
     rules: {
-      ...typescript.configs.recommended.rules,
-      ...typescript.configs['recommended-requiring-type-checking'].rules,
+      ...typescriptEslint.configs.recommended.rules,
+      ...typescriptEslint.configs['recommended-requiring-type-checking'].rules,
       ...prettierConfig.rules,
       'no-console': 2,
       'no-duplicate-imports': 2,
