@@ -1,0 +1,1974 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@jsfns/core v.1.0.0-alpha.x</title>
+    <style>
+  :root {
+    font-family: Arial, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu,
+      Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+
+    font-size: 14px;
+  }
+
+  body {
+    min-height: 100vh;
+    margin: 0;
+    background: #11181d;
+    color: whitesmoke;
+  }
+
+  pre,
+  p,
+  ul,
+  h1,
+  h2,
+  h3 {
+    margin: 0;
+  }
+
+  * {
+    scrollbar-width: thin;
+    scroll-behavior: smooth;
+  }
+
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+    box-shadow: none;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    border-radius: 2px;
+    background: rgba(255, 255, 255, 0.15);
+  }
+</style>
+ <style>
+  table {
+    table-layout: auto;
+    border-collapse: collapse;
+  }
+
+  table th,
+  table td {
+    text-align: left;
+    padding: 5px 10px;
+    border: 0 solid #444;
+    border-width: 0 0 1px;
+
+    & + & {
+      border-left-width: 1px;
+    }
+  }
+
+  table tbody tr:last-child th,
+  table tbody tr:last-child td {
+    border-bottom: 0;
+  }
+
+  details[open] summary {
+    margin-bottom: 5px;
+  }
+
+  details pre code.hljs {
+    background-color: #1c2431;
+    box-shadow: inset #141a24 0 0 5px;
+  }
+
+  summary {
+    font-size: 12px;
+    cursor: pointer;
+    color: gray;
+    transition: color 0.2s;
+  }
+
+  summary:hover,
+  summary:focus {
+    color: #cc7000;
+    outline: none;
+  }
+
+  pre code.hljs {
+    padding: 15px;
+  }
+
+  code:not(.hljs) {
+    color: hotpink;
+  }
+
+  .page {
+    --header-hight: 50px;
+
+    grid-template-areas:
+      'header header'
+      'nav content';
+    grid-template-columns: 300px 1fr;
+  }
+
+  .header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 99;
+    background-color: #212d36;
+    color: white;
+    padding: 0 10px;
+    grid-area: header;
+    height: var(--header-hight);
+    display: flex;
+    align-items: center;
+    gap: 15px;
+  }
+
+  .page-title {
+    margin: 0;
+    font-size: 18px;
+    flex: 1 1 100%;
+  }
+
+  .page-title a {
+    color: currentColor;
+    text-decoration: none;
+  }
+
+  .page-title a:hover,
+  .page-title a:focus {
+    text-decoration: underline;
+  }
+
+  .modules {
+    grid-area: content;
+    padding: 0 15px var(--header-hight);
+    overflow: hidden;
+    position: relative;
+    z-index: 9;
+    container-type: inline-size;
+  }
+
+  .menu-trigger {
+    width: 22px;
+    height: 16px;
+    border: 0;
+    background: linear-gradient(white, white 25%, transparent 25%, transparent);
+    background-repeat: repeat;
+    background-size: 1px 7px;
+    appearance: none;
+    cursor: pointer;
+  }
+
+  .menu-trigger,
+  .repository {
+    flex: 0 0 auto;
+  }
+
+  .repository img {
+    width: 20px;
+    aspect-ratio: 1;
+  }
+
+  @media (min-width: 800px) {
+    .page {
+      display: grid;
+    }
+
+    .menu-trigger {
+      display: none;
+    }
+  }
+
+  .menu {
+    grid-area: nav;
+    position: fixed;
+    z-index: 98;
+    width: 300px;
+    top: var(--header-hight);
+    bottom: 0;
+    left: 0;
+    background: #192229;
+    overflow-y: auto;
+    overflow-x: hidden;
+    translate: -100% 0;
+    transition: translate 0.3s ease;
+    font-size: 18px;
+  }
+
+  .menu.open {
+    translate: 0;
+  }
+
+  .menu-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    padding: 10px 0;
+    box-shadow: inset 0 0 0 transparent;
+  }
+
+  .menu-list-item a {
+    color: #ccc;
+    text-decoration: none;
+    padding: 10px;
+    display: block;
+    transition: all 0.2s;
+  }
+
+  .menu-list-item.current a {
+    background: rgba(122, 150, 174, 0.25);
+    box-shadow: inset 5px 0 0 cornflowerblue;
+    padding-left: 20px;
+  }
+
+  .menu-list-item a:hover,
+  .menu-list-item a:focus {
+    background: rgba(255, 255, 255, 0.15);
+    outline: none;
+  }
+
+  @media (min-width: 800px) {
+    .menu {
+      translate: 0;
+    }
+  }
+
+  .module {
+    padding-top: var(--header-hight);
+  }
+
+  .module-content {
+    background: #192229;
+    border-radius: 5px;
+    margin-top: 15px;
+    transition: border-color 1s;
+    border: 1px solid #444;
+  }
+
+  .module-content:hover {
+    border-color: darkolivegreen;
+    transition: border-color 0.2s;
+  }
+
+  .module:target .module-content,
+  .module:target .module-content:hover {
+    border-color: cornflowerblue;
+  }
+
+  .module-content h1 {
+    margin: 0;
+    padding: 0 15px;
+    line-height: 50px;
+    font-size: 18px;
+    font-weight: 400;
+    border-top-left-radius: inherit;
+    border-top-right-radius: inherit;
+  }
+
+  .module-content h1 a {
+    color: currentColor;
+    text-decoration: none;
+  }
+
+  .module-content h1 a:hover b,
+  .module-content h1 a:focus b {
+    color: currentColor;
+  }
+
+  .module-content h1 b {
+    color: gray;
+    transition: color 0.2s;
+  }
+
+  .signatures {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  @container (min-width: 600px) {
+    .module-content h1 {
+      font-size: 25px;
+    }
+  }
+
+  .signature-content {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding: 15px;
+  }
+
+  .signature-definition {
+    font-size: 14px;
+    border: 0 solid #444;
+    border-width: 1px 0;
+  }
+
+  .signature-description {
+    font-size: 18px;
+    color: #aaa;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .signature-remark {
+    padding: 10px;
+    border: currentColor 1px solid;
+    color: darkorange;
+    border-radius: 4px;
+  }
+
+  @container (min-width: 750px) {
+    .signature-definition {
+      font-size: 20px;
+    }
+  }
+
+  .tooltip {
+    display: none;
+    border-radius: 5px;
+    box-shadow: #1a1f23 0 4px 8px -2px;
+    overflow: hidden;
+    border: 1px solid #333;
+    z-index: -1;
+    position: absolute;
+  }
+
+  .tooltip code.hljs {
+    background-color: #292d25;
+  }
+</style>
+
+    <style>
+      pre code.hljs{display:block;overflow-x:auto;padding:1em}code.hljs{padding:3px 5px}/*!
+  Theme: GitHub Dark
+  Description: Dark theme as seen on github.com
+  Author: github.com
+  Maintainer: @Hirse
+  Updated: 2021-05-15
+
+  Outdated base version: https://github.com/primer/github-syntax-dark
+  Current colors taken from GitHub's CSS
+*/.hljs{color:#c9d1d9;background:#0d1117}.hljs-doctag,.hljs-keyword,.hljs-meta .hljs-keyword,.hljs-template-tag,.hljs-template-variable,.hljs-type,.hljs-variable.language_{color:#ff7b72}.hljs-title,.hljs-title.class_,.hljs-title.class_.inherited__,.hljs-title.function_{color:#d2a8ff}.hljs-attr,.hljs-attribute,.hljs-literal,.hljs-meta,.hljs-number,.hljs-operator,.hljs-selector-attr,.hljs-selector-class,.hljs-selector-id,.hljs-variable{color:#79c0ff}.hljs-meta .hljs-string,.hljs-regexp,.hljs-string{color:#a5d6ff}.hljs-built_in,.hljs-symbol{color:#ffa657}.hljs-code,.hljs-comment,.hljs-formula{color:#8b949e}.hljs-name,.hljs-quote,.hljs-selector-pseudo,.hljs-selector-tag{color:#7ee787}.hljs-subst{color:#c9d1d9}.hljs-section{color:#1f6feb;font-weight:700}.hljs-bullet{color:#f2cc60}.hljs-emphasis{color:#c9d1d9;font-style:italic}.hljs-strong{color:#c9d1d9;font-weight:700}.hljs-addition{color:#aff5b4;background-color:#033a16}.hljs-deletion{color:#ffdcd7;background-color:#67060c}
+    </style>
+  </head>
+
+  <body>
+    <main class="page">
+      <header class="header">
+        <button type="button" class="menu-trigger"></button>
+
+        <h2 class="page-title"><a href="#">@jsfns/core v.1.0.0-alpha.x</a></h2>
+
+        <a target="_blank" href="https://www.npmjs.com/package/@jsfns/" class="repository">
+          <img src="https://static.npmjs.com/f1786e9b7cba9753ca7b9c40e8b98f67.png" alt="npm" />
+        </a>
+
+        <a target="_blank" href="https://github.com/Tokimon/jsfns/" class="repository">
+          <img src="https://github.githubassets.com/favicons/favicon-dark.svg" alt="Github" />
+        </a>
+      </header>
+
+      <nav class="menu" id="Menu">
+        <ul class="menu-list">
+          
+          <li class="menu-list-item" id="Menu-camelCase">
+            <a href="#camelCase">camelCase</a>
+          </li>
+          
+          <li class="menu-list-item" id="Menu-capitalize">
+            <a href="#capitalize">capitalize</a>
+          </li>
+          
+          <li class="menu-list-item" id="Menu-chunkString">
+            <a href="#chunkString">chunkString</a>
+          </li>
+          
+          <li class="menu-list-item" id="Menu-formatCurrency">
+            <a href="#formatCurrency">formatCurrency</a>
+          </li>
+          
+          <li class="menu-list-item" id="Menu-formatNumber">
+            <a href="#formatNumber">formatNumber</a>
+          </li>
+          
+          <li class="menu-list-item" id="Menu-hash">
+            <a href="#hash">hash</a>
+          </li>
+          
+          <li class="menu-list-item" id="Menu-hexToNumber">
+            <a href="#hexToNumber">hexToNumber</a>
+          </li>
+          
+          <li class="menu-list-item" id="Menu-hexToRGB">
+            <a href="#hexToRGB">hexToRGB</a>
+          </li>
+          
+          <li class="menu-list-item" id="Menu-isBoolean">
+            <a href="#isBoolean">isBoolean</a>
+          </li>
+          
+          <li class="menu-list-item" id="Menu-isFunction">
+            <a href="#isFunction">isFunction</a>
+          </li>
+          
+          <li class="menu-list-item" id="Menu-isGenerator">
+            <a href="#isGenerator">isGenerator</a>
+          </li>
+          
+          <li class="menu-list-item" id="Menu-isNumber">
+            <a href="#isNumber">isNumber</a>
+          </li>
+          
+          <li class="menu-list-item" id="Menu-isNumeric">
+            <a href="#isNumeric">isNumeric</a>
+          </li>
+          
+          <li class="menu-list-item" id="Menu-isObject">
+            <a href="#isObject">isObject</a>
+          </li>
+          
+          <li class="menu-list-item" id="Menu-isString">
+            <a href="#isString">isString</a>
+          </li>
+          
+          <li class="menu-list-item" id="Menu-kebabCase">
+            <a href="#kebabCase">kebabCase</a>
+          </li>
+          
+          <li class="menu-list-item" id="Menu-leadingZero">
+            <a href="#leadingZero">leadingZero</a>
+          </li>
+          
+          <li class="menu-list-item" id="Menu-limitDecimals">
+            <a href="#limitDecimals">limitDecimals</a>
+          </li>
+          
+          <li class="menu-list-item" id="Menu-minMax">
+            <a href="#minMax">minMax</a>
+          </li>
+          
+          <li class="menu-list-item" id="Menu-numberToHex">
+            <a href="#numberToHex">numberToHex</a>
+          </li>
+          
+          <li class="menu-list-item" id="Menu-pascalCase">
+            <a href="#pascalCase">pascalCase</a>
+          </li>
+          
+          <li class="menu-list-item" id="Menu-phrasify">
+            <a href="#phrasify">phrasify</a>
+          </li>
+          
+          <li class="menu-list-item" id="Menu-popIndex">
+            <a href="#popIndex">popIndex</a>
+          </li>
+          
+          <li class="menu-list-item" id="Menu-promisefy">
+            <a href="#promisefy">promisefy</a>
+          </li>
+          
+          <li class="menu-list-item" id="Menu-randomCryptoId">
+            <a href="#randomCryptoId">randomCryptoId</a>
+          </li>
+          
+          <li class="menu-list-item" id="Menu-randomHexColor">
+            <a href="#randomHexColor">randomHexColor</a>
+          </li>
+          
+          <li class="menu-list-item" id="Menu-randomId">
+            <a href="#randomId">randomId</a>
+          </li>
+          
+          <li class="menu-list-item" id="Menu-randomInt">
+            <a href="#randomInt">randomInt</a>
+          </li>
+          
+          <li class="menu-list-item" id="Menu-randomRGBColor">
+            <a href="#randomRGBColor">randomRGBColor</a>
+          </li>
+          
+          <li class="menu-list-item" id="Menu-RGBToHex">
+            <a href="#RGBToHex">RGBToHex</a>
+          </li>
+          
+          <li class="menu-list-item" id="Menu-safeDateChange">
+            <a href="#safeDateChange">safeDateChange</a>
+          </li>
+          
+          <li class="menu-list-item" id="Menu-snakeCase">
+            <a href="#snakeCase">snakeCase</a>
+          </li>
+          
+          <li class="menu-list-item" id="Menu-truncate">
+            <a href="#truncate">truncate</a>
+          </li>
+          
+          <li class="menu-list-item" id="Menu-uniqueArray">
+            <a href="#uniqueArray">uniqueArray</a>
+          </li>
+          
+        </ul>
+      </nav>
+
+      <article class="modules">
+        
+        <section class="module" id="camelCase">
+          <div class="module-content">
+            <h1>
+              <a href="#camelCase"><b>#</b> camelCase</a>
+            </h1>
+
+            <div class="signatures">
+              
+              <div class="signature">
+                <div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">camelCase</span>(<span class="hljs-attr">input</span>: <span class="hljs-built_in">string</span>, settings?: <span class="hljs-title class_">CamelCaseSettings</span>): <span class="hljs-built_in">string</span>
+</code></pre></div>
+
+                <div class="signature-content">
+                  
+                  <div class="signature-description"><p>Transform a string into a camelCased word (eg. &#39;camel case&#39; -&gt; &#39;camelCase&#39;)</p>
+</div>
+                    
+                  <details>
+                    <summary>Examples</summary>
+                     <pre><code class="hljs language-ts"><span class="hljs-title function_">camelCase</span>(<span class="hljs-string">&#x27;data-value2-input&#x27;</span>); <span class="hljs-comment">// --&gt; dataValue2input</span>
+<span class="hljs-title function_">camelCase</span>(<span class="hljs-string">&#x27;XML data input&#x27;</span>); <span class="hljs-comment">// --&gt; XmlDataInput</span>
+
+<span class="hljs-comment">// With settings</span>
+<span class="hljs-keyword">const</span> settings = { <span class="hljs-attr">abbr</span>: <span class="hljs-literal">true</span>, <span class="hljs-attr">numbers</span>: <span class="hljs-literal">true</span>, <span class="hljs-attr">upper</span>: <span class="hljs-literal">true</span> };
+
+<span class="hljs-title function_">camelCase</span>(<span class="hljs-string">&#x27;data-VALUE2-input&#x27;</span>, settings); <span class="hljs-comment">// --&gt; DataVALUE2Input</span>
+</code></pre> 
+                  </details>
+                   
+                  <details>
+                    <summary>Types</summary>
+                    <pre><code class="hljs language-ts"><span class="hljs-keyword">type</span> <span class="hljs-title class_">CamelCaseSettings</span> = <span class="hljs-title class_">PhrasifySettings</span> &amp; {
+  <span class="hljs-comment">// Keep abbreviations uppercase (false == HTMLElement =&gt; HtmlElement | true == HTMLElement =&gt; HTMLElement)</span>
+  abbr?: <span class="hljs-built_in">boolean</span>
+  <span class="hljs-comment">// Convert to UpperCase CamelCase (aka PascalCase)</span>
+  upper?: <span class="hljs-built_in">boolean</span>
+};
+</code></pre>
+                  </details>
+                  
+                </div>
+              </div>
+              
+            </div>
+          </div>
+        </section>
+        
+        <section class="module" id="capitalize">
+          <div class="module-content">
+            <h1>
+              <a href="#capitalize"><b>#</b> capitalize</a>
+            </h1>
+
+            <div class="signatures">
+              
+              <div class="signature">
+                <div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">capitalize</span>(<span class="hljs-attr">str</span>: <span class="hljs-built_in">string</span>): <span class="hljs-built_in">string</span>
+</code></pre></div>
+
+                <div class="signature-content">
+                  
+                  <div class="signature-description"><p>Capitalize each word in a phrase</p>
+</div>
+                    
+                  <details>
+                    <summary>Examples</summary>
+                     <pre><code class="hljs language-ts"><span class="hljs-title function_">capitalize</span>(<span class="hljs-string">&#x27;capitalize this phrase&#x27;</span>); <span class="hljs-comment">// --&gt; Capitalize This Phrase</span>
+<span class="hljs-title function_">capitalize</span>(<span class="hljs-string">&#x27;capitalize-This-phrase&#x27;</span>); <span class="hljs-comment">// --&gt; Capitalize-This-Phrase</span>
+</code></pre> 
+                  </details>
+                   
+                </div>
+              </div>
+              
+            </div>
+          </div>
+        </section>
+        
+        <section class="module" id="chunkString">
+          <div class="module-content">
+            <h1>
+              <a href="#chunkString"><b>#</b> chunkString</a>
+            </h1>
+
+            <div class="signatures">
+              
+              <div class="signature">
+                <div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">chunkString</span>(<span class="hljs-attr">str</span>: <span class="hljs-built_in">string</span>, <span class="hljs-attr">size</span>: <span class="hljs-built_in">number</span> = <span class="hljs-number">2</span>): <span class="hljs-built_in">string</span>[]
+</code></pre></div>
+
+                <div class="signature-content">
+                  
+                  <div class="signature-description"><p>Split a String up into smaller strings of a give size (eg. &#39;ABCDEF&#39; -&gt; [AB,CD,EF])</p>
+</div>
+                    
+                  <details>
+                    <summary>Examples</summary>
+                     <pre><code class="hljs language-ts"><span class="hljs-title function_">chunkString</span>(<span class="hljs-string">&#x27;abcdefghijkl&#x27;</span>); <span class="hljs-comment">// --&gt; [&#x27;ab&#x27;, &#x27;cd&#x27;, &#x27;ef&#x27;, &#x27;gh&#x27;, &#x27;ij&#x27;, &#x27;kl&#x27;]</span>
+<span class="hljs-title function_">chunkString</span>(<span class="hljs-string">&#x27;abcdefghijkl&#x27;</span>, <span class="hljs-number">4</span>); <span class="hljs-comment">// --&gt; [&#x27;abcd&#x27;, &#x27;efgh&#x27;, &#x27;ijkl&#x27;]</span>
+</code></pre> 
+                  </details>
+                   
+                </div>
+              </div>
+              
+            </div>
+          </div>
+        </section>
+        
+        <section class="module" id="formatCurrency">
+          <div class="module-content">
+            <h1>
+              <a href="#formatCurrency"><b>#</b> formatCurrency</a>
+            </h1>
+
+            <div class="signatures">
+              
+              <div class="signature">
+                <div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">formatCurrency</span>(<span class="hljs-attr">thousandTemplate</span>: <span class="hljs-built_in">string</span> = <span class="hljs-string">&#x27;1.000,00 €&#x27;</span>): <span class="hljs-title class_">CurrencyFormatter</span>
+</code></pre></div>
+
+                <div class="signature-content">
+                  
+                  <div class="signature-description"><p>Creates a function that formats a number to a given currency format (eg. 1000 -&gt; 1.000,00 €)</p>
+<p>The template string should be the number 1000 described with before and after<br>symbols (no numbers), a thousand separator and a decimal separator followed by<br>the number of decimals defined with zeroes: <code>[before]1[thou.]000[dec.]00[after] -&gt; $ 1,000.00</code></p>
+</div>
+                    
+                  <details>
+                    <summary>Examples</summary>
+                     <pre><code class="hljs language-ts"><span class="hljs-comment">// Format number to default currency format (euro)</span>
+<span class="hljs-keyword">const</span> euro = <span class="hljs-title function_">formatCurrency</span>();
+<span class="hljs-title function_">euro</span>(<span class="hljs-number">2345234.678</span>); <span class="hljs-comment">// --&gt; &#x27;2.345.234,68 €&#x27;</span>
+
+<span class="hljs-comment">// Format number to USD currency format</span>
+<span class="hljs-keyword">const</span> usd = <span class="hljs-title function_">formatCurrency</span>(<span class="hljs-string">&#x27;$ 1,000.00&#x27;</span>);
+<span class="hljs-title function_">usd</span>(<span class="hljs-number">2345234.678</span>); <span class="hljs-comment">// --&gt; &#x27;$ 2,345,234.68&#x27;</span>
+
+<span class="hljs-comment">// Format number to custom currency format</span>
+<span class="hljs-keyword">const</span> custom = <span class="hljs-title function_">formatCurrency</span>(<span class="hljs-string">&#x27;# 1-000;00 ¤&#x27;</span>);
+<span class="hljs-title function_">custom</span>(<span class="hljs-number">2345234.678</span>); <span class="hljs-comment">// --&gt; &#x27;# 2-345-234;68 ¤&#x27;</span>
+
+<span class="hljs-comment">// Specifying number of decimals</span>
+<span class="hljs-keyword">const</span> sixDecimals = <span class="hljs-title function_">formatCurrency</span>(<span class="hljs-string">&#x27;$ 1,000.000000&#x27;</span>);
+<span class="hljs-title function_">sixDecimals</span>(<span class="hljs-number">2345234.678</span>); <span class="hljs-comment">// --&gt; &#x27;$ 2,345,234.678000&#x27;</span>
+<span class="hljs-title function_">sixDecimals</span>(<span class="hljs-number">234.12345678</span>); <span class="hljs-comment">// --&gt; &#x27;$ 234.123457&#x27;</span>
+</code></pre> 
+                  </details>
+                   
+                  <details>
+                    <summary>Types</summary>
+                    <pre><code class="hljs language-ts"><span class="hljs-keyword">type</span> <span class="hljs-title class_">CurrencyFormatter</span> = <span class="hljs-function">(<span class="hljs-params">num: <span class="hljs-built_in">number</span></span>) =&gt;</span> <span class="hljs-built_in">string</span>;
+</code></pre>
+                  </details>
+                  
+                </div>
+              </div>
+              
+            </div>
+          </div>
+        </section>
+        
+        <section class="module" id="formatNumber">
+          <div class="module-content">
+            <h1>
+              <a href="#formatNumber"><b>#</b> formatNumber</a>
+            </h1>
+
+            <div class="signatures">
+              
+              <div class="signature">
+                <div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">formatNumber</span>(<span class="hljs-attr">num</span>: <span class="hljs-built_in">number</span>, settings?: <span class="hljs-title class_">FormatNumberSettings</span>): <span class="hljs-built_in">string</span>
+</code></pre></div>
+
+                <div class="signature-content">
+                  
+                  <div class="signature-description"><p>Formats a number with defined thousand and decimal separator, and a decimal limit<br>(see <code>limitDecimals</code> for details on <code>decimalCount</code>)</p>
+</div>
+                    
+                  <details>
+                    <summary>Examples</summary>
+                     <pre><code class="hljs language-ts"><span class="hljs-comment">// Default format</span>
+<span class="hljs-title function_">formatNumber</span>(<span class="hljs-number">123456</span>); <span class="hljs-comment">// --&gt; 123.456,00</span>
+
+<span class="hljs-comment">// Custom format</span>
+<span class="hljs-title function_">formatNumber</span>(<span class="hljs-number">123456</span>, { <span class="hljs-attr">decimalCount</span>: <span class="hljs-string">&#x27;&gt;3&#x27;</span>, <span class="hljs-attr">thousand</span>: <span class="hljs-string">&#x27;-&#x27;</span>, <span class="hljs-attr">decimal</span>: <span class="hljs-string">&#x27;:&#x27;</span> }); <span class="hljs-comment">// --&gt; 123-456:000</span>
+</code></pre> 
+                  </details>
+                   
+                  <details>
+                    <summary>Types</summary>
+                    <pre><code class="hljs language-ts"><span class="hljs-keyword">type</span> <span class="hljs-title class_">FormatNumberSettings</span> = {
+  <span class="hljs-comment">// The decimal separator character</span>
+  decimal?: <span class="hljs-built_in">string</span>
+  <span class="hljs-comment">// How many decimals to show</span>
+  decimalCount?: <span class="hljs-built_in">number</span> | <span class="hljs-built_in">string</span>
+  <span class="hljs-comment">// The thousand separator character</span>
+  thousand?: <span class="hljs-built_in">string</span>
+};
+</code></pre>
+                  </details>
+                  
+                </div>
+              </div>
+              
+            </div>
+          </div>
+        </section>
+        
+        <section class="module" id="hash">
+          <div class="module-content">
+            <h1>
+              <a href="#hash"><b>#</b> hash</a>
+            </h1>
+
+            <div class="signatures">
+              
+              <div class="signature">
+                <div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">hash</span>(<span class="hljs-attr">str</span>: <span class="hljs-built_in">string</span>): <span class="hljs-built_in">string</span>
+</code></pre></div>
+
+                <div class="signature-content">
+                  
+                  <div class="signature-description"><p>Generates a unique hash (DJB2) string from a string</p>
+</div>
+                    
+                  <details>
+                    <summary>Examples</summary>
+                     <pre><code class="hljs language-ts"><span class="hljs-title function_">hash</span>(<span class="hljs-string">&#x27;Hash this string&#x27;</span>); <span class="hljs-comment">// --&gt; sg463l</span>
+</code></pre> 
+                  </details>
+                   
+                </div>
+              </div>
+              
+              <div class="signature">
+                <div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">hashCode</span>(<span class="hljs-attr">str</span>: <span class="hljs-built_in">string</span>): <span class="hljs-built_in">number</span>
+</code></pre></div>
+
+                <div class="signature-content">
+                  
+                  <div class="signature-description"><p>Generates a unique numeric hash (DJB2) code from a string</p>
+</div>
+                    
+                  <details>
+                    <summary>Examples</summary>
+                     <pre><code class="hljs language-ts"><span class="hljs-title function_">hashCode</span>(<span class="hljs-string">&#x27;Hash this string&#x27;</span>); <span class="hljs-comment">// --&gt; 1720121313</span>
+</code></pre> 
+                  </details>
+                   
+                </div>
+              </div>
+              
+            </div>
+          </div>
+        </section>
+        
+        <section class="module" id="hexToNumber">
+          <div class="module-content">
+            <h1>
+              <a href="#hexToNumber"><b>#</b> hexToNumber</a>
+            </h1>
+
+            <div class="signatures">
+              
+              <div class="signature">
+                <div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">hexToNumber</span>(<span class="hljs-attr">hex</span>: <span class="hljs-built_in">string</span>): <span class="hljs-built_in">number</span>
+</code></pre></div>
+
+                <div class="signature-content">
+                  
+                  <div class="signature-description"><p>Convert Hexadecimal into a number (eg. b4 =&gt; 180)</p>
+</div>
+                    
+                  <details>
+                    <summary>Examples</summary>
+                     <pre><code class="hljs language-ts"><span class="hljs-title function_">hexToNumber</span>(<span class="hljs-string">&#x27;ba&#x27;</span>); <span class="hljs-comment">// --&gt; 186</span>
+</code></pre> 
+                  </details>
+                   
+                </div>
+              </div>
+              
+            </div>
+          </div>
+        </section>
+        
+        <section class="module" id="hexToRGB">
+          <div class="module-content">
+            <h1>
+              <a href="#hexToRGB"><b>#</b> hexToRGB</a>
+            </h1>
+
+            <div class="signatures">
+              
+              <div class="signature">
+                <div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">hexToRGB</span>(<span class="hljs-attr">hex</span>: <span class="hljs-built_in">string</span>): <span class="hljs-built_in">number</span>[]
+</code></pre></div>
+
+                <div class="signature-content">
+                  
+                  <div class="signature-description"><p>Converts a Hexadecimal color to a RGB(A) color array</p>
+</div>
+                    
+                  <details>
+                    <summary>Examples</summary>
+                     <pre><code class="hljs language-ts"><span class="hljs-title function_">hexToRGB</span>(<span class="hljs-string">&#x27;#2fd466&#x27;</span>); <span class="hljs-comment">// --&gt; [47, 212, 102]</span>
+
+<span class="hljs-comment">// And with alpha channel</span>
+<span class="hljs-title function_">hexToRGB</span>(<span class="hljs-string">&#x27;#2fd46680&#x27;</span>); <span class="hljs-comment">// --&gt; [47, 212, 102, 0.5]</span>
+</code></pre> 
+                  </details>
+                   
+                </div>
+              </div>
+              
+            </div>
+          </div>
+        </section>
+        
+        <section class="module" id="isBoolean">
+          <div class="module-content">
+            <h1>
+              <a href="#isBoolean"><b>#</b> isBoolean</a>
+            </h1>
+
+            <div class="signatures">
+              
+              <div class="signature">
+                <div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">isBoolean</span>(<span class="hljs-attr">x</span>: <span class="hljs-built_in">unknown</span>): <span class="hljs-built_in">boolean</span> (x is <span class="hljs-built_in">boolean</span>)
+</code></pre></div>
+
+                <div class="signature-content">
+                  
+                  <div class="signature-description"><p>Is the given argument a boolean</p>
+</div>
+                    
+                  <details>
+                    <summary>Examples</summary>
+                     <pre><code class="hljs language-ts"><span class="hljs-title function_">isBoolean</span>(<span class="hljs-literal">false</span>); <span class="hljs-comment">// --&gt; true</span>
+<span class="hljs-title function_">isBoolean</span>(<span class="hljs-string">&#x27;string&#x27;</span>); <span class="hljs-comment">// --&gt; false</span>
+</code></pre> 
+                  </details>
+                   
+                </div>
+              </div>
+              
+            </div>
+          </div>
+        </section>
+        
+        <section class="module" id="isFunction">
+          <div class="module-content">
+            <h1>
+              <a href="#isFunction"><b>#</b> isFunction</a>
+            </h1>
+
+            <div class="signatures">
+              
+              <div class="signature">
+                <div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">isFunction</span>(<span class="hljs-attr">x</span>: <span class="hljs-built_in">unknown</span>): <span class="hljs-built_in">boolean</span> (x is <span class="hljs-literal">undefined</span>)
+</code></pre></div>
+
+                <div class="signature-content">
+                  
+                  <div class="signature-description"><p>Is the given argument a Function</p>
+</div>
+                    
+                  <details>
+                    <summary>Examples</summary>
+                     <pre><code class="hljs language-ts"><span class="hljs-title function_">isFunction</span>(<span class="hljs-function">() =&gt;</span> {}); <span class="hljs-comment">// --&gt; true</span>
+<span class="hljs-title function_">isFunction</span>(<span class="hljs-string">&#x27;string&#x27;</span>); <span class="hljs-comment">// --&gt; false</span>
+</code></pre> 
+                  </details>
+                   
+                </div>
+              </div>
+              
+            </div>
+          </div>
+        </section>
+        
+        <section class="module" id="isGenerator">
+          <div class="module-content">
+            <h1>
+              <a href="#isGenerator"><b>#</b> isGenerator</a>
+            </h1>
+
+            <div class="signatures">
+              
+              <div class="signature">
+                <div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">isGenerator</span>(<span class="hljs-attr">x</span>: <span class="hljs-built_in">unknown</span>): <span class="hljs-built_in">boolean</span> (x is <span class="hljs-title class_">GeneratorFunction</span>)
+</code></pre></div>
+
+                <div class="signature-content">
+                  
+                  <div class="signature-description"><p>Determine if the given argument is a Generator Function</p>
+</div>
+                    
+                  <details>
+                    <summary>Examples</summary>
+                     <pre><code class="hljs language-ts"><span class="hljs-keyword">function</span>* <span class="hljs-title function_">gen</span>(<span class="hljs-params"></span>) {}
+
+<span class="hljs-title function_">isGenerator</span>(gen); <span class="hljs-comment">// --&gt; true</span>
+<span class="hljs-title function_">isGenerator</span>(<span class="hljs-function">() =&gt;</span> {}); <span class="hljs-comment">// --&gt; false</span>
+</code></pre> 
+                  </details>
+                   
+                </div>
+              </div>
+              
+              <div class="signature">
+                <div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">isGeneratorLike</span>(<span class="hljs-attr">x</span>: <span class="hljs-built_in">unknown</span>): <span class="hljs-built_in">boolean</span> (x is <span class="hljs-title class_">Generator</span>)
+</code></pre></div>
+
+                <div class="signature-content">
+                  
+                  <div class="signature-description"><p>Determine if the given argument is a Generator object.<br>(A generator is the one created when calling a generator function)</p>
+</div>
+                    
+                  <details>
+                    <summary>Examples</summary>
+                     <pre><code class="hljs language-ts"><span class="hljs-keyword">function</span> *<span class="hljs-title function_">gen</span>(<span class="hljs-params"></span>) {}
+
+<span class="hljs-title function_">isGeneratorLike</span>(<span class="hljs-title function_">gen</span>()); <span class="hljs-comment">// --&gt; true</span>
+<span class="hljs-title function_">isGeneratorLike</span>({ <span class="hljs-title function_">next</span>(<span class="hljs-params"></span>) {}, <span class="hljs-keyword">throw</span>() {} <span class="hljs-keyword">return</span>() {} [<span class="hljs-title class_">Symbol</span>.<span class="hljs-property">iterator</span>]() {} }); <span class="hljs-comment">// --&gt; true</span>
+<span class="hljs-title function_">isGeneratorLike</span>(<span class="hljs-function">() =&gt;</span> {}); <span class="hljs-comment">// --&gt; false</span>
+</code></pre> 
+                  </details>
+                   
+                </div>
+              </div>
+              
+            </div>
+          </div>
+        </section>
+        
+        <section class="module" id="isNumber">
+          <div class="module-content">
+            <h1>
+              <a href="#isNumber"><b>#</b> isNumber</a>
+            </h1>
+
+            <div class="signatures">
+              
+              <div class="signature">
+                <div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">isNumber</span>(<span class="hljs-attr">x</span>: <span class="hljs-built_in">unknown</span>): <span class="hljs-built_in">boolean</span> (x is <span class="hljs-built_in">number</span>)
+</code></pre></div>
+
+                <div class="signature-content">
+                  
+                  <div class="signature-description"><p>Is the given argument is a finite Number</p>
+</div>
+                    
+                  <details>
+                    <summary>Examples</summary>
+                     <pre><code class="hljs language-ts"><span class="hljs-title function_">isNumber</span>(<span class="hljs-number">123</span>); <span class="hljs-comment">// --&gt; true</span>
+<span class="hljs-title function_">isNumber</span>(<span class="hljs-title class_">Infinity</span>); <span class="hljs-comment">// --&gt; false</span>
+<span class="hljs-title function_">isNumber</span>(<span class="hljs-string">&#x27;123&#x27;</span>); <span class="hljs-comment">// --&gt; false</span>
+</code></pre> 
+                  </details>
+                   
+                </div>
+              </div>
+              
+            </div>
+          </div>
+        </section>
+        
+        <section class="module" id="isNumeric">
+          <div class="module-content">
+            <h1>
+              <a href="#isNumeric"><b>#</b> isNumeric</a>
+            </h1>
+
+            <div class="signatures">
+              
+              <div class="signature">
+                <div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">isNumeric</span>(<span class="hljs-attr">x</span>: <span class="hljs-built_in">unknown</span>): <span class="hljs-built_in">boolean</span>
+</code></pre></div>
+
+                <div class="signature-content">
+                  
+                  <div class="signature-description"><p>Is the given argument is a finite numeric value (number as string or number directly) or not.</p>
+</div>
+                    
+                  <details>
+                    <summary>Examples</summary>
+                     <pre><code class="hljs language-ts"><span class="hljs-title function_">isNumeric</span>(<span class="hljs-number">123</span>); <span class="hljs-comment">// --&gt; true</span>
+<span class="hljs-title function_">isNumeric</span>(<span class="hljs-string">&#x27;123&#x27;</span>); <span class="hljs-comment">// --&gt; true</span>
+<span class="hljs-title function_">isNumeric</span>(<span class="hljs-title class_">Infinity</span>); <span class="hljs-comment">// --&gt; false</span>
+</code></pre> 
+                  </details>
+                   
+                </div>
+              </div>
+              
+            </div>
+          </div>
+        </section>
+        
+        <section class="module" id="isObject">
+          <div class="module-content">
+            <h1>
+              <a href="#isObject"><b>#</b> isObject</a>
+            </h1>
+
+            <div class="signatures">
+              
+              <div class="signature">
+                <div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">isObject</span>(<span class="hljs-attr">x</span>: <span class="hljs-built_in">unknown</span>): <span class="hljs-built_in">boolean</span> (x is <span class="hljs-built_in">object</span>)
+</code></pre></div>
+
+                <div class="signature-content">
+                  
+                  <div class="signature-description"><p>Is the given argument of type String</p>
+</div>
+                    
+                  <details>
+                    <summary>Examples</summary>
+                     <pre><code class="hljs language-ts"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Obj</span> {}
+
+<span class="hljs-title function_">isObject</span>({}); <span class="hljs-comment">// --&gt; true</span>
+<span class="hljs-title function_">isObject</span>(<span class="hljs-keyword">new</span> <span class="hljs-title class_">Obj</span>()); <span class="hljs-comment">// --&gt; true</span>
+<span class="hljs-title function_">isObject</span>(<span class="hljs-string">&#x27;123&#x27;</span>); <span class="hljs-comment">// --&gt; false</span>
+</code></pre> 
+                  </details>
+                   
+                </div>
+              </div>
+              
+            </div>
+          </div>
+        </section>
+        
+        <section class="module" id="isString">
+          <div class="module-content">
+            <h1>
+              <a href="#isString"><b>#</b> isString</a>
+            </h1>
+
+            <div class="signatures">
+              
+              <div class="signature">
+                <div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">isString</span>(<span class="hljs-attr">x</span>: <span class="hljs-built_in">unknown</span>): <span class="hljs-built_in">boolean</span> (x is <span class="hljs-built_in">string</span>)
+</code></pre></div>
+
+                <div class="signature-content">
+                  
+                  <div class="signature-description"><p>Is the given argument of type String</p>
+</div>
+                    
+                  <details>
+                    <summary>Examples</summary>
+                     <pre><code class="hljs language-ts"><span class="hljs-title function_">isString</span>(<span class="hljs-string">&#x27;string&#x27;</span>); <span class="hljs-comment">// --&gt; true</span>
+<span class="hljs-title function_">isString</span>(<span class="hljs-number">123</span>); <span class="hljs-comment">// --&gt; false</span>
+</code></pre> 
+                  </details>
+                   
+                </div>
+              </div>
+              
+            </div>
+          </div>
+        </section>
+        
+        <section class="module" id="kebabCase">
+          <div class="module-content">
+            <h1>
+              <a href="#kebabCase"><b>#</b> kebabCase</a>
+            </h1>
+
+            <div class="signatures">
+              
+              <div class="signature">
+                <div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">kebabCase</span>(<span class="hljs-attr">str</span>: <span class="hljs-built_in">string</span>, settings?: <span class="hljs-title class_">PhrasifySettings</span>): <span class="hljs-built_in">string</span>
+</code></pre></div>
+
+                <div class="signature-content">
+                  
+                  <div class="signature-description"><p>Transform phrase into a dashed phrase<br>(eg. &#39;camelCase&#39; -&gt; &#39;camel-case&#39; or &#39;spaced phrase&#39; -&gt; &#39;spaced-phrase&#39;)</p>
+</div>
+                    
+                  <details>
+                    <summary>Examples</summary>
+                     <pre><code class="hljs language-ts"><span class="hljs-title function_">kebabCase</span>(<span class="hljs-string">&#x27;some dashed phrase&#x27;</span>); <span class="hljs-comment">// --&gt; some-dashed-phrase</span>
+<span class="hljs-title function_">kebabCase</span>(<span class="hljs-string">&#x27;dash version1 beta&#x27;</span>, { <span class="hljs-attr">numbers</span>: <span class="hljs-literal">true</span> }); <span class="hljs-comment">// --&gt; dash-version-1-beta</span>
+</code></pre> 
+                  </details>
+                   
+                </div>
+              </div>
+              
+            </div>
+          </div>
+        </section>
+        
+        <section class="module" id="leadingZero">
+          <div class="module-content">
+            <h1>
+              <a href="#leadingZero"><b>#</b> leadingZero</a>
+            </h1>
+
+            <div class="signatures">
+              
+              <div class="signature">
+                <div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">leadingZero</span>(<span class="hljs-attr">num</span>: <span class="hljs-built_in">string</span> | <span class="hljs-built_in">number</span>, <span class="hljs-attr">len</span>: <span class="hljs-built_in">number</span> = <span class="hljs-number">2</span>): <span class="hljs-built_in">string</span>
+</code></pre></div>
+
+                <div class="signature-content">
+                  
+                  <div class="signature-description"><p>Makes sure a given number is a certain length and fills excess space with zeroes (0)</p>
+</div>
+                    
+                  <details>
+                    <summary>Examples</summary>
+                     <pre><code class="hljs language-ts"><span class="hljs-title function_">leadingZero</span>(<span class="hljs-number">1</span>); <span class="hljs-comment">// --&gt; &#x27;01&#x27;</span>
+<span class="hljs-title function_">leadingZero</span>(<span class="hljs-number">123</span>); <span class="hljs-comment">// --&gt; &#x27;123&#x27;</span>
+<span class="hljs-title function_">leadingZero</span>(<span class="hljs-number">123</span>, <span class="hljs-number">5</span>); <span class="hljs-comment">// --&gt; &#x27;00123&#x27;</span>
+</code></pre> 
+                  </details>
+                   
+                </div>
+              </div>
+              
+            </div>
+          </div>
+        </section>
+        
+        <section class="module" id="limitDecimals">
+          <div class="module-content">
+            <h1>
+              <a href="#limitDecimals"><b>#</b> limitDecimals</a>
+            </h1>
+
+            <div class="signatures">
+              
+              <div class="signature">
+                <div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">limitDecimals</span>(<span class="hljs-attr">num</span>: <span class="hljs-built_in">number</span>, <span class="hljs-attr">decimalCount</span>: <span class="hljs-built_in">string</span> | <span class="hljs-built_in">number</span> = <span class="hljs-number">2</span>): <span class="hljs-built_in">string</span>
+</code></pre></div>
+
+                <div class="signature-content">
+                  
+                  <div class="signature-description"><p>Limit decimals of a floating number to specified length. The length depends on <code>decimals</code><br>which can have the following settings (n = integer):</p>
+<table>
+<thead>
+<tr>
+<th>Char</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>&gt;n</strong></td>
+<td>Minimum number of decimals, if the current number of decimals are shorter than the defined length, extra 0 (zeros) will be added.</td>
+</tr>
+<tr>
+<td><strong>&lt;n</strong></td>
+<td>Maximum number of decimals, longer decimals will be rounded and shortened down to this number.</td>
+</tr>
+<tr>
+<td><strong>n</strong></td>
+<td>Match this exact number of decimals, rounding longer decimals and adding extra 0 (zeroes) to shorter ones.</td>
+</tr>
+</tbody></table>
+</div>
+                    
+                  <details>
+                    <summary>Examples</summary>
+                     <pre><code class="hljs language-ts"><span class="hljs-comment">// Exact number of decimals</span>
+<span class="hljs-title function_">limitDecimals</span>(<span class="hljs-number">123.4567</span>) <span class="hljs-comment">// --&gt; 123.46</span>
+<span class="hljs-title function_">limitDecimals</span>(<span class="hljs-number">123</span>, <span class="hljs-number">5</span>) <span class="hljs-comment">// --&gt; 123.00000</span>
+
+<span class="hljs-comment">// Max number of decimals</span>
+<span class="hljs-title function_">limitDecimals</span>(<span class="hljs-number">123.4567</span>, <span class="hljs-string">&#x27;&lt;3&#x27;</span>) <span class="hljs-comment">// --&gt; 123.457</span>
+<span class="hljs-title function_">limitDecimals</span>(<span class="hljs-number">123</span>, <span class="hljs-string">&#x27;&lt;3&#x27;</span>) <span class="hljs-comment">// --&gt; 123</span>
+
+<span class="hljs-comment">// Min number decimals</span>
+<span class="hljs-title function_">limitDecimals</span>(<span class="hljs-number">123.4</span>, <span class="hljs-string">&#x27;&gt;4&#x27;</span>) <span class="hljs-comment">// --&gt; 123.4000</span>
+<span class="hljs-title function_">limitDecimals</span>(<span class="hljs-number">123.456789</span>, <span class="hljs-string">&#x27;&gt;4&#x27;</span>) <span class="hljs-comment">// --&gt; 123.456789</span>
+</code></pre> 
+                  </details>
+                   
+                </div>
+              </div>
+              
+            </div>
+          </div>
+        </section>
+        
+        <section class="module" id="minMax">
+          <div class="module-content">
+            <h1>
+              <a href="#minMax"><b>#</b> minMax</a>
+            </h1>
+
+            <div class="signatures">
+              
+              <div class="signature">
+                <div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">minMax</span>(<span class="hljs-attr">num</span>: <span class="hljs-built_in">number</span>, <span class="hljs-attr">min</span>: <span class="hljs-built_in">number</span>, <span class="hljs-attr">max</span>: <span class="hljs-built_in">number</span>): <span class="hljs-built_in">number</span>
+</code></pre></div>
+
+                <div class="signature-content">
+                  
+                  <div class="signature-description"><p>Limit a number to a certain range defined by Minimum and a Maximum</p>
+</div>
+                    
+                  <details>
+                    <summary>Examples</summary>
+                     <pre><code class="hljs language-ts"><span class="hljs-title function_">minMax</span>(<span class="hljs-number">5</span>, <span class="hljs-number">10</span>, <span class="hljs-number">20</span>); <span class="hljs-comment">// --&gt; 10</span>
+<span class="hljs-title function_">minMax</span>(<span class="hljs-number">15</span>, <span class="hljs-number">10</span>, <span class="hljs-number">20</span>); <span class="hljs-comment">// --&gt; 15</span>
+<span class="hljs-title function_">minMax</span>(<span class="hljs-number">25</span>, <span class="hljs-number">10</span>, <span class="hljs-number">20</span>); <span class="hljs-comment">// --&gt; 20</span>
+</code></pre> 
+                  </details>
+                   
+                </div>
+              </div>
+              
+            </div>
+          </div>
+        </section>
+        
+        <section class="module" id="numberToHex">
+          <div class="module-content">
+            <h1>
+              <a href="#numberToHex"><b>#</b> numberToHex</a>
+            </h1>
+
+            <div class="signatures">
+              
+              <div class="signature">
+                <div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">numberToHex</span>(<span class="hljs-attr">num</span>: <span class="hljs-built_in">number</span>): <span class="hljs-built_in">string</span>
+</code></pre></div>
+
+                <div class="signature-content">
+                  
+                  <div class="signature-description"><p>Convert a number to a Hexadecimal representation (eg. 180 =&gt; b4)</p>
+</div>
+                    
+                  <details>
+                    <summary>Examples</summary>
+                     <pre><code class="hljs language-ts"><span class="hljs-title function_">numberToHex</span>(<span class="hljs-number">180</span>); <span class="hljs-comment">// --&gt; &#x27;b4&#x27;</span>
+</code></pre> 
+                  </details>
+                   
+                </div>
+              </div>
+              
+            </div>
+          </div>
+        </section>
+        
+        <section class="module" id="pascalCase">
+          <div class="module-content">
+            <h1>
+              <a href="#pascalCase"><b>#</b> pascalCase</a>
+            </h1>
+
+            <div class="signatures">
+              
+              <div class="signature">
+                <div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">pascalCase</span>(<span class="hljs-attr">input</span>: <span class="hljs-built_in">string</span>, settings?: <span class="hljs-title class_">PascalCaseSettings</span>): <span class="hljs-built_in">string</span>
+</code></pre></div>
+
+                <div class="signature-content">
+                  
+                  <div class="signature-description"><p>Transform a string into a PascalCased word (eg. &#39;pascal case&#39; -&gt; &#39;PascalCase&#39;)</p>
+</div>
+                    
+                  <details>
+                    <summary>Examples</summary>
+                     <pre><code class="hljs language-ts"><span class="hljs-title function_">pascalCase</span>(<span class="hljs-string">&#x27;data-value2-input&#x27;</span>); <span class="hljs-comment">// --&gt; DataValue2input</span>
+<span class="hljs-title function_">pascalCase</span>(<span class="hljs-string">&#x27;XML data input&#x27;</span>); <span class="hljs-comment">// --&gt; XmlDataInput</span>
+
+<span class="hljs-comment">// With settings</span>
+<span class="hljs-keyword">const</span> settings = { <span class="hljs-attr">abbr</span>: <span class="hljs-literal">true</span>, <span class="hljs-attr">numbers</span>: <span class="hljs-literal">true</span> };
+
+<span class="hljs-title function_">pascalCase</span>(<span class="hljs-string">&#x27;data-VALUE2-input&#x27;</span>, settings); <span class="hljs-comment">// --&gt; DataVALUE2Input</span>
+</code></pre> 
+                  </details>
+                   
+                  <details>
+                    <summary>Types</summary>
+                    <pre><code class="hljs language-ts"><span class="hljs-keyword">type</span> <span class="hljs-title class_">PascalCaseSettings</span> = <span class="hljs-title class_">Omit</span>&lt;<span class="hljs-title class_">CamelCaseSettings</span>, <span class="hljs-string">&#x27;upper&#x27;</span>&gt;;
+</code></pre>
+                  </details>
+                  
+                </div>
+              </div>
+              
+            </div>
+          </div>
+        </section>
+        
+        <section class="module" id="phrasify">
+          <div class="module-content">
+            <h1>
+              <a href="#phrasify"><b>#</b> phrasify</a>
+            </h1>
+
+            <div class="signatures">
+              
+              <div class="signature">
+                <div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">phrasify</span>(<span class="hljs-attr">input</span>: <span class="hljs-built_in">string</span>, settings?: <span class="hljs-title class_">PhrasifySettings</span>): <span class="hljs-built_in">string</span>
+</code></pre></div>
+
+                <div class="signature-content">
+                  
+                  <div class="signature-description"><p>Transform a string into a space separated phrase</p>
+</div>
+                    
+                  <details>
+                    <summary>Examples</summary>
+                     <pre><code class="hljs language-ts"><span class="hljs-title function_">phrasify</span>(<span class="hljs-string">&#x27;XMLDataInput&#x27;</span>); <span class="hljs-comment">// --&gt; XML data input</span>
+<span class="hljs-title function_">phrasify</span>(<span class="hljs-string">&#x27;dataVALUE2-input&#x27;</span>, { <span class="hljs-attr">numbers</span>: <span class="hljs-literal">true</span> }); <span class="hljs-comment">// --&gt; data VALUE 2 input</span>
+</code></pre> 
+                  </details>
+                   
+                  <details>
+                    <summary>Types</summary>
+                    <pre><code class="hljs language-ts"><span class="hljs-keyword">type</span> <span class="hljs-title class_">PhrasifySettings</span> = {
+  <span class="hljs-comment">// Separate numbers from words?</span>
+  numbers?: <span class="hljs-built_in">boolean</span>
+};
+</code></pre>
+                  </details>
+                  
+                </div>
+              </div>
+              
+            </div>
+          </div>
+        </section>
+        
+        <section class="module" id="popIndex">
+          <div class="module-content">
+            <h1>
+              <a href="#popIndex"><b>#</b> popIndex</a>
+            </h1>
+
+            <div class="signatures">
+              
+              <div class="signature">
+                <div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">popIndex</span>(<span class="hljs-attr">list</span>: T[], <span class="hljs-attr">index</span>: <span class="hljs-built_in">number</span>): T | <span class="hljs-literal">undefined</span>
+</code></pre></div>
+
+                <div class="signature-content">
+                  
+                  <div class="signature-description"><p>Removes and returns an entry from a given array, at a designated index position.<br>WARNING: This is not a pure function and will alter the given array internally</p>
+</div>
+                    
+                  <details>
+                    <summary>Examples</summary>
+                     <pre><code class="hljs language-ts"><span class="hljs-title function_">popIndex</span>([<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>], <span class="hljs-number">1</span>); <span class="hljs-comment">// --&gt; 2 (array will then be [1, 3])</span>
+</code></pre> 
+                  </details>
+                   
+                </div>
+              </div>
+              
+              <div class="signature">
+                <div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">popIndexPure</span>(<span class="hljs-attr">list</span>: <span class="hljs-built_in">unknown</span>[], <span class="hljs-attr">index</span>: <span class="hljs-built_in">number</span>): [<span class="hljs-built_in">unknown</span>, <span class="hljs-built_in">unknown</span>[]]
+</code></pre></div>
+
+                <div class="signature-content">
+                  
+                  <div class="signature-description"><p>Removes and returns an entry from a given array, at a designated index position.<br>WARNING: This is not a pure function and will alter the given array internally</p>
+</div>
+                    
+                  <details>
+                    <summary>Examples</summary>
+                     <pre><code class="hljs language-ts"><span class="hljs-title function_">popIndexPure</span>([<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>], <span class="hljs-number">1</span>); <span class="hljs-comment">// --&gt; 2 (array will then be [1, 3])</span>
+</code></pre> 
+                  </details>
+                   
+                </div>
+              </div>
+              
+            </div>
+          </div>
+        </section>
+        
+        <section class="module" id="promisefy">
+          <div class="module-content">
+            <h1>
+              <a href="#promisefy"><b>#</b> promisefy</a>
+            </h1>
+
+            <div class="signatures">
+              
+              <div class="signature">
+                <div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">promisefy</span>(<span class="hljs-attr">fn</span>: <span class="hljs-title class_">PromisefyCallback</span>): <span class="hljs-title class_">PromisefiedFunction</span>
+</code></pre></div>
+
+                <div class="signature-content">
+                  
+                  <div class="signature-description"><p>Converts a callback based action into one returning a Promise instead.</p>
+</div>
+                    
+                  <details>
+                    <summary>Examples</summary>
+                     <pre><code class="hljs language-ts"><span class="hljs-keyword">function</span> <span class="hljs-title function_">action</span>(<span class="hljs-params">name, callback</span>) { ... <span class="hljs-title function_">callback</span>(); }
+
+action = <span class="hljs-title function_">promisefy</span>(action);
+
+action
+  .<span class="hljs-title function_">then</span>(<span class="hljs-function">() =&gt;</span> <span class="hljs-string">&#x27;all good&#x27;</span>)
+  .<span class="hljs-title function_">catch</span>(<span class="hljs-function">() =&gt;</span> <span class="hljs-string">&#x27;Something went wrong&#x27;</span>);
+</code></pre> 
+                  </details>
+                   
+                  <details>
+                    <summary>Types</summary>
+                    <pre><code class="hljs language-ts"><span class="hljs-keyword">type</span> <span class="hljs-title class_">PromisefyCallback</span> = <span class="hljs-function">(<span class="hljs-params">args: <span class="hljs-built_in">any</span>[]</span>) =&gt;</span> <span class="hljs-built_in">any</span>;
+<span class="hljs-keyword">type</span> <span class="hljs-title class_">PromisefiedFunction</span> = <span class="hljs-function">(<span class="hljs-params">args: <span class="hljs-built_in">any</span>[]</span>) =&gt;</span> <span class="hljs-title class_">Promise</span>&lt;<span class="hljs-built_in">any</span>&gt;;
+</code></pre>
+                  </details>
+                  
+                </div>
+              </div>
+              
+            </div>
+          </div>
+        </section>
+        
+        <section class="module" id="randomCryptoId">
+          <div class="module-content">
+            <h1>
+              <a href="#randomCryptoId"><b>#</b> randomCryptoId</a>
+            </h1>
+
+            <div class="signatures">
+              
+              <div class="signature">
+                <div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">randomCryptoId</span>(<span class="hljs-attr">length</span>: <span class="hljs-built_in">number</span> = <span class="hljs-number">10</span>): <span class="hljs-built_in">string</span>
+</code></pre></div>
+
+                <div class="signature-content">
+                  
+                  <div class="signature-description"><p>Generate a random id of designated length - using cryptographic secure random numbers,<br>so it is a bit slower than <code>randomId</code></p>
+</div>
+                    
+                  <details>
+                    <summary>Examples</summary>
+                     <p>This method differs from <code>crypto.randomUUID()</code> in the way that it can be of any specified length<br>and doesn&#39;t contain any &quot;-&quot;.<br>The methods would be slightly slower than <code>randomId</code> since it is using <code>crypto.getRandomValues()</code>,<br>but it is a more secure method.</p>
+  <pre><code class="hljs language-ts"><span class="hljs-title function_">randomCryptoId</span>(); <span class="hljs-comment">// --&gt; eg. &#x27;efuc6f1n4xf&#x27;</span>
+<span class="hljs-title function_">randomCryptoId</span>(<span class="hljs-number">20</span>); <span class="hljs-comment">// --&gt; eg. &#x27;3vsmrbxlh9at0vhcsf1xh&#x27;</span>
+</code></pre> 
+                  </details>
+                   
+                </div>
+              </div>
+              
+            </div>
+          </div>
+        </section>
+        
+        <section class="module" id="randomHexColor">
+          <div class="module-content">
+            <h1>
+              <a href="#randomHexColor"><b>#</b> randomHexColor</a>
+            </h1>
+
+            <div class="signatures">
+              
+              <div class="signature">
+                <div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">randomHexColor</span>(): <span class="hljs-built_in">string</span>
+</code></pre></div>
+
+                <div class="signature-content">
+                  
+                  <div class="signature-description"><p>Generate a random HEX color</p>
+</div>
+                    
+                  <details>
+                    <summary>Examples</summary>
+                     <pre><code class="hljs language-ts"><span class="hljs-title function_">randomHexColor</span>(); <span class="hljs-comment">// --&gt; eg. #f42c71</span>
+</code></pre> 
+                  </details>
+                   
+                </div>
+              </div>
+              
+            </div>
+          </div>
+        </section>
+        
+        <section class="module" id="randomId">
+          <div class="module-content">
+            <h1>
+              <a href="#randomId"><b>#</b> randomId</a>
+            </h1>
+
+            <div class="signatures">
+              
+              <div class="signature">
+                <div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">randomId</span>(<span class="hljs-attr">length</span>: <span class="hljs-built_in">number</span> = <span class="hljs-number">10</span>): <span class="hljs-built_in">string</span>
+</code></pre></div>
+
+                <div class="signature-content">
+                  
+                  <div class="signature-description"><p>Generate a random id of designated length</p>
+</div>
+                    
+                  <details>
+                    <summary>Examples</summary>
+                     <pre><code class="hljs language-ts"><span class="hljs-title function_">randomId</span>(); <span class="hljs-comment">// --&gt; eg. &#x27;efuc6f1n4xf&#x27;</span>
+<span class="hljs-title function_">randomId</span>(<span class="hljs-number">20</span>); <span class="hljs-comment">// --&gt; eg. &#x27;3vsmrbxlh9at0vhcsf1xh&#x27;</span>
+</code></pre> 
+                  </details>
+                   
+                </div>
+              </div>
+              
+            </div>
+          </div>
+        </section>
+        
+        <section class="module" id="randomInt">
+          <div class="module-content">
+            <h1>
+              <a href="#randomInt"><b>#</b> randomInt</a>
+            </h1>
+
+            <div class="signatures">
+              
+              <div class="signature">
+                <div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">randomInt</span>(<span class="hljs-attr">min</span>: <span class="hljs-built_in">number</span>, <span class="hljs-attr">max</span>: <span class="hljs-built_in">number</span>): <span class="hljs-built_in">number</span>
+</code></pre></div>
+
+                <div class="signature-content">
+                  
+                  <div class="signature-description"><p>Returns a random integer from a base number or range of numbers</p>
+</div>
+                    
+                  <details>
+                    <summary>Examples</summary>
+                     <pre><code class="hljs language-ts"><span class="hljs-title function_">randomInt</span>(<span class="hljs-number">100</span>, <span class="hljs-number">200</span>); <span class="hljs-comment">// --&gt; a number between 100 and 200</span>
+</code></pre> 
+                  </details>
+                   
+                </div>
+              </div>
+              
+              <div class="signature">
+                <div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">randomInt</span>(max?: <span class="hljs-built_in">number</span>): <span class="hljs-built_in">number</span>
+</code></pre></div>
+
+                <div class="signature-content">
+                  
+                  <div class="signature-description"><p>Returns a random integer from a base number or range of numbers</p>
+</div>
+                    
+                  <details>
+                    <summary>Examples</summary>
+                     <pre><code class="hljs language-ts"><span class="hljs-comment">// Any random number</span>
+<span class="hljs-title function_">randomInt</span>(); <span class="hljs-comment">// --&gt; a number between 0 and Number.MAX_SAFE_INTEGER</span>
+
+<span class="hljs-comment">// With max number</span>
+<span class="hljs-title function_">randomInt</span>(<span class="hljs-number">100</span>); <span class="hljs-comment">// --&gt; a number between 0 and 100</span>
+</code></pre> 
+                  </details>
+                   
+                </div>
+              </div>
+              
+            </div>
+          </div>
+        </section>
+        
+        <section class="module" id="randomRGBColor">
+          <div class="module-content">
+            <h1>
+              <a href="#randomRGBColor"><b>#</b> randomRGBColor</a>
+            </h1>
+
+            <div class="signatures">
+              
+              <div class="signature">
+                <div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">randomRGBColor</span>(): [<span class="hljs-attr">r</span>: <span class="hljs-built_in">number</span>, <span class="hljs-attr">g</span>: <span class="hljs-built_in">number</span>, <span class="hljs-attr">b</span>: <span class="hljs-built_in">number</span>]
+</code></pre></div>
+
+                <div class="signature-content">
+                  
+                  <div class="signature-description"><p>Generate a random RGB color</p>
+</div>
+                    
+                  <details>
+                    <summary>Examples</summary>
+                     <pre><code class="hljs language-ts"><span class="hljs-title function_">randomRGBColor</span>(); <span class="hljs-comment">// --&gt; eg. [169, 100, 52]</span>
+</code></pre> 
+                  </details>
+                   
+                </div>
+              </div>
+              
+            </div>
+          </div>
+        </section>
+        
+        <section class="module" id="RGBToHex">
+          <div class="module-content">
+            <h1>
+              <a href="#RGBToHex"><b>#</b> RGBToHex</a>
+            </h1>
+
+            <div class="signatures">
+              
+              <div class="signature">
+                <div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title class_">RGBToHex</span>(<span class="hljs-attr">rgb</span>: <span class="hljs-title class_">RGBTuple</span>): <span class="hljs-built_in">string</span>
+</code></pre></div>
+
+                <div class="signature-content">
+                  
+                  <div class="signature-description"><p>Converts an Array of R G B (A) colors into a hex color.</p>
+</div>
+                    
+                  <details>
+                    <summary>Examples</summary>
+                     <pre><code class="hljs language-ts"><span class="hljs-title class_">RGBToHex</span>([<span class="hljs-number">123</span>, <span class="hljs-number">123</span>, <span class="hljs-number">123</span>]) <span class="hljs-comment">// --&gt; #7b7b7b</span>
+
+<span class="hljs-comment">// With alpha channel</span>
+<span class="hljs-title class_">RGBToHex</span>([<span class="hljs-number">123</span>, <span class="hljs-number">123</span>, <span class="hljs-number">123</span>, <span class="hljs-number">0.5</span>]) <span class="hljs-comment">// --&gt; #7b7b7b80</span>
+</code></pre> 
+                  </details>
+                   
+                  <details>
+                    <summary>Types</summary>
+                    <pre><code class="hljs language-ts"><span class="hljs-keyword">type</span> <span class="hljs-title class_">RGBTuple</span> = [<span class="hljs-attr">red</span>: <span class="hljs-built_in">number</span>, <span class="hljs-attr">green</span>: <span class="hljs-built_in">number</span>, <span class="hljs-attr">blue</span>: <span class="hljs-built_in">number</span>, alpha?: <span class="hljs-built_in">number</span>];
+</code></pre>
+                  </details>
+                  
+                </div>
+              </div>
+              
+              <div class="signature">
+                <div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title class_">RGBToHex</span>(<span class="hljs-attr">r</span>: <span class="hljs-built_in">number</span>, <span class="hljs-attr">g</span>: <span class="hljs-built_in">number</span>, <span class="hljs-attr">b</span>: <span class="hljs-built_in">number</span>, a?: <span class="hljs-built_in">number</span>): <span class="hljs-built_in">string</span>
+</code></pre></div>
+
+                <div class="signature-content">
+                  
+                  <div class="signature-description"><p>Converts R G B (A) color arguments into a hex color.</p>
+</div>
+                    
+                  <details>
+                    <summary>Examples</summary>
+                     <pre><code class="hljs language-ts"><span class="hljs-comment">// RGB as arguments</span>
+<span class="hljs-title class_">RGBToHex</span>( <span class="hljs-number">123</span>, <span class="hljs-number">123</span>, <span class="hljs-number">123</span> ) <span class="hljs-comment">// --&gt; #7b7b7b80</span>
+
+<span class="hljs-comment">// With alpha channel</span>
+<span class="hljs-title class_">RGBToHex</span>( <span class="hljs-number">123</span>, <span class="hljs-number">123</span>, <span class="hljs-number">123</span>, <span class="hljs-number">0.5</span> ) <span class="hljs-comment">// --&gt; #7b7b7b80</span>
+</code></pre> 
+                  </details>
+                   
+                </div>
+              </div>
+              
+            </div>
+          </div>
+        </section>
+        
+        <section class="module" id="safeDateChange">
+          <div class="module-content">
+            <h1>
+              <a href="#safeDateChange"><b>#</b> safeDateChange</a>
+            </h1>
+
+            <div class="signatures">
+              
+              <div class="signature">
+                <div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">safeDateChange</span>(<span class="hljs-attr">from</span>: <span class="hljs-title class_">Date</span>, <span class="hljs-attr">to</span>: <span class="hljs-title class_">Date</span>): <span class="hljs-title class_">Date</span>
+</code></pre></div>
+
+                <div class="signature-content">
+                  
+                  <div class="signature-description"><p>Verifies and corrects Dates where the month could accidentally have skipped into the<br>next month because the date is out of bounds by the month changed to.</p>
+</div>
+                    
+                  <details>
+                    <summary>Examples</summary>
+                     <pre><code class="hljs language-ts"><span class="hljs-keyword">const</span> date = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Date</span>(<span class="hljs-number">2017</span>, <span class="hljs-number">0</span>, <span class="hljs-number">31</span>);
+newDate = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Date</span>(date);
+newDate.<span class="hljs-title function_">setMonth</span>(<span class="hljs-number">1</span>);
+
+<span class="hljs-comment">// Normally you would expect &quot;newDate&quot; month to be February, but since the date</span>
+<span class="hljs-comment">// of the previous date was 31 and february max date is 28 (or 29), the actual</span>
+<span class="hljs-comment">// &quot;newDate&quot; is &quot;Match 3rd 2017&quot; (or 2nd). Using this function keeps it at &quot;February 28 2017&quot;</span>
+
+<span class="hljs-title function_">safeDateChange</span>(date, newDate);
+
+<span class="hljs-comment">// newDate === &quot;February 28 2017&quot;</span>
+</code></pre> 
+                  </details>
+                   
+                </div>
+              </div>
+              
+            </div>
+          </div>
+        </section>
+        
+        <section class="module" id="snakeCase">
+          <div class="module-content">
+            <h1>
+              <a href="#snakeCase"><b>#</b> snakeCase</a>
+            </h1>
+
+            <div class="signatures">
+              
+              <div class="signature">
+                <div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">snakeCase</span>(<span class="hljs-attr">str</span>: <span class="hljs-built_in">string</span>, settings?: <span class="hljs-title class_">PhrasifySettings</span>): <span class="hljs-built_in">string</span>
+</code></pre></div>
+
+                <div class="signature-content">
+                  
+                  <div class="signature-description"><p>Transform phrase into a snake_case phrase<br>(eg. &#39;camelCase&#39; -&gt; &#39;camel-case&#39; or &#39;spaced phrase&#39; -&gt; &#39;spaced-phrase&#39;)</p>
+</div>
+                    
+                  <details>
+                    <summary>Examples</summary>
+                     <pre><code class="hljs language-ts"><span class="hljs-title function_">snakeCase</span>(<span class="hljs-string">&#x27;Convert This phrase&#x27;</span>); <span class="hljs-comment">// --&gt; convert_this_phrase</span>
+<span class="hljs-title function_">snakeCase</span>(<span class="hljs-string">&#x27;dash VERSION1 beta&#x27;</span>, { <span class="hljs-attr">numbers</span>: <span class="hljs-literal">true</span> }); <span class="hljs-comment">// --&gt; dash_version_1_beta</span>
+</code></pre> 
+                  </details>
+                   
+                  <details>
+                    <summary>Types</summary>
+                    <pre><code class="hljs language-ts"><span class="hljs-keyword">type</span> <span class="hljs-title class_">PhrasifySettings</span> = {
+  <span class="hljs-comment">// Separate numbers from words?</span>
+  numbers?: <span class="hljs-built_in">boolean</span>
+};
+</code></pre>
+                  </details>
+                  
+                </div>
+              </div>
+              
+            </div>
+          </div>
+        </section>
+        
+        <section class="module" id="truncate">
+          <div class="module-content">
+            <h1>
+              <a href="#truncate"><b>#</b> truncate</a>
+            </h1>
+
+            <div class="signatures">
+              
+              <div class="signature">
+                <div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">truncate</span>(<span class="hljs-attr">str</span>: <span class="hljs-built_in">string</span>, <span class="hljs-attr">settings</span>: <span class="hljs-title class_">TruncateSettings</span> = {}): <span class="hljs-built_in">string</span>
+</code></pre></div>
+
+                <div class="signature-content">
+                  
+                  <div class="signature-description"><p>Limits a string to a given number of characters and adds &#39;...&#39; in the end</p>
+</div>
+                    
+                  <details>
+                    <summary>Examples</summary>
+                     <pre><code class="hljs language-ts"><span class="hljs-title function_">truncate</span>(<span class="hljs-string">&#x27;No max length to the string&#x27;</span>); <span class="hljs-comment">// --&gt; No max limit to the string length</span>
+<span class="hljs-title function_">truncate</span>(<span class="hljs-string">&#x27;With a max length to the string&#x27;</span>, { <span class="hljs-attr">maxLength</span>: <span class="hljs-number">10</span> }); <span class="hljs-comment">// --&gt; With a max...</span>
+<span class="hljs-title function_">truncate</span>(<span class="hljs-string">&#x27;With a max length to the string and a different ending&#x27;</span>, { <span class="hljs-attr">maxLength</span>: <span class="hljs-number">10</span>, <span class="hljs-attr">end</span>: <span class="hljs-string">&#x27; &lt;---&#x27;</span> }); <span class="hljs-comment">// --&gt; With a max &lt;---</span>
+</code></pre> 
+                  </details>
+                   
+                  <details>
+                    <summary>Types</summary>
+                    <pre><code class="hljs language-ts"><span class="hljs-keyword">type</span> <span class="hljs-title class_">TruncateSettings</span> = {
+  <span class="hljs-comment">// What ending to give the truncated string (default is &quot;...&quot;)</span>
+  end?: <span class="hljs-built_in">string</span>
+  <span class="hljs-comment">// Max length of the given string</span>
+  maxLength?: <span class="hljs-built_in">number</span>
+};
+</code></pre>
+                  </details>
+                  
+                </div>
+              </div>
+              
+            </div>
+          </div>
+        </section>
+        
+        <section class="module" id="uniqueArray">
+          <div class="module-content">
+            <h1>
+              <a href="#uniqueArray"><b>#</b> uniqueArray</a>
+            </h1>
+
+            <div class="signatures">
+              
+              <div class="signature">
+                <div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">uniqueArray</span>(<span class="hljs-attr">arr</span>: <span class="hljs-title class_">ArrayLike</span>&lt;T&gt; | <span class="hljs-title class_">Iterable</span>&lt;T&gt;): T[]
+</code></pre></div>
+
+                <div class="signature-content">
+                  
+                  <div class="signature-description"><p>Filter out duplicate values from an array</p>
+</div>
+                    
+                  <details>
+                    <summary>Examples</summary>
+                     <pre><code class="hljs language-ts"><span class="hljs-title function_">uniqueArray</span>([<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">1</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>,<span class="hljs-number">3</span>,<span class="hljs-number">7</span>]); <span class="hljs-comment">// --&gt; [1,2,3,4,5,6,7]</span>
+<span class="hljs-title function_">uniqueArray</span>(<span class="hljs-variable language_">document</span>.<span class="hljs-title function_">querySelectorAll</span>(<span class="hljs-string">&#x27;.my-elm, .selected&#x27;</span>)); <span class="hljs-comment">// --&gt; unique array of elements (so .my-elm.selected will only be present once)</span>
+</code></pre> 
+                  </details>
+                   
+                  <details>
+                    <summary>Types</summary>
+                    <pre><code class="hljs language-ts">
+</code></pre>
+                  </details>
+                  
+                </div>
+              </div>
+              
+            </div>
+          </div>
+        </section>
+        
+      </article>
+    </main>
+
+    
+    <div class="tooltip" id="Tooltip-RGBTuple"><pre><code class="hljs language-ts"><span class="hljs-keyword">type</span> <span class="hljs-title class_">RGBTuple</span> = [<span class="hljs-attr">red</span>: <span class="hljs-built_in">number</span>, <span class="hljs-attr">green</span>: <span class="hljs-built_in">number</span>, <span class="hljs-attr">blue</span>: <span class="hljs-built_in">number</span>, alpha?: <span class="hljs-built_in">number</span>];
+</code></pre></div>
+    
+    <div class="tooltip" id="Tooltip-CamelCaseSettings"><pre><code class="hljs language-ts"><span class="hljs-keyword">type</span> <span class="hljs-title class_">CamelCaseSettings</span> = <span class="hljs-title class_">PhrasifySettings</span> &amp; {
+  <span class="hljs-comment">// Keep abbreviations uppercase (false == HTMLElement =&gt; HtmlElement | true == HTMLElement =&gt; HTMLElement)</span>
+  abbr?: <span class="hljs-built_in">boolean</span>
+  <span class="hljs-comment">// Convert to UpperCase CamelCase (aka PascalCase)</span>
+  upper?: <span class="hljs-built_in">boolean</span>
+};
+</code></pre></div>
+    
+    <div class="tooltip" id="Tooltip-CurrencyFormatter"><pre><code class="hljs language-ts"><span class="hljs-keyword">type</span> <span class="hljs-title class_">CurrencyFormatter</span> = <span class="hljs-function">(<span class="hljs-params">num: <span class="hljs-built_in">number</span></span>) =&gt;</span> <span class="hljs-built_in">string</span>;
+</code></pre></div>
+    
+    <div class="tooltip" id="Tooltip-FormatNumberSettings"><pre><code class="hljs language-ts"><span class="hljs-keyword">type</span> <span class="hljs-title class_">FormatNumberSettings</span> = {
+  <span class="hljs-comment">// The decimal separator character</span>
+  decimal?: <span class="hljs-built_in">string</span>
+  <span class="hljs-comment">// How many decimals to show</span>
+  decimalCount?: <span class="hljs-built_in">number</span> | <span class="hljs-built_in">string</span>
+  <span class="hljs-comment">// The thousand separator character</span>
+  thousand?: <span class="hljs-built_in">string</span>
+};
+</code></pre></div>
+    
+    <div class="tooltip" id="Tooltip-KebabCaseSettings"><pre><code class="hljs language-ts"><span class="hljs-keyword">type</span> <span class="hljs-title class_">KebabCaseSettings</span> = <span class="hljs-title class_">PhrasifySettings</span>;
+</code></pre></div>
+    
+    <div class="tooltip" id="Tooltip-PascalCaseSettings"><pre><code class="hljs language-ts"><span class="hljs-keyword">type</span> <span class="hljs-title class_">PascalCaseSettings</span> = <span class="hljs-title class_">Omit</span>&lt;<span class="hljs-title class_">CamelCaseSettings</span>, <span class="hljs-string">&#x27;upper&#x27;</span>&gt;;
+</code></pre></div>
+    
+    <div class="tooltip" id="Tooltip-PhrasifySettings"><pre><code class="hljs language-ts"><span class="hljs-keyword">type</span> <span class="hljs-title class_">PhrasifySettings</span> = {
+  <span class="hljs-comment">// Separate numbers from words?</span>
+  numbers?: <span class="hljs-built_in">boolean</span>
+};
+</code></pre></div>
+    
+    <div class="tooltip" id="Tooltip-NodeLikeCallback"><pre><code class="hljs language-ts"><span class="hljs-keyword">type</span> <span class="hljs-title class_">NodeLikeCallback</span> = <span class="hljs-function">(<span class="hljs-params">err?: <span class="hljs-built_in">string</span> | <span class="hljs-built_in">Error</span> | <span class="hljs-string">&#x27;null&#x27;</span>, data?: <span class="hljs-built_in">unknown</span></span>) =&gt;</span> <span class="hljs-built_in">unknown</span>;
+</code></pre></div>
+    
+    <div class="tooltip" id="Tooltip-PromisefiedFunction"><pre><code class="hljs language-ts"><span class="hljs-keyword">type</span> <span class="hljs-title class_">PromisefiedFunction</span> = <span class="hljs-function">(<span class="hljs-params">args: <span class="hljs-built_in">any</span>[]</span>) =&gt;</span> <span class="hljs-title class_">Promise</span>&lt;<span class="hljs-built_in">any</span>&gt;;
+</code></pre></div>
+    
+    <div class="tooltip" id="Tooltip-PromisefyCallback"><pre><code class="hljs language-ts"><span class="hljs-keyword">type</span> <span class="hljs-title class_">PromisefyCallback</span> = <span class="hljs-function">(<span class="hljs-params">args: <span class="hljs-built_in">any</span>[]</span>) =&gt;</span> <span class="hljs-built_in">any</span>;
+</code></pre></div>
+    
+    <div class="tooltip" id="Tooltip-SnakeCaseSettings"><pre><code class="hljs language-ts"><span class="hljs-keyword">type</span> <span class="hljs-title class_">SnakeCaseSettings</span> = <span class="hljs-title class_">PhrasifySettings</span>;
+</code></pre></div>
+    
+    <div class="tooltip" id="Tooltip-TruncateSettings"><pre><code class="hljs language-ts"><span class="hljs-keyword">type</span> <span class="hljs-title class_">TruncateSettings</span> = {
+  <span class="hljs-comment">// What ending to give the truncated string (default is &quot;...&quot;)</span>
+  end?: <span class="hljs-built_in">string</span>
+  <span class="hljs-comment">// Max length of the given string</span>
+  maxLength?: <span class="hljs-built_in">number</span>
+};
+</code></pre></div>
+     <script defer>
+	const Menu = document.getElementById('Menu');
+	[...document.getElementsByClassName('menu-trigger')].forEach((button) => {
+		button.addEventListener('click', () => Menu.classList.toggle('open'));
+	});
+
+	function onHashChange() {
+		const moduleName = location.hash.slice(1);
+		const current = document.querySelector('.menu-list-item.current');
+
+		if (moduleName) {
+			const menuItem = document.getElementById('Menu-' + moduleName);
+
+			if (menuItem === current) return;
+
+			menuItem?.classList.add('current');
+		}
+
+		current?.classList.remove('current');
+	}
+
+	window.addEventListener('hashchange', onHashChange);
+	onHashChange();
+</script>
+ <script defer>
+	[...document.querySelectorAll('.module .hljs-title.class_')].forEach((element) => {
+		const { innerHTML: id } = element;
+		const tooltip = document.getElementById('Tooltip-' + id.trim());
+		if (!tooltip) return;
+		if (element.previousElementSibling?.classList.contains('hljs-keyword')) return;
+
+		element.style.cursor = 'default';
+
+		element.addEventListener('mouseenter', () => {
+			tooltip.style.display = 'block';
+
+			const viewport = document.scrollingElement;
+			const tooltipH = tooltip.offsetHeight;
+			let tooltipW = tooltip.offsetWidth;
+
+			if (tooltipW + 30 > viewport.clientWidth) {
+				tooltipW = viewport.clientWidth - 30;
+				tooltip.style.maxWidth = tooltipW + 'px';
+			}
+
+			const { top, bottom, left } = element.getBoundingClientRect();
+
+			const refTop = top + viewport.scrollTop;
+			const refBottom = bottom + viewport.scrollTop;
+			const refLeft = left + viewport.scrollLeft;
+
+			let tooltipTop = refBottom;
+			let tooltipLeft = Math.round(refLeft + element.offsetWidth / 2 - tooltip.offsetWidth / 2);
+
+			if (bottom + tooltip.offsetHeight > viewport.clientHeight) {
+				tooltipTop = refTop - tooltipH;
+			}
+
+			const tooltipMaxRight = tooltipLeft + tooltipW + 15;
+			if (tooltipMaxRight > viewport.clientWidth) {
+				tooltipLeft -= tooltipMaxRight - viewport.clientWidth;
+			}
+
+			tooltip.style.left = tooltipLeft + 'px';
+			tooltip.style.top = tooltipTop + 'px';
+			tooltip.style.zIndex = 999;
+		});
+
+		element.addEventListener('mouseleave', () => {
+			tooltip.style.cssText = '';
+		});
+	});
+</script>
+
+  </body>
+</html>
