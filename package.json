@@ -2,6 +2,7 @@
   "name": "js-fns",
   "version": "0.0.0",
   "description": "Simple, no dependency, JS utility functions",
+  "private": false,
   "main": "index.js",
   "type": "module",
   "scripts": {

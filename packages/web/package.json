@@ -2,6 +2,7 @@
   "name": "@js-fns/web",
   "version": "0.0.0",
   "description": "Simple, no dependency, JS utility functions for use in a browser environment",
+  "private": false,
   "author": "Toke Voltelen",
   "license": "MIT",
   "type": "module",
