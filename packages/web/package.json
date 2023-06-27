@@ -1,6 +1,6 @@
 {
   "name": "@jsfns/web",
-  "version": "0.0.0",
+  "version": "1.0.0-alpha.1",
   "description": "Simple, no dependency, JS utility functions for use in a browser environment",
   "private": false,
   "author": "Toke Voltelen",
@@ -13,7 +13,7 @@
   "typings": "./index.d.ts",
   "repository": {
     "type": "git",
-    "url": "git+https://Tokimon@github.com/Tokimon/js-fns.git"
+    "url": "git+https://Tokimon@github.com/Tokimon/jsfns.git"
   },
   "keywords": [
     "javascript",
@@ -23,11 +23,11 @@
     "tool"
   ],
   "bugs": {
-    "url": "https://github.com/Tokimon/js-fns/issues"
+    "url": "https://github.com/Tokimon/jsfns/issues"
   },
-  "homepage": "https://github.com/Tokimon/js-fns#readme",
+  "homepage": "https://github.com/Tokimon/jsfns#readme",
   "scripts": {
-    "prepublishOnly": "pnpm run validate && pnpm run build && pnpm run docs",
+    "prepublishOnly": "pnpm run build && pnpm run docs",
     "postpublish": "pnpm run clean",
     "build": "../../bin/build.sh",
     "clean": "../../bin/clean.sh",
@@ -40,7 +40,7 @@
     "validate": "pnpm lint && pnpm types && pnpm test"
   },
   "dependencies": {
-    "@js-fns/core": "workspace:*"
+    "@jsfns/core": "1.0.0-alpha.1"
   },
   "devDependencies": {
     "@types/jest": "~29.5.2",

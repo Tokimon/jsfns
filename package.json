@@ -1,5 +1,5 @@
 {
-  "name": "js-fns",
+  "name": "jsfns",
   "version": "0.0.0",
   "description": "Simple, no dependency, JS utility functions",
   "private": false,
@@ -14,15 +14,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Tokimon/js-fns.git"
+    "url": "git+https://github.com/Tokimon/jsfns.git"
   },
   "keywords": [],
   "author": "Toke Voltelen",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Tokimon/js-fns/issues"
+    "url": "https://github.com/Tokimon/jsfns/issues"
   },
-  "homepage": "https://github.com/Tokimon/js-fns#readme",
+  "homepage": "https://github.com/Tokimon/jsfns#readme",
   "devDependencies": {
     "@trivago/prettier-plugin-sort-imports": "^4.1.1",
     "@types/jest": "~29.5.2",

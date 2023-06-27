@@ -1,6 +1,6 @@
 # @jsfns/web
 
-## [@jsfns/web Docs](https://tokimon.github.io/js-fns/web)
+## [@jsfns/web Docs](https://tokimon.github.io/jsfns/web)
 
 This is a collection of simple, no dependency, JavaScript snippets with the aim
 of making it easier to work with vanilla JavaScript in the browser.
@@ -14,7 +14,7 @@ All helpers are written in TypeScript and converted into various JS versions sui
 
 ## Environment agnostic helpers
 
-Searching for more basic, environment agnostic JavaScript methods? Check out: [@jsfns/core](https://tokimon.github.io/js-fns/core)
+Searching for more basic, environment agnostic JavaScript methods? Check out: [@jsfns/core](https://tokimon.github.io/jsfns/core)
 
 ## ES version support
 
@@ -62,5 +62,5 @@ append(document.body, '<span>Appended content</span>');
 ## Something missing?
 
 If you have any questions, find any bugs or have ideas for missing functionality you would like to see included, feel
-free to add an issue in the [issue list](https://github.com/Tokimon/js-fns/issues) or perhaps do a
-[Pull Request](https://github.com/Tokimon/js-fns/pulls) of a great snippet you created.
+free to add an issue in the [issue list](https://github.com/Tokimon/jsfns/issues) or perhaps do a
+[Pull Request](https://github.com/Tokimon/jsfns/pulls) of a great snippet you created.
