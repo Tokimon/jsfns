@@ -3,7 +3,6 @@
   "version": "0.0.0",
   "description": "Simple, no dependency, JS utility functions",
   "main": "index.js",
-  "private": true,
   "type": "module",
   "scripts": {
     "prettier": "prettier --write .",
