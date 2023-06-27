@@ -8,8 +8,9 @@
   "scripts": {
     "prettier": "prettier --write .",
     "lint": "eslint . --max-warnings=0",
-    "build": "pnpm -r build",
-    "clean": "pnpm -r clean"
+    "build": "pnpm --parallel build",
+    "clean": "pnpm --parallel clean",
+    "validate": "pnpm --parallel validate"
   },
   "repository": {
     "type": "git",
