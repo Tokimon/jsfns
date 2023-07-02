@@ -1,6 +1,7 @@
 /* eslint-disable no-console */
 import { mkdir } from 'node:fs/promises';
 import { dirname, join } from 'path';
+import { buildJS } from './building/buildJS';
 import { buildTypedoc } from './building/buildTypedoc';
 import { getHighlighCss } from './building/getHighlighCss';
 import { getPackageVersions } from './building/getPackageVersions';
@@ -39,12 +40,17 @@ async function build() {
   const highlightCss = await getHighlighCss();
 
   const docs = buildTypedoc(packagePath) as unknown as Kind_Project;
-  console.log(`${color.green('🗸')} types parsed`);
 
   const modules = prepareModules(docs.children);
   const { name: npmName, version } = pkgJson;
   const majorVersion = version.replace(/\d+$/, 'x');
   const versionPath = join(docsPath, packageName, majorVersion);
+
+  console.log(`${color.green('🗸')} types parsed`);
+
+  const js = await buildJS();
+
+  console.log(`${color.green('🗸')} JS build`);
 
   await mkdir(versionPath, { recursive: true });
 
@@ -57,6 +63,7 @@ async function build() {
       title: `${npmName} v.${majorVersion}`,
       customTypes: getCustomTypesArray(),
       highlightCss,
+      js,
     },
   });
 

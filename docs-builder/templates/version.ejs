@@ -77,6 +77,10 @@
 
     <% customTypes.forEach(({ name, markdown }) => { %>
     <div class="tooltip" id="Tooltip-<%= name %>"><%- markdown %></div>
-    <% }) %> <%- await include('assets/menu-js'); %> <%- await include('assets/tooltip-js'); %>
+    <% }) %>
+
+    <script defer>
+      <%- js %>
+    </script>
   </body>
 </html>
