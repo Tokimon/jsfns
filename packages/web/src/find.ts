@@ -1,7 +1,7 @@
 import { isString } from '@jsfns/core/isString';
 import { findByClass } from './findByClass';
 import { findById } from './findById';
-import { findByQuery } from './findByQuery';
+import { findByQuery, findOneByQuery } from './findByQuery';
 import { findByTagName } from './findByTagName';
 
 /**
@@ -69,7 +69,7 @@ function find(elm: Document | Element | string, selector?: string): HTMLElement 
     const hasId = rest.includes('#');
 
     if (isId) {
-      if (!hasClass) return elm === document ? findById(rest) : findByQuery(elm, q, true);
+      if (!hasClass) return elm === document ? findById(rest) : findOneByQuery(elm, q);
     } else if (isClass) {
       if (!hasId) return findByClass(elm, rest.split('.').join(' '));
     } else if (!hasId && !hasClass) {

@@ -1,5 +1,5 @@
 import { jest } from '@jest/globals';
-import { findByQuery } from '@jsfns/web/findByQuery';
+import { findByQuery, findOneByQuery } from '@jsfns/web/findByQuery';
 import { byId, insertHtml, removeElement } from './assets/helpers';
 
 const testID = 'findByQuery';
@@ -28,7 +28,7 @@ describe('"findByQuery"', () => {
       target = getTarget();
     });
 
-    describe('find ALL', () => {
+    describe('.findByQuery', () => {
       it('Finds all DOM elements matching a given CSS selector: #Item2.item', () => {
         const nodes = findByQuery(target, '#Item2.item');
         expect(nodes).toHaveLength(1);
@@ -59,36 +59,32 @@ describe('"findByQuery"', () => {
       });
     });
 
-    describe('find FIRST', () => {
+    describe('.findOneByQuery', () => {
       it('Find a DOM element matching a given CSS selector: #Item2.item', () => {
-        const node = findByQuery(target, '#Item2.item', true);
+        const node = findOneByQuery(target, '#Item2.item');
         expect(node?.id).toBe('Item2');
       });
 
       it('Find a DOM element matching a given CSS selector: #Item2 .item', () => {
-        const node = findByQuery(target, '#Item2 .item', true);
+        const node = findOneByQuery(target, '#Item2 .item');
         expect(node?.className).toBe('item child');
       });
 
       it('Find a DOM element matching a given CSS selector: .item', () => {
-        const node = findByQuery(target, '.item', true) as Element;
+        const node = findOneByQuery(target, '.item') as Element;
         expect(node?.id).toBe('Item1');
       });
 
       it('Fails on bad queries', () => {
-        expect(() => findByQuery(target, ':badquery', true)).toThrow();
+        expect(() => findOneByQuery(target, ':badquery')).toThrow();
       });
 
       it('Returns null when nothings is found', () => {
-        expect(findByQuery(target, '.not-found', true)).toBeNull();
+        expect(findOneByQuery(target, '.not-found')).toBeNull();
       });
 
       it('Find a DOM element from a list of CSS selectors: space separated string', () => {
-        const node = findByQuery(target, '.item, .item.child', true) as Element;
-        expect(node?.id).toBe('Item1');
-      });
-      it('Find a DOM element from a list of CSS selectors: array', () => {
-        const node = findByQuery(target, ['.item', '.item.child'], true) as Element;
+        const node = findOneByQuery(target, '.item, .item.child');
         expect(node?.id).toBe('Item1');
       });
     });
@@ -96,7 +92,7 @@ describe('"findByQuery"', () => {
 
   describe('With document', () => {
     describe('Falls back to document when no element is given', () => {
-      it('ALL', () => {
+      it('.findByQuery', () => {
         const spy = jest.spyOn(document, 'querySelectorAll');
 
         findByQuery('#Item2 .item');
@@ -105,10 +101,10 @@ describe('"findByQuery"', () => {
         spy.mockRestore();
       });
 
-      it('FIRST', () => {
+      it('.findOneByQuery', () => {
         const spy = jest.spyOn(document, 'querySelector');
 
-        findByQuery('#Item2 .item', true);
+        findOneByQuery('#Item2 .item');
         expect(spy).toHaveBeenCalledTimes(1);
 
         spy.mockRestore();

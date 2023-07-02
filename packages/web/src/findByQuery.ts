@@ -1,15 +1,8 @@
 import { isString } from '@jsfns/core/isString';
 import { uniqueNodeList } from './uniqueNodeList';
 
-export type argsWithoutTarget = [queries: string | string[], first?: boolean];
-export type argsWithTarget = [elm: Document | Element, queries: string | string[], first?: boolean];
-export type ReturnValue<T extends argsWithoutTarget | argsWithTarget> = T extends argsWithTarget
-  ? T[2] extends true
-    ? Element | null
-    : Element[]
-  : T[1] extends true
-  ? Element | null
-  : Element[];
+export type argsWithoutTarget = [queries: string | string[]];
+export type argsWithTarget = [elm: Document | Element, queries: string | string[]];
 
 /**
  * Find all elements matching a given CSS selector from a given element
@@ -23,10 +16,9 @@ export type ReturnValue<T extends argsWithoutTarget | argsWithTarget> = T extend
  *
  * ```ts
  * findByQuery(MyElm, 'span.my-class') // --> All "span.my-class" elements that are descendants of MyElm
- * findByQuery(MyElm, 'span.my-class', true) // --> First "span.my-class" elements that are descendants of MyElm
  * ```
  */
-function findByQuery<T extends argsWithTarget>(...args: T): ReturnValue<T>;
+function findByQuery<T extends argsWithTarget>(...args: T): Element[];
 
 /**
  * Find all elements matching a given CSS selector
@@ -38,24 +30,60 @@ function findByQuery<T extends argsWithTarget>(...args: T): ReturnValue<T>;
  * @example
  *
  * ```ts
- * findByQuery(MyElm, 'span.my-class') // --> All "span.my-class" elements that are descendants of MyElm
- * findByQuery(MyElm, 'span.my-class', true) // --> First "span.my-class" elements that are descendants of MyElm
+ * findByQuery('span.my-class') // --> All "span.my-class" elements that are descendants of document
  * ```
  */
-function findByQuery<T extends argsWithoutTarget>(...args: T): ReturnValue<T>;
+function findByQuery<T extends argsWithoutTarget>(...args: T): Element[];
 
-function findByQuery<T extends argsWithTarget | argsWithoutTarget>(...args: T): Element[] | Element | null {
-  if (isString(args[0]) || Array.isArray(args[0])) {
-    const [queries, first] = args as argsWithoutTarget;
-    return findByQuery(document, queries, !!first);
-  }
+function findByQuery<T extends argsWithTarget | argsWithoutTarget>(...args: T): Element[] {
+  if (isString(args[0]) || Array.isArray(args[0])) return findByQuery(document, args[0]);
 
   // eslint-disable-next-line prefer-const
-  let [elm, queries, first] = args as argsWithTarget;
+  let [elm, queries] = args as argsWithTarget;
   if (Array.isArray(queries)) queries = queries.join(',');
 
-  return first ? elm.querySelector(queries) : uniqueNodeList(elm.querySelectorAll(queries));
+  return uniqueNodeList(elm.querySelectorAll(queries));
 }
 
-export { findByQuery };
+/**
+ * Find first elements matching a given CSS selector from a given element
+ *
+ * @param elm - The DOM element to start the search from
+ * @param query - CSS selector to find elements by
+ * @param first - Return only the first found element
+ * @returns List of found DOM elements
+ *
+ * @example
+ *
+ * ```ts
+ * findOneByQuery(MyElm, 'span.my-class') // --> First "span.my-class" elements that are descendants of MyElm
+ * ```
+ */
+function findOneByQuery(elm: Document | Element, query: string): Element | null;
+
+/**
+ * Find first elements matching a given CSS selector
+ *
+ * @param query - CSS selector to find elements by
+ * @param first - Return only the first found element
+ * @returns List of found DOM elements
+ *
+ * @example
+ *
+ * ```ts
+ * findOneByQuery('span.my-class') // --> First "span.my-class" elements that are descendants of document
+ * ```
+ */
+function findOneByQuery(query: string): Element | null;
+
+function findOneByQuery<T extends [elm: Document | Element, query: string] | [query: string]>(...args: T): Element | null {
+  if (isString(args[0])) return findOneByQuery(document, args[0]);
+
+  // eslint-disable-next-line prefer-const
+  let [elm, query] = args as [elm: Document | Element, query: string];
+
+  return elm.querySelector(query);
+}
+
+export { findByQuery, findOneByQuery };
 export default findByQuery;
