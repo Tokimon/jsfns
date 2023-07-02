@@ -6,6 +6,7 @@ import { viewport } from './viewport';
 
 /**
  * Find the size of a DOM element, document or window excluding borders, margins and padding
+ * (Getting the size of the viewport if `document` or `window` is given)
  *
  * @param elm - The DOM element (or window) to find the size of
  * @returns Object describing width and height of the element
@@ -15,6 +16,9 @@ import { viewport } from './viewport';
  * ```ts
  * // <div style="width: 200px; height: 300px; margin: 10px; border: 2px solid;" />
  * contentBoxSize(div) // --> { width: 200, height: 300 }
+ *
+ * contentBoxSize(window) // --> [size of the viewport]
+ * contentBoxSize(document) // --> [size of the viewport]
  * ```
  */
 export function contentBoxSize(elm: Document | GeneralWindow | HTMLElement) {

@@ -6,6 +6,7 @@ import { viewport } from './viewport';
 
 /**
  * Find the size of the content (scrollable area minus padding) of a DOM element, document or window
+ * (Getting the size of the viewport if `document` or `window` is given)
  *
  * @param elm - The DOM element (or window) to find the size of
  * @returns Object describing width and height of the element
@@ -17,6 +18,9 @@ import { viewport } from './viewport';
  * //   <div style="height: 400px; width: 400px" />
  * // </div>
  * contentSize(div) // --> { width: 400, height: 400 }
+ *
+ * contentSize(window) // --> [size of the viewport]
+ * contentSize(document) // --> [size of the viewport]
  * ```
  */
 export function contentSize(elm: Document | GeneralWindow | HTMLElement) {
