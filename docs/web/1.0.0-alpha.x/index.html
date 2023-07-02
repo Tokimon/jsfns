@@ -342,6 +342,10 @@
   .tooltip code.hljs {
     background-color: #292d25;
   }
+
+  .tooltip.show {
+    display: block;
+  }
 </style>
 
     <style>
@@ -469,8 +473,8 @@
             <a href="#getCurrentWindow">getCurrentWindow</a>
           </li>
           
-          <li class="menu-list-item" id="Menu-hasClassName">
-            <a href="#hasClassName">hasClassName</a>
+          <li class="menu-list-item" id="Menu-hasClass">
+            <a href="#hasClass">hasClass</a>
           </li>
           
           <li class="menu-list-item" id="Menu-hidden">
@@ -567,6 +571,10 @@
           
           <li class="menu-list-item" id="Menu-parseSelector">
             <a href="#parseSelector">parseSelector</a>
+          </li>
+          
+          <li class="menu-list-item" id="Menu-position">
+            <a href="#position">position</a>
           </li>
           
           <li class="menu-list-item" id="Menu-prepend">
@@ -863,13 +871,16 @@
 
                 <div class="signature-content">
                   
-                  <div class="signature-description"><p>Find the size of a DOM element, document or window excluding borders, margins and padding</p>
+                  <div class="signature-description"><p>Find the size of a DOM element, document or window excluding borders, margins and padding<br>(Getting the size of the viewport if <code>document</code> or <code>window</code> is given)</p>
 </div>
                     
                   <details>
                     <summary>Examples</summary>
                      <pre><code class="hljs language-ts"><span class="hljs-comment">// &lt;div style=&quot;width: 200px; height: 300px; margin: 10px; border: 2px solid;&quot; /&gt;</span>
 <span class="hljs-title function_">contentBoxSize</span>(div) <span class="hljs-comment">// --&gt; { width: 200, height: 300 }</span>
+
+<span class="hljs-title function_">contentBoxSize</span>(<span class="hljs-variable language_">window</span>) <span class="hljs-comment">// --&gt; [size of the viewport]</span>
+<span class="hljs-title function_">contentBoxSize</span>(<span class="hljs-variable language_">document</span>) <span class="hljs-comment">// --&gt; [size of the viewport]</span>
 </code></pre> 
                   </details>
                    
@@ -897,7 +908,7 @@
 
                 <div class="signature-content">
                   
-                  <div class="signature-description"><p>Find the size of the content (scrollable area minus padding) of a DOM element, document or window</p>
+                  <div class="signature-description"><p>Find the size of the content (scrollable area minus padding) of a DOM element, document or window<br>(Getting the size of the viewport if <code>document</code> or <code>window</code> is given)</p>
 </div>
                     
                   <details>
@@ -906,6 +917,9 @@
 <span class="hljs-comment">//   &lt;div style=&quot;height: 400px; width: 400px&quot; /&gt;</span>
 <span class="hljs-comment">// &lt;/div&gt;</span>
 <span class="hljs-title function_">contentSize</span>(div) <span class="hljs-comment">// --&gt; { width: 400, height: 400 }</span>
+
+<span class="hljs-title function_">contentSize</span>(<span class="hljs-variable language_">window</span>) <span class="hljs-comment">// --&gt; [size of the viewport]</span>
+<span class="hljs-title function_">contentSize</span>(<span class="hljs-variable language_">document</span>) <span class="hljs-comment">// --&gt; [size of the viewport]</span>
 </code></pre> 
                   </details>
                    
@@ -1606,16 +1620,16 @@
           </div>
         </section>
         
-        <section class="module" id="hasClassName">
+        <section class="module" id="hasClass">
           <div class="module-content">
             <h1>
-              <a href="#hasClassName"><b>#</b> hasClassName</a>
+              <a href="#hasClass"><b>#</b> hasClass</a>
             </h1>
 
             <div class="signatures">
               
               <div class="signature">
-                <div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">hasClassName</span>(<span class="hljs-attr">elm</span>: <span class="hljs-title class_">Element</span>, <span class="hljs-attr">classNames</span>: <span class="hljs-built_in">string</span> | <span class="hljs-built_in">string</span>[], <span class="hljs-built_in">any</span>?: <span class="hljs-built_in">boolean</span>): <span class="hljs-built_in">boolean</span>
+                <div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">hasClass</span>(<span class="hljs-attr">elm</span>: <span class="hljs-string">&#x27;null&#x27;</span> | <span class="hljs-title class_">Element</span>, <span class="hljs-attr">classNames</span>: <span class="hljs-built_in">string</span> | <span class="hljs-built_in">string</span>[], <span class="hljs-built_in">any</span>?: <span class="hljs-built_in">boolean</span>): <span class="hljs-built_in">boolean</span>
 </code></pre></div>
 
                 <div class="signature-content">
@@ -1635,7 +1649,7 @@
               </div>
               
               <div class="signature">
-                <div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">hasAllClassNames</span>(<span class="hljs-attr">elm</span>: <span class="hljs-title class_">Element</span>, <span class="hljs-attr">classNames</span>: <span class="hljs-built_in">string</span> | <span class="hljs-built_in">string</span>[]): <span class="hljs-built_in">boolean</span>
+                <div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">hasAllClass</span>(<span class="hljs-attr">elm</span>: <span class="hljs-title class_">Element</span>, <span class="hljs-attr">classNames</span>: <span class="hljs-built_in">string</span> | <span class="hljs-built_in">string</span>[]): <span class="hljs-built_in">boolean</span>
 </code></pre></div>
 
                 <div class="signature-content">
@@ -1654,7 +1668,7 @@
               </div>
               
               <div class="signature">
-                <div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">hasAnyClassName</span>(<span class="hljs-attr">elm</span>: <span class="hljs-title class_">Element</span>, <span class="hljs-attr">classNames</span>: <span class="hljs-built_in">string</span> | <span class="hljs-built_in">string</span>[]): <span class="hljs-built_in">boolean</span>
+                <div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">hasAnyClass</span>(<span class="hljs-attr">elm</span>: <span class="hljs-title class_">Element</span>, <span class="hljs-attr">classNames</span>: <span class="hljs-built_in">string</span> | <span class="hljs-built_in">string</span>[]): <span class="hljs-built_in">boolean</span>
 </code></pre></div>
 
                 <div class="signature-content">
@@ -1763,13 +1777,16 @@
 
                 <div class="signature-content">
                   
-                  <div class="signature-description"><p>Find the size of a DOM element, document or window excluding borders, margins and scrollbars</p>
+                  <div class="signature-description"><p>Find the size of a DOM element, document or window excluding borders, margins and scrollbars.<br>Getting the size of the viewport if <code>document</code> or <code>window</code> is given.</p>
 </div>
                     
                   <details>
                     <summary>Examples</summary>
                      <pre><code class="hljs language-ts"><span class="hljs-comment">// &lt;div style=&quot;width: 200px; height: 300px; margin: 15px; padding: 10px; border-width: 2px;&quot; /&gt;</span>
 <span class="hljs-title function_">innerSize</span>(div) <span class="hljs-comment">// --&gt; { width: 220, height: 320 }</span>
+
+<span class="hljs-title function_">innerSize</span>(<span class="hljs-variable language_">window</span>) <span class="hljs-comment">// --&gt; [size of the viewport]</span>
+<span class="hljs-title function_">innerSize</span>(<span class="hljs-variable language_">document</span>) <span class="hljs-comment">// --&gt; [size of the viewport]</span>
 </code></pre> 
                   </details>
                    
@@ -2338,13 +2355,16 @@
 
                 <div class="signature-content">
                   
-                  <div class="signature-description"><p>Find the size of a DOM element, document or window including margins and borders</p>
+                  <div class="signature-description"><p>Find the size of a DOM element, document or window including margins and borders<br>(Getting the size of the viewport if <code>document</code> or <code>window</code> is given)</p>
 </div>
                     
                   <details>
                     <summary>Examples</summary>
                      <pre><code class="hljs language-ts"><span class="hljs-comment">// &lt;div style=&quot;width: 200px; height: 300px; margin: 15px; padding: 10px; border-width: 2px;&quot; /&gt;</span>
 <span class="hljs-title function_">marginBoxSize</span>(div) <span class="hljs-comment">// --&gt; { width: 254, height: 354 }</span>
+
+<span class="hljs-title function_">marginBoxSize</span>(<span class="hljs-variable language_">window</span>) <span class="hljs-comment">// --&gt; [size of the viewport]</span>
+<span class="hljs-title function_">marginBoxSize</span>(<span class="hljs-variable language_">document</span>) <span class="hljs-comment">// --&gt; [size of the viewport]</span>
 </code></pre> 
                   </details>
                    
@@ -2562,13 +2582,15 @@
 
                 <div class="signature-content">
                   
-                  <div class="signature-description"><p>Find the size of a DOM element, document or window including borders</p>
+                  <div class="signature-description"><p>Find the size of a DOM element, document or window including borders.<br>(Getting the size of the viewport if <code>document</code> is given)</p>
 </div>
                     
                   <details>
                     <summary>Examples</summary>
                      <pre><code class="hljs language-ts"><span class="hljs-comment">// &lt;div style=&quot;width: 200px; height: 300px; margin: 10px; border: 2px solid;&quot; /&gt;</span>
 <span class="hljs-title function_">outerSize</span>(div) <span class="hljs-comment">// --&gt; { width: 224, height: 324 }</span>
+
+<span class="hljs-title function_">outerSize</span>(<span class="hljs-variable language_">document</span>) <span class="hljs-comment">// --&gt; [size of the viewport]</span>
 </code></pre> 
                   </details>
                    
@@ -2602,6 +2624,57 @@
   <span class="hljs-attr">attributeList</span>: <span class="hljs-built_in">string</span>[]
   <span class="hljs-attr">attributes</span>: <span class="hljs-title class_">Record</span>&lt;<span class="hljs-built_in">string</span>, <span class="hljs-built_in">string</span>&gt;
   <span class="hljs-attr">tagName</span>: <span class="hljs-built_in">string</span>
+};
+</code></pre>
+                  </details>
+                  
+                </div>
+              </div>
+              
+            </div>
+          </div>
+        </section>
+        
+        <section class="module" id="position">
+          <div class="module-content">
+            <h1>
+              <a href="#position"><b>#</b> position</a>
+            </h1>
+
+            <div class="signatures">
+              
+              <div class="signature">
+                <div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">position</span>(elm?: <span class="hljs-title class_">Document</span> | <span class="hljs-title class_">GeneralWindow</span> | <span class="hljs-title class_">HTMLElement</span>): <span class="hljs-title class_">Position</span> | <span class="hljs-title class_">PositionData</span>
+</code></pre></div>
+
+                <div class="signature-content">
+                  
+                  <div class="signature-description"><p>Get the current position of a DOM element, either relative to the offsetParent<br>or relative to the document. If the element is the viewport or the window, the<br>position of the window is returned.</p>
+</div>
+                    
+                  <details>
+                    <summary>Examples</summary>
+                     <pre><code class="hljs language-ts"><span class="hljs-comment">// Get the position of the current window</span>
+<span class="hljs-title function_">position</span>();
+
+<span class="hljs-comment">// Get the position of the window of a given document</span>
+<span class="hljs-title function_">position</span>(<span class="hljs-variable language_">document</span>);
+<span class="hljs-title function_">position</span>(<span class="hljs-variable language_">document</span>.<span class="hljs-property">documentElement</span>);
+<span class="hljs-title function_">position</span>(<span class="hljs-variable language_">document</span>.<span class="hljs-property">body</span>);
+
+<span class="hljs-comment">// Get the position of a given element</span>
+<span class="hljs-title function_">position</span>(<span class="hljs-title class_">MyElm</span>);
+</code></pre> 
+                  </details>
+                   
+                  <details>
+                    <summary>Types</summary>
+                    <pre><code class="hljs language-ts">
+<span class="hljs-keyword">type</span> <span class="hljs-title class_">Position</span> = {
+  <span class="hljs-attr">bottom</span>: <span class="hljs-built_in">number</span>
+  <span class="hljs-attr">left</span>: <span class="hljs-built_in">number</span>
+  <span class="hljs-attr">right</span>: <span class="hljs-built_in">number</span>
+  <span class="hljs-attr">top</span>: <span class="hljs-built_in">number</span>
 };
 </code></pre>
                   </details>
@@ -3323,6 +3396,14 @@
 };
 </code></pre></div>
     
+    <div class="tooltip" id="Tooltip-Position"><pre><code class="hljs language-ts"><span class="hljs-keyword">type</span> <span class="hljs-title class_">Position</span> = {
+  <span class="hljs-attr">bottom</span>: <span class="hljs-built_in">number</span>
+  <span class="hljs-attr">left</span>: <span class="hljs-built_in">number</span>
+  <span class="hljs-attr">right</span>: <span class="hljs-built_in">number</span>
+  <span class="hljs-attr">top</span>: <span class="hljs-built_in">number</span>
+};
+</code></pre></div>
+    
     <div class="tooltip" id="Tooltip-ScrollInfo"><pre><code class="hljs language-ts"><span class="hljs-keyword">type</span> <span class="hljs-title class_">ScrollInfo</span> = {
   <span class="hljs-attr">x</span>: <span class="hljs-built_in">number</span>
   <span class="hljs-attr">xMax</span>: <span class="hljs-built_in">number</span>
@@ -3355,79 +3436,11 @@
   <span class="hljs-attr">prefix</span>: <span class="hljs-string">&#x27;o&#x27;</span>
 }];
 </code></pre></div>
-     <script defer>
-	const Menu = document.getElementById('Menu');
-	[...document.getElementsByClassName('menu-trigger')].forEach((button) => {
-		button.addEventListener('click', () => Menu.classList.toggle('open'));
-	});
+    
 
-	function onHashChange() {
-		const moduleName = location.hash.slice(1);
-		const current = document.querySelector('.menu-list-item.current');
+    <script defer>
+      "use strict";(()=>{function v(){let t=document.getElementById("Menu");[...document.getElementsByClassName("menu-trigger")].forEach(n=>{n.addEventListener("click",()=>t?.classList.toggle("open"))});function e(){let n=location.hash.slice(1),r=document.querySelector(".menu-list-item.current");if(n){let o=document.getElementById("Menu-"+n);if(o===r)return;o?.classList.add("current")}r?.classList.remove("current")}window.addEventListener("hashchange",e),e()}function M(t,e){return Array.isArray(e)||(e=[e]),t.classList.add(...e),t}function D(t,e,n){let r=t.getAttribute(e);return n===!1||n===null?t.removeAttribute(e):n!==void 0&&t.setAttribute(e,n===!0?"":String(n)),r}var y=t=>typeof t=="string";var q={numbers:!1};function O(t,e){return t?(e={...q,...e},t=`${t}`.replace(/([A-Z])([a-z])/g,n=>` ${n}`),e.numbers&&(t=t.replace(/(\d+)/g," $1 ")),t.replace(/[^a-z\d]+/gi," ").trim()):""}var b=(t,e)=>O(t,e).toLowerCase().replace(/\s+/g,"-");var H=(t,e,n,r)=>{e=b(e);let o=n!=null?String(n):"",i=r?"important":void 0;t.style.setProperty(e,o,i),!Number.isNaN(Number(o))&&t.style.getPropertyValue(e)!==o&&H(t,e,o+"px",r)},C=(t,e,n)=>{let r=!1;y(n)&&n.includes("!important")&&(n=n.split(" ")[0],r=!0),H(t,e,n,r)},R=(t,e,n)=>{if(n!==void 0)return C(t,e,n),window.getComputedStyle(t);let r=window.getComputedStyle(t).getPropertyValue(b(e)),o=parseFloat(r);return Number.isNaN(o)?r:o},F=(t,e)=>(e&&Object.entries(e).forEach(([n,r])=>{r&&C(t,n,r)}),window.getComputedStyle(t));function P(t,e,n){return y(e)?R(t,e,n):F(t,e)}var c=t=>!!t&&typeof t.nodeType<"u";function x(...t){let e=new Set;for(let n of t)if(n)if(c(n))e.add(n);else for(let r=0;r<n.length;r++)e.add(n[r]);return Array.from(e)}function S(t){return Array.isArray(t)?x(...t.map(e=>document.getElementById(e))):document.getElementById(t)}function L(...t){if(y(t[0])||Array.isArray(t[0])){let[o,i]=t;return L(document,o,!!i)}let[e,n,r]=t;return Array.isArray(n)&&(n=n.join(",")),r?e.querySelector(n):x(e.querySelectorAll(n))}function A(t,e,n){if(!t)return!1;let r=n?"some":"every";return(Array.isArray(e)?e:[e])[r](i=>t.classList.contains(i))}var u=t=>c(t)&&t.nodeType===Node.DOCUMENT_NODE;var l=t=>t instanceof Window||Object.prototype.toString.call(t).includes("object Window");function N(t){return t?u(t)?t:l(t)?t.document:t.ownerDocument:null}function p(t){let e=N(t||document);return e&&(e.scrollingElement||e.documentElement)}function k(t){if(u(t)||l(t)){let e=p(t);if(!e)return{width:0,height:0};t=e}return{width:t.clientWidth,height:t.clientHeight}}var G=t=>typeof t=="function";var j=(t,e)=>{let n=t.constructor.name,r=new window[n](t.type,t);return Object.defineProperty(r,"currentTarget",{value:e??t.currentTarget,writable:!1,enumerable:!0,configurable:!0}),Object.defineProperty(r,"target",{value:t.target,writable:!1,enumerable:!0,configurable:!0}),r};function d(t,e){if(!c(t))return!1;let n=t.nodeType===Node.ELEMENT_NODE;if(!n||!e)return n;Array.isArray(e)||(e=[e]);let{tagName:r}=t;return e.some(o=>o.toUpperCase()===r)}var E=t=>t instanceof EventTarget;function T(...t){if(!E(t[0])){let[i,f,s]=t;return T(document,i,f,s)}let[e,n,r,o]=t;return Array.isArray(n)||(n=[n]),n.forEach(i=>e.removeEventListener(i,r,o)),e}var Q=(t,e)=>{let n=t.target;for(;d(n);){if(n.matches(e))return[n,j(t,n)];n=n.parentElement}};function _(t,e,n){let{when:r,once:o,delegate:i,...f}=n;if(!r&&!i)return[e,n];let s=G(e)?e:e.handleEvent.bind(e),g=a=>{if(r&&r(a)!==!0)return;let h=()=>T(t,a.type,g,n);if(!i)return o&&h(),s(a);let W=Q(a,i);if(W)return o&&h(),s.call(...W)};return[g,f]}function w(...t){if(!E(t[0])){let[i,f,s]=t;return w(document,i,f,s)}let[e,n,r,o]=t;return Array.isArray(n)||(n=[n]),o&&([r,o]=_(e,r,o)),n.forEach(i=>e.addEventListener(i,r,o)),()=>T(e,n,r,o)}function m(t){if(l(t))return{width:t.outerWidth,height:t.outerHeight};if(u(t)){let e=p(t);if(!e)return{width:0,height:0};t=e}return{width:t.offsetWidth,height:t.offsetHeight}}function B(t=window){let e=d(t)?t:p(t),n={x:0,y:0,xMax:0,yMax:0,xPct:0,yPct:0};return e&&(n.x=e.scrollLeft,n.y=e.scrollTop,n.xMax=Math.max(e.scrollWidth-e.clientWidth,0),n.yMax=Math.max(e.scrollHeight-e.clientHeight,0),n.xMax&&(n.xPct=n.x/n.xMax),n.yMax&&(n.yPct=n.y/n.yMax)),n}var $=t=>{let e=t.screenLeft||t.screenX||0,n=t.screenY||t.screenTop||0,r=t.screen.availWidth-n-t.outerWidth,o=t.screen.availHeight-e-t.outerHeight;return{top:e,left:n,right:r,bottom:o}},K=t=>{let e=t.getBoundingClientRect(),n=B(),r=m(document),o=m(t),i=m(t.offsetParent||void 0);return{top:e.top+n.y,left:e.left+n.x,right:r.width-e.right-n.x,bottom:r.height-e.bottom-n.y,parent:{top:t.offsetTop,left:t.offsetLeft,right:i.width-t.offsetLeft-o.width,bottom:i.height-t.offsetTop-o.height},viewport:{top:e.top,left:e.left,right:r.width-e.right,bottom:r.height-e.bottom}}};function I(t){let e=t;return d(e,["html","body"])&&(e=e.ownerDocument),u(e)&&(e=e.defaultView),e=e||window,l(e)?$(e):K(e)}function z(t,e){return Array.isArray(e)||(e=[e]),t.classList.remove(...e),t}function U(t,e){let n=k(document),{top:r,bottom:o,left:i}=I(t),f=m(t).width,s=m(e),g=o,a=Math.round(i+f/2-s.width/2);o+s.height>n.height&&(g=r-s.height);let h=a+s.width+15;h>n.width&&(a-=h-n.width),P(e,{left:a,top:g,maxWidth:n.width-30})}function V(){L(".module .hljs-title.class_").forEach(t=>{t&&(A(t.previousElementSibling,"hljs-keyword")||D(t,"data-custom-type",t.innerHTML.trim()))}),w("mouseenter",t=>{let e=t.currentTarget;if(!e)return;let n=S("Tooltip-"+e.dataset.customType?.trim());n&&(M(n,"show"),U(e,n))},{delegate:"[data-custom-type]"}),w("mouseleave",t=>{let e=t.currentTarget;if(!e)return;let n=S("Tooltip-"+e.dataset.customType?.trim());n&&z(n,"show")},{delegate:"[data-custom-type]"})}v();V();})();
 
-		if (moduleName) {
-			const menuItem = document.getElementById('Menu-' + moduleName);
-
-			if (menuItem === current) return;
-
-			menuItem?.classList.add('current');
-		}
-
-		current?.classList.remove('current');
-	}
-
-	window.addEventListener('hashchange', onHashChange);
-	onHashChange();
-</script>
- <script defer>
-	[...document.querySelectorAll('.module .hljs-title.class_')].forEach((element) => {
-		const { innerHTML: id } = element;
-		const tooltip = document.getElementById('Tooltip-' + id.trim());
-		if (!tooltip) return;
-		if (element.previousElementSibling?.classList.contains('hljs-keyword')) return;
-
-		element.style.cursor = 'default';
-
-		element.addEventListener('mouseenter', () => {
-			tooltip.style.display = 'block';
-
-			const viewport = document.scrollingElement;
-			const tooltipH = tooltip.offsetHeight;
-			let tooltipW = tooltip.offsetWidth;
-
-			if (tooltipW + 30 > viewport.clientWidth) {
-				tooltipW = viewport.clientWidth - 30;
-				tooltip.style.maxWidth = tooltipW + 'px';
-			}
-
-			const { top, bottom, left } = element.getBoundingClientRect();
-
-			const refTop = top + viewport.scrollTop;
-			const refBottom = bottom + viewport.scrollTop;
-			const refLeft = left + viewport.scrollLeft;
-
-			let tooltipTop = refBottom;
-			let tooltipLeft = Math.round(refLeft + element.offsetWidth / 2 - tooltip.offsetWidth / 2);
-
-			if (bottom + tooltip.offsetHeight > viewport.clientHeight) {
-				tooltipTop = refTop - tooltipH;
-			}
-
-			const tooltipMaxRight = tooltipLeft + tooltipW + 15;
-			if (tooltipMaxRight > viewport.clientWidth) {
-				tooltipLeft -= tooltipMaxRight - viewport.clientWidth;
-			}
-
-			tooltip.style.left = tooltipLeft + 'px';
-			tooltip.style.top = tooltipTop + 'px';
-			tooltip.style.zIndex = 999;
-		});
-
-		element.addEventListener('mouseleave', () => {
-			tooltip.style.cssText = '';
-		});
-	});
-</script>
-
+    </script>
   </body>
 </html>

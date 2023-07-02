@@ -2,16 +2,18 @@
   "name": "@jsfns/docs",
   "version": "0.0.1",
   "scripts": {
-    "build": "esrun ./scripts/build.ts",
+    "build": "esrun --tsconfig=./tsconfig.docs.json ./scripts/build.ts",
     "prettier": "prettier --write .",
     "lint": "eslint . --max-warnings=0"
   },
   "devDependencies": {
     "@digitak/esrun": "^3.2.24",
+    "@jsfns/web": "workspace:*",
     "@types/ejs": "^3.1.2",
     "@types/marked": "^5.0.0",
-    "highlight.js": "^11.8.0",
     "ejs": "^3.1.9",
+    "esbuild": "^0.18.10",
+    "highlight.js": "^11.8.0",
     "marked": "^5.1.0",
     "marked-highlight": "^2.0.1",
     "typedoc": "^0.24.8",
