@@ -14,14 +14,16 @@
  * hasClass(myElm, ['open', 'shown'], true) // --> true if myElm has all given class names
  * ```
  */
-export function hasClassName(elm: Element, classNames: string | string[], any?: boolean): boolean {
+export function hasClass(elm: Element | null, classNames: string | string[], any?: boolean): boolean {
+  if (!elm) return false;
+
   const checkFn = any ? 'some' : 'every';
   const cns = !Array.isArray(classNames) ? [classNames] : classNames;
 
   return cns[checkFn]((cn) => elm.classList.contains(cn));
 }
 
-export default hasClassName;
+export default hasClass;
 
 /**
  * Does any of the listed class names exist in the DOM elements list of class names
@@ -37,8 +39,8 @@ export default hasClassName;
  * hasAnyClassName(myElm, ['open', 'shown']) // --> true if myElm has at least one of the given class names
  * ```
  */
-export function hasAnyClassName(elm: Element, classNames: string | string[]): boolean {
-  return hasClassName(elm, classNames, true);
+export function hasAnyClass(elm: Element, classNames: string | string[]): boolean {
+  return hasClass(elm, classNames, true);
 }
 
 /**
@@ -55,6 +57,6 @@ export function hasAnyClassName(elm: Element, classNames: string | string[]): bo
  * hasAllClassNames(myElm, ['open', 'shown']) // --> true if myElm has all given class names
  * ```
  */
-export function hasAllClassNames(elm: Element, classNames: string | string[]): boolean {
-  return hasClassName(elm, classNames, false);
+export function hasAllClass(elm: Element, classNames: string | string[]): boolean {
+  return hasClass(elm, classNames, false);
 }
