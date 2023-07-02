@@ -18,7 +18,9 @@
  * toggleClass(MyNode, 'active', false) // --> <div class="open" />
  * ```
  */
-export function toggleClass(elm: Element, classNames: string | string[], force?: boolean): Element {
+export function toggleClass<T extends Element>(elm: T | null, classNames: string | string[], force?: boolean): T | null {
+  if (!elm) return null;
+
   if (!Array.isArray(classNames)) classNames = [classNames];
 
   classNames.forEach((cn) => elm.classList.toggle(cn, force));

@@ -28,6 +28,10 @@ describe('"removeClass"', () => {
     expect(removeClass(div, 'class')).toBe(div);
   });
 
+  it('Returns null when given element is null', () => {
+    expect(removeClass(null, 'class')).toBeNull();
+  });
+
   describe('Multiple class names', () => {
     it('Removes several CSS classes from a DOM element', () => {
       testNode.className = 'class added class3';

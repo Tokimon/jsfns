@@ -13,7 +13,9 @@
  * removeClass(MyNode, ['active', 'open']) // --> <div class="" />
  * ```
  */
-export function removeClass(elm: Element, classNames: string | string[]): Element {
+export function removeClass<T extends Element>(elm: T | null, classNames: string | string[]): T | null {
+  if (!elm) return null;
+
   if (!Array.isArray(classNames)) classNames = [classNames];
 
   elm.classList.remove(...classNames);

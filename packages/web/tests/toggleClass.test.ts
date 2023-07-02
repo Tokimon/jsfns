@@ -25,6 +25,10 @@ describe('"toggleClass"', () => {
     expect(toggleClass(div, cn)).toBe(div);
   });
 
+  it('Returns null when given element is null', () => {
+    expect(toggleClass(null, cn)).toBeNull();
+  });
+
   describe('Toggles a single class name', () => {
     it('Adds it', () => {
       testNode.className = '';

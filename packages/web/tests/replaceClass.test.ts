@@ -29,6 +29,14 @@ describe('"replaceClass"', () => {
     expect(testNode.className).toBe('root one two');
   });
 
+  it('Returns the given element', () => {
+    expect(replaceClass(testNode, 'one', 'two')).toBe(testNode);
+  });
+
+  it('Returns null when given element is null', () => {
+    expect(replaceClass(null, 'one', 'two')).toBeNull();
+  });
+
   describe('Replaces given class names with the given replacements', () => {
     it('Single class replaced by a single class', () => {
       testNode.className = 'root class';

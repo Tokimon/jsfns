@@ -36,6 +36,10 @@ describe('"addClass"', () => {
     expect(addClass(div, 'inserted')).toBe(div);
   });
 
+  it('Returns null when given element is null', () => {
+    expect(addClass(null, 'inserted')).toBeNull();
+  });
+
   describe('Multiple class names', () => {
     it('Adds several CSS classes to a DOM element', () => {
       testNode.className = '';
