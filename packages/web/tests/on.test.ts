@@ -1,9 +1,9 @@
 import { jest } from '@jest/globals';
-import { type OnOptions, on } from '@jsfns/web/on';
 import type { SpyInstance } from 'jest-mock';
-import { byId, insertHtml, triggerEvent } from './assets/helpers';
+import { type OnOptions, on } from '@jsfns/web/on';
+import { byId, generateId, insertHtml, triggerEvent } from './assets/helpers';
 
-const testID = 'onEvents';
+const testID = generateId('on');
 const eventName = 'test';
 const eventNames = [1, 2, 3].map((n) => eventName + n.toString());
 

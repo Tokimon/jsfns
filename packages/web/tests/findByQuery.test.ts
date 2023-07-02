@@ -1,8 +1,8 @@
 import { jest } from '@jest/globals';
 import { findByQuery, findOneByQuery } from '@jsfns/web/findByQuery';
-import { byId, insertHtml, removeElement } from './assets/helpers';
+import { byId, generateId, insertHtml, removeElement } from './assets/helpers';
 
-const testID = 'findByQuery';
+const testID = generateId('findByQuery');
 
 describe('"findByQuery"', () => {
   beforeAll(() => {
