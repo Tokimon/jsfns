@@ -126,7 +126,7 @@ importers:
   packages/web:
     dependencies:
       '@jsfns/core':
-        specifier: 1.0.0-alpha.1
+        specifier: ^1.0.0
         version: link:../core
     devDependencies:
       '@types/jest':
