@@ -26,7 +26,7 @@
   },
   "homepage": "https://github.com/Tokimon/jsfns#readme",
   "scripts": {
-    "prepublishOnly": "pnpm run build && pnpm run docs",
+    "prepublishOnly": "pnpm run test && pnpm run build && pnpm run docs",
     "postpublish": "pnpm run clean",
     "build": "../../bin/build.sh",
     "clean": "../../bin/clean.sh",
