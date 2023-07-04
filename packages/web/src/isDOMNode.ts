@@ -8,10 +8,10 @@
  *
  * ```ts
  * isDOMNode(document.documentElement) // --> true
- * isDOMContainer(document.createTextNode('')) // --> true
- * isDOMContainer(document.createComment('')) // --> true
+ * isDOMNode(document.createTextNode('')) // --> true
+ * isDOMNode(document.createComment('')) // --> true
  *
- * isDOMContainer(window) // --> false
+ * isDOMNode(window) // --> false
  * ```
  */
 export const isDOMNode = (node: unknown): node is Node => !!node && typeof (node as Node).nodeType !== 'undefined';

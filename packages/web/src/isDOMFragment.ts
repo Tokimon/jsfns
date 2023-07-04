@@ -11,9 +11,9 @@ import { isDOMNode } from './isDOMNode';
  * ```ts
  * isDOMFragment(document.createDocumentFragment()) // --> true
  *
- * isDOMContainer(document.createElement('p')) // --> false
- * isDOMContainer(document) // --> false
- * isDOMContainer(window) // --> false
+ * isDOMFragment(document.createElement('p')) // --> false
+ * isDOMFragment(document) // --> false
+ * isDOMFragment(window) // --> false
  * ```
  */
 export const isDOMFragment = (obj: unknown): obj is DocumentFragment => isDOMNode(obj) && obj.nodeType === Node.DOCUMENT_FRAGMENT_NODE;
