@@ -17,22 +17,22 @@ describe('"isDOMChildNode"', () => {
   describe('Returns `true` for', () => {
     it('DOM nodes in the DOM below the DOM root element', () => {
       expect(isDOMChildNode(document.body)).toBe(true);
-      expect(isDOMChildNode(byId(testID).firstChild as Node)).toBe(true);
+      expect(isDOMChildNode(byId(testID).firstChild)).toBe(true);
     });
 
     it('Child DOM nodes of a DOM element not in the DOM', () => {
       const div = createElement('div');
       div.innerHTML = '<b></b>\ntext';
-      const first = div.firstChild as Node;
+      const first = div.firstChild;
 
       expect(isDOMChildNode(first)).toBe(true);
-      expect(isDOMChildNode(first.nextSibling as Node)).toBe(true);
+      expect(isDOMChildNode(first?.nextSibling)).toBe(true);
     });
 
     it('DOM nodes in a Frame', () => {
       const frame = appendFrame();
 
-      expect(isDOMChildNode((frame.contentDocument as Document).body)).toBe(true);
+      expect(isDOMChildNode(frame.contentDocument?.body)).toBe(true);
 
       frame.remove();
     });
