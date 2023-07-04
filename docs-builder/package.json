@@ -1,6 +1,7 @@
 {
-  "name": "@jsfns/docs",
+  "name": "@jsfns/docs-builder",
   "version": "0.0.1",
+  "private": true,
   "scripts": {
     "build": "esrun --tsconfig=./tsconfig.docs.json ./scripts/build.ts",
     "prettier": "prettier --write .",
