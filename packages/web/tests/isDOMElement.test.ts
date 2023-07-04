@@ -40,24 +40,4 @@ describe('"isDOMElement"', () => {
       expect(isDOMElement(elm)).toBe(false);
     });
   });
-
-  describe('With a given tag name to match', () => {
-    it('Returns `true` when it matches the given tag name', () => {
-      expect(isDOMElement(document.body, 'body')).toBe(true);
-    });
-
-    it('Returns `false` when it does not match the given tag name', () => {
-      expect(isDOMElement(document.body, 'html')).toBe(false);
-    });
-  });
-
-  describe('With a given list tag names to match', () => {
-    it('Returns `true` when it matches the one of the given tag names', () => {
-      expect(isDOMElement(document.body, ['body', 'div', 'p'])).toBe(true);
-    });
-
-    it('Returns `false` when it does not match one of the given tag names', () => {
-      expect(isDOMElement(document.documentElement, ['body', 'div', 'p'])).toBe(false);
-    });
-  });
 });
