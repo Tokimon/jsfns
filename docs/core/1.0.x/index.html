@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@jsfns/core v.1.0.0-alpha.x</title>
+    <title>@jsfns/core v.1.0.x</title>
     <style>
   :root {
     font-family: Arial, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu,
@@ -342,6 +342,10 @@
   .tooltip code.hljs {
     background-color: #292d25;
   }
+
+  .tooltip.show {
+    display: block;
+  }
 </style>
 
     <style>
@@ -363,7 +367,7 @@
       <header class="header">
         <button type="button" class="menu-trigger"></button>
 
-        <h2 class="page-title"><a href="#">@jsfns/core v.1.0.0-alpha.x</a></h2>
+        <h2 class="page-title"><a href="#">@jsfns/core v.1.0.x</a></h2>
 
         <a target="_blank" href="https://www.npmjs.com/package/@jsfns/" class="repository">
           <img src="https://static.npmjs.com/f1786e9b7cba9753ca7b9c40e8b98f67.png" alt="npm" />
@@ -1896,79 +1900,11 @@ newDate.<span class="hljs-title function_">setMonth</span>(<span class="hljs-num
   maxLength?: <span class="hljs-built_in">number</span>
 };
 </code></pre></div>
-     <script defer>
-	const Menu = document.getElementById('Menu');
-	[...document.getElementsByClassName('menu-trigger')].forEach((button) => {
-		button.addEventListener('click', () => Menu.classList.toggle('open'));
-	});
+    
 
-	function onHashChange() {
-		const moduleName = location.hash.slice(1);
-		const current = document.querySelector('.menu-list-item.current');
+    <script defer>
+      "use strict";(()=>{function T(t,e){return t?(Array.isArray(e)||(e=[e]),t.classList.add(...e),t):null}var f=t=>!!t&&typeof t.nodeType<"u";function h(...t){let e=new Set;for(let n of t)if(n)if(f(n))e.add(n);else for(let r=0;r<n.length;r++)e.add(n[r]);return Array.from(e)}function m(t){return Array.isArray(t)?h(...t.map(e=>document.getElementById(e))):document.getElementById(t)}var p=t=>typeof t=="string";function L(...t){if(p(t[0])||Array.isArray(t[0]))return L(document,t[0]);let[e,n]=t;return Array.isArray(n)&&(n=n.join(",")),h(e.querySelectorAll(n))}function S(...t){if(p(t[0]))return S(document,t[0]);let[e,n]=t;return e.querySelector(n)}var D=t=>typeof t=="function";var C=(t,e)=>{let n=t.constructor.name,r=new window[n](t.type,t);return Object.defineProperty(r,"currentTarget",{value:e??t.currentTarget,writable:!1,enumerable:!0,configurable:!0}),Object.defineProperty(r,"target",{value:t.target,writable:!1,enumerable:!0,configurable:!0}),r};function H(t){return f(t)&&t.nodeType===Node.ELEMENT_NODE}var E=t=>t instanceof EventTarget;function x(...t){if(!E(t[0])){let[i,l,s]=t;return x(document,i,l,s)}let[e,n,r,o]=t;return Array.isArray(n)||(n=[n]),n.forEach(i=>e.removeEventListener(i,r,o)),e}var $=(t,e)=>{let n=t.target;for(;H(n);){if(n.matches(e))return[n,C(t,n)];n=n.parentElement}};function K(t,e,n){let{when:r,once:o,delegate:i,...l}=n;if(!r&&!i)return[e,n];let s=D(e)?e:e.handleEvent.bind(e),d=u=>{if(r&&r(u)!==!0)return;let y=()=>x(t,u.type,d,n);if(!i)return o&&y(),s(u);let M=$(u,i);if(M)return o&&y(),s.call(...M)};return[d,l]}function a(...t){if(!E(t[0])){let[i,l,s]=t;return a(document,i,l,s)}let[e,n,r,o]=t;return Array.isArray(n)||(n=[n]),o&&([r,o]=K(e,r,o)),n.forEach(i=>e.addEventListener(i,r,o)),()=>x(e,n,r,o)}function b(t,e){return t?(Array.isArray(e)||(e=[e]),t.classList.remove(...e),t):null}function A(t,e,n){return t?(Array.isArray(e)||(e=[e]),e.forEach(r=>t.classList.toggle(r,n)),t):null}function P(){let t=location.hash.slice(1),e=S(".menu-list-item.current");if(t){let n=m("Menu-"+t);if(n===e)return;T(n,"current")}b(e,"current")}function N(){a("click",()=>A(m("Menu"),"open"),{delegate:".menu-trigger"}),a(window,"hashchange",P),P()}function j(t,e,n){let r=t.getAttribute(e);return n===!1||n===null?t.removeAttribute(e):n!==void 0&&t.setAttribute(e,n===!0?"":String(n)),r}var R={numbers:!1};function k(t,e){return t?(e={...R,...e},t=`${t}`.replace(/([A-Z])([a-z])/g,n=>` ${n}`),e.numbers&&(t=t.replace(/(\d+)/g," $1 ")),t.replace(/[^a-z\d]+/gi," ").trim()):""}var v=(t,e)=>k(t,e).toLowerCase().replace(/\s+/g,"-");var B=(t,e,n,r)=>{e=v(e);let o=n!=null?String(n):"",i=r?"important":void 0;t.style.setProperty(e,o,i),!Number.isNaN(Number(o))&&t.style.getPropertyValue(e)!==o&&B(t,e,o+"px",r)},q=(t,e,n)=>{let r=!1;p(n)&&n.includes("!important")&&(n=n.split(" ")[0],r=!0),B(t,e,n,r)},U=(t,e,n)=>{if(n!==void 0)return q(t,e,n),window.getComputedStyle(t);let r=window.getComputedStyle(t).getPropertyValue(v(e)),o=parseFloat(r);return Number.isNaN(o)?r:o},Z=(t,e)=>(e&&Object.entries(e).forEach(([n,r])=>{r&&q(t,n,r)}),window.getComputedStyle(t));function G(t,e,n){return p(e)?U(t,e,n):Z(t,e)}function z(t,e,n){if(!t)return!1;let r=n?"some":"every";return(Array.isArray(e)?e:[e])[r](i=>t.classList.contains(i))}var c=t=>f(t)&&t.nodeType===Node.DOCUMENT_NODE;var g=t=>t instanceof Window||Object.prototype.toString.call(t).includes("object Window");function I(t){return t?c(t)?t:g(t)?t.document:t.ownerDocument:null}function w(t){let e=I(t||document);return e&&(e.scrollingElement||e.documentElement)}function Q(t){if(c(t)||g(t)){let e=w(t);if(!e)return{width:0,height:0};t=e}return{width:t.clientWidth,height:t.clientHeight}}function W(t){if(g(t))return{width:t.outerWidth,height:t.outerHeight};if(c(t)){let e=w(t);if(!e)return{width:0,height:0};t=e}return{width:t.offsetWidth,height:t.offsetHeight}}function O(t,e,n=0){return t?O(t.offsetParent,e,n+t[e]):n}var V=(t,e,n)=>{let r=e??t.offsetTop,o=n??t.offsetLeft;return{top:r,left:o,right:o+t.offsetWidth,bottom:r+t.offsetHeight}};function F(t){if(!t)return{top:0,left:0,right:0,bottom:0};let e=O(t,"offsetTop"),n=O(t,"offsetLeft");return{...V(t,e,n),relative:V(t)}}function J(t,e){let n=Q(document),{top:r,bottom:o,left:i}=F(t),l=W(t).width,s=W(e),d=o,u=Math.round(i+l/2-s.width/2);o+s.height>n.height&&(d=r-s.height);let y=u+s.width+15;y>n.width&&(u-=y-n.width),G(e,{left:u,top:d,maxWidth:n.width-30})}function _(){L(".module .hljs-title.class_").forEach(t=>{t&&(z(t.previousElementSibling,"hljs-keyword")||j(t,"data-custom-type",t.innerHTML.trim()))}),a("mouseenter",t=>{let e=t.currentTarget;if(!e)return;let n=m("Tooltip-"+e.dataset.customType?.trim());n&&(T(n,"show"),J(e,n))},{delegate:"[data-custom-type]"}),a("mouseleave",t=>{let e=t.currentTarget;if(!e)return;let n=m("Tooltip-"+e.dataset.customType?.trim());n&&b(n,"show")},{delegate:"[data-custom-type]"})}N();_();})();
 
-		if (moduleName) {
-			const menuItem = document.getElementById('Menu-' + moduleName);
-
-			if (menuItem === current) return;
-
-			menuItem?.classList.add('current');
-		}
-
-		current?.classList.remove('current');
-	}
-
-	window.addEventListener('hashchange', onHashChange);
-	onHashChange();
-</script>
- <script defer>
-	[...document.querySelectorAll('.module .hljs-title.class_')].forEach((element) => {
-		const { innerHTML: id } = element;
-		const tooltip = document.getElementById('Tooltip-' + id.trim());
-		if (!tooltip) return;
-		if (element.previousElementSibling?.classList.contains('hljs-keyword')) return;
-
-		element.style.cursor = 'default';
-
-		element.addEventListener('mouseenter', () => {
-			tooltip.style.display = 'block';
-
-			const viewport = document.scrollingElement;
-			const tooltipH = tooltip.offsetHeight;
-			let tooltipW = tooltip.offsetWidth;
-
-			if (tooltipW + 30 > viewport.clientWidth) {
-				tooltipW = viewport.clientWidth - 30;
-				tooltip.style.maxWidth = tooltipW + 'px';
-			}
-
-			const { top, bottom, left } = element.getBoundingClientRect();
-
-			const refTop = top + viewport.scrollTop;
-			const refBottom = bottom + viewport.scrollTop;
-			const refLeft = left + viewport.scrollLeft;
-
-			let tooltipTop = refBottom;
-			let tooltipLeft = Math.round(refLeft + element.offsetWidth / 2 - tooltip.offsetWidth / 2);
-
-			if (bottom + tooltip.offsetHeight > viewport.clientHeight) {
-				tooltipTop = refTop - tooltipH;
-			}
-
-			const tooltipMaxRight = tooltipLeft + tooltipW + 15;
-			if (tooltipMaxRight > viewport.clientWidth) {
-				tooltipLeft -= tooltipMaxRight - viewport.clientWidth;
-			}
-
-			tooltip.style.left = tooltipLeft + 'px';
-			tooltip.style.top = tooltipTop + 'px';
-			tooltip.style.zIndex = 999;
-		});
-
-		element.addEventListener('mouseleave', () => {
-			tooltip.style.cssText = '';
-		});
-	});
-</script>
-
+    </script>
   </body>
 </html>

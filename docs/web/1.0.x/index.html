@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@jsfns/web v.1.0.0-alpha.x</title>
+    <title>@jsfns/web v.1.0.x</title>
     <style>
   :root {
     font-family: Arial, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu,
@@ -367,7 +367,7 @@
       <header class="header">
         <button type="button" class="menu-trigger"></button>
 
-        <h2 class="page-title"><a href="#">@jsfns/web v.1.0.0-alpha.x</a></h2>
+        <h2 class="page-title"><a href="#">@jsfns/web v.1.0.x</a></h2>
 
         <a target="_blank" href="https://www.npmjs.com/package/@jsfns/" class="repository">
           <img src="https://static.npmjs.com/f1786e9b7cba9753ca7b9c40e8b98f67.png" alt="npm" />
@@ -545,6 +545,14 @@
             <a href="#isEventTarget">isEventTarget</a>
           </li>
           
+          <li class="menu-list-item" id="Menu-isHTMLChildElement">
+            <a href="#isHTMLChildElement">isHTMLChildElement</a>
+          </li>
+          
+          <li class="menu-list-item" id="Menu-isHTMLElement">
+            <a href="#isHTMLElement">isHTMLElement</a>
+          </li>
+          
           <li class="menu-list-item" id="Menu-isWindow">
             <a href="#isWindow">isWindow</a>
           </li>
@@ -659,7 +667,7 @@
             <div class="signatures">
               
               <div class="signature">
-                <div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">addClass</span>(<span class="hljs-attr">elm</span>: <span class="hljs-title class_">Element</span>, <span class="hljs-attr">classNames</span>: <span class="hljs-built_in">string</span> | <span class="hljs-built_in">string</span>[]): <span class="hljs-title class_">Element</span>
+                <div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">addClass</span>(<span class="hljs-attr">elm</span>: <span class="hljs-string">&#x27;null&#x27;</span> | T, <span class="hljs-attr">classNames</span>: <span class="hljs-built_in">string</span> | <span class="hljs-built_in">string</span>[]): T | <span class="hljs-string">&#x27;null&#x27;</span>
 </code></pre></div>
 
                 <div class="signature-content">
@@ -674,6 +682,12 @@
 </code></pre> 
                   </details>
                    
+                  <details>
+                    <summary>Types</summary>
+                    <pre><code class="hljs language-ts">
+</code></pre>
+                  </details>
+                  
                 </div>
               </div>
               
@@ -1447,7 +1461,7 @@
             <div class="signatures">
               
               <div class="signature">
-                <div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">findByQuery</span>(<span class="hljs-attr">args</span>: T): <span class="hljs-title class_">ReturnValue</span>&lt;T&gt;
+                <div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">findByQuery</span>(<span class="hljs-attr">args</span>: T): <span class="hljs-title class_">Element</span>[]
 </code></pre></div>
 
                 <div class="signature-content">
@@ -1458,22 +1472,14 @@
                   <details>
                     <summary>Examples</summary>
                      <pre><code class="hljs language-ts"><span class="hljs-title function_">findByQuery</span>(<span class="hljs-title class_">MyElm</span>, <span class="hljs-string">&#x27;span.my-class&#x27;</span>) <span class="hljs-comment">// --&gt; All &quot;span.my-class&quot; elements that are descendants of MyElm</span>
-<span class="hljs-title function_">findByQuery</span>(<span class="hljs-title class_">MyElm</span>, <span class="hljs-string">&#x27;span.my-class&#x27;</span>, <span class="hljs-literal">true</span>) <span class="hljs-comment">// --&gt; First &quot;span.my-class&quot; elements that are descendants of MyElm</span>
 </code></pre> 
                   </details>
                    
-                  <details>
-                    <summary>Types</summary>
-                    <pre><code class="hljs language-ts">
-<span class="hljs-keyword">type</span> <span class="hljs-title class_">ReturnValue</span> = <span class="hljs-literal">undefined</span>;
-</code></pre>
-                  </details>
-                  
                 </div>
               </div>
               
               <div class="signature">
-                <div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">findByQuery</span>(<span class="hljs-attr">args</span>: T): <span class="hljs-title class_">ReturnValue</span>&lt;T&gt;
+                <div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">findByQuery</span>(<span class="hljs-attr">args</span>: T): <span class="hljs-title class_">Element</span>[]
 </code></pre></div>
 
                 <div class="signature-content">
@@ -1483,18 +1489,46 @@
                     
                   <details>
                     <summary>Examples</summary>
-                     <pre><code class="hljs language-ts"><span class="hljs-title function_">findByQuery</span>(<span class="hljs-title class_">MyElm</span>, <span class="hljs-string">&#x27;span.my-class&#x27;</span>) <span class="hljs-comment">// --&gt; All &quot;span.my-class&quot; elements that are descendants of MyElm</span>
-<span class="hljs-title function_">findByQuery</span>(<span class="hljs-title class_">MyElm</span>, <span class="hljs-string">&#x27;span.my-class&#x27;</span>, <span class="hljs-literal">true</span>) <span class="hljs-comment">// --&gt; First &quot;span.my-class&quot; elements that are descendants of MyElm</span>
+                     <pre><code class="hljs language-ts"><span class="hljs-title function_">findByQuery</span>(<span class="hljs-string">&#x27;span.my-class&#x27;</span>) <span class="hljs-comment">// --&gt; All &quot;span.my-class&quot; elements that are descendants of document</span>
 </code></pre> 
                   </details>
                    
-                  <details>
-                    <summary>Types</summary>
-                    <pre><code class="hljs language-ts">
-<span class="hljs-keyword">type</span> <span class="hljs-title class_">ReturnValue</span> = <span class="hljs-literal">undefined</span>;
-</code></pre>
-                  </details>
+                </div>
+              </div>
+              
+              <div class="signature">
+                <div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">findOneByQuery</span>(<span class="hljs-attr">elm</span>: <span class="hljs-title class_">Element</span> | <span class="hljs-title class_">Document</span>, <span class="hljs-attr">query</span>: <span class="hljs-built_in">string</span>): <span class="hljs-title class_">Element</span> | <span class="hljs-string">&#x27;null&#x27;</span>
+</code></pre></div>
+
+                <div class="signature-content">
                   
+                  <div class="signature-description"><p>Find first elements matching a given CSS selector from a given element</p>
+</div>
+                    
+                  <details>
+                    <summary>Examples</summary>
+                     <pre><code class="hljs language-ts"><span class="hljs-title function_">findOneByQuery</span>(<span class="hljs-title class_">MyElm</span>, <span class="hljs-string">&#x27;span.my-class&#x27;</span>) <span class="hljs-comment">// --&gt; First &quot;span.my-class&quot; elements that are descendants of MyElm</span>
+</code></pre> 
+                  </details>
+                   
+                </div>
+              </div>
+              
+              <div class="signature">
+                <div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">findOneByQuery</span>(<span class="hljs-attr">query</span>: <span class="hljs-built_in">string</span>): <span class="hljs-title class_">Element</span> | <span class="hljs-string">&#x27;null&#x27;</span>
+</code></pre></div>
+
+                <div class="signature-content">
+                  
+                  <div class="signature-description"><p>Find first elements matching a given CSS selector</p>
+</div>
+                    
+                  <details>
+                    <summary>Examples</summary>
+                     <pre><code class="hljs language-ts"><span class="hljs-title function_">findOneByQuery</span>(<span class="hljs-string">&#x27;span.my-class&#x27;</span>) <span class="hljs-comment">// --&gt; First &quot;span.my-class&quot; elements that are descendants of document</span>
+</code></pre> 
+                  </details>
+                   
                 </div>
               </div>
               
@@ -2067,7 +2101,7 @@
             <div class="signatures">
               
               <div class="signature">
-                <div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">isDOMChildNode</span>(<span class="hljs-attr">node</span>: <span class="hljs-title class_">Node</span>): <span class="hljs-built_in">boolean</span> (node is <span class="hljs-title class_">ChildNodeWithParent</span>)
+                <div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">isDOMChildNode</span>(<span class="hljs-attr">node</span>: <span class="hljs-built_in">unknown</span>): <span class="hljs-built_in">boolean</span> (node is <span class="hljs-title class_">ChildNodeWithParent</span>)
 </code></pre></div>
 
                 <div class="signature-content">
@@ -2137,7 +2171,7 @@
             <div class="signatures">
               
               <div class="signature">
-                <div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">isDOMElement</span>(<span class="hljs-attr">obj</span>: <span class="hljs-built_in">unknown</span>, tags?: <span class="hljs-built_in">string</span> | <span class="hljs-built_in">string</span>[]): <span class="hljs-built_in">boolean</span> (obj is <span class="hljs-title class_">Element</span>)
+                <div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">isDOMElement</span>(<span class="hljs-attr">obj</span>: <span class="hljs-built_in">unknown</span>): <span class="hljs-built_in">boolean</span> (obj is <span class="hljs-title class_">Element</span>)
 </code></pre></div>
 
                 <div class="signature-content">
@@ -2151,12 +2185,8 @@
 <span class="hljs-title function_">isDOMElement</span>(<span class="hljs-variable language_">document</span>.<span class="hljs-property">documentElement</span>) <span class="hljs-comment">// --&gt; true</span>
 <span class="hljs-title function_">isDOMElement</span>(<span class="hljs-variable language_">document</span>.<span class="hljs-property">body</span>) <span class="hljs-comment">// --&gt; true</span>
 
-<span class="hljs-title function_">isDOMContainer</span>(<span class="hljs-variable language_">window</span>) <span class="hljs-comment">// --&gt; false</span>
-<span class="hljs-title function_">isDOMContainer</span>(<span class="hljs-variable language_">document</span>.<span class="hljs-title function_">createTextNode</span>(<span class="hljs-string">&#x27;&#x27;</span>)) <span class="hljs-comment">// --&gt; false</span>
-
-<span class="hljs-comment">// Is DOM element of a given type</span>
-<span class="hljs-title function_">isDOMElement</span>(<span class="hljs-variable language_">document</span>.<span class="hljs-title function_">createElement</span>(<span class="hljs-string">&#x27;p&#x27;</span>), [<span class="hljs-string">&#x27;div&#x27;</span>, <span class="hljs-string">&#x27;p&#x27;</span>]) <span class="hljs-comment">// --&gt; true</span>
-<span class="hljs-title function_">isDOMElement</span>(<span class="hljs-variable language_">document</span>.<span class="hljs-property">body</span>, <span class="hljs-string">&#x27;body&#x27;</span>) <span class="hljs-comment">// --&gt; true</span>
+<span class="hljs-title function_">isDOMElement</span>(<span class="hljs-variable language_">window</span>) <span class="hljs-comment">// --&gt; false</span>
+<span class="hljs-title function_">isDOMElement</span>(<span class="hljs-variable language_">document</span>.<span class="hljs-title function_">createTextNode</span>(<span class="hljs-string">&#x27;&#x27;</span>)) <span class="hljs-comment">// --&gt; false</span>
 </code></pre> 
                   </details>
                    
@@ -2188,9 +2218,9 @@
                     <summary>Examples</summary>
                      <pre><code class="hljs language-ts"><span class="hljs-title function_">isDOMFragment</span>(<span class="hljs-variable language_">document</span>.<span class="hljs-title function_">createDocumentFragment</span>()) <span class="hljs-comment">// --&gt; true</span>
 
-<span class="hljs-title function_">isDOMContainer</span>(<span class="hljs-variable language_">document</span>.<span class="hljs-title function_">createElement</span>(<span class="hljs-string">&#x27;p&#x27;</span>)) <span class="hljs-comment">// --&gt; false</span>
-<span class="hljs-title function_">isDOMContainer</span>(<span class="hljs-variable language_">document</span>) <span class="hljs-comment">// --&gt; false</span>
-<span class="hljs-title function_">isDOMContainer</span>(<span class="hljs-variable language_">window</span>) <span class="hljs-comment">// --&gt; false</span>
+<span class="hljs-title function_">isDOMFragment</span>(<span class="hljs-variable language_">document</span>.<span class="hljs-title function_">createElement</span>(<span class="hljs-string">&#x27;p&#x27;</span>)) <span class="hljs-comment">// --&gt; false</span>
+<span class="hljs-title function_">isDOMFragment</span>(<span class="hljs-variable language_">document</span>) <span class="hljs-comment">// --&gt; false</span>
+<span class="hljs-title function_">isDOMFragment</span>(<span class="hljs-variable language_">window</span>) <span class="hljs-comment">// --&gt; false</span>
 </code></pre> 
                   </details>
                    
@@ -2221,10 +2251,10 @@
                   <details>
                     <summary>Examples</summary>
                      <pre><code class="hljs language-ts"><span class="hljs-title function_">isDOMNode</span>(<span class="hljs-variable language_">document</span>.<span class="hljs-property">documentElement</span>) <span class="hljs-comment">// --&gt; true</span>
-<span class="hljs-title function_">isDOMContainer</span>(<span class="hljs-variable language_">document</span>.<span class="hljs-title function_">createTextNode</span>(<span class="hljs-string">&#x27;&#x27;</span>)) <span class="hljs-comment">// --&gt; true</span>
-<span class="hljs-title function_">isDOMContainer</span>(<span class="hljs-variable language_">document</span>.<span class="hljs-title function_">createComment</span>(<span class="hljs-string">&#x27;&#x27;</span>)) <span class="hljs-comment">// --&gt; true</span>
+<span class="hljs-title function_">isDOMNode</span>(<span class="hljs-variable language_">document</span>.<span class="hljs-title function_">createTextNode</span>(<span class="hljs-string">&#x27;&#x27;</span>)) <span class="hljs-comment">// --&gt; true</span>
+<span class="hljs-title function_">isDOMNode</span>(<span class="hljs-variable language_">document</span>.<span class="hljs-title function_">createComment</span>(<span class="hljs-string">&#x27;&#x27;</span>)) <span class="hljs-comment">// --&gt; true</span>
 
-<span class="hljs-title function_">isDOMContainer</span>(<span class="hljs-variable language_">window</span>) <span class="hljs-comment">// --&gt; false</span>
+<span class="hljs-title function_">isDOMNode</span>(<span class="hljs-variable language_">window</span>) <span class="hljs-comment">// --&gt; false</span>
 </code></pre> 
                   </details>
                    
@@ -2295,6 +2325,75 @@
 <span class="hljs-title function_">isEventTarget</span>(<span class="hljs-keyword">new</span> <span class="hljs-title class_">XMLHttpRequest</span>()) <span class="hljs-comment">// --&gt; true</span>
 
 <span class="hljs-title function_">isEventTarget</span>({}) <span class="hljs-comment">// --&gt; false</span>
+</code></pre> 
+                  </details>
+                   
+                </div>
+              </div>
+              
+            </div>
+          </div>
+        </section>
+        
+        <section class="module" id="isHTMLChildElement">
+          <div class="module-content">
+            <h1>
+              <a href="#isHTMLChildElement"><b>#</b> isHTMLChildElement</a>
+            </h1>
+
+            <div class="signatures">
+              
+              <div class="signature">
+                <div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">isHTMLChildElement</span>(<span class="hljs-attr">node</span>: <span class="hljs-built_in">unknown</span>): <span class="hljs-built_in">boolean</span> (node is <span class="hljs-title class_">HTMLChildElement</span>)
+</code></pre></div>
+
+                <div class="signature-content">
+                  
+                  <div class="signature-description"><p>Is the given object a DOM node child of a DOM element</p>
+</div>
+                    
+                  <details>
+                    <summary>Examples</summary>
+                     <pre><code class="hljs language-ts"><span class="hljs-title function_">isHTMLChildElement</span>(<span class="hljs-variable language_">document</span>.<span class="hljs-property">body</span>) <span class="hljs-comment">// --&gt; true</span>
+<span class="hljs-title function_">isHTMLChildElement</span>(<span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(<span class="hljs-string">&#x27;my-elm&#x27;</span>)) <span class="hljs-comment">// --&gt; true</span>
+<span class="hljs-title function_">isHTMLChildElement</span>(<span class="hljs-title function_">createDetachedDocument</span>().<span class="hljs-property">body</span>) <span class="hljs-comment">// --&gt; true</span>
+
+<span class="hljs-title function_">isHTMLChildElement</span>(<span class="hljs-variable language_">document</span>.<span class="hljs-property">documentElement</span>) <span class="hljs-comment">// --&gt; false</span>
+</code></pre> 
+                  </details>
+                   
+                </div>
+              </div>
+              
+            </div>
+          </div>
+        </section>
+        
+        <section class="module" id="isHTMLElement">
+          <div class="module-content">
+            <h1>
+              <a href="#isHTMLElement"><b>#</b> isHTMLElement</a>
+            </h1>
+
+            <div class="signatures">
+              
+              <div class="signature">
+                <div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">isHTMLElement</span>(<span class="hljs-attr">obj</span>: <span class="hljs-built_in">unknown</span>): <span class="hljs-built_in">boolean</span> (obj is <span class="hljs-title class_">HTMLElement</span>)
+</code></pre></div>
+
+                <div class="signature-content">
+                  
+                  <div class="signature-description"><p>Is the given object a HTMLElement node</p>
+</div>
+                    
+                  <details>
+                    <summary>Examples</summary>
+                     <pre><code class="hljs language-ts"><span class="hljs-title function_">isHTMLElement</span>(<span class="hljs-variable language_">document</span>.<span class="hljs-title function_">createElement</span>(<span class="hljs-string">&#x27;p&#x27;</span>)) <span class="hljs-comment">// --&gt; true</span>
+<span class="hljs-title function_">isHTMLElement</span>(<span class="hljs-variable language_">document</span>.<span class="hljs-property">documentElement</span>) <span class="hljs-comment">// --&gt; true</span>
+<span class="hljs-title function_">isHTMLElement</span>(<span class="hljs-variable language_">document</span>.<span class="hljs-property">body</span>) <span class="hljs-comment">// --&gt; true</span>
+
+<span class="hljs-title function_">isHTMLElement</span>(<span class="hljs-variable language_">window</span>) <span class="hljs-comment">// --&gt; false</span>
+<span class="hljs-title function_">isHTMLElement</span>(<span class="hljs-variable language_">document</span>.<span class="hljs-title function_">createTextNode</span>(<span class="hljs-string">&#x27;&#x27;</span>)) <span class="hljs-comment">// --&gt; false</span>
 </code></pre> 
                   </details>
                    
@@ -2644,21 +2743,20 @@
             <div class="signatures">
               
               <div class="signature">
-                <div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">position</span>(elm?: <span class="hljs-title class_">Document</span> | <span class="hljs-title class_">GeneralWindow</span> | <span class="hljs-title class_">HTMLElement</span>): <span class="hljs-title class_">Position</span> | <span class="hljs-title class_">PositionData</span>
+                <div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">position</span>(<span class="hljs-attr">elm</span>: <span class="hljs-string">&#x27;null&#x27;</span> | <span class="hljs-title class_">HTMLElement</span>): <span class="hljs-title class_">PositionData</span>
 </code></pre></div>
 
                 <div class="signature-content">
                   
-                  <div class="signature-description"><p>Get the current position of a DOM element, either relative to the offsetParent<br>or relative to the document. If the element is the viewport or the window, the<br>position of the window is returned.</p>
+                  <div class="signature-description"><p>Get the current absolute position of a DOM element and optionally also the relative position (position relative to offset parent)</p>
 </div>
                     
                   <details>
                     <summary>Examples</summary>
-                     <pre><code class="hljs language-ts"><span class="hljs-comment">// Get the position of the current window</span>
-<span class="hljs-title function_">position</span>();
+                     <pre><code class="hljs language-ts"><span class="hljs-comment">// Returns a 0 position</span>
+<span class="hljs-title function_">position</span>(<span class="hljs-literal">null</span>);
 
-<span class="hljs-comment">// Get the position of the window of a given document</span>
-<span class="hljs-title function_">position</span>(<span class="hljs-variable language_">document</span>);
+<span class="hljs-comment">// Basically returns the size of the element, as top and left will be 0</span>
 <span class="hljs-title function_">position</span>(<span class="hljs-variable language_">document</span>.<span class="hljs-property">documentElement</span>);
 <span class="hljs-title function_">position</span>(<span class="hljs-variable language_">document</span>.<span class="hljs-property">body</span>);
 
@@ -2667,18 +2765,6 @@
 </code></pre> 
                   </details>
                    
-                  <details>
-                    <summary>Types</summary>
-                    <pre><code class="hljs language-ts">
-<span class="hljs-keyword">type</span> <span class="hljs-title class_">Position</span> = {
-  <span class="hljs-attr">bottom</span>: <span class="hljs-built_in">number</span>
-  <span class="hljs-attr">left</span>: <span class="hljs-built_in">number</span>
-  <span class="hljs-attr">right</span>: <span class="hljs-built_in">number</span>
-  <span class="hljs-attr">top</span>: <span class="hljs-built_in">number</span>
-};
-</code></pre>
-                  </details>
-                  
                 </div>
               </div>
               
@@ -2757,7 +2843,7 @@
             <div class="signatures">
               
               <div class="signature">
-                <div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">removeClass</span>(<span class="hljs-attr">elm</span>: <span class="hljs-title class_">Element</span>, <span class="hljs-attr">classNames</span>: <span class="hljs-built_in">string</span> | <span class="hljs-built_in">string</span>[]): <span class="hljs-title class_">Element</span>
+                <div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">removeClass</span>(<span class="hljs-attr">elm</span>: <span class="hljs-string">&#x27;null&#x27;</span> | T, <span class="hljs-attr">classNames</span>: <span class="hljs-built_in">string</span> | <span class="hljs-built_in">string</span>[]): T | <span class="hljs-string">&#x27;null&#x27;</span>
 </code></pre></div>
 
                 <div class="signature-content">
@@ -2773,6 +2859,12 @@
 </code></pre> 
                   </details>
                    
+                  <details>
+                    <summary>Types</summary>
+                    <pre><code class="hljs language-ts">
+</code></pre>
+                  </details>
+                  
                 </div>
               </div>
               
@@ -2789,7 +2881,7 @@
             <div class="signatures">
               
               <div class="signature">
-                <div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">replaceClass</span>(<span class="hljs-attr">elm</span>: <span class="hljs-title class_">Element</span>, <span class="hljs-attr">classNames</span>: <span class="hljs-built_in">string</span> | <span class="hljs-built_in">string</span>[], <span class="hljs-attr">replacements</span>: <span class="hljs-built_in">string</span> | <span class="hljs-built_in">string</span>[]): <span class="hljs-title class_">Element</span>
+                <div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">replaceClass</span>(<span class="hljs-attr">elm</span>: <span class="hljs-string">&#x27;null&#x27;</span> | T, <span class="hljs-attr">classNames</span>: <span class="hljs-built_in">string</span> | <span class="hljs-built_in">string</span>[], <span class="hljs-attr">replacements</span>: <span class="hljs-built_in">string</span> | <span class="hljs-built_in">string</span>[]): <span class="hljs-string">&#x27;null&#x27;</span> | T
 </code></pre></div>
 
                 <div class="signature-content">
@@ -2806,6 +2898,12 @@
 </code></pre> 
                   </details>
                    
+                  <details>
+                    <summary>Types</summary>
+                    <pre><code class="hljs language-ts">
+</code></pre>
+                  </details>
+                  
                 </div>
               </div>
               
@@ -3038,7 +3136,7 @@
             <div class="signatures">
               
               <div class="signature">
-                <div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">toggleClass</span>(<span class="hljs-attr">elm</span>: <span class="hljs-title class_">Element</span>, <span class="hljs-attr">classNames</span>: <span class="hljs-built_in">string</span> | <span class="hljs-built_in">string</span>[], force?: <span class="hljs-built_in">boolean</span>): <span class="hljs-title class_">Element</span>
+                <div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">toggleClass</span>(<span class="hljs-attr">elm</span>: <span class="hljs-string">&#x27;null&#x27;</span> | T, <span class="hljs-attr">classNames</span>: <span class="hljs-built_in">string</span> | <span class="hljs-built_in">string</span>[], force?: <span class="hljs-built_in">boolean</span>): T | <span class="hljs-string">&#x27;null&#x27;</span>
 </code></pre></div>
 
                 <div class="signature-content">
@@ -3058,6 +3156,12 @@
 </code></pre> 
                   </details>
                    
+                  <details>
+                    <summary>Types</summary>
+                    <pre><code class="hljs language-ts">
+</code></pre>
+                  </details>
+                  
                 </div>
               </div>
               
@@ -3360,9 +3464,6 @@
     <div class="tooltip" id="Tooltip-argsWithoutTarget"><pre><code class="hljs language-ts"><span class="hljs-keyword">type</span> argsWithoutTarget = [<span class="hljs-attr">classNames</span>: <span class="hljs-built_in">string</span> | <span class="hljs-built_in">string</span>[]];
 </code></pre></div>
     
-    <div class="tooltip" id="Tooltip-ReturnValue"><pre><code class="hljs language-ts"><span class="hljs-keyword">type</span> <span class="hljs-title class_">ReturnValue</span> = <span class="hljs-literal">undefined</span>;
-</code></pre></div>
-    
     <div class="tooltip" id="Tooltip-PositionIndicator"><pre><code class="hljs language-ts"><span class="hljs-keyword">type</span> <span class="hljs-title class_">PositionIndicator</span> = {
   <span class="hljs-comment">// Above the viewport area?</span>
   <span class="hljs-attr">above</span>: <span class="hljs-built_in">boolean</span>
@@ -3397,9 +3498,13 @@
 </code></pre></div>
     
     <div class="tooltip" id="Tooltip-Position"><pre><code class="hljs language-ts"><span class="hljs-keyword">type</span> <span class="hljs-title class_">Position</span> = {
+  <span class="hljs-comment">// Number of pixels from the top to the bottom side of the element</span>
   <span class="hljs-attr">bottom</span>: <span class="hljs-built_in">number</span>
+  <span class="hljs-comment">// Number of pixels from the left</span>
   <span class="hljs-attr">left</span>: <span class="hljs-built_in">number</span>
+  <span class="hljs-comment">// Number of pixels from the left to the right side of the element</span>
   <span class="hljs-attr">right</span>: <span class="hljs-built_in">number</span>
+  <span class="hljs-comment">// Number of pixels from the top</span>
   <span class="hljs-attr">top</span>: <span class="hljs-built_in">number</span>
 };
 </code></pre></div>
@@ -3439,7 +3544,7 @@
     
 
     <script defer>
-      "use strict";(()=>{function v(){let t=document.getElementById("Menu");[...document.getElementsByClassName("menu-trigger")].forEach(n=>{n.addEventListener("click",()=>t?.classList.toggle("open"))});function e(){let n=location.hash.slice(1),r=document.querySelector(".menu-list-item.current");if(n){let o=document.getElementById("Menu-"+n);if(o===r)return;o?.classList.add("current")}r?.classList.remove("current")}window.addEventListener("hashchange",e),e()}function M(t,e){return Array.isArray(e)||(e=[e]),t.classList.add(...e),t}function D(t,e,n){let r=t.getAttribute(e);return n===!1||n===null?t.removeAttribute(e):n!==void 0&&t.setAttribute(e,n===!0?"":String(n)),r}var y=t=>typeof t=="string";var q={numbers:!1};function O(t,e){return t?(e={...q,...e},t=`${t}`.replace(/([A-Z])([a-z])/g,n=>` ${n}`),e.numbers&&(t=t.replace(/(\d+)/g," $1 ")),t.replace(/[^a-z\d]+/gi," ").trim()):""}var b=(t,e)=>O(t,e).toLowerCase().replace(/\s+/g,"-");var H=(t,e,n,r)=>{e=b(e);let o=n!=null?String(n):"",i=r?"important":void 0;t.style.setProperty(e,o,i),!Number.isNaN(Number(o))&&t.style.getPropertyValue(e)!==o&&H(t,e,o+"px",r)},C=(t,e,n)=>{let r=!1;y(n)&&n.includes("!important")&&(n=n.split(" ")[0],r=!0),H(t,e,n,r)},R=(t,e,n)=>{if(n!==void 0)return C(t,e,n),window.getComputedStyle(t);let r=window.getComputedStyle(t).getPropertyValue(b(e)),o=parseFloat(r);return Number.isNaN(o)?r:o},F=(t,e)=>(e&&Object.entries(e).forEach(([n,r])=>{r&&C(t,n,r)}),window.getComputedStyle(t));function P(t,e,n){return y(e)?R(t,e,n):F(t,e)}var c=t=>!!t&&typeof t.nodeType<"u";function x(...t){let e=new Set;for(let n of t)if(n)if(c(n))e.add(n);else for(let r=0;r<n.length;r++)e.add(n[r]);return Array.from(e)}function S(t){return Array.isArray(t)?x(...t.map(e=>document.getElementById(e))):document.getElementById(t)}function L(...t){if(y(t[0])||Array.isArray(t[0])){let[o,i]=t;return L(document,o,!!i)}let[e,n,r]=t;return Array.isArray(n)&&(n=n.join(",")),r?e.querySelector(n):x(e.querySelectorAll(n))}function A(t,e,n){if(!t)return!1;let r=n?"some":"every";return(Array.isArray(e)?e:[e])[r](i=>t.classList.contains(i))}var u=t=>c(t)&&t.nodeType===Node.DOCUMENT_NODE;var l=t=>t instanceof Window||Object.prototype.toString.call(t).includes("object Window");function N(t){return t?u(t)?t:l(t)?t.document:t.ownerDocument:null}function p(t){let e=N(t||document);return e&&(e.scrollingElement||e.documentElement)}function k(t){if(u(t)||l(t)){let e=p(t);if(!e)return{width:0,height:0};t=e}return{width:t.clientWidth,height:t.clientHeight}}var G=t=>typeof t=="function";var j=(t,e)=>{let n=t.constructor.name,r=new window[n](t.type,t);return Object.defineProperty(r,"currentTarget",{value:e??t.currentTarget,writable:!1,enumerable:!0,configurable:!0}),Object.defineProperty(r,"target",{value:t.target,writable:!1,enumerable:!0,configurable:!0}),r};function d(t,e){if(!c(t))return!1;let n=t.nodeType===Node.ELEMENT_NODE;if(!n||!e)return n;Array.isArray(e)||(e=[e]);let{tagName:r}=t;return e.some(o=>o.toUpperCase()===r)}var E=t=>t instanceof EventTarget;function T(...t){if(!E(t[0])){let[i,f,s]=t;return T(document,i,f,s)}let[e,n,r,o]=t;return Array.isArray(n)||(n=[n]),n.forEach(i=>e.removeEventListener(i,r,o)),e}var Q=(t,e)=>{let n=t.target;for(;d(n);){if(n.matches(e))return[n,j(t,n)];n=n.parentElement}};function _(t,e,n){let{when:r,once:o,delegate:i,...f}=n;if(!r&&!i)return[e,n];let s=G(e)?e:e.handleEvent.bind(e),g=a=>{if(r&&r(a)!==!0)return;let h=()=>T(t,a.type,g,n);if(!i)return o&&h(),s(a);let W=Q(a,i);if(W)return o&&h(),s.call(...W)};return[g,f]}function w(...t){if(!E(t[0])){let[i,f,s]=t;return w(document,i,f,s)}let[e,n,r,o]=t;return Array.isArray(n)||(n=[n]),o&&([r,o]=_(e,r,o)),n.forEach(i=>e.addEventListener(i,r,o)),()=>T(e,n,r,o)}function m(t){if(l(t))return{width:t.outerWidth,height:t.outerHeight};if(u(t)){let e=p(t);if(!e)return{width:0,height:0};t=e}return{width:t.offsetWidth,height:t.offsetHeight}}function B(t=window){let e=d(t)?t:p(t),n={x:0,y:0,xMax:0,yMax:0,xPct:0,yPct:0};return e&&(n.x=e.scrollLeft,n.y=e.scrollTop,n.xMax=Math.max(e.scrollWidth-e.clientWidth,0),n.yMax=Math.max(e.scrollHeight-e.clientHeight,0),n.xMax&&(n.xPct=n.x/n.xMax),n.yMax&&(n.yPct=n.y/n.yMax)),n}var $=t=>{let e=t.screenLeft||t.screenX||0,n=t.screenY||t.screenTop||0,r=t.screen.availWidth-n-t.outerWidth,o=t.screen.availHeight-e-t.outerHeight;return{top:e,left:n,right:r,bottom:o}},K=t=>{let e=t.getBoundingClientRect(),n=B(),r=m(document),o=m(t),i=m(t.offsetParent||void 0);return{top:e.top+n.y,left:e.left+n.x,right:r.width-e.right-n.x,bottom:r.height-e.bottom-n.y,parent:{top:t.offsetTop,left:t.offsetLeft,right:i.width-t.offsetLeft-o.width,bottom:i.height-t.offsetTop-o.height},viewport:{top:e.top,left:e.left,right:r.width-e.right,bottom:r.height-e.bottom}}};function I(t){let e=t;return d(e,["html","body"])&&(e=e.ownerDocument),u(e)&&(e=e.defaultView),e=e||window,l(e)?$(e):K(e)}function z(t,e){return Array.isArray(e)||(e=[e]),t.classList.remove(...e),t}function U(t,e){let n=k(document),{top:r,bottom:o,left:i}=I(t),f=m(t).width,s=m(e),g=o,a=Math.round(i+f/2-s.width/2);o+s.height>n.height&&(g=r-s.height);let h=a+s.width+15;h>n.width&&(a-=h-n.width),P(e,{left:a,top:g,maxWidth:n.width-30})}function V(){L(".module .hljs-title.class_").forEach(t=>{t&&(A(t.previousElementSibling,"hljs-keyword")||D(t,"data-custom-type",t.innerHTML.trim()))}),w("mouseenter",t=>{let e=t.currentTarget;if(!e)return;let n=S("Tooltip-"+e.dataset.customType?.trim());n&&(M(n,"show"),U(e,n))},{delegate:"[data-custom-type]"}),w("mouseleave",t=>{let e=t.currentTarget;if(!e)return;let n=S("Tooltip-"+e.dataset.customType?.trim());n&&z(n,"show")},{delegate:"[data-custom-type]"})}v();V();})();
+      "use strict";(()=>{function T(t,e){return t?(Array.isArray(e)||(e=[e]),t.classList.add(...e),t):null}var f=t=>!!t&&typeof t.nodeType<"u";function h(...t){let e=new Set;for(let n of t)if(n)if(f(n))e.add(n);else for(let r=0;r<n.length;r++)e.add(n[r]);return Array.from(e)}function m(t){return Array.isArray(t)?h(...t.map(e=>document.getElementById(e))):document.getElementById(t)}var p=t=>typeof t=="string";function L(...t){if(p(t[0])||Array.isArray(t[0]))return L(document,t[0]);let[e,n]=t;return Array.isArray(n)&&(n=n.join(",")),h(e.querySelectorAll(n))}function S(...t){if(p(t[0]))return S(document,t[0]);let[e,n]=t;return e.querySelector(n)}var D=t=>typeof t=="function";var C=(t,e)=>{let n=t.constructor.name,r=new window[n](t.type,t);return Object.defineProperty(r,"currentTarget",{value:e??t.currentTarget,writable:!1,enumerable:!0,configurable:!0}),Object.defineProperty(r,"target",{value:t.target,writable:!1,enumerable:!0,configurable:!0}),r};function H(t){return f(t)&&t.nodeType===Node.ELEMENT_NODE}var E=t=>t instanceof EventTarget;function x(...t){if(!E(t[0])){let[i,l,s]=t;return x(document,i,l,s)}let[e,n,r,o]=t;return Array.isArray(n)||(n=[n]),n.forEach(i=>e.removeEventListener(i,r,o)),e}var $=(t,e)=>{let n=t.target;for(;H(n);){if(n.matches(e))return[n,C(t,n)];n=n.parentElement}};function K(t,e,n){let{when:r,once:o,delegate:i,...l}=n;if(!r&&!i)return[e,n];let s=D(e)?e:e.handleEvent.bind(e),d=u=>{if(r&&r(u)!==!0)return;let y=()=>x(t,u.type,d,n);if(!i)return o&&y(),s(u);let M=$(u,i);if(M)return o&&y(),s.call(...M)};return[d,l]}function a(...t){if(!E(t[0])){let[i,l,s]=t;return a(document,i,l,s)}let[e,n,r,o]=t;return Array.isArray(n)||(n=[n]),o&&([r,o]=K(e,r,o)),n.forEach(i=>e.addEventListener(i,r,o)),()=>x(e,n,r,o)}function b(t,e){return t?(Array.isArray(e)||(e=[e]),t.classList.remove(...e),t):null}function A(t,e,n){return t?(Array.isArray(e)||(e=[e]),e.forEach(r=>t.classList.toggle(r,n)),t):null}function P(){let t=location.hash.slice(1),e=S(".menu-list-item.current");if(t){let n=m("Menu-"+t);if(n===e)return;T(n,"current")}b(e,"current")}function N(){a("click",()=>A(m("Menu"),"open"),{delegate:".menu-trigger"}),a(window,"hashchange",P),P()}function j(t,e,n){let r=t.getAttribute(e);return n===!1||n===null?t.removeAttribute(e):n!==void 0&&t.setAttribute(e,n===!0?"":String(n)),r}var R={numbers:!1};function k(t,e){return t?(e={...R,...e},t=`${t}`.replace(/([A-Z])([a-z])/g,n=>` ${n}`),e.numbers&&(t=t.replace(/(\d+)/g," $1 ")),t.replace(/[^a-z\d]+/gi," ").trim()):""}var v=(t,e)=>k(t,e).toLowerCase().replace(/\s+/g,"-");var B=(t,e,n,r)=>{e=v(e);let o=n!=null?String(n):"",i=r?"important":void 0;t.style.setProperty(e,o,i),!Number.isNaN(Number(o))&&t.style.getPropertyValue(e)!==o&&B(t,e,o+"px",r)},q=(t,e,n)=>{let r=!1;p(n)&&n.includes("!important")&&(n=n.split(" ")[0],r=!0),B(t,e,n,r)},U=(t,e,n)=>{if(n!==void 0)return q(t,e,n),window.getComputedStyle(t);let r=window.getComputedStyle(t).getPropertyValue(v(e)),o=parseFloat(r);return Number.isNaN(o)?r:o},Z=(t,e)=>(e&&Object.entries(e).forEach(([n,r])=>{r&&q(t,n,r)}),window.getComputedStyle(t));function G(t,e,n){return p(e)?U(t,e,n):Z(t,e)}function z(t,e,n){if(!t)return!1;let r=n?"some":"every";return(Array.isArray(e)?e:[e])[r](i=>t.classList.contains(i))}var c=t=>f(t)&&t.nodeType===Node.DOCUMENT_NODE;var g=t=>t instanceof Window||Object.prototype.toString.call(t).includes("object Window");function I(t){return t?c(t)?t:g(t)?t.document:t.ownerDocument:null}function w(t){let e=I(t||document);return e&&(e.scrollingElement||e.documentElement)}function Q(t){if(c(t)||g(t)){let e=w(t);if(!e)return{width:0,height:0};t=e}return{width:t.clientWidth,height:t.clientHeight}}function W(t){if(g(t))return{width:t.outerWidth,height:t.outerHeight};if(c(t)){let e=w(t);if(!e)return{width:0,height:0};t=e}return{width:t.offsetWidth,height:t.offsetHeight}}function O(t,e,n=0){return t?O(t.offsetParent,e,n+t[e]):n}var V=(t,e,n)=>{let r=e??t.offsetTop,o=n??t.offsetLeft;return{top:r,left:o,right:o+t.offsetWidth,bottom:r+t.offsetHeight}};function F(t){if(!t)return{top:0,left:0,right:0,bottom:0};let e=O(t,"offsetTop"),n=O(t,"offsetLeft");return{...V(t,e,n),relative:V(t)}}function J(t,e){let n=Q(document),{top:r,bottom:o,left:i}=F(t),l=W(t).width,s=W(e),d=o,u=Math.round(i+l/2-s.width/2);o+s.height>n.height&&(d=r-s.height);let y=u+s.width+15;y>n.width&&(u-=y-n.width),G(e,{left:u,top:d,maxWidth:n.width-30})}function _(){L(".module .hljs-title.class_").forEach(t=>{t&&(z(t.previousElementSibling,"hljs-keyword")||j(t,"data-custom-type",t.innerHTML.trim()))}),a("mouseenter",t=>{let e=t.currentTarget;if(!e)return;let n=m("Tooltip-"+e.dataset.customType?.trim());n&&(T(n,"show"),J(e,n))},{delegate:"[data-custom-type]"}),a("mouseleave",t=>{let e=t.currentTarget;if(!e)return;let n=m("Tooltip-"+e.dataset.customType?.trim());n&&b(n,"show")},{delegate:"[data-custom-type]"})}N();_();})();
 
     </script>
   </body>
