@@ -24,15 +24,6 @@ export type argsWithTarget = [
   options?: OnOptions
 ];
 
-const getDelegateTarget = (event: Event, delegate: string) => {
-  let target = event.target;
-
-  while (isDOMElement(target)) {
-    if (target.matches(delegate)) return [target, copyEvent(event, target)] as const;
-    target = target.parentElement;
-  }
-};
-
 function onOptionsHandler(elm: EventTarget, handler: EventListenerOrEventListenerObject, options: OnOptions) {
   const { when, once, delegate, ...rest } = options;
   if (!when && !delegate) return [handler, options] as const;
@@ -42,6 +33,8 @@ function onOptionsHandler(elm: EventTarget, handler: EventListenerOrEventListene
   const eventHandler: typeof handler = (e) => {
     if (when && when(e) !== true) return;
 
+    // We don't always remove when once is defined here, as we only should
+    // remove delegation once it has hit the delegation target
     const remove = () => off(elm, e.type, eventHandler, options);
 
     if (!delegate) {
@@ -49,10 +42,16 @@ function onOptionsHandler(elm: EventTarget, handler: EventListenerOrEventListene
       return orgHandler(e);
     }
 
-    const foundDelegate = getDelegateTarget(e, delegate);
-    if (!foundDelegate) return;
-    if (once) remove();
-    return orgHandler.call(...foundDelegate);
+    const { target } = e;
+    // Delegation does nothing for non-dom element targets
+    if (!isDOMElement(target)) return;
+
+    const delegateTarget = target.closest(delegate);
+
+    if (delegateTarget) {
+      if (once) remove();
+      return orgHandler.call(delegateTarget, copyEvent(e, delegateTarget));
+    }
   };
 
   return [eventHandler, rest] as [EventListener, Omit<OnOptions, 'when' | 'once' | 'delegate'>];
@@ -167,9 +166,7 @@ function on<T extends argsWithTarget | argsWithoutTarget>(...args: T): () => T[0
   let [elm, eventNames, handler, options] = args as argsWithTarget;
   if (!Array.isArray(eventNames)) eventNames = [eventNames];
 
-  if (options) {
-    [handler, options] = onOptionsHandler(elm, handler, options);
-  }
+  if (options) [handler, options] = onOptionsHandler(elm, handler, options);
 
   eventNames.forEach((evt) => elm.addEventListener(evt, handler, options));
 
