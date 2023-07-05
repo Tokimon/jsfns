@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title><%= title %></title>
+    <title>@jsfns/<%= packageName %></title>
     <%- await include('assets/base-css'); %> <%- await include('assets/modules-css'); %>
     <style>
       <%- highlightCss %>
@@ -15,7 +15,13 @@
       <header class="header">
         <button type="button" class="menu-trigger"></button>
 
-        <h2 class="page-title"><a href="#"><%= title %></a></h2>
+        <h2 class="page-title">
+          @jsfns/
+          <a href="../../core" class="<%= packageName === 'core' ? 'selected' : '' %>">core</a>
+          <a href="../../web" class="<%= packageName === 'web' ? 'selected' : '' %>">web</a>
+        </h2>
+
+        <i class="page-version">v. <%= version %></i>
 
         <a target="_blank" href="https://www.npmjs.com/package/@jsfns/<%_ packageName %>" class="repository">
           <img src="https://static.npmjs.com/f1786e9b7cba9753ca7b9c40e8b98f67.png" alt="npm" />

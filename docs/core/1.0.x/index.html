@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@jsfns/core v.1.0.x</title>
+    <title>@jsfns/core</title>
     <style>
   :root {
     font-family: Arial, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu,
@@ -130,16 +130,28 @@
     margin: 0;
     font-size: 18px;
     flex: 1 1 100%;
+    display: flex;
+    gap: 10px;
+    align-items: center;
   }
 
   .page-title a {
     color: currentColor;
     text-decoration: none;
+    padding: 5px 10px;
+    border: 1px solid #444;
+    transition: background-color 0.2s;
+    border-radius: 2px;
   }
 
   .page-title a:hover,
-  .page-title a:focus {
-    text-decoration: underline;
+  .page-title a:focus,
+  .page-title a.selected {
+    background: #58b29a;
+  }
+
+  .page-version {
+    white-space: nowrap;
   }
 
   .modules {
@@ -367,7 +379,13 @@
       <header class="header">
         <button type="button" class="menu-trigger"></button>
 
-        <h2 class="page-title"><a href="#">@jsfns/core v.1.0.x</a></h2>
+        <h2 class="page-title">
+          @jsfns/
+          <a href="../../core" class="selected">core</a>
+          <a href="../../web" class="">web</a>
+        </h2>
+
+        <i class="page-version">v. 1.0.0</i>
 
         <a target="_blank" href="https://www.npmjs.com/package/@jsfns/" class="repository">
           <img src="https://static.npmjs.com/f1786e9b7cba9753ca7b9c40e8b98f67.png" alt="npm" />

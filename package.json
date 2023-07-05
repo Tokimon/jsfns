@@ -6,7 +6,7 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "docs": "pnpm -parallel docs",
+    "docs": "pnpm -r docs",
     "missing": "pnpm -parallel missing",
     "prettier": "prettier --write .",
     "lint": "eslint . --max-warnings=0",

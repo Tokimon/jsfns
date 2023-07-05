@@ -43,7 +43,7 @@ async function build() {
   const docs = buildTypedoc(packagePath) as unknown as Kind_Project;
 
   const modules = prepareModules(docs.children);
-  const { name: npmName, version } = pkgJson;
+  const { version } = pkgJson;
   const majorVersion = version.replace(/\d+$/, 'x');
   const versionPath = join(docsPath, packageName, majorVersion);
 
@@ -61,7 +61,7 @@ async function build() {
     data: {
       modules,
       packageName,
-      title: `${npmName} v.${majorVersion}`,
+      version,
       customTypes: getCustomTypesArray(),
       highlightCss,
       js,
