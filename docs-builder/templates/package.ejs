@@ -2,6 +2,10 @@
 <html lang="en">
   <head>
     <meta http-equiv="Refresh" content="0; ./<%= version %>" />
+    <%- await include('assets/base-css'); %>
+    <script>
+      location.assign(`./${location.pathname.split('/').pop()}/<%= version %>${location.hash}`);
+    </script>
   </head>
 
   <body>
