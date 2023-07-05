@@ -2,6 +2,7 @@
 import { mkdir } from 'node:fs/promises';
 import { dirname, join } from 'path';
 import { buildJS } from './building/buildJS';
+import { buildReadme } from './building/buildReadme';
 import { buildTypedoc } from './building/buildTypedoc';
 import { getHighlighCss } from './building/getHighlighCss';
 import { getPackageVersions } from './building/getPackageVersions';
@@ -94,8 +95,12 @@ async function build() {
   await Promise.all(indexes.map(renderIndex));
 
   console.log(
-    `${color.green('🗸')} ${color.blue(packageName + '/')} and ${color.blue('/')} ${color.yellow('index.html')} successfully generated`
+    `${color.green('🗸')} ${color.blue(packageName + '/')} and ${color.blue('./')} ${color.yellow('index.html')} successfully generated`
   );
+
+  await buildReadme({ path: packagePath, packageName, modules });
+
+  console.log(`${color.green('🗸')} ${color.blue(packageName + '/')}${color.yellow('README.md')} successfully generated`);
 }
 
 build().then(() => {

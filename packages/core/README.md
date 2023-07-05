@@ -5,6 +5,12 @@
 This is a collection of simple, no dependency, JavaScript snippets with the aim
 of making it easier to work with vanilla JavaScript.
 
+## Methods
+
+[camelCase](https://tokimon.github.io/jsfns/core#camelCase), [capitalize](https://tokimon.github.io/jsfns/core#capitalize), [chunkString](https://tokimon.github.io/jsfns/core#chunkString), [formatCurrency](https://tokimon.github.io/jsfns/core#formatCurrency), [formatNumber](https://tokimon.github.io/jsfns/core#formatNumber), [hash](https://tokimon.github.io/jsfns/core#hash), [hexToNumber](https://tokimon.github.io/jsfns/core#hexToNumber), [hexToRGB](https://tokimon.github.io/jsfns/core#hexToRGB), [isBoolean](https://tokimon.github.io/jsfns/core#isBoolean), [isFunction](https://tokimon.github.io/jsfns/core#isFunction), [isGenerator](https://tokimon.github.io/jsfns/core#isGenerator), [isNumber](https://tokimon.github.io/jsfns/core#isNumber), [isNumeric](https://tokimon.github.io/jsfns/core#isNumeric), [isObject](https://tokimon.github.io/jsfns/core#isObject), [isString](https://tokimon.github.io/jsfns/core#isString), [kebabCase](https://tokimon.github.io/jsfns/core#kebabCase), [leadingZero](https://tokimon.github.io/jsfns/core#leadingZero), [limitDecimals](https://tokimon.github.io/jsfns/core#limitDecimals), [minMax](https://tokimon.github.io/jsfns/core#minMax), [numberToHex](https://tokimon.github.io/jsfns/core#numberToHex), [pascalCase](https://tokimon.github.io/jsfns/core#pascalCase), [phrasify](https://tokimon.github.io/jsfns/core#phrasify), [popIndex](https://tokimon.github.io/jsfns/core#popIndex), [promisefy](https://tokimon.github.io/jsfns/core#promisefy), [randomCryptoId](https://tokimon.github.io/jsfns/core#randomCryptoId), [randomHexColor](https://tokimon.github.io/jsfns/core#randomHexColor), [randomId](https://tokimon.github.io/jsfns/core#randomId), [randomInt](https://tokimon.github.io/jsfns/core#randomInt), [randomRGBColor](https://tokimon.github.io/jsfns/core#randomRGBColor), [RGBToHex](https://tokimon.github.io/jsfns/core#RGBToHex), [safeDateChange](https://tokimon.github.io/jsfns/core#safeDateChange), [snakeCase](https://tokimon.github.io/jsfns/core#snakeCase), [truncate](https://tokimon.github.io/jsfns/core#truncate), [uniqueArray](https://tokimon.github.io/jsfns/core#uniqueArray)
+
+## Files to fit your needs
+
 All methods are written in TypeScript and converted into various JS versions suiting your use case:
 
 - `.js`: ES 6 syntax.
@@ -26,10 +32,6 @@ majority of the methods will be supported at one point. Also, with compilers lik
 polyfills can be included automatically in the build process, making it simple to ensure full support.
 Therefore it is more future proof and clutter free to leave fallbacks and polyfills out of
 the methods and just focus on core functionality.
-
-**Note**  
-You will have to add these snippets as part of your transpilation if you wish to have
-enable auto detection of polyfills.
 
 ## Installation
 

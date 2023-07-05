@@ -14,7 +14,7 @@ type ModuleFunction = {
   typesMarkdown: string; // markdown html
 };
 
-type ModuleEntry = {
+export type ModuleEntry = {
   name: string;
   functions: ModuleFunction[];
 };

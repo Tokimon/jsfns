@@ -11,3 +11,4 @@ src
 .travis.yml
 tsconfig.*
 jest.*.js
+readme/*
