@@ -1,18 +1,18 @@
 # @jsfns/core
 
-## [@jsfns/core Docs](https://tokimon.github.io/jsfns/core)
+<a href="https://tokimon.github.io/jsfns/core" target="__blank" style="font-size: 50px; display: block; text-align: center;">@jsfns/core documentation</a>
 
 This is a collection of simple, no dependency, JavaScript snippets with the aim
 of making it easier to work with vanilla JavaScript.
 
-All helpers are written in TypeScript and converted into various JS versions suiting your use case:
+All methods are written in TypeScript and converted into various JS versions suiting your use case:
 
 - `.js`: ES 6 syntax.
 - `.mjs`: ES 2022 syntax
 - `.cjs`: ES 6 syntax + CommonJS `require` imports
 - `.d.ts`: TypeScript description files
 
-## Browser specific helpers
+## [@jsfns/web](https://tokimon.github.io/jsfns/web)
 
 Searching for browser specific methods? Check out: [@jsfns/web](https://tokimon.github.io/jsfns/web)
 
@@ -63,4 +63,4 @@ camelCase('Camel cased phrase'); // camelCasedPhrase
 
 If you have any questions, find any bugs or have ideas for missing functionality you would like to see included, feel
 free to add an issue in the [issue list](https://github.com/Tokimon/jsfns/issues) or perhaps do a
-[Pull Request](https://github.com/Tokimon/jsfns/pulls) of a great snippet you created.
+[Pull Request](https://github.com/Tokimon/jsfns/pulls) of a great method you created.
