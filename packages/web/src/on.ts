@@ -15,9 +15,9 @@ export type OnOptions = AddEventListenerOptions & {
   delegate?: string;
 };
 
-export type argsWithoutTarget = [eventNames: string | string[], handler: EventListenerOrEventListenerObject, options?: OnOptions];
+export type ArgsWithoutTarget = [eventNames: string | string[], handler: EventListenerOrEventListenerObject, options?: OnOptions];
 
-export type argsWithTarget = [
+export type ArgsWithTarget = [
   elm: EventTarget,
   eventNames: string | string[],
   handler: EventListenerOrEventListenerObject,
@@ -105,7 +105,7 @@ function onOptionsHandler(elm: EventTarget, handler: EventListenerOrEventListene
  * // and delegate have been fulfilled).
  * ```
  */
-function on<T extends argsWithTarget>(...args: T): () => T[0];
+function on<T extends ArgsWithTarget>(...args: T): () => T[0];
 
 /**
  * Bind an event handler for one or more event names on `document`.
@@ -154,16 +154,16 @@ function on<T extends argsWithTarget>(...args: T): () => T[0];
  * // and delegate have been fulfilled).
  * ```
  */
-function on(...args: argsWithoutTarget): () => Document;
+function on(...args: ArgsWithoutTarget): () => Document;
 
-function on<T extends argsWithTarget | argsWithoutTarget>(...args: T): () => T[0] | Document {
+function on<T extends ArgsWithTarget | ArgsWithoutTarget>(...args: T): () => T[0] | Document {
   if (!isEventTarget(args[0])) {
-    const [eventNames, handler, options] = args as argsWithoutTarget;
+    const [eventNames, handler, options] = args as ArgsWithoutTarget;
     return on(document, eventNames, handler, options);
   }
 
   // eslint-disable-next-line prefer-const
-  let [elm, eventNames, handler, options] = args as argsWithTarget;
+  let [elm, eventNames, handler, options] = args as ArgsWithTarget;
   if (!Array.isArray(eventNames)) eventNames = [eventNames];
 
   if (options) [handler, options] = onOptionsHandler(elm, handler, options);

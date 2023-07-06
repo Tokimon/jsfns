@@ -4,7 +4,7 @@ import { inDOM } from './inDOM';
 /**
  * Test if a given DOM element is technically hidden
  *
- * - Not is DOM
+ * - Not in DOM
  * - Collapsed (no width and height)
  * - display: none
  * - visibility: hidden.

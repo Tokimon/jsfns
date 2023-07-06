@@ -1,13 +1,13 @@
 import { isEventTarget } from './isEventTarget';
 
-export type argsWithTarget = [
+export type ArgsWithTarget = [
   elm: EventTarget,
   eventNames: string | string[],
   handler: EventListenerOrEventListenerObject,
   options?: AddEventListenerOptions
 ];
 
-export type argsWithoutTarget = [
+export type ArgsWithoutTarget = [
   eventNames: string | string[],
   handler: EventListenerOrEventListenerObject,
   options?: AddEventListenerOptions
@@ -30,7 +30,7 @@ export type argsWithoutTarget = [
  * off(MyElm, ['mouseenter', 'touchstart'], () => {})
  * ```
  */
-function off<T extends argsWithTarget>(...args: T): T[0];
+function off<T extends ArgsWithTarget>(...args: T): T[0];
 
 /**
  * Bind an event handler for one or more event names to `document`
@@ -48,16 +48,16 @@ function off<T extends argsWithTarget>(...args: T): T[0];
  * off(['mouseenter', 'touchstart'], () => {})
  * ```
  */
-function off(...args: argsWithoutTarget): Document;
+function off(...args: ArgsWithoutTarget): Document;
 
-function off<T extends argsWithTarget | argsWithoutTarget>(...args: T): T[0] | Document {
+function off<T extends ArgsWithTarget | ArgsWithoutTarget>(...args: T): T[0] | Document {
   if (!isEventTarget(args[0])) {
-    const [eventNames, handler, options] = args as argsWithoutTarget;
+    const [eventNames, handler, options] = args as ArgsWithoutTarget;
     return off(document, eventNames, handler, options);
   }
 
   // eslint-disable-next-line prefer-const
-  let [elm, eventNames, handler, options] = args as argsWithTarget;
+  let [elm, eventNames, handler, options] = args as ArgsWithTarget;
   if (!Array.isArray(eventNames)) eventNames = [eventNames];
 
   eventNames.forEach((evt) => elm.removeEventListener(evt, handler, options));

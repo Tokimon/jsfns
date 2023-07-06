@@ -1,8 +1,8 @@
 import { isString } from '@jsfns/core/isString';
 import { uniqueNodeList } from './uniqueNodeList';
 
-export type argsWithoutTarget = [tagNames: string | string[]];
-export type argsWithTarget = [elm: Document | Element, tagNames: string | string[]];
+export type ArgsWithoutTarget = [tagNames: string | string[]];
+export type ArgsWithTarget = [elm: Document | Element, tagNames: string | string[]];
 
 /**
  * Find elements by given tag name
@@ -34,11 +34,11 @@ function findByTagName(tagNames: string | string[]): Element[];
  */
 function findByTagName(elm: Document | Element, tagNames?: string | string[]): Element[];
 
-function findByTagName<T extends argsWithTarget | argsWithoutTarget>(...args: T): Element[] {
+function findByTagName<T extends ArgsWithTarget | ArgsWithoutTarget>(...args: T): Element[] {
   if (isString(args[0]) || Array.isArray(args[0])) return findByTagName(document, args[0]);
 
   // eslint-disable-next-line prefer-const
-  let [elm, tagNames] = args as argsWithTarget;
+  let [elm, tagNames] = args as ArgsWithTarget;
   if (!Array.isArray(tagNames)) tagNames = [tagNames];
 
   return uniqueNodeList(...tagNames.map((cn) => elm.getElementsByTagName(cn)));

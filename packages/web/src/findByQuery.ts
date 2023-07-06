@@ -1,8 +1,8 @@
 import { isString } from '@jsfns/core/isString';
 import { uniqueNodeList } from './uniqueNodeList';
 
-export type argsWithoutTarget = [queries: string | string[]];
-export type argsWithTarget = [elm: Document | Element, queries: string | string[]];
+export type ArgsWithoutTarget = [queries: string | string[]];
+export type ArgsWithTarget = [elm: Document | Element, queries: string | string[]];
 
 /**
  * Find all elements matching a given CSS selector from a given element
@@ -18,7 +18,7 @@ export type argsWithTarget = [elm: Document | Element, queries: string | string[
  * findByQuery(MyElm, 'span.my-class') // --> All "span.my-class" elements that are descendants of MyElm
  * ```
  */
-function findByQuery<T extends argsWithTarget>(...args: T): Element[];
+function findByQuery<T extends ArgsWithTarget>(...args: T): Element[];
 
 /**
  * Find all elements matching a given CSS selector
@@ -33,13 +33,13 @@ function findByQuery<T extends argsWithTarget>(...args: T): Element[];
  * findByQuery('span.my-class') // --> All "span.my-class" elements that are descendants of document
  * ```
  */
-function findByQuery<T extends argsWithoutTarget>(...args: T): Element[];
+function findByQuery<T extends ArgsWithoutTarget>(...args: T): Element[];
 
-function findByQuery<T extends argsWithTarget | argsWithoutTarget>(...args: T): Element[] {
+function findByQuery<T extends ArgsWithTarget | ArgsWithoutTarget>(...args: T): Element[] {
   if (isString(args[0]) || Array.isArray(args[0])) return findByQuery(document, args[0]);
 
   // eslint-disable-next-line prefer-const
-  let [elm, queries] = args as argsWithTarget;
+  let [elm, queries] = args as ArgsWithTarget;
   if (Array.isArray(queries)) queries = queries.join(',');
 
   return uniqueNodeList(elm.querySelectorAll(queries));
