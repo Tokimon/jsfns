@@ -22,7 +22,7 @@ export type ScrollInfo = {
  * ```ts
  * scrollInfo(window)
  * scrollInfo(document)
- * scrollInfo(MyElmO)
+ * scrollInfo(MyElm)
  * ```
  */
 export function scrollInfo(elm: Element | GeneralWindow | Document = window): ScrollInfo {

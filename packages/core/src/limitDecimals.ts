@@ -12,8 +12,8 @@ function minDecimals(num: number, decimals: number): string {
 }
 
 /**
- * Limit decimals of a floating number to specified length. The length depends on `decimals`
- * which can have the following settings (n = integer):
+ * Limit decimals of a floating number to specified length. The length depends on `decimalCount`
+ * which can have the following settings (eg. 2 or ">3" or "<5"):
  *
  * Char | Description
  * ----- | -------------

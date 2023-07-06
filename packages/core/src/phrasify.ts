@@ -20,18 +20,14 @@ const defaultSettings: PhrasifySettings = { numbers: false };
  * ```
  */
 export function phrasify(input: string, settings?: PhrasifySettings): string {
-  if (!input) {
-    return '';
-  }
+  if (!input) return '';
 
   settings = { ...defaultSettings, ...settings };
 
   // Create space before uppercase letters (if it is an abbreviation
   // - more than 1 letter - create space after as well)
   input = `${input}`.replace(/([A-Z])([a-z])/g, (m) => ` ${m}`);
-  if (settings.numbers) {
-    input = input.replace(/(\d+)/g, ' $1 ');
-  }
+  if (settings.numbers) input = input.replace(/(\d+)/g, ' $1 ');
 
   // Convert any non letter/number characters into a single space
   // and remove trailing spaces
