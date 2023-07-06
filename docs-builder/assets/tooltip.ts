@@ -9,17 +9,23 @@ import { on } from '@jsfns/web/on';
 import { outerSize } from '@jsfns/web/outerSize';
 import { position } from '@jsfns/web/position';
 import { removeClass } from '@jsfns/web/removeClass';
+import viewport from '@jsfns/web/viewport';
 
 function positionTooltip(elm: HTMLElement, tooltip: HTMLElement) {
-  const vpSize = innerSize(document);
+  const vp = viewport();
+  if (!vp) return;
+
+  const vpSize = innerSize(vp);
   const { top, bottom, left } = position(elm);
   const elmWidth = outerSize(elm).width;
   const tpSize = outerSize(tooltip);
 
-  let tooltipTop = bottom;
+  let tooltipTop = bottom + 10;
   let tooltipLeft = Math.round(left + elmWidth / 2 - tpSize.width / 2);
 
-  if (bottom + tpSize.height > vpSize.height) tooltipTop = top - tpSize.height;
+  if (bottom + tpSize.height - vp.scrollTop > vpSize.height) {
+    tooltipTop = top - tpSize.height - 10;
+  }
 
   const tooltipMaxRight = tooltipLeft + tpSize.width + 15;
   if (tooltipMaxRight > vpSize.width) tooltipLeft -= tooltipMaxRight - vpSize.width;
@@ -47,7 +53,7 @@ export function initTooltips() {
         positionTooltip(elm, tooltip);
       }
     },
-    { delegate: '[data-custom-type]' }
+    { delegate: '[data-custom-type]', capture: true }
   );
 
   on(
@@ -60,6 +66,6 @@ export function initTooltips() {
 
       if (tooltip) removeClass(tooltip, 'show');
     },
-    { delegate: '[data-custom-type]' }
+    { delegate: '[data-custom-type]', capture: true }
   );
 }

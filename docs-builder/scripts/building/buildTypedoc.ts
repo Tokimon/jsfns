@@ -11,7 +11,7 @@ export function buildTypedoc(packagePath: string) {
     entryPointStrategy: 'expand',
     readme: 'none',
     tsconfig: path.join(packagePath, 'tsconfig.js.json'),
-    exclude: ['**/index.*', '**/types.d.ts'],
+    exclude: ['**/index.*'],
     entryPoints: [packageSrcPath],
   });
 

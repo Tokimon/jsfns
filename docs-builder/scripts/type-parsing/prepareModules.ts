@@ -25,6 +25,8 @@ export function prepareModules(modules: Kind_Module[]) {
   for (const module of modules) {
     findCustomTypes(module);
 
+    if (module.name === 'types') continue;
+
     const functions = getFunctions(module).flatMap((func) => {
       return func.signatures.map((signature): ModuleFunction => {
         const types: string[] = [];

@@ -51,6 +51,10 @@
     color: hotpink;
   }
 
+  [data-custom-type] {
+    cursor: default;
+  }
+
   .page {
     --header-hight: 50px;
 
@@ -91,7 +95,7 @@
     padding: 5px 10px;
     border: 1px solid #444;
     transition: background-color 0.2s;
-    border-radius: 2px;
+    border-radius: 4px;
   }
 
   .page-title a:hover,
@@ -182,7 +186,7 @@
 
   .menu-list-item.current a {
     background: rgba(122, 150, 174, 0.25);
-    box-shadow: inset 5px 0 0 cornflowerblue;
+    box-shadow: inset 5px 0 0 #58b29a;
     padding-left: 20px;
   }
 
@@ -217,7 +221,7 @@
 
   .module:target .module-content,
   .module:target .module-content:hover {
-    border-color: cornflowerblue;
+    border-color: #58b29a;
   }
 
   .module-content h1 {
@@ -297,7 +301,7 @@
     box-shadow: #1a1f23 0 4px 8px -2px;
     overflow: hidden;
     border: 1px solid #333;
-    z-index: -1;
+    z-index: 99;
     position: absolute;
   }
 
