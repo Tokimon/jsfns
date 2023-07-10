@@ -11,6 +11,7 @@ import { isString } from './isString';
  *
  * @example
  * ```ts
+ * hexToRGB('#fff'); // --> [255, 255, 255]
  * hexToRGB('#2fd466'); // --> [47, 212, 102]
  *
  * // And with alpha channel
@@ -22,7 +23,7 @@ export function hexToRGB(hex: string): number[] {
 
   if (hex[0] === '#') hex = hex.slice(1);
 
-  const rgb = chunkString(hex, hex.length <= 4 ? 1 : 2).map((c) => hexToNumber(c.length > 1 ? c : `${c}${c}`));
+  const rgb = chunkString(hex, { size: hex.length <= 4 ? 1 : 2 }).map((c) => hexToNumber(c.length > 1 ? c : `${c}${c}`));
 
   if (rgb.length > 3) rgb[3] = parseFloat((rgb[3] / 255).toFixed(2));
 

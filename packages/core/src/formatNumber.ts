@@ -1,3 +1,4 @@
+import { chunkString } from './chunkString';
 import { limitDecimals } from './limitDecimals';
 
 export type FormatNumberSettings = {
@@ -40,7 +41,7 @@ export function formatNumber(num: number, settings?: FormatNumberSettings): stri
   const parts = limitDecimals(num, decimalCount).split('.');
 
   // Insert separator
-  parts[0] = parts[0].replace(/(\d)(?=(\d{3})+$)/g, `$1${thousand ?? ''}`);
+  parts[0] = chunkString(parts[0], { size: 3, reverse: true }).join(thousand);
 
   // Join with decimal delimiter
   return parts.join(decimal);
