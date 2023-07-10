@@ -30,7 +30,12 @@ export type ArgsWithoutTarget = [
  * off(MyElm, ['mouseenter', 'touchstart'], () => {})
  * ```
  */
-function off<T extends ArgsWithTarget>(...args: T): T[0];
+function off(
+  elm: EventTarget,
+  eventNames: string | string[],
+  handler: EventListenerOrEventListenerObject,
+  options?: AddEventListenerOptions
+): typeof elm;
 
 /**
  * Bind an event handler for one or more event names to `document`
@@ -48,7 +53,7 @@ function off<T extends ArgsWithTarget>(...args: T): T[0];
  * off(['mouseenter', 'touchstart'], () => {})
  * ```
  */
-function off(...args: ArgsWithoutTarget): Document;
+function off(eventNames: string | string[], handler: EventListenerOrEventListenerObject, options?: AddEventListenerOptions): Document;
 
 function off<T extends ArgsWithTarget | ArgsWithoutTarget>(...args: T): T[0] | Document {
   if (!isEventTarget(args[0])) {

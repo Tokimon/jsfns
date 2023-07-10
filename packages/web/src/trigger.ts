@@ -27,7 +27,7 @@ export type ArgsWithTarget = [elm: EventTarget, eventNames: string | string[], d
  * trigger(MyElm, 'my-event', { SomeEntry: true })
  * ```
  */
-function trigger<T extends ArgsWithTarget>(...args: T): EventTarget;
+function trigger(elm: EventTarget, eventNames: string | string[], data?: unknown): EventTarget;
 
 /**
  * Trigger one or more events on Document.
@@ -43,7 +43,7 @@ function trigger<T extends ArgsWithTarget>(...args: T): EventTarget;
  * trigger('my-event', { SomeEntry: true })
  * ```
  */
-function trigger(...args: ArgsWithoutTarget): EventTarget;
+function trigger(eventNames: string | string[], data?: unknown): EventTarget;
 
 function trigger<T extends ArgsWithTarget | ArgsWithoutTarget>(...args: T): EventTarget {
   if (!isEventTarget(args[0])) {

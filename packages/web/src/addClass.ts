@@ -12,7 +12,7 @@
  * addClass(MyNode, ['active', 'open']) // --> <div class="active open" />
  * ```
  */
-export function addClass<T extends Element>(elm: T | null, classNames: string | string[]): T | null {
+export function addClass(elm: Element | null, classNames: string | string[]): typeof elm {
   if (!elm) return null;
 
   if (!Array.isArray(classNames)) classNames = [classNames];

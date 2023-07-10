@@ -105,7 +105,12 @@ function onOptionsHandler(elm: EventTarget, handler: EventListenerOrEventListene
  * // and delegate have been fulfilled).
  * ```
  */
-function on<T extends ArgsWithTarget>(...args: T): () => T[0];
+function on(
+  elm: EventTarget,
+  eventNames: string | string[],
+  handler: EventListenerOrEventListenerObject,
+  options?: OnOptions
+): () => typeof elm;
 
 /**
  * Bind an event handler for one or more event names on `document`.
@@ -154,7 +159,7 @@ function on<T extends ArgsWithTarget>(...args: T): () => T[0];
  * // and delegate have been fulfilled).
  * ```
  */
-function on(...args: ArgsWithoutTarget): () => Document;
+function on(eventNames: string | string[], handler: EventListenerOrEventListenerObject, options?: OnOptions): () => Document;
 
 function on<T extends ArgsWithTarget | ArgsWithoutTarget>(...args: T): () => T[0] | Document {
   if (!isEventTarget(args[0])) {

@@ -1,5 +1,5 @@
 import { type Kind_Module } from '~docs-builder/types';
-import { buildFunction } from './buildFunction';
+import { buildSignature } from './buildSignature';
 import { buildSummary } from './buildSummary';
 import { findCustomTypes, getCustomTypes } from './findCustomTypes';
 import { getFunctions } from './getFunctions';
@@ -43,7 +43,7 @@ export function prepareModules(modules: Kind_Module[]) {
         }
 
         return {
-          definition: TSCodeMarkdown(buildFunction(typeString, func.name, signature)),
+          definition: TSCodeMarkdown(buildSignature(typeString, func.name, signature)),
           comment: markdown(buildSummary(comment?.summary)),
           examples,
           remarks,

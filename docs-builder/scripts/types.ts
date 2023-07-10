@@ -56,7 +56,7 @@ export type Type_Tuple = {
 
 export type Type_Literal = {
   type: 'literal';
-  value: string;
+  value: string | null;
 };
 
 export type Type_Intrinsic = {
@@ -97,6 +97,12 @@ export type Type_Reference = {
   typeArguments?: Basic_Types[];
   name: string;
   package: string;
+};
+
+export type Type_TypeOperator = {
+  type: 'typeOperator';
+  operator: string;
+  target?: Basic_Types[];
 };
 
 export type Type_Reflection = {
@@ -148,6 +154,7 @@ export type Kind_Property = BaseProps & {
 export type Kind_Signature = BaseProps & {
   kind: ReflectionKind.CallSignature;
   parameters?: Kind_Param[];
+  typeParameter?: Kind_TypeParam[];
   type: Basic_Types;
 };
 
@@ -155,6 +162,11 @@ export type Kind_Param = BaseProps & {
   kind: ReflectionKind.Parameter;
   type: Basic_Types;
   defaultValue?: string;
+};
+
+export type Kind_TypeParam = BaseProps & {
+  kind: ReflectionKind.TypeParameter;
+  type?: Basic_Types;
 };
 
 export type Kind_Literal = BaseProps & {

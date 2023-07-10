@@ -18,7 +18,7 @@ export type ArgsWithTarget = [elm: Document | Element, queries: string | string[
  * findByQuery(MyElm, 'span.my-class') // --> All "span.my-class" elements that are descendants of MyElm
  * ```
  */
-function findByQuery<T extends ArgsWithTarget>(...args: T): Element[];
+function findByQuery(elm: Document | Element, queries: string | string[]): Element[];
 
 /**
  * Find all elements matching a given CSS selector
@@ -33,7 +33,7 @@ function findByQuery<T extends ArgsWithTarget>(...args: T): Element[];
  * findByQuery('span.my-class') // --> All "span.my-class" elements that are descendants of document
  * ```
  */
-function findByQuery<T extends ArgsWithoutTarget>(...args: T): Element[];
+function findByQuery(queries: string | string[]): Element[];
 
 function findByQuery<T extends ArgsWithTarget | ArgsWithoutTarget>(...args: T): Element[] {
   if (isString(args[0]) || Array.isArray(args[0])) return findByQuery(document, args[0]);
