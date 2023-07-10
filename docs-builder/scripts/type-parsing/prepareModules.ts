@@ -30,7 +30,7 @@ export function prepareModules(modules: Kind_Module[]) {
     const functions = getFunctions(module).flatMap((func) => {
       return func.signatures.map((signature): ModuleFunction => {
         const types: string[] = [];
-        const typeString = createTypeString(func.name, types);
+        const typeString = createTypeString(types);
 
         const { comment } = signature;
 
