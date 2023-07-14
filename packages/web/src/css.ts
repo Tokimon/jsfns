@@ -128,7 +128,7 @@ function css(elm: HTMLElement, styles: CSSStyleProperties): CSSStyleDeclaration;
  * css(MyElm, 'fontSize', 30) // --> All computed styles of MyElm
  * ```
  */
-function css(elm: HTMLElement, property: string, value: NonNullable<CSSStyleProperties[string]>): CSSStyleDeclaration;
+function css(elm: HTMLElement, property: string, value: CSSStyleProperties[string]): CSSStyleDeclaration;
 
 function css(
   elm: HTMLElement,
