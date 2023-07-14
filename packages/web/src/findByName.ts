@@ -13,9 +13,9 @@ import { uniqueNodeList } from './uniqueNodeList';
  * findByName(['my-element-name', 'my-second-name']) // --> all "[name=my-element-name]" and "[name=my-second-name]" elements
  * ```
  */
-export const findByName = (names: string | string[]): Element[] => {
+export const findByName = <T extends HTMLElement>(names: string | string[]): T[] => {
   if (!Array.isArray(names)) names = [names];
-  return uniqueNodeList(...names.map((n) => document.getElementsByName(n)));
+  return uniqueNodeList<T>(...names.map((n) => document.getElementsByName(n) as NodeListOf<T>));
 };
 
 export default findByName;

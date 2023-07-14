@@ -13,7 +13,7 @@ import { uniqueNodeList } from './uniqueNodeList';
  * findById('non-existing') // --> null
  * ```
  */
-function findById(ids: string): HTMLElement | null;
+function findById<T extends HTMLElement>(id: string): T | null;
 
 /**
  * Find a DOM elements from a list of IDs
@@ -28,11 +28,11 @@ function findById(ids: string): HTMLElement | null;
  * findById(['non-existing', 'non-existing-2']) // --> []
  * ```
  */
-function findById(ids: string[]): HTMLElement[];
+function findById<T extends HTMLElement>(ids: string[]): T[];
 
-function findById(ids: string | string[]): HTMLElement | HTMLElement[] | null {
-  if (!Array.isArray(ids)) return document.getElementById(ids);
-  return uniqueNodeList(...ids.map((id) => document.getElementById(id))) as HTMLElement[];
+function findById<T extends HTMLElement>(ids: string | string[]): T | T[] | null {
+  const byId = (id: string) => document.getElementById(id) as T | null;
+  return !Array.isArray(ids) ? byId(ids) : uniqueNodeList<T>(...ids.map(byId));
 }
 
 export { findById };

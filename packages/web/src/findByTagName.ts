@@ -1,8 +1,8 @@
 import { isString } from '@jsfns/core/isString';
+import { type NotFirst } from './types';
 import { uniqueNodeList } from './uniqueNodeList';
 
-export type ArgsWithoutTarget = [tagNames: string | string[]];
-export type ArgsWithTarget = [elm: Document | Element, tagNames: string | string[]];
+type Args = [elm: Document | HTMLElement, tagNames: string | string[]];
 
 /**
  * Find elements by given tag name
@@ -17,7 +17,7 @@ export type ArgsWithTarget = [elm: Document | Element, tagNames: string | string
  * findByTagName('div') // --> All <div> elements
  * ```
  */
-function findByTagName(tagNames: string | string[]): Element[];
+function findByTagName<T extends HTMLElement>(tagNames: Args[1]): T[];
 
 /**
  * Find elements by given tag name
@@ -32,16 +32,16 @@ function findByTagName(tagNames: string | string[]): Element[];
  * findByTagName(MyElm, 'div') // --> All <div> elements that are descendants of MyElm
  * ```
  */
-function findByTagName(elm: Document | Element, tagNames?: string | string[]): Element[];
+function findByTagName<T extends HTMLElement>(elm: Args[0], tagNames: Args[1]): T[];
 
-function findByTagName<T extends ArgsWithTarget | ArgsWithoutTarget>(...args: T): Element[] {
+function findByTagName<T extends HTMLElement>(...args: Args | NotFirst<Args>): T[] {
   if (isString(args[0]) || Array.isArray(args[0])) return findByTagName(document, args[0]);
 
   // eslint-disable-next-line prefer-const
-  let [elm, tagNames] = args as ArgsWithTarget;
+  let [elm, tagNames] = args as Args;
   if (!Array.isArray(tagNames)) tagNames = [tagNames];
 
-  return uniqueNodeList(...tagNames.map((cn) => elm.getElementsByTagName(cn)));
+  return uniqueNodeList<T>(...tagNames.map((cn) => elm.getElementsByTagName(cn) as HTMLCollectionOf<T>));
 }
 
 export { findByTagName };

@@ -1,8 +1,8 @@
 import { isString } from '@jsfns/core/isString';
+import { type NotFirst } from './types';
 import { uniqueNodeList } from './uniqueNodeList';
 
-export type ArgsWithoutTarget = [queries: string | string[]];
-export type ArgsWithTarget = [elm: Document | Element, queries: string | string[]];
+type Args = [elm: Document | HTMLElement, queries: string | string[]];
 
 /**
  * Find all elements matching a given CSS selector from a given element
@@ -18,7 +18,7 @@ export type ArgsWithTarget = [elm: Document | Element, queries: string | string[
  * findByQuery(MyElm, 'span.my-class') // --> All "span.my-class" elements that are descendants of MyElm
  * ```
  */
-function findByQuery(elm: Document | Element, queries: string | string[]): Element[];
+function findByQuery<T extends HTMLElement>(elm: Args[0], queries: Args[1]): T[];
 
 /**
  * Find all elements matching a given CSS selector
@@ -33,17 +33,19 @@ function findByQuery(elm: Document | Element, queries: string | string[]): Eleme
  * findByQuery('span.my-class') // --> All "span.my-class" elements that are descendants of document
  * ```
  */
-function findByQuery(queries: string | string[]): Element[];
+function findByQuery<T extends HTMLElement>(queries: Args[1]): T[];
 
-function findByQuery<T extends ArgsWithTarget | ArgsWithoutTarget>(...args: T): Element[] {
+function findByQuery<T extends HTMLElement>(...args: Args | NotFirst<Args>) {
   if (isString(args[0]) || Array.isArray(args[0])) return findByQuery(document, args[0]);
 
   // eslint-disable-next-line prefer-const
-  let [elm, queries] = args as ArgsWithTarget;
+  let [elm, queries] = args as Args;
   if (Array.isArray(queries)) queries = queries.join(',');
 
-  return uniqueNodeList(elm.querySelectorAll(queries));
+  return uniqueNodeList<T>(elm.querySelectorAll<T>(queries));
 }
+
+export type OneArgs = [elm: Document | HTMLElement, query: string];
 
 /**
  * Find first elements matching a given CSS selector from a given element
@@ -59,7 +61,7 @@ function findByQuery<T extends ArgsWithTarget | ArgsWithoutTarget>(...args: T): 
  * findOneByQuery(MyElm, 'span.my-class') // --> First "span.my-class" elements that are descendants of MyElm
  * ```
  */
-function findOneByQuery(elm: Document | Element, query: string): Element | null;
+function findOneByQuery<T extends HTMLElement>(elm: Document | HTMLElement, query: string): T | null;
 
 /**
  * Find first elements matching a given CSS selector
@@ -74,15 +76,15 @@ function findOneByQuery(elm: Document | Element, query: string): Element | null;
  * findOneByQuery('span.my-class') // --> First "span.my-class" elements that are descendants of document
  * ```
  */
-function findOneByQuery(query: string): Element | null;
+function findOneByQuery(query: string): HTMLElement | null;
 
-function findOneByQuery<T extends [elm: Document | Element, query: string] | [query: string]>(...args: T): Element | null {
+function findOneByQuery<T extends HTMLElement>(...args: OneArgs | NotFirst<OneArgs>): T | null {
   if (isString(args[0])) return findOneByQuery(document, args[0]);
 
   // eslint-disable-next-line prefer-const
-  let [elm, query] = args as [elm: Document | Element, query: string];
+  let [elm, query] = args as OneArgs;
 
-  return elm.querySelector(query);
+  return elm.querySelector<T>(query);
 }
 
 export { findByQuery, findOneByQuery };

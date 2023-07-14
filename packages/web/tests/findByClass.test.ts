@@ -40,7 +40,7 @@ describe('"findByClass"', () => {
   });
 
   describe('With defined elm', () => {
-    let elm: Element;
+    let elm: HTMLElement;
 
     beforeAll(() => {
       elm = byId('Item2');

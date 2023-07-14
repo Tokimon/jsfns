@@ -1,8 +1,8 @@
 import { isString } from '@jsfns/core/isString';
+import { type NotFirst } from './types';
 import { uniqueNodeList } from './uniqueNodeList';
 
-export type ArgsWithoutTarget = [classNames: string | string[]];
-export type ArgsWithTarget = [elm: Document | Element, classNames: string | string[]];
+type Args = [elm: Document | HTMLElement, classNames: string | string[]];
 
 /**
  * Finds DOM elements with a given class name.
@@ -19,7 +19,7 @@ export type ArgsWithTarget = [elm: Document | Element, classNames: string | stri
  * findByClass('my-id my-other-elm') // --> all ".my-elm.my-other-elm" elements
  * ```
  */
-function findByClass(classNames: string | string[]): Element[];
+function findByClass<T extends HTMLElement>(classNames: Args[1]): T[];
 
 /**
  * Finds DOM elements with a given class name from a given element.
@@ -37,16 +37,16 @@ function findByClass(classNames: string | string[]): Element[];
  * findByClass(myElm, 'my-id my-other-elm') // --> all ".my-elm.my-other-elm" elements as descendant of myElm
  * ```
  */
-function findByClass(elm: Document | Element, classNames: string | string[]): Element[];
+function findByClass<T extends HTMLElement>(elm: Args[0], classNames: Args[1]): T[];
 
-function findByClass<T extends ArgsWithTarget | ArgsWithoutTarget>(...args: T): Element[] {
+function findByClass<T extends HTMLElement>(...args: Args | NotFirst<Args>): T[] {
   if (isString(args[0]) || Array.isArray(args[0])) return findByClass(document, args[0]);
 
   // eslint-disable-next-line prefer-const
-  let [elm, classNames] = args as ArgsWithTarget;
+  let [elm, classNames] = args as Args;
   if (!Array.isArray(classNames)) classNames = [classNames];
 
-  return uniqueNodeList(...classNames.map((cn) => elm.getElementsByClassName(cn)));
+  return uniqueNodeList(...classNames.map((cn) => elm.getElementsByClassName(cn) as HTMLCollectionOf<T>));
 }
 
 export { findByClass };

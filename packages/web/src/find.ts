@@ -3,6 +3,9 @@ import { findByClass } from './findByClass';
 import { findById } from './findById';
 import { findByQuery, findOneByQuery } from './findByQuery';
 import { findByTagName } from './findByTagName';
+import { type NotFirst } from './types';
+
+type Args = [elm: Document | HTMLElement, selector: string];
 
 /**
  * Find elements by a given selector. The selector will be lightly analyzed to determine
@@ -22,7 +25,7 @@ import { findByTagName } from './findByTagName';
  * find('#my-id > .my-class + p') // Uses querySelectorAll()
  * ```
  */
-function find(selector: string): HTMLElement | Element | Element[] | null;
+function find<T extends HTMLElement>(selector: Args[1]): T | T[] | null;
 
 /**
  * Find elements by a given selector from a given element. The selector will be lightly analyzed to determine
@@ -43,37 +46,24 @@ function find(selector: string): HTMLElement | Element | Element[] | null;
  * find(myElm, '#my-id > .my-class + p') // Uses myElm.querySelectorAll()
  * ```
  */
-function find(elm: Document | Element, selector: string): HTMLElement | Element | Element[] | null;
+function find<T extends HTMLElement>(elm: Args[0], selector: Args[1]): T | T[] | null;
 
-function find(elm: Document | Element | string, selector?: string): HTMLElement | Element | Element[] | null {
-  if (isString(elm)) [elm, selector] = [document, elm];
+function find<T extends HTMLElement>(...args: Args | NotFirst<Args>): T | T[] | null {
+  if (isString(args[0])) return find(document, args[0]);
 
-  const q = selector as string;
-  const isComplex =
-    q.includes(' ') ||
-    q.includes('>') ||
-    q.includes('+') ||
-    q.includes('*') ||
-    q.includes('~') ||
-    q.includes(':') ||
-    q.includes('[') ||
-    q.includes(',');
+  const [elm, q] = args as Args;
 
-  if (!isComplex) {
-    const firstChar = q[0];
+  if (!/[ >+*~\[,:]/.test(q)) {
     const rest = q.substring(1);
-
-    const isId = firstChar === '#';
-    const isClass = firstChar === '.';
     const hasClass = rest.includes('.');
     const hasId = rest.includes('#');
 
-    if (isId) {
-      if (!hasClass) return elm === document ? findById(rest) : findOneByQuery(elm, q);
-    } else if (isClass) {
-      if (!hasId) return findByClass(elm, rest.split('.').join(' '));
+    if (q[0] === '#') {
+      if (!hasClass) return elm === document ? findById<T>(rest) : findOneByQuery<T>(elm, q);
+    } else if (q[0] === '.') {
+      if (!hasId) return findByClass<T>(elm, rest.split('.').join(' '));
     } else if (!hasId && !hasClass) {
-      return findByTagName(elm, selector);
+      return findByTagName<T>(elm, q);
     }
   }
 
