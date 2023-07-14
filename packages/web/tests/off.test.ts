@@ -1,6 +1,6 @@
 import { jest } from '@jest/globals';
-import { off } from '@jsfns/web/off';
 import type { SpyInstance } from 'jest-mock';
+import { off } from '@jsfns/web/off';
 import { bind, triggerEvent } from './assets/helpers';
 
 describe('"off"', () => {
@@ -11,8 +11,7 @@ describe('"off"', () => {
     const eventName = 'test';
     const eventNames = [1, 2, 3].map((n) => eventName + n.toString());
 
-    const _off = (...args: [string | string[], EventListenerOrEventListenerObject, EventListenerOptions?]) =>
-      elm ? off(elm, ...args) : off(...args);
+    const _off = (...args: Parameters<typeof off>) => (elm ? off(elm, ...args) : off(...args));
 
     const target = elm || document;
 

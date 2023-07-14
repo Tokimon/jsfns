@@ -132,7 +132,7 @@ describe('"on"', () => {
           const off = on(
             elm,
             eventName,
-            function (this: HTMLElement) {
+            function () {
               expect(this).toEqual(testElm);
             },
             { delegate: '#' + testID }

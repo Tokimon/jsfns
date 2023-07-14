@@ -1,16 +1,14 @@
 import { isEventTarget } from './isEventTarget';
+import { type NotFirst } from './types';
+
+type Args = [elm: EventTarget, eventNames: string | string[], data?: unknown];
 
 const customEvent = (name: string, data?: unknown) => {
   const options: CustomEventInit = { bubbles: true };
-  if (typeof data !== 'undefined') {
-    options.detail = data;
-  }
+  if (typeof data !== 'undefined') options.detail = data;
+
   return new CustomEvent(name, options);
 };
-
-export type ArgsWithoutTarget = [eventNames: string | string[], data?: unknown];
-
-export type ArgsWithTarget = [elm: EventTarget, eventNames: string | string[], data?: unknown];
 
 /**
  * Trigger one or more events on a given DOM element.
@@ -27,7 +25,7 @@ export type ArgsWithTarget = [elm: EventTarget, eventNames: string | string[], d
  * trigger(MyElm, 'my-event', { SomeEntry: true })
  * ```
  */
-function trigger(elm: EventTarget, eventNames: string | string[], data?: unknown): EventTarget;
+function trigger(elm: Args[0], eventNames: Args[1], data?: Args[2]): typeof elm;
 
 /**
  * Trigger one or more events on Document.
@@ -43,16 +41,13 @@ function trigger(elm: EventTarget, eventNames: string | string[], data?: unknown
  * trigger('my-event', { SomeEntry: true })
  * ```
  */
-function trigger(eventNames: string | string[], data?: unknown): EventTarget;
+function trigger(eventNames: Args[1], data?: Args[2]): Document;
 
-function trigger<T extends ArgsWithTarget | ArgsWithoutTarget>(...args: T): EventTarget {
-  if (!isEventTarget(args[0])) {
-    const [eventNames, data] = args;
-    return trigger(document, eventNames, data);
-  }
+function trigger(...args: Args | NotFirst<Args>): Args[0] {
+  if (!isEventTarget(args[0])) return trigger(document, ...(args as NotFirst<Args>));
 
   // eslint-disable-next-line prefer-const
-  let [elm, eventNames, data] = args as ArgsWithTarget;
+  let [elm, eventNames, data] = args as Args;
   if (!Array.isArray(eventNames)) eventNames = [eventNames];
 
   eventNames.forEach((evt: string) => elm.dispatchEvent(customEvent(evt, data)));

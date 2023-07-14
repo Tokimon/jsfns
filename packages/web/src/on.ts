@@ -1,8 +1,8 @@
-import { isFunction } from '@jsfns/core/isFunction';
 import { copyEvent } from './copyEvent';
 import { isDOMElement } from './isDOMElement';
 import { isEventTarget } from './isEventTarget';
 import { off } from './off';
+import { type EventHandler, type EventName, type NotFirst } from './types';
 
 export type OnOptions = AddEventListenerOptions & {
   /**
@@ -15,22 +15,13 @@ export type OnOptions = AddEventListenerOptions & {
   delegate?: string;
 };
 
-export type ArgsWithoutTarget = [eventNames: string | string[], handler: EventListenerOrEventListenerObject, options?: OnOptions];
+type Args<E extends EventName = EventName> = [elm: EventTarget, eventNames: E | E[], handler: EventHandler<E>, options?: OnOptions];
 
-export type ArgsWithTarget = [
-  elm: EventTarget,
-  eventNames: string | string[],
-  handler: EventListenerOrEventListenerObject,
-  options?: OnOptions
-];
-
-function onOptionsHandler(elm: EventTarget, handler: EventListenerOrEventListenerObject, options: OnOptions) {
+function onOptionsHandler(elm: EventTarget, handler: EventHandler, options: OnOptions) {
   const { when, once, delegate, ...rest } = options;
   if (!when && !delegate) return [handler, options] as const;
 
-  const orgHandler = isFunction(handler) ? handler : (handler as EventListenerObject).handleEvent.bind(handler);
-
-  const eventHandler: typeof handler = (e) => {
+  function eventHandler(this: EventTarget, e: Parameters<EventHandler>[0]) {
     if (when && when(e) !== true) return;
 
     // We don't always remove when once is defined here, as we only should
@@ -39,7 +30,7 @@ function onOptionsHandler(elm: EventTarget, handler: EventListenerOrEventListene
 
     if (!delegate) {
       if (once) remove();
-      return orgHandler(e);
+      return handler.call(this, e);
     }
 
     const { target } = e;
@@ -50,11 +41,11 @@ function onOptionsHandler(elm: EventTarget, handler: EventListenerOrEventListene
 
     if (delegateTarget) {
       if (once) remove();
-      return orgHandler.call(delegateTarget, copyEvent(e, delegateTarget));
+      return handler.call(delegateTarget, copyEvent(e, delegateTarget));
     }
-  };
+  }
 
-  return [eventHandler, rest] as [EventListener, Omit<OnOptions, 'when' | 'once' | 'delegate'>];
+  return [eventHandler, rest] as [EventHandler, Omit<OnOptions, 'when' | 'once' | 'delegate'>];
 }
 
 /**
@@ -105,12 +96,7 @@ function onOptionsHandler(elm: EventTarget, handler: EventListenerOrEventListene
  * // and delegate have been fulfilled).
  * ```
  */
-function on(
-  elm: EventTarget,
-  eventNames: string | string[],
-  handler: EventListenerOrEventListenerObject,
-  options?: OnOptions
-): () => typeof elm;
+function on<E extends EventName>(elm: Args[0], eventNames: E | E[], handler: EventHandler<E>, options?: Args[3]): () => typeof elm;
 
 /**
  * Bind an event handler for one or more event names on `document`.
@@ -159,21 +145,18 @@ function on(
  * // and delegate have been fulfilled).
  * ```
  */
-function on(eventNames: string | string[], handler: EventListenerOrEventListenerObject, options?: OnOptions): () => Document;
+function on<E extends EventName>(eventNames: E | E[], handler: EventHandler<E>, options?: Args[3]): () => Document;
 
-function on<T extends ArgsWithTarget | ArgsWithoutTarget>(...args: T): () => T[0] | Document {
-  if (!isEventTarget(args[0])) {
-    const [eventNames, handler, options] = args as ArgsWithoutTarget;
-    return on(document, eventNames, handler, options);
-  }
+function on(...args: Args | NotFirst<Args>): () => (typeof args)[0] {
+  if (!isEventTarget(args[0])) return on(document, ...(args as NotFirst<Args>));
 
   // eslint-disable-next-line prefer-const
-  let [elm, eventNames, handler, options] = args as ArgsWithTarget;
+  let [elm, eventNames, handler, options] = args as Args;
   if (!Array.isArray(eventNames)) eventNames = [eventNames];
 
   if (options) [handler, options] = onOptionsHandler(elm, handler, options);
 
-  eventNames.forEach((evt) => elm.addEventListener(evt, handler, options));
+  eventNames.forEach((evt) => elm.addEventListener(evt, handler as EventListener, options));
 
   return () => off(elm, eventNames, handler, options);
 }

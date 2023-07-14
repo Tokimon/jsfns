@@ -1,17 +1,7 @@
 import { isEventTarget } from './isEventTarget';
+import { type EventHandler, type EventName, type NotFirst } from './types';
 
-export type ArgsWithTarget = [
-  elm: EventTarget,
-  eventNames: string | string[],
-  handler: EventListenerOrEventListenerObject,
-  options?: AddEventListenerOptions
-];
-
-export type ArgsWithoutTarget = [
-  eventNames: string | string[],
-  handler: EventListenerOrEventListenerObject,
-  options?: AddEventListenerOptions
-];
+type Args = [elm: EventTarget, eventNames: EventName | EventName[], handler: EventHandler, options?: AddEventListenerOptions];
 
 /**
  * Bind an event handler for one or more event names on a given DOM element.
@@ -30,12 +20,13 @@ export type ArgsWithoutTarget = [
  * off(MyElm, ['mouseenter', 'touchstart'], () => {})
  * ```
  */
-function off(
-  elm: EventTarget,
-  eventNames: string | string[],
-  handler: EventListenerOrEventListenerObject,
-  options?: AddEventListenerOptions
-): typeof elm;
+function off<E extends EventName>(elm: Args[0], eventNames: E | E[], handler: EventHandler<E>, options?: Args[3]): typeof elm;
+// function off(
+//   elm: EventTarget,
+//   eventNames: string | string[],
+//   handler: EventListenerOrEventListenerObject,
+//   options?: AddEventListenerOptions
+// ): typeof elm;
 
 /**
  * Bind an event handler for one or more event names to `document`
@@ -53,19 +44,17 @@ function off(
  * off(['mouseenter', 'touchstart'], () => {})
  * ```
  */
-function off(eventNames: string | string[], handler: EventListenerOrEventListenerObject, options?: AddEventListenerOptions): Document;
+function off<E extends EventName>(eventNames: E | E[], handler: EventHandler<E>, options?: Args[3]): Document;
+// function off(eventNames: string | string[], handler: EventListenerOrEventListenerObject, options?: AddEventListenerOptions): Document;
 
-function off<T extends ArgsWithTarget | ArgsWithoutTarget>(...args: T): T[0] | Document {
-  if (!isEventTarget(args[0])) {
-    const [eventNames, handler, options] = args as ArgsWithoutTarget;
-    return off(document, eventNames, handler, options);
-  }
+function off(...args: Args | NotFirst<Args>): (typeof args)[0] {
+  if (!isEventTarget(args[0])) return off(document, ...(args as NotFirst<Args>));
 
   // eslint-disable-next-line prefer-const
-  let [elm, eventNames, handler, options] = args as ArgsWithTarget;
+  let [elm, eventNames, handler, options] = args as Args;
   if (!Array.isArray(eventNames)) eventNames = [eventNames];
 
-  eventNames.forEach((evt) => elm.removeEventListener(evt, handler, options));
+  eventNames.forEach((evt) => elm.removeEventListener(evt, handler as EventListener, options));
 
   return elm;
 }

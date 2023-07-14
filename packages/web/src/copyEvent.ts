@@ -11,10 +11,10 @@
  * copyEvent(SomeEvent, MyNewCurrentTargetElement)
  * ```
  */
-export const copyEvent = (event: Event, currentTarget?: EventTarget) => {
+export const copyEvent = <T extends Event>(event: T, currentTarget?: EventTarget): T => {
   const evtType = event.constructor.name as keyof Window;
   // eslint-disable-next-line @typescript-eslint/no-unsafe-call
-  const copy = new window[evtType](event.type, event) as Event;
+  const copy = new window[evtType](event.type, event) as T;
 
   Object.defineProperty(copy, 'currentTarget', {
     value: currentTarget ?? event.currentTarget,
