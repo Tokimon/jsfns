@@ -49,6 +49,14 @@
   }
 </style>
  <style>
+  :root {
+    --focus-color: #58b29a;
+    --hover-color: darkolivegreen;
+    --border-color: #444;
+    --module-bg-color: #192229;
+    --header-color: #212d36;
+  }
+
   table {
     table-layout: auto;
     border-collapse: collapse;
@@ -58,7 +66,7 @@
   table td {
     text-align: left;
     padding: 5px 10px;
-    border: 0 solid #444;
+    border: 0 solid var(--border-color);
     border-width: 0 0 1px;
 
     & + & {
@@ -120,7 +128,7 @@
     left: 0;
     right: 0;
     z-index: 99;
-    background-color: #212d36;
+    background-color: var(--header-color);
     color: white;
     padding: 0 10px;
     grid-area: header;
@@ -143,7 +151,7 @@
     color: currentColor;
     text-decoration: none;
     padding: 5px 10px;
-    border: 1px solid #444;
+    border: 1px solid var(--border-color);
     transition: background-color 0.2s;
     border-radius: 4px;
   }
@@ -151,7 +159,7 @@
   .page-title a:hover,
   .page-title a:focus,
   .page-title a.selected {
-    background: #58b29a;
+    background: var(--focus-color);
   }
 
   .page-version {
@@ -171,11 +179,21 @@
     width: 22px;
     height: 16px;
     border: 0;
-    background: linear-gradient(white, white 25%, transparent 25%, transparent);
+    background: white linear-gradient(transparent, transparent 25%, var(--header-color) 25%, var(--header-color));
     background-repeat: repeat;
     background-size: 1px 7px;
     appearance: none;
     cursor: pointer;
+    transition: background-color 0.2s;
+  }
+
+  .menu-trigger:hover {
+    background-color: var(--hover-color);
+  }
+
+  .menu-trigger:focus {
+    outline: none;
+    background-color: var(--focus-color);
   }
 
   .menu-trigger,
@@ -200,15 +218,15 @@
 
   .menu {
     grid-area: nav;
+    display: flex;
+    flex-direction: column;
     position: fixed;
     z-index: 98;
     width: 300px;
     top: var(--header-hight);
     bottom: 0;
     left: 0;
-    background: #192229;
-    overflow-y: auto;
-    overflow-x: hidden;
+    background: var(--module-bg-color);
     translate: -100% 0;
     transition: translate 0.3s ease;
     font-size: 18px;
@@ -224,6 +242,8 @@
     list-style: none;
     padding: 10px 0;
     box-shadow: inset 0 0 0 transparent;
+    overflow-y: auto;
+    overflow-x: hidden;
   }
 
   .menu-list-item a {
@@ -236,7 +256,7 @@
 
   .menu-list-item.current a {
     background: rgba(122, 150, 174, 0.25);
-    box-shadow: inset 5px 0 0 #58b29a;
+    box-shadow: inset 5px 0 0 var(--focus-color);
     padding-left: 20px;
   }
 
@@ -244,6 +264,32 @@
   .menu-list-item a:focus {
     background: rgba(255, 255, 255, 0.15);
     outline: none;
+  }
+
+  .menu-search {
+    border-radius: 4px;
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid var(--border-color);
+    background-color: transparent;
+    color: white;
+    margin: 10px;
+    transition: border 0.2s;
+  }
+
+  .menu-search::-webkit-search-cancel-button {
+    appearance: none;
+    -webkit-mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23777'><path d='M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z'/></svg>");
+    background-color: var(--focus-color);
+    background-size: 100%;
+    height: 20px;
+    width: 20px;
+    cursor: pointer;
+  }
+
+  .menu-search:focus {
+    outline: none;
+    border-color: var(--focus-color);
   }
 
   @media (min-width: 800px) {
@@ -257,21 +303,20 @@
   }
 
   .module-content {
-    background: #192229;
+    background: var(--module-bg-color);
     border-radius: 5px;
     margin-top: 15px;
-    transition: border-color 1s;
-    border: 1px solid #444;
+    transition: box-shadow 1s;
   }
 
   .module-content:hover {
-    border-color: darkolivegreen;
-    transition: border-color 0.2s;
+    box-shadow: 0 0 3px 1px var(--hover-color);
+    transition: box-shadow 0.2s;
   }
 
   .module:target .module-content,
   .module:target .module-content:hover {
-    border-color: #58b29a;
+    box-shadow: 0 0 3px 1px var(--focus-color);
   }
 
   .module-content h1 {
@@ -320,8 +365,6 @@
 
   .signature-definition {
     font-size: 14px;
-    border: 0 solid #444;
-    border-width: 1px 0;
   }
 
   .signature-description {
@@ -401,6 +444,8 @@
       </header>
 
       <nav class="menu" id="Menu">
+        <input type="search" class="menu-search" id="Menu-Search" placeholder="Type to filter..." />
+
         <ul class="menu-list">
           
           <li class="menu-list-item" id="Menu-addClass">
@@ -689,7 +734,7 @@
             <div class="signatures">
               
               <div class="signature">
-                <div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">addClass</span>(<span class="hljs-attr">elm</span>: <span class="hljs-string">&#x27;null&#x27;</span> | T, <span class="hljs-attr">classNames</span>: <span class="hljs-built_in">string</span> | <span class="hljs-built_in">string</span>[]): T | <span class="hljs-string">&#x27;null&#x27;</span>
+                <div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">addClass</span>(<span class="hljs-attr">elm</span>: <span class="hljs-literal">null</span> | <span class="hljs-title class_">Element</span>, <span class="hljs-attr">classNames</span>: <span class="hljs-built_in">string</span> | <span class="hljs-built_in">string</span>[]): elm
 </code></pre></div>
 
                 <div class="signature-content">
@@ -704,12 +749,6 @@
 </code></pre> 
                   </details>
                    
-                  <details>
-                    <summary>Types</summary>
-                    <pre><code class="hljs language-ts">
-</code></pre>
-                  </details>
-                  
                 </div>
               </div>
               
@@ -726,7 +765,7 @@
             <div class="signatures">
               
               <div class="signature">
-                <div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">append</span>(<span class="hljs-attr">elm</span>: <span class="hljs-title class_">Element</span>, <span class="hljs-attr">insertElm</span>: <span class="hljs-built_in">string</span> | <span class="hljs-title class_">Node</span>): <span class="hljs-title class_">Element</span> | <span class="hljs-string">&#x27;null&#x27;</span>
+                <div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">append</span>(<span class="hljs-attr">elm</span>: <span class="hljs-title class_">Element</span>, <span class="hljs-attr">insertElm</span>: <span class="hljs-built_in">string</span> | <span class="hljs-title class_">Node</span>): <span class="hljs-title class_">Element</span> | <span class="hljs-literal">null</span>
 </code></pre></div>
 
                 <div class="signature-content">
@@ -758,7 +797,7 @@
             <div class="signatures">
               
               <div class="signature">
-                <div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">attr</span>(<span class="hljs-attr">elm</span>: <span class="hljs-title class_">Element</span>, <span class="hljs-attr">attrName</span>: <span class="hljs-built_in">string</span>, value?: <span class="hljs-string">&#x27;null&#x27;</span> | <span class="hljs-built_in">string</span> | <span class="hljs-built_in">number</span> | <span class="hljs-built_in">boolean</span>): <span class="hljs-built_in">string</span> | <span class="hljs-string">&#x27;null&#x27;</span>
+                <div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">attr</span>(<span class="hljs-attr">elm</span>: <span class="hljs-title class_">Element</span>, <span class="hljs-attr">attrName</span>: <span class="hljs-built_in">string</span>, value?: <span class="hljs-literal">null</span> | <span class="hljs-built_in">string</span> | <span class="hljs-built_in">number</span> | <span class="hljs-built_in">boolean</span>): <span class="hljs-built_in">string</span> | <span class="hljs-literal">null</span>
 </code></pre></div>
 
                 <div class="signature-content">
@@ -975,7 +1014,7 @@
             <div class="signatures">
               
               <div class="signature">
-                <div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">copyEvent</span>(<span class="hljs-attr">event</span>: <span class="hljs-title class_">Event</span>, currentTarget?: <span class="hljs-title class_">EventTarget</span>): <span class="hljs-title class_">Event</span>
+                <div class="signature-definition"><pre><code class="hljs language-ts">copyEvent&lt;T <span class="hljs-keyword">extends</span> <span class="hljs-title class_">Event</span>&lt;T&gt;&gt;(<span class="hljs-attr">event</span>: T, currentTarget?: <span class="hljs-title class_">EventTarget</span>): T
 </code></pre></div>
 
                 <div class="signature-content">
@@ -989,6 +1028,13 @@
 </code></pre> 
                   </details>
                    
+                  <details>
+                    <summary>Types</summary>
+                    <pre><code class="hljs language-ts">
+
+</code></pre>
+                  </details>
+                  
                 </div>
               </div>
               
@@ -1060,7 +1106,7 @@
               </div>
               
               <div class="signature">
-                <div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">css</span>(<span class="hljs-attr">elm</span>: <span class="hljs-title class_">HTMLElement</span>, <span class="hljs-attr">property</span>: <span class="hljs-built_in">string</span>): <span class="hljs-built_in">string</span> | <span class="hljs-built_in">number</span> | <span class="hljs-string">&#x27;null&#x27;</span>
+                <div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">css</span>(<span class="hljs-attr">elm</span>: <span class="hljs-title class_">HTMLElement</span>, <span class="hljs-attr">property</span>: <span class="hljs-built_in">string</span>): <span class="hljs-built_in">string</span> | <span class="hljs-built_in">number</span> | <span class="hljs-literal">null</span>
 </code></pre></div>
 
                 <div class="signature-content">
@@ -1100,7 +1146,7 @@
                    
                   <details>
                     <summary>Types</summary>
-                    <pre><code class="hljs language-ts"><span class="hljs-keyword">type</span> <span class="hljs-title class_">CSSStyleProperties</span> = <span class="hljs-title class_">Record</span>&lt;<span class="hljs-built_in">string</span>, <span class="hljs-built_in">string</span> | <span class="hljs-built_in">number</span> | <span class="hljs-string">&#x27;null&#x27;</span> | <span class="hljs-literal">undefined</span>&gt;;
+                    <pre><code class="hljs language-ts"><span class="hljs-keyword">type</span> <span class="hljs-title class_">CSSStyleProperties</span> = <span class="hljs-title class_">Record</span>&lt;<span class="hljs-built_in">string</span>, <span class="hljs-built_in">string</span> | <span class="hljs-built_in">number</span> | <span class="hljs-literal">null</span> | <span class="hljs-literal">undefined</span>&gt;;
 </code></pre>
                   </details>
                   
@@ -1108,7 +1154,7 @@
               </div>
               
               <div class="signature">
-                <div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">css</span>(<span class="hljs-attr">elm</span>: <span class="hljs-title class_">HTMLElement</span>, <span class="hljs-attr">property</span>: <span class="hljs-built_in">string</span>, <span class="hljs-attr">value</span>: <span class="hljs-title class_">NonNullable</span>&lt;<span class="hljs-literal">undefined</span> | <span class="hljs-string">&#x27;null&#x27;</span> | <span class="hljs-built_in">string</span> | <span class="hljs-built_in">number</span>&gt;): <span class="hljs-title class_">CSSStyleDeclaration</span>
+                <div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">css</span>(<span class="hljs-attr">elm</span>: <span class="hljs-title class_">HTMLElement</span>, <span class="hljs-attr">property</span>: <span class="hljs-built_in">string</span>, <span class="hljs-attr">value</span>: <span class="hljs-literal">undefined</span> | <span class="hljs-literal">null</span> | <span class="hljs-built_in">string</span> | <span class="hljs-built_in">number</span>): <span class="hljs-title class_">CSSStyleDeclaration</span>
 </code></pre></div>
 
                 <div class="signature-content">
@@ -1294,7 +1340,7 @@
             <div class="signatures">
               
               <div class="signature">
-                <div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">find</span>(<span class="hljs-attr">selector</span>: <span class="hljs-built_in">string</span>): <span class="hljs-title class_">HTMLElement</span> | <span class="hljs-title class_">Element</span> | <span class="hljs-title class_">Element</span>[] | <span class="hljs-string">&#x27;null&#x27;</span>
+                <div class="signature-definition"><pre><code class="hljs language-ts">find&lt;T <span class="hljs-keyword">extends</span> <span class="hljs-title class_">HTMLElement</span>&lt;T&gt;&gt;(<span class="hljs-attr">selector</span>: <span class="hljs-built_in">string</span>): T | T[] | <span class="hljs-literal">null</span>
 </code></pre></div>
 
                 <div class="signature-content">
@@ -1312,11 +1358,17 @@
 </code></pre> 
                   </details>
                    
+                  <details>
+                    <summary>Types</summary>
+                    <pre><code class="hljs language-ts">
+</code></pre>
+                  </details>
+                  
                 </div>
               </div>
               
               <div class="signature">
-                <div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">find</span>(<span class="hljs-attr">elm</span>: <span class="hljs-title class_">Element</span> | <span class="hljs-title class_">Document</span>, <span class="hljs-attr">selector</span>: <span class="hljs-built_in">string</span>): <span class="hljs-title class_">HTMLElement</span> | <span class="hljs-title class_">Element</span> | <span class="hljs-title class_">Element</span>[] | <span class="hljs-string">&#x27;null&#x27;</span>
+                <div class="signature-definition"><pre><code class="hljs language-ts">find&lt;T <span class="hljs-keyword">extends</span> <span class="hljs-title class_">HTMLElement</span>&lt;T&gt;&gt;(<span class="hljs-attr">elm</span>: <span class="hljs-title class_">Document</span> | <span class="hljs-title class_">HTMLElement</span>, <span class="hljs-attr">selector</span>: <span class="hljs-built_in">string</span>): T | T[] | <span class="hljs-literal">null</span>
 </code></pre></div>
 
                 <div class="signature-content">
@@ -1334,6 +1386,12 @@
 </code></pre> 
                   </details>
                    
+                  <details>
+                    <summary>Types</summary>
+                    <pre><code class="hljs language-ts">
+</code></pre>
+                  </details>
+                  
                 </div>
               </div>
               
@@ -1350,7 +1408,7 @@
             <div class="signatures">
               
               <div class="signature">
-                <div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">findByClass</span>(<span class="hljs-attr">classNames</span>: <span class="hljs-built_in">string</span> | <span class="hljs-built_in">string</span>[]): <span class="hljs-title class_">Element</span>[]
+                <div class="signature-definition"><pre><code class="hljs language-ts">findByClass&lt;T <span class="hljs-keyword">extends</span> <span class="hljs-title class_">HTMLElement</span>&lt;T&gt;&gt;(<span class="hljs-attr">classNames</span>: <span class="hljs-built_in">string</span> | <span class="hljs-built_in">string</span>[]): T[]
 </code></pre></div>
 
                 <div class="signature-content">
@@ -1370,7 +1428,7 @@
               </div>
               
               <div class="signature">
-                <div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">findByClass</span>(<span class="hljs-attr">elm</span>: <span class="hljs-title class_">Element</span> | <span class="hljs-title class_">Document</span>, <span class="hljs-attr">classNames</span>: <span class="hljs-built_in">string</span> | <span class="hljs-built_in">string</span>[]): <span class="hljs-title class_">Element</span>[]
+                <div class="signature-definition"><pre><code class="hljs language-ts">findByClass&lt;T <span class="hljs-keyword">extends</span> <span class="hljs-title class_">HTMLElement</span>&lt;T&gt;&gt;(<span class="hljs-attr">elm</span>: <span class="hljs-title class_">Document</span> | <span class="hljs-title class_">HTMLElement</span>, <span class="hljs-attr">classNames</span>: <span class="hljs-built_in">string</span> | <span class="hljs-built_in">string</span>[]): T[]
 </code></pre></div>
 
                 <div class="signature-content">
@@ -1402,7 +1460,7 @@
             <div class="signatures">
               
               <div class="signature">
-                <div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">findById</span>(<span class="hljs-attr">ids</span>: <span class="hljs-built_in">string</span>): <span class="hljs-title class_">HTMLElement</span> | <span class="hljs-string">&#x27;null&#x27;</span>
+                <div class="signature-definition"><pre><code class="hljs language-ts">findById&lt;T <span class="hljs-keyword">extends</span> <span class="hljs-title class_">HTMLElement</span>&lt;T&gt;&gt;(<span class="hljs-attr">id</span>: <span class="hljs-built_in">string</span>): T | <span class="hljs-literal">null</span>
 </code></pre></div>
 
                 <div class="signature-content">
@@ -1417,11 +1475,17 @@
 </code></pre> 
                   </details>
                    
+                  <details>
+                    <summary>Types</summary>
+                    <pre><code class="hljs language-ts">
+</code></pre>
+                  </details>
+                  
                 </div>
               </div>
               
               <div class="signature">
-                <div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">findById</span>(<span class="hljs-attr">ids</span>: <span class="hljs-built_in">string</span>[]): <span class="hljs-title class_">HTMLElement</span>[]
+                <div class="signature-definition"><pre><code class="hljs language-ts">findById&lt;T <span class="hljs-keyword">extends</span> <span class="hljs-title class_">HTMLElement</span>&lt;T&gt;&gt;(<span class="hljs-attr">ids</span>: <span class="hljs-built_in">string</span>[]): T[]
 </code></pre></div>
 
                 <div class="signature-content">
@@ -1452,7 +1516,7 @@
             <div class="signatures">
               
               <div class="signature">
-                <div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">findByName</span>(<span class="hljs-attr">names</span>: <span class="hljs-built_in">string</span> | <span class="hljs-built_in">string</span>[]): <span class="hljs-title class_">Element</span>[]
+                <div class="signature-definition"><pre><code class="hljs language-ts">findByName&lt;T <span class="hljs-keyword">extends</span> <span class="hljs-title class_">HTMLElement</span>&lt;T&gt;&gt;(<span class="hljs-attr">names</span>: <span class="hljs-built_in">string</span> | <span class="hljs-built_in">string</span>[]): T[]
 </code></pre></div>
 
                 <div class="signature-content">
@@ -1483,7 +1547,7 @@
             <div class="signatures">
               
               <div class="signature">
-                <div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">findByQuery</span>(<span class="hljs-attr">args</span>: T): <span class="hljs-title class_">Element</span>[]
+                <div class="signature-definition"><pre><code class="hljs language-ts">findByQuery&lt;T <span class="hljs-keyword">extends</span> <span class="hljs-title class_">HTMLElement</span>&lt;T&gt;&gt;(<span class="hljs-attr">elm</span>: <span class="hljs-title class_">Document</span> | <span class="hljs-title class_">HTMLElement</span>, <span class="hljs-attr">queries</span>: <span class="hljs-built_in">string</span> | <span class="hljs-built_in">string</span>[]): T[]
 </code></pre></div>
 
                 <div class="signature-content">
@@ -1501,7 +1565,7 @@
               </div>
               
               <div class="signature">
-                <div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">findByQuery</span>(<span class="hljs-attr">args</span>: T): <span class="hljs-title class_">Element</span>[]
+                <div class="signature-definition"><pre><code class="hljs language-ts">findByQuery&lt;T <span class="hljs-keyword">extends</span> <span class="hljs-title class_">HTMLElement</span>&lt;T&gt;&gt;(<span class="hljs-attr">queries</span>: <span class="hljs-built_in">string</span> | <span class="hljs-built_in">string</span>[]): T[]
 </code></pre></div>
 
                 <div class="signature-content">
@@ -1519,7 +1583,7 @@
               </div>
               
               <div class="signature">
-                <div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">findOneByQuery</span>(<span class="hljs-attr">elm</span>: <span class="hljs-title class_">Element</span> | <span class="hljs-title class_">Document</span>, <span class="hljs-attr">query</span>: <span class="hljs-built_in">string</span>): <span class="hljs-title class_">Element</span> | <span class="hljs-string">&#x27;null&#x27;</span>
+                <div class="signature-definition"><pre><code class="hljs language-ts">findOneByQuery&lt;T <span class="hljs-keyword">extends</span> <span class="hljs-title class_">HTMLElement</span>&lt;T&gt;&gt;(<span class="hljs-attr">elm</span>: <span class="hljs-title class_">Document</span> | <span class="hljs-title class_">HTMLElement</span>, <span class="hljs-attr">query</span>: <span class="hljs-built_in">string</span>): T | <span class="hljs-literal">null</span>
 </code></pre></div>
 
                 <div class="signature-content">
@@ -1533,11 +1597,17 @@
 </code></pre> 
                   </details>
                    
+                  <details>
+                    <summary>Types</summary>
+                    <pre><code class="hljs language-ts">
+</code></pre>
+                  </details>
+                  
                 </div>
               </div>
               
               <div class="signature">
-                <div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">findOneByQuery</span>(<span class="hljs-attr">query</span>: <span class="hljs-built_in">string</span>): <span class="hljs-title class_">Element</span> | <span class="hljs-string">&#x27;null&#x27;</span>
+                <div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">findOneByQuery</span>(<span class="hljs-attr">query</span>: <span class="hljs-built_in">string</span>): <span class="hljs-title class_">HTMLElement</span> | <span class="hljs-literal">null</span>
 </code></pre></div>
 
                 <div class="signature-content">
@@ -1567,7 +1637,7 @@
             <div class="signatures">
               
               <div class="signature">
-                <div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">findByTagName</span>(<span class="hljs-attr">tagNames</span>: <span class="hljs-built_in">string</span> | <span class="hljs-built_in">string</span>[]): <span class="hljs-title class_">Element</span>[]
+                <div class="signature-definition"><pre><code class="hljs language-ts">findByTagName&lt;T <span class="hljs-keyword">extends</span> <span class="hljs-title class_">HTMLElement</span>&lt;T&gt;&gt;(<span class="hljs-attr">tagNames</span>: <span class="hljs-built_in">string</span> | <span class="hljs-built_in">string</span>[]): T[]
 </code></pre></div>
 
                 <div class="signature-content">
@@ -1585,7 +1655,7 @@
               </div>
               
               <div class="signature">
-                <div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">findByTagName</span>(<span class="hljs-attr">elm</span>: <span class="hljs-title class_">Element</span> | <span class="hljs-title class_">Document</span>, tagNames?: <span class="hljs-built_in">string</span> | <span class="hljs-built_in">string</span>[]): <span class="hljs-title class_">Element</span>[]
+                <div class="signature-definition"><pre><code class="hljs language-ts">findByTagName&lt;T <span class="hljs-keyword">extends</span> <span class="hljs-title class_">HTMLElement</span>&lt;T&gt;&gt;(<span class="hljs-attr">elm</span>: <span class="hljs-title class_">Document</span> | <span class="hljs-title class_">HTMLElement</span>, <span class="hljs-attr">tagNames</span>: <span class="hljs-built_in">string</span> | <span class="hljs-built_in">string</span>[]): T[]
 </code></pre></div>
 
                 <div class="signature-content">
@@ -1615,7 +1685,7 @@
             <div class="signatures">
               
               <div class="signature">
-                <div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">getCurrentDocument</span>(<span class="hljs-attr">node</span>: <span class="hljs-string">&#x27;null&#x27;</span> | <span class="hljs-title class_">Node</span> | <span class="hljs-title class_">Document</span> | <span class="hljs-title class_">GeneralWindow</span>): <span class="hljs-title class_">Document</span> | <span class="hljs-string">&#x27;null&#x27;</span>
+                <div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">getCurrentDocument</span>(<span class="hljs-attr">node</span>: <span class="hljs-literal">null</span> | <span class="hljs-title class_">Node</span> | <span class="hljs-title class_">Document</span> | <span class="hljs-title class_">GeneralWindow</span>): <span class="hljs-title class_">Document</span> | <span class="hljs-literal">null</span>
 </code></pre></div>
 
                 <div class="signature-content">
@@ -1647,7 +1717,7 @@
             <div class="signatures">
               
               <div class="signature">
-                <div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">getCurrentWindow</span>(<span class="hljs-attr">node</span>: <span class="hljs-string">&#x27;null&#x27;</span> | <span class="hljs-title class_">Node</span> | <span class="hljs-title class_">Document</span> | <span class="hljs-title class_">GeneralWindow</span>): <span class="hljs-string">&#x27;null&#x27;</span> | <span class="hljs-title class_">GeneralWindow</span>
+                <div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">getCurrentWindow</span>(<span class="hljs-attr">node</span>: <span class="hljs-literal">null</span> | <span class="hljs-title class_">Node</span> | <span class="hljs-title class_">Document</span> | <span class="hljs-title class_">GeneralWindow</span>): <span class="hljs-literal">null</span> | <span class="hljs-title class_">GeneralWindow</span>
 </code></pre></div>
 
                 <div class="signature-content">
@@ -1685,7 +1755,7 @@
             <div class="signatures">
               
               <div class="signature">
-                <div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">hasClass</span>(<span class="hljs-attr">elm</span>: <span class="hljs-string">&#x27;null&#x27;</span> | <span class="hljs-title class_">Element</span>, <span class="hljs-attr">classNames</span>: <span class="hljs-built_in">string</span> | <span class="hljs-built_in">string</span>[], <span class="hljs-built_in">any</span>?: <span class="hljs-built_in">boolean</span>): <span class="hljs-built_in">boolean</span>
+                <div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">hasClass</span>(<span class="hljs-attr">elm</span>: <span class="hljs-literal">null</span> | <span class="hljs-title class_">Element</span>, <span class="hljs-attr">classNames</span>: <span class="hljs-built_in">string</span> | <span class="hljs-built_in">string</span>[], <span class="hljs-built_in">any</span>?: <span class="hljs-built_in">boolean</span>): <span class="hljs-built_in">boolean</span>
 </code></pre></div>
 
                 <div class="signature-content">
@@ -1893,7 +1963,7 @@
             <div class="signatures">
               
               <div class="signature">
-                <div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">insertAfter</span>(<span class="hljs-attr">elm</span>: <span class="hljs-title class_">Element</span>, <span class="hljs-attr">insertElm</span>: <span class="hljs-built_in">string</span> | <span class="hljs-title class_">Element</span>): <span class="hljs-title class_">Element</span> | <span class="hljs-string">&#x27;null&#x27;</span>
+                <div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">insertAfter</span>(<span class="hljs-attr">elm</span>: <span class="hljs-title class_">Element</span>, <span class="hljs-attr">insertElm</span>: <span class="hljs-built_in">string</span> | <span class="hljs-title class_">Element</span>): <span class="hljs-title class_">Element</span> | <span class="hljs-literal">null</span>
 </code></pre></div>
 
                 <div class="signature-content">
@@ -1928,7 +1998,7 @@
             <div class="signatures">
               
               <div class="signature">
-                <div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">insertBefore</span>(<span class="hljs-attr">elm</span>: <span class="hljs-title class_">Element</span>, <span class="hljs-attr">insertElm</span>: <span class="hljs-built_in">string</span> | <span class="hljs-title class_">Element</span>): <span class="hljs-title class_">Element</span> | <span class="hljs-string">&#x27;null&#x27;</span>
+                <div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">insertBefore</span>(<span class="hljs-attr">elm</span>: <span class="hljs-title class_">Element</span>, <span class="hljs-attr">insertElm</span>: <span class="hljs-built_in">string</span> | <span class="hljs-title class_">Element</span>): <span class="hljs-title class_">Element</span> | <span class="hljs-literal">null</span>
 </code></pre></div>
 
                 <div class="signature-content">
@@ -2535,7 +2605,7 @@
             <div class="signatures">
               
               <div class="signature">
-                <div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">off</span>(<span class="hljs-attr">args</span>: T): <span class="hljs-literal">undefined</span>
+                <div class="signature-definition"><pre><code class="hljs language-ts">off&lt;E <span class="hljs-keyword">extends</span> <span class="hljs-built_in">string</span>&gt;(<span class="hljs-attr">elm</span>: <span class="hljs-title class_">EventTarget</span>, <span class="hljs-attr">eventNames</span>: E | E[], <span class="hljs-attr">handler</span>: <span class="hljs-title class_">EventHandler</span>&lt;E&gt;, options?: <span class="hljs-title class_">AddEventListenerOptions</span>): elm
 </code></pre></div>
 
                 <div class="signature-content">
@@ -2551,11 +2621,19 @@
 </code></pre> 
                   </details>
                    
+                  <details>
+                    <summary>Types</summary>
+                    <pre><code class="hljs language-ts">
+
+
+</code></pre>
+                  </details>
+                  
                 </div>
               </div>
               
               <div class="signature">
-                <div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">off</span>(<span class="hljs-attr">args</span>: <span class="hljs-title class_">ArgsWithoutTarget</span>): <span class="hljs-title class_">Document</span>
+                <div class="signature-definition"><pre><code class="hljs language-ts">off&lt;E <span class="hljs-keyword">extends</span> <span class="hljs-built_in">string</span>&gt;(<span class="hljs-attr">eventNames</span>: E | E[], <span class="hljs-attr">handler</span>: <span class="hljs-title class_">EventHandler</span>&lt;E&gt;, options?: <span class="hljs-title class_">AddEventListenerOptions</span>): <span class="hljs-title class_">Document</span>
 </code></pre></div>
 
                 <div class="signature-content">
@@ -2573,7 +2651,8 @@
                    
                   <details>
                     <summary>Types</summary>
-                    <pre><code class="hljs language-ts"><span class="hljs-keyword">type</span> <span class="hljs-title class_">ArgsWithoutTarget</span> = [<span class="hljs-attr">classNames</span>: <span class="hljs-built_in">string</span> | <span class="hljs-built_in">string</span>[]];
+                    <pre><code class="hljs language-ts">
+
 </code></pre>
                   </details>
                   
@@ -2593,7 +2672,7 @@
             <div class="signatures">
               
               <div class="signature">
-                <div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">on</span>(<span class="hljs-attr">args</span>: T): <span class="hljs-function">() =&gt;</span> <span class="hljs-literal">undefined</span>
+                <div class="signature-definition"><pre><code class="hljs language-ts">on&lt;E <span class="hljs-keyword">extends</span> <span class="hljs-built_in">string</span>&gt;(<span class="hljs-attr">elm</span>: <span class="hljs-title class_">EventTarget</span>, <span class="hljs-attr">eventNames</span>: E | E[], <span class="hljs-attr">handler</span>: <span class="hljs-title class_">EventHandler</span>&lt;E&gt;, options?: <span class="hljs-title class_">OnOptions</span>): <span class="hljs-function">() =&gt;</span> elm
 </code></pre></div>
 
                 <div class="signature-content">
@@ -2631,11 +2710,24 @@
 </code></pre> 
                   </details>
                    
+                  <details>
+                    <summary>Types</summary>
+                    <pre><code class="hljs language-ts">
+
+
+<span class="hljs-keyword">type</span> <span class="hljs-title class_">OnOptions</span> = <span class="hljs-title class_">AddEventListenerOptions</span> &amp; {
+  <span class="hljs-comment">// A selector that defines which element is the actual target of the event</span>
+  delegate?: <span class="hljs-built_in">string</span>
+  when?: <span class="hljs-function">(<span class="hljs-params">event: Event</span>) =&gt;</span> <span class="hljs-built_in">boolean</span>
+};
+</code></pre>
+                  </details>
+                  
                 </div>
               </div>
               
               <div class="signature">
-                <div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">on</span>(<span class="hljs-attr">args</span>: <span class="hljs-title class_">ArgsWithoutTarget</span>): <span class="hljs-function">() =&gt;</span> <span class="hljs-title class_">Document</span>
+                <div class="signature-definition"><pre><code class="hljs language-ts">on&lt;E <span class="hljs-keyword">extends</span> <span class="hljs-built_in">string</span>&gt;(<span class="hljs-attr">eventNames</span>: E | E[], <span class="hljs-attr">handler</span>: <span class="hljs-title class_">EventHandler</span>&lt;E&gt;, options?: <span class="hljs-title class_">OnOptions</span>): <span class="hljs-function">() =&gt;</span> <span class="hljs-title class_">Document</span>
 </code></pre></div>
 
                 <div class="signature-content">
@@ -2675,7 +2767,14 @@
                    
                   <details>
                     <summary>Types</summary>
-                    <pre><code class="hljs language-ts"><span class="hljs-keyword">type</span> <span class="hljs-title class_">ArgsWithoutTarget</span> = [<span class="hljs-attr">classNames</span>: <span class="hljs-built_in">string</span> | <span class="hljs-built_in">string</span>[]];
+                    <pre><code class="hljs language-ts">
+
+
+<span class="hljs-keyword">type</span> <span class="hljs-title class_">OnOptions</span> = <span class="hljs-title class_">AddEventListenerOptions</span> &amp; {
+  <span class="hljs-comment">// A selector that defines which element is the actual target of the event</span>
+  delegate?: <span class="hljs-built_in">string</span>
+  when?: <span class="hljs-function">(<span class="hljs-params">event: Event</span>) =&gt;</span> <span class="hljs-built_in">boolean</span>
+};
 </code></pre>
                   </details>
                   
@@ -2765,7 +2864,7 @@
             <div class="signatures">
               
               <div class="signature">
-                <div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">position</span>(<span class="hljs-attr">elm</span>: <span class="hljs-string">&#x27;null&#x27;</span> | <span class="hljs-title class_">HTMLElement</span>): <span class="hljs-title class_">PositionData</span>
+                <div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">position</span>(<span class="hljs-attr">elm</span>: <span class="hljs-literal">null</span> | <span class="hljs-title class_">HTMLElement</span>): <span class="hljs-title class_">PositionData</span>
 </code></pre></div>
 
                 <div class="signature-content">
@@ -2803,7 +2902,7 @@
             <div class="signatures">
               
               <div class="signature">
-                <div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">prepend</span>(<span class="hljs-attr">elm</span>: <span class="hljs-title class_">Element</span>, <span class="hljs-attr">insertElm</span>: <span class="hljs-built_in">string</span> | <span class="hljs-title class_">Node</span>): <span class="hljs-title class_">Element</span> | <span class="hljs-string">&#x27;null&#x27;</span>
+                <div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">prepend</span>(<span class="hljs-attr">elm</span>: <span class="hljs-title class_">Element</span>, <span class="hljs-attr">insertElm</span>: <span class="hljs-built_in">string</span> | <span class="hljs-title class_">Node</span>): <span class="hljs-title class_">Element</span> | <span class="hljs-literal">null</span>
 </code></pre></div>
 
                 <div class="signature-content">
@@ -2865,7 +2964,7 @@
             <div class="signatures">
               
               <div class="signature">
-                <div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">removeClass</span>(<span class="hljs-attr">elm</span>: <span class="hljs-string">&#x27;null&#x27;</span> | T, <span class="hljs-attr">classNames</span>: <span class="hljs-built_in">string</span> | <span class="hljs-built_in">string</span>[]): T | <span class="hljs-string">&#x27;null&#x27;</span>
+                <div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">removeClass</span>(<span class="hljs-attr">elm</span>: <span class="hljs-literal">null</span> | <span class="hljs-title class_">Element</span>, <span class="hljs-attr">classNames</span>: <span class="hljs-built_in">string</span> | <span class="hljs-built_in">string</span>[]): elm
 </code></pre></div>
 
                 <div class="signature-content">
@@ -2881,12 +2980,6 @@
 </code></pre> 
                   </details>
                    
-                  <details>
-                    <summary>Types</summary>
-                    <pre><code class="hljs language-ts">
-</code></pre>
-                  </details>
-                  
                 </div>
               </div>
               
@@ -2903,7 +2996,7 @@
             <div class="signatures">
               
               <div class="signature">
-                <div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">replaceClass</span>(<span class="hljs-attr">elm</span>: <span class="hljs-string">&#x27;null&#x27;</span> | T, <span class="hljs-attr">classNames</span>: <span class="hljs-built_in">string</span> | <span class="hljs-built_in">string</span>[], <span class="hljs-attr">replacements</span>: <span class="hljs-built_in">string</span> | <span class="hljs-built_in">string</span>[]): <span class="hljs-string">&#x27;null&#x27;</span> | T
+                <div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">replaceClass</span>(<span class="hljs-attr">elm</span>: <span class="hljs-literal">null</span> | <span class="hljs-title class_">Element</span>, <span class="hljs-attr">classNames</span>: <span class="hljs-built_in">string</span> | <span class="hljs-built_in">string</span>[], <span class="hljs-attr">replacements</span>: <span class="hljs-built_in">string</span> | <span class="hljs-built_in">string</span>[]): <span class="hljs-literal">null</span> | <span class="hljs-title class_">Element</span>
 </code></pre></div>
 
                 <div class="signature-content">
@@ -2920,12 +3013,6 @@
 </code></pre> 
                   </details>
                    
-                  <details>
-                    <summary>Types</summary>
-                    <pre><code class="hljs language-ts">
-</code></pre>
-                  </details>
-                  
                 </div>
               </div>
               
@@ -3020,7 +3107,7 @@
             <div class="signatures">
               
               <div class="signature">
-                <div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">scrollParent</span>(<span class="hljs-attr">elm</span>: <span class="hljs-title class_">Element</span>): <span class="hljs-title class_">Element</span> | <span class="hljs-title class_">HTMLElement</span> | <span class="hljs-string">&#x27;null&#x27;</span>
+                <div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">scrollParent</span>(<span class="hljs-attr">elm</span>: <span class="hljs-title class_">Element</span>): <span class="hljs-title class_">Element</span> | <span class="hljs-title class_">HTMLElement</span> | <span class="hljs-literal">null</span>
 </code></pre></div>
 
                 <div class="signature-content">
@@ -3122,7 +3209,7 @@
             <div class="signatures">
               
               <div class="signature">
-                <div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">toDOM</span>(<span class="hljs-attr">html</span>: <span class="hljs-built_in">string</span>): <span class="hljs-title class_">HTMLCollection</span> | <span class="hljs-string">&#x27;null&#x27;</span>
+                <div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">toDOM</span>(<span class="hljs-attr">html</span>: <span class="hljs-built_in">string</span>): <span class="hljs-title class_">HTMLCollection</span> | <span class="hljs-literal">null</span>
 </code></pre></div>
 
                 <div class="signature-content">
@@ -3158,7 +3245,7 @@
             <div class="signatures">
               
               <div class="signature">
-                <div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">toggleClass</span>(<span class="hljs-attr">elm</span>: <span class="hljs-string">&#x27;null&#x27;</span> | T, <span class="hljs-attr">classNames</span>: <span class="hljs-built_in">string</span> | <span class="hljs-built_in">string</span>[], force?: <span class="hljs-built_in">boolean</span>): T | <span class="hljs-string">&#x27;null&#x27;</span>
+                <div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">toggleClass</span>(<span class="hljs-attr">elm</span>: <span class="hljs-literal">null</span> | <span class="hljs-title class_">Element</span>, <span class="hljs-attr">classNames</span>: <span class="hljs-built_in">string</span> | <span class="hljs-built_in">string</span>[], force?: <span class="hljs-built_in">boolean</span>): elm
 </code></pre></div>
 
                 <div class="signature-content">
@@ -3178,12 +3265,6 @@
 </code></pre> 
                   </details>
                    
-                  <details>
-                    <summary>Types</summary>
-                    <pre><code class="hljs language-ts">
-</code></pre>
-                  </details>
-                  
                 </div>
               </div>
               
@@ -3200,7 +3281,7 @@
             <div class="signatures">
               
               <div class="signature">
-                <div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">trigger</span>(<span class="hljs-attr">args</span>: T): <span class="hljs-title class_">EventTarget</span>
+                <div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">trigger</span>(<span class="hljs-attr">elm</span>: <span class="hljs-title class_">EventTarget</span>, <span class="hljs-attr">eventNames</span>: <span class="hljs-built_in">string</span> | <span class="hljs-built_in">string</span>[], data?: <span class="hljs-built_in">unknown</span>): <span class="hljs-title class_">EventTarget</span>
 </code></pre></div>
 
                 <div class="signature-content">
@@ -3219,7 +3300,7 @@
               </div>
               
               <div class="signature">
-                <div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">trigger</span>(<span class="hljs-attr">args</span>: <span class="hljs-title class_">ArgsWithoutTarget</span>): <span class="hljs-title class_">EventTarget</span>
+                <div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">trigger</span>(<span class="hljs-attr">eventNames</span>: <span class="hljs-built_in">string</span> | <span class="hljs-built_in">string</span>[], data?: <span class="hljs-built_in">unknown</span>): <span class="hljs-title class_">EventTarget</span>
 </code></pre></div>
 
                 <div class="signature-content">
@@ -3234,12 +3315,6 @@
 </code></pre> 
                   </details>
                    
-                  <details>
-                    <summary>Types</summary>
-                    <pre><code class="hljs language-ts"><span class="hljs-keyword">type</span> <span class="hljs-title class_">ArgsWithoutTarget</span> = [<span class="hljs-attr">classNames</span>: <span class="hljs-built_in">string</span> | <span class="hljs-built_in">string</span>[]];
-</code></pre>
-                  </details>
-                  
                 </div>
               </div>
               
@@ -3256,7 +3331,7 @@
             <div class="signatures">
               
               <div class="signature">
-                <div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">uniqueNodeList</span>(<span class="hljs-attr">args</span>: <span class="hljs-literal">undefined</span>[]): <span class="hljs-title class_">Element</span>[]
+                <div class="signature-definition"><pre><code class="hljs language-ts">uniqueNodeList&lt;T <span class="hljs-keyword">extends</span> <span class="hljs-title class_">Element</span>&lt;T&gt;&gt;(<span class="hljs-attr">args</span>: <span class="hljs-literal">undefined</span>[]): T[]
 </code></pre></div>
 
                 <div class="signature-content">
@@ -3355,7 +3430,7 @@
             <div class="signatures">
               
               <div class="signature">
-                <div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">viewport</span>(elm?: <span class="hljs-title class_">Element</span> | <span class="hljs-title class_">Document</span> | <span class="hljs-title class_">GeneralWindow</span>): <span class="hljs-string">&#x27;null&#x27;</span> | <span class="hljs-title class_">HTMLElement</span>
+                <div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">viewport</span>(elm?: <span class="hljs-title class_">Element</span> | <span class="hljs-title class_">Document</span> | <span class="hljs-title class_">GeneralWindow</span>): <span class="hljs-literal">null</span> | <span class="hljs-title class_">HTMLElement</span>
 </code></pre></div>
 
                 <div class="signature-content">
@@ -3378,7 +3453,7 @@
                    
                   <details>
                     <summary>Types</summary>
-                    <pre><code class="hljs language-ts"><span class="hljs-keyword">type</span> <span class="hljs-title class_">GeneralWindow</span> = <span class="hljs-title class_">Window</span> | ;
+                    <pre><code class="hljs language-ts"><span class="hljs-keyword">type</span> <span class="hljs-title class_">GeneralWindow</span> = <span class="hljs-title class_">Window</span> | <span class="hljs-variable language_">window</span>;
 </code></pre>
                   </details>
                   
@@ -3433,7 +3508,7 @@
             <div class="signatures">
               
               <div class="signature">
-                <div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">wrap</span>(<span class="hljs-attr">elm</span>: <span class="hljs-title class_">Element</span>, <span class="hljs-attr">wrapping</span>: <span class="hljs-built_in">string</span> | <span class="hljs-title class_">Element</span>): <span class="hljs-string">&#x27;null&#x27;</span> | <span class="hljs-title class_">Element</span>
+                <div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">wrap</span>(<span class="hljs-attr">elm</span>: <span class="hljs-title class_">Element</span>, <span class="hljs-attr">wrapping</span>: <span class="hljs-built_in">string</span> | <span class="hljs-title class_">Element</span>): <span class="hljs-literal">null</span> | <span class="hljs-title class_">Element</span>
 </code></pre></div>
 
                 <div class="signature-content">
@@ -3483,13 +3558,13 @@
     <div class="tooltip" id="Tooltip-cnObj"><pre><code class="hljs language-ts"><span class="hljs-keyword">type</span> cnObj = ;
 </code></pre></div>
     
-    <div class="tooltip" id="Tooltip-CSSStyleProperties"><pre><code class="hljs language-ts"><span class="hljs-keyword">type</span> <span class="hljs-title class_">CSSStyleProperties</span> = <span class="hljs-title class_">Record</span>&lt;<span class="hljs-built_in">string</span>, <span class="hljs-built_in">string</span> | <span class="hljs-built_in">number</span> | <span class="hljs-string">&#x27;null&#x27;</span> | <span class="hljs-literal">undefined</span>&gt;;
+    <div class="tooltip" id="Tooltip-CSSStyleProperties"><pre><code class="hljs language-ts"><span class="hljs-keyword">type</span> <span class="hljs-title class_">CSSStyleProperties</span> = <span class="hljs-title class_">Record</span>&lt;<span class="hljs-built_in">string</span>, <span class="hljs-built_in">string</span> | <span class="hljs-built_in">number</span> | <span class="hljs-literal">null</span> | <span class="hljs-literal">undefined</span>&gt;;
 </code></pre></div>
     
-    <div class="tooltip" id="Tooltip-ArgsWithTarget"><pre><code class="hljs language-ts"><span class="hljs-keyword">type</span> <span class="hljs-title class_">ArgsWithTarget</span> = [<span class="hljs-attr">elm</span>: <span class="hljs-title class_">Document</span> | <span class="hljs-title class_">Element</span>, <span class="hljs-attr">classNames</span>: <span class="hljs-built_in">string</span> | <span class="hljs-built_in">string</span>[]];
+    <div class="tooltip" id="Tooltip-Args"><pre><code class="hljs language-ts"><span class="hljs-keyword">type</span> <span class="hljs-title class_">Args</span> = [<span class="hljs-attr">elm</span>: <span class="hljs-title class_">Document</span> | <span class="hljs-title class_">HTMLElement</span>, <span class="hljs-attr">classNames</span>: <span class="hljs-built_in">string</span> | <span class="hljs-built_in">string</span>[]];
 </code></pre></div>
     
-    <div class="tooltip" id="Tooltip-ArgsWithoutTarget"><pre><code class="hljs language-ts"><span class="hljs-keyword">type</span> <span class="hljs-title class_">ArgsWithoutTarget</span> = [<span class="hljs-attr">classNames</span>: <span class="hljs-built_in">string</span> | <span class="hljs-built_in">string</span>[]];
+    <div class="tooltip" id="Tooltip-OneArgs"><pre><code class="hljs language-ts"><span class="hljs-keyword">type</span> <span class="hljs-title class_">OneArgs</span> = [<span class="hljs-attr">elm</span>: <span class="hljs-title class_">Document</span> | <span class="hljs-title class_">HTMLElement</span>, <span class="hljs-attr">query</span>: <span class="hljs-built_in">string</span>];
 </code></pre></div>
     
     <div class="tooltip" id="Tooltip-PositionIndicator"><pre><code class="hljs language-ts"><span class="hljs-keyword">type</span> <span class="hljs-title class_">PositionIndicator</span> = {
@@ -3547,7 +3622,16 @@
 };
 </code></pre></div>
     
-    <div class="tooltip" id="Tooltip-GeneralWindow"><pre><code class="hljs language-ts"><span class="hljs-keyword">type</span> <span class="hljs-title class_">GeneralWindow</span> = <span class="hljs-title class_">Window</span> | ;
+    <div class="tooltip" id="Tooltip-EventHandler"><pre><code class="hljs language-ts"><span class="hljs-keyword">type</span> <span class="hljs-title class_">EventHandler</span> = <span class="hljs-function">(<span class="hljs-params"><span class="hljs-variable language_">this</span>: EventSource | EventTarget, event: <span class="hljs-literal">undefined</span></span>) =&gt;</span> <span class="hljs-built_in">unknown</span>;
+</code></pre></div>
+    
+    <div class="tooltip" id="Tooltip-EventName"><pre><code class="hljs language-ts"><span class="hljs-keyword">type</span> <span class="hljs-title class_">EventName</span> = <span class="hljs-built_in">string</span>;
+</code></pre></div>
+    
+    <div class="tooltip" id="Tooltip-GeneralWindow"><pre><code class="hljs language-ts"><span class="hljs-keyword">type</span> <span class="hljs-title class_">GeneralWindow</span> = <span class="hljs-title class_">Window</span> | <span class="hljs-variable language_">window</span>;
+</code></pre></div>
+    
+    <div class="tooltip" id="Tooltip-NotFirst"><pre><code class="hljs language-ts"><span class="hljs-keyword">type</span> <span class="hljs-title class_">NotFirst</span> = <span class="hljs-literal">undefined</span>;
 </code></pre></div>
     
     <div class="tooltip" id="Tooltip-VendorPrefixing"><pre><code class="hljs language-ts"><span class="hljs-keyword">type</span> <span class="hljs-title class_">VendorPrefixing</span> = [{
@@ -3575,7 +3659,7 @@
     
 
     <script defer>
-      "use strict";(()=>{function E(t,e){return t?(Array.isArray(e)||(e=[e]),t.classList.add(...e),t):null}var p=t=>!!t&&typeof t.nodeType<"u";function x(...t){let e=new Set;for(let n of t)if(n)if(p(n))e.add(n);else for(let r=0;r<n.length;r++)e.add(n[r]);return Array.from(e)}function c(t){return Array.isArray(t)?x(...t.map(e=>document.getElementById(e))):document.getElementById(t)}var d=t=>typeof t=="string";function v(...t){if(d(t[0])||Array.isArray(t[0]))return v(document,t[0]);let[e,n]=t;return Array.isArray(n)&&(n=n.join(",")),x(e.querySelectorAll(n))}function A(...t){if(d(t[0]))return A(document,t[0]);let[e,n]=t;return e.querySelector(n)}var D=t=>typeof t=="function";var C=(t,e)=>{let n=t.constructor.name,r=new window[n](t.type,t);return Object.defineProperty(r,"currentTarget",{value:e??t.currentTarget,writable:!1,enumerable:!0,configurable:!0}),Object.defineProperty(r,"target",{value:t.target,writable:!1,enumerable:!0,configurable:!0}),r};function H(t){return p(t)&&t.nodeType===Node.ELEMENT_NODE}var b=t=>t instanceof EventTarget;function w(...t){if(!b(t[0])){let[i,l,s]=t;return w(document,i,l,s)}let[e,n,r,o]=t;return Array.isArray(n)||(n=[n]),n.forEach(i=>e.removeEventListener(i,r,o)),e}function R(t,e,n){let{when:r,once:o,delegate:i,...l}=n;if(!r&&!i)return[e,n];let s=D(e)?e:e.handleEvent.bind(e),f=u=>{if(r&&r(u)!==!0)return;let m=()=>w(t,u.type,f,n);if(!i)return o&&m(),s(u);let{target:T}=u;if(!H(T))return;let S=T.closest(i);if(S)return o&&m(),s.call(S,C(u,S))};return[f,l]}function a(...t){if(!b(t[0])){let[i,l,s]=t;return a(document,i,l,s)}let[e,n,r,o]=t;return Array.isArray(n)||(n=[n]),o&&([r,o]=R(e,r,o)),n.forEach(i=>e.addEventListener(i,r,o)),()=>w(e,n,r,o)}function L(t,e){return t?(Array.isArray(e)||(e=[e]),t.classList.remove(...e),t):null}function P(t,e,n){return t?(Array.isArray(e)||(e=[e]),e.forEach(r=>t.classList.toggle(r,n)),t):null}function N(){let t=location.hash.slice(1),e=A(".menu-list-item.current");if(t){let n=c("Menu-"+t);if(n===e)return;E(n,"current")}L(e,"current")}function j(){a("click",()=>P(c("Menu"),"open"),{delegate:".menu-trigger"}),a(window,"hashchange",N),N()}function k(t,e,n){let r=t.getAttribute(e);return n===!1||n===null?t.removeAttribute(e):n!==void 0&&t.setAttribute(e,n===!0?"":String(n)),r}var U={numbers:!1};function B(t,e){return t?(e={...U,...e},t=`${t}`.replace(/([A-Z])([a-z])/g,n=>` ${n}`),e.numbers&&(t=t.replace(/(\d+)/g," $1 ")),t.replace(/[^a-z\d]+/gi," ").trim()):""}var W=(t,e)=>B(t,e).toLowerCase().replace(/\s+/g,"-");var q=(t,e,n,r)=>{e=W(e);let o=n!=null?String(n):"",i=r?"important":void 0;t.style.setProperty(e,o,i),!Number.isNaN(Number(o))&&t.style.getPropertyValue(e)!==o&&q(t,e,o+"px",r)},G=(t,e,n)=>{let r=!1;d(n)&&n.includes("!important")&&(n=n.split(" ")[0],r=!0),q(t,e,n,r)},Z=(t,e,n)=>{if(n!==void 0)return G(t,e,n),window.getComputedStyle(t);let r=window.getComputedStyle(t).getPropertyValue(W(e)),o=parseFloat(r);return Number.isNaN(o)?r:o},J=(t,e)=>(e&&Object.entries(e).forEach(([n,r])=>{r&&G(t,n,r)}),window.getComputedStyle(t));function z(t,e,n){return d(e)?Z(t,e,n):J(t,e)}function I(t,e,n){if(!t)return!1;let r=n?"some":"every";return(Array.isArray(e)?e:[e])[r](i=>t.classList.contains(i))}var g=t=>p(t)&&t.nodeType===Node.DOCUMENT_NODE;var y=t=>t instanceof Window||Object.prototype.toString.call(t).includes("object Window");function Q(t){return t?g(t)?t:y(t)?t.document:t.ownerDocument:null}function h(t){let e=Q(t||document);return e&&(e.scrollingElement||e.documentElement)}var V=h;function F(t){if(g(t)||y(t)){let e=h(t);if(!e)return{width:0,height:0};t=e}return{width:t.clientWidth,height:t.clientHeight}}function O(t){if(y(t))return{width:t.outerWidth,height:t.outerHeight};if(g(t)){let e=h(t);if(!e)return{width:0,height:0};t=e}return{width:t.offsetWidth,height:t.offsetHeight}}function M(t,e,n=0){return t?M(t.offsetParent,e,n+t[e]):n}var _=(t,e,n)=>{let r=e??t.offsetTop,o=n??t.offsetLeft;return{top:r,left:o,right:o+t.offsetWidth,bottom:r+t.offsetHeight}};function $(t){if(!t)return{top:0,left:0,right:0,bottom:0};let e=M(t,"offsetTop"),n=M(t,"offsetLeft");return{..._(t,e,n),relative:_(t)}}function X(t,e){let n=V();if(!n)return;let r=F(n),{top:o,bottom:i,left:l}=$(t),s=O(t).width,f=O(e),u=i+10,m=Math.round(l+s/2-f.width/2);i+f.height-n.scrollTop>r.height&&(u=o-f.height-10);let T=m+f.width+15;T>r.width&&(m-=T-r.width),z(e,{left:m,top:u,maxWidth:r.width-30})}function K(){v(".module .hljs-title.class_").forEach(t=>{t&&(I(t.previousElementSibling,"hljs-keyword")||k(t,"data-custom-type",t.innerHTML.trim()))}),a("mouseenter",t=>{let e=t.currentTarget;if(!e)return;let n=c("Tooltip-"+e.dataset.customType?.trim());n&&(E(n,"show"),X(e,n))},{delegate:"[data-custom-type]",capture:!0}),a("mouseleave",t=>{let e=t.currentTarget;if(!e)return;let n=c("Tooltip-"+e.dataset.customType?.trim());n&&L(n,"show")},{delegate:"[data-custom-type]",capture:!0})}j();K();})();
+      "use strict";(()=>{function K(t,e,n){n?.caseSensitive&&([t,e]=[t.toLowerCase(),e.toLowerCase()]);let r=t.length,o=e.length;if(r<=o)return t===e;for(let i=0,l=-1;i<o;i++)for(;l<=r;){if(l===r)return!1;if(t[++l]===e[i])break}return!0}var O=K;function x(t,e){return t?(Array.isArray(e)||(e=[e]),t.classList.add(...e),t):null}var p=t=>typeof t=="string";var R={numbers:!1};function D(t,e){return t?(e={...R,...e},t=`${t}`.replace(/([A-Z])([a-z])/g,n=>` ${n}`),e.numbers&&(t=t.replace(/(\d+)/g," $1 ")),t.replace(/[^a-z\d]+/gi," ").trim()):""}var M=(t,e)=>D(t,e).toLowerCase().replace(/\s+/g,"-");var P=(t,e,n,r)=>{e=M(e);let o=n!=null?String(n):"",i=r?"important":void 0;t.style.setProperty(e,o,i),!Number.isNaN(Number(o))&&t.style.getPropertyValue(e)!==o&&P(t,e,o+"px",r)},W=(t,e,n)=>{let r=!1;p(n)&&n.includes("!important")&&(n=n.split(" ")[0],r=!0),P(t,e,n,r)},U=(t,e,n)=>{if(n!==void 0)return W(t,e,n),window.getComputedStyle(t);let r=window.getComputedStyle(t).getPropertyValue(M(e)),o=parseFloat(r);return Number.isNaN(o)?r:o},Z=(t,e)=>(e&&Object.entries(e).forEach(([n,r])=>{r&&W(t,n,r)}),window.getComputedStyle(t));function S(t,e,n){return p(e)?U(t,e,n):Z(t,e)}var c=t=>!!t&&typeof t.nodeType<"u";function v(...t){let e=new Set;for(let n of t)if(n)if(c(n))e.add(n);else for(let r=0;r<n.length;r++)e.add(n[r]);return Array.from(e)}function f(t){let e=n=>document.getElementById(n);return Array.isArray(t)?v(...t.map(e)):e(t)}function E(...t){if(p(t[0])||Array.isArray(t[0]))return E(document,t[0]);let[e,n]=t;return Array.isArray(n)&&(n=n.join(",")),v(e.querySelectorAll(n))}function A(...t){if(p(t[0]))return A(document,t[0]);let[e,n]=t;return e.querySelector(n)}var k=(t,e)=>{let n=t.constructor.name,r=new window[n](t.type,t);return Object.defineProperty(r,"currentTarget",{value:e??t.currentTarget,writable:!1,enumerable:!0,configurable:!0}),Object.defineProperty(r,"target",{value:t.target,writable:!1,enumerable:!0,configurable:!0}),r};function z(t){return c(t)&&t.nodeType===Node.ELEMENT_NODE}var b=t=>t instanceof EventTarget;function w(...t){if(!b(t[0]))return w(document,...t);let[e,n,r,o]=t;return Array.isArray(n)||(n=[n]),n.forEach(i=>e.removeEventListener(i,r,o)),e}function J(t,e,n){let{when:r,once:o,delegate:i,...l}=n;if(!r&&!i)return[e,n];function h(s){if(r&&r(s)!==!0)return;let y=()=>w(t,s.type,h,n);if(!i)return o&&y(),e.call(this,s);let{target:a}=s;if(!z(a))return;let m=a.closest(i);if(m)return o&&y(),e.call(m,k(s,m))}return[h,l]}function u(...t){if(!b(t[0]))return u(document,...t);let[e,n,r,o]=t;return Array.isArray(n)||(n=[n]),o&&([r,o]=J(e,r,o)),n.forEach(i=>e.addEventListener(i,r,o)),()=>w(e,n,r,o)}function L(t,e){return t?(Array.isArray(e)||(e=[e]),t.classList.remove(...e),t):null}function H(t,e,n){return t?(Array.isArray(e)||(e=[e]),e.forEach(r=>t.classList.toggle(r,n)),t):null}function B(){let t=location.hash.slice(1),e=A(".menu-list-item.current");if(t){let n=f("Menu-"+t);if(n===e)return;x(n,"current")}L(e,"current")}function X(){let t=f("Menu-Search");if(!t)return;let e=E("#Menu .menu-list-item");u(t,"input",()=>{let n=t.value;e.forEach(r=>{let o=O(r.id.slice(5),n);S(r,"display",o?null:"none")})})}function Y(){let t=f("Menu"),e=()=>H(t,"open",!1);u("click",()=>H(t,"open"),{delegate:".menu-trigger"}),u("click",n=>{let r=n.target;r.className!=="menu-trigger"&&!r.closest("#Menu")&&e()}),u("keyup",n=>{n.key==="Escape"&&e()}),u(window,"hashchange",B),B()}function F(){Y(),X()}function q(t,e,n){let r=t.getAttribute(e);return n===!1||n===null?t.removeAttribute(e):n!==void 0&&t.setAttribute(e,n===!0?"":String(n)),r}function j(t,e,n){if(!t)return!1;let r=n?"some":"every";return(Array.isArray(e)?e:[e])[r](i=>t.classList.contains(i))}var d=t=>c(t)&&t.nodeType===Node.DOCUMENT_NODE;var g=t=>t instanceof Window||Object.prototype.toString.call(t).includes("object Window");function G(t){return t?d(t)?t:g(t)?t.document:t.ownerDocument:null}function T(t){let e=G(t||document);return e&&(e.scrollingElement||e.documentElement)}var I=T;function Q(t){if(d(t)||g(t)){let e=T(t);if(!e)return{width:0,height:0};t=e}return{width:t.clientWidth,height:t.clientHeight}}function N(t){if(g(t))return{width:t.outerWidth,height:t.outerHeight};if(d(t)){let e=T(t);if(!e)return{width:0,height:0};t=e}return{width:t.offsetWidth,height:t.offsetHeight}}function C(t,e,n=0){return t?C(t.offsetParent,e,n+t[e]):n}var V=(t,e,n)=>{let r=e??t.offsetTop,o=n??t.offsetLeft;return{top:r,left:o,right:o+t.offsetWidth,bottom:r+t.offsetHeight}};function _(t){if(!t)return{top:0,left:0,right:0,bottom:0};let e=C(t,"offsetTop"),n=C(t,"offsetLeft");return{...V(t,e,n),relative:V(t)}}function tt(t,e){let n=I();if(!n)return;let r=Q(n),{top:o,bottom:i,left:l}=_(t),h=N(t).width,s=N(e),y=i+10,a=Math.round(l+h/2-s.width/2);i+s.height-n.scrollTop>r.height&&(y=o-s.height-10);let m=a+s.width+15;m>r.width&&(a-=m-r.width),S(e,{left:a,top:y,maxWidth:r.width-30})}function $(){E(".module .hljs-title.class_").forEach(t=>{t&&(j(t.previousElementSibling,"hljs-keyword")||q(t,"data-custom-type",t.innerHTML.trim()))}),u("mouseenter",t=>{let e=t.currentTarget;if(!e)return;let n=f("Tooltip-"+e.dataset.customType?.trim());n&&(x(n,"show"),tt(e,n))},{delegate:"[data-custom-type]",capture:!0}),u("mouseleave",t=>{let e=t.currentTarget;if(!e)return;let n=f("Tooltip-"+e.dataset.customType?.trim());n&&L(n,"show")},{delegate:"[data-custom-type]",capture:!0})}F();$();})();
 
     </script>
   </body>

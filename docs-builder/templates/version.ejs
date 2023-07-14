@@ -33,6 +33,8 @@
       </header>
 
       <nav class="menu" id="Menu">
+        <input type="search" class="menu-search" id="Menu-Search" placeholder="Type to filter..." />
+
         <ul class="menu-list">
           <% modules.forEach((module) => { %>
           <li class="menu-list-item" id="Menu-<%= module.name %>">
