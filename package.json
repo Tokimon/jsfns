@@ -12,6 +12,8 @@
     "lint": "eslint . --max-warnings=0",
     "build": "pnpm --parallel build",
     "clean": "pnpm --parallel clean",
+    "test": "pnpm --parallel test",
+    "types": "pnpm --parallel types",
     "validate": "pnpm --parallel validate"
   },
   "repository": {
