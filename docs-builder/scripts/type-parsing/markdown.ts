@@ -6,11 +6,18 @@ const ho: SynchronousOptions = {
   langPrefix: 'hljs language-',
   highlight(code, lang) {
     const language = hljs.getLanguage(lang) ? lang : 'plaintext';
-    return hljs.highlight(code, { language }).value;
+
+    let html = hljs.highlight(code, { language }).value;
+    if (html.includes('?:')) {
+      // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
+      html = html.replaceAll(/(?<!\>)\b(\w+)(?!<\/[^>]+>)\?:/g, (_, name) => `<span class="hljs-attr">${name}</span>?:`);
+    }
+
+    return html;
   },
 };
 
-marked.use(markedHighlight(ho) as marked.MarkedExtension);
+marked.use(markedHighlight(ho));
 
 const opts = { mangle: false, headerIds: false, gfm: true, breaks: true };
 
