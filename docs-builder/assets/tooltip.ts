@@ -18,19 +18,23 @@ function positionTooltip(elm: HTMLElement, tooltip: HTMLElement) {
   const vpSize = innerSize(vp);
   const { top, bottom, left } = position(elm);
   const elmWidth = outerSize(elm).width;
-  const tpSize = outerSize(tooltip);
+  const tooltipSize = outerSize(tooltip);
+
+  const maxWidth = vpSize.width - 30;
+  const width = Math.min(tooltipSize.width, maxWidth);
 
   let tooltipTop = bottom + 10;
-  let tooltipLeft = Math.round(left + elmWidth / 2 - tpSize.width / 2);
 
-  if (bottom + tpSize.height - vp.scrollTop > vpSize.height) {
-    tooltipTop = top - tpSize.height - 10;
+  if (bottom + tooltipSize.height - vp.scrollTop > vpSize.height) {
+    tooltipTop = top - tooltipSize.height - 10;
   }
 
-  const tooltipMaxRight = tooltipLeft + tpSize.width + 15;
+  let tooltipLeft = Math.max(15, Math.round(left + elmWidth / 2 - width / 2));
+
+  const tooltipMaxRight = tooltipLeft + tooltipSize.width + 15;
   if (tooltipMaxRight > vpSize.width) tooltipLeft -= tooltipMaxRight - vpSize.width;
 
-  css(tooltip, { left: tooltipLeft, top: tooltipTop, maxWidth: vpSize.width - 30 });
+  css(tooltip, { left: tooltipLeft, top: tooltipTop, maxWidth });
 }
 
 export function initTooltips() {
