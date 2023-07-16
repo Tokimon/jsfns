@@ -3,8 +3,8 @@
   "compilerOptions": {
     "lib": ["es2022", "DOM"],
     "moduleResolution": "Node",
-    "module": "ESNext",
-    "target": "es6",
+    "module": "esnext",
+    "target": "ES2022",
     "noEmit": true,
     "declaration": true,
     "skipLibCheck": true,
