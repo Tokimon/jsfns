@@ -1,3 +1,4 @@
+import { writeFileSync } from 'fs';
 import path from 'path';
 import TypeDoc from 'typedoc';
 
@@ -19,5 +20,9 @@ export function buildTypedoc(packagePath: string) {
 
   if (!project) throw app.logger.errorCount;
 
-  return app.serializer.projectToObject(project, packagePath);
+  const json = app.serializer.projectToObject(project, packagePath);
+
+  writeFileSync(path.join(packagePath, 'doc.json'), JSON.stringify(json, null, 2));
+
+  return json;
 }

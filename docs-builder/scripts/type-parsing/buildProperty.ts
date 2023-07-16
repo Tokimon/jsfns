@@ -16,7 +16,10 @@ export function buildPropertyLike(typeString: TypeStringFunction, prop: Property
   return `${name}${optional}: ${typeString(type)}${defVal}`;
 }
 
-export function buildProperty(typeString: TypeStringFunction, prop: Kind_Property | Kind_Param) {
-  const { name, flags, type, defaultValue } = prop;
-  return buildPropertyLike(typeString, { name, flags, type, defaultValue });
+export function buildProperty(typeString: TypeStringFunction, prop: Kind_Property) {
+  return buildPropertyLike(typeString, prop);
+}
+
+export function buildParam(typeString: TypeStringFunction, prop: Kind_Param) {
+  return buildPropertyLike(typeString, prop);
 }
