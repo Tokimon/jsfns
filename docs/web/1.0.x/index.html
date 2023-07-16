@@ -1059,7 +1059,7 @@
             <div class="signatures">
               
               <div class="signature">
-                <div class="signature-definition"><pre><code class="hljs language-ts">copyEvent&lt;T <span class="hljs-keyword">extends</span> <span class="hljs-title class_">Event</span>&lt;T&gt;&gt;(<span class="hljs-attr" title="The event to copy" title="does stuff">event</span>: T, <span class="hljs-attr" title="Element to define as currentTarget (falls back to the event currentTarget if not defined)" title="does stuff">currentTarget</span>?: <span class="hljs-title class_">EventTarget</span>): T
+                <div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">copyEvent</span>&lt;T <span class="hljs-keyword">extends</span> <span class="hljs-title class_">Event</span>&lt;T&gt;&gt;(<span class="hljs-attr" title="The event to copy" title="does stuff">event</span>: T, <span class="hljs-attr" title="Element to define as currentTarget (falls back to the event currentTarget if not defined)" title="does stuff">currentTarget</span>?: <span class="hljs-title class_">EventTarget</span>): T
 </code></pre></div>
 
                 <div class="signature-content">
@@ -1417,7 +1417,7 @@
             <div class="signatures">
               
               <div class="signature">
-                <div class="signature-definition"><pre><code class="hljs language-ts">find&lt;T <span class="hljs-keyword">extends</span> <span class="hljs-title class_">HTMLElement</span>&lt;T&gt;&gt;(<span class="hljs-attr" title="The selector to use" title="does stuff">selector</span>: <span class="hljs-built_in">string</span>): T | T[] | <span class="hljs-literal">null</span>
+                <div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">find</span>&lt;T <span class="hljs-keyword">extends</span> <span class="hljs-title class_">HTMLElement</span>&lt;T&gt;&gt;(<span class="hljs-attr" title="The selector to use" title="does stuff">selector</span>: <span class="hljs-built_in">string</span>): T | T[] | <span class="hljs-literal">null</span>
 </code></pre></div>
 
                 <div class="signature-content">
@@ -1448,7 +1448,7 @@
               </div>
               
               <div class="signature">
-                <div class="signature-definition"><pre><code class="hljs language-ts">find&lt;T <span class="hljs-keyword">extends</span> <span class="hljs-title class_">HTMLElement</span>&lt;T&gt;&gt;(<span class="hljs-attr" title="The DOM element to start the search from" title="does stuff">elm</span>: <span class="hljs-title class_">Document</span> | <span class="hljs-title class_">HTMLElement</span>, <span class="hljs-attr" title="The selector to use" title="does stuff">selector</span>: <span class="hljs-built_in">string</span>): T | T[] | <span class="hljs-literal">null</span>
+                <div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">find</span>&lt;T <span class="hljs-keyword">extends</span> <span class="hljs-title class_">HTMLElement</span>&lt;T&gt;&gt;(<span class="hljs-attr" title="The DOM element to start the search from" title="does stuff">elm</span>: <span class="hljs-title class_">Document</span> | <span class="hljs-title class_">HTMLElement</span>, <span class="hljs-attr" title="The selector to use" title="does stuff">selector</span>: <span class="hljs-built_in">string</span>): T | T[] | <span class="hljs-literal">null</span>
 </code></pre></div>
 
                 <div class="signature-content">
@@ -1491,7 +1491,7 @@
             <div class="signatures">
               
               <div class="signature">
-                <div class="signature-definition"><pre><code class="hljs language-ts">findByClass&lt;T <span class="hljs-keyword">extends</span> <span class="hljs-title class_">HTMLElement</span>&lt;T&gt;&gt;(<span class="hljs-attr" title="Class name(s) to find elements by" title="does stuff">classNames</span>: <span class="hljs-built_in">string</span> | <span class="hljs-built_in">string</span>[]): T[]
+                <div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">findByClass</span>&lt;T <span class="hljs-keyword">extends</span> <span class="hljs-title class_">HTMLElement</span>&lt;T&gt;&gt;(<span class="hljs-attr" title="Class name(s) to find elements by" title="does stuff">classNames</span>: <span class="hljs-built_in">string</span> | <span class="hljs-built_in">string</span>[]): T[]
 </code></pre></div>
 
                 <div class="signature-content">
@@ -1514,7 +1514,7 @@
               </div>
               
               <div class="signature">
-                <div class="signature-definition"><pre><code class="hljs language-ts">findByClass&lt;T <span class="hljs-keyword">extends</span> <span class="hljs-title class_">HTMLElement</span>&lt;T&gt;&gt;(<span class="hljs-attr" title="The DOM element to start the search from" title="does stuff">elm</span>: <span class="hljs-title class_">Document</span> | <span class="hljs-title class_">HTMLElement</span>, <span class="hljs-attr" title="Class name(s) to find elements by" title="does stuff">classNames</span>: <span class="hljs-built_in">string</span> | <span class="hljs-built_in">string</span>[]): T[]
+                <div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">findByClass</span>&lt;T <span class="hljs-keyword">extends</span> <span class="hljs-title class_">HTMLElement</span>&lt;T&gt;&gt;(<span class="hljs-attr" title="The DOM element to start the search from" title="does stuff">elm</span>: <span class="hljs-title class_">Document</span> | <span class="hljs-title class_">HTMLElement</span>, <span class="hljs-attr" title="Class name(s) to find elements by" title="does stuff">classNames</span>: <span class="hljs-built_in">string</span> | <span class="hljs-built_in">string</span>[]): T[]
 </code></pre></div>
 
                 <div class="signature-content">
@@ -1549,7 +1549,7 @@
             <div class="signatures">
               
               <div class="signature">
-                <div class="signature-definition"><pre><code class="hljs language-ts">findById&lt;T <span class="hljs-keyword">extends</span> <span class="hljs-title class_">HTMLElement</span>&lt;T&gt;&gt;(<span class="hljs-attr" title="does stuff">id</span>: <span class="hljs-built_in">string</span>): T | <span class="hljs-literal">null</span>
+                <div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">findById</span>&lt;T <span class="hljs-keyword">extends</span> <span class="hljs-title class_">HTMLElement</span>&lt;T&gt;&gt;(<span class="hljs-attr" title="does stuff">id</span>: <span class="hljs-built_in">string</span>): T | <span class="hljs-literal">null</span>
 </code></pre></div>
 
                 <div class="signature-content">
@@ -1577,7 +1577,7 @@
               </div>
               
               <div class="signature">
-                <div class="signature-definition"><pre><code class="hljs language-ts">findById&lt;T <span class="hljs-keyword">extends</span> <span class="hljs-title class_">HTMLElement</span>&lt;T&gt;&gt;(<span class="hljs-attr" title="ID to find the element by" title="does stuff">ids</span>: <span class="hljs-built_in">string</span>[]): T[]
+                <div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">findById</span>&lt;T <span class="hljs-keyword">extends</span> <span class="hljs-title class_">HTMLElement</span>&lt;T&gt;&gt;(<span class="hljs-attr" title="ID to find the element by" title="does stuff">ids</span>: <span class="hljs-built_in">string</span>[]): T[]
 </code></pre></div>
 
                 <div class="signature-content">
@@ -1611,7 +1611,7 @@
             <div class="signatures">
               
               <div class="signature">
-                <div class="signature-definition"><pre><code class="hljs language-ts">findByName&lt;T <span class="hljs-keyword">extends</span> <span class="hljs-title class_">HTMLElement</span>&lt;T&gt;&gt;(<span class="hljs-attr" title="Value of name attribute to find the elements by" title="does stuff">names</span>: <span class="hljs-built_in">string</span> | <span class="hljs-built_in">string</span>[]): T[]
+                <div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">findByName</span>&lt;T <span class="hljs-keyword">extends</span> <span class="hljs-title class_">HTMLElement</span>&lt;T&gt;&gt;(<span class="hljs-attr" title="Value of name attribute to find the elements by" title="does stuff">names</span>: <span class="hljs-built_in">string</span> | <span class="hljs-built_in">string</span>[]): T[]
 </code></pre></div>
 
                 <div class="signature-content">
@@ -1645,7 +1645,7 @@
             <div class="signatures">
               
               <div class="signature">
-                <div class="signature-definition"><pre><code class="hljs language-ts">findByQuery&lt;T <span class="hljs-keyword">extends</span> <span class="hljs-title class_">HTMLElement</span>&lt;T&gt;&gt;(<span class="hljs-attr" title="The DOM element to start the search from" title="does stuff">elm</span>: <span class="hljs-title class_">Document</span> | <span class="hljs-title class_">HTMLElement</span>, <span class="hljs-attr" title="CSS selector to find elements by" title="does stuff">queries</span>: <span class="hljs-built_in">string</span> | <span class="hljs-built_in">string</span>[]): T[]
+                <div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">findByQuery</span>&lt;T <span class="hljs-keyword">extends</span> <span class="hljs-title class_">HTMLElement</span>&lt;T&gt;&gt;(<span class="hljs-attr" title="The DOM element to start the search from" title="does stuff">elm</span>: <span class="hljs-title class_">Document</span> | <span class="hljs-title class_">HTMLElement</span>, <span class="hljs-attr" title="CSS selector to find elements by" title="does stuff">queries</span>: <span class="hljs-built_in">string</span> | <span class="hljs-built_in">string</span>[]): T[]
 </code></pre></div>
 
                 <div class="signature-content">
@@ -1666,7 +1666,7 @@
               </div>
               
               <div class="signature">
-                <div class="signature-definition"><pre><code class="hljs language-ts">findByQuery&lt;T <span class="hljs-keyword">extends</span> <span class="hljs-title class_">HTMLElement</span>&lt;T&gt;&gt;(<span class="hljs-attr" title="CSS selector to find elements by" title="does stuff">queries</span>: <span class="hljs-built_in">string</span> | <span class="hljs-built_in">string</span>[]): T[]
+                <div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">findByQuery</span>&lt;T <span class="hljs-keyword">extends</span> <span class="hljs-title class_">HTMLElement</span>&lt;T&gt;&gt;(<span class="hljs-attr" title="CSS selector to find elements by" title="does stuff">queries</span>: <span class="hljs-built_in">string</span> | <span class="hljs-built_in">string</span>[]): T[]
 </code></pre></div>
 
                 <div class="signature-content">
@@ -1687,7 +1687,7 @@
               </div>
               
               <div class="signature">
-                <div class="signature-definition"><pre><code class="hljs language-ts">findOneByQuery&lt;T <span class="hljs-keyword">extends</span> <span class="hljs-title class_">HTMLElement</span>&lt;T&gt;&gt;(<span class="hljs-attr" title="The DOM element to start the search from" title="does stuff">elm</span>: <span class="hljs-title class_">Document</span> | <span class="hljs-title class_">HTMLElement</span>, <span class="hljs-attr" title="CSS selector to find elements by" title="does stuff">query</span>: <span class="hljs-built_in">string</span>): T | <span class="hljs-literal">null</span>
+                <div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">findOneByQuery</span>&lt;T <span class="hljs-keyword">extends</span> <span class="hljs-title class_">HTMLElement</span>&lt;T&gt;&gt;(<span class="hljs-attr" title="The DOM element to start the search from" title="does stuff">elm</span>: <span class="hljs-title class_">Document</span> | <span class="hljs-title class_">HTMLElement</span>, <span class="hljs-attr" title="CSS selector to find elements by" title="does stuff">query</span>: <span class="hljs-built_in">string</span>): T | <span class="hljs-literal">null</span>
 </code></pre></div>
 
                 <div class="signature-content">
@@ -1747,7 +1747,7 @@
             <div class="signatures">
               
               <div class="signature">
-                <div class="signature-definition"><pre><code class="hljs language-ts">findByTagName&lt;T <span class="hljs-keyword">extends</span> <span class="hljs-title class_">HTMLElement</span>&lt;T&gt;&gt;(<span class="hljs-attr" title="Tag name to find the elements by" title="does stuff">tagNames</span>: <span class="hljs-built_in">string</span> | <span class="hljs-built_in">string</span>[]): T[]
+                <div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">findByTagName</span>&lt;T <span class="hljs-keyword">extends</span> <span class="hljs-title class_">HTMLElement</span>&lt;T&gt;&gt;(<span class="hljs-attr" title="Tag name to find the elements by" title="does stuff">tagNames</span>: <span class="hljs-built_in">string</span> | <span class="hljs-built_in">string</span>[]): T[]
 </code></pre></div>
 
                 <div class="signature-content">
@@ -1768,7 +1768,7 @@
               </div>
               
               <div class="signature">
-                <div class="signature-definition"><pre><code class="hljs language-ts">findByTagName&lt;T <span class="hljs-keyword">extends</span> <span class="hljs-title class_">HTMLElement</span>&lt;T&gt;&gt;(<span class="hljs-attr" title="The DOM element to start the search from" title="does stuff">elm</span>: <span class="hljs-title class_">Document</span> | <span class="hljs-title class_">HTMLElement</span>, <span class="hljs-attr" title="Tag name to find the elements by" title="does stuff">tagNames</span>: <span class="hljs-built_in">string</span> | <span class="hljs-built_in">string</span>[]): T[]
+                <div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">findByTagName</span>&lt;T <span class="hljs-keyword">extends</span> <span class="hljs-title class_">HTMLElement</span>&lt;T&gt;&gt;(<span class="hljs-attr" title="The DOM element to start the search from" title="does stuff">elm</span>: <span class="hljs-title class_">Document</span> | <span class="hljs-title class_">HTMLElement</span>, <span class="hljs-attr" title="Tag name to find the elements by" title="does stuff">tagNames</span>: <span class="hljs-built_in">string</span> | <span class="hljs-built_in">string</span>[]): T[]
 </code></pre></div>
 
                 <div class="signature-content">
@@ -2804,7 +2804,7 @@
             <div class="signatures">
               
               <div class="signature">
-                <div class="signature-definition"><pre><code class="hljs language-ts">off&lt;E <span class="hljs-keyword">extends</span> <span class="hljs-built_in">string</span>&gt;(<span class="hljs-attr" title="DOM element to bind the event to" title="does stuff">elm</span>: <span class="hljs-title class_">EventTarget</span>, <span class="hljs-attr" title="Event names to bind the handler to" title="does stuff">eventNames</span>: E | E[], <span class="hljs-attr" title="Handler to bind to the event" title="does stuff">handler</span>: <span class="hljs-title class_">EventHandler</span>&lt;E&gt;, <span class="hljs-attr" title="Options to pass to the 'removeEventListener'" title="does stuff">options</span>?: <span class="hljs-title class_">AddEventListenerOptions</span>): elm
+                <div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">off</span>&lt;E <span class="hljs-keyword">extends</span> <span class="hljs-built_in">string</span>&gt;(<span class="hljs-attr" title="DOM element to bind the event to" title="does stuff">elm</span>: <span class="hljs-title class_">EventTarget</span>, <span class="hljs-attr" title="Event names to bind the handler to" title="does stuff">eventNames</span>: E | E[], <span class="hljs-attr" title="Handler to bind to the event" title="does stuff">handler</span>: <span class="hljs-title class_">EventHandler</span>&lt;E&gt;, <span class="hljs-attr" title="Options to pass to the 'removeEventListener'" title="does stuff">options</span>?: <span class="hljs-title class_">AddEventListenerOptions</span>): elm
 </code></pre></div>
 
                 <div class="signature-content">
@@ -2835,7 +2835,7 @@
               </div>
               
               <div class="signature">
-                <div class="signature-definition"><pre><code class="hljs language-ts">off&lt;E <span class="hljs-keyword">extends</span> <span class="hljs-built_in">string</span>&gt;(<span class="hljs-attr" title="Event names to bind the handler to" title="does stuff">eventNames</span>: E | E[], <span class="hljs-attr" title="Handler to bind to the event" title="does stuff">handler</span>: <span class="hljs-title class_">EventHandler</span>&lt;E&gt;, <span class="hljs-attr" title="Options to pass to the 'removeEventListener'" title="does stuff">options</span>?: <span class="hljs-title class_">AddEventListenerOptions</span>): <span class="hljs-title class_">Document</span>
+                <div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">off</span>&lt;E <span class="hljs-keyword">extends</span> <span class="hljs-built_in">string</span>&gt;(<span class="hljs-attr" title="Event names to bind the handler to" title="does stuff">eventNames</span>: E | E[], <span class="hljs-attr" title="Handler to bind to the event" title="does stuff">handler</span>: <span class="hljs-title class_">EventHandler</span>&lt;E&gt;, <span class="hljs-attr" title="Options to pass to the 'removeEventListener'" title="does stuff">options</span>?: <span class="hljs-title class_">AddEventListenerOptions</span>): <span class="hljs-title class_">Document</span>
 </code></pre></div>
 
                 <div class="signature-content">
@@ -2877,7 +2877,7 @@
             <div class="signatures">
               
               <div class="signature">
-                <div class="signature-definition"><pre><code class="hljs language-ts">on&lt;E <span class="hljs-keyword">extends</span> <span class="hljs-built_in">string</span>&gt;(<span class="hljs-attr" title="DOM element to bind the event to" title="does stuff">elm</span>: <span class="hljs-title class_">EventTarget</span>, <span class="hljs-attr" title="Event names to bind the handler to" title="does stuff">eventNames</span>: E | E[], <span class="hljs-attr" title="Handler to bind to the event" title="does stuff">handler</span>: <span class="hljs-title class_">EventHandler</span>&lt;E&gt;, <span class="hljs-attr" title="Options to pass to the 'addEventListener'" title="does stuff">options</span>?: <span class="hljs-title class_">OnOptions</span>): <span class="hljs-function">() =&gt;</span> elm
+                <div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">on</span>&lt;E <span class="hljs-keyword">extends</span> <span class="hljs-built_in">string</span>&gt;(<span class="hljs-attr" title="DOM element to bind the event to" title="does stuff">elm</span>: <span class="hljs-title class_">EventTarget</span>, <span class="hljs-attr" title="Event names to bind the handler to" title="does stuff">eventNames</span>: E | E[], <span class="hljs-attr" title="Handler to bind to the event" title="does stuff">handler</span>: <span class="hljs-title class_">EventHandler</span>&lt;E&gt;, <span class="hljs-attr" title="Options to pass to the 'addEventListener'" title="does stuff">options</span>?: <span class="hljs-title class_">OnOptions</span>): <span class="hljs-function">() =&gt;</span> elm
 </code></pre></div>
 
                 <div class="signature-content">
@@ -2935,7 +2935,7 @@
               </div>
               
               <div class="signature">
-                <div class="signature-definition"><pre><code class="hljs language-ts">on&lt;E <span class="hljs-keyword">extends</span> <span class="hljs-built_in">string</span>&gt;(<span class="hljs-attr" title="Event names to bind the handler to" title="does stuff">eventNames</span>: E | E[], <span class="hljs-attr" title="Handler to bind to the event" title="does stuff">handler</span>: <span class="hljs-title class_">EventHandler</span>&lt;E&gt;, <span class="hljs-attr" title="Options to pass to the 'addEventListener'" title="does stuff">options</span>?: <span class="hljs-title class_">OnOptions</span>): <span class="hljs-function">() =&gt;</span> <span class="hljs-title class_">Document</span>
+                <div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">on</span>&lt;E <span class="hljs-keyword">extends</span> <span class="hljs-built_in">string</span>&gt;(<span class="hljs-attr" title="Event names to bind the handler to" title="does stuff">eventNames</span>: E | E[], <span class="hljs-attr" title="Handler to bind to the event" title="does stuff">handler</span>: <span class="hljs-title class_">EventHandler</span>&lt;E&gt;, <span class="hljs-attr" title="Options to pass to the 'addEventListener'" title="does stuff">options</span>?: <span class="hljs-title class_">OnOptions</span>): <span class="hljs-function">() =&gt;</span> <span class="hljs-title class_">Document</span>
 </code></pre></div>
 
                 <div class="signature-content">
@@ -3597,7 +3597,7 @@
             <div class="signatures">
               
               <div class="signature">
-                <div class="signature-definition"><pre><code class="hljs language-ts">uniqueNodeList&lt;T <span class="hljs-keyword">extends</span> <span class="hljs-title class_">Element</span>&lt;T&gt;&gt;(<span class="hljs-attr" title="does stuff">args</span>: <span class="hljs-literal">undefined</span>[]): T[]
+                <div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">uniqueNodeList</span>&lt;T <span class="hljs-keyword">extends</span> <span class="hljs-title class_">Element</span>&lt;T&gt;&gt;(<span class="hljs-attr" title="does stuff">args</span>: <span class="hljs-literal">undefined</span>[]): T[]
 </code></pre></div>
 
                 <div class="signature-content">

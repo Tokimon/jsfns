@@ -13,6 +13,11 @@ const ho: SynchronousOptions = {
       html = html.replaceAll(/(?<!\>)\b(\w+)(?!<\/[^>]+>)\?:/g, (_, name) => `<span class="hljs-attr">${name}</span>?:`);
     }
 
+    if (/^\w+&lt;/.test(html)) {
+      // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
+      html = html.replace(/^(\w+)&lt;/, (_, name) => `<span class="hljs-title function_">${name}</span>&lt;`);
+    }
+
     return html;
   },
 };
