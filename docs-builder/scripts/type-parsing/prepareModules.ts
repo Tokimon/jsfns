@@ -11,6 +11,7 @@ type ModuleFunction = {
   comment: string; // markdown html
   examples: string[]; // markdown html
   remarks: string[]; // markdown html
+  descriptions: string; // markdown html
   typesMarkdown: string; // markdown html
 };
 
@@ -36,17 +37,20 @@ export function prepareModules(modules: Kind_Module[]) {
 
         const examples: string[] = [];
         const remarks: string[] = [];
+        const descriptions: string[] = [];
 
         for (const { tag, content } of comment?.blockTags || []) {
           if (tag.startsWith('@example')) examples.push(markdown(buildSummary(content)));
-          else if (tag.startsWith('@remark')) examples.push(markdown(buildSummary(content)));
+          else if (tag.startsWith('@remark')) remarks.push(markdown(buildSummary(content)));
+          else descriptions.push(markdown('<span class="hljs-doctag">' + tag + '</span> : ' + buildSummary(content)));
         }
 
         return {
-          definition: TSCodeMarkdown(buildSignature(typeString, func.name, signature)),
+          definition: buildSignature(typeString, func.name, signature),
           comment: markdown(buildSummary(comment?.summary)),
           examples,
           remarks,
+          descriptions: descriptions.join('\n'),
           typesMarkdown: TSCodeMarkdown(types.map((type) => getCustomTypes()[type]).join('\n')),
         };
       });

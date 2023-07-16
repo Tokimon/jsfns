@@ -61,8 +61,13 @@
                   <% if (func.comment) { %>
                   <div class="signature-description"><%- func.comment %></div>
                   <% } %> <% func.remarks.forEach((remark) => { %>
-                  <div class="signature-remark"><%- remark %></div>
-                  <% }) %> <% if (func.examples.length) { %>
+                  <fieldset class="signature-remark">
+                    <legend>Note</legend>
+                    <%- remark %>
+                  </fieldset>
+                  <% }) %> <% if (func.descriptions) { %>
+                  <div class="signature-params"><%- func.descriptions %></div>
+                  <% } %> <% if (func.examples.length) { %>
                   <details>
                     <summary>Examples</summary>
                     <% func.examples.forEach((example) => { %> <%- example %> <% }) %>
