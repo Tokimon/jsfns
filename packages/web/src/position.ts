@@ -9,10 +9,10 @@ export type Position = {
   bottom: number;
 };
 
-export interface PositionData extends Position {
+export type PositionData = Position & {
   /** Position relative to the offset parent */
   relative?: Position;
-}
+};
 
 function absolutePosition(elm: HTMLElement | null, attr: 'offsetTop' | 'offsetLeft', accumulatedPosition = 0): number {
   if (!elm) return accumulatedPosition;

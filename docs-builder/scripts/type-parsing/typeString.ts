@@ -1,16 +1,17 @@
 import type { All_Types } from '../types';
 import { buildArray } from './buildArray';
-import { buildElement } from './buildElement';
 import { buildIntersection } from './buildIntersection';
 import { buildIntrinsic } from './buildIntrinsic';
 import { buildLiteral } from './buildLiteral';
+import { buildNamedTupleMember } from './buildNamedTupleMember';
 import { buildPredicate } from './buildPredicate';
 import { buildReference } from './buildReference';
 import { buildReflection } from './buildReflection';
+import { buildTemplateLiteral } from './buildTemplateLiteral';
 import { buildTuple } from './buildTuple';
 import { buildUnion } from './buildUnion';
 
-export type TypeStringOptions = { nonNull?: boolean };
+export type TypeStringOptions = { nonNull?: boolean; commentExtractor?: string[] };
 export type TypeStringFunction = (type: All_Types, options?: TypeStringOptions) => string;
 
 export const createTypeString = (customTypes?: string[]) => {
@@ -24,8 +25,10 @@ export const createTypeString = (customTypes?: string[]) => {
         return buildIntrinsic(type, options);
       case 'literal':
         return buildLiteral(type, options);
+      case 'templateLiteral':
+        return buildTemplateLiteral(typeString, type, options);
       case 'query':
-        return typeString(type.queryType);
+        return typeString(type.queryType, options);
       case 'tuple':
         return buildTuple(typeString, type, options);
       case 'intersection':
@@ -33,12 +36,12 @@ export const createTypeString = (customTypes?: string[]) => {
       case 'union':
         return buildUnion(typeString, type, options);
       case 'namedTupleMember':
-        return buildElement(typeString, type);
+        return buildNamedTupleMember(typeString, type);
       case 'reflection':
-        return buildReflection(typeString, type);
+        return buildReflection(typeString, type, options);
       case 'reference': {
         if (type.package !== 'typescript') customTypes?.push(type.name);
-        return buildReference(typeString, type);
+        return buildReference(typeString, type, options);
       }
     }
   };

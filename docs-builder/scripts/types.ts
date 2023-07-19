@@ -59,6 +59,12 @@ export type Type_Literal = {
   value: string | null;
 };
 
+export type Type_TemplateLiteral = {
+  type: 'templateLiteral';
+  head: string | Type_Intrinsic | (Type_Intrinsic | string)[] | (Type_Intrinsic | string)[][];
+  tail: string | Type_Intrinsic | (Type_Intrinsic | string)[] | (Type_Intrinsic | string)[][];
+};
+
 export type Type_Intrinsic = {
   type: 'intrinsic';
   name: string;
@@ -118,7 +124,7 @@ export type Element_NamedTupleMember = {
   defaultValue?: string;
 };
 
-type Basic_Types = Type_Intrinsic | Type_Reference | Type_Array | Type_Tuple | Type_Union | Type_Literal;
+type Basic_Types = Type_Intrinsic | Type_Reference | Type_Array | Type_Tuple | Type_Union | Type_Literal | Type_TemplateLiteral;
 
 export type All_Types = Basic_Types | Type_Intersection | Type_Reflection | Element_NamedTupleMember | Type_Predicate | Type_Query;
 

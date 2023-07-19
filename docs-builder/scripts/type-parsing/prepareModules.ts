@@ -1,7 +1,7 @@
 import { type Kind_Module } from '~docs-builder/types';
 import { buildSignature } from './buildSignature';
 import { buildSummary } from './buildSummary';
-import { findCustomTypes, getCustomTypes } from './findCustomTypes';
+import { findCustomTypes, getCustomTypesForModule } from './findCustomTypes';
 import { getFunctions } from './getFunctions';
 import { TSCodeMarkdown, markdown } from './markdown';
 import { createTypeString } from './typeString';
@@ -30,8 +30,7 @@ export function prepareModules(modules: Kind_Module[]) {
 
     const functions = getFunctions(module).flatMap((func) => {
       return func.signatures.map((signature): ModuleFunction => {
-        const types: string[] = [];
-        const typeString = createTypeString(types);
+        const typeString = createTypeString();
 
         const { comment } = signature;
 
@@ -51,7 +50,7 @@ export function prepareModules(modules: Kind_Module[]) {
           examples,
           remarks,
           descriptions: descriptions.join('\n'),
-          typesMarkdown: TSCodeMarkdown(types.map((type) => getCustomTypes()[type]).join('\n')),
+          typesMarkdown: TSCodeMarkdown(getCustomTypesForModule(func.name)),
         };
       });
     });

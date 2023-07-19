@@ -654,8 +654,7 @@
   <span class="hljs-comment">// Convert to UpperCase CamelCase (aka PascalCase)</span>
   <span class="hljs-attr">upper</span>?: <span class="hljs-built_in">boolean</span>
 };
-</code></pre>
-                  </details>
+</code></pre>                  </details>
                   
                 </div>
               </div>
@@ -707,10 +706,7 @@
             <div class="signatures">
               
               <div class="signature">
-                <div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">chunkString</span>(<span class="hljs-attr" title="String to split up" title="does stuff">str</span>: <span class="hljs-built_in">string</span>, <span class="hljs-attr" title="does stuff">__namedParameters</span>: {
-  <span class="hljs-attr" title="does stuff">reverse</span>: <span class="hljs-literal">undefined</span> | <span class="hljs-built_in">boolean</span>
-  <span class="hljs-attr" title="does stuff">size</span>: <span class="hljs-literal">undefined</span> | <span class="hljs-built_in">number</span>
-} = {}): <span class="hljs-built_in">string</span>[]
+                <div class="signature-definition"><pre><code class="hljs language-ts"><span class="hljs-title function_">chunkString</span>(<span class="hljs-attr" title="String to split up" title="does stuff">str</span>: <span class="hljs-built_in">string</span>, <span class="hljs-attr" title="The configuration options" title="does stuff">options</span>: <span class="hljs-title class_">ChunkStringOptions</span> = {}): <span class="hljs-built_in">string</span>[]
 </code></pre></div>
 
                 <div class="signature-content">
@@ -718,7 +714,7 @@
                   <div class="signature-description"><p>Split a String up into smaller strings of a give size (eg. &#39;ABCDEF&#39; -&gt; [AB,CD,EF])</p>
 </div>
                     
-                  <div class="signature-params"><p><span class="hljs-doctag">@returns</span> : Array of string chunks</p>
+                  <div class="signature-params"><p><span class="hljs-doctag">@returns</span> : Array of chunks</p>
 </div>
                    
                   <details>
@@ -729,6 +725,14 @@
 </code></pre> 
                   </details>
                    
+                  <details>
+                    <summary>Types</summary>
+                    <pre><code class="hljs language-ts"><span class="hljs-keyword">type</span> <span class="hljs-title class_">ChunkStringOptions</span> = {
+  <span class="hljs-attr">reverse</span>?: <span class="hljs-built_in">boolean</span>
+  <span class="hljs-attr">size</span>?: <span class="hljs-built_in">number</span>
+};
+</code></pre>                  </details>
+                  
                 </div>
               </div>
               
@@ -781,8 +785,7 @@
                   <details>
                     <summary>Types</summary>
                     <pre><code class="hljs language-ts"><span class="hljs-keyword">type</span> <span class="hljs-title class_">CurrencyFormatter</span> = <span class="hljs-function">(<span class="hljs-params">num: <span class="hljs-built_in">number</span></span>) =&gt;</span> <span class="hljs-built_in">string</span>;
-</code></pre>
-                  </details>
+</code></pre>                  </details>
                   
                 </div>
               </div>
@@ -831,8 +834,7 @@
   <span class="hljs-comment">// The thousand separator character</span>
   <span class="hljs-attr">thousand</span>?: <span class="hljs-built_in">string</span>
 };
-</code></pre>
-                  </details>
+</code></pre>                  </details>
                   
                 </div>
               </div>
@@ -1297,6 +1299,11 @@
 </code></pre> 
                   </details>
                    
+                  <details>
+                    <summary>Types</summary>
+                    <pre><code class="hljs language-ts"><span class="hljs-keyword">type</span> <span class="hljs-title class_">KebabCaseSettings</span> = <span class="hljs-title class_">PhrasifySettings</span>;
+</code></pre>                  </details>
+                  
                 </div>
               </div>
               
@@ -1505,8 +1512,7 @@
                   <details>
                     <summary>Types</summary>
                     <pre><code class="hljs language-ts"><span class="hljs-keyword">type</span> <span class="hljs-title class_">PascalCaseSettings</span> = <span class="hljs-title class_">Omit</span>&lt;<span class="hljs-title class_">CamelCaseSettings</span>, <span class="hljs-string">&#x27;upper&#x27;</span>&gt;;
-</code></pre>
-                  </details>
+</code></pre>                  </details>
                   
                 </div>
               </div>
@@ -1548,8 +1554,7 @@
   <span class="hljs-comment">// Separate numbers from words?</span>
   <span class="hljs-attr">numbers</span>?: <span class="hljs-built_in">boolean</span>
 };
-</code></pre>
-                  </details>
+</code></pre>                  </details>
                   
                 </div>
               </div>
@@ -1643,10 +1648,12 @@ action
                    
                   <details>
                     <summary>Types</summary>
-                    <pre><code class="hljs language-ts"><span class="hljs-keyword">type</span> <span class="hljs-title class_">PromisefyCallback</span> = <span class="hljs-function">(<span class="hljs-params">args: <span class="hljs-built_in">any</span>[]</span>) =&gt;</span> <span class="hljs-built_in">any</span>;
+                    <pre><code class="hljs language-ts"><span class="hljs-keyword">type</span> <span class="hljs-title class_">NodeLikeCallback</span> = <span class="hljs-function">(<span class="hljs-params">err?: <span class="hljs-built_in">string</span> | <span class="hljs-built_in">Error</span> | <span class="hljs-literal">null</span>, <span class="hljs-attr">data</span>?: <span class="hljs-built_in">unknown</span></span>) =&gt;</span> <span class="hljs-built_in">unknown</span>;
+
 <span class="hljs-keyword">type</span> <span class="hljs-title class_">PromisefiedFunction</span> = <span class="hljs-function">(<span class="hljs-params">args: <span class="hljs-built_in">any</span>[]</span>) =&gt;</span> <span class="hljs-title class_">Promise</span>&lt;<span class="hljs-built_in">any</span>&gt;;
-</code></pre>
-                  </details>
+
+<span class="hljs-keyword">type</span> <span class="hljs-title class_">PromisefyCallback</span> = <span class="hljs-function">(<span class="hljs-params">args: <span class="hljs-built_in">any</span>[]</span>) =&gt;</span> <span class="hljs-built_in">any</span>;
+</code></pre>                  </details>
                   
                 </div>
               </div>
@@ -1885,8 +1892,7 @@ action
                   <details>
                     <summary>Types</summary>
                     <pre><code class="hljs language-ts"><span class="hljs-keyword">type</span> <span class="hljs-title class_">RGBTuple</span> = [<span class="hljs-attr">red</span>: <span class="hljs-built_in">number</span>, <span class="hljs-attr">green</span>: <span class="hljs-built_in">number</span>, <span class="hljs-attr">blue</span>: <span class="hljs-built_in">number</span>, <span class="hljs-attr">alpha</span>?: <span class="hljs-built_in">number</span>];
-</code></pre>
-                  </details>
+</code></pre>                  </details>
                   
                 </div>
               </div>
@@ -1913,6 +1919,11 @@ action
 </code></pre> 
                   </details>
                    
+                  <details>
+                    <summary>Types</summary>
+                    <pre><code class="hljs language-ts"><span class="hljs-keyword">type</span> <span class="hljs-title class_">RGBTuple</span> = [<span class="hljs-attr">red</span>: <span class="hljs-built_in">number</span>, <span class="hljs-attr">green</span>: <span class="hljs-built_in">number</span>, <span class="hljs-attr">blue</span>: <span class="hljs-built_in">number</span>, <span class="hljs-attr">alpha</span>?: <span class="hljs-built_in">number</span>];
+</code></pre>                  </details>
+                  
                 </div>
               </div>
               
@@ -1992,12 +2003,8 @@ newDate.<span class="hljs-title function_">setMonth</span>(<span class="hljs-num
                    
                   <details>
                     <summary>Types</summary>
-                    <pre><code class="hljs language-ts"><span class="hljs-keyword">type</span> <span class="hljs-title class_">PhrasifySettings</span> = {
-  <span class="hljs-comment">// Separate numbers from words?</span>
-  <span class="hljs-attr">numbers</span>?: <span class="hljs-built_in">boolean</span>
-};
-</code></pre>
-                  </details>
+                    <pre><code class="hljs language-ts"><span class="hljs-keyword">type</span> <span class="hljs-title class_">SnakeCaseSettings</span> = <span class="hljs-title class_">PhrasifySettings</span>;
+</code></pre>                  </details>
                   
                 </div>
               </div>
@@ -2042,8 +2049,7 @@ newDate.<span class="hljs-title function_">setMonth</span>(<span class="hljs-num
   <span class="hljs-comment">// Max length of the given string</span>
   <span class="hljs-attr">maxLength</span>?: <span class="hljs-built_in">number</span>
 };
-</code></pre>
-                  </details>
+</code></pre>                  </details>
                   
                 </div>
               </div>
@@ -2079,12 +2085,6 @@ newDate.<span class="hljs-title function_">setMonth</span>(<span class="hljs-num
 </code></pre> 
                   </details>
                    
-                  <details>
-                    <summary>Types</summary>
-                    <pre><code class="hljs language-ts">
-</code></pre>
-                  </details>
-                  
                 </div>
               </div>
               
@@ -2104,6 +2104,12 @@ newDate.<span class="hljs-title function_">setMonth</span>(<span class="hljs-num
   <span class="hljs-attr">abbr</span>?: <span class="hljs-built_in">boolean</span>
   <span class="hljs-comment">// Convert to UpperCase CamelCase (aka PascalCase)</span>
   <span class="hljs-attr">upper</span>?: <span class="hljs-built_in">boolean</span>
+};
+</code></pre></div>
+    
+    <div class="tooltip" id="Tooltip-ChunkStringOptions"><pre><code class="hljs language-ts"><span class="hljs-keyword">type</span> <span class="hljs-title class_">ChunkStringOptions</span> = {
+  <span class="hljs-attr">reverse</span>?: <span class="hljs-built_in">boolean</span>
+  <span class="hljs-attr">size</span>?: <span class="hljs-built_in">number</span>
 };
 </code></pre></div>
     

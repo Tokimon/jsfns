@@ -7,7 +7,7 @@ import { type EventHandler, type EventName, type NotFirst } from './types';
 export type OnOptions = AddEventListenerOptions & {
   /**
    * A method that returns true when the event should trigger
-   * Combined with `once`, it will only remove the handler if the handler has triggered (when resolves to true)
+   * Combined with `once`, it will only remove the handler when `when()` resolves to true)
    */
   when?: (event: Event) => boolean;
 
