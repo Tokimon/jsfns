@@ -1,44 +1,44 @@
-import { popIndex, popIndexPure } from '@jsfns/core/popIndex';
+import { popAtIndex, popAtIndexPure } from '@jsfns/core/popAtIndex';
 
-describe('"popIndex"', () => {
-  describe('"popIndex"', () => {
+describe('"popAtIndex"', () => {
+  describe('"popAtIndex"', () => {
     it('Returns the value a the given index', () => {
-      expect(popIndex([1, 2, 3], 1)).toBe(2);
+      expect(popAtIndex([1, 2, 3], 1)).toBe(2);
     });
 
     it('Removes the value a the given index from the given array', () => {
       const a = [1, 2, 3];
-      popIndex(a, 1);
+      popAtIndex(a, 1);
       expect(a).toEqual([1, 3]);
     });
 
     describe.each([-1, 10])('When index is out of bounds: %i', (index) => {
       it('Returns undefined', () => {
-        expect(popIndex([1, 2, 3], index)).toBe(undefined);
+        expect(popAtIndex([1, 2, 3], index)).toBe(undefined);
       });
 
       it('Does not alter the given array', () => {
         const a = [1, 2, 3];
-        popIndex(a, index);
+        popAtIndex(a, index);
         expect(a).toEqual(a);
       });
     });
   });
 
-  describe('"popIndexPure"', () => {
+  describe('"popAtIndexPure"', () => {
     it('Removes the value a the given index from the given array', () => {
-      expect(popIndexPure([1, 2, 3], 1)).toEqual([2, [1, 3]]);
+      expect(popAtIndexPure([1, 2, 3], 1)).toEqual([2, [1, 3]]);
     });
 
     describe.each([-1, 10])('When index is out of bounds: %i', (index) => {
       it('Returns undefined', () => {
         const a = [1, 2, 3];
-        expect(popIndexPure(a, index)).toEqual([undefined, a]);
+        expect(popAtIndexPure(a, index)).toEqual([undefined, a]);
       });
 
       it('Does not alter the given array', () => {
         const a = [1, 2, 3];
-        expect(popIndexPure(a, index)[1]).toBe(a);
+        expect(popAtIndexPure(a, index)[1]).toBe(a);
       });
     });
   });
