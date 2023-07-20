@@ -27,8 +27,8 @@
   },
   "homepage": "https://tokimon.github.io/jsfns/web",
   "scripts": {
-    "prepublishOnly": "pnpm run test && pnpm run build && pnpm run docs",
-    "postpublish": "pnpm run clean",
+    "prepublishOnly": "pnpm run test && pnpm run build",
+    "postpublish": "pnpm run clean && pnpm run docs",
     "build": "../../bin/build.sh",
     "clean": "../../bin/clean.sh",
     "missing": "../../bin/missing.sh",
