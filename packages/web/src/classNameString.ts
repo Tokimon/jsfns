@@ -1,5 +1,4 @@
-export type cnObj = { [key: string]: boolean };
-export type Option = string | cnObj;
+export type Option = string | Record<string, boolean | undefined>;
 
 const combine = (base: string, cn: string) => base + (base && cn && ' ') + cn;
 

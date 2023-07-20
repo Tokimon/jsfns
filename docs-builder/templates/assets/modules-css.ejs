@@ -10,23 +10,25 @@
   table {
     table-layout: auto;
     border-collapse: collapse;
-  }
 
-  table th,
-  table td {
-    text-align: left;
-    padding: 5px 10px;
-    border: 0 solid var(--border-color);
-    border-width: 0 0 1px;
+    & th,
+    & td {
+      text-align: left;
+      padding: 5px 10px;
+      border: 0 solid var(--border-color);
+      border-width: 0 0 1px;
 
-    & + & {
-      border-left-width: 1px;
+      & + & {
+        border-left-width: 1px;
+      }
     }
-  }
 
-  table tbody tr:last-child th,
-  table tbody tr:last-child td {
-    border-bottom: 0;
+    & tbody tr:last-child {
+      & th,
+      & td {
+        border-bottom: 0;
+      }
+    }
   }
 
   details[open] summary {
@@ -43,12 +45,12 @@
     cursor: pointer;
     color: gray;
     transition: color 0.2s;
-  }
 
-  summary:hover,
-  summary:focus {
-    color: #cc7000;
-    outline: none;
+    &:hover,
+    &:focus {
+      color: #cc7000;
+      outline: none;
+    }
   }
 
   pre code.hljs {
@@ -62,11 +64,11 @@
   code a {
     color: inherit;
     text-decoration: none;
-  }
 
-  code a:hover,
-  code a:focus {
-    text-decoration: underline;
+    &:hover,
+    &:focus {
+      text-decoration: underline;
+    }
   }
 
   .hljs-attr[title] {
@@ -109,21 +111,21 @@
     display: flex;
     gap: 10px;
     align-items: center;
-  }
 
-  .page-title a {
-    color: currentColor;
-    text-decoration: none;
-    padding: 5px 10px;
-    border: 1px solid var(--border-color);
-    transition: background-color 0.2s;
-    border-radius: 4px;
-  }
+    & a {
+      color: currentColor;
+      text-decoration: none;
+      padding: 5px 10px;
+      border: 1px solid var(--border-color);
+      transition: background-color 0.2s;
+      border-radius: 4px;
 
-  .page-title a:hover,
-  .page-title a:focus,
-  .page-title a.selected {
-    background: var(--focus-color);
+      &:hover,
+      &:focus,
+      &.selected {
+        background: var(--focus-color);
+      }
+    }
   }
 
   .page-version {
@@ -149,15 +151,15 @@
     appearance: none;
     cursor: pointer;
     transition: background-color 0.2s;
-  }
 
-  .menu-trigger:hover {
-    background-color: var(--hover-color);
-  }
+    &:hover {
+      background-color: var(--hover-color);
+    }
 
-  .menu-trigger:focus {
-    outline: none;
-    background-color: var(--focus-color);
+    &:focus {
+      outline: none;
+      background-color: var(--focus-color);
+    }
   }
 
   .menu-trigger,
@@ -194,10 +196,10 @@
     translate: -100% 0;
     transition: translate 0.3s ease;
     font-size: 18px;
-  }
 
-  .menu.open {
-    translate: 0;
+    &.open {
+      translate: 0;
+    }
   }
 
   .menu-list {
@@ -210,24 +212,26 @@
     overflow-x: hidden;
   }
 
-  .menu-list-item a {
-    color: #ccc;
-    text-decoration: none;
-    padding: 10px;
-    display: block;
-    transition: all 0.2s;
-  }
+  .menu-list-item {
+    & a {
+      color: #ccc;
+      text-decoration: none;
+      padding: 10px;
+      display: block;
+      transition: all 0.2s;
 
-  .menu-list-item.current a {
-    background: rgba(122, 150, 174, 0.25);
-    box-shadow: inset 5px 0 0 var(--focus-color);
-    padding-left: 20px;
-  }
+      &:hover,
+      &:focus {
+        background: rgba(255, 255, 255, 0.15);
+        outline: none;
+      }
+    }
 
-  .menu-list-item a:hover,
-  .menu-list-item a:focus {
-    background: rgba(255, 255, 255, 0.15);
-    outline: none;
+    &.current a {
+      background: rgba(122, 150, 174, 0.25);
+      box-shadow: inset 5px 0 0 var(--focus-color);
+      padding-left: 20px;
+    }
   }
 
   .menu-search {
@@ -239,21 +243,21 @@
     color: white;
     margin: 10px;
     transition: border 0.2s;
-  }
 
-  .menu-search::-webkit-search-cancel-button {
-    appearance: none;
-    -webkit-mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23777'><path d='M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z'/></svg>");
-    background-color: var(--focus-color);
-    background-size: 100%;
-    height: 20px;
-    width: 20px;
-    cursor: pointer;
-  }
+    &::-webkit-search-cancel-button {
+      appearance: none;
+      -webkit-mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23777'><path d='M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z'/></svg>");
+      background-color: var(--focus-color);
+      background-size: 100%;
+      height: 20px;
+      width: 20px;
+      cursor: pointer;
+    }
 
-  .menu-search:focus {
-    outline: none;
-    border-color: var(--focus-color);
+    &:focus {
+      outline: none;
+      border-color: var(--focus-color);
+    }
   }
 
   @media (min-width: 800px) {
@@ -264,6 +268,13 @@
 
   .module {
     padding-top: var(--header-hight);
+
+    &:target {
+      .module-content,
+      .module-content:hover {
+        box-shadow: 0 0 3px 1px var(--focus-color);
+      }
+    }
   }
 
   .module-content {
@@ -271,41 +282,44 @@
     border-radius: 5px;
     margin-top: 15px;
     transition: box-shadow 1s;
+
+    &:hover {
+      box-shadow: 0 0 3px 1px var(--hover-color);
+      transition: box-shadow 0.2s;
+    }
+
+    & h1 {
+      margin: 0;
+      padding: 0 15px;
+      line-height: 50px;
+      font-size: 18px;
+      font-weight: 400;
+      border-top-left-radius: inherit;
+      border-top-right-radius: inherit;
+
+      & a {
+        color: currentColor;
+        text-decoration: none;
+
+        &:hover,
+        &:focus {
+          & b {
+            color: currentColor;
+          }
+        }
+      }
+
+      & b {
+        color: gray;
+        transition: color 0.2s;
+      }
+    }
   }
 
-  .module-content:hover {
-    box-shadow: 0 0 3px 1px var(--hover-color);
-    transition: box-shadow 0.2s;
-  }
-
-  .module:target .module-content,
-  .module:target .module-content:hover {
-    box-shadow: 0 0 3px 1px var(--focus-color);
-  }
-
-  .module-content h1 {
-    margin: 0;
-    padding: 0 15px;
-    line-height: 50px;
-    font-size: 18px;
-    font-weight: 400;
-    border-top-left-radius: inherit;
-    border-top-right-radius: inherit;
-  }
-
-  .module-content h1 a {
-    color: currentColor;
-    text-decoration: none;
-  }
-
-  .module-content h1 a:hover b,
-  .module-content h1 a:focus b {
-    color: currentColor;
-  }
-
-  .module-content h1 b {
-    color: gray;
-    transition: color 0.2s;
+  @container (min-width: 600px) {
+    .module-content h1 {
+      font-size: 25px;
+    }
   }
 
   .signatures {
@@ -313,12 +327,6 @@
     flex-direction: column;
     gap: 15px;
     color: #aaa;
-  }
-
-  @container (min-width: 600px) {
-    .module-content h1 {
-      font-size: 25px;
-    }
   }
 
   .signature-content {
@@ -344,13 +352,14 @@
     border: #81644b solid;
     border-width: 1px 0;
     color: #808080;
-  }
+    width: fit-content;
 
-  .signature-remark legend {
-    text-transform: uppercase;
-    color: #ffa657;
-    font-size: 11px;
-    padding: 0 7px;
+    & legend {
+      text-transform: uppercase;
+      color: #ffa657;
+      font-size: 11px;
+      padding: 0 7px;
+    }
   }
 
   @container (min-width: 750px) {
@@ -367,13 +376,13 @@
     border: 1px solid #333;
     z-index: 99;
     position: absolute;
-  }
 
-  .tooltip code.hljs {
-    background-color: #292d25;
-  }
+    &.show {
+      display: block;
+    }
 
-  .tooltip.show {
-    display: block;
+    & code.hljs {
+      background-color: #292d25;
+    }
   }
 </style>

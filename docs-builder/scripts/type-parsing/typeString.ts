@@ -18,7 +18,7 @@ export const createTypeString = (customTypes?: string[]) => {
   const typeString: TypeStringFunction = (type, options) => {
     switch (type.type) {
       case 'array':
-        return buildArray(type);
+        return buildArray(typeString, type);
       case 'predicate':
         return buildPredicate(type);
       case 'intrinsic':

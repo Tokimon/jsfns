@@ -1,4 +1,4 @@
-type FuzzySearchOptions = {
+export type FuzzySearchOptions = {
   caseSensitive: boolean;
 };
 
