@@ -11,7 +11,7 @@
     <main>
       <h1>@jsfns</h1>
       <% packages.forEach(({name, version}) => { %>
-      <a class="package-link" href="./<%= name %>/<%= version %>">/<%= name %></a>
+      <a class="package-link" href="./<%= name %>/<%= version %>"><%= name %> <small>v<%= version %></small></a>
       <% }); %>
     </main>
   </body>

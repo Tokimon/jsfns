@@ -55,6 +55,9 @@ async function build() {
 
   await mkdir(versionPath, { recursive: true });
 
+  const allVersions = await getPackageVersions(docsPath);
+  const packageVersions = allVersions[packageName];
+
   await renderIndex({
     template: 'version',
     path: versionPath,
@@ -62,6 +65,7 @@ async function build() {
       modules,
       packageName,
       version,
+      versions: packageVersions,
       customTypes: getCustomTypesArray(),
       highlightCss,
       js,
@@ -72,21 +76,17 @@ async function build() {
     `${color.green('🗸')} ${color.blue(packageName + '/' + majorVersion + '/')}${color.yellow('index.html')} successfully generated`
   );
 
-  const versions = await getPackageVersions(docsPath);
-
-  console.log({ versions });
-
   const indexes = [
     {
       template: 'package',
       path: join(docsPath, packageName),
-      data: { packageName, version: versions[packageName][0] },
+      data: { packageName, version: packageVersions[0] },
     },
     {
       template: 'landing',
       path: docsPath,
       data: {
-        packages: Object.entries(versions).map(([name, versions]) => ({
+        packages: Object.entries(allVersions).map(([name, versions]) => ({
           name,
           version: versions[0],
         })),
