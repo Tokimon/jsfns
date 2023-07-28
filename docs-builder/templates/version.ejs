@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@jsfns/<%= packageName %> v. <%= version %></title>
+    <title>@jsfns/<%= packageName %> v. <%= displayVersion %></title>
     <%- await include('assets/base-css'); %> <%- await include('assets/modules-css'); %>
     <style>
       <%- highlightCss %>
@@ -21,7 +21,23 @@
           <a href="../../web" class="<%= packageName === 'web' ? 'selected' : '' %>">web</a>
         </h2>
 
-        <i class="page-version">v. <%= version %></i>
+        <div class="page-version">
+          <div class="version current-version">v. <%= displayVersion %></div>
+
+          <% if (versions.length) { %>
+          <ul class="version-list">
+            <% versions.forEach((version) => { %>
+            <li>
+              <% if (version === currentVersion) { %>
+              <div class="version selected">v. <%= version %></div>
+              <% } else { %>
+              <a href="../<%= version %>" class="version">v. <%= version %></a>
+              <% } %>
+            </li>
+            <% }); %>
+          </ul>
+          <% } %>
+        </div>
 
         <a target="_blank" href="https://www.npmjs.com/package/@jsfns/<%= packageName %>" class="repository">
           <img src="https://static.npmjs.com/f1786e9b7cba9753ca7b9c40e8b98f67.png" alt="npm" />

@@ -64,7 +64,8 @@ async function build() {
     data: {
       modules,
       packageName,
-      version,
+      displayVersion: version,
+      currentVersion: majorVersion,
       versions: packageVersions,
       customTypes: getCustomTypesArray(),
       highlightCss,

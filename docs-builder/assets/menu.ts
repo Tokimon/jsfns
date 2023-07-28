@@ -5,7 +5,7 @@ import { findById } from '@jsfns/web/findById';
 import { findByQuery, findOneByQuery } from '@jsfns/web/findByQuery';
 import { on } from '@jsfns/web/on';
 import { removeClass } from '@jsfns/web/removeClass';
-import { toggleClass } from '@jsfns/web/toggleClass';
+import { toggleList } from './toggleList';
 
 function onHashChange() {
   const moduleName = location.hash.slice(1);
@@ -38,18 +38,7 @@ function initSearch() {
 }
 
 function initCurrentChange() {
-  const Menu = findById('Menu');
-  const closeMenu = () => toggleClass(Menu, 'open', false);
-
-  on('click', () => toggleClass(Menu, 'open'), { delegate: '.menu-trigger' });
-  on('click', (e) => {
-    const target = e.target as HTMLElement;
-    if (target.className !== 'menu-trigger' && !target.closest('#Menu')) closeMenu();
-  });
-
-  on('keyup', (e) => {
-    if (e.key === 'Escape') closeMenu();
-  });
+  toggleList('#Menu', '.menu-trigger');
 
   on(window, 'hashchange', onHashChange);
   onHashChange();
