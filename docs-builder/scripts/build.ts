@@ -74,6 +74,8 @@ async function build() {
 
   const versions = await getPackageVersions(docsPath);
 
+  console.log({ versions });
+
   const indexes = [
     {
       template: 'package',

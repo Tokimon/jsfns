@@ -14,7 +14,7 @@ export async function getPackageVersions(root: string) {
 
     for (const pkg of pkgs) {
       const versions = await getFolderNames(path.join(root, pkg));
-      if (versions.length) structure[pkg] = versions;
+      if (versions.length) structure[pkg] = versions.sort((vA, vB) => (vB > vA ? 1 : vA === vB ? 0 : -1));
     }
 
     return structure;
