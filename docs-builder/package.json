@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "build": "esrun --tsconfig=./tsconfig.docs.json ./scripts/build.ts",
+    "build:readme": "esrun --tsconfig=./tsconfig.docs.json ./scripts/buildReadme.ts",
     "prettier": "prettier --write .",
     "lint": "eslint . --max-warnings=0"
   },

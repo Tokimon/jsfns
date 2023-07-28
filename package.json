@@ -7,6 +7,7 @@
   "type": "module",
   "scripts": {
     "docs": "pnpm -r docs",
+    "readme": "pnpm -r readme",
     "missing": "pnpm -parallel missing",
     "prettier": "prettier --write .",
     "lint": "eslint . --max-warnings=0",

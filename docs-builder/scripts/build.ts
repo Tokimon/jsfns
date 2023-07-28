@@ -2,7 +2,6 @@
 import { mkdir } from 'node:fs/promises';
 import { dirname, join } from 'path';
 import { buildJS } from './building/buildJS';
-import { buildReadme } from './building/buildReadme';
 import { buildTypedoc } from './building/buildTypedoc';
 import { getHighlighCss } from './building/getHighlighCss';
 import { getPackageVersions } from './building/getPackageVersions';
@@ -10,17 +9,7 @@ import { renderIndex } from './building/renderHtml';
 import { getCustomTypesArray } from './type-parsing/findCustomTypes';
 import { prepareModules } from './type-parsing/prepareModules';
 import { type Kind_Project } from './types';
-
-const RESET = '\x1b[0m';
-const BLUE = '\x1b[36m';
-const GREEN = '\x1b[32m';
-const YELLOW = '\x1b[33m';
-
-const color = {
-  green: (text: string) => GREEN + text + RESET,
-  yellow: (text: string) => YELLOW + text + RESET,
-  blue: (text: string) => BLUE + text + RESET,
-};
+import * as color from './utils/color';
 
 async function build() {
   console.log(color.yellow('\n\n-------------------------------------'));
@@ -28,7 +17,7 @@ async function build() {
   const packageName = process.argv.pop();
   if (!packageName) throw new Error('package name was not given');
 
-  console.log(`   Building ${color.yellow('Docs')} for package: ${color.blue(packageName)}`);
+  console.log(`  Building ${color.yellow('Docs')} for package: ${color.blue(packageName)}`);
   console.log(color.yellow('-------------------------------------\n'));
 
   const root = dirname(process.cwd());
@@ -100,15 +89,10 @@ async function build() {
   console.log(
     `${color.green('🗸')} ${color.blue(packageName + '/')} and ${color.blue('./')} ${color.yellow('index.html')} successfully generated`
   );
-
-  await buildReadme({ path: packagePath, packageName, modules });
-
-  console.log(`${color.green('🗸')} ${color.blue(packageName + '/')}${color.yellow('README.md')} successfully generated`);
 }
 
 build().then(() => {
   console.log(color.yellow('\n-------------------------------------'));
-
   console.log(color.green('  Documentation generation complete'));
   console.log(color.yellow('-------------------------------------\n\n'));
 }, console.error);
