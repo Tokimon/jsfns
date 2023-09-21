@@ -1,6 +1,6 @@
 import { jest } from '@jest/globals';
-import { randomInt } from '@jsfns/core/randomInt';
 import type { SpyInstance } from 'jest-mock';
+import { randomInt } from '@jsfns/core/randomInt';
 
 describe('"randomInt"', () => {
   let randomSpy: SpyInstance<typeof Math.random>;
@@ -14,6 +14,12 @@ describe('"randomInt"', () => {
   afterAll(() => randomSpy.mockRestore());
 
   describe('As a direct integer', () => {
+    it('Defaults to Number.MAX_SAFE_INTEGER', () => {
+      randomSpy.mockReturnValue(1);
+
+      expect(randomInt()).toBe(Number.MAX_SAFE_INTEGER);
+    });
+
     describe.each([-200, 0, 200])('%i', (num) => {
       it.each([0, 0.5, 1])('With random output: %s', (rdn) => {
         randomSpy.mockReturnValue(rdn);
