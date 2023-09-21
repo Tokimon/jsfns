@@ -49,6 +49,14 @@ describe('"css"', () => {
     });
 
     describe('And `value`', () => {
+      it('Removes property when value is null', () => {
+        css(testNode, 'color', 'red');
+        expect(testNode.style.color).toBe('red');
+
+        css(testNode, 'color', null);
+        expect(testNode.style.color).toBe('');
+      });
+
       it('Returns all computed css values', () => {
         const result = css(testNode, 'fontSize', '20px');
         expect(result.toString()).toBe(window.getComputedStyle(testNode).toString());

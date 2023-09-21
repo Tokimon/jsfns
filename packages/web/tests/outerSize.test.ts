@@ -52,7 +52,7 @@ describe('outerSize', () => {
   });
 
   it('When given document it returns the outer size of the viewport, including borders', () => {
-    const vp = viewport(document) as HTMLElement;
+    const vp = viewport(document);
     expect(outerSize(document)).toEqual(outerSize(vp));
   });
 });

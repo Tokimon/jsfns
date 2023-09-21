@@ -17,7 +17,7 @@ import { isDOMChildNode } from './isDOMChildNode';
  * replaceNode(document.getElementById('a'), 'p.p') // --> <div><p class="p" /></div>
  * ```
  */
-export function replaceNode(elm: Node, replacement?: Node | string): Node | void {
+export function replaceNode(elm: Node, replacement?: Node | string | null): Node | void {
   if (!isDOMChildNode(elm)) return;
   if (!replacement) return elm.remove();
 

@@ -22,11 +22,7 @@ import { viewport } from './viewport';
 export function outerSize(elm: Document | GeneralWindow | HTMLElement) {
   if (isWindow(elm)) return { width: elm.outerWidth, height: elm.outerHeight };
 
-  if (isDocument(elm)) {
-    const vp = viewport(elm);
-    if (!vp) return { width: 0, height: 0 };
-    elm = vp;
-  }
+  if (isDocument(elm)) elm = viewport(elm);
 
   return { width: elm.offsetWidth, height: elm.offsetHeight };
 }

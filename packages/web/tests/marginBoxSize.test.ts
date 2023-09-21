@@ -37,12 +37,12 @@ describe('marginBoxSize', () => {
 
   describe('Returns the outer size of the viewport, including margins and borders', () => {
     it('When given window', () => {
-      const vp = viewport(window) as HTMLElement;
+      const vp = viewport(window);
       expect(marginBoxSize(window)).toEqual(marginBoxSize(vp));
     });
 
     it('When given document', () => {
-      const vp = viewport(document) as HTMLElement;
+      const vp = viewport(document);
       expect(marginBoxSize(document)).toEqual(marginBoxSize(vp));
     });
   });

@@ -22,11 +22,7 @@ import { viewport } from './viewport';
  * ```
  */
 export function marginBoxSize(elm: Document | GeneralWindow | HTMLElement) {
-  if (isDocument(elm) || isWindow(elm)) {
-    const vp = viewport(elm);
-    if (!vp) return { width: 0, height: 0 };
-    elm = vp;
-  }
+  if (isDocument(elm) || isWindow(elm)) elm = viewport(elm);
 
   const { margin } = boxModel(elm);
 

@@ -23,6 +23,13 @@ describe('wrap', () => {
     expect(elm.parentElement?.id).toBe(testID);
   });
 
+  it('Returns null when element given is not in the DOM', () => {
+    const elm = document.createElement('div');
+    const result = wrap(elm, '<div></div>');
+
+    expect(result).toBeNull();
+  });
+
   it('Returns wrapper element when element is successfully wrapped', () => {
     const elm = byId(elmID);
     const wrapperElm = createElement('div');

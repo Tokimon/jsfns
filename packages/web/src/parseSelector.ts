@@ -7,9 +7,8 @@ const idExp = new RegExp(`#${nameExpStr}`, 'i');
 const classExp = new RegExp(`\\.${nameExpStr}`, 'ig');
 const attrExp = new RegExp(`\\[(${nameExpStr})(?:=([^\\]]+))?]`, 'g');
 
-export type AttributeMapping = {
+export type AttributeMapping = Record<string, string | true> & {
   class?: Set<string>;
-  [attr: string]: string | Set<string> | true | undefined;
 };
 
 export type SelectorParsing = {
@@ -18,13 +17,14 @@ export type SelectorParsing = {
   attributeList: string[];
 };
 
-const addAttribute = (attributeName: string, value: string | undefined, attributes: AttributeMapping, override?: boolean): void => {
-  if (value == null) return;
-
+const addAttribute = (attributeName: string, value: string, attributes: AttributeMapping, override?: boolean): void => {
   if (attributeName === 'class') {
     if (!value) return;
-    if (!attributes.class) attributes.class = new Set();
-    value.split('.').forEach((cn) => cn && (attributes.class as Set<string>).add(cn));
+
+    const set = attributes.class ?? new Set<string>();
+    if (!attributes.class) attributes.class = set;
+
+    value.split('.').forEach((cn) => cn && set.add(cn));
   } else {
     if (attributeName === 'id') {
       value = value.replaceAll('#', '');
@@ -38,9 +38,9 @@ const addAttribute = (attributeName: string, value: string | undefined, attribut
 const parseAttribute = (selector: string, attributes: AttributeMapping) => {
   // This function detects the attribute from the selector,
   // and then removes it to avoid having to parse it again
-  const replaceFn = (_: string, att: string, val: string | undefined) => {
-    val = (val || '').replace(/^["']|["']$/g, '');
-    addAttribute(att, val, attributes);
+  const replaceFn = (_: string, attributeName: string, value: string | undefined) => {
+    value = (value ?? '').replace(/^["']|["']$/g, '');
+    addAttribute(attributeName, value, attributes);
     return '';
   };
 
@@ -63,7 +63,7 @@ export function parseSelector(selector: string): SelectorParsing {
 
   // Tag name
   const tagNameMatch = selector.match(elmExp);
-  const tagName = (tagNameMatch || ['div'])[0];
+  const tagName = tagNameMatch?.[0] ?? 'div';
 
   // Attribute expressions
   selector = parseAttribute(selector, mapping);
@@ -81,8 +81,6 @@ export function parseSelector(selector: string): SelectorParsing {
   const parsing: SelectorParsing = { tagName, attributes: {}, attributeList: [] };
 
   for (const [name, value] of Object.entries(mapping)) {
-    if (!value) continue;
-
     parsing.attributeList.push(name);
     parsing.attributes[name] = value === true ? '' : isString(value) ? value : Array.from(value).join(' ');
   }

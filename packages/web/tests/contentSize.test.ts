@@ -50,12 +50,12 @@ describe('contentSize', () => {
 
   describe('Returns the size of the content of the viewport, excluding element padding', () => {
     it('When given window', () => {
-      const vp = viewport(window) as HTMLElement;
+      const vp = viewport(window);
       expect(contentSize(window)).toEqual(contentSize(vp));
     });
 
     it('When given document', () => {
-      const vp = viewport(document) as HTMLElement;
+      const vp = viewport(document);
       expect(contentSize(document)).toEqual(contentSize(vp));
     });
   });

@@ -37,12 +37,12 @@ describe('contentBoxSize', () => {
 
   describe('Returns the inner size of the viewport, excluding padding', () => {
     it('When given window', () => {
-      const vp = viewport(window) as HTMLElement;
+      const vp = viewport(window);
       expect(contentBoxSize(window)).toEqual(contentBoxSize(vp));
     });
 
     it('When given document', () => {
-      const vp = viewport(document) as HTMLElement;
+      const vp = viewport(document);
       expect(contentBoxSize(document)).toEqual(contentBoxSize(vp));
     });
   });

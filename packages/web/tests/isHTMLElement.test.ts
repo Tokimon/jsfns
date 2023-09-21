@@ -28,6 +28,14 @@ describe('"isHTMLElement"', () => {
   });
 
   describe('Returns `false` for non HTML element:', () => {
+    it('Frame window', () => {
+      const frame = appendFrame();
+
+      expect(isHTMLElement(frame.contentDocument?.defaultView)).toBe(false);
+
+      frame.remove();
+    });
+
     it.each([
       ['Document', document],
       ['Fragment', document.createDocumentFragment()],

@@ -2,6 +2,10 @@ import { getCurrentDocument } from '@jsfns/web/getCurrentDocument';
 import { appendFrame, createDetachedDocument, createElement } from './assets/helpers';
 
 describe('"getCurrentDocument"', () => {
+  it('Returns null, when given node is null', () => {
+    expect(getCurrentDocument(null)).toBeNull();
+  });
+
   it('Returns the Document that a given Frame is placed in', () => {
     const frame = appendFrame();
 
@@ -13,9 +17,7 @@ describe('"getCurrentDocument"', () => {
 
   describe('Returns given Document', () => {
     it('Current Document', () => {
-      const doc = getCurrentDocument(document);
-
-      expect(doc).toBe(document);
+      expect(getCurrentDocument(document)).toBe(document);
     });
 
     it('Frame Document', () => {
@@ -38,9 +40,7 @@ describe('"getCurrentDocument"', () => {
 
   describe('Returns the Document of given Window', () => {
     it('Current Window', () => {
-      const doc = getCurrentDocument(window);
-
-      expect(doc).toBe(window.document);
+      expect(getCurrentDocument(window)).toBe(window.document);
     });
 
     it('Frame Window', () => {

@@ -21,8 +21,8 @@ import type { GeneralWindow } from './types';
  * ```
  */
 export function viewport(elm?: Element | Document | GeneralWindow) {
-  const doc = getCurrentDocument(elm || document);
-  return doc && ((doc.scrollingElement || doc.documentElement) as HTMLElement);
+  const doc = (elm && getCurrentDocument(elm)) ?? document;
+  return (doc.scrollingElement ?? doc.documentElement) as HTMLElement;
 }
 
 export default viewport;

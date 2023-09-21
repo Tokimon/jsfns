@@ -37,12 +37,12 @@ describe('innerSize', () => {
 
   describe('Returns the inner size of the viewport, including padding', () => {
     it('When given window', () => {
-      const vp = viewport(window) as HTMLElement;
+      const vp = viewport(window);
       expect(innerSize(window)).toEqual(innerSize(vp));
     });
 
     it('When given document', () => {
-      const vp = viewport(document) as HTMLElement;
+      const vp = viewport(document);
       expect(innerSize(document)).toEqual(innerSize(vp));
     });
   });

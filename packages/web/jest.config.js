@@ -9,4 +9,5 @@ export default {
     '^@jsfns/web/(.*)$': '<rootDir>/src/$1',
     '^@jsfns/core/(.*)$': '<rootDir>/../core/src/$1',
   },
+  collectCoverageFrom: ['src/*.ts', '!src/types.d.ts'],
 };
