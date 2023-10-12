@@ -3,6 +3,7 @@ node_modules
 build
 data
 docs
+readme-builder/template.ejs
 *.md
 
 # Ignore files for PNPM, NPM and YARN
