@@ -76,7 +76,7 @@ function findOneByQuery<T extends HTMLElement>(elm: Document | HTMLElement, quer
  * findOneByQuery('span.my-class') // --> First "span.my-class" elements that are descendants of document
  * ```
  */
-function findOneByQuery(query: string): HTMLElement | null;
+function findOneByQuery<T extends HTMLElement>(query: string): T | null;
 
 function findOneByQuery<T extends HTMLElement>(...args: OneArgs | NotFirst<OneArgs>): T | null {
   if (isString(args[0])) return findOneByQuery(document, args[0]);
