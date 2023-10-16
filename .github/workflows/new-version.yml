@@ -1,0 +1,23 @@
+name: New Version Trigger Docs Build
+run-name: Trigger Docs Build
+
+on:
+  workflow_dispatch:
+  create:
+    tags:
+      - \@jsfns/@(web|core)\@*
+  push:
+    tags:
+      - \@jsfns/@(web|core)\@*
+
+jobs:
+  trigger-docs-build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Triggering Docs Build
+        run: |
+          curl --location 'https://api.github.com/repos/Tokimon/jsfns-docs/dispatches' \
+          --header 'Accept: application/json' \
+          --header 'Authorization: Bearer ${{ secrets.ACCESS_TOKEN }}' \
+          --header 'Content-Type: application/json' \
+          --data '{ "event_type": "new-version"'
