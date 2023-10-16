@@ -2,7 +2,6 @@ name: New Version Trigger Docs
 
 on:
   push:
-  repository_dispatch:
 
 jobs:
   ping-pong:
