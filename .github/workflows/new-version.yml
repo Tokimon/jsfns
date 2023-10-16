@@ -14,4 +14,4 @@ jobs:
           curl -X POST https://api.github.com/repos/marcnuri-demo/actions-remote-dispatch-b/dispatches \
           -H 'Accept: application/vnd.github.everest-preview+json' \
           -u ${{ secrets.ACCESS_TOKEN }} \
-          --data '{"event_type": "new-version", "client_payload": { "type": "'"$github.event.action"'" }}'
+          --data '{"event_type": "new-version", "client_payload": { "type": "'"$github.event.action"'", "repository": "'"$GITHUB_REPOSITORY"'" }}'
