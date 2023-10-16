@@ -1,7 +1,8 @@
 name: New Version Trigger Docs
 
 on:
-  push:
+  create:
+    tag:
 
 jobs:
   trigger-docs-build:
