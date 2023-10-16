@@ -7,6 +7,9 @@ jobs:
   trigger-docs-build:
     runs-on: ubuntu-latest
     steps:
+      - name: what action
+        run: |
+          echo "Event '${{ github.event.action }}'"
       - name: New version pushed
         # if: github.event.action != 'pong'
         run: |
