@@ -3,8 +3,9 @@ run-name: New version pushed
 
 on:
   workflow_dispatch:
-  create:
-    tag
+  push:
+    tags:
+      - \@jsfns/@(web|core)\@*
 
 jobs:
   trigger-docs-build:
