@@ -1,6 +1,7 @@
 name: New Version Trigger Docs
 
 on:
+  workflow_dispatch:
   create:
     tag:
 
