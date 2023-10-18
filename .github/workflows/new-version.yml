@@ -3,7 +3,7 @@ run-name: New version pushed
 
 on:
   workflow_dispatch:
-  create: tag
+  create: [tag]
 
 jobs:
   trigger-docs-build:
