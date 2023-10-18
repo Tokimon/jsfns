@@ -1,4 +1,5 @@
 name: New Version Trigger Docs
+run-name: New version pushed
 
 on:
   workflow_dispatch:
