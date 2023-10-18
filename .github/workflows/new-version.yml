@@ -10,13 +10,10 @@ jobs:
   trigger-docs-build:
     runs-on: ubuntu-latest
     steps:
-      - name: what action
-        run: |
-          echo "Event '${{ github.event.action }}'"
-      - name: New version pushed
+      - name: Triggering Docs Build
         run: |
           curl --location 'https://api.github.com/repos/Tokimon/jsfns-docs/dispatches' \
           --header 'Accept: application/json' \
           --header 'Authorization: Bearer ${{ secrets.ACCESS_TOKEN }}' \
           --header 'Content-Type: application/json' \
-          --data '{ "event_type": "new-version", "client_payload": { "repository": "'"$GITHUB_REPOSITORY"'" }'
+          --data '{ "event_type": "new-version"'
