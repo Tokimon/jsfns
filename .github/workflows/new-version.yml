@@ -17,6 +17,6 @@ jobs:
         run: |
           curl --location 'https://api.github.com/repos/Tokimon/jsfns-docs/dispatches' \
           --header 'Accept: application/json' \
-          --header 'Authorization: Bearer ${{ secrets.ACCESS_TOKEN }}' \
+          --header 'Authorization: Bearer ${{ secrets.TROGELS }}' \
           --header 'Content-Type: application/json' \
           --data '{ "event_type": "new-version", "client_payload": { "repository": "'"$GITHUB_REPOSITORY"'" }'
