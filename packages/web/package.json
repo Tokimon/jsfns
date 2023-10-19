@@ -27,7 +27,7 @@
   },
   "homepage": "https://tokimon.github.io/jsfns/web",
   "scripts": {
-    "prepublishOnly": "pnpm run test && pnpm run build && pnpm run readme",
+    "prepublishOnly": "pnpm test -- --coverage && pnpm build && pnpm readme",
     "postpublish": "pnpm run clean && pnpm run docs",
     "build": "../../bin/build.sh",
     "clean": "../../bin/clean.sh",
@@ -37,7 +37,8 @@
     "test": "NODE_OPTIONS=--experimental-vm-modules jest",
     "test:coverage": "npm t -- --collectCoverage",
     "lint": "eslint . --max-warnings=0",
-    "validate": "pnpm lint && pnpm types && pnpm test"
+    "prettier": "prettier --write .",
+    "validate": "pnpm lint && pnpm types && pnpm test -- --coverage --coverageReporters='text-summary'"
   },
   "dependencies": {
     "@jsfns/core": "^1.1.0"

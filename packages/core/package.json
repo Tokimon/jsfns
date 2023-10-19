@@ -26,7 +26,7 @@
   },
   "homepage": "https://tokimon.github.io/jsfns/core",
   "scripts": {
-    "prepublishOnly": "pnpm run test && pnpm run build && pnpm run readme",
+    "prepublishOnly": "pnpm test -- --coverage && pnpm build && pnpm readme",
     "postpublish": "pnpm run clean && pnpm run docs",
     "build": "../../bin/build.sh",
     "clean": "../../bin/clean.sh",
@@ -37,7 +37,7 @@
     "test:coverage": "npm t -- --collectCoverage",
     "lint": "eslint . --max-warnings=0",
     "prettier": "prettier --write .",
-    "validate": "pnpm lint && pnpm types && pnpm test"
+    "validate": "pnpm lint && pnpm types && pnpm test -- --coverage --coverageReporters='text-summary'"
   },
   "directories": {
     "test": "tests"
