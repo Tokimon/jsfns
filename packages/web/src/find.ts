@@ -3,9 +3,9 @@ import { findByClass } from './findByClass';
 import { findById } from './findById';
 import { findByQuery, findOneByQuery } from './findByQuery';
 import { findByTagName } from './findByTagName';
-import { type NotFirst } from './types';
+import { type Maybe, type NotFirst } from './types';
 
-type Args = [elm: Document | HTMLElement, selector: string];
+type Args = [elm: Maybe<Document | HTMLElement>, selector: string];
 
 /**
  * Find elements by a given selector. The selector will be lightly analyzed to determine

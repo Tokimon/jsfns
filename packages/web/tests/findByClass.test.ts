@@ -46,6 +46,10 @@ describe('"findByClass"', () => {
       elm = byId('Item2');
     });
 
+    it.each([null, undefined])('Returns empty array when given element is falsy: %s', (elm) => {
+      expect(findByClass(elm, 'item')).toHaveLength(0);
+    });
+
     it('Finds DOM elements with a given class name', () => {
       const nodes = findByClass(elm, 'item');
 

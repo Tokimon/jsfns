@@ -29,6 +29,10 @@ describe('"findByQuery"', () => {
     });
 
     describe('.findByQuery', () => {
+      it.each([null, undefined])('Returns empty array when given element is falsy: %s', (elm) => {
+        expect(findByQuery(elm, '.item')).toHaveLength(0);
+      });
+
       it('Finds all DOM elements matching a given CSS selector: #Item2.item', () => {
         const nodes = findByQuery(target, '#Item2.item');
         expect(nodes).toHaveLength(1);
@@ -60,6 +64,10 @@ describe('"findByQuery"', () => {
     });
 
     describe('.findOneByQuery', () => {
+      it.each([null, undefined])('Returns `null` when given element is falsy: %s', (elm) => {
+        expect(findOneByQuery(elm, '.item')).toBeNull();
+      });
+
       it('Find a DOM element matching a given CSS selector: #Item2.item', () => {
         const node = findOneByQuery(target, '#Item2.item');
         expect(node?.id).toBe('Item2');
