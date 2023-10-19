@@ -18,7 +18,7 @@ const defaultSettings: FormatNumberSettings = {
 
 /**
  * Formats a number with defined thousand and decimal separator, and a decimal limit
- * (see `limitDecimals` for details on `decimalCount`)
+ * (see {@link limitDecimals} for details on `decimalCount`)
  *
  * @param num - Number to format
  * @param settings - Settings for the number formatting
