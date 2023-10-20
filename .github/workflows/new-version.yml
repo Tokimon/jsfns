@@ -1,8 +1,11 @@
-name: New Version Trigger Docs
-run-name: New version pushed
+name: New Version Trigger Docs Build
+run-name: Trigger Docs Build
 
 on:
   workflow_dispatch:
+  create:
+    tags:
+      - \@jsfns/@(web|core)\@*
   push:
     tags:
       - \@jsfns/@(web|core)\@*
