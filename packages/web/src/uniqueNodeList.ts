@@ -18,17 +18,14 @@ import { isDOMNode } from './isDOMNode';
  * findUniqueNodeCollection(['.my-element', 'sone-other-elements'], byClassName);
  * ```
  */
-export function uniqueNodeList<T extends Element>(...args: (T | NodeListOf<T> | HTMLCollectionOf<T> | null)[]): T[] {
+export function uniqueNodeList<T extends Element>(...args: (T | T[] | NodeListOf<T> | HTMLCollectionOf<T> | null)[]): T[] {
   const collection = new Set<T>();
 
-  for (const arg of args) {
+  for (let arg of args) {
     if (!arg) continue;
+    if (isDOMNode(arg)) arg = [arg];
 
-    if (isDOMNode(arg)) {
-      collection.add(arg);
-    } else {
-      for (let i = 0; i < arg.length; i++) collection.add(arg[i]);
-    }
+    for (let i = 0; i < arg.length; i++) collection.add(arg[i]);
   }
 
   return Array.from(collection);
