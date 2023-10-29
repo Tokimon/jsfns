@@ -1,7 +1,5 @@
-# @jsfns/core
+# [@jsfns/core](https://tokimon.github.io/jsfns-docs/core)
 ![Code Coverage 100](https://badgen.net/badge/coverage/100%25/green)
-
-<a href="https://tokimon.github.io/jsfns-docs/core" target="__blank" style="font-size: 50px; display: block; text-align: center;">@jsfns/core documentation</a>
 
 This is a collection of simple, no dependency, JavaScript snippets with the aim
 of making it easier to work with vanilla JavaScript.
