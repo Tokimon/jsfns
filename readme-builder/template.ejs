@@ -1,12 +1,15 @@
 # @jsfns/<%= packageName %>
+![Code Coverage <%= coverage %>](https://badgen.net/badge/coverage/<%= coverage %>%25/<%= coverage > 95 ? 'green' : (coverage < 75 ? 'red' : 'yellow') %>)
 
-<a href="https://tokimon.github.io/jsfns/<%= packageName %>" target="__blank" style="font-size: 50px; display: block; text-align: center;">@jsfns/<%= packageName %> documentation</a>
+<a href="https://tokimon.github.io/jsfns-docs/<%= packageName %>" target="__blank" style="font-size: 50px; display: block; text-align: center;">@jsfns/<%= packageName %> documentation</a>
 
 <%= description %>
 
 ## Methods
 
-<%= methods %>
+<div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 5px">
+<%- methods %>
+</div>
 
 ## Files to fit your needs
 

@@ -17,6 +17,14 @@ export type OnOptions<E extends EventName = EventName> = AddEventListenerOptions
 
 type Args<E extends EventName = EventName> = [elm: EventTarget, eventNames: E | E[], handler: EventHandler<E>, options?: OnOptions<E>];
 
+function getDelegateTarget<E extends EventName = EventName>(delegate: string, e: Parameters<EventHandler<E>>[0]) {
+  const { target } = e;
+  // Delegation does nothing for non-dom element targets
+  if (!isDOMElement(target)) return;
+
+  return target.closest(delegate);
+}
+
 function onOptionsHandler<E extends EventName = EventName>(elm: EventTarget, handler: EventHandler<E>, options: OnOptions<E>) {
   const { when, once, delegate, ...rest } = options;
   if (!when && !delegate) return [handler, options] as const;
@@ -26,23 +34,15 @@ function onOptionsHandler<E extends EventName = EventName>(elm: EventTarget, han
 
     // We don't always remove when once is defined here, as we only should
     // remove delegation once it has hit the delegation target
-    const remove = () => off(elm, e.type as E, eventHandler, options);
+    const trigger = (target: Element | EventTarget, event: typeof e) => {
+      if (once) off(elm, e.type as E, eventHandler, options);
+      return handler.call(target, event);
+    };
 
-    if (!delegate) {
-      if (once) remove();
-      return handler.call(this, e);
-    }
+    if (!delegate) return trigger(this, e);
 
-    const { target } = e;
-    // Delegation does nothing for non-dom element targets
-    if (!isDOMElement(target)) return;
-
-    const delegateTarget = target.closest(delegate);
-
-    if (delegateTarget) {
-      if (once) remove();
-      return handler.call(delegateTarget, copyEvent(e, delegateTarget));
-    }
+    const delegateTarget = getDelegateTarget<E>(delegate, e);
+    if (delegateTarget) trigger(delegateTarget, copyEvent(e, delegateTarget));
   }
 
   return [eventHandler, rest] as [EventHandler, Omit<OnOptions, 'when' | 'once' | 'delegate'>];

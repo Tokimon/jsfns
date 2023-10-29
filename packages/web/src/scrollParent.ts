@@ -1,5 +1,23 @@
+import { css } from './css';
 import { isDOMChildNode } from './isDOMChildNode';
 import { viewport } from './viewport';
+
+function getScrollParent(elm: Element, noStaticParent: boolean) {
+  let parent = elm.parentElement;
+
+  while (parent && parent !== document.body) {
+    const { position, overflow, overflowX, overflowY } = css(parent);
+
+    const scrollingOverFlow = /(auto|scroll)/.test(overflow + overflowY + overflowX);
+    const includeParent = !(noStaticParent && position === 'static');
+
+    if (includeParent && scrollingOverFlow) return parent;
+
+    parent = parent.parentElement;
+  }
+
+  return null;
+}
 
 /**
  * Get the parent element that has scrolling
@@ -30,24 +48,11 @@ export function scrollParent(elm: Element): Element | HTMLElement | null {
 
   if (!isDOMChildNode(elm) || elm === vp) return vp;
 
-  const { position } = getComputedStyle(elm);
+  const position = css(elm as HTMLElement, 'position');
 
   if (position === 'fixed') return vp;
 
-  const noStaticParent = position === 'absolute';
-  let parent: HTMLElement | null = elm.parentElement;
-
-  while (parent && parent !== document.body) {
-    const { position, overflow, overflowX, overflowY } = getComputedStyle(parent);
-
-    if (!(noStaticParent && position === 'static') && /(auto|scroll)/.test(overflow + overflowY + overflowX)) {
-      return parent;
-    }
-
-    parent = parent.parentElement;
-  }
-
-  return vp;
+  return getScrollParent(elm, position === 'absolute') ?? vp;
 }
 
 export default scrollParent;

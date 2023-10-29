@@ -1,8 +1,8 @@
 import { isString } from '@jsfns/core/isString';
-import { type NotFirst } from './types';
+import { type Maybe, type NotFirst } from './types';
 import { uniqueNodeList } from './uniqueNodeList';
 
-type Args = [elm: Document | HTMLElement, tagNames: string | string[]];
+type Args = [elm: Maybe<Document | HTMLElement>, tagNames: string | string[]];
 
 /**
  * Find elements by given tag name
@@ -39,9 +39,10 @@ function findByTagName<T extends HTMLElement>(...args: Args | NotFirst<Args>): T
 
   // eslint-disable-next-line prefer-const
   let [elm, tagNames] = args as Args;
+  if (!elm) return [];
   if (!Array.isArray(tagNames)) tagNames = [tagNames];
 
-  return uniqueNodeList<T>(...tagNames.map((cn) => elm.getElementsByTagName(cn) as HTMLCollectionOf<T>));
+  return uniqueNodeList<T>(...tagNames.map((cn) => (elm as NonNullable<typeof elm>).getElementsByTagName(cn) as HTMLCollectionOf<T>));
 }
 
 export { findByTagName };

@@ -31,7 +31,11 @@ ok "Generated index file"
 
 # Remove any remaining "build" folder
 rm -rf $PWD/build
-ok 'build directory'
+ok '"build" directory'
+
+# Remove any remaining "build" folder
+rm -rf $PWD/coverage
+ok '"coverage" directory'
 
 # Remove any remaining empty folders
 find $PWD -type d -empty -delete

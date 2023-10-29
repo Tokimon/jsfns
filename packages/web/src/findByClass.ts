@@ -1,8 +1,8 @@
 import { isString } from '@jsfns/core/isString';
-import { type NotFirst } from './types';
+import { type Maybe, type NotFirst } from './types';
 import { uniqueNodeList } from './uniqueNodeList';
 
-type Args = [elm: Document | HTMLElement, classNames: string | string[]];
+type Args = [elm: Maybe<Document | HTMLElement>, classNames: string | string[]];
 
 /**
  * Finds DOM elements with a given class name.
@@ -44,9 +44,10 @@ function findByClass<T extends HTMLElement>(...args: Args | NotFirst<Args>): T[]
 
   // eslint-disable-next-line prefer-const
   let [elm, classNames] = args as Args;
+  if (!elm) return [];
   if (!Array.isArray(classNames)) classNames = [classNames];
 
-  return uniqueNodeList(...classNames.map((cn) => elm.getElementsByClassName(cn) as HTMLCollectionOf<T>));
+  return uniqueNodeList(...classNames.map((cn) => (elm as NonNullable<typeof elm>).getElementsByClassName(cn) as HTMLCollectionOf<T>));
 }
 
 export { findByClass };

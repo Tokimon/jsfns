@@ -1,13 +1,50 @@
 # @jsfns/core
+![Code Coverage 100](https://badgen.net/badge/coverage/100%25/green)
 
-<a href="https://tokimon.github.io/jsfns/core" target="__blank" style="font-size: 50px; display: block; text-align: center;">@jsfns/core documentation</a>
+<a href="https://tokimon.github.io/jsfns-docs/core" target="__blank" style="font-size: 50px; display: block; text-align: center;">@jsfns/core documentation</a>
 
 This is a collection of simple, no dependency, JavaScript snippets with the aim
 of making it easier to work with vanilla JavaScript.
 
 ## Methods
 
-[camelCase](https://tokimon.github.io/jsfns/core#camelCase), [capitalize](https://tokimon.github.io/jsfns/core#capitalize), [chunkString](https://tokimon.github.io/jsfns/core#chunkString), [formatCurrency](https://tokimon.github.io/jsfns/core#formatCurrency), [formatNumber](https://tokimon.github.io/jsfns/core#formatNumber), [fuzzySearch](https://tokimon.github.io/jsfns/core#fuzzySearch), [hash](https://tokimon.github.io/jsfns/core#hash), [hexToNumber](https://tokimon.github.io/jsfns/core#hexToNumber), [hexToRGB](https://tokimon.github.io/jsfns/core#hexToRGB), [isBoolean](https://tokimon.github.io/jsfns/core#isBoolean), [isFunction](https://tokimon.github.io/jsfns/core#isFunction), [isGenerator](https://tokimon.github.io/jsfns/core#isGenerator), [isNumber](https://tokimon.github.io/jsfns/core#isNumber), [isNumeric](https://tokimon.github.io/jsfns/core#isNumeric), [isObject](https://tokimon.github.io/jsfns/core#isObject), [isString](https://tokimon.github.io/jsfns/core#isString), [kebabCase](https://tokimon.github.io/jsfns/core#kebabCase), [leadingZero](https://tokimon.github.io/jsfns/core#leadingZero), [limitDecimals](https://tokimon.github.io/jsfns/core#limitDecimals), [minMax](https://tokimon.github.io/jsfns/core#minMax), [numberToHex](https://tokimon.github.io/jsfns/core#numberToHex), [pascalCase](https://tokimon.github.io/jsfns/core#pascalCase), [phrasify](https://tokimon.github.io/jsfns/core#phrasify), [popAtIndex](https://tokimon.github.io/jsfns/core#popAtIndex), [promisefy](https://tokimon.github.io/jsfns/core#promisefy), [randomCryptoId](https://tokimon.github.io/jsfns/core#randomCryptoId), [randomHexColor](https://tokimon.github.io/jsfns/core#randomHexColor), [randomId](https://tokimon.github.io/jsfns/core#randomId), [randomInt](https://tokimon.github.io/jsfns/core#randomInt), [randomRGBColor](https://tokimon.github.io/jsfns/core#randomRGBColor), [RGBToHex](https://tokimon.github.io/jsfns/core#RGBToHex), [safeDateChange](https://tokimon.github.io/jsfns/core#safeDateChange), [snakeCase](https://tokimon.github.io/jsfns/core#snakeCase), [truncate](https://tokimon.github.io/jsfns/core#truncate), [uniqueArray](https://tokimon.github.io/jsfns/core#uniqueArray)
+<div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 5px">
+<a href="https://tokimon.github.io/jsfns-docs/core#camelCase">camelCase</a>
+<a href="https://tokimon.github.io/jsfns-docs/core#capitalize">capitalize</a>
+<a href="https://tokimon.github.io/jsfns-docs/core#chunkString">chunkString</a>
+<a href="https://tokimon.github.io/jsfns-docs/core#formatCurrency">formatCurrency</a>
+<a href="https://tokimon.github.io/jsfns-docs/core#formatNumber">formatNumber</a>
+<a href="https://tokimon.github.io/jsfns-docs/core#fuzzySearch">fuzzySearch</a>
+<a href="https://tokimon.github.io/jsfns-docs/core#hash">hash</a>
+<a href="https://tokimon.github.io/jsfns-docs/core#hexToNumber">hexToNumber</a>
+<a href="https://tokimon.github.io/jsfns-docs/core#hexToRGB">hexToRGB</a>
+<a href="https://tokimon.github.io/jsfns-docs/core#isBoolean">isBoolean</a>
+<a href="https://tokimon.github.io/jsfns-docs/core#isFunction">isFunction</a>
+<a href="https://tokimon.github.io/jsfns-docs/core#isGenerator">isGenerator</a>
+<a href="https://tokimon.github.io/jsfns-docs/core#isNumber">isNumber</a>
+<a href="https://tokimon.github.io/jsfns-docs/core#isNumeric">isNumeric</a>
+<a href="https://tokimon.github.io/jsfns-docs/core#isObject">isObject</a>
+<a href="https://tokimon.github.io/jsfns-docs/core#isString">isString</a>
+<a href="https://tokimon.github.io/jsfns-docs/core#kebabCase">kebabCase</a>
+<a href="https://tokimon.github.io/jsfns-docs/core#leadingZero">leadingZero</a>
+<a href="https://tokimon.github.io/jsfns-docs/core#limitDecimals">limitDecimals</a>
+<a href="https://tokimon.github.io/jsfns-docs/core#minMax">minMax</a>
+<a href="https://tokimon.github.io/jsfns-docs/core#numberToHex">numberToHex</a>
+<a href="https://tokimon.github.io/jsfns-docs/core#pascalCase">pascalCase</a>
+<a href="https://tokimon.github.io/jsfns-docs/core#phrasify">phrasify</a>
+<a href="https://tokimon.github.io/jsfns-docs/core#popAtIndex">popAtIndex</a>
+<a href="https://tokimon.github.io/jsfns-docs/core#promisefy">promisefy</a>
+<a href="https://tokimon.github.io/jsfns-docs/core#randomCryptoId">randomCryptoId</a>
+<a href="https://tokimon.github.io/jsfns-docs/core#randomHexColor">randomHexColor</a>
+<a href="https://tokimon.github.io/jsfns-docs/core#randomId">randomId</a>
+<a href="https://tokimon.github.io/jsfns-docs/core#randomInt">randomInt</a>
+<a href="https://tokimon.github.io/jsfns-docs/core#randomRGBColor">randomRGBColor</a>
+<a href="https://tokimon.github.io/jsfns-docs/core#RGBToHex">RGBToHex</a>
+<a href="https://tokimon.github.io/jsfns-docs/core#safeDateChange">safeDateChange</a>
+<a href="https://tokimon.github.io/jsfns-docs/core#snakeCase">snakeCase</a>
+<a href="https://tokimon.github.io/jsfns-docs/core#truncate">truncate</a>
+<a href="https://tokimon.github.io/jsfns-docs/core#uniqueArray">uniqueArray</a>
+</div>
 
 ## Files to fit your needs
 
@@ -18,9 +55,9 @@ All methods are written in TypeScript and converted into various JS versions sui
 - `.cjs`: ES 6 syntax + CommonJS `require` imports
 - `.d.ts`: TypeScript description files
 
-## [@jsfns/web](https://tokimon.github.io/jsfns/web)
+## [@jsfns/web](https://tokimon.github.io/jsfns-docs/web)
 
-Searching for browser specific methods? Check out: [@jsfns/web](https://tokimon.github.io/jsfns/web)
+Searching for browser specific methods? Check out: [@jsfns/web](https://tokimon.github.io/jsfns-docs/web)
 
 ## ES version support
 

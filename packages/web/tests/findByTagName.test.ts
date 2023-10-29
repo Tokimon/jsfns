@@ -17,6 +17,10 @@ describe('"findByTagName"', () => {
 
   afterAll(() => removeElement(testID));
 
+  it.each([null, undefined])('Returns empty array when given element is falsy: %s', (elm) => {
+    expect(findByTagName(elm, 'div')).toHaveLength(0);
+  });
+
   describe('Finds DOM elements matching a given tag name', () => {
     it('Globally', () => {
       const nodes = findByTagName('div');
