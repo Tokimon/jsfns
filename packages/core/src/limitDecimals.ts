@@ -1,14 +1,23 @@
 import { isString } from './isString';
 
-function maxDecimals(num: number, decimals: number): number {
+function maxDecimals(num: number, decimals: number) {
   const multiplier = 10 ** decimals;
-  // toFixed is to avoid decimal imprecision (eg. 3.4500000003)
+  // toFixed is to avoid decimal imprecision (eg. 3.4500000003) and then convert back to number to remove any trailing 0's
   return Number((Math.round(num * multiplier) / multiplier).toFixed(decimals));
 }
 
-function minDecimals(num: number, decimals: number): string {
-  const decLen = (String(num).split('.')[1] || '').length;
-  return decimals <= decLen ? String(num) : num.toFixed(decimals);
+function minDecimals(num: number, decimals: number) {
+  const strNum = num.toString();
+  const decLen = (strNum.split('.')[1] ?? '').length;
+  return decimals <= decLen ? strNum : Number(num).toFixed(decimals);
+}
+
+function parseMinMax(decimalCount: string) {
+  const [minDec, maxDec] = decimalCount.split(/[,\s]+/);
+  const min = Number(minDec);
+  const max = Number(maxDec);
+
+  return max < min ? [max, min] : [min, max];
 }
 
 /**
@@ -39,33 +48,27 @@ function minDecimals(num: number, decimals: number): string {
  * // Min number decimals
  * limitDecimals(123.4, '>4') // --> 123.4000
  * limitDecimals(123.456789, '>4') // --> 123.456789
+ *
+ * // Min, Max number decimals
+ * limitDecimals(123.4, '2,4') // --> 123.40
+ * limitDecimals(123.456789, '2,4') // --> 123.4568
  * ```
  */
 export function limitDecimals(num: number, decimalCount: number | string = 2): string {
-  if (isString(decimalCount)) {
-    if (decimalCount.startsWith('<')) {
-      return String(maxDecimals(num, Number(decimalCount.slice(1))));
-    }
+  if (!isString(decimalCount)) return num.toFixed(decimalCount);
 
-    if (decimalCount.startsWith('>')) {
-      return minDecimals(num, Number(decimalCount.slice(1)));
-    }
-
-    if (decimalCount.includes(',')) {
-      const [minDec, maxDec] = decimalCount.split(/[, ]+/);
-      let min = Number(minDec);
-      let max = Number(maxDec);
-      if (max < min) {
-        [min, max] = [max, min];
-      }
-
-      return minDecimals(maxDecimals(num, max), min);
-    }
-
-    decimalCount = Number(decimalCount) || 0;
+  if (decimalCount.startsWith('<')) {
+    return maxDecimals(num, Number(decimalCount.slice(1))).toString();
   }
 
-  return num.toFixed(decimalCount);
+  if (decimalCount.startsWith('>')) return minDecimals(num, Number(decimalCount.slice(1)));
+
+  if (decimalCount.includes(',')) {
+    const [min, max] = parseMinMax(decimalCount);
+    return minDecimals(maxDecimals(num, max), min);
+  }
+
+  return num.toFixed(Number(decimalCount) || 0);
 }
 
 export default limitDecimals;
