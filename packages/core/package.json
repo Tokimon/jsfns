@@ -24,7 +24,7 @@
   "bugs": {
     "url": "https://github.com/Tokimon/jsfns/issues"
   },
-  "homepage": "https://tokimon.github.io/jsfns/core",
+  "homepage": "https://tokimon.github.io/jsfns-web/core",
   "scripts": {
     "prepublishOnly": "pnpm test -- --coverage && pnpm build && pnpm readme",
     "postpublish": "pnpm clean",
