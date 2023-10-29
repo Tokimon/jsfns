@@ -37,7 +37,7 @@ export async function build() {
 
   for (const file of files) {
     const name = basename(file, '.ts');
-    methods.push(`<a href="https://tokimon.github.io/jsfns-docs/${packageName}#${name}">${name}</a>`);
+    if (name !== 'index') methods.push(`<a href="https://tokimon.github.io/jsfns-docs/${packageName}#${name}">${name}</a>`);
   }
 
   const data: ejs.Data = {
