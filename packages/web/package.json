@@ -42,7 +42,7 @@
     "validate": "pnpm lint && pnpm types && pnpm test -- --coverage --coverageReporters='text-summary'"
   },
   "dependencies": {
-    "@jsfns/core": "^1.2.0"
+    "@jsfns/core": "^1.1.0"
   },
   "devDependencies": {
     "@types/jest": "~29.5.2",
