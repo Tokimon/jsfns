@@ -32,13 +32,16 @@ export async function build() {
     readFile(join(packagePath, 'readme', 'examples.md'), { encoding: 'utf8' }),
   ]);
 
-  const methods = [];
   const files = await readdir(join(packagePath, 'src'));
+  const fileNames = files.map((file) => basename(file, '.ts')).filter((name) => name !== 'index');
+  const len = fileNames.length;
 
-  for (const file of files) {
-    const name = basename(file, '.ts');
-    if (name !== 'index') methods.push(`<a href="https://tokimon.github.io/jsfns-docs/${packageName}#${name}">${name}</a>`);
-  }
+  // const methods = fileNames.map((name) => `[${name}](https://tokimon.github.io/jsfns-docs/${packageName}#${name})`).join(' | ');
+  const methods = fileNames.reduce((str, name, index) => {
+    const n = index + 1;
+    const end = n % 5 === 0 || n === len ? '|\n' : '';
+    return `${str}| [${name}](https://tokimon.github.io/jsfns-docs/${packageName}#${name}) ${end}`;
+  }, '');
 
   const data: ejs.Data = {
     packageName,
@@ -46,7 +49,7 @@ export async function build() {
     description,
     docReferences,
     examples,
-    methods: methods.join('\n'),
+    methods,
   };
 
   const content = await ejs.renderFile(resolve('..', '..', 'readme-builder', 'template.ejs'), data, { async: true });
