@@ -1,4 +1,7 @@
 packages:
-  - 'docs-builder'
-  - 'packages/*'
+  - docs-builder
+  - packages/*
   - '!**/test/**'
+
+onlyBuiltDependencies:
+  - nx
