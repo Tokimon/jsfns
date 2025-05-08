@@ -1,6 +1,6 @@
 import { isString } from '@jsfns/core/isString';
-import { type Maybe, type NotFirst } from './types';
 import { uniqueNodeList } from './uniqueNodeList';
+import type { Maybe, NotFirst } from './types';
 
 type Args = [elm: Maybe<Document | HTMLElement>, queries: string | string[]];
 
@@ -36,14 +36,13 @@ function findByQuery<T extends HTMLElement>(elm: Args[0], queries: Args[1]): T[]
 function findByQuery<T extends HTMLElement>(queries: Args[1]): T[];
 
 function findByQuery<T extends HTMLElement>(...args: Args | NotFirst<Args>) {
-  if (isString(args[0]) || Array.isArray(args[0])) return findByQuery(document, args[0]);
+	if (isString(args[0]) || Array.isArray(args[0])) return findByQuery(document, args[0]);
 
-  // eslint-disable-next-line prefer-const
-  let [elm, queries] = args as Args;
-  if (!elm) return [];
-  if (Array.isArray(queries)) queries = queries.join(',');
+	let [elm, queries] = args as Args;
+	if (!elm) return [];
+	if (Array.isArray(queries)) queries = queries.join(',');
 
-  return uniqueNodeList<T>(elm.querySelectorAll<T>(queries));
+	return uniqueNodeList<T>(elm.querySelectorAll<T>(queries));
 }
 
 export type OneArgs = [elm: Args[0], query: string];
@@ -80,12 +79,11 @@ function findOneByQuery<T extends HTMLElement>(elm: OneArgs[0], query: string): 
 function findOneByQuery<T extends HTMLElement>(query: string): T | null;
 
 function findOneByQuery<T extends HTMLElement>(...args: OneArgs | NotFirst<OneArgs>): T | null {
-  if (isString(args[0])) return findOneByQuery(document, args[0]);
+	if (isString(args[0])) return findOneByQuery(document, args[0]);
 
-  // eslint-disable-next-line prefer-const
-  let [elm, query] = args as OneArgs;
+	const [elm, query] = args as OneArgs;
 
-  return elm?.querySelector<T>(query) ?? null;
+	return elm?.querySelector<T>(query) ?? null;
 }
 
 export { findByQuery, findOneByQuery };

@@ -1,6 +1,22 @@
 import { parseSelector } from './parseSelector';
 
-const voidTags = ['area', 'base', 'br', 'col', 'embed', 'hr', 'img', 'input', 'keygen', 'link', 'meta', 'param', 'source', 'track', 'wbr'];
+const voidTags = [
+	'area',
+	'base',
+	'br',
+	'col',
+	'embed',
+	'hr',
+	'img',
+	'input',
+	'keygen',
+	'link',
+	'meta',
+	'param',
+	'source',
+	'track',
+	'wbr',
+];
 
 /**
  * Converts a given CSS selector into HTML
@@ -16,13 +32,15 @@ const voidTags = ['area', 'base', 'br', 'col', 'embed', 'hr', 'img', 'input', 'k
  * ```
  */
 export function selectorToHTML(selector: string): string {
-  const { tagName, attributes, attributeList } = parseSelector(selector);
+	const { tagName, attributes, attributeList } = parseSelector(selector);
 
-  const atts = attributeList.map((att) => ` ${att}${attributes[att] ? `="${attributes[att]}"` : ''}`).join('');
+	const atts = attributeList
+		.map((att) => ` ${att}${attributes[att] ? `="${attributes[att]}"` : ''}`)
+		.join('');
 
-  const end = voidTags.includes(tagName) ? ' /' : `></${tagName}`;
+	const end = voidTags.includes(tagName) ? ' /' : `></${tagName}`;
 
-  return `<${tagName}${atts}${end}>`;
+	return `<${tagName}${atts}${end}>`;
 }
 
 export default selectorToHTML;

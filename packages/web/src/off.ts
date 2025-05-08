@@ -1,11 +1,11 @@
 import { isEventTarget } from './isEventTarget';
-import { type EventHandler, type EventName, type NotFirst } from './types';
+import type { EventHandler, EventName, NotFirst } from './types';
 
 type Args<E extends EventName = EventName> = [
-  elm: EventTarget,
-  eventNames: EventName | EventName[],
-  handler: EventHandler<E>,
-  options?: AddEventListenerOptions
+	elm: EventTarget,
+	eventNames: EventName | EventName[],
+	handler: EventHandler<E>,
+	options?: AddEventListenerOptions,
 ];
 
 /**
@@ -25,7 +25,12 @@ type Args<E extends EventName = EventName> = [
  * off(MyElm, ['mouseenter', 'touchstart'], () => {})
  * ```
  */
-function off<E extends EventName>(elm: Args<E>[0], eventNames: E | E[], handler: EventHandler<E>, options?: Args<E>[3]): typeof elm;
+function off<E extends EventName>(
+	elm: Args<E>[0],
+	eventNames: E | E[],
+	handler: EventHandler<E>,
+	options?: Args<E>[3],
+): typeof elm;
 // function off(
 //   elm: EventTarget,
 //   eventNames: string | string[],
@@ -49,19 +54,22 @@ function off<E extends EventName>(elm: Args<E>[0], eventNames: E | E[], handler:
  * off(['mouseenter', 'touchstart'], () => {})
  * ```
  */
-function off<E extends EventName>(eventNames: E | E[], handler: EventHandler<E>, options?: Args<E>[3]): Document;
+function off<E extends EventName>(
+	eventNames: E | E[],
+	handler: EventHandler<E>,
+	options?: Args<E>[3],
+): Document;
 // function off(eventNames: string | string[], handler: EventListenerOrEventListenerObject, options?: AddEventListenerOptions): Document;
 
 function off<E extends EventName>(...args: Args<E> | NotFirst<Args<E>>): (typeof args)[0] {
-  if (!isEventTarget(args[0])) return off(document, ...(args as NotFirst<Args>));
+	if (!isEventTarget(args[0])) return off(document, ...(args as NotFirst<Args>));
 
-  // eslint-disable-next-line prefer-const
-  let [elm, eventNames, handler, options] = args as Args<E>;
-  if (!Array.isArray(eventNames)) eventNames = [eventNames];
+	let [elm, eventNames, handler, options] = args as Args<E>;
+	if (!Array.isArray(eventNames)) eventNames = [eventNames];
 
-  eventNames.forEach((evt) => elm.removeEventListener(evt, handler as EventListener, options));
+	for (const evt of eventNames) elm.removeEventListener(evt, handler as EventListener, options);
 
-  return elm;
+	return elm;
 }
 
 export { off };

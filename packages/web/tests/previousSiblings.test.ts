@@ -4,9 +4,9 @@ import { byId, createElement, generateId, insertHtml, removeElement } from './as
 const testID = generateId('previousSiblings');
 
 describe('"previousSiblings"', () => {
-  beforeAll(() =>
-    insertHtml(
-      `<div id="${testID}">
+	beforeAll(() =>
+		insertHtml(
+			`<div id="${testID}">
       <span id="FirstChild">
         <b id="LoneChild"></b>
       </span>
@@ -20,33 +20,33 @@ describe('"previousSiblings"', () => {
       <input>
       <button></button>
       <span id="LastChild"></span>
-    </div>`
-    )
-  );
+    </div>`,
+		),
+	);
 
-  afterAll(() => removeElement(testID));
+	afterAll(() => removeElement(testID));
 
-  describe('.previousSiblings', () => {
-    it('Returns an array of all siblings after the given element', () => {
-      const elm = byId('MiddleChild');
-      const elms = previousSiblings(elm);
+	describe('.previousSiblings', () => {
+		it('Returns an array of all siblings after the given element', () => {
+			const elm = byId('MiddleChild');
+			const elms = previousSiblings(elm);
 
-      expect(elms).toHaveLength(4);
-      expect(elms.every((node) => node !== elm)).toBe(true);
-      expect(elms[elms.length - 1].id).toBe('FirstChild');
-    });
+			expect(elms).toHaveLength(4);
+			expect(elms.every((node) => node !== elm)).toBe(true);
+			expect(elms[elms.length - 1].id).toBe('FirstChild');
+		});
 
-    describe('Returns an empty array when', () => {
-      it('The given node is not a child in the DOM', () => {
-        expect(previousSiblings(createElement('div'))).toHaveLength(0);
-      });
+		describe('Returns an empty array when', () => {
+			it('The given node is not a child in the DOM', () => {
+				expect(previousSiblings(createElement('div'))).toHaveLength(0);
+			});
 
-      it('The element has no siblings', () => {
-        const elm = byId('LoneChild');
-        const elms = previousSiblings(elm);
+			it('The element has no siblings', () => {
+				const elm = byId('LoneChild');
+				const elms = previousSiblings(elm);
 
-        expect(elms).toHaveLength(0);
-      });
-    });
-  });
+				expect(elms).toHaveLength(0);
+			});
+		});
+	});
 });

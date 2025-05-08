@@ -1,8 +1,8 @@
 import { insertAfter } from './insertAfter';
 
 function findEmptyElm(elm: Element): Element {
-  const child = elm?.firstElementChild;
-  return child ? findEmptyElm(child) : elm;
+	const child = elm?.firstElementChild;
+	return child ? findEmptyElm(child) : elm;
 }
 
 /**
@@ -23,14 +23,14 @@ function findEmptyElm(elm: Element): Element {
  * ```
  */
 export function wrap(elm: Element, wrapping: Element | string) {
-  if (!wrapping) return null;
+	if (!wrapping) return null;
 
-  const wrapDom = insertAfter(elm, wrapping);
-  if (!wrapDom) return null;
+	const wrapDom = insertAfter(elm, wrapping);
+	if (!wrapDom) return null;
 
-  findEmptyElm(wrapDom).appendChild(elm);
+	findEmptyElm(wrapDom).appendChild(elm);
 
-  return wrapDom;
+	return wrapDom;
 }
 
 export default wrap;

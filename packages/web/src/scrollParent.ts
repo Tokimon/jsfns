@@ -3,20 +3,20 @@ import { isDOMChildNode } from './isDOMChildNode';
 import { viewport } from './viewport';
 
 function getScrollParent(elm: Element, noStaticParent: boolean) {
-  let parent = elm.parentElement;
+	let parent = elm.parentElement;
 
-  while (parent && parent !== document.body) {
-    const { position, overflow, overflowX, overflowY } = css(parent);
+	while (parent && parent !== document.body) {
+		const { position, overflow, overflowX, overflowY } = css(parent);
 
-    const scrollingOverFlow = /(auto|scroll)/.test(overflow + overflowY + overflowX);
-    const includeParent = !(noStaticParent && position === 'static');
+		const scrollingOverFlow = /(auto|scroll)/.test(overflow + overflowY + overflowX);
+		const includeParent = !(noStaticParent && position === 'static');
 
-    if (includeParent && scrollingOverFlow) return parent;
+		if (includeParent && scrollingOverFlow) return parent;
 
-    parent = parent.parentElement;
-  }
+		parent = parent.parentElement;
+	}
 
-  return null;
+	return null;
 }
 
 /**
@@ -44,15 +44,15 @@ function getScrollParent(elm: Element, noStaticParent: boolean) {
  * ```
  */
 export function scrollParent(elm: Element): Element | HTMLElement | null {
-  const vp = viewport(elm);
+	const vp = viewport(elm);
 
-  if (!isDOMChildNode(elm) || elm === vp) return vp;
+	if (!isDOMChildNode(elm) || elm === vp) return vp;
 
-  const position = css(elm as HTMLElement, 'position');
+	const position = css(elm as HTMLElement, 'position');
 
-  if (position === 'fixed') return vp;
+	if (position === 'fixed') return vp;
 
-  return getScrollParent(elm, position === 'absolute') ?? vp;
+	return getScrollParent(elm, position === 'absolute') ?? vp;
 }
 
 export default scrollParent;

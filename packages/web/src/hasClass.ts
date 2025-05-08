@@ -14,13 +14,17 @@
  * hasClass(myElm, ['open', 'shown'], true) // --> true if myElm has all given class names
  * ```
  */
-export function hasClass(elm: Element | null, classNames: string | string[], any?: boolean): boolean {
-  if (!elm) return false;
+export function hasClass(
+	elm: Element | null,
+	classNames: string | string[],
+	any?: boolean,
+): boolean {
+	if (!elm) return false;
 
-  const checkFn = any ? 'some' : 'every';
-  const cns = !Array.isArray(classNames) ? [classNames] : classNames;
+	const checkFn = any ? 'some' : 'every';
+	const cns = !Array.isArray(classNames) ? [classNames] : classNames;
 
-  return cns[checkFn]((cn) => elm.classList.contains(cn));
+	return cns[checkFn]((cn) => elm.classList.contains(cn));
 }
 
 export default hasClass;
@@ -40,7 +44,7 @@ export default hasClass;
  * ```
  */
 export function hasAnyClass(elm: Element, classNames: string | string[]): boolean {
-  return hasClass(elm, classNames, true);
+	return hasClass(elm, classNames, true);
 }
 
 /**
@@ -58,5 +62,5 @@ export function hasAnyClass(elm: Element, classNames: string | string[]): boolea
  * ```
  */
 export function hasAllClass(elm: Element, classNames: string | string[]): boolean {
-  return hasClass(elm, classNames, false);
+	return hasClass(elm, classNames, false);
 }

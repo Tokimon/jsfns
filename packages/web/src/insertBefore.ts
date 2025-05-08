@@ -23,17 +23,17 @@ import { isDOMRoot } from './isDOMRoot';
  * ```
  */
 export function insertBefore(elm: Element, insertElm: string | Element): Element | null {
-  if (!inDOM(elm) || isDOMRoot(elm)) {
-    return null;
-  }
+	if (!inDOM(elm) || isDOMRoot(elm)) {
+		return null;
+	}
 
-  if (isString(insertElm)) {
-    elm.insertAdjacentHTML('beforebegin', ensureHTML(insertElm));
-  } else {
-    elm.insertAdjacentElement('beforebegin', insertElm);
-  }
+	if (isString(insertElm)) {
+		elm.insertAdjacentHTML('beforebegin', ensureHTML(insertElm));
+	} else {
+		elm.insertAdjacentElement('beforebegin', insertElm);
+	}
 
-  return elm.previousElementSibling;
+	return elm.previousElementSibling;
 }
 
 export default insertBefore;

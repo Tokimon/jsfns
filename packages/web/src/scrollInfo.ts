@@ -1,14 +1,14 @@
 import { isDOMElement } from './isDOMElement';
-import type { GeneralWindow } from './types';
 import { viewport } from './viewport';
+import type { GeneralWindow } from './types';
 
 export type ScrollInfo = {
-  x: number;
-  y: number;
-  xMax: number;
-  yMax: number;
-  xPct: number;
-  yPct: number;
+	x: number;
+	y: number;
+	xMax: number;
+	yMax: number;
+	xPct: number;
+	yPct: number;
 };
 
 /**
@@ -26,20 +26,20 @@ export type ScrollInfo = {
  * ```
  */
 export function scrollInfo(elm: Element | GeneralWindow | Document = document): ScrollInfo {
-  const _elm = !isDOMElement(elm) ? viewport(elm) : elm;
+	const _elm = !isDOMElement(elm) ? viewport(elm) : elm;
 
-  const info = { x: 0, y: 0, xMax: 0, yMax: 0, xPct: 0, yPct: 0 };
+	const info = { x: 0, y: 0, xMax: 0, yMax: 0, xPct: 0, yPct: 0 };
 
-  info.x = _elm.scrollLeft;
-  info.y = _elm.scrollTop;
+	info.x = _elm.scrollLeft;
+	info.y = _elm.scrollTop;
 
-  info.xMax = Math.max(_elm.scrollWidth - _elm.clientWidth, 0);
-  info.yMax = Math.max(_elm.scrollHeight - _elm.clientHeight, 0);
+	info.xMax = Math.max(_elm.scrollWidth - _elm.clientWidth, 0);
+	info.yMax = Math.max(_elm.scrollHeight - _elm.clientHeight, 0);
 
-  if (info.xMax) info.xPct = info.x / info.xMax;
-  if (info.yMax) info.yPct = info.y / info.yMax;
+	if (info.xMax) info.xPct = info.x / info.xMax;
+	if (info.yMax) info.yPct = info.y / info.yMax;
 
-  return info;
+	return info;
 }
 
 export default scrollInfo;

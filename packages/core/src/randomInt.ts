@@ -1,8 +1,8 @@
 const random = (num: number): number => Math.round(Math.random() * num);
 
 const range = (num: number, num2: number): number => {
-  if (num2 < num) [num, num2] = [num2, num];
-  return random(num2 - num) + num;
+	const [n, n2] = num2 < num ? [num2, num] : [num, num2];
+	return random(n2 - n) + n;
 };
 
 /**
@@ -39,7 +39,7 @@ function randomInt(min: number, max: number): number;
 function randomInt(max?: number): number;
 
 function randomInt(num = Number.MAX_SAFE_INTEGER, num2?: number): number {
-  return num2 === undefined ? random(num) : range(num, num2);
+	return num2 === undefined ? random(num) : range(num, num2);
 }
 
 export { randomInt };

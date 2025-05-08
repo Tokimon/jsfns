@@ -18,12 +18,11 @@ import { isFunction } from './isFunction';
  * ```
  */
 export function isGeneratorLike(x: unknown): x is Generator {
-  if (x == null) return false;
+	if (x == null) return false;
 
-  const i = x as Iterator<unknown>;
+	const i = x as Iterator<unknown>;
 
-  // eslint-disable-next-line @typescript-eslint/unbound-method
-  return isFunction(i.next) && isFunction(i.throw) && isFunction(i.return);
+	return isFunction(i.next) && isFunction(i.throw) && isFunction(i.return);
 }
 
 /**
@@ -41,9 +40,12 @@ export function isGeneratorLike(x: unknown): x is Generator {
  * @returns Whether the argument a Generator or not
  */
 export function isGenerator(x: unknown): x is GeneratorFunction {
-  if (!x?.constructor) return false;
+	if (!x?.constructor) return false;
 
-  return x.constructor.name === 'GeneratorFunction' || isGeneratorLike(Object.getPrototypeOf(x.constructor));
+	return (
+		x.constructor.name === 'GeneratorFunction' ||
+		isGeneratorLike(Object.getPrototypeOf(x.constructor))
+	);
 }
 
 export default isGenerator;

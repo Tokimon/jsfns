@@ -11,11 +11,11 @@
  * ```
  */
 export function randomId(length = 10): string {
-  length = Math.max(2, length);
+	const len = Math.max(2, length);
 
-  let id = '';
-  while (id.length < length) id += Math.random().toString(36).slice(2);
-  return id.slice(0, length);
+	let id = '';
+	while (id.length < len) id += Math.random().toString(36).slice(2);
+	return id.slice(0, len);
 }
 
 export default randomId;

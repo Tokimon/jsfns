@@ -11,6 +11,7 @@
  * isBoolean('string'); // --> false
  * ```
  */
-export const isBoolean = (x: unknown): x is boolean => x === true || x === false || x instanceof Boolean;
+export const isBoolean = (x: unknown): x is boolean =>
+	x === true || x === false || x instanceof Boolean;
 
 export default isBoolean;

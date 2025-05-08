@@ -23,12 +23,12 @@ import { isDOMRoot } from './isDOMRoot';
  * ```
  */
 export function insertAfter(elm: Element, insertElm: string | Element): Element | null {
-  if (!inDOM(elm) || isDOMRoot(elm)) return null;
+	if (!inDOM(elm) || isDOMRoot(elm)) return null;
 
-  if (isString(insertElm)) elm.insertAdjacentHTML('afterend', ensureHTML(insertElm));
-  else elm.insertAdjacentElement('afterend', insertElm);
+	if (isString(insertElm)) elm.insertAdjacentHTML('afterend', ensureHTML(insertElm));
+	else elm.insertAdjacentElement('afterend', insertElm);
 
-  return elm.nextElementSibling;
+	return elm.nextElementSibling;
 }
 
 export default insertAfter;

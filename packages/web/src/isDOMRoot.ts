@@ -18,10 +18,10 @@ import { isDOMNode } from './isDOMNode';
  * ```
  */
 export function isDOMRoot(node: unknown): node is HTMLElement {
-  if (!isDOMNode(node)) return false;
+	if (!isDOMNode(node)) return false;
 
-  const doc = getCurrentDocument(node);
-  return !!doc && node === doc.documentElement;
+	const doc = getCurrentDocument(node);
+	return !!doc && node === doc.documentElement;
 }
 
 export default isDOMRoot;

@@ -18,14 +18,18 @@
  * toggleClass(MyNode, 'active', false) // --> <div class="open" />
  * ```
  */
-export function toggleClass(elm: Element | null, classNames: string | string[], force?: boolean): typeof elm {
-  if (!elm) return null;
+export function toggleClass(
+	elm: Element | null,
+	classNames: string | string[],
+	force?: boolean,
+): typeof elm {
+	if (!elm) return null;
 
-  if (!Array.isArray(classNames)) classNames = [classNames];
+	const cns = !Array.isArray(classNames) ? [classNames] : classNames;
 
-  classNames.forEach((cn) => elm.classList.toggle(cn, force));
+	for (const cn of cns) elm.classList.toggle(cn, force);
 
-  return elm;
+	return elm;
 }
 
 export default toggleClass;

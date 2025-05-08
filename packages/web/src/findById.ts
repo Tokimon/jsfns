@@ -31,8 +31,8 @@ function findById<T extends HTMLElement>(id: string): T | null;
 function findById<T extends HTMLElement>(ids: string[]): T[];
 
 function findById<T extends HTMLElement>(ids: string | string[]): T | T[] | null {
-  const byId = (id: string) => document.getElementById(id) as T | null;
-  return !Array.isArray(ids) ? byId(ids) : uniqueNodeList<T>(...ids.map(byId));
+	const byId = (id: string) => document.getElementById(id) as T | null;
+	return !Array.isArray(ids) ? byId(ids) : uniqueNodeList<T>(...ids.map(byId));
 }
 
 export { findById };

@@ -1,7 +1,7 @@
 export type NodeLikeCallback = (err?: string | Error | null, data?: unknown) => unknown;
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
+// biome-ignore lint/suspicious/noExplicitAny: cannot be done with "unknown" it has to be "any"
 export type PromisefyCallback = (...args: any[]) => any;
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
+// biome-ignore lint/suspicious/noExplicitAny: cannot be done with "unknown" it has to be "any"
 export type PromisefiedFunction = (...args: any[]) => Promise<any>;
 
 /**
@@ -24,12 +24,13 @@ export type PromisefiedFunction = (...args: any[]) => Promise<any>;
  * ```
  */
 export function promisefy(fn: PromisefyCallback): PromisefiedFunction {
-  return (...args: unknown[]) =>
-    new Promise((resolve, reject) => {
-      const cb = (err?: string | Error | null, data?: unknown) => (err ? reject(err) : resolve(data));
+	return (...args: unknown[]) =>
+		new Promise((resolve, reject) => {
+			const cb = (err?: string | Error | null, data?: unknown) =>
+				err ? reject(err) : resolve(data);
 
-      fn(...args, cb);
-    });
+			fn(...args, cb);
+		});
 }
 
 export default promisefy;

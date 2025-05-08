@@ -14,8 +14,8 @@ import { getCurrentDocument } from './getCurrentDocument';
  * ```
  */
 export function inDOM(elm: Node): boolean {
-  const doc = getCurrentDocument(elm);
-  return !!doc && doc !== elm && doc.contains(elm);
+	const doc = getCurrentDocument(elm);
+	return !!doc && doc !== elm && doc.contains(elm);
 }
 
 export default inDOM;

@@ -12,6 +12,7 @@
  * isNumber('123'); // --> false
  * ```
  */
-export const isNumber = (x: unknown): x is number => (typeof x === 'number' || x instanceof Number) && Number.isFinite(Number(x));
+export const isNumber = (x: unknown): x is number =>
+	(typeof x === 'number' || x instanceof Number) && Number.isFinite(Number(x));
 
 export default isNumber;

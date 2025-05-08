@@ -1,8 +1,8 @@
 export type ChunkStringOptions = {
-  // The max size of each chunk
-  size?: number;
-  // Chunk strings from the end to front (['ab', 'cde', 'fgh'] instead of ['abc', 'def', 'gh'])
-  reverse?: boolean;
+	// The max size of each chunk
+	size?: number;
+	// Chunk strings from the end to front (['ab', 'cde', 'fgh'] instead of ['abc', 'def', 'gh'])
+	reverse?: boolean;
 };
 
 /**
@@ -20,9 +20,9 @@ export type ChunkStringOptions = {
  * ```
  */
 export function chunkString(str: string, options: ChunkStringOptions = {}): string[] {
-  const { size = 2, reverse = false } = options;
-  const rev = reverse ? `(?=(?:.{${size}})*$)` : '';
-  return str.match(new RegExp(`.{1,${size}}${rev}`, 'g')) || [];
+	const { size = 2, reverse = false } = options;
+	const rev = reverse ? `(?=(?:.{${size}})*$)` : '';
+	return str.match(new RegExp(`.{1,${size}}${rev}`, 'g')) || [];
 }
 
 export default chunkString;

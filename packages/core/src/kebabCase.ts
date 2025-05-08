@@ -17,6 +17,7 @@ export type KebabCaseSettings = PhrasifySettings;
  * kebabCase('dash version1 beta', { numbers: true }); // --> dash-version-1-beta
  * ```
  */
-export const kebabCase = (str: string, settings?: KebabCaseSettings) => phrasify(str, settings).toLowerCase().replace(/\s+/g, '-');
+export const kebabCase = (str: string, settings?: KebabCaseSettings) =>
+	phrasify(str, settings).toLowerCase().replace(/\s+/g, '-');
 
 export default kebabCase;

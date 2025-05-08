@@ -18,17 +18,18 @@ const combine = (base: string, cn: string) => base + (base && cn && ' ') + cn;
  * ```
  */
 export const classNameString = (...args: (Option | Option[])[]): string => {
-  let str = '';
+	let str = '';
 
-  for (let i = 0; i < args.length; i++) {
-    const input = args[i];
+	for (let i = 0; i < args.length; i++) {
+		const input = args[i];
 
-    if (typeof input === 'string') str = combine(str, input);
-    else if (Array.isArray(input)) str = combine(str, classNameString(...input));
-    else if (typeof input === 'object') for (const key in input) str = combine(str, input[key] ? key : '');
-  }
+		if (typeof input === 'string') str = combine(str, input);
+		else if (Array.isArray(input)) str = combine(str, classNameString(...input));
+		else if (typeof input === 'object')
+			for (const key in input) str = combine(str, input[key] ? key : '');
+	}
 
-  return str;
+	return str;
 };
 
 export default classNameString;

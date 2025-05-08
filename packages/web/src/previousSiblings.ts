@@ -13,18 +13,18 @@ import { isDOMChildNode } from './isDOMChildNode';
  * ```
  */
 export function previousSiblings(elm: Element): Element[] {
-  if (!isDOMChildNode(elm)) return [];
+	if (!isDOMChildNode(elm)) return [];
 
-  const siblings = [];
+	const siblings = [];
 
-  let sibling: Element | null = elm.previousElementSibling;
+	let sibling: Element | null = elm.previousElementSibling;
 
-  while (sibling) {
-    siblings.push(sibling);
-    sibling = sibling.previousElementSibling;
-  }
+	while (sibling) {
+		siblings.push(sibling);
+		sibling = sibling.previousElementSibling;
+	}
 
-  return siblings;
+	return siblings;
 }
 
 export default previousSiblings;

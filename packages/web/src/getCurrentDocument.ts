@@ -17,11 +17,11 @@ import type { GeneralWindow } from './types';
  * ```
  */
 export function getCurrentDocument(node: Document | GeneralWindow | Node | null): Document | null {
-  if (!node) return null;
-  if (isDocument(node)) return node;
-  if (isWindow(node)) return node.document;
+	if (!node) return null;
+	if (isDocument(node)) return node;
+	if (isWindow(node)) return node.document;
 
-  return node.ownerDocument;
+	return node.ownerDocument;
 }
 
 export default getCurrentDocument;

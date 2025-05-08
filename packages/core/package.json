@@ -31,9 +31,10 @@
 		"test": "jest",
 		"test:coverage:json": "npm t -- --coverage",
 		"test:coverage:cli": "npm t -- --coverage --coverageReporters='text'",
-		"lint": "biome lint . --error-on-warnings",
-		"format": "biome format --write .",
-		"validate": "pnpm lint && pnpm types && pnpm test:coverage:cli"
+		"lint": "biome lint --error-on-warnings",
+		"format": "biome format --write",
+		"format:check": "biome format",
+		"validate": "pnpm lint && pnpm format:check && pnpm types && pnpm test:coverage:cli"
 	},
 	"devDependencies": {
 		"@types/jest": "~29.5.14",

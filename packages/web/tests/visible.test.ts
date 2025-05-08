@@ -7,8 +7,8 @@ const sizeStyle = 'width: 10px; height: 10px;';
 const visibleStyle = `${sizeStyle} opacity: 1;`;
 
 describe('"visible"', () => {
-  beforeAll(() =>
-    insertHtml(`
+	beforeAll(() =>
+		insertHtml(`
     <div id="${testID}" style="${visibleStyle}">
       <style id="Style">
         #NoDisplay { display: none; }
@@ -23,71 +23,71 @@ describe('"visible"', () => {
       <div id="Transparent" style="${sizeStyle}"><div id="ChildTransparent"></div></div>
       <div id="Visible" style="${visibleStyle}"></div>
     </div>
-  `)
-  );
+  `),
+	);
 
-  afterAll(() => removeElement(testID));
+	afterAll(() => removeElement(testID));
 
-  describe('Returns `false` when', () => {
-    it('DOM element is "display: none"', () => {
-      const node = byId('NoDisplay');
-      expect(visible(node)).toBe(false);
-    });
+	describe('Returns `false` when', () => {
+		it('DOM element is "display: none"', () => {
+			const node = byId('NoDisplay');
+			expect(visible(node)).toBe(false);
+		});
 
-    it('DOM element is a child of an element that is "display: none"', () => {
-      const node = byId('ChildDisplay');
-      expect(visible(node)).toBe(false);
-    });
+		it('DOM element is a child of an element that is "display: none"', () => {
+			const node = byId('ChildDisplay');
+			expect(visible(node)).toBe(false);
+		});
 
-    it('DOM element is "visibility: hidden"', () => {
-      const node = byId('NotVisible');
-      expect(visible(node)).toBe(false);
-    });
+		it('DOM element is "visibility: hidden"', () => {
+			const node = byId('NotVisible');
+			expect(visible(node)).toBe(false);
+		});
 
-    it('DOM element is a child of an element that is "visibility: hidden"', () => {
-      const node = byId('ChildVisibility');
-      expect(visible(node)).toBe(false);
-    });
+		it('DOM element is a child of an element that is "visibility: hidden"', () => {
+			const node = byId('ChildVisibility');
+			expect(visible(node)).toBe(false);
+		});
 
-    it('DOM element is Collapsed', () => {
-      const node = byId('Collapsed');
-      expect(visible(node)).toBe(false);
-    });
+		it('DOM element is Collapsed', () => {
+			const node = byId('Collapsed');
+			expect(visible(node)).toBe(false);
+		});
 
-    it('DOM element is a child of an element that is Collapsed', () => {
-      const node = byId('Collapsed');
-      const first = node.firstElementChild as HTMLElement;
-      expect(visible(first)).toBe(false);
-    });
+		it('DOM element is a child of an element that is Collapsed', () => {
+			const node = byId('Collapsed');
+			const first = node.firstElementChild as HTMLElement;
+			expect(visible(first)).toBe(false);
+		});
 
-    it('DOM element is Transparent', () => {
-      const node = byId('Transparent');
-      expect(visible(node)).toBe(false);
-    });
+		it('DOM element is Transparent', () => {
+			const node = byId('Transparent');
+			expect(visible(node)).toBe(false);
+		});
 
-    it('DOM element is a child of an element that is Transparent', () => {
-      const node = byId('Transparent');
-      const first = node.firstElementChild as HTMLElement;
-      expect(visible(first)).toBe(false);
-    });
+		it('DOM element is a child of an element that is Transparent', () => {
+			const node = byId('Transparent');
+			const first = node.firstElementChild as HTMLElement;
+			expect(visible(first)).toBe(false);
+		});
 
-    it('DOM element is not in the DOM', () => {
-      const node = createElement('div');
-      expect(visible(node)).toBe(false);
-    });
+		it('DOM element is not in the DOM', () => {
+			const node = createElement('div');
+			expect(visible(node)).toBe(false);
+		});
 
-    it('DOM element is a child of an element that is not in the DOM', () => {
-      const node = createElement('div');
-      node.innerHTML = '<p></p>';
-      const first = node.firstElementChild as HTMLElement;
-      expect(visible(first)).toBe(false);
-    });
-  });
+		it('DOM element is a child of an element that is not in the DOM', () => {
+			const node = createElement('div');
+			node.innerHTML = '<p></p>';
+			const first = node.firstElementChild as HTMLElement;
+			expect(visible(first)).toBe(false);
+		});
+	});
 
-  describe('Returns `true` when ', () => {
-    it('DOM element is in the DOM and is not styled invisible', () => {
-      const node = byId('Visible');
-      expect(visible(node)).toBe(true);
-    });
-  });
+	describe('Returns `true` when ', () => {
+		it('DOM element is in the DOM and is not styled invisible', () => {
+			const node = byId('Visible');
+			expect(visible(node)).toBe(true);
+		});
+	});
 });

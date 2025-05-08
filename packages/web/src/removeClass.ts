@@ -14,13 +14,13 @@
  * ```
  */
 export function removeClass(elm: Element | null, classNames: string | string[]): typeof elm {
-  if (!elm) return null;
+	if (!elm) return null;
 
-  if (!Array.isArray(classNames)) classNames = [classNames];
+	const cns = !Array.isArray(classNames) ? [classNames] : classNames;
 
-  elm.classList.remove(...classNames);
+	elm.classList.remove(...cns);
 
-  return elm;
+	return elm;
 }
 
 export default removeClass;

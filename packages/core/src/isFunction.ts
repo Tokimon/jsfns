@@ -11,6 +11,7 @@
  * isFunction('string'); // --> false
  * ```
  */
-export const isFunction = (x: unknown): x is (...args: unknown[]) => unknown => typeof x === 'function';
+export const isFunction = (x: unknown): x is (...args: unknown[]) => unknown =>
+	typeof x === 'function';
 
 export default isFunction;

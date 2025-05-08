@@ -2,7 +2,7 @@ let _cache = new WeakMap<Node, Record<string, unknown | undefined>>();
 
 /** Resets ALL local data cache  */
 export const resetCache = () => {
-  _cache = new WeakMap();
+	_cache = new WeakMap();
 };
 
 /**
@@ -27,20 +27,20 @@ export const resetCache = () => {
  * ```
  */
 export function elementData(elm: Node, key?: string, data?: unknown) {
-  let elmCache = _cache.get(elm);
+	let elmCache = _cache.get(elm);
 
-  if (!key) return elmCache;
+	if (!key) return elmCache;
 
-  if (data !== undefined) {
-    if (!elmCache) {
-      elmCache = {};
-      _cache.set(elm, elmCache);
-    }
+	if (data !== undefined) {
+		if (!elmCache) {
+			elmCache = {};
+			_cache.set(elm, elmCache);
+		}
 
-    elmCache[key] = data;
-  }
+		elmCache[key] = data;
+	}
 
-  return elmCache?.[key];
+	return elmCache?.[key];
 }
 
 export default elementData;

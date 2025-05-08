@@ -12,8 +12,8 @@
  * ```
  */
 export function uniqueArray<T>(arr: ArrayLike<T> | Iterable<T>): T[] {
-  const a = !Array.isArray(arr) ? Array.from(arr) : arr;
-  return Array.from<T>(new Set(a));
+	const a = !Array.isArray(arr) ? Array.from(arr) : arr;
+	return Array.from<T>(new Set(a));
 }
 
 export default uniqueArray;
