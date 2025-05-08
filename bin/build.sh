@@ -2,12 +2,14 @@
 
 workspaceName=$(basename $PWD)
 
+# Function to print '✓' when the build is done
 print_done() {
-  echo -e '\e[1;32mdone\e[0m'
+    echo -e ' \e[1;32m\u2713\e[0m'  # Print ✓ in green for success
 }
 
+# Function to print 'Building' and save cursor position
 print_building() {
-  printf "  \e[1;33m$1\e[0m ... "
+    echo -en "  \e[1;33m$1\e[0m ..."  # Print status line in yellow
 }
 
 get_build_dir() {
@@ -25,17 +27,25 @@ build() {
 
   print_building ".$1"
 
+  tput sc  # Save cursor position
+  echo     # Move to a new line for the output of the next command
+
   # Compile the typescript files
-  npx tsc --build $PWD/$tsconfig
+  npx tsc --build $PWD/$tsconfig || exit
+
+  # Wait for tsc to finish
   wait
 
   buildDir=$(get_build_dir $1)
 
-  # # Move build files to the root of the project
+  # Move build files to the root of the project
   for file in $buildDir/*.js; do
     dest=$PWD/$(basename $file .js).$1
-    mv -u $file $dest
+    mv -u $file $dest || exit
   done
+
+  tput rc            # Move cursor bask to the saved horisontal position
+  tput cuu1          # Move cursor up one line
 
   print_done
 }
@@ -47,8 +57,12 @@ move_dts_files() {
 
   for file in $jsBuildDir/*.d.ts; do
     dest=$PWD/$(basename $file)
-    mv -u "$file" "$dest"
+    mv -u "$file" "$dest" || exit
   done
+
+  if [ -f "$PWD/src/types.d.ts" ]; then
+      cp "$PWD/src/types.d.ts" "$PWD/types.d.ts"
+  fi
 
   print_done
 }

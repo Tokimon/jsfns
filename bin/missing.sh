@@ -17,7 +17,7 @@ for file in $PWD/src/*.ts; do
 done
 
 if [ $missing == 0 ]; then
-  echo -e "\e[1;32m🗸\e[0m All good! \e[1;34m$workspaceName\e[0m have no missing tests"
+  echo -e "\e[1;32m\u2713\e[0m All good! \e[1;34m$workspaceName\e[0m have no missing tests"
 else
-  echo -e "\e[1;34m$workspaceName\e[0m has \e[1;31m$missing missing tests\e[0m"
+  echo -e "\e[1;31m\u2718\e[0m \e[1;34m$workspaceName\e[0m has \e[1;31m$missing missing tests\e[0m"
 fi
