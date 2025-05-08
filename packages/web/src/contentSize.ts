@@ -1,8 +1,8 @@
 import { boxModel } from './boxModel';
 import { isDocument } from './isDocument';
 import { isWindow } from './isWindow';
-import { type GeneralWindow } from './types';
 import { viewport } from './viewport';
+import type { GeneralWindow } from './types';
 
 /**
  * Find the size of the content (scrollable area minus padding) of a DOM element, document or window
@@ -23,15 +23,14 @@ import { viewport } from './viewport';
  * contentSize(document) // --> [size of the viewport]
  * ```
  */
-export function contentSize(elm: Document | GeneralWindow | HTMLElement) {
-  if (isDocument(elm) || isWindow(elm)) elm = viewport(elm);
+export function contentSize(element: Document | GeneralWindow | HTMLElement) {
+	const elm = isDocument(element) || isWindow(element) ? viewport(element) : element;
+	const { padding } = boxModel(elm);
 
-  const { padding } = boxModel(elm);
-
-  return {
-    width: elm.scrollWidth - padding.left - padding.right,
-    height: elm.scrollHeight - padding.top - padding.bottom,
-  };
+	return {
+		width: elm.scrollWidth - padding.left - padding.right,
+		height: elm.scrollHeight - padding.top - padding.bottom,
+	};
 }
 
 export default contentSize;

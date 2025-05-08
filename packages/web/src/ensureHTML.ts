@@ -19,6 +19,6 @@ import { selectorToHTML } from './selectorToHTML';
  * ```
  */
 export const ensureHTML = (htmlOrSelector: string): string =>
-  htmlOrSelector.includes('<') ? htmlOrSelector : selectorToHTML(htmlOrSelector);
+	htmlOrSelector.includes('<') ? htmlOrSelector : selectorToHTML(htmlOrSelector);
 
 export default ensureHTML;

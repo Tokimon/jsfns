@@ -13,11 +13,12 @@
  * ```
  */
 export function popAtIndexPure(list: unknown[], index: number): [unknown, unknown[]] {
-  const value = list[index];
+	const value = list[index];
 
-  if (index >= 0 && index < list.length) list = list.slice(0, index).concat(list.slice(index + 1));
+	let arr = list;
+	if (index >= 0 && index < list.length) arr = arr.slice(0, index).concat(arr.slice(index + 1));
 
-  return [value, list];
+	return [value, arr];
 }
 
 /**
@@ -36,7 +37,7 @@ export function popAtIndexPure(list: unknown[], index: number): [unknown, unknow
  * ```
  */
 export function popAtIndex<T>(list: T[], index: number): T | undefined {
-  if (index >= 0 && index < list.length) return list.splice(index, 1)[0];
+	if (index >= 0 && index < list.length) return list.splice(index, 1)[0];
 }
 
 export default popAtIndex;

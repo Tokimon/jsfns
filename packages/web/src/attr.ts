@@ -20,13 +20,17 @@
  * attr(MyInput, readonly, false); // --> <input />
  * ```
  */
-export function attr(elm: Element, attrName: string, value?: string | number | boolean | null): string | null {
-  const currVal = elm.getAttribute(attrName);
+export function attr(
+	elm: Element,
+	attrName: string,
+	value?: string | number | boolean | null,
+): string | null {
+	const currVal = elm.getAttribute(attrName);
 
-  if (value === false || value === null) elm.removeAttribute(attrName);
-  else if (value !== undefined) elm.setAttribute(attrName, value === true ? '' : String(value));
+	if (value === false || value === null) elm.removeAttribute(attrName);
+	else if (value !== undefined) elm.setAttribute(attrName, value === true ? '' : String(value));
 
-  return currVal;
+	return currVal;
 }
 
 export default attr;

@@ -19,7 +19,7 @@ import { isDOMNode } from './isDOMNode';
  * ```
  */
 export function isDOMElement(obj: unknown): obj is Element {
-  return isDOMNode(obj) && obj.nodeType === Node.ELEMENT_NODE;
+	return isDOMNode(obj) && obj.nodeType === Node.ELEMENT_NODE;
 }
 
 export default isDOMElement;

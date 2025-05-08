@@ -1,7 +1,7 @@
 const manualInnerXml = (XMLNode: Element) => {
-  const serializer = new XMLSerializer();
+	const serializer = new XMLSerializer();
 
-  return Array.from(XMLNode.childNodes, (child) => serializer.serializeToString(child)).join('');
+	return Array.from(XMLNode.childNodes, (child) => serializer.serializeToString(child)).join('');
 };
 
 /**
@@ -19,7 +19,7 @@ const manualInnerXml = (XMLNode: Element) => {
  * ```
  */
 export function innerXML(elm: Element): string {
-  return elm.innerHTML !== undefined ? elm.innerHTML : manualInnerXml(elm);
+	return elm.innerHTML !== undefined ? elm.innerHTML : manualInnerXml(elm);
 }
 
 export default innerXML;

@@ -23,13 +23,13 @@
  * ```
  */
 export function safeDateChange(from: Date, to: Date): Date {
-  const d = from.getDate();
+	const d = from.getDate();
 
-  // Compensate for going from the eg. 31st in a month
-  // into a month that doesn't have that many days
-  if (d > 28 && to.getDate() !== d) to.setDate(0);
+	// Compensate for going from the eg. 31st in a month
+	// into a month that doesn't have that many days
+	if (d > 28 && to.getDate() !== d) to.setDate(0);
 
-  return to;
+	return to;
 }
 
 export default safeDateChange;

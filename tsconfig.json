@@ -1,27 +1,27 @@
 {
-  "$schema": "https://json.schemastore.org/tsconfig",
-  "compilerOptions": {
-    "lib": ["es2022", "DOM"],
-    "moduleResolution": "Node",
-    "module": "esnext",
-    "target": "ES2022",
-    "noEmit": true,
-    "declaration": true,
-    "skipLibCheck": true,
-    "noImplicitAny": true,
-    "sourceMap": false,
-    "allowJs": false,
-    "checkJs": false,
-    "strictNullChecks": true,
-    "strict": true,
-    "forceConsistentCasingInFileNames": true,
-    "esModuleInterop": true,
-    "resolveJsonModule": true,
-    "baseUrl": ".",
-    "paths": {
-      "~docs-builder/*": ["./docs-builder/scripts/*"],
-      "@jsfns/core/*": ["./packages/core/src/*"],
-      "@jsfns/web/*": ["./packages/web/src/*"]
-    }
-  }
+	"$schema": "https://json.schemastore.org/tsconfig",
+	"compilerOptions": {
+		"lib": ["es2022", "DOM"],
+		"moduleResolution": "Node",
+		"module": "esnext",
+		"target": "ES2022",
+		"noEmit": true,
+		"declaration": true,
+		"skipLibCheck": true,
+		"noImplicitAny": true,
+		"sourceMap": false,
+		"allowJs": false,
+		"checkJs": false,
+		"strictNullChecks": true,
+		"strict": true,
+		"forceConsistentCasingInFileNames": true,
+		"esModuleInterop": true,
+		"resolveJsonModule": true,
+		"baseUrl": ".",
+		"paths": {
+			"~docs-builder/*": ["./docs-builder/scripts/*"],
+			"@jsfns/core/*": ["./packages/core/src/*"],
+			"@jsfns/web/*": ["./packages/web/src/*"]
+		}
+	}
 }

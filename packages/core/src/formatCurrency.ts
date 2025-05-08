@@ -36,15 +36,15 @@ const thousandRegExp = /^(\D*)1(\D*)000(\D*)(\d*)(\D*)$/;
  * ```
  */
 export function formatCurrency(thousandTemplate = '1.000,00 €'): CurrencyFormatter {
-  let m = thousandRegExp.exec(thousandTemplate);
+	let m = thousandRegExp.exec(thousandTemplate);
 
-  if (!m) m = thousandRegExp.exec('1.000,00 €') as RegExpExecArray;
+	if (!m) m = thousandRegExp.exec('1.000,00 €') as RegExpExecArray;
 
-  const [before, thousand, decimal, decimals, after] = m.slice(1);
+	const [before, thousand, decimal, decimals, after] = m.slice(1);
 
-  const settings: FormatNumberSettings = { decimalCount: decimals.length, thousand, decimal };
+	const settings: FormatNumberSettings = { decimalCount: decimals.length, thousand, decimal };
 
-  return (num: number) => `${before}${formatNumber(num, settings)}${after}`;
+	return (num: number) => `${before}${formatNumber(num, settings)}${after}`;
 }
 
 export default formatCurrency;

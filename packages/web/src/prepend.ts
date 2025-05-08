@@ -17,15 +17,15 @@ import { ensureHTML } from './ensureHTML';
  * ```
  */
 export function prepend(elm: Element, insertElm: string | Node): Element | null {
-  if (!elm) return null;
+	if (!elm) return null;
 
-  if (isString(insertElm)) {
-    elm.insertAdjacentHTML('afterbegin', ensureHTML(insertElm));
-  } else {
-    elm.prepend(insertElm);
-  }
+	if (isString(insertElm)) {
+		elm.insertAdjacentHTML('afterbegin', ensureHTML(insertElm));
+	} else {
+		elm.prepend(insertElm);
+	}
 
-  return elm.firstElementChild;
+	return elm.firstElementChild;
 }
 
 export default prepend;

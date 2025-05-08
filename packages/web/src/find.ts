@@ -3,24 +3,24 @@ import { findByClass } from './findByClass';
 import { findById } from './findById';
 import { findByQuery, findOneByQuery } from './findByQuery';
 import { findByTagName } from './findByTagName';
-import { type Maybe, type NotFirst } from './types';
+import type { Maybe, NotFirst } from './types';
 
 type Args = [elm: Maybe<Document | HTMLElement>, selector: string];
 
 function findBySpecializedMethod<T extends HTMLElement>(elm: Args[0], query: string) {
-  if (/[ >+*~\[,:]/.test(query)) return;
+	if (/[ >+*~\[,:]/.test(query)) return;
 
-  const rest = query.substring(1);
-  const hasClass = rest.includes('.');
-  const hasId = rest.includes('#');
+	const rest = query.substring(1);
+	const hasClass = rest.includes('.');
+	const hasId = rest.includes('#');
 
-  if (query[0] === '#') {
-    if (!hasClass) return elm === document ? findById<T>(rest) : findOneByQuery<T>(elm, query);
-  } else if (query[0] === '.') {
-    if (!hasId) return findByClass<T>(elm, rest.split('.').join(' '));
-  } else if (!hasId && !hasClass) {
-    return findByTagName<T>(elm, query);
-  }
+	if (query[0] === '#') {
+		if (!hasClass) return elm === document ? findById<T>(rest) : findOneByQuery<T>(elm, query);
+	} else if (query[0] === '.') {
+		if (!hasId) return findByClass<T>(elm, rest.split('.').join(' '));
+	} else if (!hasId && !hasClass) {
+		return findByTagName<T>(elm, query);
+	}
 }
 
 /**
@@ -65,12 +65,12 @@ function find<T extends HTMLElement>(selector: Args[1]): T | T[] | null;
 function find<T extends HTMLElement>(elm: Args[0], selector: Args[1]): T | T[] | null;
 
 function find<T extends HTMLElement>(...args: Args | NotFirst<Args>): T | T[] | null {
-  if (isString(args[0])) return find(document, args[0]);
+	if (isString(args[0])) return find(document, args[0]);
 
-  const [elm, query] = args as Args;
+	const [elm, query] = args as Args;
 
-  const found = findBySpecializedMethod<T>(elm, query);
-  return found === undefined ? findByQuery(elm, query) : found;
+	const found = findBySpecializedMethod<T>(elm, query);
+	return found === undefined ? findByQuery(elm, query) : found;
 }
 
 export { find };

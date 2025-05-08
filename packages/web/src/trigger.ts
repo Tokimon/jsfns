@@ -1,13 +1,13 @@
 import { isEventTarget } from './isEventTarget';
-import { type NotFirst } from './types';
+import type { NotFirst } from './types';
 
 type Args = [elm: EventTarget, eventNames: string | string[], data?: unknown];
 
 const customEvent = (name: string, data?: unknown) => {
-  const options: CustomEventInit = { bubbles: true };
-  if (typeof data !== 'undefined') options.detail = data;
+	const options: CustomEventInit = { bubbles: true };
+	if (typeof data !== 'undefined') options.detail = data;
 
-  return new CustomEvent(name, options);
+	return new CustomEvent(name, options);
 };
 
 /**
@@ -44,15 +44,14 @@ function trigger(elm: Args[0], eventNames: Args[1], data?: Args[2]): typeof elm;
 function trigger(eventNames: Args[1], data?: Args[2]): Document;
 
 function trigger(...args: Args | NotFirst<Args>): Args[0] {
-  if (!isEventTarget(args[0])) return trigger(document, ...(args as NotFirst<Args>));
+	if (!isEventTarget(args[0])) return trigger(document, ...(args as NotFirst<Args>));
 
-  // eslint-disable-next-line prefer-const
-  let [elm, eventNames, data] = args as Args;
-  if (!Array.isArray(eventNames)) eventNames = [eventNames];
+	const [elm, eventNames, data] = args as Args;
+	const evs = !Array.isArray(eventNames) ? [eventNames] : eventNames;
 
-  eventNames.forEach((evt: string) => elm.dispatchEvent(customEvent(evt, data)));
+	for (const evt of evs) elm.dispatchEvent(customEvent(evt, data));
 
-  return elm;
+	return elm;
 }
 
 export { trigger };

@@ -23,12 +23,12 @@
  * ```
  */
 export function toDOM(html: string): HTMLCollection | null {
-  if (/<(html|body|head|frame(set)?)\b/.test(html)) return null;
+	if (/<(html|body|head|frame(set)?)\b/.test(html)) return null;
 
-  const template = document.createElement('template');
-  template.innerHTML = html;
+	const template = document.createElement('template');
+	template.innerHTML = html;
 
-  return template.content.children;
+	return template.content.children;
 }
 
 export default toDOM;

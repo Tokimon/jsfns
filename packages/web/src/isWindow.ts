@@ -16,6 +16,6 @@ import type { GeneralWindow } from './types';
  * ```
  */
 export const isWindow = (obj: unknown): obj is GeneralWindow =>
-  obj instanceof Window || Object.prototype.toString.call(obj).includes('object Window');
+	obj instanceof Window || Object.prototype.toString.call(obj).includes('object Window');
 
 export default isWindow;

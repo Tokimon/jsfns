@@ -11,14 +11,14 @@
  * ```
  */
 export function hashCode(str: string): number {
-  const l = str.length;
-  let h = 0;
+	const l = str.length;
+	let h = 0;
 
-  for (let i = 0; i < l; i++) {
-    h = ((h << 5) - h + str.charCodeAt(i)) | 0;
-  }
+	for (let i = 0; i < l; i++) {
+		h = ((h << 5) - h + str.charCodeAt(i)) | 0;
+	}
 
-  return h >>> 0;
+	return h >>> 0;
 }
 
 /**
@@ -33,8 +33,8 @@ export function hashCode(str: string): number {
  * @returns Hash string
  */
 export function hash(str: string): string {
-  const code = hashCode(str);
-  return code === 0 ? '' : code.toString(36);
+	const code = hashCode(str);
+	return code === 0 ? '' : code.toString(36);
 }
 
 export default hash;

@@ -24,18 +24,18 @@ import { hidden } from './hidden';
  * ```
  */
 export function invisible(elm: HTMLElement): boolean {
-  let checkElm: HTMLElement | null = elm;
+	let checkElm: HTMLElement | null = elm;
 
-  while (checkElm && checkElm.tagName !== 'BODY') {
-    const collapsed = !checkElm.offsetHeight || !checkElm.offsetWidth;
-    const invisible = hidden(checkElm) || css(checkElm, 'opacity') === 0 || collapsed;
+	while (checkElm && checkElm.tagName !== 'BODY') {
+		const collapsed = !checkElm.offsetHeight || !checkElm.offsetWidth;
+		const invisible = hidden(checkElm) || css(checkElm, 'opacity') === 0 || collapsed;
 
-    if (invisible) return true;
+		if (invisible) return true;
 
-    checkElm = checkElm.parentElement;
-  }
+		checkElm = checkElm.parentElement;
+	}
 
-  return false;
+	return false;
 }
 
 export default invisible;

@@ -14,8 +14,8 @@ import { uniqueNodeList } from './uniqueNodeList';
  * ```
  */
 export const findByName = <T extends HTMLElement>(names: string | string[]): T[] => {
-  if (!Array.isArray(names)) names = [names];
-  return uniqueNodeList<T>(...names.map((n) => document.getElementsByName(n) as NodeListOf<T>));
+	const _names = !Array.isArray(names) ? [names] : names;
+	return uniqueNodeList<T>(..._names.map((n) => document.getElementsByName(n) as NodeListOf<T>));
 };
 
 export default findByName;

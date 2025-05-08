@@ -18,7 +18,7 @@ export type SnakeCaseSettings = PhrasifySettings;
  * ```
  */
 export function snakeCase(str: string, settings?: SnakeCaseSettings): string {
-  return phrasify(str, settings).toLowerCase().replace(/\s+/g, '_');
+	return phrasify(str, settings).toLowerCase().replace(/\s+/g, '_');
 }
 
 export default snakeCase;

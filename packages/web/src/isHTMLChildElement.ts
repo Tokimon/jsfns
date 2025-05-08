@@ -1,9 +1,9 @@
 import { isHTMLElement } from './isHTMLElement';
 
 export interface HTMLChildElement extends HTMLElement {
-  offsetParent: NonNullable<HTMLElement['offsetParent']>;
-  parentElement: NonNullable<HTMLElement['parentElement']>;
-  parentNode: NonNullable<HTMLElement['parentNode']>;
+	offsetParent: NonNullable<HTMLElement['offsetParent']>;
+	parentElement: NonNullable<HTMLElement['parentElement']>;
+	parentNode: NonNullable<HTMLElement['parentNode']>;
 }
 
 /**
@@ -22,6 +22,7 @@ export interface HTMLChildElement extends HTMLElement {
  * isHTMLChildElement(document.documentElement) // --> false
  * ```
  */
-export const isHTMLChildElement = (node: unknown): node is HTMLChildElement => isHTMLElement(node) && node.offsetParent != null;
+export const isHTMLChildElement = (node: unknown): node is HTMLChildElement =>
+	isHTMLElement(node) && node.offsetParent != null;
 
 export default isHTMLChildElement;

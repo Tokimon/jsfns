@@ -5,101 +5,101 @@ const testID = generateId('Wrap');
 const elmID = generateId('Wrap_Elm');
 
 describe('wrap', () => {
-  beforeEach(() => {
-    insertHtml(`
+	beforeEach(() => {
+		insertHtml(`
       <div id="${testID}">
         <div id="${elmID}"></div>
       </div>
     `);
-  });
+	});
 
-  afterEach(() => removeElement(testID));
+	afterEach(() => removeElement(testID));
 
-  it('Returns null when no HTML given', () => {
-    const elm = byId(elmID);
-    const result = wrap(elm, '');
+	it('Returns null when no HTML given', () => {
+		const elm = byId(elmID);
+		const result = wrap(elm, '');
 
-    expect(result).toBeNull();
-    expect(elm.parentElement?.id).toBe(testID);
-  });
+		expect(result).toBeNull();
+		expect(elm.parentElement?.id).toBe(testID);
+	});
 
-  it('Returns null when element given is not in the DOM', () => {
-    const elm = document.createElement('div');
-    const result = wrap(elm, '<div></div>');
+	it('Returns null when element given is not in the DOM', () => {
+		const elm = document.createElement('div');
+		const result = wrap(elm, '<div></div>');
 
-    expect(result).toBeNull();
-  });
+		expect(result).toBeNull();
+	});
 
-  it('Returns wrapper element when element is successfully wrapped', () => {
-    const elm = byId(elmID);
-    const wrapperElm = createElement('div');
-    const result = wrap(elm, wrapperElm);
+	it('Returns wrapper element when element is successfully wrapped', () => {
+		const elm = byId(elmID);
+		const wrapperElm = createElement('div');
+		const result = wrap(elm, wrapperElm);
 
-    expect(result).toBe(wrapperElm);
-    expect(elm.parentElement).toBe(wrapperElm);
-  });
+		expect(result).toBe(wrapperElm);
+		expect(elm.parentElement).toBe(wrapperElm);
+	});
 
-  it('Wraps element with given HTML', () => {
-    const elm = byId(elmID);
+	it('Wraps element with given HTML', () => {
+		const elm = byId(elmID);
 
-    const result = wrap(elm, '<div class="wrapper"></div>');
+		const result = wrap(elm, '<div class="wrapper"></div>');
 
-    expect(result?.className).toBe('wrapper');
-    expect(elm.parentElement?.className).toBe('wrapper');
-  });
+		expect(result?.className).toBe('wrapper');
+		expect(elm.parentElement?.className).toBe('wrapper');
+	});
 
-  it('Inserts the given element after the text in the wrap', () => {
-    const elm = byId(elmID);
+	it('Inserts the given element after the text in the wrap', () => {
+		const elm = byId(elmID);
 
-    const result = wrap(
-      elm,
-      `
+		const result = wrap(
+			elm,
+			`
       <div class="wrapper">
         some text here
       </div>
-      `
-    );
+      `,
+		);
 
-    expect(result?.className).toBe('wrapper');
-    expect(elm.previousSibling?.nodeValue?.trim()).toBe('some text here');
-  });
+		expect(result?.className).toBe('wrapper');
+		expect(elm.previousSibling?.nodeValue?.trim()).toBe('some text here');
+	});
 
-  describe('Nested html structure', () => {
-    it('Wraps the element in the deepest child', () => {
-      const elm = byId(elmID);
+	describe('Nested html structure', () => {
+		it('Wraps the element in the deepest child', () => {
+			const elm = byId(elmID);
 
-      const result = wrap(
-        elm,
-        `
+			const result = wrap(
+				elm,
+				`
         <div class="root">
           <div class="level1">
             <div class="wrapper"></div>
           </div>
         </div>
-      `
-      );
+      `,
+			);
 
-      expect(result?.className).toBe('root');
-      expect(elm.parentElement?.className).toBe('wrapper');
-      expect(elm.parentElement?.parentElement?.parentElement?.className).toBe('root');
-    });
+			expect(result?.className).toBe('root');
+			expect(elm.parentElement?.className).toBe('wrapper');
+			expect(elm.parentElement?.parentElement?.parentElement?.className).toBe('root');
+		});
 
-    it('Wraps the element in the first child', () => {
-      const elm = byId(elmID);
+		it('Wraps the element in the first child', () => {
+			const elm = byId(elmID);
 
-      const result = wrap(
-        elm,
-        `
+			const result = wrap(
+				elm,
+				`
         <div class="root">
           <div class="wrapper"></div>
           <div class="not-the-wrapper"></div>
         </div>
-      `
-      );
+      `,
+			);
 
-      expect(result?.className).toBe('root');
-      expect(elm.parentElement?.className).toBe('wrapper');
-      expect(elm.parentElement?.parentElement?.className).toBe('root');
-    });
-  });
+			expect(result?.className).toBe('root');
+			expect(elm.parentElement?.className).toBe('wrapper');
+			expect(elm.parentElement?.parentElement?.className).toBe('root');
+		});
+	});
 });

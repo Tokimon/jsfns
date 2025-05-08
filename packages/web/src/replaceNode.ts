@@ -17,14 +17,15 @@ import { isDOMChildNode } from './isDOMChildNode';
  * replaceNode(document.getElementById('a'), 'p.p') // --> <div><p class="p" /></div>
  * ```
  */
+// biome-ignore lint/suspicious/noConfusingVoidType: elm.remove() returns void
 export function replaceNode(elm: Node, replacement?: Node | string | null): Node | void {
-  if (!isDOMChildNode(elm)) return;
-  if (!replacement) return elm.remove();
+	if (!isDOMChildNode(elm)) return;
+	if (!replacement) return elm.remove();
 
-  if (isString(replacement)) replacement = createElement(replacement);
+	const rpl = isString(replacement) ? createElement(replacement) : replacement;
 
-  elm.replaceWith(replacement);
-  return elm;
+	elm.replaceWith(rpl);
+	return elm;
 }
 
 export default replaceNode;

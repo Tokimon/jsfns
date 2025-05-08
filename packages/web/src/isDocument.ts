@@ -15,6 +15,7 @@ import { isDOMNode } from './isDOMNode';
  * isDocument(document.body) // --> false
  * ```
  */
-export const isDocument = (obj: unknown): obj is Document => isDOMNode(obj) && obj.nodeType === Node.DOCUMENT_NODE;
+export const isDocument = (obj: unknown): obj is Document =>
+	isDOMNode(obj) && obj.nodeType === Node.DOCUMENT_NODE;
 
 export default isDocument;

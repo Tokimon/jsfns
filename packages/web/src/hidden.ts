@@ -22,7 +22,9 @@ import { inDOM } from './inDOM';
  * ```
  */
 export function hidden(elm: HTMLElement): boolean {
-  return !inDOM(elm) || (!elm.offsetHeight && !elm.offsetWidth) || css(elm, 'visibility') === 'hidden';
+	return (
+		!inDOM(elm) || (!elm.offsetHeight && !elm.offsetWidth) || css(elm, 'visibility') === 'hidden'
+	);
 }
 
 export default hidden;

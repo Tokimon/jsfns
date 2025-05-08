@@ -17,12 +17,12 @@ import { ensureHTML } from './ensureHTML';
  * ```
  */
 export function append(elm: Element, insertElm: string | Node): Element | null {
-  if (!elm) return null;
+	if (!elm) return null;
 
-  if (isString(insertElm)) elm.insertAdjacentHTML('beforeend', ensureHTML(insertElm));
-  else elm.append(insertElm);
+	if (isString(insertElm)) elm.insertAdjacentHTML('beforeend', ensureHTML(insertElm));
+	else elm.append(insertElm);
 
-  return elm.lastElementChild;
+	return elm.lastElementChild;
 }
 
 export default append;
