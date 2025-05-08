@@ -1,32 +1,41 @@
+import { isNumeric } from '@jsfns/core/isNumeric';
 import { isString } from '@jsfns/core/isString';
 import { kebabCase } from '@jsfns/core/kebabCase';
 
 export type CSSStyleProperties = Record<string, string | number | null | undefined>;
 
-const applyValue = (elm: HTMLElement, property: string, value: string | number | null, important: boolean) => {
-  property = kebabCase(property);
-  const val = value != null ? String(value) : '';
-  const imp = important ? 'important' : undefined;
+const normalizePropName = (prop: string) => (prop.includes('-') ? prop : kebabCase(prop));
 
-  elm.style.setProperty(property, val, imp);
+const applyValue = (
+	elm: HTMLElement,
+	property: string,
+	value: string | number | null,
+	important: boolean,
+) => {
+	const prop = normalizePropName(property);
+	const val = value != null ? String(value) : '';
+	const imp = important ? 'important' : undefined;
 
-  // This part here is for when the value is a number,
-  // but the property can't accept just a numeric value,
-  // so "px" has to be added
-  if (!Number.isNaN(Number(val)) && elm.style.getPropertyValue(property) !== val) {
-    applyValue(elm, property, val + 'px', important);
-  }
+	elm.style.setProperty(prop, val, imp);
+
+	// This part here is for when the value is a number,
+	// but the property can't accept just a numeric value,
+	// so "px" has to be added
+	if (isNumeric(val) && elm.style.getPropertyValue(prop) !== val) {
+		applyValue(elm, prop, val + 'px', important);
+	}
 };
 
 const setValue = (elm: HTMLElement, property: string, value: string | number | null): void => {
-  let important = false;
+	let important = false;
+	let val = value;
 
-  if (isString(value) && value.includes('!important')) {
-    value = value.split(' ')[0];
-    important = true;
-  }
+	if (isString(val) && val.includes('!important')) {
+		val = val.split(' ')[0];
+		important = true;
+	}
 
-  applyValue(elm, property, value, important);
+	applyValue(elm, property, val, important);
 };
 
 /**
@@ -34,30 +43,33 @@ const setValue = (elm: HTMLElement, property: string, value: string | number | n
  * if value is set (not undefined), it will be set before returning
  */
 const handleSingleValue = (elm: HTMLElement, property: string, value?: string | number | null) => {
-  if (value !== undefined) {
-    setValue(elm, property, value);
-    return window.getComputedStyle(elm);
-  }
+	if (value !== undefined) {
+		setValue(elm, property, value);
+		return window.getComputedStyle(elm);
+	}
 
-  // Get all computed styles as that gives a more correct value
-  const val = window.getComputedStyle(elm).getPropertyValue(kebabCase(property));
+	// Get all computed styles as that gives a more correct value
+	const val = window.getComputedStyle(elm).getPropertyValue(normalizePropName(property));
 
-  // Ensure to return a numeric value if possible
-  const numeric = parseFloat(val);
-  return !Number.isNaN(numeric) ? numeric : val;
+	// Ensure to return a numeric value if possible
+	const numeric = Number.parseFloat(val);
+	return !Number.isNaN(numeric) ? numeric : val;
 };
 
 /**
  * Traverse the `propertyMap` and set style on element accordingly
  */
-const handleMultipleValues = (elm: HTMLElement, properties?: CSSStyleProperties): CSSStyleDeclaration => {
-  if (properties) {
-    Object.entries(properties).forEach(([key, value]) => {
-      value && setValue(elm, key, value);
-    });
-  }
+const handleMultipleValues = (
+	elm: HTMLElement,
+	properties?: CSSStyleProperties,
+): CSSStyleDeclaration => {
+	if (properties) {
+		for (const [key, value] of Object.entries(properties)) {
+			value && setValue(elm, key, value);
+		}
+	}
 
-  return window.getComputedStyle(elm);
+	return window.getComputedStyle(elm);
 };
 
 /**
@@ -128,14 +140,20 @@ function css(elm: HTMLElement, styles: CSSStyleProperties): CSSStyleDeclaration;
  * css(MyElm, 'fontSize', 30) // --> All computed styles of MyElm
  * ```
  */
-function css(elm: HTMLElement, property: string, value: Exclude<CSSStyleProperties[string], undefined>): CSSStyleDeclaration;
+function css(
+	elm: HTMLElement,
+	property: string,
+	value: Exclude<CSSStyleProperties[string], undefined>,
+): CSSStyleDeclaration;
 
 function css(
-  elm: HTMLElement,
-  property?: string | CSSStyleProperties,
-  value?: string | number | null
+	elm: HTMLElement,
+	property?: string | CSSStyleProperties,
+	value?: string | number | null,
 ): CSSStyleDeclaration | string | number | null {
-  return isString(property) ? handleSingleValue(elm, property, value) : handleMultipleValues(elm, property);
+	return isString(property)
+		? handleSingleValue(elm, property, value)
+		: handleMultipleValues(elm, property);
 }
 
 export { css };
