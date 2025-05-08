@@ -3,7 +3,7 @@
 workspaceName=$(basename $PWD)
 
 ok() {
-  echo -e "\e[1;32m🗸\e[0m \e[1;33m$1\e[0m removed"
+  echo -e "\e[1;32m\u2713\e[0m \e[1;33m$1\e[0m removed"
 }
 
 echo -e "Cleaning \e[1;34m$workspaceName\e[0m"
@@ -22,6 +22,9 @@ for file in $PWD/src/*.ts; do
   rm -f $PWD/$b.js
   rm -f $PWD/$b.d.ts
 done
+
+# Remove any copdied global types
+rm -f "$PWD/types.d.ts"
 
 ok ".js\e[0m and \e[1;33m.d.ts"
 
