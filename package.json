@@ -17,7 +17,7 @@
     "validate": "pnpm --parallel validate",
     "changelog": "./bin/changelog.sh",
     "versioning": "pnpm chageset version && pnpm changeset tag",
-    "release": "pnpm publish -r"
+    "release": "pnpm -r release"
   },
   "repository": {
     "type": "git",

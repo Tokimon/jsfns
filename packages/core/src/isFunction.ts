@@ -1,7 +1,7 @@
 /**
  * Is the given argument a Function
  *
- * @param obj - Argument to test
+ * @param x - Argument to test
  *
  * @returns Whether the argument a Function or not
  *
@@ -12,6 +12,6 @@
  * ```
  */
 export const isFunction = (x: unknown): x is (...args: unknown[]) => unknown =>
-	typeof x === 'function';
+  typeof x === "function";
 
 export default isFunction;
