@@ -1,44 +1,46 @@
 {
-	"name": "jsfns",
-	"version": "0.0.0",
-	"description": "Simple, no dependency, JS utility functions",
-	"private": false,
-	"main": "index.js",
-	"type": "module",
-	"scripts": {
-		"readme": "pnpm -r readme",
-		"missing": "pnpm -parallel missing",
-		"format": "biome format . --write",
-		"lint": "biome lint . --error-on-warnings",
-		"build": "pnpm --parallel build",
-		"clean": "pnpm --parallel clean",
-		"test": "pnpm --parallel test",
-		"types": "pnpm --parallel types",
-		"validate": "pnpm --parallel validate"
-	},
-	"repository": {
-		"type": "git",
-		"url": "git+https://github.com/Tokimon/jsfns.git"
-	},
-	"keywords": [],
-	"author": "Toke Voltelen",
-	"license": "MIT",
-	"bugs": {
-		"url": "https://github.com/Tokimon/jsfns/issues"
-	},
-	"homepage": "https://github.com/Tokimon/jsfns#readme",
-	"devDependencies": {
-		"@biomejs/biome": "^1.9.4",
-		"@digitak/esrun": "^3.2.26",
-		"@jest/globals": "^29.7.0",
-		"@types/ejs": "^3.1.5",
-		"@types/jest": "~29.5.14",
-		"@types/node": "^22.14.1",
-		"ejs": "^3.1.10",
-		"globals": "^16.0.0",
-		"jest-mock": "^29.7.0",
-		"lerna": "^8.2.2",
-		"nx": "^20.8.0",
-		"typescript": "^5.8.3"
-	}
+  "name": "jsfns",
+  "version": "0.0.0",
+  "description": "Simple, no dependency, JS utility functions",
+  "private": false,
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "readme": "pnpm -r readme",
+    "missing": "pnpm -parallel missing",
+    "format": "biome format . --write",
+    "lint": "biome lint . --error-on-warnings",
+    "build": "pnpm --parallel build",
+    "clean": "pnpm --parallel clean",
+    "test": "pnpm --parallel test",
+    "types": "pnpm --parallel types",
+    "validate": "pnpm --parallel validate",
+    "changelog": "./bin/changelog.sh",
+    "versioning": "pnpm chageset version && pnpm changeset tag",
+    "release": "pnpm publish -r"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Tokimon/jsfns.git"
+  },
+  "keywords": [],
+  "author": "Toke Voltelen",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Tokimon/jsfns/issues"
+  },
+  "homepage": "https://github.com/Tokimon/jsfns#readme",
+  "devDependencies": {
+    "@biomejs/biome": "^1.9.4",
+    "@changesets/cli": "^2.29.3",
+    "@digitak/esrun": "^3.2.26",
+    "@jest/globals": "^29.7.0",
+    "@types/ejs": "^3.1.5",
+    "@types/jest": "~29.5.14",
+    "@types/node": "^22.15.17",
+    "ejs": "^3.1.10",
+    "globals": "^16.1.0",
+    "jest-mock": "^29.7.0",
+    "typescript": "^5.8.3"
+  }
 }
