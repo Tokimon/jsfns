@@ -1,10 +1,11 @@
-import { isNumber } from './isNumber';
+import { isNumber } from "./isNumber";
 
+/** The settings for the truncate method */
 export type TruncateSettings = {
-	/** Max length of the given string */
-	maxLength?: number;
-	/** What ending to give the truncated string (default is "...") */
-	end?: string;
+  /** Max length of the given string */
+  maxLength?: number;
+  /** What ending to give the truncated string (default is "...") */
+  end?: string;
 };
 
 /**
@@ -23,11 +24,12 @@ export type TruncateSettings = {
  * ```
  */
 export function truncate(str: string, settings: TruncateSettings = {}): string {
-	const { maxLength, end = '...' } = settings;
+  const { maxLength, end = "..." } = settings;
 
-	if (!isNumber(maxLength) || maxLength < 0 || str.length <= maxLength) return str;
+  if (!isNumber(maxLength) || maxLength < 0 || str.length <= maxLength)
+    return str;
 
-	return `${str.slice(0, maxLength)}${end}`;
+  return `${str.slice(0, maxLength)}${end}`;
 }
 
 export default truncate;

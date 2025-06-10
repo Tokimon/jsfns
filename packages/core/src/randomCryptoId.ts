@@ -2,7 +2,7 @@
  * Generate a random id of designated length - using cryptographic secure random numbers,
  * so it is a bit slower than `randomId`
  *
- * @remark
+ * @remarks
  *
  * This method differs from `crypto.randomUUID()` in the way that it can be of any specified length
  * and doesn't contain any "-".
@@ -20,12 +20,12 @@
  * ```
  */
 export function randomCryptoId(length = 10): string {
-	const len = Math.max(2, length);
+  const len = Math.max(2, length);
 
-	const UiArr = new Uint32Array(Math.ceil(Math.max(1, len / 6)));
-	const numbers = globalThis.crypto.getRandomValues(UiArr);
+  const UiArr = new Uint32Array(Math.ceil(Math.max(1, len / 6)));
+  const numbers = globalThis.crypto.getRandomValues(UiArr);
 
-	return numbers.reduce((str, n) => str + n.toString(36), '').slice(0, len);
+  return numbers.reduce((str, n) => str + n.toString(36), "").slice(0, len);
 }
 
 export default randomCryptoId;

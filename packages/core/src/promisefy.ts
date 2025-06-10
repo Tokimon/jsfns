@@ -1,9 +1,8 @@
-export type NodeLikeCallback = (
-  err?: string | Error | null,
-  data?: unknown,
-) => unknown;
+/** The callback style method to promisefy */
 // biome-ignore lint/suspicious/noExplicitAny: cannot be done with "unknown" it has to be "any"
 export type PromisefyCallback = (...args: any[]) => any;
+
+/** The promisefied method */
 // biome-ignore lint/suspicious/noExplicitAny: cannot be done with "unknown" it has to be "any"
 export type PromisefiedFunction = (...args: any[]) => Promise<any>;
 

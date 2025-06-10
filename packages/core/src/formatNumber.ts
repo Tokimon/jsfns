@@ -1,19 +1,20 @@
-import { chunkString } from './chunkString';
-import { limitDecimals } from './limitDecimals';
+import { chunkString } from "./chunkString";
+import { limitDecimals } from "./limitDecimals";
 
+/** Settings for the number formatting */
 export type FormatNumberSettings = {
-	/** How many decimals to show */
-	decimalCount?: number | string;
-	/** The thousand separator character */
-	thousand?: string;
-	/** The decimal separator character */
-	decimal?: string;
+  /** How many decimals to show */
+  decimalCount?: number | string;
+  /** The thousand separator character */
+  thousand?: string;
+  /** The decimal separator character */
+  decimal?: string;
 };
 
 const defaultSettings: FormatNumberSettings = {
-	decimalCount: 2,
-	thousand: '.',
-	decimal: ',',
+  decimalCount: 2,
+  thousand: ".",
+  decimal: ",",
 };
 
 /**
@@ -34,17 +35,23 @@ const defaultSettings: FormatNumberSettings = {
  * formatNumber(123456, { decimalCount: '>3', thousand: '-', decimal: ':' }); // --> 123-456:000
  * ```
  */
-export function formatNumber(num: number, settings?: FormatNumberSettings): string {
-	const { decimalCount, thousand, decimal } = { ...defaultSettings, ...settings };
+export function formatNumber(
+  num: number,
+  settings?: FormatNumberSettings,
+): string {
+  const { decimalCount, thousand, decimal } = {
+    ...defaultSettings,
+    ...settings,
+  };
 
-	// Format the number to the desired number of decimals and split.
-	const parts = limitDecimals(num, decimalCount).split('.');
+  // Format the number to the desired number of decimals and split.
+  const parts = limitDecimals(num, decimalCount).split(".");
 
-	// Insert separator
-	parts[0] = chunkString(parts[0], { size: 3, reverse: true }).join(thousand);
+  // Insert separator
+  parts[0] = chunkString(parts[0], { size: 3, reverse: true }).join(thousand);
 
-	// Join with decimal delimiter
-	return parts.join(decimal);
+  // Join with decimal delimiter
+  return parts.join(decimal);
 }
 
 export default formatNumber;

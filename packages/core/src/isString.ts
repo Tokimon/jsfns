@@ -3,7 +3,7 @@
  *
  * @param x - Argument to test
  *
- * @returns Whether the argument a string or not
+ * @returns Whether the argument is a string or not
  *
  * @example
  * ```ts

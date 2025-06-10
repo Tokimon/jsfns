@@ -1,7 +1,14 @@
-type DebounceCallback = (...args: unknown[]) => void;
+/** The callback that need to be debounced */
+export type DebounceCallback = (...args: unknown[]) => void;
 
+/**
+ * The function returned by the debounce method. Effectively the callback with debounce added
+ *
+ * @typeParam T - The inferred type of the given callback function that will be debounced
+ */
 export type DebouncedFunction<T extends DebounceCallback> = T & {
-	cancelDebounce: () => void;
+  /** Method to cancel the current debounce */
+  cancelDebounce: () => void;
 };
 
 /**
@@ -10,20 +17,21 @@ export type DebouncedFunction<T extends DebounceCallback> = T & {
  *
  * @param callback - The function to add debounce to
  * @param ms - Number of milliseconds without another call to trigger the last function
+ * @typeParam T - The inferred type of the given callback function that need to be debounced
  * @returns The debounce enabled function
  */
 export function debounce<T extends DebounceCallback>(callback: T, ms = 200) {
-	let id: ReturnType<typeof setTimeout>;
-	const cancelDebounce = () => clearTimeout(id);
+  let id: ReturnType<typeof setTimeout>;
+  const cancelDebounce = () => clearTimeout(id);
 
-	const fn = ((...args: Parameters<T>) => {
-		cancelDebounce();
-		id = setTimeout(() => callback(...args), ms);
-	}) as DebouncedFunction<T>;
+  const fn = ((...args: Parameters<T>) => {
+    cancelDebounce();
+    id = setTimeout(() => callback(...args), ms);
+  }) as DebouncedFunction<T>;
 
-	fn.cancelDebounce = cancelDebounce;
+  fn.cancelDebounce = cancelDebounce;
 
-	return fn;
+  return fn;
 }
 
 export default debounce;

@@ -1,6 +1,7 @@
-import { type CamelCaseSettings, camelCase } from './camelCase';
+import { type CamelCaseSettings, camelCase } from "./camelCase";
 
-export type PascalCaseSettings = Omit<CamelCaseSettings, 'upper'>;
+/** Settings for the pascal case method */
+export type PascalCaseSettings = Omit<CamelCaseSettings, "upper">;
 
 /**
  * Transform a string into a PascalCased word (eg. 'pascal case' -> 'PascalCase')
@@ -21,7 +22,9 @@ export type PascalCaseSettings = Omit<CamelCaseSettings, 'upper'>;
  * pascalCase('data-VALUE2-input', settings); // --> DataVALUE2Input
  * ```
  */
-export const pascalCase = (input: string, settings?: PascalCaseSettings): string =>
-	camelCase(input, { ...settings, upper: true });
+export const pascalCase = (
+  input: string,
+  settings?: PascalCaseSettings,
+): string => camelCase(input, { ...settings, upper: true });
 
 export default pascalCase;
