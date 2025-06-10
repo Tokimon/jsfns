@@ -1,17 +1,18 @@
-import { hidden } from './hidden';
-import { isDOMChildNode } from './isDOMChildNode';
+import { hidden } from "./hidden";
+import { isDOMChildNode } from "./isDOMChildNode";
 
+/** The indication object of the element's position compared to the viewport area */
 export type PositionIndicator = {
-	/** Inside the viewport area? */
-	inside: boolean;
-	/** Above the viewport area? */
-	above: boolean;
-	/** Below the viewport area? */
-	below: boolean;
-	/** To the left of the viewport area? */
-	left: boolean;
-	/** To the right of the viewport area? */
-	right: boolean;
+  /** Inside the viewport area? */
+  inside: boolean;
+  /** Above the viewport area? */
+  above: boolean;
+  /** Below the viewport area? */
+  below: boolean;
+  /** To the left of the viewport area? */
+  left: boolean;
+  /** To the right of the viewport area? */
+  right: boolean;
 };
 
 /**
@@ -38,21 +39,27 @@ export type PositionIndicator = {
  * ```
  */
 export function inView(elm: HTMLElement, threshold = 0): PositionIndicator {
-	if (!isDOMChildNode(elm) || hidden(elm)) {
-		return { above: false, below: false, left: false, right: false, inside: false };
-	}
+  if (!isDOMChildNode(elm) || hidden(elm)) {
+    return {
+      above: false,
+      below: false,
+      left: false,
+      right: false,
+      inside: false,
+    };
+  }
 
-	const rect = elm.getBoundingClientRect();
-	const vpWidth = window.innerWidth;
-	const vpHeight = window.innerHeight;
+  const rect = elm.getBoundingClientRect();
+  const vpWidth = window.innerWidth;
+  const vpHeight = window.innerHeight;
 
-	const above = rect.bottom - threshold <= 0;
-	const below = rect.top - vpHeight + threshold >= 0;
-	const left = rect.right - threshold <= 0;
-	const right = rect.left - vpWidth + threshold >= 0;
-	const inside = !above && !below && !left && !right;
+  const above = rect.bottom - threshold <= 0;
+  const below = rect.top - vpHeight + threshold >= 0;
+  const left = rect.right - threshold <= 0;
+  const right = rect.left - vpWidth + threshold >= 0;
+  const inside = !above && !below && !left && !right;
 
-	return { above, below, left, right, inside };
+  return { above, below, left, right, inside };
 }
 
 export default inView;

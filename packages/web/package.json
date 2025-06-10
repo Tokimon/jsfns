@@ -39,9 +39,10 @@
     "test:coverage:json": "npm t -- --coverage",
     "test:coverage:cli": "npm t -- --coverage --coverageReporters='text'",
     "lint": "biome lint --error-on-warnings",
+    "typedoc:validate": "typedoc --entryPoints \"src/*.ts\" --validation --treatWarningsAsErrors --emit none",
     "format": "biome format --write",
     "format:check": "biome format",
-    "validate": "pnpm lint && pnpm format:check && pnpm types && pnpm test:coverage:cli",
+    "validate": "pnpm lint && pnpm format:check && typedoc:validate && pnpm types && pnpm test:coverage:cli",
     "release": "pnpm publish"
   },
   "dependencies": {
@@ -53,6 +54,7 @@
     "jest": "~29.7.0",
     "jest-environment-jsdom": "^29.7.0",
     "ts-jest": "^29.3.2",
+    "typedoc": "^0.28.5",
     "typescript": "^5.8.3"
   },
   "files": [

@@ -1,9 +1,9 @@
-import { uniqueNodeList } from './uniqueNodeList';
+import { uniqueNodeList } from "./uniqueNodeList";
 
 /**
  * Find a DOM element with the given ID
  *
- * @param ids - ID to find the element by
+ * @param id - ID to find the element by
  * @returns The found element
  *
  * @example
@@ -30,9 +30,11 @@ function findById<T extends HTMLElement>(id: string): T | null;
  */
 function findById<T extends HTMLElement>(ids: string[]): T[];
 
-function findById<T extends HTMLElement>(ids: string | string[]): T | T[] | null {
-	const byId = (id: string) => document.getElementById(id) as T | null;
-	return !Array.isArray(ids) ? byId(ids) : uniqueNodeList<T>(...ids.map(byId));
+function findById<T extends HTMLElement>(
+  ids: string | string[],
+): T | T[] | null {
+  const byId = (id: string) => document.getElementById(id) as T | null;
+  return !Array.isArray(ids) ? byId(ids) : uniqueNodeList<T>(...ids.map(byId));
 }
 
 export { findById };

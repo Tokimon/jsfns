@@ -1,4 +1,4 @@
-import { selectorToHTML } from './selectorToHTML';
+import { selectorToHTML } from "./selectorToHTML";
 
 /**
  * Parses a string to see if it is already HTML otherwise it assumes
@@ -18,7 +18,10 @@ import { selectorToHTML } from './selectorToHTML';
  * ensureHTML('.my-div'); // --> <div class="my-div" />
  * ```
  */
-export const ensureHTML = (htmlOrSelector: string): string =>
-	htmlOrSelector.includes('<') ? htmlOrSelector : selectorToHTML(htmlOrSelector);
+export function ensureHTML(htmlOrSelector: string): string {
+  return htmlOrSelector.includes("<")
+    ? htmlOrSelector
+    : selectorToHTML(htmlOrSelector);
+}
 
 export default ensureHTML;

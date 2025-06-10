@@ -1,63 +1,68 @@
-import { copyEvent } from './copyEvent';
-import { isDOMElement } from './isDOMElement';
-import { isEventTarget } from './isEventTarget';
-import { off } from './off';
-import type { ActualEvent, EventHandler, EventName, NotFirst } from './types';
+import { copyEvent } from "./copyEvent";
+import { isDOMElement } from "./isDOMElement";
+import { isEventTarget } from "./isEventTarget";
+import { off } from "./off";
+import type { ActualEvent, EventHandler, EventName, NotFirst } from "./types";
 
-export type OnOptions<E extends EventName = EventName> = AddEventListenerOptions & {
-	/**
-	 * A method that returns true when the event should trigger
-	 * Combined with `once`, it will only remove the handler when `when()` resolves to true)
-	 */
-	when?: (event: ActualEvent<E>) => boolean;
+/** The extended event listener options for the `on` function */
+export type OnOptions<E extends EventName = EventName> =
+  AddEventListenerOptions & {
+    /**
+     * A method that returns true when the event should trigger
+     * Combined with `once`, it will only remove the handler when `when()` resolves to true)
+     */
+    when?: (event: ActualEvent<E>) => boolean;
 
-	/** A selector that defines which element is the actual target of the event */
-	delegate?: string;
-};
+    /** A selector that defines which element is the actual target of the event */
+    delegate?: string;
+  };
 
 type Args<E extends EventName = EventName> = [
-	elm: EventTarget,
-	eventNames: E | E[],
-	handler: EventHandler<E>,
-	options?: OnOptions<E>,
+  elm: EventTarget,
+  eventNames: E | E[],
+  handler: EventHandler<E>,
+  options?: OnOptions<E>,
 ];
 
 function getDelegateTarget<E extends EventName = EventName>(
-	delegate: string,
-	e: Parameters<EventHandler<E>>[0],
+  delegate: string,
+  e: Parameters<EventHandler<E>>[0],
 ) {
-	const { target } = e;
-	// Delegation does nothing for non-dom element targets
-	if (!isDOMElement(target)) return;
+  const { target } = e;
+  // Delegation does nothing for non-dom element targets
+  if (!isDOMElement(target)) return;
 
-	return target.closest(delegate);
+  return target.closest(delegate);
 }
 
 function onOptionsHandler<E extends EventName = EventName>(
-	elm: EventTarget,
-	handler: EventHandler<E>,
-	options: OnOptions<E>,
+  elm: EventTarget,
+  handler: EventHandler<E>,
+  options: OnOptions<E>,
 ) {
-	const { when, once, delegate, ...rest } = options;
-	if (!when && !delegate) return [handler, options] as const;
+  const { when, once, delegate, ...rest } = options;
+  if (!when && !delegate) return [handler, options] as const;
 
-	function eventHandler(this: EventTarget, e: Parameters<EventHandler<E>>[0]) {
-		if (when && when(e) !== true) return;
+  function eventHandler(this: EventTarget, e: Parameters<EventHandler<E>>[0]) {
+    if (when && when(e) !== true) return;
 
-		// We don't always remove when once is defined here, as we only should
-		// remove delegation once it has hit the delegation target
-		const trigger = (target: Element | EventTarget, event: typeof e) => {
-			if (once) off(elm, e.type as E, eventHandler, options);
-			return handler.call(target, event);
-		};
+    // We don't always remove when once is defined here, as we only should
+    // remove delegation once it has hit the delegation target
+    const trigger = (target: Element | EventTarget, event: typeof e) => {
+      if (once) off(elm, e.type as E, eventHandler, options);
+      return handler.call(target, event);
+    };
 
-		if (!delegate) return trigger(this, e);
+    if (!delegate) return trigger(this, e);
 
-		const delegateTarget = getDelegateTarget<E>(delegate, e);
-		if (delegateTarget) trigger(delegateTarget, copyEvent(e, delegateTarget));
-	}
+    const delegateTarget = getDelegateTarget<E>(delegate, e);
+    if (delegateTarget) trigger(delegateTarget, copyEvent(e, delegateTarget));
+  }
 
-	return [eventHandler, rest] as [EventHandler, Omit<OnOptions, 'when' | 'once' | 'delegate'>];
+  return [eventHandler, rest] as [
+    EventHandler,
+    Omit<OnOptions, "when" | "once" | "delegate">,
+  ];
 }
 
 /**
@@ -109,10 +114,10 @@ function onOptionsHandler<E extends EventName = EventName>(
  * ```
  */
 function on<E extends EventName>(
-	elm: Args<E>[0],
-	eventNames: E | E[],
-	handler: EventHandler<E>,
-	options?: Args<E>[3],
+  elm: Args<E>[0],
+  eventNames: E | E[],
+  handler: EventHandler<E>,
+  options?: Args<E>[3],
 ): () => typeof elm;
 
 /**
@@ -163,22 +168,26 @@ function on<E extends EventName>(
  * ```
  */
 function on<E extends EventName>(
-	eventNames: E | E[],
-	handler: EventHandler<E>,
-	options?: Args<E>[3],
+  eventNames: E | E[],
+  handler: EventHandler<E>,
+  options?: Args<E>[3],
 ): () => Document;
 
-function on<E extends EventName>(...args: Args<E> | NotFirst<Args<E>>): () => (typeof args)[0] {
-	if (!isEventTarget(args[0])) return on(document, ...(args as NotFirst<Args<E>>));
+function on<E extends EventName>(
+  ...args: Args<E> | NotFirst<Args<E>>
+): () => (typeof args)[0] {
+  if (!isEventTarget(args[0]))
+    return on(document, ...(args as NotFirst<Args<E>>));
 
-	let [elm, eventNames, handler, options] = args as Args<E>;
-	if (!Array.isArray(eventNames)) eventNames = [eventNames];
+  let [elm, eventNames, handler, options] = args as Args<E>;
+  if (!Array.isArray(eventNames)) eventNames = [eventNames];
 
-	if (options) [handler, options] = onOptionsHandler(elm, handler, options);
+  if (options) [handler, options] = onOptionsHandler(elm, handler, options);
 
-	for (const evt of eventNames) elm.addEventListener(evt, handler as EventListener, options);
+  for (const evt of eventNames)
+    elm.addEventListener(evt, handler as EventListener, options);
 
-	return () => off(elm, eventNames, handler, options);
+  return () => off(elm, eventNames, handler, options);
 }
 
 export { on };

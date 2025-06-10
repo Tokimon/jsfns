@@ -1,10 +1,10 @@
-import { getCurrentDocument } from './getCurrentDocument';
-import type { GeneralWindow } from './types';
+import { getCurrentDocument } from "./getCurrentDocument";
+import type { GeneralWindow } from "./types";
 
 /**
  * Get the current viewport element (scrolling element) of the current document, from a given element
  *
- * @param doc - Element to find the viewport element from
+ * @param elm - Element to find the viewport element from
  * @returns The viewport element
  *
  * @example
@@ -21,8 +21,8 @@ import type { GeneralWindow } from './types';
  * ```
  */
 export function viewport(elm?: Element | Document | GeneralWindow) {
-	const doc = (elm && getCurrentDocument(elm)) ?? document;
-	return (doc.scrollingElement ?? doc.documentElement) as HTMLElement;
+  const doc = (elm && getCurrentDocument(elm)) ?? document;
+  return (doc.scrollingElement ?? doc.documentElement) as HTMLElement;
 }
 
 export default viewport;

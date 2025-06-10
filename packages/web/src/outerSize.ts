@@ -1,13 +1,13 @@
-import { isDocument } from './isDocument';
-import { isWindow } from './isWindow';
-import { viewport } from './viewport';
-import type { GeneralWindow } from './types';
+import { isDocument } from "./isDocument";
+import { isWindow } from "./isWindow";
+import { viewport } from "./viewport";
+import type { GeneralWindow } from "./types";
 
 /**
  * Find the size of a DOM element, document or window including borders.
  * (Getting the size of the viewport if `document` is given)
  *
- * @param elm - The DOM element (or window) to find the size of
+ * @param element - The DOM element (or window) to find the size of
  * @returns Object describing width and height of the element
  *
  * @example
@@ -20,13 +20,13 @@ import type { GeneralWindow } from './types';
  * ```
  */
 export function outerSize(element: Document | GeneralWindow | HTMLElement) {
-	let elm = element;
+  let elm = element;
 
-	if (isWindow(elm)) return { width: elm.outerWidth, height: elm.outerHeight };
+  if (isWindow(elm)) return { width: elm.outerWidth, height: elm.outerHeight };
 
-	if (isDocument(elm)) elm = viewport(elm);
+  if (isDocument(elm)) elm = viewport(elm);
 
-	return { width: elm.offsetWidth, height: elm.offsetHeight };
+  return { width: elm.offsetWidth, height: elm.offsetHeight };
 }
 
 export default outerSize;

@@ -1,15 +1,23 @@
-import { isHTMLElement } from './isHTMLElement';
+import { isHTMLElement } from "./isHTMLElement";
 
 export interface HTMLChildElement extends HTMLElement {
-	offsetParent: NonNullable<HTMLElement['offsetParent']>;
-	parentElement: NonNullable<HTMLElement['parentElement']>;
-	parentNode: NonNullable<HTMLElement['parentNode']>;
+  offsetParent: NonNullable<HTMLElement["offsetParent"]>;
+  parentElement: NonNullable<HTMLElement["parentElement"]>;
+  parentNode: NonNullable<HTMLElement["parentNode"]>;
 }
 
+/** A HTML Element with DOM element parent */
+export type HTMLChildElement = Omit<
+  HTMLElement,
+  HTMLChildElementParentProps
+> & {
+  [K in HTMLChildElementParentProps]: NonNullable<HTMLElement[K]>;
+};
+
 /**
- * Is the given object a DOM node child of a DOM element
+ * Is the given object a HTML element child of a DOM element
  *
- * @param obj - The object to check
+ * @param node - The object to check
  * @returns Is it a child HTMLElement or not
  *
  * @example
@@ -23,6 +31,6 @@ export interface HTMLChildElement extends HTMLElement {
  * ```
  */
 export const isHTMLChildElement = (node: unknown): node is HTMLChildElement =>
-	isHTMLElement(node) && node.offsetParent != null;
+  isHTMLElement(node) && node.offsetParent != null;
 
 export default isHTMLChildElement;

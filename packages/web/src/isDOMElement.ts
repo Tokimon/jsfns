@@ -1,10 +1,9 @@
-import { isDOMNode } from './isDOMNode';
+import { isDOMNode } from "./isDOMNode";
 
 /**
  * Is the given object a DOM element node and optionally of a given type
  *
- * @param obj - The object to check
- * @param tags - Tag name to match
+ * @param node - The object to check
  * @returns Is it a DOM element node or not and optionally of the right type
  *
  * @example
@@ -18,8 +17,8 @@ import { isDOMNode } from './isDOMNode';
  * isDOMElement(document.createTextNode('')) // --> false
  * ```
  */
-export function isDOMElement(obj: unknown): obj is Element {
-	return isDOMNode(obj) && obj.nodeType === Node.ELEMENT_NODE;
+export function isDOMElement(node: unknown): node is Element {
+  return isDOMNode(node) && node.nodeType === Node.ELEMENT_NODE;
 }
 
 export default isDOMElement;

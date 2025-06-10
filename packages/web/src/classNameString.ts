@@ -1,6 +1,10 @@
+import { isObject } from "@jsfns/core/isObject";
+import { isString } from "@jsfns/core/isString";
+
+/** The various input options for classNameString */
 export type Option = string | Record<string, boolean | undefined>;
 
-const combine = (base: string, cn: string) => base + (base && cn && ' ') + cn;
+const combine = (...args: [string, string]) => args.join(" ");
 
 /**
  * Create a string of names that will be used as class names for a given element.
@@ -11,25 +15,28 @@ const combine = (base: string, cn: string) => base + (base && cn && ' ') + cn;
  * @example
  *
  * ```ts
- * classNames('my-elm', 'open', 'active') // --> "my-elm open active"
- * classNames(['my-elm', 'open', 'active']) // --> "my-elm open active"
- * classNames('my-elm', ['open', 'active']) // --> "my-elm open active"
- * classNames('my-elm', { open: true, active: true }) // --> "my-elm open active"
+ * classNameString('my-elm', 'open', 'active') // --> "my-elm open active"
+ * classNameString(['my-elm', 'open', 'active']) // --> "my-elm open active"
+ * classNameString('my-elm', ['open', 'active']) // --> "my-elm open active"
+ * classNameString('my-elm', { open: true, active: true }) // --> "my-elm open active"
  * ```
  */
-export const classNameString = (...args: (Option | Option[])[]): string => {
-	let str = '';
+export function classNameString(...args: (Option | Option[])[]): string {
+  let str = "";
 
-	for (let i = 0; i < args.length; i++) {
-		const input = args[i];
+  for (let i = 0; i < args.length; i++) {
+    const input = args[i];
 
-		if (typeof input === 'string') str = combine(str, input);
-		else if (Array.isArray(input)) str = combine(str, classNameString(...input));
-		else if (typeof input === 'object')
-			for (const key in input) str = combine(str, input[key] ? key : '');
-	}
+    if (isString(input)) {
+      str = combine(str, input);
+    } else if (Array.isArray(input)) {
+      str = combine(str, classNameString(...input));
+    } else if (isObject(input)) {
+      for (const key in input) str = combine(str, input[key] ? key : "");
+    }
+  }
 
-	return str;
-};
+  return str;
+}
 
 export default classNameString;

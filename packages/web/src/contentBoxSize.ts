@@ -1,14 +1,17 @@
-import { boxModel } from './boxModel';
-import { isDocument } from './isDocument';
-import { isWindow } from './isWindow';
-import { viewport } from './viewport';
-import type { GeneralWindow } from './types';
+import { boxModel } from "./boxModel";
+import { isDocument } from "./isDocument";
+import { isWindow } from "./isWindow";
+import { viewport } from "./viewport";
+import type { GeneralWindow } from "./types";
+
+/** The size, (in pixels) of an element's content box (excluding borders, margins, and padding). */
+export type ContentBoxSize = Size;
 
 /**
  * Find the size of a DOM element, document or window excluding borders, margins and padding
  * (Getting the size of the viewport if `document` or `window` is given)
  *
- * @param elm - The DOM element (or window) to find the size of
+ * @param element - The DOM element (or window) to find the size of
  * @returns Object describing width and height of the element
  *
  * @example
@@ -21,14 +24,17 @@ import type { GeneralWindow } from './types';
  * contentBoxSize(document) // --> [size of the viewport]
  * ```
  */
-export function contentBoxSize(element: Document | GeneralWindow | HTMLElement) {
-	const elm = isDocument(element) || isWindow(element) ? viewport(element) : element;
-	const { padding } = boxModel(elm);
+export function contentBoxSize(
+  element: Document | GeneralWindow | HTMLElement,
+) {
+  const elm =
+    isDocument(element) || isWindow(element) ? viewport(element) : element;
+  const { padding } = boxModel(elm);
 
-	return {
-		width: elm.clientWidth - padding.left - padding.right,
-		height: elm.clientHeight - padding.top - padding.bottom,
-	};
+  return {
+    width: elm.clientWidth - padding.left - padding.right,
+    height: elm.clientHeight - padding.top - padding.bottom,
+  };
 }
 
 export default contentBoxSize;

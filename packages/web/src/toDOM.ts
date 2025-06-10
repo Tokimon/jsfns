@@ -4,7 +4,7 @@
  * @param html - HTML string to transform into nodes
  * @returns DOM elements that the HTML represented
  *
- * @remark
+ * @remarks
  *
  * To keep the method simple and short, this method uses the `<template />`
  * element to convert the HTML. For older browsers, either
@@ -23,12 +23,12 @@
  * ```
  */
 export function toDOM(html: string): HTMLCollection | null {
-	if (/<(html|body|head|frame(set)?)\b/.test(html)) return null;
+  if (/<(html|body|head|frame(set)?)\b/.test(html)) return null;
 
-	const template = document.createElement('template');
-	template.innerHTML = html;
+  const template = document.createElement("template");
+  template.innerHTML = html;
 
-	return template.content.children;
+  return template.content.children;
 }
 
 export default toDOM;
