@@ -1,4 +1,4 @@
-import { uniqueNodeList } from "./uniqueNodeList";
+import { uniqueNodeList } from './uniqueNodeList';
 
 /**
  * Find DOM elements with the given name
@@ -13,13 +13,9 @@ import { uniqueNodeList } from "./uniqueNodeList";
  * findByName(['my-element-name', 'my-second-name']) // --> all "[name=my-element-name]" and "[name=my-second-name]" elements
  * ```
  */
-export function findByName<T extends HTMLElement>(
-  names: string | string[],
-): T[] {
-  const _names = !Array.isArray(names) ? [names] : names;
-  return uniqueNodeList<T>(
-    ..._names.map((n) => document.getElementsByName(n) as NodeListOf<T>),
-  );
+export function findByName<T extends HTMLElement>(names: string | string[]): T[] {
+	const _names = !Array.isArray(names) ? [names] : names;
+	return uniqueNodeList<T>(..._names.map((n) => document.getElementsByName(n) as NodeListOf<T>));
 }
 
 export default findByName;

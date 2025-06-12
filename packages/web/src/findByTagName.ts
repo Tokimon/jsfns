@@ -1,6 +1,6 @@
-import { isString } from "@jsfns/core/isString";
-import { uniqueNodeList } from "./uniqueNodeList";
-import type { Maybe, NotFirst } from "./types";
+import { isString } from '@jsfns/core/isString';
+import type { Maybe, NotFirst } from './types';
+import { uniqueNodeList } from './uniqueNodeList';
 
 type Args = [elm: Maybe<Document | HTMLElement>, tagNames: string | string[]];
 
@@ -31,29 +31,20 @@ function findByTagName<T extends HTMLElement>(tagNames: Args[1]): T[];
  * findByTagName(MyElm, 'div') // --> All <div> elements that are descendants of MyElm
  * ```
  */
-function findByTagName<T extends HTMLElement>(
-  elm: Args[0],
-  tagNames: Args[1],
-): T[];
+function findByTagName<T extends HTMLElement>(elm: Args[0], tagNames: Args[1]): T[];
 
-function findByTagName<T extends HTMLElement>(
-  ...args: Args | NotFirst<Args>
-): T[] {
-  if (isString(args[0]) || Array.isArray(args[0]))
-    return findByTagName(document, args[0]);
+function findByTagName<T extends HTMLElement>(...args: Args | NotFirst<Args>): T[] {
+	if (isString(args[0]) || Array.isArray(args[0])) return findByTagName(document, args[0]);
 
-  let [elm, tagNames] = args as Args;
-  if (!elm) return [];
-  if (!Array.isArray(tagNames)) tagNames = [tagNames];
+	let [elm, tagNames] = args as Args;
+	if (!elm) return [];
+	if (!Array.isArray(tagNames)) tagNames = [tagNames];
 
-  return uniqueNodeList<T>(
-    ...tagNames.map(
-      (cn) =>
-        (elm as NonNullable<typeof elm>).getElementsByTagName(
-          cn,
-        ) as HTMLCollectionOf<T>,
-    ),
-  );
+	return uniqueNodeList<T>(
+		...tagNames.map(
+			(cn) => (elm as NonNullable<typeof elm>).getElementsByTagName(cn) as HTMLCollectionOf<T>,
+		),
+	);
 }
 
 export { findByTagName };

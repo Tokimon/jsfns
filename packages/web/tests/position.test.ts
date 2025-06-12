@@ -1,5 +1,5 @@
-import type { SpiedGetter } from 'jest-mock';
 import position from '@jsfns/web/position';
+import type { SpiedGetter } from 'jest-mock';
 import { byId, generateId, getOne, insertHtml, removeElement } from './assets/helpers';
 import { mockOffsetParent, mockOffsetPosition } from './assets/mocks';
 

@@ -1,13 +1,8 @@
-import { minMax } from "./minMax";
-import { numberToHex } from "./numberToHex";
+import { minMax } from './minMax';
+import { numberToHex } from './numberToHex';
 
 /** Array representation of the RGB(A) color values */
-export type RGBTuple = [
-  red: number,
-  green: number,
-  blue: number,
-  alpha?: number,
-];
+export type RGBTuple = [red: number, green: number, blue: number, alpha?: number];
 
 const hexStr = (color: number) => numberToHex(minMax(color, 0, 255));
 
@@ -49,18 +44,13 @@ function RGBToHex(rgb: RGBTuple): string;
  */
 function RGBToHex(r: number, g: number, b: number, a?: number): string;
 
-function RGBToHex(
-  r: number | RGBTuple,
-  g?: number,
-  b?: number,
-  a?: number,
-): string {
-  if (Array.isArray(r)) return RGBToHex(...r);
+function RGBToHex(r: number | RGBTuple, g?: number, b?: number, a?: number): string {
+	if (Array.isArray(r)) return RGBToHex(...r);
 
-  let hex = "#" + hexStr(r) + hexStr(g as number) + hexStr(b as number);
-  if (a !== undefined) hex += hexStr(minMax(a, 0, 1) * 255);
+	let hex = '#' + hexStr(r) + hexStr(g as number) + hexStr(b as number);
+	if (a !== undefined) hex += hexStr(minMax(a, 0, 1) * 255);
 
-  return hex;
+	return hex;
 }
 
 export { RGBToHex };

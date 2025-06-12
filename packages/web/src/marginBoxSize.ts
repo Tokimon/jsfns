@@ -1,11 +1,8 @@
-import { boxModel } from "./boxModel";
-import { isDocument } from "./isDocument";
-import { isWindow } from "./isWindow";
-import { viewport } from "./viewport";
-import type { GeneralWindow } from "./types";
-
-/** The size, (in pixels) of an element's full box (including borders, margins, and padding) */
-export type MarginBoxSize = Size;
+import { boxModel } from './boxModel';
+import { isDocument } from './isDocument';
+import { isWindow } from './isWindow';
+import type { GeneralWindow, Size } from './types';
+import { viewport } from './viewport';
 
 /**
  * Find the size of a DOM element, document or window including margins and borders
@@ -24,16 +21,15 @@ export type MarginBoxSize = Size;
  * marginBoxSize(document) // --> [size of the viewport]
  * ```
  */
-export function marginBoxSize(element: Document | GeneralWindow | HTMLElement) {
-  const elm =
-    isDocument(element) || isWindow(element) ? viewport(element) : element;
+export function marginBoxSize(element: Document | GeneralWindow | HTMLElement): Size {
+	const elm = isDocument(element) || isWindow(element) ? viewport(element) : element;
 
-  const { margin } = boxModel(elm);
+	const { margin } = boxModel(elm);
 
-  return {
-    width: elm.offsetWidth + margin.left + margin.right,
-    height: elm.offsetHeight + margin.top + margin.bottom,
-  };
+	return {
+		width: elm.offsetWidth + margin.left + margin.right,
+		height: elm.offsetHeight + margin.top + margin.bottom,
+	};
 }
 
 export default marginBoxSize;

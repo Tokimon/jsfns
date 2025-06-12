@@ -12,7 +12,7 @@
  * ```
  */
 export function isFunction(x: unknown): x is (...args: unknown[]) => unknown {
-  return typeof x === "function";
+	return typeof x === 'function';
 }
 
 export default isFunction;

@@ -1,13 +1,11 @@
-import { isDOMNode } from "./isDOMNode";
+import { isDOMNode } from './isDOMNode';
 
-export interface ChildNodeWithParent extends ChildNode {
-  parentElement: NonNullable<ChildNode["parentElement"]>;
-  parentNode: NonNullable<ChildNode["parentNode"]>;
-}
+/** A DOM Child Node parent properties */
+export type ChildNodeParentProps = 'parentElement' | 'parentNode';
 
 /** A DOM child node with DOM element parent */
 export type ChildNodeWithParent = Omit<ChildNode, ChildNodeParentProps> & {
-  [K in ChildNodeParentProps]: NonNullable<HTMLElement[K]>;
+	[K in ChildNodeParentProps]: NonNullable<HTMLElement[K]>;
 };
 
 /**
@@ -27,6 +25,6 @@ export type ChildNodeWithParent = Omit<ChildNode, ChildNodeParentProps> & {
  * ```
  */
 export const isDOMChildNode = (node: unknown): node is ChildNodeWithParent =>
-  isDOMNode(node) && node.parentElement != null;
+	isDOMNode(node) && node.parentElement != null;
 
 export default isDOMChildNode;

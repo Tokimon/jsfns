@@ -1,7 +1,7 @@
 /** Options for the fuzzy Search */
 export type FuzzySearchOptions = {
-  /** Respect the case of the input, or not */
-  caseSensitive: boolean;
+	/** Respect the case of the input, or not */
+	caseSensitive: boolean;
 };
 
 /**
@@ -19,30 +19,25 @@ export type FuzzySearchOptions = {
  * fuzzySearch('search me', 'reach') // => false
  * ```
  */
-export function fuzzySearch(
-  input: string,
-  searchWord: string,
-  options?: FuzzySearchOptions,
-) {
-  let inp = input;
-  let word = searchWord;
+export function fuzzySearch(input: string, searchWord: string, options?: FuzzySearchOptions) {
+	let inp = input;
+	let word = searchWord;
 
-  if (!options?.caseSensitive)
-    [inp, word] = [inp.toLowerCase(), word.toLowerCase()];
+	if (!options?.caseSensitive) [inp, word] = [inp.toLowerCase(), word.toLowerCase()];
 
-  const inputLen = inp.length;
-  const searchLen = word.length;
+	const inputLen = inp.length;
+	const searchLen = word.length;
 
-  if (inputLen <= searchLen) return inp === word;
+	if (inputLen <= searchLen) return inp === word;
 
-  for (let i = 0, j = -1; i < searchLen; i++) {
-    while (j <= inputLen) {
-      if (j === inputLen) return false;
-      if (inp[++j] === word[i]) break;
-    }
-  }
+	for (let i = 0, j = -1; i < searchLen; i++) {
+		while (j <= inputLen) {
+			if (j === inputLen) return false;
+			if (inp[++j] === word[i]) break;
+		}
+	}
 
-  return true;
+	return true;
 }
 
 export default fuzzySearch;

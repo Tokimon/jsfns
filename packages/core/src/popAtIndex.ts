@@ -12,17 +12,13 @@
  * popIndexPure([1,2,3], 1); // --> [2,  [1, 3]]
  * ```
  */
-export function popAtIndexPure(
-  list: unknown[],
-  index: number,
-): [unknown, unknown[]] {
-  const value = list[index];
+export function popAtIndexPure(list: unknown[], index: number): [unknown, unknown[]] {
+	const value = list[index];
 
-  let arr = list;
-  if (index >= 0 && index < list.length)
-    arr = arr.slice(0, index).concat(arr.slice(index + 1));
+	let arr = list;
+	if (index >= 0 && index < list.length) arr = arr.slice(0, index).concat(arr.slice(index + 1));
 
-  return [value, arr];
+	return [value, arr];
 }
 
 /**
@@ -41,7 +37,7 @@ export function popAtIndexPure(
  * ```
  */
 export function popAtIndex<T>(list: T[], index: number): T | undefined {
-  if (index >= 0 && index < list.length) return list.splice(index, 1)[0];
+	if (index >= 0 && index < list.length) return list.splice(index, 1)[0];
 }
 
 export default popAtIndex;

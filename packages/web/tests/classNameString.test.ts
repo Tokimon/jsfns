@@ -18,11 +18,15 @@ describe('"classNameString"', () => {
 	});
 
 	it('Combines class names from a combination of inputs', () => {
-		expect(
-			classNameString('class', { class1: true, class2: false, class3: true }, [
-				'class12',
-				{ class13: true, class14: false },
-			]),
-		).toBe('class class1 class3 class12 class13');
+		const result = classNameString('class', { class1: true, class2: false, class3: true }, [
+			'class12',
+			{ class13: true, class14: false },
+		]);
+		expect(result).toBe('class class1 class3 class12 class13');
+	});
+
+	it('Ignores empty values', () => {
+		const result = classNameString('', {}, ['', []]);
+		expect(result).toBe('');
 	});
 });

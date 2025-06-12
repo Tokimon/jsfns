@@ -1,4 +1,4 @@
-import { isDOMNode } from "./isDOMNode";
+import { isDOMNode } from './isDOMNode';
 
 /**
  * Is the given object a DOM element node and optionally of a given type
@@ -18,7 +18,7 @@ import { isDOMNode } from "./isDOMNode";
  * ```
  */
 export function isDOMElement(node: unknown): node is Element {
-  return isDOMNode(node) && node.nodeType === Node.ELEMENT_NODE;
+	return isDOMNode(node) && node.nodeType === Node.ELEMENT_NODE;
 }
 
 export default isDOMElement;

@@ -14,12 +14,9 @@ export type GeneralWindow = Window | typeof window;
  * type Rest = NotFirst<[string, number, boolean]>; // [number, boolean]
  * ```
  */
-export type NotFirst<T extends Array<unknown>> = T extends [
-  arg0: T[0],
-  ...rest: infer R,
-]
-  ? R
-  : never;
+export type NotFirst<T extends Array<unknown>> = T extends [arg0: T[0], ...rest: infer R]
+	? R
+	: never;
 
 /**
  * A valid event name string. Includes all standard `DocumentEventMap` keys (like `"click"`, `"keydown"`)
@@ -39,15 +36,16 @@ export type EventName = keyof DocumentEventMap | string;
  * type Custom = ActualEvent<'my-event'>; // CustomEvent<'my-event'>
  * ```
  */
-export type ActualEvent<E extends EventName = EventName> =
-  E extends keyof DocumentEventMap ? DocumentEventMap[E] : CustomEvent<E>;
+export type ActualEvent<E extends EventName = EventName> = E extends keyof DocumentEventMap
+	? DocumentEventMap[E]
+	: CustomEvent<E>;
 
 /**
  * A general event handler function for both native and custom events.
  */
 export type EventHandler<E extends EventName = EventName> = (
-  this: EventSource | EventTarget,
-  event: ActualEvent<E>,
+	this: EventSource | EventTarget,
+	event: ActualEvent<E>,
 ) => unknown;
 
 /**
@@ -64,8 +62,8 @@ export type Maybe<T> = T | null | undefined;
  * Represents a 2D size in pixels.
  */
 export type Size = {
-  /** Width in pixels */
-  width: number;
-  /** Height in pixels */
-  height: number;
+	/** Width in pixels */
+	width: number;
+	/** Height in pixels */
+	height: number;
 };

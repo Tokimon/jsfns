@@ -1,6 +1,6 @@
-import ejs from 'ejs';
 import { readFile, readdir, writeFile } from 'node:fs/promises';
 import { basename, join, resolve } from 'node:path';
+import ejs from 'ejs';
 import * as color from './color';
 
 type Summary = {

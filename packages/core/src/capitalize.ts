@@ -12,10 +12,10 @@
  * ```
  */
 export function capitalize(str: string): string {
-  return str.replace(
-    /(^|[\s-])(\w)/g,
-    (_, ...[before, char]: string[]) => before + char.toUpperCase(),
-  );
+	return str.replace(
+		/(^|[\s-])(\w)/g,
+		(_, ...[before, char]: string[]) => before + char.toUpperCase(),
+	);
 }
 
 export default capitalize;

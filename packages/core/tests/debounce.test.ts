@@ -1,5 +1,5 @@
 import { jest } from '@jest/globals';
-import { debounce, type DebouncedFunction } from '@jsfns/core/debounce';
+import { type DebouncedFunction, debounce } from '@jsfns/core/debounce';
 import { wait } from './assets/wait';
 
 const TIME = 100;

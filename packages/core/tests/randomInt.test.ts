@@ -1,6 +1,6 @@
 import { jest } from '@jest/globals';
-import type { SpyInstance } from 'jest-mock';
 import { randomInt } from '@jsfns/core/randomInt';
+import type { SpyInstance } from 'jest-mock';
 
 describe('"randomInt"', () => {
 	let randomSpy: SpyInstance<typeof Math.random>;

@@ -1,4 +1,4 @@
-import { type PhrasifySettings, phrasify } from "./phrasify";
+import { type PhrasifySettings, phrasify } from './phrasify';
 
 /** Settings for the kebab case method */
 export type KebabCaseSettings = PhrasifySettings;
@@ -19,7 +19,7 @@ export type KebabCaseSettings = PhrasifySettings;
  * ```
  */
 export function kebabCase(str: string, settings?: KebabCaseSettings) {
-  return phrasify(str, settings).toLowerCase().replace(/\s+/g, "-");
+	return phrasify(str, settings).toLowerCase().replace(/\s+/g, '-');
 }
 
 export default kebabCase;

@@ -1,6 +1,6 @@
 import { isString } from '@jsfns/core/isString';
-import { uniqueNodeList } from './uniqueNodeList';
 import type { Maybe, NotFirst } from './types';
+import { uniqueNodeList } from './uniqueNodeList';
 
 type Args = [elm: Maybe<Document | HTMLElement>, classNames: string | string[]];
 

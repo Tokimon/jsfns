@@ -1,7 +1,7 @@
-import { isDocument } from "./isDocument";
-import { isWindow } from "./isWindow";
-import { viewport } from "./viewport";
-import type { GeneralWindow } from "./types";
+import { isDocument } from './isDocument';
+import { isWindow } from './isWindow';
+import type { GeneralWindow, Size } from './types';
+import { viewport } from './viewport';
 
 /**
  * Find the size of a DOM element, document or window excluding borders, margins and scrollbars.
@@ -20,11 +20,10 @@ import type { GeneralWindow } from "./types";
  * innerSize(document) // --> [size of the viewport]
  * ```
  */
-export function innerSize(element: Document | GeneralWindow | HTMLElement) {
-  const elm =
-    isDocument(element) || isWindow(element) ? viewport(element) : element;
+export function innerSize(element: Document | GeneralWindow | HTMLElement): Size {
+	const elm = isDocument(element) || isWindow(element) ? viewport(element) : element;
 
-  return { width: elm.clientWidth, height: elm.clientHeight };
+	return { width: elm.clientWidth, height: elm.clientHeight };
 }
 
 export default innerSize;

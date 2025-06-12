@@ -1,5 +1,5 @@
-import type { SpiedGetter } from 'jest-mock';
 import { isHTMLChildElement } from '@jsfns/web/isHTMLChildElement';
+import type { SpiedGetter } from 'jest-mock';
 import {
 	appendFrame,
 	byId,

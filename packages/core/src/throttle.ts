@@ -6,24 +6,21 @@
  * @typeParam T - The inferred type of the given callback function that need to be throttled
  * @returns The throttled function
  */
-export function throttle<T extends (...args: unknown[]) => void>(
-  callback: T,
-  ms = 200,
-) {
-  let canCall = true;
+export function throttle<T extends (...args: unknown[]) => void>(callback: T, ms = 200) {
+	let canCall = true;
 
-  function fn(...args: Parameters<T>) {
-    if (!canCall) return;
+	function fn(...args: Parameters<T>) {
+		if (!canCall) return;
 
-    callback(...args);
-    canCall = false;
+		callback(...args);
+		canCall = false;
 
-    setTimeout(() => {
-      canCall = true;
-    }, ms);
-  }
+		setTimeout(() => {
+			canCall = true;
+		}, ms);
+	}
 
-  return fn as T;
+	return fn as T;
 }
 
 export default throttle;

@@ -25,13 +25,13 @@ export type PromisefiedFunction = (...args: any[]) => Promise<any>;
  * ```
  */
 export function promisefy(fn: PromisefyCallback): PromisefiedFunction {
-  return (...args: unknown[]) =>
-    new Promise((resolve, reject) => {
-      const cb = (err?: string | Error | null, data?: unknown) =>
-        err ? reject(err) : resolve(data);
+	return (...args: unknown[]) =>
+		new Promise((resolve, reject) => {
+			const cb = (err?: string | Error | null, data?: unknown) =>
+				err ? reject(err) : resolve(data);
 
-      fn(...args, cb);
-    });
+			fn(...args, cb);
+		});
 }
 
 export default promisefy;
