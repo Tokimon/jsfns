@@ -1,10 +1,11 @@
-import { isObject } from "@jsfns/core/isObject";
-import { isString } from "@jsfns/core/isString";
+import { isObject } from '@jsfns/core/isObject';
+import { isString } from '@jsfns/core/isString';
 
-/** The various input options for classNameString */
-export type Option = string | Record<string, boolean | undefined>;
+/** The various input valid for classNameString */
+export type SimpleClassNameInput = string | Record<string, boolean | undefined>;
 
-const combine = (...args: [string, string]) => args.join(" ");
+/** All valid inputs for classNameString */
+export type ClassNamesInput = SimpleClassNameInput | ClassNamesInput[];
 
 /**
  * Create a string of names that will be used as class names for a given element.
@@ -21,22 +22,28 @@ const combine = (...args: [string, string]) => args.join(" ");
  * classNameString('my-elm', { open: true, active: true }) // --> "my-elm open active"
  * ```
  */
-export function classNameString(...args: (Option | Option[])[]): string {
-  let str = "";
+export function classNameString(...args: ClassNamesInput[]): string {
+	const cns = [];
+	const queue = [...args];
+	let i = 0;
 
-  for (let i = 0; i < args.length; i++) {
-    const input = args[i];
+	while (i < queue.length) {
+		const input = queue[i++];
+		if (!input) continue;
 
-    if (isString(input)) {
-      str = combine(str, input);
-    } else if (Array.isArray(input)) {
-      str = combine(str, classNameString(...input));
-    } else if (isObject(input)) {
-      for (const key in input) str = combine(str, input[key] ? key : "");
-    }
-  }
+		if (isString(input)) {
+			cns.push(input);
+		} else if (Array.isArray(input)) {
+			queue.push(...input);
+		} else if (isObject(input)) {
+			for (const key in input) {
+				const hasProp = Object.prototype.hasOwnProperty.call(input, key);
+				if (hasProp && input[key]) cns.push(key);
+			}
+		}
+	}
 
-  return str;
+	return cns.join(' ');
 }
 
 export default classNameString;
