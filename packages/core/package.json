@@ -1,6 +1,6 @@
 {
 	"name": "@jsfns/core",
-	"version": "1.2.0",
+	"version": "1.2.1",
 	"description": "Simple, no dependency, JS utility functions",
 	"private": false,
 	"author": "Toke Voltelen",

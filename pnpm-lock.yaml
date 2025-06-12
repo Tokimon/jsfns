@@ -12,7 +12,7 @@ importers:
         specifier: ^1.9.4
         version: 1.9.4
       '@changesets/cli':
-        specifier: ^2.29.3
+        specifier: ^2.29.4
         version: 2.29.4
       '@digitak/esrun':
         specifier: ^3.2.26
@@ -66,8 +66,8 @@ importers:
   packages/web:
     dependencies:
       '@jsfns/core':
-        specifier: ^1.2.0
-        version: 1.2.0
+        specifier: ^1.2.1
+        version: 1.2.1
     devDependencies:
       '@types/jest':
         specifier: ~29.5.14
@@ -605,8 +605,8 @@ packages:
   '@jridgewell/trace-mapping@0.3.25':
     resolution: {integrity: sha512-vNk6aEwybGtawWmy/PzwnGDOjCkLWSD2wqvjGGAgOAwCGWySYXfYoxt00IJkTF+8Lb57DwOb3Aa0o9CApepiYQ==}
 
-  '@jsfns/core@1.2.0':
-    resolution: {integrity: sha512-hDL4jtFpv37AKtIsvfzB56aguDIXFgXa/ISVhPVmbZjy8DGJyMpM278utBmYH2qLiCNFOiIJo5GP7w8ZXhqG4w==}
+  '@jsfns/core@1.2.1':
+    resolution: {integrity: sha512-Xnp7g093/xKCGAVWt35Rlru6Xtm31C4H2Yv9/tFMj1LhMg17NiW9blsjKSsU3jz8+LlH+OqOkc4B+Nwl6hsepw==}
 
   '@manypkg/find-root@1.1.0':
     resolution: {integrity: sha512-mki5uBvhHzO8kYYix/WRy2WX8S3B5wdVSc9D6KcU5lQNglP2yt58/VfLuAK49glRXChosY8ap2oJ1qgma3GUVA==}
@@ -2689,7 +2689,7 @@ snapshots:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.5.0
 
-  '@jsfns/core@1.2.0': {}
+  '@jsfns/core@1.2.1': {}
 
   '@manypkg/find-root@1.1.0':
     dependencies:

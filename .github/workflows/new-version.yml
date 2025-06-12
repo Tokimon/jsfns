@@ -20,4 +20,4 @@ jobs:
           --header 'Accept: application/json' \
           --header 'Authorization: Bearer ${{ secrets.ACCESS_TOKEN }}' \
           --header 'Content-Type: application/json' \
-          --data '{ "event_type": "new-version"'
+          --data '{ "event_type": "new-version" }'

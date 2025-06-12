@@ -16,6 +16,7 @@
 		"validate": "pnpm -r validate",
 		"dry-run": "pnpm -r dry-run",
 		"changelog": "./bin/changelog.sh",
+		"versioning": "pnpm changeset version && pnpm changeset tag",
 		"release": "pnpm -r release"
 	},
 	"repository": {
@@ -31,7 +32,7 @@
 	"homepage": "https://github.com/Tokimon/jsfns#readme",
 	"devDependencies": {
 		"@biomejs/biome": "^1.9.4",
-		"@changesets/cli": "^2.29.3",
+		"@changesets/cli": "^2.29.4",
 		"@digitak/esrun": "^3.2.26",
 		"@jest/globals": "^29.7.0",
 		"@types/ejs": "^3.1.5",

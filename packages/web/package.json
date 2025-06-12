@@ -1,6 +1,6 @@
 {
 	"name": "@jsfns/web",
-	"version": "1.1.2",
+	"version": "1.1.3",
 	"description": "Simple, no dependency, JS utility functions for use in a browser environment",
 	"private": false,
 	"author": "Toke Voltelen",
@@ -38,7 +38,7 @@
 		"release": "pnpm publish"
 	},
 	"dependencies": {
-		"@jsfns/core": "^1.2.0"
+		"@jsfns/core": "^1.2.1"
 	},
 	"devDependencies": {
 		"@types/jest": "~29.5.14",
