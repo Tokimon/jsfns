@@ -7,16 +7,15 @@
 	"type": "module",
 	"scripts": {
 		"readme": "pnpm -r readme",
-		"missing": "pnpm -parallel missing",
-		"format": "biome check --write",
-		"lint": "biome lint . --error-on-warnings",
+		"missing": "pnpm --parallel missing",
 		"build": "pnpm --parallel build",
 		"clean": "pnpm --parallel clean",
-		"test": "pnpm --parallel test",
-		"types": "pnpm --parallel types",
-		"validate": "pnpm --parallel validate",
+		"format": "biome check --write",
+		"test": "pnpm -r test",
+		"types": "pnpm -r types",
+		"validate": "pnpm -r validate",
+		"dry-run": "pnpm -r dry-run",
 		"changelog": "./bin/changelog.sh",
-		"versioning": "pnpm chageset version && pnpm changeset tag",
 		"release": "pnpm -r release"
 	},
 	"repository": {

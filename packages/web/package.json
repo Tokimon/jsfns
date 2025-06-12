@@ -23,7 +23,7 @@
 	"scripts": {
 		"prepublishOnly": "pnpm test:coverage:json && pnpm build && pnpm readme",
 		"postpublish": "pnpm clean",
-		"dry-run": "pnpm build && npm pack --dry-run && pnpm clean",
+		"dry-run": "pnpm validate && pnpm build && npm pack --dry-run && pnpm clean",
 		"build": "../../bin/build.sh",
 		"clean": "../../bin/clean.sh",
 		"missing": "../../bin/missing.sh",
