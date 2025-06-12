@@ -13,7 +13,7 @@ changelog() {
         FILE=$(ls -t .changeset/*.md | head -n 1)
 
         sed -i "2i\"@jsfns/$1\": $SELECTED" $FILE
-        echo "\nUpdates:\n-"
+        echo -e "\nUpdates:"
 
         nano $FILE
 
