@@ -1,23 +1,52 @@
-name: New Version Trigger Docs Build
-run-name: Trigger Docs Build
+name: New Version
 
 on:
-  workflow_dispatch:
-  create:
-    tags:
-      - \@jsfns/@(web|core)\@*
   push:
     tags:
-      - \@jsfns/@(web|core)\@*
+      - "@jsfns/core@*"
+      - "@jsfns/web@*"
 
 jobs:
-  trigger-docs-build:
+  validate:
     runs-on: ubuntu-latest
     steps:
-      - name: Triggering Docs Build
+      - uses: ./.github/actions/setup-node-pnpm
+
+      - name: Run validation
+        run: pnpm validate
+
+  release:
+    needs: validate
+    runs-on: ubuntu-latest
+    steps:
+      - uses: ./.github/actions/setup-node-pnpm
+
+      - name: Determine package and release
         run: |
-          curl --location 'https://api.github.com/repos/Tokimon/jsfns-docs/dispatches' \
-          --header 'Accept: application/json' \
-          --header 'Authorization: Bearer ${{ secrets.ACCESS_TOKEN }}' \
-          --header 'Content-Type: application/json' \
-          --data '{ "event_type": "new-version" }'
+          echo "Tag: $GITHUB_REF_NAME"
+          if [[ "$GITHUB_REF_NAME" == "@jsfns/core@"* ]]; then
+            echo "Releasing @jsfns/core"
+            pnpm --filter @jsfns/core release
+          elif [[ "$GITHUB_REF_NAME" == "@jsfns/web@"* ]]; then
+            echo "Releasing @jsfns/web"
+            pnpm --filter @jsfns/web release
+          else
+            echo "Unknown tag format: $GITHUB_REF_NAME"
+            exit 1
+          fi
+
+  trigger-docs:
+    needs: validate
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger workflow in jsfns-docs
+        uses: peter-evans/repository-dispatch@v3
+        with:
+          token: ${{ secrets.ACCESS_TOKEN }}
+          repository: Tokimon/jsfns-docs
+          event-type: new-version
+          client-payload: >-
+            {
+              "tag": "${{ github.ref_name }}",
+              "source_repo": "${{ github.repository }}"
+            }
