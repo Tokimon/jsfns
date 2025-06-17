@@ -1,13 +1,8 @@
 import { jest } from '@jest/globals';
 import { randomInt } from '@jsfns/core/randomInt';
-import type { SpyInstance } from 'jest-mock';
 
 describe('"randomInt"', () => {
-	let randomSpy: SpyInstance<typeof Math.random>;
-
-	beforeAll(() => {
-		randomSpy = jest.spyOn(Math, 'random');
-	});
+	const randomSpy = jest.spyOn(Math, 'random');
 
 	beforeEach(() => randomSpy.mockReset());
 

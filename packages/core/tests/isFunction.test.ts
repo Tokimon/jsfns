@@ -2,14 +2,7 @@ import { isFunction } from '@jsfns/core/isFunction';
 
 describe('"isFunction"', () => {
 	describe('Returns `true` for Function values', () => {
-		it.each([
-			// biome-ignore lint/complexity/useArrowFunction: needed for the test
-			function () {
-				return undefined;
-			},
-			() => undefined,
-			new Function(),
-		])('"%s"', (fn) => {
+		it.each([() => undefined, () => undefined, new Function()])('"%s"', (fn) => {
 			expect(isFunction(fn)).toBe(true);
 		});
 	});

@@ -1,6 +1,5 @@
 import { jest } from '@jest/globals';
 import { find } from '@jsfns/web/find';
-import type { SpyInstance } from 'jest-mock';
 
 describe('"find"', () => {
 	function suite(target: Document | HTMLElement) {
@@ -14,11 +13,7 @@ describe('"find"', () => {
 		});
 
 		describe('Uses `getElementsByClassName` when selector is:', () => {
-			let classSpy: SpyInstance<typeof target.getElementsByClassName>;
-
-			beforeAll(() => {
-				classSpy = jest.spyOn(target, 'getElementsByClassName');
-			});
+			const classSpy = jest.spyOn(target, 'getElementsByClassName');
 
 			beforeEach(() => classSpy.mockClear());
 
@@ -36,17 +31,13 @@ describe('"find"', () => {
 		});
 
 		describe('Uses `querySelectorAll` when selector:', () => {
-			let querySpy: SpyInstance<typeof target.querySelectorAll>;
+			const querySpy = jest.spyOn(target, 'querySelectorAll');
 
 			const testQuery = (query: string) => {
 				querySpy.mockClear();
 				find(target, query);
 				expect(querySpy).toHaveBeenCalledWith(query);
 			};
-
-			beforeAll(() => {
-				querySpy = jest.spyOn(target, 'querySelectorAll');
-			});
 
 			afterAll(() => querySpy.mockRestore());
 

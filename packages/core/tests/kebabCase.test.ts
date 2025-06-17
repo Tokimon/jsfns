@@ -1,5 +1,5 @@
 import { type KebabCaseSettings, kebabCase } from '@jsfns/core/kebabCase';
-import { type TestInput, result } from './assets/result';
+import { result, type TestInput } from './assets/result';
 import { surround } from './assets/surround';
 
 const emptyObj = {};

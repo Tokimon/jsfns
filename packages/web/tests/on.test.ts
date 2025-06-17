@@ -1,6 +1,5 @@
 import { jest } from '@jest/globals';
 import { type OnOptions, on } from '@jsfns/web/on';
-import type { SpyInstance } from 'jest-mock';
 import { byId, generateId, insertHtml, triggerEvent } from './assets/helpers';
 
 const testID = generateId('on');
@@ -9,7 +8,7 @@ const eventNames = [1, 2, 3].map((n) => eventName + n.toString());
 
 describe('"on"', () => {
 	function suite(elm: Document | HTMLElement | Window) {
-		let addEventListenerSpy: SpyInstance<typeof document.addEventListener>;
+		const addEventListenerSpy = jest.spyOn(elm, 'addEventListener');
 		let testElm: HTMLElement;
 		let targetChild: HTMLElement;
 
@@ -17,10 +16,6 @@ describe('"on"', () => {
 		const when = jest.fn();
 
 		beforeAll(() => {
-			// we need to do the check to get the right number of calls,
-			// since the check uses "addEventListener"
-			addEventListenerSpy = jest.spyOn(elm, 'addEventListener');
-
 			insertHtml(`
         <div id='${testID}'>
           <span class='child'></span>

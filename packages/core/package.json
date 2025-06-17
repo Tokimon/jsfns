@@ -14,7 +14,13 @@
 		"type": "git",
 		"url": "git+https://Tokimon@github.com/Tokimon/jsfns.git"
 	},
-	"keywords": ["javascript", "helpers", "snippets", "utility", "tool"],
+	"keywords": [
+		"javascript",
+		"helpers",
+		"snippets",
+		"utility",
+		"tool"
+	],
 	"bugs": {
 		"url": "https://github.com/Tokimon/jsfns/issues"
 	},

@@ -1,11 +1,10 @@
 import { jest } from '@jest/globals';
 import { off } from '@jsfns/web/off';
-import type { SpyInstance } from 'jest-mock';
 import { bind, triggerEvent } from './assets/helpers';
 
 describe('"off"', () => {
 	function suite(elm?: HTMLElement | Window) {
-		let removeEventListenerSpy: SpyInstance<typeof document.removeEventListener>;
+		const removeEventListenerSpy = jest.spyOn(elm || document, 'removeEventListener');
 		const cb = jest.fn();
 
 		const eventName = 'test';
@@ -14,12 +13,6 @@ describe('"off"', () => {
 		const _off = (...args: Parameters<typeof off>) => (elm ? off(elm, ...args) : off(...args));
 
 		const target = elm || document;
-
-		beforeAll(() => {
-			// we need to do the check to get the right number of calls,
-			// since the check uses "removeEventListener"
-			removeEventListenerSpy = jest.spyOn(elm || document, 'removeEventListener');
-		});
 
 		beforeEach(() => {
 			removeEventListenerSpy.mockClear();

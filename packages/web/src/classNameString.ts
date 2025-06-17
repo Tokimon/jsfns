@@ -37,7 +37,7 @@ export function classNameString(...args: ClassNamesInput[]): string {
 			queue.push(...input);
 		} else if (isObject(input)) {
 			for (const key in input) {
-				const hasProp = Object.prototype.hasOwnProperty.call(input, key);
+				const hasProp = Object.hasOwn(input, key);
 				if (hasProp && input[key]) cns.push(key);
 			}
 		}

@@ -20,13 +20,7 @@ describe('"isGenerator"', () => {
 		describe('Returns `false` for non Generator', () => {
 			it.each([
 				['Null', null],
-				[
-					'Normal Function',
-					// biome-ignore lint/complexity/useArrowFunction: needed for the test
-					function () {
-						return undefined;
-					},
-				],
+				['Normal Function', () => undefined],
 				['Generator Like', generatorMock],
 				['Object containing "next"', { next: (): void => undefined }],
 				['Object containing "throw"', { throw: (): void => undefined }],
@@ -56,13 +50,7 @@ describe('"isGenerator"', () => {
 		describe('Returns `false` for non Generator Like Objects:', () => {
 			it.each([
 				['Null', null],
-				[
-					'Normal Function',
-					// biome-ignore lint/complexity/useArrowFunction: needed for the test
-					function () {
-						return undefined;
-					},
-				],
+				['Normal Function', () => undefined],
 				['Object containing "next"', { next: (): void => undefined }],
 				['Object containing "throw"', { throw: (): void => undefined }],
 			])('%s', (_, fn) => {

@@ -8,7 +8,7 @@ import type { Maybe, NotFirst } from './types';
 type Args = [elm: Maybe<Document | HTMLElement>, selector: string];
 
 function findBySpecializedMethod<T extends HTMLElement>(elm: Args[0], query: string) {
-	if (/[ >+*~\[,:]/.test(query)) return;
+	if (/[ >+*~[,:]/.test(query)) return;
 
 	const rest = query.substring(1);
 	const hasClass = rest.includes('.');
