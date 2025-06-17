@@ -1,4 +1,4 @@
-import { readFile, readdir, writeFile } from 'node:fs/promises';
+import { readdir, readFile, writeFile } from 'node:fs/promises';
 import { basename, join, resolve } from 'node:path';
 import ejs from 'ejs';
 import * as color from './color';
@@ -49,7 +49,7 @@ export async function build() {
 
 	const methods = fileNames.reduce((str, name, index) => {
 		const n = index + 1;
-		const end = n % 5 === 0 || n === len ? '|\n' : '';
+		const end = n % 4 === 0 || n === len ? '|\n' : '';
 		return `${str}| [${name}](https://tokimon.github.io/jsfns-docs/${packageName}#${name}) ${end}`;
 	}, '');
 
