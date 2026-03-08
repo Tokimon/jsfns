@@ -41,18 +41,19 @@ describe('"replaceNode"', () => {
 		expect(replaceNode(elm, replacement)).toBeUndefined();
 	});
 
-	it.each(['', undefined, null])(
-		'Removes the given DOM node when replacement is not given',
-		(replacement) => {
-			insertHtml('<div class="removed"></div>', testNode);
-			const element = getOne('.removed', testNode);
+	it.each([
+		'',
+		undefined,
+		null,
+	])('Removes the given DOM node when replacement is not given', (replacement) => {
+		insertHtml('<div class="removed"></div>', testNode);
+		const element = getOne('.removed', testNode);
 
-			const returnValue = replaceNode(element, replacement);
+		const returnValue = replaceNode(element, replacement);
 
-			expect(getOne('.removed', testNode)).toBeFalsy();
-			expect(returnValue).toBeUndefined();
-		},
-	);
+		expect(getOne('.removed', testNode)).toBeFalsy();
+		expect(returnValue).toBeUndefined();
+	});
 
 	describe.each([
 		['HTML element', createElement('div')],
