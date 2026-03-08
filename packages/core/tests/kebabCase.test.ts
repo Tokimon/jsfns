@@ -39,13 +39,14 @@ describe('"kebabCase"', () => {
 	});
 
 	describe('Passing a config object', () => {
-		describe.each([emptyObj, { numbers: true }, { numbers: false }] as KebabCaseSettings[])(
-			'%s',
-			(conf) => {
-				it.each(phrases)('"%s"', (input, output) => {
-					expect(kebabCase(input, conf)).toBe(result(output, conf));
-				});
-			},
-		);
+		describe.each([
+			emptyObj,
+			{ numbers: true },
+			{ numbers: false },
+		] as KebabCaseSettings[])('%s', (conf) => {
+			it.each(phrases)('"%s"', (input, output) => {
+				expect(kebabCase(input, conf)).toBe(result(output, conf));
+			});
+		});
 	});
 });
