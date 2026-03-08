@@ -31,8 +31,8 @@ const phrases: TestInput<CamelCaseSettings>[] = [
 	['ABBR in the beginning', ({ abbr }) => `${abbrev(abbr, true)}InTheBeginning`],
 	['ABBRInWord', ({ abbr }) => `${abbrev(abbr, true)}InWord`],
 
-	['Num42in the middle', ({ numbers = true }) => `num42${afterNum('in', numbers)}TheMiddle`],
-	['42in the beginning', ({ numbers = true }) => `42${afterNum('in', numbers)}TheBeginning`],
+	['Num42in the middle', 'num42InTheMiddle'],
+	['42in the beginning', `42InTheBeginning`],
 	['42 alone', '42Alone'],
 
 	['camelCase', 'camelCase'],
@@ -43,10 +43,7 @@ const phrases: TestInput<CamelCaseSettings>[] = [
 	['word', 'word'],
 	['Name', 'name'],
 
-	[
-		'data-ABBR42number space',
-		({ numbers = true, abbr }) => `data${abbrev(abbr)}42${afterNum('number', numbers)}Space`,
-	],
+	['data-ABBR42number space', ({ abbr }) => `data${abbrev(abbr)}42NumberSpace`],
 	['Look! 99 ? ABBR #Test', ({ abbr }) => `look99${abbrev(abbr)}Test`],
 ];
 
