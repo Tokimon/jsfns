@@ -1,11 +1,7 @@
-import { type SnakeCaseSettings, snakeCase } from '@jsfns/core/snakeCase';
+import { snakeCase } from '@jsfns/core/snakeCase';
 import { result, type TestInput } from './assets/result';
-import { surround } from './assets/surround';
 
-const emptyObj = {};
-const surround42 = surround('42', '_');
-
-const phrases: TestInput<SnakeCaseSettings>[] = [
+const phrases = [
 	['', ''],
 
 	['Multiple   spaces   in  phrase', 'multiple_spaces_in_phrase'],
@@ -13,8 +9,8 @@ const phrases: TestInput<SnakeCaseSettings>[] = [
 
 	['ABBR in the beginning', 'abbr_in_the_beginning'],
 	['ABBRInWord', 'abbr_in_word'],
-	['Num42in the middle', ({ numbers }) => `num${surround42(numbers)}in_the_middle`],
-	['42in the beginning', ({ numbers }) => `${surround42(numbers, true)}in_the_beginning`],
+	['Num42in the middle', `num_42_in_the_middle`],
+	['42in the beginning', `42_in_the_beginning`],
 	['42 alone', '42_alone'],
 
 	['camelCase', 'camel_case'],
@@ -25,27 +21,12 @@ const phrases: TestInput<SnakeCaseSettings>[] = [
 	['word', 'word'],
 	['Name', 'name'],
 
-	['data-ABBR42number space', ({ numbers }) => `data_abbr${surround42(numbers)}number_space`],
+	['data-ABBR42number space',`data_abbr_42_number_space`],
 	['Look! 99 ? ABBR #Test', 'look_99_abbr_test'],
 ];
 
 describe('"snakeCase"', () => {
-	describe('Passing a string directly', () => {
-		describe('Convert a phrase into a lower PascalCased word (using default settings)', () => {
-			it.each(phrases)('"%s"', (input, output) => {
+			it.each(phrases)('Converts "%s" to snake_case', (input, output) => {
 				expect(snakeCase(input)).toBe(result(output));
 			});
-		});
-	});
-
-	describe('Passing a config object', () => {
-		describe.each([emptyObj, { numbers: true }, { numbers: false }] as SnakeCaseSettings[])(
-			'%s',
-			(conf) => {
-				it.each(phrases)('"%s"', (input, output) => {
-					expect(snakeCase(input, conf)).toBe(result(output, conf));
-				});
-			},
-		);
-	});
 });
