@@ -1,5 +1,6 @@
 import { innerSize } from '@jsfns/web/innerSize';
 import { viewport } from '@jsfns/web/viewport';
+import { afterAll, beforeAll, describe, expect, it } from 'vitest';
 import { byId, generateId, insertHtml, removeElement } from './assets/helpers';
 
 const testID = generateId('innerSize');

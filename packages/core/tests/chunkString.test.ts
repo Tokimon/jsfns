@@ -1,4 +1,5 @@
 import { chunkString } from '@jsfns/core/chunkString';
+import { describe, expect, it } from 'vitest';
 
 describe('"chunkString"', () => {
 	it('Cuts up a string into chunks', () => {

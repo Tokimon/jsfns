@@ -1,4 +1,5 @@
 import { formatCurrency } from '@jsfns/core/formatCurrency';
+import { describe, expect, it } from 'vitest';
 
 describe('"formatCurrency"', () => {
 	const num = 1100.234;

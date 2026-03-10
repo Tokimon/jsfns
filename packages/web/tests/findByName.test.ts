@@ -1,4 +1,5 @@
 import { findByName } from '@jsfns/web/findByName';
+import { afterAll, beforeAll, describe, expect, it } from 'vitest';
 import { generateId, insertHtml, removeElement } from './assets/helpers';
 
 const testID = generateId('FindByName');

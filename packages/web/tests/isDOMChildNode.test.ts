@@ -1,4 +1,5 @@
 import { isDOMChildNode } from '@jsfns/web/isDOMChildNode';
+import { afterAll, beforeAll, describe, expect, it } from 'vitest';
 import {
 	appendFrame,
 	byId,

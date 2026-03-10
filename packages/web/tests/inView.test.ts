@@ -1,4 +1,5 @@
 import { inView } from '@jsfns/web/inView';
+import { afterAll, describe, expect, it } from 'vitest';
 import { byId, createElement, generateId, insertHtml, removeElement } from './assets/helpers';
 import { mockClientRect } from './assets/mocks';
 

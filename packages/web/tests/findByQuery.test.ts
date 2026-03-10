@@ -1,5 +1,5 @@
-import { jest } from '@jest/globals';
 import { findByQuery, findOneByQuery } from '@jsfns/web/findByQuery';
+import { afterAll, beforeAll, describe, expect, it, vi } from 'vitest';
 import { byId, generateId, insertHtml, removeElement } from './assets/helpers';
 
 const testID = generateId('findByQuery');
@@ -102,7 +102,7 @@ describe('"findByQuery"', () => {
 	describe('With document', () => {
 		describe('Falls back to document when no element is given', () => {
 			it('.findByQuery', () => {
-				const spy = jest.spyOn(document, 'querySelectorAll');
+				const spy = vi.spyOn(document, 'querySelectorAll');
 
 				findByQuery('#Item2 .item');
 				expect(spy).toHaveBeenCalledTimes(1);
@@ -111,7 +111,7 @@ describe('"findByQuery"', () => {
 			});
 
 			it('.findOneByQuery', () => {
-				const spy = jest.spyOn(document, 'querySelector');
+				const spy = vi.spyOn(document, 'querySelector');
 
 				findOneByQuery('#Item2 .item');
 				expect(spy).toHaveBeenCalledTimes(1);

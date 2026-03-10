@@ -1,4 +1,5 @@
 import { hexToRGB } from '@jsfns/core/hexToRGB';
+import { describe, expect, it } from 'vitest';
 
 describe('"hexToRGB"', () => {
 	it('Generates a RGB array from empty string', () => {

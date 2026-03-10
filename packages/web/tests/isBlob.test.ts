@@ -1,4 +1,5 @@
 import { isBlob } from '@jsfns/web/isBlob';
+import { describe, expect, it } from 'vitest';
 
 describe('"isBlob"', () => {
 	it('Returns `true` for Blob objects', () => {

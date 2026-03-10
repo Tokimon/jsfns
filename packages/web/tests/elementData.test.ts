@@ -1,4 +1,5 @@
 import { elementData, resetCache } from '@jsfns/web/elementData';
+import { afterAll, beforeAll, beforeEach, describe, expect, test } from 'vitest';
 import { byId, generateId, insertHtml, removeElement } from './assets/helpers';
 
 const testID = generateId('ElementData');

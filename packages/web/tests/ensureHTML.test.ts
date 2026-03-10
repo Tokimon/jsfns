@@ -1,4 +1,5 @@
 import { ensureHTML } from '@jsfns/web/ensureHTML';
+import { describe, expect, it } from 'vitest';
 
 describe('"ensureHTML"', () => {
 	it('Returns string containing "<" directly', () => {

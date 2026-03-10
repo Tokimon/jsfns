@@ -1,4 +1,5 @@
 import { isBoolean } from '@jsfns/core/isBoolean';
+import { describe, expect, it } from 'vitest';
 
 describe('"isBoolean"', () => {
 	describe('Returns `true` for Boolean values', () => {

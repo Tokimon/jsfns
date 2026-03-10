@@ -1,4 +1,5 @@
 import { isDOMFragment } from '@jsfns/web/isDOMFragment';
+import { describe, expect, it } from 'vitest';
 import { createElement } from './assets/helpers';
 
 describe('"isDOMFragment"', () => {

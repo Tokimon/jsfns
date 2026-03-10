@@ -1,8 +1,21 @@
-import { jest } from '@jest/globals';
 import { randomInt } from '@jsfns/core/randomInt';
+import {
+	afterAll,
+	beforeAll,
+	beforeEach,
+	describe,
+	expect,
+	it,
+	type MockInstance,
+	vi,
+} from 'vitest';
 
 describe('"randomInt"', () => {
-	const randomSpy = jest.spyOn(Math, 'random');
+	let randomSpy: MockInstance<typeof Math.random>;
+
+	beforeAll(() => {
+		randomSpy = vi.spyOn(Math, 'random');
+	});
 
 	beforeEach(() => randomSpy.mockReset());
 

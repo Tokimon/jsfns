@@ -1,4 +1,5 @@
 import { addClass } from '@jsfns/web/addClass';
+import { afterAll, beforeAll, beforeEach, describe, expect, it } from 'vitest';
 import { byId, createElement, generateId, insertHtml, removeElement } from './assets/helpers';
 
 const testID = generateId('AddClass');

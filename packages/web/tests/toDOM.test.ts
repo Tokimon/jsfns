@@ -1,4 +1,5 @@
 import { toDOM } from '@jsfns/web/toDOM';
+import { describe, expect, it } from 'vitest';
 
 describe('"toDOM"', () => {
 	it('Return a HTMLCollection of all root elements converted', () => {

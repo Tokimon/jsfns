@@ -1,4 +1,5 @@
 import { uniqueArray } from '@jsfns/core/uniqueArray';
+import { describe, expect, it } from 'vitest';
 
 const numberArray = [1, 2, 1, 3, 3, 2, 1];
 

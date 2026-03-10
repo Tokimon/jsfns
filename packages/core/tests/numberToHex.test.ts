@@ -1,4 +1,5 @@
 import { numberToHex } from '@jsfns/core/numberToHex';
+import { describe, expect, it } from 'vitest';
 
 describe('"numberToHex"', () => {
 	it('Generates a hexadecimal from a number', () => {

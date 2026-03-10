@@ -1,4 +1,5 @@
 import { isObject } from '@jsfns/core/isObject';
+import { describe, expect, it } from 'vitest';
 
 class TestObj {
 	name = '';

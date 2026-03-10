@@ -1,4 +1,5 @@
 import { isString } from '@jsfns/core/isString';
+import { describe, expect, it } from 'vitest';
 
 describe('"isString"', () => {
 	describe('Returns `true` for String values', () => {

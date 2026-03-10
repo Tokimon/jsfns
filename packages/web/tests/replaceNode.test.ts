@@ -1,4 +1,5 @@
 import { replaceNode } from '@jsfns/web/replaceNode';
+import { afterAll, beforeAll, beforeEach, describe, expect, it } from 'vitest';
 import {
 	byId,
 	createElement,

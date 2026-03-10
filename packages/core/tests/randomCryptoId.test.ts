@@ -1,5 +1,6 @@
 import crypto from 'node:crypto';
 import { randomCryptoId } from '@jsfns/core/randomCryptoId';
+import { beforeAll, describe, expect, it } from 'vitest';
 
 describe('"randomCryptoId"', () => {
 	const hasCrypto = typeof globalThis.crypto !== 'undefined';

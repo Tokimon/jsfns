@@ -1,4 +1,5 @@
 import { isDOMElement } from '@jsfns/web/isDOMElement';
+import { describe, expect, it } from 'vitest';
 import { appendFrame, createDetachedDocument } from './assets/helpers';
 
 describe('"isDOMElement"', () => {

@@ -1,6 +1,6 @@
 Object.setPrototypeOf(window, Window.prototype);
 
-function getBorder(style) {
+function getBorder(style: CSSStyleDeclaration) {
 	const {
 		border,
 		borderWidth,
@@ -26,35 +26,29 @@ function getBorder(style) {
 
 	if (borderWidth) {
 		const bw = borderWidth.split(' ');
-		bT = Number.parseInt(bw[0]);
-		bR = bw[1] ? Number.parseInt(bw[1]) : bT;
-		bB = bw[2] ? Number.parseInt(bw[2]) : bT;
-		bL = bw[3] ? Number.parseInt(bw[3]) : bR;
+		bT = Number.parseInt(bw[0], 10);
+		bR = bw[1] ? Number.parseInt(bw[1], 10) : bT;
+		bB = bw[2] ? Number.parseInt(bw[2], 10) : bT;
+		bL = bw[3] ? Number.parseInt(bw[3], 10) : bR;
 	}
 
-	if (borderTopWidth) bT = Number.parseInt(borderTopWidth);
-	if (borderLeftWidth) bL = Number.parseInt(borderLeftWidth);
-	if (borderRightWidth) bR = Number.parseInt(borderRightWidth);
-	if (borderBottomWidth) bB = Number.parseInt(borderBottomWidth);
+	if (borderTopWidth) bT = Number.parseInt(borderTopWidth, 10);
+	if (borderLeftWidth) bL = Number.parseInt(borderLeftWidth, 10);
+	if (borderRightWidth) bR = Number.parseInt(borderRightWidth, 10);
+	if (borderBottomWidth) bB = Number.parseInt(borderBottomWidth, 10);
 
 	return { bT, bR, bB, bL };
 }
 
 Object.defineProperties(window.HTMLElement.prototype, {
-	// offsetLeft: {
-	//   get() { return parseFloat(this.style.marginLeft) || 0; }
-	// },
-	// offsetTop: {
-	//   get() { return parseFloat(this.style.marginTop) || 0; }
-	// },
 	offsetHeight: {
 		get() {
-			return Number.parseInt(this.style.height) || 0;
+			return Number.parseInt(this.style.height, 10) || 0;
 		},
 	},
 	offsetWidth: {
 		get() {
-			return Number.parseInt(this.style.width) || 0;
+			return Number.parseInt(this.style.width, 10) || 0;
 		},
 	},
 

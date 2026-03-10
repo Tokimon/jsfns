@@ -1,4 +1,5 @@
 import { minMax } from '@jsfns/core/minMax';
+import { describe, expect, it } from 'vitest';
 
 describe('"minMax"', () => {
 	it('Limits a number to the given minimum value', () => {

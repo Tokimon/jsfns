@@ -1,4 +1,5 @@
 import { isGenerator, isGeneratorLike } from '@jsfns/core/isGenerator';
+import { describe, expect, it } from 'vitest';
 
 describe('"isGenerator"', () => {
 	const generatorMock = {

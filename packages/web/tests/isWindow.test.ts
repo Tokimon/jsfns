@@ -1,4 +1,5 @@
 import { isWindow } from '@jsfns/web/isWindow';
+import { describe, expect, it } from 'vitest';
 import { appendFrame, createDetachedDocument } from './assets/helpers';
 
 describe('"isWindow"', () => {

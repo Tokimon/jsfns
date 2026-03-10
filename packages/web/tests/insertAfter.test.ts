@@ -1,4 +1,5 @@
 import { insertAfter } from '@jsfns/web/insertAfter';
+import { afterAll, beforeAll, beforeEach, describe, expect, it } from 'vitest';
 import { byId, createElement, generateId, insertHtml, removeElement } from './assets/helpers';
 
 const testID = generateId('InsertAfter');

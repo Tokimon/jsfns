@@ -1,4 +1,5 @@
 import { classNameString } from '@jsfns/web/classNameString';
+import { describe, expect, it } from 'vitest';
 
 describe('"classNameString"', () => {
 	it('Return a given string directly', () => {

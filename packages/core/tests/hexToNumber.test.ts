@@ -1,4 +1,5 @@
 import { hexToNumber } from '@jsfns/core/hexToNumber';
+import { describe, expect, it } from 'vitest';
 
 describe('"hexToNumber"', () => {
 	it('Returns 0 on empty strings', () => {

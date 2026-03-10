@@ -1,4 +1,5 @@
 import { createElement } from '@jsfns/web/createElement';
+import { describe, expect, it } from 'vitest';
 
 describe('"createElement"', () => {
 	it('Creates a <div> element when no element is given', () => {

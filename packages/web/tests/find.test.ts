@@ -1,10 +1,19 @@
-import { jest } from '@jest/globals';
 import { find } from '@jsfns/web/find';
+import {
+	afterAll,
+	beforeAll,
+	beforeEach,
+	describe,
+	expect,
+	it,
+	type MockInstance,
+	vi,
+} from 'vitest';
 
 describe('"find"', () => {
 	function suite(target: Document | HTMLElement) {
 		it('Uses `getElementsByTagName` when selector is a tag name ', () => {
-			const tagNameSpy = jest.spyOn(target, 'getElementsByTagName');
+			const tagNameSpy = vi.spyOn(target, 'getElementsByTagName');
 
 			find(target, 'div');
 			expect(tagNameSpy).toHaveBeenCalledWith('div');
@@ -13,9 +22,14 @@ describe('"find"', () => {
 		});
 
 		describe('Uses `getElementsByClassName` when selector is:', () => {
-			const classSpy = jest.spyOn(target, 'getElementsByClassName');
+			let classSpy: MockInstance<(Document | HTMLElement)['getElementsByClassName']>;
+			beforeAll(() => {
+				classSpy = vi.spyOn(target, 'getElementsByClassName');
+			});
 
-			beforeEach(() => classSpy.mockClear());
+			beforeEach(() => {
+				classSpy.mockReset();
+			});
 
 			afterAll(() => classSpy.mockRestore());
 
@@ -31,13 +45,19 @@ describe('"find"', () => {
 		});
 
 		describe('Uses `querySelectorAll` when selector:', () => {
-			const querySpy = jest.spyOn(target, 'querySelectorAll');
-
 			const testQuery = (query: string) => {
-				querySpy.mockClear();
 				find(target, query);
 				expect(querySpy).toHaveBeenCalledWith(query);
 			};
+
+			let querySpy: MockInstance<(Document | HTMLElement)['querySelectorAll']>;
+			beforeAll(() => {
+				querySpy = vi.spyOn(target, 'querySelectorAll');
+			});
+
+			beforeEach(() => {
+				querySpy.mockReset();
+			});
 
 			afterAll(() => querySpy.mockRestore());
 
@@ -68,7 +88,7 @@ describe('"find"', () => {
 	describe('With document and selector defined', () => {
 		describe('Falls back to document when no element is given', () => {
 			it('.getElementsByClassName', () => {
-				const classSpy = jest.spyOn(document, 'getElementsByClassName');
+				const classSpy = vi.spyOn(document, 'getElementsByClassName');
 
 				find('.item.first');
 				expect(classSpy).toHaveBeenCalledWith('item first');
@@ -77,7 +97,7 @@ describe('"find"', () => {
 			});
 
 			it('.getElementsByTagName', () => {
-				const tagNameSpy = jest.spyOn(document, 'getElementsByTagName');
+				const tagNameSpy = vi.spyOn(document, 'getElementsByTagName');
 
 				find('div');
 				expect(tagNameSpy).toHaveBeenCalledWith('div');
@@ -86,7 +106,7 @@ describe('"find"', () => {
 			});
 
 			it('.querySelectorAll', () => {
-				const querySpy = jest.spyOn(document, 'querySelectorAll');
+				const querySpy = vi.spyOn(document, 'querySelectorAll');
 
 				find('.item div');
 				expect(querySpy).toHaveBeenCalledWith('.item div');
@@ -96,7 +116,7 @@ describe('"find"', () => {
 		});
 
 		it('Uses `getElementById` when selector is an ID', () => {
-			const idSpy = jest.spyOn(document, 'getElementById');
+			const idSpy = vi.spyOn(document, 'getElementById');
 
 			find(document, '#MyId');
 			expect(idSpy).toHaveBeenCalledWith('MyId');
@@ -109,7 +129,7 @@ describe('"find"', () => {
 
 	describe('With element and selector defined', () => {
 		it('Uses `querySelector` when element is given and selector is an ID', () => {
-			const querySpy = jest.spyOn(document.body, 'querySelector');
+			const querySpy = vi.spyOn(document.body, 'querySelector');
 
 			find(document.body, '#MyId');
 			expect(querySpy).toHaveBeenCalledWith('#MyId');

@@ -1,11 +1,9 @@
-import { jest } from '@jest/globals';
 import { trigger } from '@jsfns/web/trigger';
+import { describe, expect, it, vi } from 'vitest';
 import { bind, unbind } from './assets/helpers';
 
 describe('"Trigger"', () => {
 	function suite(elm?: Element | Window) {
-		const cb = jest.fn();
-
 		const eventName = 'test';
 		const eventNames = [1, 2, 3].map((n) => `${eventName}${n}`);
 
@@ -14,16 +12,12 @@ describe('"Trigger"', () => {
 
 		const target = elm || document;
 
-		beforeEach(() => {
-			cb.mockClear();
-		});
-
 		it('Returns the given element', () => {
 			expect(_trigger(eventName)).toBe(target);
 		});
 
 		it.each(['', '_', '-', '.', ':'])('Triggers event with separator: "%s"', (separator) => {
-			const cb = jest.fn();
+			const cb = vi.fn();
 
 			let e = 'test';
 			if (separator) {
@@ -40,7 +34,7 @@ describe('"Trigger"', () => {
 		});
 
 		it('Triggers multiple events', () => {
-			const cb = jest.fn();
+			const cb = vi.fn();
 
 			for (const e of eventNames) bind(target, e, cb);
 
@@ -56,6 +50,8 @@ describe('"Trigger"', () => {
 			['Function', () => undefined],
 			['String', 'test'],
 		])('Triggers given event with extra data: %s', (_, val) => {
+			const cb = vi.fn();
+
 			bind(target, eventName, cb);
 
 			_trigger(eventName, val);

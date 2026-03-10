@@ -1,15 +1,11 @@
 import { type CamelCaseSettings, camelCase, defaultSettings } from '@jsfns/core/camelCase';
+import { describe, expect, it } from 'vitest';
 import { createBooleanSettings } from './assets/createBooleanSettings';
 import { firstUpper } from './assets/firstUpper';
 import { result, type TestInput } from './assets/result';
 
 const emptyObj = {};
 const settingsKeys = Object.keys(defaultSettings) as (keyof CamelCaseSettings)[];
-
-const afterNum = (str: string, numbers?: boolean) => {
-	const s = str.toLowerCase();
-	return numbers ? firstUpper(s) : s;
-};
 
 const abbrev = (abbr?: boolean, inBeginning?: true) => {
 	let str = 'ABBR';

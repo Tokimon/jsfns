@@ -1,5 +1,6 @@
 import { defaultSettings } from '@jsfns/core/camelCase';
 import { type PascalCaseSettings, pascalCase } from '@jsfns/core/pascalCase';
+import { describe, expect, it } from 'vitest';
 import { createBooleanSettings } from './assets/createBooleanSettings';
 import { firstUpper } from './assets/firstUpper';
 import { result, type TestInput } from './assets/result';
@@ -37,18 +38,15 @@ const phrases: TestInput<PascalCaseSettings>[] = [
 	['word', 'Word'],
 	['Name', 'Name'],
 
-	[
-		'data-ABBR42number space',
-		({ abbr }) => `Data${abbrev(abbr)}42NumberSpace`,
-	],
+	['data-ABBR42number space', ({ abbr }) => `Data${abbrev(abbr)}42NumberSpace`],
 	['Look! 99 ? ABBR #Test', ({ abbr }) => `Look99${abbrev(abbr)}Test`],
 ];
 
 describe('"pascalCase"', () => {
 	describe('Passing a string directly', () => {
-			it.each(phrases)('Converts "%s" into PascalCased word', (input, output) => {
-				expect(pascalCase(input)).toBe(result(output, defaultSettings));
-			});
+		it.each(phrases)('Converts "%s" into PascalCased word', (input, output) => {
+			expect(pascalCase(input)).toBe(result(output, defaultSettings));
+		});
 	});
 
 	describe('Passing a config object', () => {

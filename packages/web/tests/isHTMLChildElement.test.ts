@@ -1,5 +1,5 @@
 import { isHTMLChildElement } from '@jsfns/web/isHTMLChildElement';
-import type { SpiedGetter } from 'jest-mock';
+import { afterAll, beforeAll, describe, expect, it, type MockInstance } from 'vitest';
 import {
 	appendFrame,
 	byId,
@@ -14,7 +14,7 @@ import { mockOffsetParent } from './assets/mocks';
 const testID = generateId('IsDOMChildNode');
 
 describe('"isHTMLChildElement"', () => {
-	let spy: SpiedGetter<Element | null>;
+	let spy: MockInstance<() => Element | null>;
 
 	beforeAll(() => {
 		insertHtml(`

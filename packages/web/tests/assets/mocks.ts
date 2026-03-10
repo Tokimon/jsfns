@@ -1,4 +1,4 @@
-import { jest } from '@jest/globals';
+import { vi } from 'vitest';
 
 type Overrides = {
 	top?: number;
@@ -8,7 +8,7 @@ type Overrides = {
 };
 
 export function mockClientRect(overrides?: Overrides): () => void {
-	const spy = jest.spyOn(HTMLElement.prototype, 'getBoundingClientRect').mockReturnValue(
+	const spy = vi.spyOn(HTMLElement.prototype, 'getBoundingClientRect').mockReturnValue(
 		Object.assign(
 			{
 				width: 100,
@@ -29,7 +29,7 @@ export function mockClientRect(overrides?: Overrides): () => void {
 }
 
 export function mockOffsetParent(htmlElmProto: HTMLElement) {
-	return jest.spyOn(htmlElmProto, 'offsetParent', 'get').mockImplementation(function (
+	return vi.spyOn(htmlElmProto, 'offsetParent', 'get').mockImplementation(function (
 		this: HTMLElement,
 	) {
 		if (this.tagName === 'BODY' || this.style.position === 'fixed') return null;
@@ -56,7 +56,7 @@ export function mockOffsetParent(htmlElmProto: HTMLElement) {
 
 const parsePosition = (elm: HTMLElement, dir: 'Top' | 'Left') => {
 	if (elm.style.position === 'absolute' || elm.style.position === 'fixed') {
-		return Number.parseInt(elm.style[dir.toLowerCase() as 'top' | 'left']) || 0;
+		return Number.parseInt(elm.style[dir.toLowerCase() as 'top' | 'left'], 10) || 0;
 	}
 
 	if (elm.parentElement) {
@@ -65,6 +65,7 @@ const parsePosition = (elm: HTMLElement, dir: 'Top' | 'Left') => {
 				window.getComputedStyle(elm.parentElement)[
 					('padding' + dir) as 'paddingTop' | 'paddingLeft'
 				],
+				10,
 			) || 0
 		);
 	}
@@ -73,13 +74,13 @@ const parsePosition = (elm: HTMLElement, dir: 'Top' | 'Left') => {
 };
 
 export function mockOffsetPosition(htmlElmProto: HTMLElement) {
-	const spyTop = jest.spyOn(htmlElmProto, 'offsetTop', 'get').mockImplementation(function (
+	const spyTop = vi.spyOn(htmlElmProto, 'offsetTop', 'get').mockImplementation(function (
 		this: HTMLElement,
 	) {
 		return parsePosition(this, 'Top');
 	});
 
-	const spyLeft = jest.spyOn(htmlElmProto, 'offsetLeft', 'get').mockImplementation(function (
+	const spyLeft = vi.spyOn(htmlElmProto, 'offsetLeft', 'get').mockImplementation(function (
 		this: HTMLElement,
 	) {
 		return parsePosition(this, 'Left');

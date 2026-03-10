@@ -1,8 +1,6 @@
 import { phrasify } from '@jsfns/core/phrasify';
+import { describe, expect, it } from 'vitest';
 import { result } from './assets/result';
-import { surround } from './assets/surround';
-
-const space42 = surround('42', ' ');
 
 const phrases = [
 	['', ''],

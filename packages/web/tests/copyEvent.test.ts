@@ -1,4 +1,5 @@
 import { copyEvent } from '@jsfns/web/copyEvent';
+import { describe, expect, it } from 'vitest';
 import { createElement, triggerEvent } from './assets/helpers';
 
 describe('"copyEvent"', () => {

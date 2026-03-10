@@ -1,18 +1,22 @@
-import { jest } from '@jest/globals';
 import { throttle } from '@jsfns/core/throttle';
-import { wait } from './assets/wait';
+import { afterEach, beforeEach, describe, expect, test, vi } from 'vitest';
 
 const TIME = 100;
 const FULL_TIME = TIME + 1;
 const HALF_TIME = Math.floor(TIME / 2);
 
 describe('"Throttle"', () => {
-	let orgfn: ReturnType<typeof jest.fn>;
+	let orgfn: ReturnType<typeof vi.fn>;
 	let thfn: typeof orgfn;
 
 	beforeEach(() => {
-		orgfn = jest.fn();
+		vi.useFakeTimers();
+		orgfn = vi.fn();
 		thfn = throttle(orgfn, TIME);
+	});
+
+	afterEach(() => {
+		vi.useRealTimers();
 	});
 
 	test('Triggers the given function', () => {
@@ -25,11 +29,11 @@ describe('"Throttle"', () => {
 		expect(orgfn).toHaveBeenCalledWith(1, 2, 3, 4, 5, 6, 7, 8, 9);
 	});
 
-	test('Trigger only the first call within the given time limit', async () => {
+	test('Trigger only the first call within the given time limit', () => {
 		thfn(1);
 		thfn(2);
 
-		await wait(HALF_TIME);
+		vi.advanceTimersByTime(HALF_TIME);
 
 		thfn(2);
 
@@ -37,14 +41,14 @@ describe('"Throttle"', () => {
 		expect(orgfn).toHaveBeenCalledWith(1);
 	});
 
-	test('Triggers again after the given time limit', async () => {
+	test('Triggers again after the given time limit', () => {
 		thfn(1);
 
-		await wait(HALF_TIME);
+		vi.advanceTimersByTime(HALF_TIME);
 
 		thfn(2);
 
-		await wait(FULL_TIME);
+		vi.advanceTimersByTime(FULL_TIME);
 
 		thfn(3);
 
@@ -53,15 +57,15 @@ describe('"Throttle"', () => {
 		expect(orgfn).toHaveBeenNthCalledWith(2, 3);
 	});
 
-	test('Time limit is set to 200 ms per default', async () => {
+	test('Time limit is set to 200 ms per default', () => {
 		const thDefaultMs = throttle(orgfn);
 		thDefaultMs(1);
 
-		await wait(100);
+		vi.advanceTimersByTime(100);
 
 		thDefaultMs(2);
 
-		await wait(101);
+		vi.advanceTimersByTime(101);
 
 		thDefaultMs(3);
 

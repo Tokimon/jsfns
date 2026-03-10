@@ -1,4 +1,5 @@
 import { formatNumber } from '@jsfns/core/formatNumber';
+import { describe, expect, it } from 'vitest';
 
 describe('"formatNumber"', () => {
 	const num = 1100.254;

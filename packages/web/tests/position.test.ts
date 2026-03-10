@@ -1,5 +1,5 @@
 import position from '@jsfns/web/position';
-import type { SpiedGetter } from 'jest-mock';
+import { afterAll, beforeAll, describe, expect, it, type MockInstance } from 'vitest';
 import { byId, generateId, getOne, insertHtml, removeElement } from './assets/helpers';
 import { mockOffsetParent, mockOffsetPosition } from './assets/mocks';
 
@@ -11,7 +11,7 @@ describe('"position"', () => {
 	let FixedElm: HTMLElement;
 
 	let offsetPositionRestore: () => void;
-	let offsetParentSpy: SpiedGetter<Element | null>;
+	let offsetParentSpy: MockInstance<() => Element | null>;
 
 	beforeAll(() => {
 		insertHtml(`

@@ -1,5 +1,6 @@
 import { snakeCase } from '@jsfns/core/snakeCase';
-import { result, type TestInput } from './assets/result';
+import { describe, expect, it } from 'vitest';
+import { result } from './assets/result';
 
 const phrases = [
 	['', ''],
@@ -21,12 +22,12 @@ const phrases = [
 	['word', 'word'],
 	['Name', 'name'],
 
-	['data-ABBR42number space',`data_abbr_42_number_space`],
+	['data-ABBR42number space', `data_abbr_42_number_space`],
 	['Look! 99 ? ABBR #Test', 'look_99_abbr_test'],
 ];
 
 describe('"snakeCase"', () => {
-			it.each(phrases)('Converts "%s" to snake_case', (input, output) => {
-				expect(snakeCase(input)).toBe(result(output));
-			});
+	it.each(phrases)('Converts "%s" to snake_case', (input, output) => {
+		expect(snakeCase(input)).toBe(result(output));
+	});
 });

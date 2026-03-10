@@ -1,4 +1,5 @@
 import { toWords } from '@jsfns/core/toWords';
+import { describe, expect, it } from 'vitest';
 
 describe('"toWords"', () => {
 	it.each([

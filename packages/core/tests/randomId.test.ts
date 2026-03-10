@@ -1,4 +1,5 @@
 import { randomId } from '@jsfns/core/randomId';
+import { describe, expect, it } from 'vitest';
 
 describe('"randomId"', () => {
 	it('Generates a random id of default length', () => {

@@ -1,4 +1,5 @@
 import { popAtIndex, popAtIndexPure } from '@jsfns/core/popAtIndex';
+import { describe, expect, it } from 'vitest';
 
 describe('"popAtIndex"', () => {
 	describe('"popAtIndex"', () => {

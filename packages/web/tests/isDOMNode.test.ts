@@ -1,4 +1,5 @@
 import { isDOMNode } from '@jsfns/web/isDOMNode';
+import { describe, expect, it } from 'vitest';
 import { appendFrame, createDetachedDocument } from './assets/helpers';
 
 describe('"isDOMNode"', () => {

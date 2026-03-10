@@ -1,4 +1,5 @@
 import { type VendorPrefixing, vendorPrefixed } from '@jsfns/web/vendorPrefixed';
+import { describe, expect, it } from 'vitest';
 
 const resultArray = (js: string, css: string): VendorPrefixing => [
 	{ prefix: '', js, css },

@@ -1,4 +1,5 @@
 import { inDOM } from '@jsfns/web/inDOM';
+import { describe, expect, it } from 'vitest';
 import { appendFrame, createDetachedDocument, createElement } from './assets/helpers';
 
 describe('"inDOM"', () => {

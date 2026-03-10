@@ -17,7 +17,7 @@ function findBySpecializedMethod<T extends HTMLElement>(elm: Args[0], query: str
 	if (query[0] === '#') {
 		if (!hasClass) return elm === document ? findById<T>(rest) : findOneByQuery<T>(elm, query);
 	} else if (query[0] === '.') {
-		if (!hasId) return findByClass<T>(elm, rest.split('.').join(' '));
+		if (!hasId) return findByClass<T>(elm, rest.replaceAll('.', ' '));
 	} else if (!hasId && !hasClass) {
 		return findByTagName<T>(elm, query);
 	}

@@ -47,9 +47,7 @@ function findByClass<T extends HTMLElement>(...args: Args | NotFirst<Args>): T[]
 	if (!Array.isArray(classNames)) classNames = [classNames];
 
 	return uniqueNodeList(
-		...classNames.map(
-			(cn) => (elm as NonNullable<typeof elm>).getElementsByClassName(cn) as HTMLCollectionOf<T>,
-		),
+		...classNames.map((cn) => elm.getElementsByClassName(cn) as HTMLCollectionOf<T>),
 	);
 }
 
