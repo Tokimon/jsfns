@@ -47,12 +47,12 @@
 		"@jsfns/core": "^1.2.1"
 	},
 	"devDependencies": {
-		"@types/node": "^22.14.1",
+		"@types/node": "^25.4.0",
 		"happy-dom": "^20.8.3",
-		"typedoc": "^0.28.5",
-		"typescript": "^5.8.3",
-		"vite-tsconfig-paths": "^5.1.4",
-		"vitest": "^3.1.1"
+		"typedoc": "^0.28.17",
+		"typescript": "^5.9.3",
+		"vite-tsconfig-paths": "^6.1.1",
+		"vitest": "^4.0.18"
 	},
 	"files": [
 		"/*.js",

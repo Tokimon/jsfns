@@ -43,11 +43,11 @@
 		"release": "pnpm publish"
 	},
 	"devDependencies": {
-		"@types/node": "^22.15.29",
-		"vitest": "^3.1.1",
-		"vite-tsconfig-paths": "^5.1.4",
-		"typedoc": "^0.28.5",
-		"typescript": "^5.8.3"
+		"@types/node": "^25.4.0",
+		"vitest": "^4.0.18",
+		"vite-tsconfig-paths": "^6.1.1",
+		"typedoc": "^0.28.17",
+		"typescript": "^5.9.3"
 	},
 	"files": [
 		"/*.js",

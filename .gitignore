@@ -30,3 +30,5 @@ packages/*/*.cjs
 packages/*/*.d.ts
 
 !jest.*.js
+
+.zed

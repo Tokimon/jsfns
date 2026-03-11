@@ -1,10 +1,5 @@
 import { off } from '@jsfns/web/off';
-import {
-	describe,
-	expect,
-	it,
-	vi,
-} from 'vitest';
+import { describe, expect, it, vi } from 'vitest';
 import { bind, triggerEvent } from './assets/helpers';
 
 describe('"off"', () => {

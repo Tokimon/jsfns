@@ -1,11 +1,5 @@
 import { type OnOptions, on } from '@jsfns/web/on';
-import {
-	beforeAll,
-	describe,
-	expect,
-	it,
-	vi,
-} from 'vitest';
+import { beforeAll, describe, expect, it, vi } from 'vitest';
 import { byId, generateId, insertHtml, triggerEvent } from './assets/helpers';
 
 const testID = generateId('on');
@@ -271,7 +265,7 @@ describe('"on"', () => {
 				});
 
 				it('For multiple events', () => {
-				const cb = vi.fn();
+					const cb = vi.fn();
 
 					const whens: Record<string, [boolean, EventListener]> = {
 						[eventNames[0]]: [true, vi.fn()],
