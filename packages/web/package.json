@@ -36,11 +36,10 @@
 		"readme": "esrun ../../readme-builder/build.ts",
 		"types": "tsgo -p tsconfig.json",
 		"test": "vitest run",
-		"test:coverage:json": "vitest run --coverage",
-		"test:coverage:cli": "vitest run --coverage --coverage.reporter=text",
+		"test:coverage:json": "vitest run --coverage.reporter=json-summary",
 		"typedoc:validate": "typedoc --entryPoints \"src/*.ts\" --validation --treatWarningsAsErrors --emit none",
 		"format": "biome check --write",
-		"validate": "biome check && pnpm types && pnpm typedoc:validate && pnpm test:coverage:cli",
+		"validate": "biome check && pnpm types && pnpm typedoc:validate && pnpm test",
 		"release": "pnpm publish"
 	},
 	"dependencies": {

@@ -11,7 +11,7 @@ export default defineConfig({
 				lines: 100,
 				statements: 100,
 			},
-			reporter: ['text', 'json-summary'],
+			reporter: ['text'],
 		},
 	},
 });
