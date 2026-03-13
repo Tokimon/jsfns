@@ -6,7 +6,7 @@ const FULL_TIME = TIME + 1;
 const HALF_TIME = Math.floor(TIME / 2);
 
 describe('"Throttle"', () => {
-	let orgfn: ReturnType<typeof vi.fn>;
+	let orgfn: (...args: unknown[]) => void;
 	let thfn: typeof orgfn;
 
 	beforeEach(() => {

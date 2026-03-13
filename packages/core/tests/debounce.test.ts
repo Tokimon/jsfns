@@ -1,4 +1,4 @@
-import { type DebouncedFunction, debounce } from '@jsfns/core/debounce';
+import { type DebounceCallback, type DebouncedFunction, debounce } from '@jsfns/core/debounce';
 import { afterEach, beforeEach, describe, expect, test, vi } from 'vitest';
 
 const TIME = 100;
@@ -6,8 +6,8 @@ const FULL_TIME = TIME + 1;
 const HALF_TIME = Math.floor(TIME / 2);
 
 describe('"Debounce"', () => {
-	let orgfn: ReturnType<typeof vi.fn>;
-	let dbfn: DebouncedFunction<typeof orgfn>;
+	let orgfn: DebounceCallback;
+	let dbfn: DebouncedFunction<DebounceCallback>;
 
 	beforeEach(() => {
 		vi.useFakeTimers();

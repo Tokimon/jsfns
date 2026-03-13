@@ -21,7 +21,9 @@ describe('"scrollInfo"', () => {
 
 	it('Returns zero percentages when content does not overflow', () => {
 		const noScrollId = generateId('ScrollInfoNoScroll');
-		insertHtml(`<div id="${noScrollId}" style="width: 100px; height: 100px; overflow: hidden"></div>`);
+		insertHtml(
+			`<div id="${noScrollId}" style="width: 100px; height: 100px; overflow: hidden"></div>`,
+		);
 
 		const elm = byId(noScrollId);
 		// Ensure no scrollable area by setting scroll dimensions equal to client dimensions
