@@ -13,6 +13,7 @@
 		"format": "biome check --write",
 		"test": "pnpm -r test",
 		"types": "pnpm -r types",
+		"tsgo": "tsgo -p tsconfig.json",
 		"validate": "pnpm -r validate",
 		"dry-run": "pnpm -r dry-run",
 		"changelog": "./bin/changelog.sh",
@@ -36,9 +37,11 @@
 		"@digitak/esrun": "^3.2.26",
 		"@types/ejs": "^3.1.5",
 		"@types/node": "^25.4.0",
+		"@typescript/native-preview": "7.0.0-dev.20260313.1",
 		"@vitest/coverage-v8": "^4.0.18",
 		"ejs": "^5.0.1",
 		"globals": "^17.4.0",
-		"typescript": "^5.9.3"
+		"typescript": "^5.9.3",
+		"vitest": "^4.0.18"
 	}
 }

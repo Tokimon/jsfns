@@ -6,6 +6,7 @@
 		"module": "esnext",
 		"target": "ES2022",
 		"noEmit": true,
+		"allowImportingTsExtensions": true,
 		"declaration": true,
 		"skipLibCheck": true,
 		"noImplicitAny": true,
@@ -17,7 +18,7 @@
 		"forceConsistentCasingInFileNames": true,
 		"esModuleInterop": true,
 		"resolveJsonModule": true,
-		"baseUrl": ".",
+		"types": ["node"],
 		"paths": {
 			"~docs-builder/*": ["./docs-builder/scripts/*"],
 			"@jsfns/core/*": ["./packages/core/src/*"],

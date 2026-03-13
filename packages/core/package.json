@@ -33,7 +33,7 @@
 		"clean": "../../bin/clean.sh",
 		"missing": "../../bin/missing.sh",
 		"readme": "esrun ../../readme-builder/build.ts",
-		"types": "tsc -p tsconfig.json",
+		"types": "tsgo -p tsconfig.json",
 		"test": "vitest run",
 		"test:coverage:json": "vitest run --coverage",
 		"test:coverage:cli": "vitest run --coverage --coverage.reporter=text",
