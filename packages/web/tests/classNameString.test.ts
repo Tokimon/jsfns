@@ -30,4 +30,10 @@ describe('"classNameString"', () => {
 		const result = classNameString('', {}, ['', []]);
 		expect(result).toBe('');
 	});
+
+	it('Ignores non-string, non-array, non-object values', () => {
+		// @ts-expect-error testing invalid input
+		const result = classNameString('class1', 42, true, null, undefined, 'class2');
+		expect(result).toBe('class1 class2');
+	});
 });
