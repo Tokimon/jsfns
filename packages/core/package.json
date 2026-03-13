@@ -37,6 +37,7 @@
 		"test": "vitest run",
 		"test:coverage:json": "vitest run --coverage.reporter=json-summary",
 		"typedoc:validate": "typedoc --entryPoints \"src/*.ts\" --validation --treatWarningsAsErrors --emit none",
+		"lint": "biome check",
 		"format": "biome check --write",
 		"validate": "biome check && pnpm types && pnpm typedoc:validate && pnpm test",
 		"release": "pnpm publish"

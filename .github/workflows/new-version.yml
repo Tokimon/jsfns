@@ -10,7 +10,7 @@ jobs:
   validate:
     runs-on: ubuntu-latest
     steps:
-      - uses: ./.github/actions/setup-node-pnpm
+      - uses: ./.github/setup-node-pnpm
 
       - name: Run validation
         run: pnpm validate
@@ -18,25 +18,30 @@ jobs:
   release:
     needs: validate
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
     steps:
-      - uses: ./.github/actions/setup-node-pnpm
+      - uses: ./.github/setup-node-pnpm
+        with:
+          fetch-depth: 0
 
       - name: Determine package and release
         run: |
           echo "Tag: $GITHUB_REF_NAME"
           if [[ "$GITHUB_REF_NAME" == "@jsfns/core@"* ]]; then
             echo "Releasing @jsfns/core"
-            pnpm --filter @jsfns/core release
+            pnpm --filter @jsfns/core release --provenance
           elif [[ "$GITHUB_REF_NAME" == "@jsfns/web@"* ]]; then
             echo "Releasing @jsfns/web"
-            pnpm --filter @jsfns/web release
+            pnpm --filter @jsfns/web release --provenance
           else
             echo "Unknown tag format: $GITHUB_REF_NAME"
             exit 1
           fi
 
   trigger-docs:
-    needs: validate
+    needs: release
     runs-on: ubuntu-latest
     steps:
       - name: Trigger workflow in jsfns-docs

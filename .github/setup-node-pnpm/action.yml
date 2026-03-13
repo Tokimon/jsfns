@@ -1,0 +1,23 @@
+name: "Setup Node + PNPM"
+description: "Sets up latest Node and pnpm with install"
+
+inputs:
+  fetch-depth:
+    description: "Number of commits to fetch. 0 for full history."
+    default: "1"
+
+runs:
+  using: "composite"
+  steps:
+    - uses: actions/checkout@v4
+      with:
+        fetch-depth: ${{ inputs.fetch-depth }}
+    - uses: pnpm/action-setup@v4
+      with:
+        version: latest
+    - uses: actions/setup-node@v4
+      with:
+        node-version: latest
+        cache: "pnpm"
+    - run: pnpm install --frozen-lockfile
+      shell: bash

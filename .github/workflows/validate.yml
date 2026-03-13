@@ -9,8 +9,23 @@ on:
 jobs:
   validate:
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        package: [core, web]
+        check: [lint, types, docs, test]
+        include:
+          - check: lint
+            command: pnpm lint
+          - check: types
+            command: pnpm types
+          - check: docs
+            command: pnpm typedoc:validate
+          - check: test
+            command: pnpm test
+    name: ${{ matrix.package }} / ${{ matrix.check }}
     steps:
-      - uses: ./.github/actions/setup-node-pnpm
+      - uses: ./.github/setup-node-pnpm
 
-      - name: Run validation
-        run: pnpm -w validate
+      - name: Run ${{ matrix.check }}
+        run: pnpm --filter @jsfns/${{ matrix.package }} ${{ matrix.command }}
