@@ -1,4 +1,5 @@
 import { limitDecimals } from '@jsfns/core/limitDecimals';
+import { describe, expect, it } from 'vitest';
 
 describe('"limitDecimals"', () => {
 	it('Cuts decimals completely when decimal indication is not defined correctly', () => {

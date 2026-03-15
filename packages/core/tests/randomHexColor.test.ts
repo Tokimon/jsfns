@@ -1,9 +1,9 @@
-import { jest } from '@jest/globals';
 import { randomHexColor } from '@jsfns/core/randomHexColor';
+import { describe, expect, it, vi } from 'vitest';
 
 describe('"randomHexColor"', () => {
 	it('Generates a random Hex color', () => {
-		const spy = jest
+		const spy = vi
 			.spyOn(Math, 'random')
 			.mockReturnValueOnce(0)
 			.mockReturnValueOnce(0.5)

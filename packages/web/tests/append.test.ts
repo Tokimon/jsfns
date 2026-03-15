@@ -1,4 +1,5 @@
 import { append } from '@jsfns/web/append';
+import { afterAll, beforeAll, beforeEach, describe, expect, it } from 'vitest';
 import {
 	byId,
 	createElement,

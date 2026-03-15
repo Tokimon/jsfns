@@ -1,4 +1,5 @@
 import { RGBToHex } from '@jsfns/core/RGBToHex';
+import { describe, expect, it } from 'vitest';
 
 describe('"RGBToHex"', () => {
 	it('Generates a hex color from a RGB entries', () => {

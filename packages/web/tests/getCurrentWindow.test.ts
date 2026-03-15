@@ -1,4 +1,5 @@
 import { getCurrentWindow } from '@jsfns/web/getCurrentWindow';
+import { describe, expect, it } from 'vitest';
 import { appendFrame, createDetachedDocument, createElement } from './assets/helpers';
 
 describe('"getCurrentWindow"', () => {

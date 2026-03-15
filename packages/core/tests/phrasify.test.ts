@@ -1,11 +1,8 @@
-import { type PhrasifySettings, phrasify } from '@jsfns/core/phrasify';
-import { result, type TestInput } from './assets/result';
-import { surround } from './assets/surround';
+import { phrasify } from '@jsfns/core/phrasify';
+import { describe, expect, it } from 'vitest';
+import { result } from './assets/result';
 
-const emptyObj = {};
-const space42 = surround('42', ' ');
-
-const phrases: TestInput<PhrasifySettings>[] = [
+const phrases = [
 	['', ''],
 
 	['Multiple   spaces   in  phrase', 'Multiple spaces in phrase'],
@@ -13,8 +10,8 @@ const phrases: TestInput<PhrasifySettings>[] = [
 
 	['ABBR in the beginning', 'ABBR in the beginning'],
 	['ABBRInWord', 'ABBR In Word'],
-	['Num42in the middle', ({ numbers }) => `Num${space42(numbers)}in the middle`],
-	['42in the beginning', ({ numbers }) => `${space42(numbers, true)}in the beginning`],
+	['Num42in the middle', 'Num 42 in the middle'],
+	['42in the beginning', '42 in the beginning'],
 	['42 alone', '42 alone'],
 
 	['camelCase', 'camel Case'],
@@ -26,27 +23,12 @@ const phrases: TestInput<PhrasifySettings>[] = [
 	['word', 'word'],
 	['Name', 'Name'],
 
-	['data-ABBR42number space', ({ numbers }) => `data ABBR${space42(numbers)}number space`],
+	['data-ABBR42number space', 'data ABBR 42 number space'],
 	['Look! 99 ? ABBR #Test', 'Look 99 ABBR Test'],
 ];
 
 describe('"phrasify"', () => {
-	describe('Passing a string directly', () => {
-		describe('Convert a phrase into a lower PascalCased word (using default settings)', () => {
-			it.each(phrases)('"%s"', (input, output) => {
-				expect(phrasify(input)).toBe(result(output));
-			});
-		});
-	});
-
-	describe('Passing a config object', () => {
-		describe.each([emptyObj, { numbers: true }, { numbers: false }] as PhrasifySettings[])(
-			'%s',
-			(conf) => {
-				it.each(phrases)('"%s"', (input, output) => {
-					expect(phrasify(input, conf)).toBe(result(output, conf));
-				});
-			},
-		);
+	it.each(phrases)('Converts "%s" to a phrase', (input, output) => {
+		expect(phrasify(input)).toBe(result(output));
 	});
 });

@@ -1,4 +1,5 @@
 import { fuzzySearch } from '@jsfns/core/fuzzySearch';
+import { describe, expect, it } from 'vitest';
 
 describe('"fuzzySearch"', () => {
 	const input = 'cartwheel';

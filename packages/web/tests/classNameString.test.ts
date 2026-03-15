@@ -1,4 +1,5 @@
 import { classNameString } from '@jsfns/web/classNameString';
+import { describe, expect, it } from 'vitest';
 
 describe('"classNameString"', () => {
 	it('Return a given string directly', () => {
@@ -28,5 +29,11 @@ describe('"classNameString"', () => {
 	it('Ignores empty values', () => {
 		const result = classNameString('', {}, ['', []]);
 		expect(result).toBe('');
+	});
+
+	it('Ignores non-string, non-array, non-object values', () => {
+		// @ts-expect-error testing invalid input
+		const result = classNameString('class1', 42, true, null, undefined, 'class2');
+		expect(result).toBe('class1 class2');
 	});
 });

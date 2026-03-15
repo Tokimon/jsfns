@@ -1,4 +1,5 @@
 import { viewport } from '@jsfns/web/viewport';
+import { describe, expect, it } from 'vitest';
 import { appendFrame, createDetachedDocument } from './assets/helpers';
 
 describe('"viewport"', () => {

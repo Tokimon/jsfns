@@ -1,4 +1,5 @@
 import { getCurrentDocument } from '@jsfns/web/getCurrentDocument';
+import { describe, expect, it } from 'vitest';
 import { appendFrame, createDetachedDocument, createElement } from './assets/helpers';
 
 describe('"getCurrentDocument"', () => {

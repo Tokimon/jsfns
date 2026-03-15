@@ -1,4 +1,5 @@
 import { hash, hashCode } from '@jsfns/core/hash';
+import { describe, expect, it } from 'vitest';
 
 describe('"hash"', () => {
 	describe('"hashCode"', () => {
@@ -6,12 +7,12 @@ describe('"hash"', () => {
 			expect(hashCode('')).toBe(0);
 		});
 
-		it.each(['abcdefg!!', '#/!&?^1235[]()@$£¤*µù%èéàç'])(
-			'Returns the same hash code, for the same string: %s',
-			(str) => {
-				expect(hashCode(str)).toBe(hashCode(str));
-			},
-		);
+		it.each([
+			'abcdefg!!',
+			'#/!&?^1235[]()@$£¤*µù%èéàç',
+		])('Returns the same hash code, for the same string: %s', (str) => {
+			expect(hashCode(str)).toBe(hashCode(str));
+		});
 
 		it.each([
 			['abcdefg!!', 'abcdegf!!'],

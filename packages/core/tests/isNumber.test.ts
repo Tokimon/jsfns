@@ -1,4 +1,5 @@
 import { isNumber } from '@jsfns/core/isNumber';
+import { describe, expect, it } from 'vitest';
 
 describe('"isNumber"', () => {
 	describe('Returns `true` for Number values', () => {
@@ -8,11 +9,17 @@ describe('"isNumber"', () => {
 	});
 
 	describe('Returns `false` for non Number values', () => {
-		it.each([null, undefined, Number.POSITIVE_INFINITY, Number.NaN, '', new String(''), [], {}])(
-			'"%s"',
-			(n) => {
-				expect(isNumber(n)).toBe(false);
-			},
-		);
+		it.each([
+			null,
+			undefined,
+			Number.POSITIVE_INFINITY,
+			Number.NaN,
+			'',
+			new String(''),
+			[],
+			{},
+		])('"%s"', (n) => {
+			expect(isNumber(n)).toBe(false);
+		});
 	});
 });

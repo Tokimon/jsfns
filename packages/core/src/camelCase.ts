@@ -1,7 +1,7 @@
-import { type PhrasifySettings, phrasify } from './phrasify';
+import { toWords } from './toWords';
 
 /** Settings for how to format the Camel Case */
-export type CamelCaseSettings = PhrasifySettings & {
+export type CamelCaseSettings = {
 	/** Convert to UpperCase CamelCase (aka PascalCase) */
 	upper?: boolean;
 	/** Keep abbreviations uppercase (false == HTMLElement => HtmlElement | true == HTMLElement => HTMLElement) */
@@ -12,7 +12,6 @@ export type CamelCaseSettings = PhrasifySettings & {
 export const defaultSettings: CamelCaseSettings = {
 	upper: false,
 	abbr: false,
-	numbers: true,
 };
 
 /**
@@ -37,19 +36,19 @@ export const defaultSettings: CamelCaseSettings = {
 export function camelCase(input: string, settings?: CamelCaseSettings): string {
 	if (!input) return '';
 
-	const { upper, abbr, numbers } = { ...defaultSettings, ...settings };
+	const { upper, abbr } = { ...defaultSettings, ...settings };
 
-	return phrasify(input, { numbers }).replace(
-		/(?:^|\s+)(\w+)/g,
-		(_: string, word: string, index: number) => {
-			if (index === 0 && !upper) {
-				return abbr && word === word.toUpperCase() ? word : word.toLowerCase();
-			}
+	return toWords(input)
+		.map((word, i) => {
+			if (!Number.isNaN(Number(word))) return word;
+			if (abbr && word === word.toUpperCase()) return word;
 
-			const restOfWord = word.slice(1);
-			return word[0].toUpperCase() + (abbr ? restOfWord : restOfWord.toLowerCase());
-		},
-	);
+			const lower = word.toLowerCase();
+			if (!upper && i === 0) return lower;
+
+			return lower[0].toUpperCase() + lower.slice(1);
+		})
+		.join('');
 }
 
 export default camelCase;

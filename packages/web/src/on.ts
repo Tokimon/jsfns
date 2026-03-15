@@ -58,7 +58,10 @@ function onOptionsHandler<E extends EventName = EventName>(
 		if (delegateTarget) trigger(delegateTarget, copyEvent(e, delegateTarget));
 	}
 
-	return [eventHandler, rest] as [EventHandler, Omit<OnOptions, 'when' | 'once' | 'delegate'>];
+	return [eventHandler, rest] as [
+		EventHandler<E>,
+		Omit<OnOptions<E>, 'when' | 'once' | 'delegate'>,
+	];
 }
 
 /**

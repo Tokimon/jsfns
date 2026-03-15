@@ -1,4 +1,5 @@
 import { safeDateChange } from '@jsfns/core/safeDateChange';
+import { describe, expect, it } from 'vitest';
 
 const dateStr = (date: Date) => `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`;
 

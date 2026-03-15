@@ -1,4 +1,5 @@
 import { scrollInfo } from '@jsfns/web/scrollInfo';
+import { afterAll, beforeAll, describe, expect, it } from 'vitest';
 import { byId, generateId, insertHtml, removeElement } from './assets/helpers';
 
 const testID = generateId('ScrollInfo');
@@ -17,6 +18,26 @@ describe('"scrollInfo"', () => {
 	});
 
 	afterAll(() => removeElement(testID));
+
+	it('Returns zero percentages when content does not overflow', () => {
+		const noScrollId = generateId('ScrollInfoNoScroll');
+		insertHtml(
+			`<div id="${noScrollId}" style="width: 100px; height: 100px; overflow: hidden"></div>`,
+		);
+
+		const elm = byId(noScrollId);
+		// Ensure no scrollable area by setting scroll dimensions equal to client dimensions
+		Object.defineProperty(elm, 'scrollWidth', { value: elm.clientWidth, configurable: true });
+		Object.defineProperty(elm, 'scrollHeight', { value: elm.clientHeight, configurable: true });
+
+		const result = scrollInfo(elm);
+		expect(result.xPct).toBe(0);
+		expect(result.yPct).toBe(0);
+		expect(result.xMax).toBe(0);
+		expect(result.yMax).toBe(0);
+
+		removeElement(noScrollId);
+	});
 
 	it.each([
 		[100, 50, 50],

@@ -16,10 +16,8 @@ export type PascalCaseSettings = Omit<CamelCaseSettings, 'upper'>;
  * pascalCase('data-value2-input'); // --> DataValue2input
  * pascalCase('XML data input'); // --> XmlDataInput
  *
- * // With settings
- * const settings = { abbr: true, numbers: true };
- *
- * pascalCase('data-VALUE2-input', settings); // --> DataVALUE2Input
+ * // Keep abbreviations
+ * pascalCase('data-VALUE2-input', { abbr: true }); // --> DataVALUE2Input
  * ```
  */
 export const pascalCase = (input: string, settings?: PascalCaseSettings): string =>

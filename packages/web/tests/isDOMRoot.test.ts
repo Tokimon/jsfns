@@ -1,4 +1,5 @@
 import { isDOMRoot } from '@jsfns/web/isDOMRoot';
+import { describe, expect, it } from 'vitest';
 import { appendFrame, createDetachedDocument, createElement } from './assets/helpers';
 
 describe('"isDOMRoot"', () => {

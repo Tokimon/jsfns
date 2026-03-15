@@ -1,4 +1,5 @@
 import { truncate } from '@jsfns/core/truncate';
+import { describe, expect, it } from 'vitest';
 
 describe('"truncate"', () => {
 	describe('Returns the given entry as is, when "maxLength" is', () => {

@@ -1,4 +1,5 @@
 import { previousSiblings } from '@jsfns/web/previousSiblings';
+import { afterAll, beforeAll, describe, expect, it } from 'vitest';
 import { byId, createElement, generateId, insertHtml, removeElement } from './assets/helpers';
 
 const testID = generateId('previousSiblings');

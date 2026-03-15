@@ -1,5 +1,5 @@
-import { jest } from '@jest/globals';
 import { docComplete, domReady } from '@jsfns/web/domReady';
+import { describe, expect, it, vi } from 'vitest';
 import { bind, triggerEvent, unbind } from './assets/helpers';
 
 function afterDomLoad() {
@@ -23,8 +23,8 @@ describe('"domReady"', () => {
 	it('Triggers the handler on the document ready event', async () => {
 		await afterDomLoad();
 
-		const domReadyCb = jest.fn();
-		const fakeReadyState = jest.spyOn(document, 'readyState', 'get').mockReturnValue('loading');
+		const domReadyCb = vi.fn();
+		const fakeReadyState = vi.spyOn(document, 'readyState', 'get').mockReturnValue('loading');
 
 		domReady(domReadyCb);
 		fakeReadyState.mockRestore();
@@ -36,7 +36,7 @@ describe('"domReady"', () => {
 
 	it('Triggers the handler when the method is bound after the DOM has finished loading', async () => {
 		await afterDomLoad();
-		const cb = jest.fn();
+		const cb = vi.fn();
 		domReady(cb);
 		expect(cb).toHaveBeenCalled();
 	});

@@ -1,4 +1,5 @@
 import { scrollParent } from '@jsfns/web/scrollParent';
+import { afterAll, beforeEach, describe, expect, it } from 'vitest';
 import {
 	appendFrame,
 	byId,

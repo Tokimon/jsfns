@@ -1,4 +1,5 @@
 import { promisefy } from '@jsfns/core/promisefy';
+import { describe, expect, it } from 'vitest';
 
 /** The method to promisefy, with a callback signature */
 type NodeLikeCallback = (err?: string | Error | null, data?: unknown) => unknown;

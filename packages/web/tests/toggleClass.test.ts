@@ -1,4 +1,5 @@
 import { toggleClass } from '@jsfns/web/toggleClass';
+import { afterAll, beforeAll, beforeEach, describe, expect, it } from 'vitest';
 import { byId, createElement, generateId, insertHtml, removeElement } from './assets/helpers';
 
 const testID = generateId('ToggleClass');

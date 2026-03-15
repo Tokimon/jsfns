@@ -1,5 +1,5 @@
-import { jest } from '@jest/globals';
 import { type OnOptions, on } from '@jsfns/web/on';
+import { beforeAll, describe, expect, it, vi } from 'vitest';
 import { byId, generateId, insertHtml, triggerEvent } from './assets/helpers';
 
 const testID = generateId('on');
@@ -8,12 +8,8 @@ const eventNames = [1, 2, 3].map((n) => eventName + n.toString());
 
 describe('"on"', () => {
 	function suite(elm: Document | HTMLElement | Window) {
-		const addEventListenerSpy = jest.spyOn(elm, 'addEventListener');
 		let testElm: HTMLElement;
 		let targetChild: HTMLElement;
-
-		const cb = jest.fn();
-		const when = jest.fn();
 
 		beforeAll(() => {
 			insertHtml(`
@@ -26,41 +22,40 @@ describe('"on"', () => {
 			targetChild = testElm.firstElementChild as HTMLElement;
 		});
 
-		beforeEach(() => {
-			// we need to do the check to get the right number of calls,
-			// since the check uses "addEventListener"
-			addEventListenerSpy.mockClear();
-			cb.mockClear();
-			when.mockReturnValue(false);
-		});
-
-		afterAll(() => addEventListenerSpy.mockRestore());
-
 		it.each(['', '_', '-', '.', ':'])('Adds event with separator: "%s"', (separator) => {
+			const cb = vi.fn();
+			const spy = vi.spyOn(elm, 'addEventListener');
+
 			let e = eventName;
 			if (separator) e += separator + 'part';
 
 			const off = on(elm, e, cb);
 
-			expect(addEventListenerSpy).toHaveBeenCalledTimes(1);
+			expect(spy).toHaveBeenCalledTimes(1);
 
 			off();
+			spy.mockRestore();
 		});
 
 		it('Calls "addEventListener" for each event name in a list', () => {
+			const cb = vi.fn();
+			const spy = vi.spyOn(elm, 'addEventListener');
+
 			const off = on(elm, eventNames, cb);
 
-			expect(addEventListenerSpy).toHaveBeenCalledTimes(eventNames.length);
-			const eventArguments = addEventListenerSpy.mock.calls.map(([name]) => name);
+			expect(spy).toHaveBeenCalledTimes(eventNames.length);
+			const eventArguments = spy.mock.calls.map(([name]) => name);
 			expect(eventNames).toEqual(eventArguments);
 
 			off();
+			spy.mockRestore();
 		});
 
 		describe('Options', () => {
 			describe('{ when }', () => {
 				it('Only triggers event when the "when" method return "true"', () => {
-					when.mockReturnValue(false);
+					const cb = vi.fn();
+					const when = vi.fn().mockReturnValue(false);
 
 					const off = on(elm, eventName, cb, {
 						when: when as OnOptions['when'],
@@ -82,6 +77,8 @@ describe('"on"', () => {
 
 			describe('{ once }', () => {
 				it('Triggers the event only once', () => {
+					const cb = vi.fn();
+
 					const off = on(elm, eventName, cb, { once: true });
 
 					expect(cb).toHaveBeenCalledTimes(0);
@@ -98,6 +95,8 @@ describe('"on"', () => {
 
 			describe('{ delegate }', () => {
 				it('Does not trigger the event, when target does not math delegation selector', () => {
+					const cb = vi.fn();
+
 					const off = on(elm, eventName, cb, { delegate: '#' + testID });
 
 					triggerEvent(eventName, elm);
@@ -108,6 +107,8 @@ describe('"on"', () => {
 				});
 
 				it('Triggers the event on the target that matches the given selector', () => {
+					const cb = vi.fn();
+
 					const off = on(elm, eventName, cb, { delegate: '#' + testID });
 
 					expect(cb).toHaveBeenCalledTimes(0);
@@ -144,6 +145,9 @@ describe('"on"', () => {
 
 			describe('{ when, once }', () => {
 				it('Triggers event only once when the "when" method return "true"', () => {
+					const cb = vi.fn();
+					const when = vi.fn();
+
 					when.mockReturnValue(false);
 
 					const off = on(elm, eventName, cb, {
@@ -168,6 +172,9 @@ describe('"on"', () => {
 
 			describe('{ when, delegate }', () => {
 				it('Triggers event on the matching target, only when the "when" method return "true"', () => {
+					const cb = vi.fn();
+					const when = vi.fn();
+
 					when.mockReturnValue(false);
 
 					const off = on(elm, eventName, cb, {
@@ -194,6 +201,8 @@ describe('"on"', () => {
 
 			describe('{ once, delegate }', () => {
 				it('Triggers event on the matching target, only once', () => {
+					const cb = vi.fn();
+
 					const off = on(elm, eventName, cb, {
 						delegate: '#' + testID,
 						once: true,
@@ -217,6 +226,9 @@ describe('"on"', () => {
 
 			describe('{ when, once, delegate }', () => {
 				it('Triggers event on the matching target, only once when the "when" method return "true"', () => {
+					const cb = vi.fn();
+					const when = vi.fn();
+
 					const off = on(elm, eventName, cb, {
 						delegate: '#' + testID,
 						when: when as OnOptions['when'],
@@ -253,10 +265,12 @@ describe('"on"', () => {
 				});
 
 				it('For multiple events', () => {
+					const cb = vi.fn();
+
 					const whens: Record<string, [boolean, EventListener]> = {
-						[eventNames[0]]: [true, jest.fn()],
-						[eventNames[1]]: [true, jest.fn()],
-						[eventNames[2]]: [true, jest.fn()],
+						[eventNames[0]]: [true, vi.fn()],
+						[eventNames[1]]: [true, vi.fn()],
+						[eventNames[2]]: [true, vi.fn()],
 					};
 
 					const multiWhen: OnOptions['when'] = (e) => whens[e.type][0];
@@ -312,12 +326,13 @@ describe('"on"', () => {
 
 	describe('With document given', () => {
 		it('Falls back to document, when no element is given', () => {
-			const spy = jest.spyOn(document, 'addEventListener');
-			const off = on(eventNames, jest.fn());
+			const spy = vi.spyOn(document, 'addEventListener');
+			const off = on(eventNames, vi.fn());
 
 			expect(spy).toHaveBeenCalledTimes(eventNames.length);
 
 			off();
+			spy.mockRestore();
 		});
 
 		suite(document);

@@ -1,4 +1,5 @@
 import { isDocument } from '@jsfns/web/isDocument';
+import { describe, expect, it } from 'vitest';
 import { appendFrame, createDetachedDocument } from './assets/helpers';
 
 describe('"isDocument"', () => {

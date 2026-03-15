@@ -11,7 +11,9 @@
  * isFunction('string'); // --> false
  * ```
  */
-export function isFunction(x: unknown): x is (...args: unknown[]) => unknown {
+
+// biome-ignore lint/complexity/noBannedTypes: In this instance Function is the right type
+export function isFunction(x: unknown): x is Function {
 	return typeof x === 'function';
 }
 

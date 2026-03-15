@@ -1,4 +1,5 @@
 import { replaceClass } from '@jsfns/web/replaceClass';
+import { afterAll, beforeAll, beforeEach, describe, expect, it } from 'vitest';
 import { byId, generateId, insertHtml, removeElement } from './assets/helpers';
 
 const testID = generateId('ReplaceClass');

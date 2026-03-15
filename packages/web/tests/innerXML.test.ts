@@ -1,6 +1,5 @@
-import { jest } from '@jest/globals';
 import { innerXML } from '@jsfns/web/innerXML';
-import type { SpiedFunction } from 'jest-mock';
+import { beforeEach, describe, expect, it, type MockInstance, vi } from 'vitest';
 
 describe('"innerXML"', () => {
 	describe('Returns the inner XML code of an XML element', () => {
@@ -24,7 +23,7 @@ describe('"innerXML"', () => {
 		});
 
 		it('When `innerHTML` is not present', () => {
-			const mock: SpiedFunction<() => string | undefined> = jest.spyOn(xmlElm, 'innerHTML', 'get');
+			const mock: MockInstance<() => string | undefined> = vi.spyOn(xmlElm, 'innerHTML', 'get');
 
 			mock.mockImplementation(() => undefined);
 

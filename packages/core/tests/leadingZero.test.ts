@@ -1,4 +1,5 @@
 import { leadingZero } from '@jsfns/core/leadingZero';
+import { describe, expect, it } from 'vitest';
 
 describe('"leadingZero"', () => {
 	describe('Adds a zero to a value of just one character', () => {

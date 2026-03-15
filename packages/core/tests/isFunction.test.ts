@@ -1,4 +1,5 @@
 import { isFunction } from '@jsfns/core/isFunction';
+import { describe, expect, it } from 'vitest';
 
 describe('"isFunction"', () => {
 	describe('Returns `true` for Function values', () => {

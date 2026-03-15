@@ -13,6 +13,7 @@
 		"format": "biome check --write",
 		"test": "pnpm -r test",
 		"types": "pnpm -r types",
+		"tsgo": "tsgo -p tsconfig.json",
 		"validate": "pnpm -r validate",
 		"dry-run": "pnpm -r dry-run",
 		"changelog": "./bin/changelog.sh",
@@ -31,16 +32,16 @@
 	},
 	"homepage": "https://github.com/Tokimon/jsfns#readme",
 	"devDependencies": {
-		"@biomejs/biome": "^2.0.0",
-		"@changesets/cli": "^2.29.4",
+		"@biomejs/biome": "^2.4.6",
+		"@changesets/cli": "^2.30.0",
 		"@digitak/esrun": "^3.2.26",
-		"@jest/globals": "^30.0.0",
 		"@types/ejs": "^3.1.5",
-		"@types/jest": "~30.0.0",
-		"@types/node": "^24.0.3",
-		"ejs": "^3.1.10",
-		"globals": "^16.2.0",
-		"jest-mock": "^30.0.0",
-		"typescript": "^5.8.3"
+		"@types/node": "^25.4.0",
+		"@typescript/native-preview": "7.0.0-dev.20260313.1",
+		"@vitest/coverage-v8": "^4.0.18",
+		"ejs": "^5.0.1",
+		"globals": "^17.4.0",
+		"typescript": "^5.9.3",
+		"vitest": "^4.0.18"
 	}
 }

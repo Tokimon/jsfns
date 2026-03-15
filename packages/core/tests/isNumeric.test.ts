@@ -1,4 +1,5 @@
 import { isNumeric } from '@jsfns/core/isNumeric';
+import { describe, expect, it } from 'vitest';
 
 describe('"isNumeric"', () => {
 	describe('Returns `true` for numeric values', () => {

@@ -1,4 +1,5 @@
 import { selectorToHTML } from '@jsfns/web/selectorToHTML';
+import { describe, expect, it } from 'vitest';
 
 describe('"selectorToHTML"', () => {
 	it('Correctly converts non-void tag selector', () => {

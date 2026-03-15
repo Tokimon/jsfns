@@ -1,12 +1,9 @@
-import { jest } from '@jest/globals';
 import { off } from '@jsfns/web/off';
+import { describe, expect, it, vi } from 'vitest';
 import { bind, triggerEvent } from './assets/helpers';
 
 describe('"off"', () => {
 	function suite(elm?: HTMLElement | Window) {
-		const removeEventListenerSpy = jest.spyOn(elm || document, 'removeEventListener');
-		const cb = jest.fn();
-
 		const eventName = 'test';
 		const eventNames = [1, 2, 3].map((n) => eventName + n.toString());
 
@@ -14,31 +11,36 @@ describe('"off"', () => {
 
 		const target = elm || document;
 
-		beforeEach(() => {
-			removeEventListenerSpy.mockClear();
-			cb.mockClear();
-		});
-
-		afterAll(() => removeEventListenerSpy.mockRestore());
-
 		it.each(['', '_', '-', '.', ':'])('Removes event with separator: "%s"', (separator) => {
+			const cb = vi.fn();
+			const spy = vi.spyOn(target, 'removeEventListener');
+
 			let e = eventName;
 			if (separator) e += separator + 'part';
 
 			_off(e, cb);
 
-			expect(removeEventListenerSpy).toHaveBeenCalledTimes(1);
+			expect(spy).toHaveBeenCalledTimes(1);
+
+			spy.mockRestore();
 		});
 
 		it('Calls "removeEventListener" for each event name in a list', () => {
+			const cb = vi.fn();
+			const spy = vi.spyOn(target, 'removeEventListener');
+
 			_off(eventNames, cb);
 
-			expect(removeEventListenerSpy).toHaveBeenCalledTimes(3);
-			const eventArguments = removeEventListenerSpy.mock.calls.map(([name]) => name);
+			expect(spy).toHaveBeenCalledTimes(3);
+			const eventArguments = spy.mock.calls.map(([name]) => name);
 			expect(eventNames).toEqual(eventArguments);
+
+			spy.mockRestore();
 		});
 
 		it('Removes event', () => {
+			const cb = vi.fn();
+
 			bind(target, eventName, cb);
 			triggerEvent(eventName, target);
 

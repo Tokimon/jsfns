@@ -1,20 +1,14 @@
 import { defaultSettings } from '@jsfns/core/camelCase';
 import { type PascalCaseSettings, pascalCase } from '@jsfns/core/pascalCase';
+import { describe, expect, it } from 'vitest';
 import { createBooleanSettings } from './assets/createBooleanSettings';
 import { firstUpper } from './assets/firstUpper';
 import { result, type TestInput } from './assets/result';
 
 const emptyObj = {};
 
-const defaultPascalSettings = { ...defaultSettings };
-delete defaultPascalSettings.upper;
-
-const settingsKeys = Object.keys(defaultSettings) as (keyof PascalCaseSettings)[];
-
-const afterNum = (str: string, numbers?: boolean) => {
-	const s = str.toLowerCase();
-	return numbers ? firstUpper(s) : s;
-};
+const defaultPascalSettings: PascalCaseSettings = { abbr: true };
+const settingsKeys = Object.keys(defaultPascalSettings) as (keyof PascalCaseSettings)[];
 
 const abbrev = (abbr?: boolean) => {
 	const str = 'ABBR';
@@ -27,36 +21,31 @@ const phrases: TestInput<PascalCaseSettings>[] = [
 	['Multiple   spaces   in  phrase', 'MultipleSpacesInPhrase'],
 	['/some/path/someWhere', 'SomePathSomeWhere'],
 
-	['With ABBR in the middle', ({ abbr }) => `with${abbrev(abbr)}InTheMiddle`],
+	['With ABBR in the middle', ({ abbr }) => `With${abbrev(abbr)}InTheMiddle`],
 	['ABBR in the beginning', ({ abbr }) => `${abbrev(abbr)}InTheBeginning`],
 	['ABBRInWord', ({ abbr }) => `${abbrev(abbr)}InWord`],
 
-	['Num42in the middle', ({ numbers = true }) => `num42${afterNum('in', numbers)}TheMiddle`],
-	['42in the beginning', ({ numbers = true }) => `42${afterNum('in', numbers)}TheBeginning`],
+	['Num42in the middle', `Num42InTheMiddle`],
+	['42in the beginning', `42InTheBeginning`],
 	['42 alone', '42Alone'],
 
-	['camelCase', 'camelCase'],
-	['PascalCase', 'pascalCase'],
-	['snake_case', 'snakeCase'],
-	['kebab-case', 'kebabCase'],
-	['-kebab-case-', 'kebabCase'],
+	['camelCase', 'CamelCase'],
+	['PascalCase', 'PascalCase'],
+	['snake_case', 'SnakeCase'],
+	['kebab-case', 'KebabCase'],
+	['-kebab-case-', 'KebabCase'],
 
-	['word', 'word'],
-	['Name', 'name'],
+	['word', 'Word'],
+	['Name', 'Name'],
 
-	[
-		'data-ABBR42number space',
-		({ numbers = true, abbr }) => `data${abbrev(abbr)}42${afterNum('number', numbers)}Space`,
-	],
-	['Look! 99 ? ABBR #Test', ({ abbr }) => `look99${abbrev(abbr)}Test`],
+	['data-ABBR42number space', ({ abbr }) => `Data${abbrev(abbr)}42NumberSpace`],
+	['Look! 99 ? ABBR #Test', ({ abbr }) => `Look99${abbrev(abbr)}Test`],
 ];
 
 describe('"pascalCase"', () => {
 	describe('Passing a string directly', () => {
-		describe('Convert a phrase into a lower PascalCased word (using default settings)', () => {
-			it.each(phrases)('"%s"', (input, output) => {
-				expect(pascalCase(input)).toBe(firstUpper(result(output, defaultSettings)));
-			});
+		it.each(phrases)('Converts "%s" into PascalCased word', (input, output) => {
+			expect(pascalCase(input)).toBe(result(output, defaultSettings));
 		});
 	});
 
@@ -68,7 +57,7 @@ describe('"pascalCase"', () => {
 			const settings = emptyObj === conf ? defaultPascalSettings : conf;
 
 			it.each(phrases)('"%s"', (input, output) => {
-				expect(pascalCase(input, settings)).toBe(firstUpper(result(output, settings)));
+				expect(pascalCase(input, settings)).toBe(result(output, settings));
 			});
 		});
 	});

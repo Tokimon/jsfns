@@ -1,4 +1,5 @@
 import { wrap } from '@jsfns/web/wrap';
+import { afterEach, beforeEach, describe, expect, it } from 'vitest';
 import { byId, createElement, generateId, insertHtml, removeElement } from './assets/helpers';
 
 const testID = generateId('Wrap');
