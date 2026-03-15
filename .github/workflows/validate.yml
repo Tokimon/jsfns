@@ -7,7 +7,7 @@ on:
     branches: [main]
 
 jobs:
-  validate:
+  checks:
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
@@ -15,17 +15,18 @@ jobs:
         package: [core, web]
         check: [lint, types, docs, test]
         include:
-          - check: lint
-            command: pnpm lint
-          - check: types
-            command: pnpm types
           - check: docs
-            command: pnpm typedoc:validate
-          - check: test
-            command: pnpm test
+            command: typedoc:validate
     name: ${{ matrix.package }} / ${{ matrix.check }}
     steps:
+      - uses: actions/checkout@v6
       - uses: ./.github/setup-node-pnpm
 
       - name: Run ${{ matrix.check }}
-        run: pnpm --filter @jsfns/${{ matrix.package }} ${{ matrix.command }}
+        run: pnpm --filter @jsfns/${{ matrix.package }} ${{ matrix.command || matrix.check }}
+
+  validate:
+    needs: checks
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "All checks passed"
