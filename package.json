@@ -13,7 +13,7 @@
 		"format": "biome check --write",
 		"test": "pnpm -r test",
 		"types": "pnpm -r types",
-		"tsgo": "tsgo -p tsconfig.json",
+		"typecheck": "tsgo -p tsconfig.json",
 		"validate": "pnpm -r validate",
 		"dry-run": "pnpm -r dry-run",
 		"changelog": "./bin/changelog.sh",

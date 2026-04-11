@@ -33,7 +33,7 @@
 		"clean": "../../bin/clean.sh",
 		"missing": "../../bin/missing.sh",
 		"readme": "esrun ../../readme-builder/build.ts",
-		"types": "tsgo -p tsconfig.json",
+		"typecheck": "tsgo -p tsconfig.json",
 		"test": "vitest run",
 		"test:coverage:json": "vitest run --coverage.reporter=json-summary",
 		"typedoc:validate": "typedoc --entryPoints \"src/*.ts\" --validation --treatWarningsAsErrors --emit none",
