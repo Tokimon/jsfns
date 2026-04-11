@@ -26,7 +26,6 @@ All methods are written in TypeScript and converted into various JS versions sui
 
 - `.js`: ES 6 syntax.
 - `.mjs`: ES modules syntax
-- `.cjs`: ES 6 syntax + CommonJS syntax
 - `.d.ts`: TypeScript description files
 
 ## [@jsfns/web](https://tokimon.github.io/jsfns-docs/web)
@@ -63,12 +62,6 @@ pnpm i @jsfns/core
 ```js
 // JS + MJS Modules
 import { camelCase } from '@jsfns/core/camelCase';
-camelCase('Camel cased phrase'); // camelCasedPhrase
-```
-
-```js
-// CommonJS Require Modules
-const { camelCase } = require('@jsfns/core/camelCase');
 camelCase('Camel cased phrase'); // camelCasedPhrase
 ```
 
