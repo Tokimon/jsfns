@@ -1,10 +1,10 @@
-import { minMax } from './minMax';
+import { clamp } from './clamp';
 import { numberToHex } from './numberToHex';
 
 /** Array representation of the RGB(A) color values */
 export type RGBTuple = [red: number, green: number, blue: number, alpha?: number];
 
-const hexStr = (color: number) => numberToHex(minMax(color, 0, 255));
+const hexStr = (color: number) => numberToHex(clamp(0, color, 255));
 
 /**
  * Converts an Array of R G B (A) colors into a hex color.
@@ -48,7 +48,7 @@ function RGBToHex(r: number | RGBTuple, g?: number, b?: number, a?: number): str
 	if (Array.isArray(r)) return RGBToHex(...r);
 
 	let hex = '#' + hexStr(r) + hexStr(g as number) + hexStr(b as number);
-	if (a !== undefined) hex += hexStr(minMax(a, 0, 1) * 255);
+	if (a !== undefined) hex += hexStr(clamp(0, a, 1) * 255);
 
 	return hex;
 }
