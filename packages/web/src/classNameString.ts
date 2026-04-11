@@ -1,5 +1,5 @@
-import { isObject } from '@jsfns/core/isObject';
-import { isString } from '@jsfns/core/isString';
+import { isObject } from '@jsfns/core/isObject.js';
+import { isString } from '@jsfns/core/isString.js';
 
 /** The various input valid for classNameString */
 export type SimpleClassNameInput = string | Record<string, boolean | undefined>;

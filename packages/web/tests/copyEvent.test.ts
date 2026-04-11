@@ -1,6 +1,6 @@
-import { copyEvent } from '@jsfns/web/copyEvent';
+import { copyEvent } from '@jsfns/web/copyEvent.js';
 import { describe, expect, it } from 'vitest';
-import { createElement, triggerEvent } from './assets/helpers';
+import { createElement, triggerEvent } from './assets/helpers.js';
 
 describe('"copyEvent"', () => {
 	type Assertion = (event: Event) => void;

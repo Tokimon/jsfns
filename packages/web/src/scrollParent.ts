@@ -1,6 +1,6 @@
-import { css } from './css';
-import { isDOMChildNode } from './isDOMChildNode';
-import { viewport } from './viewport';
+import { css } from './css.js';
+import { isDOMChildNode } from './isDOMChildNode.js';
+import { viewport } from './viewport.js';
 
 function getScrollParent(elm: Element, noStaticParent: boolean) {
 	let parent = elm.parentElement;

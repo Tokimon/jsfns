@@ -1,6 +1,6 @@
-import { visible } from '@jsfns/web/visible';
+import { visible } from '@jsfns/web/visible.js';
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
-import { byId, createElement, generateId, insertHtml, removeElement } from './assets/helpers';
+import { byId, createElement, generateId, insertHtml, removeElement } from './assets/helpers.js';
 
 const testID = generateId('Visible');
 

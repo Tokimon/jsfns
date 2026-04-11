@@ -1,6 +1,6 @@
-import { isDOMElement } from './isDOMElement';
-import type { GeneralWindow } from './types';
-import { viewport } from './viewport';
+import { isDOMElement } from './isDOMElement.js';
+import type { GeneralWindow } from './types.js';
+import { viewport } from './viewport.js';
 
 /** The scroll information summary */
 export type ScrollInfo = {

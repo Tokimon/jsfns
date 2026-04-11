@@ -1,6 +1,6 @@
-import { isString } from '@jsfns/core/isString';
-import { createElement } from './createElement';
-import { isDOMChildNode } from './isDOMChildNode';
+import { isString } from '@jsfns/core/isString.js';
+import { createElement } from './createElement.js';
+import { isDOMChildNode } from './isDOMChildNode.js';
 
 /**
  * Replace a given DOM element with another DOM element or plain HTML string

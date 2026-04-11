@@ -1,5 +1,5 @@
-import { isDOMElement } from './isDOMElement';
-import { isDOMFragment } from './isDOMFragment';
+import { isDOMElement } from './isDOMElement.js';
+import { isDOMFragment } from './isDOMFragment.js';
 
 /**
  * Is the given object a DOM node that can contain child DOM nodes

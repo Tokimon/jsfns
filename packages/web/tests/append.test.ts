@@ -1,4 +1,4 @@
-import { append } from '@jsfns/web/append';
+import { append } from '@jsfns/web/append.js';
 import { afterAll, beforeAll, beforeEach, describe, expect, it } from 'vitest';
 import {
 	byId,
@@ -7,7 +7,7 @@ import {
 	getOne,
 	insertHtml,
 	removeElement,
-} from './assets/helpers';
+} from './assets/helpers.js';
 
 const testID = generateId('Append');
 const insertHTML = '<div class="inserted"></div>';

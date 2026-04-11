@@ -1,6 +1,6 @@
-import { uniqueNodeList } from '@jsfns/web/uniqueNodeList';
+import { uniqueNodeList } from '@jsfns/web/uniqueNodeList.js';
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
-import { byId, generateId, insertHtml, removeElement } from './assets/helpers';
+import { byId, generateId, insertHtml, removeElement } from './assets/helpers.js';
 
 const testID = generateId('uniqueNodeList');
 

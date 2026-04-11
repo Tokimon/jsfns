@@ -1,4 +1,4 @@
-import { on } from './on';
+import { on } from './on.js';
 
 /**
  * returns whether document ready state indicates that the document is ready to be manipulated

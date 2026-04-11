@@ -1,4 +1,4 @@
-import { replaceNode } from '@jsfns/web/replaceNode';
+import { replaceNode } from '@jsfns/web/replaceNode.js';
 import { afterAll, beforeAll, beforeEach, describe, expect, it } from 'vitest';
 import {
 	byId,
@@ -7,7 +7,7 @@ import {
 	getOne,
 	insertHtml,
 	removeElement,
-} from './assets/helpers';
+} from './assets/helpers.js';
 
 const testID = generateId('ReplaceNode');
 

@@ -1,8 +1,8 @@
-import { outerSize } from '@jsfns/web/outerSize';
-import type { GeneralWindow } from '@jsfns/web/types';
-import { viewport } from '@jsfns/web/viewport';
+import { outerSize } from '@jsfns/web/outerSize.js';
+import type { GeneralWindow } from '@jsfns/web/types.js';
+import { viewport } from '@jsfns/web/viewport.js';
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
-import { byId, generateId, insertHtml, removeElement } from './assets/helpers';
+import { byId, generateId, insertHtml, removeElement } from './assets/helpers.js';
 
 const testID = generateId('outerSize');
 

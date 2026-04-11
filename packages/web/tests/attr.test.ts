@@ -1,6 +1,6 @@
-import { attr } from '@jsfns/web/attr';
+import { attr } from '@jsfns/web/attr.js';
 import { afterAll, beforeAll, beforeEach, describe, expect, it } from 'vitest';
-import { byId, generateId, insertHtml, removeElement } from './assets/helpers';
+import { byId, generateId, insertHtml, removeElement } from './assets/helpers.js';
 
 const testID = generateId('Attr');
 

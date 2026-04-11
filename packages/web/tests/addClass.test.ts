@@ -1,6 +1,6 @@
-import { addClass } from '@jsfns/web/addClass';
+import { addClass } from '@jsfns/web/addClass.js';
 import { afterAll, beforeAll, beforeEach, describe, expect, it } from 'vitest';
-import { byId, createElement, generateId, insertHtml, removeElement } from './assets/helpers';
+import { byId, createElement, generateId, insertHtml, removeElement } from './assets/helpers.js';
 
 const testID = generateId('AddClass');
 

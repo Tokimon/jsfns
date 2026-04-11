@@ -1,6 +1,6 @@
-import { trigger } from '@jsfns/web/trigger';
+import { trigger } from '@jsfns/web/trigger.js';
 import { describe, expect, it, vi } from 'vitest';
-import { bind, unbind } from './assets/helpers';
+import { bind, unbind } from './assets/helpers.js';
 
 describe('"Trigger"', () => {
 	function suite(elm?: Element | Window) {

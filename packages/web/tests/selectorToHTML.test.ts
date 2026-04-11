@@ -1,4 +1,4 @@
-import { selectorToHTML } from '@jsfns/web/selectorToHTML';
+import { selectorToHTML } from '@jsfns/web/selectorToHTML.js';
 import { describe, expect, it } from 'vitest';
 
 describe('"selectorToHTML"', () => {

@@ -1,4 +1,4 @@
-import { parseSelector } from './parseSelector';
+import { parseSelector } from './parseSelector.js';
 
 const voidTags = [
 	'area',

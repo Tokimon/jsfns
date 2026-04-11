@@ -1,4 +1,4 @@
-import { isHTMLElement } from './isHTMLElement';
+import { isHTMLElement } from './isHTMLElement.js';
 
 /** A HTML Element parent properties */
 export type HTMLElementParentProps = 'offsetParent' | 'parentElement' | 'parentNode';

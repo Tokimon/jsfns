@@ -1,6 +1,6 @@
-import { boxModel } from '@jsfns/web/boxModel';
+import { boxModel } from '@jsfns/web/boxModel.js';
 import { afterAll, beforeAll, beforeEach, describe, expect, it } from 'vitest';
-import { byId, generateId, insertHtml, removeElement } from './assets/helpers';
+import { byId, generateId, insertHtml, removeElement } from './assets/helpers.js';
 
 const testID = generateId('BoxModel');
 const styleID = generateId('BoxModelStyle');

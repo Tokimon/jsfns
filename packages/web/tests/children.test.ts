@@ -1,6 +1,6 @@
-import { children } from '@jsfns/web/children';
+import { children } from '@jsfns/web/children.js';
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
-import { byId, createElement, generateId, insertHtml, removeElement } from './assets/helpers';
+import { byId, createElement, generateId, insertHtml, removeElement } from './assets/helpers.js';
 
 const testID = generateId('Children');
 

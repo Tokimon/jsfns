@@ -1,7 +1,7 @@
-import { inView } from '@jsfns/web/inView';
+import { inView } from '@jsfns/web/inView.js';
 import { afterAll, describe, expect, it } from 'vitest';
-import { byId, createElement, generateId, insertHtml, removeElement } from './assets/helpers';
-import { mockClientRect } from './assets/mocks';
+import { byId, createElement, generateId, insertHtml, removeElement } from './assets/helpers.js';
+import { mockClientRect } from './assets/mocks.js';
 
 const testID = generateId('InView');
 const hiddenID = generateId('InView_hidden');

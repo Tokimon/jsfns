@@ -1,6 +1,6 @@
-import { isHTMLElement } from '@jsfns/web/isHTMLElement';
+import { isHTMLElement } from '@jsfns/web/isHTMLElement.js';
 import { describe, expect, it } from 'vitest';
-import { appendFrame, createDetachedDocument } from './assets/helpers';
+import { appendFrame, createDetachedDocument } from './assets/helpers.js';
 
 describe('"isHTMLElement"', () => {
 	describe('Returns `true` for HTML element:', () => {

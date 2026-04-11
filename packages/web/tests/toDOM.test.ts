@@ -1,4 +1,4 @@
-import { toDOM } from '@jsfns/web/toDOM';
+import { toDOM } from '@jsfns/web/toDOM.js';
 import { describe, expect, it } from 'vitest';
 
 describe('"toDOM"', () => {

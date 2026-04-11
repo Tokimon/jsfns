@@ -1,5 +1,5 @@
-import { kebabCase } from '@jsfns/core/kebabCase';
-import { pascalCase } from '@jsfns/core/pascalCase';
+import { kebabCase } from '@jsfns/core/kebabCase.js';
+import { pascalCase } from '@jsfns/core/pascalCase.js';
 
 /** No prefix */
 export type VendorNone = {

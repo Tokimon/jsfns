@@ -1,5 +1,5 @@
-import { isString } from '@jsfns/core/isString';
-import { ensureHTML } from './ensureHTML';
+import { isString } from '@jsfns/core/isString.js';
+import { ensureHTML } from './ensureHTML.js';
 
 /**
  * Append DOM element or plain HTML to the beginning of a given DOM element

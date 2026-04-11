@@ -1,6 +1,6 @@
-import { getCurrentDocument } from '@jsfns/web/getCurrentDocument';
+import { getCurrentDocument } from '@jsfns/web/getCurrentDocument.js';
 import { describe, expect, it } from 'vitest';
-import { appendFrame, createDetachedDocument, createElement } from './assets/helpers';
+import { appendFrame, createDetachedDocument, createElement } from './assets/helpers.js';
 
 describe('"getCurrentDocument"', () => {
 	it('Returns null, when given node is null', () => {

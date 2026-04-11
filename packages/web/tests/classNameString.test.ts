@@ -1,4 +1,4 @@
-import { classNameString } from '@jsfns/web/classNameString';
+import { classNameString } from '@jsfns/web/classNameString.js';
 import { describe, expect, it } from 'vitest';
 
 describe('"classNameString"', () => {

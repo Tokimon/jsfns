@@ -1,4 +1,4 @@
-import type { GeneralWindow } from './types';
+import type { GeneralWindow } from './types.js';
 
 /**
  * Is the given object a Window object (eg. window or IFrame.contentWindow)

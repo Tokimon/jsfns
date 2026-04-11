@@ -1,4 +1,4 @@
-import { innerXML } from '@jsfns/web/innerXML';
+import { innerXML } from '@jsfns/web/innerXML.js';
 import { beforeEach, describe, expect, it, type MockInstance, vi } from 'vitest';
 
 describe('"innerXML"', () => {

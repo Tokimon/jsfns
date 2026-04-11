@@ -1,6 +1,6 @@
-import { findByTagName } from '@jsfns/web/findByTagName';
+import { findByTagName } from '@jsfns/web/findByTagName.js';
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
-import { byId, generateId, insertHtml, removeElement } from './assets/helpers';
+import { byId, generateId, insertHtml, removeElement } from './assets/helpers.js';
 
 const testID = generateId('FindByTagName');
 

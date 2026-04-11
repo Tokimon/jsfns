@@ -1,6 +1,6 @@
-import { toggleClass } from '@jsfns/web/toggleClass';
+import { toggleClass } from '@jsfns/web/toggleClass.js';
 import { afterAll, beforeAll, beforeEach, describe, expect, it } from 'vitest';
-import { byId, createElement, generateId, insertHtml, removeElement } from './assets/helpers';
+import { byId, createElement, generateId, insertHtml, removeElement } from './assets/helpers.js';
 
 const testID = generateId('ToggleClass');
 

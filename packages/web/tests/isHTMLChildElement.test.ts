@@ -1,4 +1,4 @@
-import { isHTMLChildElement } from '@jsfns/web/isHTMLChildElement';
+import { isHTMLChildElement } from '@jsfns/web/isHTMLChildElement.js';
 import { afterAll, beforeAll, describe, expect, it, type MockInstance } from 'vitest';
 import {
 	appendFrame,
@@ -8,8 +8,8 @@ import {
 	generateId,
 	insertHtml,
 	removeElement,
-} from './assets/helpers';
-import { mockOffsetParent } from './assets/mocks';
+} from './assets/helpers.js';
+import { mockOffsetParent } from './assets/mocks.js';
 
 const testID = generateId('IsDOMChildNode');
 

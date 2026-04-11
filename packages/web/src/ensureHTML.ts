@@ -1,4 +1,4 @@
-import { selectorToHTML } from './selectorToHTML';
+import { selectorToHTML } from './selectorToHTML.js';
 
 /**
  * Parses a string to see if it is already HTML otherwise it assumes
