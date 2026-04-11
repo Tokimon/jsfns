@@ -3,7 +3,11 @@
 	"compilerOptions": {
 		"declaration": false,
 		"noEmit": false,
+		"rewriteRelativeImportExtensions": true,
 		"target": "ES2022",
 		"outDir": "./build/mjs"
-	}
+	},
+	"references": [
+		{ "path": "../core/tsconfig.js.json" }
+	]
 }

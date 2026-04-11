@@ -1,8 +1,10 @@
 {
 	"extends": "./tsconfig.json",
 	"compilerOptions": {
+		"composite": true,
 		"outDir": "./build/js",
-		"noEmit": false
+		"noEmit": false,
+		"rewriteRelativeImportExtensions": true
 	},
 	"exclude": [],
 	"include": ["./src"]
