@@ -1,5 +1,5 @@
-import { chunkString } from './chunkString';
-import { limitDecimals } from './limitDecimals';
+import { chunkString } from './chunkString.js';
+import { limitDecimals } from './limitDecimals.js';
 
 /** Settings for the number formatting */
 export type FormatNumberSettings = {

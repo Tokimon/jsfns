@@ -1,4 +1,4 @@
-import { throttle } from '@jsfns/core/throttle';
+import { throttle } from '@jsfns/core/throttle.js';
 import { afterEach, beforeEach, describe, expect, test, vi } from 'vitest';
 
 const TIME = 100;

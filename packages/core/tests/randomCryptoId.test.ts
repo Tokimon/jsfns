@@ -1,5 +1,5 @@
 import crypto from 'node:crypto';
-import { randomCryptoId } from '@jsfns/core/randomCryptoId';
+import { randomCryptoId } from '@jsfns/core/randomCryptoId.js';
 import { beforeAll, describe, expect, it } from 'vitest';
 
 describe('"randomCryptoId"', () => {

@@ -1,4 +1,4 @@
-import { isFunction } from '@jsfns/core/isFunction';
+import { isFunction } from '@jsfns/core/isFunction.js';
 import { describe, expect, it } from 'vitest';
 
 describe('"isFunction"', () => {

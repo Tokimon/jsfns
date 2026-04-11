@@ -1,5 +1,5 @@
-import { clamp } from './clamp';
-import { numberToHex } from './numberToHex';
+import { clamp } from './clamp.js';
+import { numberToHex } from './numberToHex.js';
 
 /** Array representation of the RGB(A) color values */
 export type RGBTuple = [red: number, green: number, blue: number, alpha?: number];

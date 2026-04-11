@@ -1,4 +1,4 @@
-import { RGBToHex } from '@jsfns/core/RGBToHex';
+import { RGBToHex } from '@jsfns/core/RGBToHex.js';
 import { describe, expect, it } from 'vitest';
 
 describe('"RGBToHex"', () => {

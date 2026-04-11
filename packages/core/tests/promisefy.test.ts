@@ -1,4 +1,4 @@
-import { promisefy } from '@jsfns/core/promisefy';
+import { promisefy } from '@jsfns/core/promisefy.js';
 import { describe, expect, it } from 'vitest';
 
 /** The method to promisefy, with a callback signature */

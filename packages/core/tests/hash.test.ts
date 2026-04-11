@@ -1,4 +1,4 @@
-import { hash, hashCode } from '@jsfns/core/hash';
+import { hash, hashCode } from '@jsfns/core/hash.js';
 import { describe, expect, it } from 'vitest';
 
 describe('"hash"', () => {

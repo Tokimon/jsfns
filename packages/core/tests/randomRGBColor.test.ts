@@ -1,4 +1,4 @@
-import { randomRGBColor } from '@jsfns/core/randomRGBColor';
+import { randomRGBColor } from '@jsfns/core/randomRGBColor.js';
 import { describe, expect, it, vi } from 'vitest';
 
 describe('"randomRGBColor"', () => {

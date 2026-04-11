@@ -1,4 +1,4 @@
-import { isObject } from '@jsfns/core/isObject';
+import { isObject } from '@jsfns/core/isObject.js';
 import { describe, expect, it } from 'vitest';
 
 class TestObj {

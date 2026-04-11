@@ -1,4 +1,4 @@
-import { toWords } from '@jsfns/core/toWords';
+import { toWords } from '@jsfns/core/toWords.js';
 import { describe, expect, it } from 'vitest';
 
 describe('"toWords"', () => {

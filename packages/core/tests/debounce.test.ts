@@ -1,4 +1,4 @@
-import { type DebounceCallback, type DebouncedFunction, debounce } from '@jsfns/core/debounce';
+import { type DebounceCallback, type DebouncedFunction, debounce } from '@jsfns/core/debounce.js';
 import { afterEach, beforeEach, describe, expect, test, vi } from 'vitest';
 
 const TIME = 100;

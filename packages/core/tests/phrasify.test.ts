@@ -1,6 +1,6 @@
-import { phrasify } from '@jsfns/core/phrasify';
+import { phrasify } from '@jsfns/core/phrasify.js';
 import { describe, expect, it } from 'vitest';
-import { result } from './assets/result';
+import { result } from './assets/result.js';
 
 const phrases = [
 	['', ''],

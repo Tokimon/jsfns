@@ -1,4 +1,4 @@
-import { isString } from './isString';
+import { isString } from './isString.js';
 
 function maxDecimals(num: number, decimals: number) {
 	const multiplier = 10 ** decimals;

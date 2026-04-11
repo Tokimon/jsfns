@@ -1,6 +1,6 @@
-import { chunkString } from './chunkString';
-import { hexToNumber } from './hexToNumber';
-import { isString } from './isString';
+import { chunkString } from './chunkString.js';
+import { hexToNumber } from './hexToNumber.js';
+import { isString } from './isString.js';
 
 /**
  * Converts a Hexadecimal color to a RGB(A) color array

@@ -1,6 +1,6 @@
-import { kebabCase } from '@jsfns/core/kebabCase';
+import { kebabCase } from '@jsfns/core/kebabCase.js';
 import { describe, expect, it } from 'vitest';
-import { result } from './assets/result';
+import { result } from './assets/result.js';
 
 const phrases = [
 	['', ''],

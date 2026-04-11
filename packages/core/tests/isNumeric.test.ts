@@ -1,4 +1,4 @@
-import { isNumeric } from '@jsfns/core/isNumeric';
+import { isNumeric } from '@jsfns/core/isNumeric.js';
 import { describe, expect, it } from 'vitest';
 
 describe('"isNumeric"', () => {

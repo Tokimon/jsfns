@@ -1,4 +1,4 @@
-import { chunkString } from '@jsfns/core/chunkString';
+import { chunkString } from '@jsfns/core/chunkString.js';
 import { describe, expect, it } from 'vitest';
 
 describe('"chunkString"', () => {

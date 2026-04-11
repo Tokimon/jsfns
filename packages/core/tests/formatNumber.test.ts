@@ -1,4 +1,4 @@
-import { formatNumber } from '@jsfns/core/formatNumber';
+import { formatNumber } from '@jsfns/core/formatNumber.js';
 import { describe, expect, it } from 'vitest';
 
 describe('"formatNumber"', () => {

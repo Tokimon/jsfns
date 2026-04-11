@@ -1,4 +1,4 @@
-import { hexToNumber } from '@jsfns/core/hexToNumber';
+import { hexToNumber } from '@jsfns/core/hexToNumber.js';
 import { describe, expect, it } from 'vitest';
 
 describe('"hexToNumber"', () => {

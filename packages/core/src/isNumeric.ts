@@ -1,5 +1,5 @@
-import { isNumber } from './isNumber';
-import { isString } from './isString';
+import { isNumber } from './isNumber.js';
+import { isString } from './isString.js';
 
 /**
  * Is the given argument is a finite numeric value (number as string or number directly) or not.

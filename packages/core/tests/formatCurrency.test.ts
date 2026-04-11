@@ -1,4 +1,4 @@
-import { formatCurrency } from '@jsfns/core/formatCurrency';
+import { formatCurrency } from '@jsfns/core/formatCurrency.js';
 import { describe, expect, it } from 'vitest';
 
 describe('"formatCurrency"', () => {

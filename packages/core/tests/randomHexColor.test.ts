@@ -1,4 +1,4 @@
-import { randomHexColor } from '@jsfns/core/randomHexColor';
+import { randomHexColor } from '@jsfns/core/randomHexColor.js';
 import { describe, expect, it, vi } from 'vitest';
 
 describe('"randomHexColor"', () => {

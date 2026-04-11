@@ -1,4 +1,4 @@
-import { clamp } from '@jsfns/core/clamp';
+import { clamp } from '@jsfns/core/clamp.js';
 import { describe, expect, it } from 'vitest';
 
 describe('"clamp"', () => {

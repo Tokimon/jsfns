@@ -1,4 +1,4 @@
-import { hexToRGB } from '@jsfns/core/hexToRGB';
+import { hexToRGB } from '@jsfns/core/hexToRGB.js';
 import { describe, expect, it } from 'vitest';
 
 describe('"hexToRGB"', () => {
