@@ -32,7 +32,6 @@ All methods are written in TypeScript and converted into various JS versions sui
 
 - `.js`: ES 6 syntax.
 - `.mjs`: ES modules syntax
-- `.cjs`: ES 6 syntax + CommonJS syntax
 - `.d.ts`: TypeScript description files
 
 ## [@jsfns/core](https://tokimon.github.io/jsfns-docs/core)
@@ -69,12 +68,6 @@ pnpm i @jsfns/web
 ```js
 // JS + MJS Modules
 import { append } from '@jsfns/web/append';
-append(document.body, '<span>Appended content</span>');
-```
-
-```js
-// CommonJS Require Modules
-const { append } = require('@jsfns/web/append');
 append(document.body, '<span>Appended content</span>');
 ```
 
