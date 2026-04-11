@@ -1,7 +1,6 @@
 packages:
-  - docs-builder
   - packages/*
-  - '!**/test/**'
+  - "!**/test/**"
 
 onlyBuiltDependencies:
   - esbuild
