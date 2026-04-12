@@ -1,6 +1,6 @@
-import { previousSiblings } from '@jsfns/web/previousSiblings';
+import { previousSiblings } from '@jsfns/web/previousSiblings.js';
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
-import { byId, createElement, generateId, insertHtml, removeElement } from './assets/helpers';
+import { byId, createElement, generateId, insertHtml, removeElement } from './assets/helpers.js';
 
 const testID = generateId('previousSiblings');
 

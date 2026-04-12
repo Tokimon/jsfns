@@ -1,4 +1,4 @@
-import { toWords } from './toWords';
+import { toWords } from './toWords.js';
 
 /**
  * Transform phrase into a snake_case phrase

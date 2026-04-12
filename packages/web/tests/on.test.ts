@@ -1,6 +1,6 @@
-import { type OnOptions, on } from '@jsfns/web/on';
+import { type OnOptions, on } from '@jsfns/web/on.js';
 import { beforeAll, describe, expect, it, vi } from 'vitest';
-import { byId, generateId, insertHtml, triggerEvent } from './assets/helpers';
+import { byId, generateId, insertHtml, triggerEvent } from './assets/helpers.js';
 
 const testID = generateId('on');
 const eventName = 'test';

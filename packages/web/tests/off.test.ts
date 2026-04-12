@@ -1,6 +1,6 @@
-import { off } from '@jsfns/web/off';
+import { off } from '@jsfns/web/off.js';
 import { describe, expect, it, vi } from 'vitest';
-import { bind, triggerEvent } from './assets/helpers';
+import { bind, triggerEvent } from './assets/helpers.js';
 
 describe('"off"', () => {
 	function suite(elm?: HTMLElement | Window) {

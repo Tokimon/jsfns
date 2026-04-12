@@ -1,4 +1,4 @@
-import { toWords } from './toWords';
+import { toWords } from './toWords.js';
 
 /** Settings for how to format the Camel Case */
 export type CamelCaseSettings = {

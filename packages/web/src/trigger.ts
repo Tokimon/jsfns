@@ -1,5 +1,5 @@
-import { isEventTarget } from './isEventTarget';
-import type { NotFirst } from './types';
+import { isEventTarget } from './isEventTarget.js';
+import type { NotFirst } from './types.js';
 
 type Args = [elm: EventTarget, eventNames: string | string[], data?: unknown];
 

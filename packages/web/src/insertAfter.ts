@@ -1,7 +1,7 @@
-import { isString } from '@jsfns/core/isString';
-import { ensureHTML } from './ensureHTML';
-import { inDOM } from './inDOM';
-import { isDOMRoot } from './isDOMRoot';
+import { isString } from '@jsfns/core/isString.js';
+import { ensureHTML } from './ensureHTML.js';
+import { inDOM } from './inDOM.js';
+import { isDOMRoot } from './isDOMRoot.js';
 
 /**
  * Inserts DOM element or plain HTML after a given DOM element

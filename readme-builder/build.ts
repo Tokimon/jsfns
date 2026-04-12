@@ -1,7 +1,7 @@
 import { readdir, readFile, writeFile } from 'node:fs/promises';
 import { basename, join, resolve } from 'node:path';
 import ejs from 'ejs';
-import * as color from './color';
+import * as color from './color.js';
 
 type Summary = {
 	lines: { total: 360; covered: 360; skipped: 0; pct: 100 };

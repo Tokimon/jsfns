@@ -1,7 +1,7 @@
-import { contentSize } from '@jsfns/web/contentSize';
-import { viewport } from '@jsfns/web/viewport';
+import { contentSize } from '@jsfns/web/contentSize.js';
+import { viewport } from '@jsfns/web/viewport.js';
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
-import { byId, generateId, insertHtml, removeElement } from './assets/helpers';
+import { byId, generateId, insertHtml, removeElement } from './assets/helpers.js';
 
 const testID = generateId('contentSize');
 

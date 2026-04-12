@@ -1,4 +1,4 @@
-import { fuzzySearch } from '@jsfns/core/fuzzySearch';
+import { fuzzySearch } from '@jsfns/core/fuzzySearch.js';
 import { describe, expect, it } from 'vitest';
 
 describe('"fuzzySearch"', () => {

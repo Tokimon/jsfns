@@ -1,4 +1,4 @@
-import { popAtIndex, popAtIndexPure } from '@jsfns/core/popAtIndex';
+import { popAtIndex, popAtIndexPure } from '@jsfns/core/popAtIndex.js';
 import { describe, expect, it } from 'vitest';
 
 describe('"popAtIndex"', () => {

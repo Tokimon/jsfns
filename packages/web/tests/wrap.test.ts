@@ -1,6 +1,6 @@
-import { wrap } from '@jsfns/web/wrap';
+import { wrap } from '@jsfns/web/wrap.js';
 import { afterEach, beforeEach, describe, expect, it } from 'vitest';
-import { byId, createElement, generateId, insertHtml, removeElement } from './assets/helpers';
+import { byId, createElement, generateId, insertHtml, removeElement } from './assets/helpers.js';
 
 const testID = generateId('Wrap');
 const elmID = generateId('Wrap_Elm');

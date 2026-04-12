@@ -16,6 +16,10 @@ get_build_dir() {
   buildDir=$PWD/build/$1/$workspaceName/src
 
   if [ ! -d "$buildDir" ]; then
+    buildDir=$PWD/build/$1/src
+  fi
+
+  if [ ! -d "$buildDir" ]; then
     buildDir=$PWD/build/$1
   fi
 
@@ -31,9 +35,9 @@ build() {
   echo     # Move to a new line for the output of the next command
 
   # Compile the typescript files
-  npx tsc --build $PWD/$tsconfig || exit
+  pnpm exec tsgo --build $PWD/$tsconfig || exit
 
-  # Wait for tsc to finish
+  # Wait for typescript to finish
   wait
 
   buildDir=$(get_build_dir $1)
@@ -77,7 +81,7 @@ build_index() {
     name=$(basename $file .ts)
 
     if [[ ! "$name" =~ \.d ]] && [[ ! "$name" = "index" ]]; then
-      echo "export { $name } from './$name';" >> $PWD/src/index.ts
+      echo "export { $name } from './$name.js';" >> $PWD/src/index.ts
     fi
   done
 
@@ -92,7 +96,6 @@ build_index
 
 # Build the various file types
 build mjs
-build cjs
 build js
 move_dts_files
 

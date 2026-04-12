@@ -1,4 +1,4 @@
-import { type FormatNumberSettings, formatNumber } from './formatNumber';
+import { type FormatNumberSettings, formatNumber } from './formatNumber.js';
 
 /** Method to format a given number according the currency formatter template */
 export type CurrencyFormatter = (num: number) => string;

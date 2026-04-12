@@ -1,7 +1,7 @@
-import { isDocument } from './isDocument';
-import { isWindow } from './isWindow';
-import type { GeneralWindow, Size } from './types';
-import { viewport } from './viewport';
+import { isDocument } from './isDocument.js';
+import { isWindow } from './isWindow.js';
+import type { GeneralWindow, Size } from './types.js';
+import { viewport } from './viewport.js';
 
 /**
  * Find the size of a DOM element, document or window excluding borders, margins and scrollbars.

@@ -1,4 +1,4 @@
-import { type CamelCaseSettings, camelCase } from './camelCase';
+import { type CamelCaseSettings, camelCase } from './camelCase.js';
 
 /** Settings for the pascal case method */
 export type PascalCaseSettings = Omit<CamelCaseSettings, 'upper'>;

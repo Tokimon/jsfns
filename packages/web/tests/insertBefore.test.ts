@@ -1,6 +1,6 @@
-import { insertBefore } from '@jsfns/web/insertBefore';
+import { insertBefore } from '@jsfns/web/insertBefore.js';
 import { afterAll, beforeAll, beforeEach, describe, expect, it } from 'vitest';
-import { byId, createElement, generateId, insertHtml, removeElement } from './assets/helpers';
+import { byId, createElement, generateId, insertHtml, removeElement } from './assets/helpers.js';
 
 const testID = generateId('InsertBefore');
 const nodeID = generateId('InsertBeforeNode');

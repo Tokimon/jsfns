@@ -1,6 +1,6 @@
-import getCurrentWindow from './getCurrentWindow';
-import isDOMNode from './isDOMNode';
-import isWindow from './isWindow';
+import getCurrentWindow from './getCurrentWindow.js';
+import isDOMNode from './isDOMNode.js';
+import isWindow from './isWindow.js';
 
 /**
  * Is the given object a HTMLElement node

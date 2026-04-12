@@ -1,4 +1,4 @@
-import { randomInt } from '@jsfns/core/randomInt';
+import { randomInt } from '@jsfns/core/randomInt.js';
 import {
 	afterAll,
 	beforeAll,

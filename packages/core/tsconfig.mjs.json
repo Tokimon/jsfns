@@ -1,8 +1,10 @@
 {
 	"extends": "./tsconfig.js.json",
 	"compilerOptions": {
+		"composite": false,
 		"declaration": false,
 		"noEmit": false,
+		"rewriteRelativeImportExtensions": true,
 		"target": "ES2022",
 		"outDir": "./build/mjs"
 	}

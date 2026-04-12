@@ -1,5 +1,5 @@
-import { hidden } from './hidden';
-import { isDOMChildNode } from './isDOMChildNode';
+import { hidden } from './hidden.js';
+import { isDOMChildNode } from './isDOMChildNode.js';
 
 /** The indication object of the element's position compared to the viewport area */
 export type PositionIndicator = {

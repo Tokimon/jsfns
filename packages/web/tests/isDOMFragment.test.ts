@@ -1,6 +1,6 @@
-import { isDOMFragment } from '@jsfns/web/isDOMFragment';
+import { isDOMFragment } from '@jsfns/web/isDOMFragment.js';
 import { describe, expect, it } from 'vitest';
-import { createElement } from './assets/helpers';
+import { createElement } from './assets/helpers.js';
 
 describe('"isDOMFragment"', () => {
 	describe('Returns `true` for:', () => {

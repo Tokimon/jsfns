@@ -1,4 +1,4 @@
-import { find } from '@jsfns/web/find';
+import { find } from '@jsfns/web/find.js';
 import {
 	afterAll,
 	beforeAll,

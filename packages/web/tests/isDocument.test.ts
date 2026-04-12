@@ -1,6 +1,6 @@
-import { isDocument } from '@jsfns/web/isDocument';
+import { isDocument } from '@jsfns/web/isDocument.js';
 import { describe, expect, it } from 'vitest';
-import { appendFrame, createDetachedDocument } from './assets/helpers';
+import { appendFrame, createDetachedDocument } from './assets/helpers.js';
 
 describe('"isDocument"', () => {
 	describe('Returns `true` for', () => {

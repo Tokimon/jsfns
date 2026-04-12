@@ -1,4 +1,4 @@
-import { uniqueNodeList } from './uniqueNodeList';
+import { uniqueNodeList } from './uniqueNodeList.js';
 
 /**
  * Find a DOM element with the given ID

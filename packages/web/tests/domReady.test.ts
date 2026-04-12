@@ -1,6 +1,6 @@
-import { docComplete, domReady } from '@jsfns/web/domReady';
+import { docComplete, domReady } from '@jsfns/web/domReady.js';
 import { describe, expect, it, vi } from 'vitest';
-import { bind, triggerEvent, unbind } from './assets/helpers';
+import { bind, triggerEvent, unbind } from './assets/helpers.js';
 
 function afterDomLoad() {
 	return new Promise((resolve) => {

@@ -1,4 +1,4 @@
-import { isDOMChildNode } from '@jsfns/web/isDOMChildNode';
+import { isDOMChildNode } from '@jsfns/web/isDOMChildNode.js';
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
 import {
 	appendFrame,
@@ -8,7 +8,7 @@ import {
 	generateId,
 	insertHtml,
 	removeElement,
-} from './assets/helpers';
+} from './assets/helpers.js';
 
 const testID = generateId('IsDOMChildNode');
 

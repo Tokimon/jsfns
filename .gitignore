@@ -23,10 +23,8 @@ _tests
 build
 
 packages/*/src/index.ts
-
 packages/*/*.js
 packages/*/*.mjs
-packages/*/*.cjs
 packages/*/*.d.ts
 
 !jest.*.js

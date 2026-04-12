@@ -1,6 +1,6 @@
-import { invisible } from '@jsfns/web/invisible';
+import { invisible } from '@jsfns/web/invisible.js';
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
-import { byId, createElement, generateId, insertHtml, removeElement } from './assets/helpers';
+import { byId, createElement, generateId, insertHtml, removeElement } from './assets/helpers.js';
 
 const testID = generateId('Invisible');
 

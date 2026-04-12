@@ -1,6 +1,6 @@
-import { isNumeric } from '@jsfns/core/isNumeric';
-import { isString } from '@jsfns/core/isString';
-import { kebabCase } from '@jsfns/core/kebabCase';
+import { isNumeric } from '@jsfns/core/isNumeric.js';
+import { isString } from '@jsfns/core/isString.js';
+import { kebabCase } from '@jsfns/core/kebabCase.js';
 
 /** Convert camelCase property name to kebab-case */
 export type CamelToKebab<S extends string> = S extends `${infer T}${infer U}`

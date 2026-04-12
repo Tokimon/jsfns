@@ -1,4 +1,4 @@
-import { ensureHTML } from '@jsfns/web/ensureHTML';
+import { ensureHTML } from '@jsfns/web/ensureHTML.js';
 import { describe, expect, it } from 'vitest';
 
 describe('"ensureHTML"', () => {

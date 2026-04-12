@@ -1,4 +1,4 @@
-import { parseSelector } from '@jsfns/web/parseSelector';
+import { parseSelector } from '@jsfns/web/parseSelector.js';
 import { describe, expect, it } from 'vitest';
 
 describe('"parseSelector"', () => {

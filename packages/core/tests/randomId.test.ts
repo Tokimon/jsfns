@@ -1,4 +1,4 @@
-import { randomId } from '@jsfns/core/randomId';
+import { randomId } from '@jsfns/core/randomId.js';
 import { describe, expect, it } from 'vitest';
 
 describe('"randomId"', () => {

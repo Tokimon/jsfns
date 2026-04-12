@@ -1,6 +1,6 @@
-import { isWindow } from '@jsfns/web/isWindow';
+import { isWindow } from '@jsfns/web/isWindow.js';
 import { describe, expect, it } from 'vitest';
-import { appendFrame, createDetachedDocument } from './assets/helpers';
+import { appendFrame, createDetachedDocument } from './assets/helpers.js';
 
 describe('"isWindow"', () => {
 	describe('Returns `true` for:', () => {

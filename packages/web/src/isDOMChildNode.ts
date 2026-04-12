@@ -1,4 +1,4 @@
-import { isDOMNode } from './isDOMNode';
+import { isDOMNode } from './isDOMNode.js';
 
 /** A DOM Child Node parent properties */
 export type ChildNodeParentProps = 'parentElement' | 'parentNode';

@@ -1,6 +1,6 @@
-import { findById } from '@jsfns/web/findById';
+import { findById } from '@jsfns/web/findById.js';
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
-import { generateId, insertHtml, removeElement } from './assets/helpers';
+import { generateId, insertHtml, removeElement } from './assets/helpers.js';
 
 const testID = generateId('FindByIDTest');
 

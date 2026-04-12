@@ -1,4 +1,4 @@
-import { toWords } from './toWords';
+import { toWords } from './toWords.js';
 
 /**
  * Transform a string into a space separated phrase

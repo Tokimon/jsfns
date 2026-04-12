@@ -1,6 +1,6 @@
-import { inDOM } from '@jsfns/web/inDOM';
+import { inDOM } from '@jsfns/web/inDOM.js';
 import { describe, expect, it } from 'vitest';
-import { appendFrame, createDetachedDocument, createElement } from './assets/helpers';
+import { appendFrame, createDetachedDocument, createElement } from './assets/helpers.js';
 
 describe('"inDOM"', () => {
 	describe('Returns `true` for DOM elements found in the DOM tree', () => {

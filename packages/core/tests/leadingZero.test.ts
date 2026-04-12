@@ -1,4 +1,4 @@
-import { leadingZero } from '@jsfns/core/leadingZero';
+import { leadingZero } from '@jsfns/core/leadingZero.js';
 import { describe, expect, it } from 'vitest';
 
 describe('"leadingZero"', () => {

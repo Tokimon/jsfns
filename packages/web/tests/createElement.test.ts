@@ -1,4 +1,4 @@
-import { createElement } from '@jsfns/web/createElement';
+import { createElement } from '@jsfns/web/createElement.js';
 import { describe, expect, it } from 'vitest';
 
 describe('"createElement"', () => {

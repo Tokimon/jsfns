@@ -1,7 +1,7 @@
-import { contentBoxSize } from '@jsfns/web/contentBoxSize';
-import { viewport } from '@jsfns/web/viewport';
+import { contentBoxSize } from '@jsfns/web/contentBoxSize.js';
+import { viewport } from '@jsfns/web/viewport.js';
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
-import { byId, generateId, insertHtml, removeElement } from './assets/helpers';
+import { byId, generateId, insertHtml, removeElement } from './assets/helpers.js';
 
 const testID = generateId('contentBoxSize');
 

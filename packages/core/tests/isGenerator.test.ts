@@ -1,4 +1,4 @@
-import { isGenerator, isGeneratorLike } from '@jsfns/core/isGenerator';
+import { isGenerator, isGeneratorLike } from '@jsfns/core/isGenerator.js';
 import { describe, expect, it } from 'vitest';
 
 describe('"isGenerator"', () => {

@@ -1,7 +1,7 @@
-import position from '@jsfns/web/position';
+import position from '@jsfns/web/position.js';
 import { afterAll, beforeAll, describe, expect, it, type MockInstance } from 'vitest';
-import { byId, generateId, getOne, insertHtml, removeElement } from './assets/helpers';
-import { mockOffsetParent, mockOffsetPosition } from './assets/mocks';
+import { byId, generateId, getOne, insertHtml, removeElement } from './assets/helpers.js';
+import { mockOffsetParent, mockOffsetPosition } from './assets/mocks.js';
 
 const testID = generateId('position');
 

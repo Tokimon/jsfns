@@ -1,5 +1,5 @@
-import { children } from './children';
-import { isDOMChildNode } from './isDOMChildNode';
+import { children } from './children.js';
+import { isDOMChildNode } from './isDOMChildNode.js';
 
 /**
  * Find the index of a DOM element amongst its siblings

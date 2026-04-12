@@ -1,16 +1,16 @@
-import { minMax } from '@jsfns/core/minMax';
+import { clamp } from '@jsfns/core/clamp.js';
 import { describe, expect, it } from 'vitest';
 
-describe('"minMax"', () => {
+describe('"clamp"', () => {
 	it('Limits a number to the given minimum value', () => {
-		expect(minMax(0, 10, 20)).toBe(10);
+		expect(clamp(10, 0, 20)).toBe(10);
 	});
 
 	it('Limits a number to the given maximum value', () => {
-		expect(minMax(200, 10, 20)).toBe(20);
+		expect(clamp(10, 200, 20)).toBe(20);
 	});
 
 	it('Returns the given number as is, when it is within the given range', () => {
-		expect(minMax(15, 10, 20)).toBe(15);
+		expect(clamp(10, 15, 20)).toBe(15);
 	});
 });

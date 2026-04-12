@@ -1,4 +1,4 @@
-import { isEventTarget } from '@jsfns/web/isEventTarget';
+import { isEventTarget } from '@jsfns/web/isEventTarget.js';
 import { describe, expect, it } from 'vitest';
 
 class Custom extends EventTarget {}

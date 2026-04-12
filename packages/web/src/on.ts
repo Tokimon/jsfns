@@ -1,8 +1,8 @@
-import { copyEvent } from './copyEvent';
-import { isDOMElement } from './isDOMElement';
-import { isEventTarget } from './isEventTarget';
-import { off } from './off';
-import type { ActualEvent, EventHandler, EventName, NotFirst } from './types';
+import { copyEvent } from './copyEvent.js';
+import { isDOMElement } from './isDOMElement.js';
+import { isEventTarget } from './isEventTarget.js';
+import { off } from './off.js';
+import type { ActualEvent, EventHandler, EventName, NotFirst } from './types.js';
 
 /** The extended event listener options for the `on` function */
 export type OnOptions<E extends EventName = EventName> = AddEventListenerOptions & {

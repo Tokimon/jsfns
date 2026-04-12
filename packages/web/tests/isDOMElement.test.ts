@@ -1,6 +1,6 @@
-import { isDOMElement } from '@jsfns/web/isDOMElement';
+import { isDOMElement } from '@jsfns/web/isDOMElement.js';
 import { describe, expect, it } from 'vitest';
-import { appendFrame, createDetachedDocument } from './assets/helpers';
+import { appendFrame, createDetachedDocument } from './assets/helpers.js';
 
 describe('"isDOMElement"', () => {
 	describe('Returns `true` for DOM element:', () => {

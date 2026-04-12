@@ -1,6 +1,6 @@
-import { elementData, resetCache } from '@jsfns/web/elementData';
+import { elementData, resetCache } from '@jsfns/web/elementData.js';
 import { afterAll, beforeAll, beforeEach, describe, expect, test } from 'vitest';
-import { byId, generateId, insertHtml, removeElement } from './assets/helpers';
+import { byId, generateId, insertHtml, removeElement } from './assets/helpers.js';
 
 const testID = generateId('ElementData');
 

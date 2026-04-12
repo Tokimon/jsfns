@@ -1,4 +1,4 @@
-import { capitalize } from '@jsfns/core/capitalize';
+import { capitalize } from '@jsfns/core/capitalize.js';
 import { describe, expect, it } from 'vitest';
 
 describe('"capitalize"', () => {

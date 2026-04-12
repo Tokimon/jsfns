@@ -1,6 +1,6 @@
-import { viewport } from '@jsfns/web/viewport';
+import { viewport } from '@jsfns/web/viewport.js';
 import { describe, expect, it } from 'vitest';
-import { appendFrame, createDetachedDocument } from './assets/helpers';
+import { appendFrame, createDetachedDocument } from './assets/helpers.js';
 
 describe('"viewport"', () => {
 	describe('Returns the <html> element for', () => {

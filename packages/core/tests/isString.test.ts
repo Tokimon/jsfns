@@ -1,4 +1,4 @@
-import { isString } from '@jsfns/core/isString';
+import { isString } from '@jsfns/core/isString.js';
 import { describe, expect, it } from 'vitest';
 
 describe('"isString"', () => {

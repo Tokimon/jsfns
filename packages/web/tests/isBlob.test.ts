@@ -1,4 +1,4 @@
-import { isBlob } from '@jsfns/web/isBlob';
+import { isBlob } from '@jsfns/web/isBlob.js';
 import { describe, expect, it } from 'vitest';
 
 describe('"isBlob"', () => {

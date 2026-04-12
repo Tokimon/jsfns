@@ -1,4 +1,4 @@
-import { numberToHex } from '@jsfns/core/numberToHex';
+import { numberToHex } from '@jsfns/core/numberToHex.js';
 import { describe, expect, it } from 'vitest';
 
 describe('"numberToHex"', () => {

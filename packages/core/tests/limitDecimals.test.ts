@@ -1,4 +1,4 @@
-import { limitDecimals } from '@jsfns/core/limitDecimals';
+import { limitDecimals } from '@jsfns/core/limitDecimals.js';
 import { describe, expect, it } from 'vitest';
 
 describe('"limitDecimals"', () => {

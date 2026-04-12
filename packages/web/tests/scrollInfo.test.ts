@@ -1,6 +1,6 @@
-import { scrollInfo } from '@jsfns/web/scrollInfo';
+import { scrollInfo } from '@jsfns/web/scrollInfo.js';
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
-import { byId, generateId, insertHtml, removeElement } from './assets/helpers';
+import { byId, generateId, insertHtml, removeElement } from './assets/helpers.js';
 
 const testID = generateId('ScrollInfo');
 

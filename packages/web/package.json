@@ -27,20 +27,20 @@
 	},
 	"homepage": "https://tokimon.github.io/jsfns-docs/web",
 	"scripts": {
-		"prepublishOnly": "pnpm test:coverage:json && pnpm build && pnpm readme",
+		"prepublishOnly": "pnpm test:coverage:json && pnpm build && esrun ../../readme-builder/build.ts",
 		"postpublish": "pnpm clean",
 		"dry-run": "pnpm validate && pnpm build && npm pack --dry-run && pnpm clean",
 		"build": "../../bin/build.sh",
 		"clean": "../../bin/clean.sh",
 		"missing": "../../bin/missing.sh",
-		"readme": "esrun ../../readme-builder/build.ts",
-		"types": "tsgo -p tsconfig.json",
+		"readme": "pnpm test:coverage:json && esrun ../../readme-builder/build.ts",
+		"typecheck": "tsgo -p tsconfig.json",
 		"test": "vitest run",
 		"test:coverage:json": "vitest run --coverage.reporter=json-summary",
 		"typedoc:validate": "typedoc --entryPoints \"src/*.ts\" --validation --treatWarningsAsErrors --emit none",
 		"lint": "biome check",
 		"format": "biome check --write",
-		"validate": "biome check && pnpm types && pnpm typedoc:validate && pnpm test",
+		"validate": "biome check && pnpm typecheck && pnpm typedoc:validate && pnpm test",
 		"release": "pnpm publish"
 	},
 	"dependencies": {
@@ -48,6 +48,7 @@
 	},
 	"devDependencies": {
 		"@types/node": "^25.4.0",
+		"@typescript/native-preview": "7.0.0-dev.20260412.1",
 		"happy-dom": "^20.8.3",
 		"typedoc": "^0.28.17",
 		"typescript": "^5.9.3",

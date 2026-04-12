@@ -1,4 +1,4 @@
-import { scrollParent } from '@jsfns/web/scrollParent';
+import { scrollParent } from '@jsfns/web/scrollParent.js';
 import { afterAll, beforeEach, describe, expect, it } from 'vitest';
 import {
 	appendFrame,
@@ -8,7 +8,7 @@ import {
 	getOne,
 	insertHtml,
 	removeElement,
-} from './assets/helpers';
+} from './assets/helpers.js';
 
 const scrollerID = generateId('scroller');
 const childID = generateId('child');

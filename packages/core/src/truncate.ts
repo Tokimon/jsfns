@@ -1,4 +1,4 @@
-import { isNumber } from './isNumber';
+import { isNumber } from './isNumber.js';
 
 /** The settings for the truncate method */
 export type TruncateSettings = {

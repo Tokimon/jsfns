@@ -1,4 +1,4 @@
-import { uniqueNodeList } from './uniqueNodeList';
+import { uniqueNodeList } from './uniqueNodeList.js';
 
 /**
  * Find DOM elements with the given name

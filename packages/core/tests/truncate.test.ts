@@ -1,4 +1,4 @@
-import { truncate } from '@jsfns/core/truncate';
+import { truncate } from '@jsfns/core/truncate.js';
 import { describe, expect, it } from 'vitest';
 
 describe('"truncate"', () => {

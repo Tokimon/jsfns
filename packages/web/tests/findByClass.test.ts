@@ -1,6 +1,6 @@
-import { findByClass } from '@jsfns/web/findByClass';
+import { findByClass } from '@jsfns/web/findByClass.js';
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
-import { byId, insertHtml, removeElement } from './assets/helpers';
+import { byId, insertHtml, removeElement } from './assets/helpers.js';
 
 describe('"findByClass"', () => {
 	beforeAll(() =>

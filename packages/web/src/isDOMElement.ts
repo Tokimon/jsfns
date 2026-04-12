@@ -1,4 +1,4 @@
-import { isDOMNode } from './isDOMNode';
+import { isDOMNode } from './isDOMNode.js';
 
 /**
  * Is the given object a DOM element node and optionally of a given type

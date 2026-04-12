@@ -1,6 +1,6 @@
-import { findByQuery, findOneByQuery } from '@jsfns/web/findByQuery';
+import { findByQuery, findOneByQuery } from '@jsfns/web/findByQuery.js';
 import { afterAll, beforeAll, describe, expect, it, vi } from 'vitest';
-import { byId, generateId, insertHtml, removeElement } from './assets/helpers';
+import { byId, generateId, insertHtml, removeElement } from './assets/helpers.js';
 
 const testID = generateId('findByQuery');
 

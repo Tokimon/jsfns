@@ -1,5 +1,5 @@
-import { RGBToHex } from './RGBToHex';
-import { randomRGBColor } from './randomRGBColor';
+import { RGBToHex } from './RGBToHex.js';
+import { randomRGBColor } from './randomRGBColor.js';
 
 /**
  * Generate a random HEX color

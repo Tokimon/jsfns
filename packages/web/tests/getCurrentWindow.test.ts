@@ -1,6 +1,6 @@
-import { getCurrentWindow } from '@jsfns/web/getCurrentWindow';
+import { getCurrentWindow } from '@jsfns/web/getCurrentWindow.js';
 import { describe, expect, it } from 'vitest';
-import { appendFrame, createDetachedDocument, createElement } from './assets/helpers';
+import { appendFrame, createDetachedDocument, createElement } from './assets/helpers.js';
 
 describe('"getCurrentWindow"', () => {
 	it('Returns current Window from a given Frame (not `contentWindow`)', () => {
