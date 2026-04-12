@@ -7,7 +7,5 @@
 	},
 	"exclude": [],
 	"include": ["./src"],
-	"references": [
-		{ "path": "../core/tsconfig.js.json" }
-	]
+	"references": [{ "path": "../core/tsconfig.js.json" }]
 }

@@ -7,7 +7,5 @@
 		"target": "ES2022",
 		"outDir": "./build/mjs"
 	},
-	"references": [
-		{ "path": "../core/tsconfig.js.json" }
-	]
+	"references": [{ "path": "../core/tsconfig.js.json" }]
 }
