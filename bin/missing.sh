@@ -6,7 +6,7 @@ missing=0
 
 for file in $PWD/src/*.ts; do
   name=$(basename $file .ts)
-  if [[ "$name" =~ \.d ]]; then continue; fi
+  if [[ "$name" =~ \.d ]] || [[ "$name" = "index" ]]; then continue; fi
 
   testfile=$PWD/tests/$name.test.ts;
 
