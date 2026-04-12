@@ -36,8 +36,8 @@ importers:
         specifier: ^17.5.0
         version: 17.5.0
       typescript:
-        specifier: ^6.0.2
-        version: 6.0.2
+        specifier: ^5.9.3
+        version: 5.9.3
       vitest:
         specifier: ^4.1.4
         version: 4.1.4(@types/node@25.6.0)(@vitest/coverage-v8@4.1.4)(happy-dom@20.8.3)(jsdom@20.0.3)(vite@7.3.1(@types/node@25.6.0)(yaml@2.8.3))
@@ -52,13 +52,13 @@ importers:
         version: 7.0.0-dev.20260412.1
       typedoc:
         specifier: ^0.28.19
-        version: 0.28.19(typescript@6.0.2)
+        version: 0.28.19(typescript@5.9.3)
       typescript:
-        specifier: ^6.0.2
-        version: 6.0.2
+        specifier: ^5.9.3
+        version: 5.9.3
       vite-tsconfig-paths:
         specifier: ^6.1.1
-        version: 6.1.1(typescript@6.0.2)(vite@7.3.1(@types/node@25.6.0)(yaml@2.8.3))
+        version: 6.1.1(typescript@5.9.3)(vite@7.3.1(@types/node@25.6.0)(yaml@2.8.3))
       vitest:
         specifier: ^4.1.4
         version: 4.1.4(@types/node@25.6.0)(@vitest/coverage-v8@4.1.4)(happy-dom@20.8.3)(jsdom@20.0.3)(vite@7.3.1(@types/node@25.6.0)(yaml@2.8.3))
@@ -80,13 +80,13 @@ importers:
         version: 20.8.3
       typedoc:
         specifier: ^0.28.17
-        version: 0.28.17(typescript@6.0.2)
+        version: 0.28.17(typescript@5.9.3)
       typescript:
-        specifier: ^6.0.2
-        version: 6.0.2
+        specifier: ^5.9.3
+        version: 5.9.3
       vite-tsconfig-paths:
         specifier: ^6.1.1
-        version: 6.1.1(typescript@6.0.2)(vite@7.3.1(@types/node@25.4.0)(yaml@2.8.3))
+        version: 6.1.1(typescript@5.9.3)(vite@7.3.1(@types/node@25.4.0)(yaml@2.8.3))
       vitest:
         specifier: ^4.0.18
         version: 4.0.18(@types/node@25.4.0)(happy-dom@20.8.3)(jsdom@20.0.3)(yaml@2.8.3)
@@ -1613,8 +1613,8 @@ packages:
     peerDependencies:
       typescript: 5.0.x || 5.1.x || 5.2.x || 5.3.x || 5.4.x || 5.5.x || 5.6.x || 5.7.x || 5.8.x || 5.9.x || 6.0.x
 
-  typescript@6.0.2:
-    resolution: {integrity: sha512-bGdAIrZ0wiGDo5l8c++HWtbaNCWTS4UTv7RaTH/ThVIgjkveJt83m74bBHMJkuCbslY8ixgLBVZJIOiQlQTjfQ==}
+  typescript@5.9.3:
+    resolution: {integrity: sha512-jl1vZzPDinLr9eUt3J/t7V6FgNEw9QjvBPdysz9KfQDD41fQrC2Y4vKQdiaUpFT4bXlb1RHhLpp8wtm6M5TgSw==}
     engines: {node: '>=14.17'}
     hasBin: true
 
@@ -3274,29 +3274,29 @@ snapshots:
       punycode: 2.3.1
     optional: true
 
-  tsconfck@3.1.6(typescript@6.0.2):
+  tsconfck@3.1.6(typescript@5.9.3):
     optionalDependencies:
-      typescript: 6.0.2
+      typescript: 5.9.3
 
-  typedoc@0.28.17(typescript@6.0.2):
+  typedoc@0.28.17(typescript@5.9.3):
     dependencies:
       '@gerrit0/mini-shiki': 3.23.0
       lunr: 2.3.9
       markdown-it: 14.1.1
       minimatch: 9.0.9
-      typescript: 6.0.2
+      typescript: 5.9.3
       yaml: 2.8.2
 
-  typedoc@0.28.19(typescript@6.0.2):
+  typedoc@0.28.19(typescript@5.9.3):
     dependencies:
       '@gerrit0/mini-shiki': 3.23.0
       lunr: 2.3.9
       markdown-it: 14.1.1
       minimatch: 10.2.5
-      typescript: 6.0.2
+      typescript: 5.9.3
       yaml: 2.8.3
 
-  typescript@6.0.2: {}
+  typescript@5.9.3: {}
 
   uc.micro@2.1.0: {}
 
@@ -3315,21 +3315,21 @@ snapshots:
       requires-port: 1.0.0
     optional: true
 
-  vite-tsconfig-paths@6.1.1(typescript@6.0.2)(vite@7.3.1(@types/node@25.4.0)(yaml@2.8.3)):
+  vite-tsconfig-paths@6.1.1(typescript@5.9.3)(vite@7.3.1(@types/node@25.4.0)(yaml@2.8.3)):
     dependencies:
       debug: 4.4.3
       globrex: 0.1.2
-      tsconfck: 3.1.6(typescript@6.0.2)
+      tsconfck: 3.1.6(typescript@5.9.3)
       vite: 7.3.1(@types/node@25.4.0)(yaml@2.8.3)
     transitivePeerDependencies:
       - supports-color
       - typescript
 
-  vite-tsconfig-paths@6.1.1(typescript@6.0.2)(vite@7.3.1(@types/node@25.6.0)(yaml@2.8.3)):
+  vite-tsconfig-paths@6.1.1(typescript@5.9.3)(vite@7.3.1(@types/node@25.6.0)(yaml@2.8.3)):
     dependencies:
       debug: 4.4.3
       globrex: 0.1.2
-      tsconfck: 3.1.6(typescript@6.0.2)
+      tsconfck: 3.1.6(typescript@5.9.3)
       vite: 7.3.1(@types/node@25.6.0)(yaml@2.8.3)
     transitivePeerDependencies:
       - supports-color

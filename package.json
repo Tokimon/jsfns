@@ -41,7 +41,7 @@
 		"@vitest/coverage-v8": "^4.1.4",
 		"ejs": "^5.0.2",
 		"globals": "^17.5.0",
-		"typescript": "^6.0.2",
+		"typescript": "^5.9.3",
 		"vitest": "^4.1.4"
 	}
 }

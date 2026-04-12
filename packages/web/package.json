@@ -51,7 +51,7 @@
 		"@typescript/native-preview": "7.0.0-dev.20260412.1",
 		"happy-dom": "^20.8.3",
 		"typedoc": "^0.28.17",
-		"typescript": "^6.0.2",
+		"typescript": "^5.9.3",
 		"vite-tsconfig-paths": "^6.1.1",
 		"vitest": "^4.0.18"
 	},
