@@ -14,7 +14,7 @@
  * isObject('123'); // --> false
  * ```
  */
-export function isObject(x: unknown): x is object {
+export function isObject(x: unknown): x is Record<string, unknown> {
 	return x != null && typeof x === 'object' && !Array.isArray(x) && Object(x) === x;
 }
 
