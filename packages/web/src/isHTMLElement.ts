@@ -19,14 +19,14 @@ import isWindow from './isWindow.js';
  * isHTMLElement(document.createTextNode('')) // --> false
  * ```
  */
-export const isHTMLElement = (obj: unknown): obj is HTMLElement => {
+export function isHTMLElement(obj: unknown): obj is HTMLElement {
 	if (isWindow(obj)) return false;
 	if (!isDOMNode(obj)) return false;
 	if (obj instanceof HTMLElement) return true;
 
 	// For elements in an IFrame where elements are created using the types in the frame window
-	const win = getCurrentWindow(obj) as typeof globalThis;
-	return obj instanceof win.HTMLElement;
-};
+	const win = getCurrentWindow(obj) as typeof globalThis | null;
+	return !!win?.HTMLElement && obj instanceof win.HTMLElement;
+}
 
 export default isHTMLElement;

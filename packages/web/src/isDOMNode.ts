@@ -1,7 +1,7 @@
 /**
  * Is the given object a DOM Node
  *
- * @param node - The object to check
+ * @param obj - The object to check
  * @returns Is it a DOM node or not
  *
  * @example
@@ -14,7 +14,8 @@
  * isDOMNode(window) // --> false
  * ```
  */
-export const isDOMNode = (node: unknown): node is Node =>
-	!!node && typeof (node as Node).nodeType !== 'undefined';
+export function isDOMNode(obj: unknown): obj is Node {
+	return !!obj && typeof (obj as Node).nodeType !== 'undefined';
+}
 
 export default isDOMNode;

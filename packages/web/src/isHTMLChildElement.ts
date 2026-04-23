@@ -11,7 +11,7 @@ export type HTMLChildElement = Omit<HTMLElement, HTMLElementParentProps> & {
 /**
  * Is the given object a HTML element child of a DOM element
  *
- * @param node - The object to check
+ * @param obj - The object to check
  * @returns Is it a child HTMLElement or not
  *
  * @example
@@ -24,7 +24,8 @@ export type HTMLChildElement = Omit<HTMLElement, HTMLElementParentProps> & {
  * isHTMLChildElement(document.documentElement) // --> false
  * ```
  */
-export const isHTMLChildElement = (node: unknown): node is HTMLChildElement =>
-	isHTMLElement(node) && node.offsetParent != null;
+export function isHTMLChildElement(obj: unknown): obj is HTMLChildElement {
+	return isHTMLElement(obj) && obj.offsetParent != null;
+}
 
 export default isHTMLChildElement;

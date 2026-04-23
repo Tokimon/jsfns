@@ -4,7 +4,7 @@ import { isDOMNode } from './isDOMNode.js';
 /**
  * Is the given object root node of the DOM (eg `<html>` for HTML documents og `<svg>` for SVG documents)
  *
- * @param node - The object to check
+ * @param obj - The object to check
  * @returns Is it the root node of the DOM or not
  *
  * @example
@@ -17,11 +17,11 @@ import { isDOMNode } from './isDOMNode.js';
  * isDOMRoot(window) // --> false
  * ```
  */
-export function isDOMRoot(node: unknown): node is HTMLElement {
-	if (!isDOMNode(node)) return false;
+export function isDOMRoot(obj: unknown): obj is HTMLElement {
+	if (!isDOMNode(obj)) return false;
 
-	const doc = getCurrentDocument(node);
-	return !!doc && node === doc.documentElement;
+	const doc = getCurrentDocument(obj);
+	return !!doc && obj === doc.documentElement;
 }
 
 export default isDOMRoot;

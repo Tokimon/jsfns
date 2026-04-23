@@ -11,7 +11,7 @@ export type ChildNodeWithParent = Omit<ChildNode, ChildNodeParentProps> & {
 /**
  * Is the given object a DOM node child of a DOM element
  *
- * @param node - The object to check
+ * @param obj - The object to check
  * @returns Is it a DOM child node or not
  *
  * @example
@@ -24,7 +24,8 @@ export type ChildNodeWithParent = Omit<ChildNode, ChildNodeParentProps> & {
  * isDOMChildNode(document.documentElement) // --> false
  * ```
  */
-export const isDOMChildNode = (node: unknown): node is ChildNodeWithParent =>
-	isDOMNode(node) && node.parentElement != null;
+export function isDOMChildNode(obj: unknown): obj is ChildNodeWithParent {
+	return isDOMNode(obj) && obj.parentElement != null;
+}
 
 export default isDOMChildNode;
