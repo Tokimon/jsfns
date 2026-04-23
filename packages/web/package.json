@@ -47,13 +47,14 @@
 		"@jsfns/core": "^1.2.1"
 	},
 	"devDependencies": {
-		"@types/node": "^25.4.0",
-		"@typescript/native-preview": "7.0.0-dev.20260412.1",
-		"happy-dom": "^20.8.3",
-		"typedoc": "^0.28.17",
+		"@types/node": "^25.6.0",
+		"@typescript/native-preview": "7.0.0-dev.20260423.1",
+		"@vitest/coverage-v8": "^4.1.5",
+		"happy-dom": "^20.9.0",
+		"typedoc": "^0.28.19",
 		"typescript": "^5.9.3",
 		"vite-tsconfig-paths": "^6.1.1",
-		"vitest": "^4.0.18"
+		"vitest": "^4.1.5"
 	},
 	"files": [
 		"/*.js",
