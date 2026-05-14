@@ -5,7 +5,7 @@
 		"declaration": false,
 		"noEmit": false,
 		"rewriteRelativeImportExtensions": true,
-		"target": "ES2022",
+		"target": "ES2023",
 		"outDir": "./build/mjs"
 	}
 }
