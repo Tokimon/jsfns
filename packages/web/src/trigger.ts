@@ -1,5 +1,5 @@
+import type { NotFirst } from '@jsfns/core/types.js';
 import { isEventTarget } from './isEventTarget.js';
-import type { NotFirst } from './types.js';
 
 type Args = [elm: EventTarget, eventNames: string | string[], data?: unknown];
 

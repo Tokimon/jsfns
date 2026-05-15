@@ -12,13 +12,9 @@
  * popIndexPure([1,2,3], 1); // --> [2,  [1, 3]]
  * ```
  */
-export function popAtIndexPure(list: unknown[], index: number): [unknown, unknown[]] {
-	const value = list[index];
-
-	let arr = list;
-	if (index >= 0 && index < list.length) arr = arr.slice(0, index).concat(arr.slice(index + 1));
-
-	return [value, arr];
+export function popAtIndexPure<T extends unknown[]>(list: T, index: number): [unknown, T] {
+	if (index < 0 || index >= list.length) return [undefined, list];
+	return [list[index], list.toSpliced(index, 1) as T];
 }
 
 /**

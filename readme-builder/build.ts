@@ -25,8 +25,8 @@ export async function build() {
 	const packagePath = process.cwd();
 	const packageName = basename(packagePath);
 
-	const coverageSummary: CoverageSummary = require(
-		join(packagePath, 'coverage', 'coverage-summary.json'),
+	const coverageSummary: CoverageSummary = JSON.parse(
+		await readFile(join(packagePath, 'coverage', 'coverage-summary.json'), { encoding: 'utf8' }),
 	);
 	const coverage = calcCoverage(coverageSummary);
 

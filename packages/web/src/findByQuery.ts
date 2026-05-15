@@ -1,5 +1,5 @@
 import { isString } from '@jsfns/core/isString.js';
-import type { Maybe, NotFirst } from './types.js';
+import type { Maybe, NotFirst } from '@jsfns/core/types.js';
 import { uniqueNodeList } from './uniqueNodeList.js';
 
 /** The possible arguments for the `findByQuery` function */

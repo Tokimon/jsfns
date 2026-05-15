@@ -4,21 +4,6 @@
 export type GeneralWindow = Window | typeof window;
 
 /**
- * Extracts all elements of a tuple or array type except the first.
- * (Useful for working with rest parameters after the first argument)
- *
- * @typeParam T - The inferred list of which to exclude the first element from
- *
- * @example
- * ```ts
- * type Rest = NotFirst<[string, number, boolean]>; // [number, boolean]
- * ```
- */
-export type NotFirst<T extends Array<unknown>> = T extends [arg0: T[0], ...rest: infer R]
-	? R
-	: never;
-
-/**
  * A valid event name string. Includes all standard `DocumentEventMap` keys (like `"click"`, `"keydown"`)
  * as well as arbitrary custom string values.
  */
@@ -47,16 +32,6 @@ export type EventHandler<E extends EventName = EventName> = (
 	this: EventSource | EventTarget,
 	event: ActualEvent<E>,
 ) => unknown;
-
-/**
- * A generic wrapper for values that may be `null` or `undefined`.
- *
- * @example
- * ```ts
- * type MaybeString = Maybe<string>; // string | null | undefined
- * ```
- */
-export type Maybe<T> = T | null | undefined;
 
 /**
  * Represents a 2D size in pixels.

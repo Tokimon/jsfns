@@ -1,9 +1,9 @@
 import { isString } from '@jsfns/core/isString.js';
+import type { Maybe, NotFirst } from '@jsfns/core/types.js';
 import { findByClass } from './findByClass.js';
 import { findById } from './findById.js';
 import { findByQuery, findOneByQuery } from './findByQuery.js';
 import { findByTagName } from './findByTagName.js';
-import type { Maybe, NotFirst } from './types.js';
 
 type Args = [elm: Maybe<Document | HTMLElement>, selector: string];
 

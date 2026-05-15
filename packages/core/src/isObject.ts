@@ -1,5 +1,7 @@
+import { isObjectLike } from './isObjectLike.ts';
+
 /**
- * Is the given argument of type String
+ * Is the given argument a plain object (non-null, non-array) or not
  *
  * @param x - Argument to test
  *
@@ -15,7 +17,7 @@
  * ```
  */
 export function isObject(x: unknown): x is Record<string, unknown> {
-	return x != null && typeof x === 'object' && !Array.isArray(x) && Object(x) === x;
+	return isObjectLike(x) && !Array.isArray(x);
 }
 
 export default isObject;
