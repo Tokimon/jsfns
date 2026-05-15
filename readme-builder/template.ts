@@ -1,25 +1,48 @@
-# @jsfns/<%= packageName %>
-![Code Coverage <%= coverage %>](https://badgen.net/badge/coverage/<%= coverage %>%25/<%= coverage > 95 ? 'green' : (coverage < 75 ? 'red' : 'yellow') %>)
+export type TemplateData = {
+	packageName: string;
+	coverage: number;
+	description: string;
+	docReferences: string;
+	examples: string;
+	methods: string;
+};
 
-<a href="https://tokimon.github.io/jsfns-docs/<%= packageName %>" target="__blank" style="font-size: 50px; display: block; text-align: center;">@jsfns/<%= packageName %> documentation</a>
+function coverageColor(coverage: number): string {
+	if (coverage > 95) return 'green';
+	if (coverage < 75) return 'red';
+	return 'yellow';
+}
 
-<%= description %>
+export function template({
+	packageName,
+	coverage,
+	description,
+	docReferences,
+	examples,
+	methods,
+}: TemplateData): string {
+	return `# @jsfns/${packageName}
+![Code Coverage ${coverage}](https://badgen.net/badge/coverage/${coverage}%25/${coverageColor(coverage)})
+
+<a href="https://tokimon.github.io/jsfns/${packageName}" target="__blank" style="font-size: 50px; display: block; text-align: center;">@jsfns/${packageName} documentation</a>
+
+${description}
 
 ## Methods
 
 | Available methods |||
 | --- | --- | --- | --- |
-<%- methods %>
+${methods}
 
 ## Files to fit your needs
 
 All methods are written in TypeScript and converted into various JS versions suiting your use case:
 
-- `.js`: ES 6 syntax.
-- `.mjs`: ES modules syntax
-- `.d.ts`: TypeScript description files
+- \`.js\`: ES 6 syntax.
+- \`.mjs\`: ES modules syntax
+- \`.d.ts\`: TypeScript description files
 
-<%= docReferences %>
+${docReferences}
 
 ## ES version support
 
@@ -34,28 +57,30 @@ the methods and just focus on core functionality.
 
 ## Installation
 
-```
-npm i @jsfns/<%= packageName %>
-```
+\`\`\`
+npm i @jsfns/${packageName}
+\`\`\`
 
-```
-yarn add @jsfns/<%= packageName %>
-```
+\`\`\`
+yarn add @jsfns/${packageName}
+\`\`\`
 
-```
-pnpm i @jsfns/<%= packageName %>
-```
+\`\`\`
+pnpm i @jsfns/${packageName}
+\`\`\`
 
-```
-bun add @jsfns/<%= packageName %>
-```
+\`\`\`
+bun add @jsfns/${packageName}
+\`\`\`
 
 ## Usage
 
-<%- examples %>
+${examples}
 
 ## Something missing?
 
 If you have any questions, find any bugs or have ideas for missing functionality you would like to see included, feel
 free to add an issue in the [issue list](https://github.com/Tokimon/jsfns/issues) or perhaps do a
 [Pull Request](https://github.com/Tokimon/jsfns/pulls) of a great method you created.
+`;
+}

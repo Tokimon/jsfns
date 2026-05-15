@@ -1,7 +1,7 @@
 import { readdir, readFile, writeFile } from 'node:fs/promises';
-import { basename, join, resolve } from 'node:path';
-import ejs from 'ejs';
+import { basename, join } from 'node:path';
 import * as color from './color.js';
+import { template } from './template.js';
 
 type Summary = {
 	lines: { total: 360; covered: 360; skipped: 0; pct: 100 };
@@ -50,28 +50,22 @@ export async function build() {
 	const methods = fileNames.reduce((str, name, index) => {
 		const n = index + 1;
 		const end = n % 4 === 0 || n === len ? '|\n' : '';
-		return `${str}| [${name}](https://tokimon.github.io/jsfns-docs/${packageName}#${name}) ${end}`;
+		return `${str}| [${name}](https://tokimon.github.io/jsfns/${packageName}#${name}) ${end}`;
 	}, '');
 
-	const data: ejs.Data = {
+	const content = template({
 		packageName,
 		coverage,
 		description,
 		docReferences,
 		examples,
 		methods,
-	};
-
-	const content = await ejs.renderFile(
-		resolve('..', '..', 'readme-builder', 'template.ejs'),
-		data,
-		{ async: true },
-	);
+	});
 
 	await writeFile(join(packagePath, 'README.md'), content);
 
 	console.log(
-		`${color.green('\u2713')} ${color.blue(packageName + '/')}${color.yellow('README.md')} successfully generated`,
+		`${color.green('✓')} ${color.blue(packageName + '/')}${color.yellow('README.md')} successfully generated`,
 	);
 }
 
