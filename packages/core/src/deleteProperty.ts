@@ -1,7 +1,7 @@
 import { getProperty } from './getProperty.ts';
 import { isEmpty } from './isEmpty.ts';
 import { popAtIndex } from './popAtIndex.ts';
-import type { Dictionary } from './types.js';
+import type { Dictionary } from './types.ts';
 
 /** An object or array that `deleteProperty` can traverse */
 export type InputObject = Dictionary | unknown[];

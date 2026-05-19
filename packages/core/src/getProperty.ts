@@ -1,6 +1,6 @@
 import { isNumeric } from './isNumeric.ts';
 import { isObjectLike } from './isObjectLike.ts';
-import type { Dictionary } from './types.js';
+import type { Dictionary } from './types.ts';
 
 /**
  * Read a value from an object or array by following a path of keys.
