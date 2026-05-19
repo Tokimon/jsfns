@@ -10,6 +10,7 @@ export default mergeConfig(
 			include: ['tests/*.test.ts'],
 			coverage: {
 				include: ['src/*.ts'],
+				exclude: ['src/types.ts'],
 			},
 		},
 	}),
