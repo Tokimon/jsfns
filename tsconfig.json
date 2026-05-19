@@ -1,23 +1,7 @@
 {
-	"$schema": "https://json.schemastore.org/tsconfig",
+	"extends": "./tsconfig.base.json",
 	"compilerOptions": {
-		"lib": ["ES2023", "DOM"],
-		"module": "nodenext",
-		"target": "ES2023",
 		"noEmit": true,
-		"allowImportingTsExtensions": true,
-		"declaration": true,
-		"skipLibCheck": true,
-		"noImplicitAny": true,
-		"sourceMap": false,
-		"allowJs": false,
-		"checkJs": false,
-		"strictNullChecks": true,
-		"strict": true,
-		"forceConsistentCasingInFileNames": true,
-		"esModuleInterop": true,
-		"resolveJsonModule": true,
-		"types": ["node"],
 		"paths": {
 			"@jsfns/core/*": ["./packages/core/src/*"],
 			"@jsfns/web/*": ["./packages/web/src/*"]
