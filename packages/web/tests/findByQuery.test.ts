@@ -24,7 +24,6 @@ describe('"findByQuery"', () => {
 	function suite(getTarget: () => HTMLElement | Document) {
 		let target: HTMLElement | Document;
 
-		// biome-ignore lint/suspicious/noDuplicateTestHooks: I am not sure how to do it otherwise
 		beforeAll(() => {
 			target = getTarget();
 		});
