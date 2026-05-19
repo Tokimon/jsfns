@@ -4,12 +4,6 @@ lib-cov
 # Coverage directory used by tools like istanbul
 coverage
 
-# Coverall config
-.coveralls.yml
-
-# nyc test coverage
-.nyc_output
-
 # Dependency directories
 node_modules
 
@@ -22,11 +16,6 @@ node_modules
 _tests
 build
 
-packages/*/src/index.ts
-packages/*/*.js
-packages/*/*.mjs
-packages/*/*.d.ts
-
-!jest.*.js
+dist
 
 .zed
