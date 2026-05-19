@@ -13,7 +13,7 @@ export default mergeConfig(
 			setupFiles: ['./vitest.setup.ts'],
 			coverage: {
 				include: ['src/*.ts'],
-				exclude: ['src/types.d.ts'],
+				exclude: ['src/types.ts'],
 			},
 		},
 	}),

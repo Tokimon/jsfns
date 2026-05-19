@@ -1,6 +1,6 @@
 import { isDocument } from './isDocument.js';
 import { isWindow } from './isWindow.js';
-import type { GeneralWindow, Size } from './types.js';
+import type { GeneralWindow, Size } from './types.ts';
 import { viewport } from './viewport.js';
 
 /**

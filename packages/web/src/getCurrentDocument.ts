@@ -1,6 +1,6 @@
 import { isDocument } from './isDocument.js';
 import { isWindow } from './isWindow.js';
-import type { GeneralWindow } from './types.js';
+import type { GeneralWindow } from './types.ts';
 
 /**
  * Determines the relevant owner `document` object from a give node

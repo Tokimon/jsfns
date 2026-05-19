@@ -1,6 +1,6 @@
 import type { NotFirst } from '@jsfns/core/types.js';
 import { isEventTarget } from './isEventTarget.js';
-import type { EventHandler, EventName } from './types.js';
+import type { EventHandler, EventName } from './types.ts';
 
 type Args<E extends EventName = EventName> = [
 	elm: EventTarget,
