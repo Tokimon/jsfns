@@ -6,64 +6,63 @@
 	"author": "Toke Voltelen",
 	"license": "MIT",
 	"type": "module",
-	"main": "./index.js",
-	"browser": "./index.js",
-	"module": "./index.mjs",
-	"types": "./index.d.ts",
-	"typings": "./index.d.ts",
 	"repository": {
 		"type": "git",
-		"url": "git+https://Tokimon@github.com/Tokimon/jsfns.git"
+		"url": "git+https://github.com/Tokimon/jsfns.git"
 	},
 	"keywords": [
 		"javascript",
+		"typescript",
+		"browser",
+		"dom",
+		"esm",
+		"tree-shakable",
+		"zero-dependencies",
+		"events",
+		"viewport",
 		"helpers",
-		"snippets",
-		"utility",
-		"tool"
+		"utility"
 	],
 	"bugs": {
 		"url": "https://github.com/Tokimon/jsfns/issues"
 	},
 	"homepage": "https://tokimon.github.io/jsfns/web",
 	"scripts": {
-		"prepublishOnly": "pnpm test:coverage:json && pnpm build && tsx ../../readme-builder/build.ts",
+		"prepublishOnly": "pnpm validate && pnpm build && pnpm readme",
 		"postpublish": "pnpm clean",
-		"dry-run": "pnpm validate && pnpm build && npm pack --dry-run && pnpm clean",
-		"build": "../../bin/build.sh",
-		"clean": "../../bin/clean.sh",
+		"dry-run": "pnpm validate && pnpm build && npm pack --dry-run",
+		"build": "tsgo -p ./tsconfig.build.json",
+		"clean": "rm -rf ./dist",
 		"missing": "../../bin/missing.sh",
-		"readme": "pnpm test:coverage:json && tsx ../../readme-builder/build.ts",
+		"readme": "tsx ../../readme-builder/build.ts",
 		"typecheck": "tsgo -p tsconfig.json",
 		"test": "vitest run",
-		"test:coverage:json": "vitest run --coverage.reporter=json-summary",
-		"typedoc:validate": "typedoc --entryPoints \"src/*.ts\" --validation --treatWarningsAsErrors --emit none",
+		"test:coverage": "vitest run --coverage.reporter=json-summary",
+		"typedoc:validate": "typedoc --tsconfig tsconfig.typedoc.json --entryPoints \"src/*.ts\" --validation --treatWarningsAsErrors --emit none",
 		"lint": "biome check",
 		"format": "biome check --write",
-		"validate": "biome check && pnpm typecheck && pnpm typedoc:validate && pnpm test",
+		"validate": "pnpm lint && pnpm typecheck && pnpm typedoc:validate && pnpm test:coverage",
 		"release": "pnpm publish"
 	},
 	"dependencies": {
-		"@jsfns/core": "^1.2.1"
+		"@jsfns/core": "workspace:^"
 	},
 	"devDependencies": {
-		"@types/node": "^25.6.0",
-		"@typescript/native-preview": "7.0.0-dev.20260423.1",
-		"@vitest/coverage-v8": "^4.1.5",
-		"happy-dom": "^20.9.0",
-		"typedoc": "^0.28.19",
-		"typescript": "^5.9.3",
-		"vite-tsconfig-paths": "^6.1.1",
-		"vitest": "^4.1.5"
+		"jsdom": "^29.1.1"
 	},
 	"files": [
-		"/*.js",
-		"/*.cjs",
-		"/*.mjs",
-		"/*.d.ts",
-		"/README.md",
-		"/LICENSE",
-		"!/vitest.*.ts",
-		"!/readme/*"
-	]
+		"dist",
+		"README.md",
+		"LICENSE"
+	],
+	"exports": {
+		"./*.js": {
+			"types": "./dist/*.d.ts",
+			"import": "./dist/*.js"
+		},
+		"./*": {
+			"types": "./dist/*.d.ts",
+			"import": "./dist/*.js"
+		}
+	}
 }
