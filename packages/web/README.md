@@ -25,17 +25,10 @@ of making it easier to work with vanilla JavaScript in the browser.
 | [outerSize](https://tokimon.github.io/jsfns/web#outerSize) | [parseSelector](https://tokimon.github.io/jsfns/web#parseSelector) | [position](https://tokimon.github.io/jsfns/web#position) | [prepend](https://tokimon.github.io/jsfns/web#prepend) |
 | [previousSiblings](https://tokimon.github.io/jsfns/web#previousSiblings) | [removeClass](https://tokimon.github.io/jsfns/web#removeClass) | [replaceClass](https://tokimon.github.io/jsfns/web#replaceClass) | [replaceNode](https://tokimon.github.io/jsfns/web#replaceNode) |
 | [scrollInfo](https://tokimon.github.io/jsfns/web#scrollInfo) | [scrollParent](https://tokimon.github.io/jsfns/web#scrollParent) | [selectorToHTML](https://tokimon.github.io/jsfns/web#selectorToHTML) | [siblings](https://tokimon.github.io/jsfns/web#siblings) |
-| [toDOM](https://tokimon.github.io/jsfns/web#toDOM) | [toggleClass](https://tokimon.github.io/jsfns/web#toggleClass) | [trigger](https://tokimon.github.io/jsfns/web#trigger) | [uniqueNodeList](https://tokimon.github.io/jsfns/web#uniqueNodeList) |
-| [vendorPrefixed](https://tokimon.github.io/jsfns/web#vendorPrefixed) | [viewport](https://tokimon.github.io/jsfns/web#viewport) | [visible](https://tokimon.github.io/jsfns/web#visible) | [wrap](https://tokimon.github.io/jsfns/web#wrap) |
+| [toDOM](https://tokimon.github.io/jsfns/web#toDOM) | [toggleClass](https://tokimon.github.io/jsfns/web#toggleClass) | [trigger](https://tokimon.github.io/jsfns/web#trigger) | [types](https://tokimon.github.io/jsfns/web#types) |
+| [uniqueNodeList](https://tokimon.github.io/jsfns/web#uniqueNodeList) | [vendorPrefixed](https://tokimon.github.io/jsfns/web#vendorPrefixed) | [viewport](https://tokimon.github.io/jsfns/web#viewport) | [visible](https://tokimon.github.io/jsfns/web#visible) |
+| [wrap](https://tokimon.github.io/jsfns/web#wrap) |
 
-
-## Files to fit your needs
-
-All methods are written in TypeScript and converted into various JS versions suiting your use case:
-
-- `.js`: ES 6 syntax.
-- `.mjs`: ES modules syntax
-- `.d.ts`: TypeScript description files
 
 ## [@jsfns/core](https://tokimon.github.io/jsfns/core)
 
@@ -43,14 +36,12 @@ Searching for more basic, environment agnostic JavaScript methods? Check out: [@
 
 ## ES version support
 
-All methods are using latest techniques and generally no efforts have been made to
-accommodate older browsers which do not support certain features. Polyfills should
-be used to fill the gap. This is intentional as the need for polyfills are ever
-diminishing, with modern browsers (and Node environments) getting updated all the time the vast
-majority of the methods will be supported at one point. Also, with compilers like Babel,
-polyfills can be included automatically in the build process, making it simple to ensure full support.
-Therefore it is more future proof and clutter free to leave fallbacks and polyfills out of
-the methods and just focus on core functionality.
+These packages use modern JavaScript with no bundled polyfills or
+fallbacks. If you need to support older runtimes, add polyfills through
+your build pipeline (Babel, core-js, etc.) — most are injected
+automatically. Keeping the library polyfill-free makes it leaner and
+more future-proof, since modern browsers and Node versions already cover
+the vast majority of features.
 
 ## Installation
 
@@ -81,6 +72,7 @@ append(document.body, '<span>Appended content</span>');
 
 ## Something missing?
 
-If you have any questions, find any bugs or have ideas for missing functionality you would like to see included, feel
-free to add an issue in the [issue list](https://github.com/Tokimon/jsfns/issues) or perhaps do a
-[Pull Request](https://github.com/Tokimon/jsfns/pulls) of a great method you created.
+Questions, bugs, or ideas for new functionality? Open an
+[issue](https://github.com/Tokimon/jsfns/issues), or submit a
+[pull request](https://github.com/Tokimon/jsfns/pulls) with your
+contribution.

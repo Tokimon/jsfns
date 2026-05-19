@@ -20,16 +20,8 @@ of making it easier to work with vanilla JavaScript.
 | [phrasify](https://tokimon.github.io/jsfns/core#phrasify) | [popAtIndex](https://tokimon.github.io/jsfns/core#popAtIndex) | [promisefy](https://tokimon.github.io/jsfns/core#promisefy) | [randomCryptoId](https://tokimon.github.io/jsfns/core#randomCryptoId) |
 | [randomHexColor](https://tokimon.github.io/jsfns/core#randomHexColor) | [randomId](https://tokimon.github.io/jsfns/core#randomId) | [randomInt](https://tokimon.github.io/jsfns/core#randomInt) | [randomRGBColor](https://tokimon.github.io/jsfns/core#randomRGBColor) |
 | [safeDateChange](https://tokimon.github.io/jsfns/core#safeDateChange) | [snakeCase](https://tokimon.github.io/jsfns/core#snakeCase) | [throttle](https://tokimon.github.io/jsfns/core#throttle) | [toWords](https://tokimon.github.io/jsfns/core#toWords) |
-| [truncate](https://tokimon.github.io/jsfns/core#truncate) | [uniqueArray](https://tokimon.github.io/jsfns/core#uniqueArray) |
+| [truncate](https://tokimon.github.io/jsfns/core#truncate) | [types](https://tokimon.github.io/jsfns/core#types) | [uniqueArray](https://tokimon.github.io/jsfns/core#uniqueArray) |
 
-
-## Files to fit your needs
-
-All methods are written in TypeScript and converted into various JS versions suiting your use case:
-
-- `.js`: ES 6 syntax.
-- `.mjs`: ES modules syntax
-- `.d.ts`: TypeScript description files
 
 ## [@jsfns/web](https://tokimon.github.io/jsfns/web)
 
@@ -37,14 +29,12 @@ Searching for browser specific methods? Check out: [@jsfns/web](https://tokimon.
 
 ## ES version support
 
-All methods are using latest techniques and generally no efforts have been made to
-accommodate older browsers which do not support certain features. Polyfills should
-be used to fill the gap. This is intentional as the need for polyfills are ever
-diminishing, with modern browsers (and Node environments) getting updated all the time the vast
-majority of the methods will be supported at one point. Also, with compilers like Babel,
-polyfills can be included automatically in the build process, making it simple to ensure full support.
-Therefore it is more future proof and clutter free to leave fallbacks and polyfills out of
-the methods and just focus on core functionality.
+These packages use modern JavaScript with no bundled polyfills or
+fallbacks. If you need to support older runtimes, add polyfills through
+your build pipeline (Babel, core-js, etc.) — most are injected
+automatically. Keeping the library polyfill-free makes it leaner and
+more future-proof, since modern browsers and Node versions already cover
+the vast majority of features.
 
 ## Installation
 
@@ -75,6 +65,7 @@ camelCase('Camel cased phrase'); // camelCasedPhrase
 
 ## Something missing?
 
-If you have any questions, find any bugs or have ideas for missing functionality you would like to see included, feel
-free to add an issue in the [issue list](https://github.com/Tokimon/jsfns/issues) or perhaps do a
-[Pull Request](https://github.com/Tokimon/jsfns/pulls) of a great method you created.
+Questions, bugs, or ideas for new functionality? Open an
+[issue](https://github.com/Tokimon/jsfns/issues), or submit a
+[pull request](https://github.com/Tokimon/jsfns/pulls) with your
+contribution.
