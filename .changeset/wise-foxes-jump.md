@@ -8,5 +8,5 @@
 - Added `isObjectLike`
 - Refactored `isObject` to build on `isObjectLike`
 - Simplified `popAtIndex`
-- Moved general-purpose types `NotFirst`, `Maybe`, and `Dictionary` here from `@jsfns/web` (import them from `@jsfns/core/types.d.ts`)
+- Moved general-purpose types `NotFirst`, `Maybe`, and `Dictionary` here from `@jsfns/web` (import them from `@jsfns/core/types.js`)
 - Bumped TypeScript target to ES2023
