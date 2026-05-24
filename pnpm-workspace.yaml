@@ -4,4 +4,6 @@ packages:
 
 allowBuilds:
   esbuild: true
-  nx: true
+
+onlyBuiltDependencies:
+  - esbuild
