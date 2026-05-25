@@ -44,33 +44,8 @@ jobs:
 
   trigger-docs:
     needs: release
-    runs-on: ubuntu-latest
-    steps:
-      - name: Wait for npm to expose new version
-        run: |
-          PKG="${GITHUB_REF_NAME%@*}"
-          VER="${GITHUB_REF_NAME##*@}"
-          echo "Waiting 30s before polling npm for $PKG@$VER..."
-          sleep 30
-          for i in {1..60}; do
-            if npm view "$PKG@$VER" version >/dev/null 2>&1; then
-              echo "✓ $PKG@$VER available on npm"
-              exit 0
-            fi
-            echo "waiting for $PKG@$VER... ($i/60)"
-            sleep 5
-          done
-          echo "::error::$PKG@$VER not visible on npm after 5m30s"
-          exit 1
-
-      - name: Trigger workflow in jsfns-docs
-        uses: peter-evans/repository-dispatch@v4
-        with:
-          token: ${{ secrets.ACCESS_TOKEN }}
-          repository: Tokimon/jsfns-docs
-          event-type: new-version
-          client-payload: >-
-            {
-              "tag": "${{ github.ref_name }}",
-              "source_repo": "${{ github.repository }}"
-            }
+    uses: ./.github/workflows/trigger-docs.yml
+    with:
+      tag: ${{ github.ref_name }}
+    secrets:
+      ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}

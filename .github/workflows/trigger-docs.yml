@@ -1,0 +1,41 @@
+name: Trigger docs rebuild
+
+on:
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: 'Tag (e.g. @jsfns/core@1.2.1)'
+        required: true
+  workflow_call:
+    inputs:
+      tag:
+        required: true
+        type: string
+    secrets:
+      ACCESS_TOKEN:
+        required: true
+
+jobs:
+  trigger:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Wait for npm to expose version
+        run: ./bin/wait-npm.sh "${{ inputs.tag }}"
+
+      - name: Dispatch to jsfns-docs
+        env:
+          GH_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+        run: |
+          gh api repos/Tokimon/jsfns-docs/dispatches \
+            --method POST \
+            --input - <<EOF
+          {
+            "event_type": "new-version",
+            "client_payload": {
+              "tag": "${{ inputs.tag }}",
+              "source_repo": "${{ github.repository }}"
+            }
+          }
+          EOF
