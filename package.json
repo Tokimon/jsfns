@@ -16,7 +16,7 @@
 		"validate": "pnpm --parallel validate",
 		"dry-run": "pnpm -r dry-run && pnpm clean",
 		"changelog": "./bin/changelog.sh",
-		"versioning": "pnpm changeset version && pnpm changeset tag",
+		"versioning": "./bin/version.sh",
 		"release": "pnpm -r release"
 	},
 	"repository": {
