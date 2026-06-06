@@ -36,6 +36,7 @@ jobs:
             pnpm --filter @jsfns/core release --provenance
           elif [[ "$GITHUB_REF_NAME" == "@jsfns/web@"* ]]; then
             echo "Releasing @jsfns/web"
+            pnpm --filter @jsfns/core build
             pnpm --filter @jsfns/web release --provenance
           else
             echo "Unknown tag format: $GITHUB_REF_NAME"
