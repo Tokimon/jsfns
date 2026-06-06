@@ -1,1 +1,0 @@
-import{Z as e}from"../chunks/CjeNLaWX.js";import{c as t}from"../chunks/CZVuksdV.js";import{t as n}from"../chunks/BLxoWCZS.js";function r(e,n){throw new t(e,n.toString())}var i=e({load:()=>a});function a({params:e}){let t={core:[`1.2.x`,`1.1.x`,`1.0.x`],web:[`1.1.x`]}[e.package];r(307,t?.length?n(e.package,t[0]):n())}export{i as universal};
