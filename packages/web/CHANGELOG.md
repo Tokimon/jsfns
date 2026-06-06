@@ -1,5 +1,13 @@
 # @jsfns/web
 
+## 2.0.1
+
+### Patch Changes
+
+- c485298: Update Methods listing table in README
+- Updated dependencies [c485298]
+  - @jsfns/core@2.0.1
+
 ## 2.0.0
 
 ### Major Changes

@@ -1,5 +1,11 @@
 # @jsfns/core
 
+## 2.0.1
+
+### Patch Changes
+
+- c485298: Update Methods listing table in README
+
 ## 2.0.0
 
 ### Major Changes
