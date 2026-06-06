@@ -41,7 +41,7 @@
 		"lint": "biome check",
 		"format": "biome check --write",
 		"validate": "pnpm lint && pnpm typecheck && pnpm typedoc:validate && pnpm test:coverage",
-		"release": "pnpm publish"
+		"release": "pnpm publish --no-git-checks"
 	},
 	"files": [
 		"dist",
