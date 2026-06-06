@@ -1,0 +1,1 @@
+import{Z as e}from"../chunks/CjeNLaWX.js";import{c as t}from"../chunks/CZVuksdV.js";import{t as n}from"../chunks/5L2rXnTd.js";function r(e,n){throw new t(e,n.toString())}var i=e({load:()=>a});function a({params:e,url:t,...i}){let a={core:[`2.0.x`,`1.2.x`,`1.1.x`,`1.0.x`],web:[`2.0.x`,`1.1.x`]}[e.package];r(307,(a?.length?n(e.package,a[0]):n())+t.hash)}export{i as universal};
