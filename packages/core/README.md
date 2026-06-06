@@ -8,7 +8,7 @@ of making it easier to work with vanilla JavaScript.
 
 ## Available methods
 
-<table style="width: 100%">
+<table>
 <tr><td><a href="https://tokimon.github.io/jsfns/core#RGBToHex">RGBToHex</a></td><td><a href="https://tokimon.github.io/jsfns/core#camelCase">camelCase</a></td><td><a href="https://tokimon.github.io/jsfns/core#capitalize">capitalize</a></td><td><a href="https://tokimon.github.io/jsfns/core#chunkString">chunkString</a></td></tr>
 <tr><td><a href="https://tokimon.github.io/jsfns/core#clamp">clamp</a></td><td><a href="https://tokimon.github.io/jsfns/core#debounce">debounce</a></td><td><a href="https://tokimon.github.io/jsfns/core#deleteProperty">deleteProperty</a></td><td><a href="https://tokimon.github.io/jsfns/core#formatCurrency">formatCurrency</a></td></tr>
 <tr><td><a href="https://tokimon.github.io/jsfns/core#formatNumber">formatNumber</a></td><td><a href="https://tokimon.github.io/jsfns/core#fuzzySearch">fuzzySearch</a></td><td><a href="https://tokimon.github.io/jsfns/core#getProperty">getProperty</a></td><td><a href="https://tokimon.github.io/jsfns/core#hash">hash</a></td></tr>

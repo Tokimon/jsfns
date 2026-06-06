@@ -8,7 +8,7 @@ of making it easier to work with vanilla JavaScript in the browser.
 
 ## Available methods
 
-<table style="width: 100%">
+<table>
 <tr><td><a href="https://tokimon.github.io/jsfns/web#addClass">addClass</a></td><td><a href="https://tokimon.github.io/jsfns/web#append">append</a></td><td><a href="https://tokimon.github.io/jsfns/web#attr">attr</a></td><td><a href="https://tokimon.github.io/jsfns/web#boxModel">boxModel</a></td></tr>
 <tr><td><a href="https://tokimon.github.io/jsfns/web#children">children</a></td><td><a href="https://tokimon.github.io/jsfns/web#classNameString">classNameString</a></td><td><a href="https://tokimon.github.io/jsfns/web#contentBoxSize">contentBoxSize</a></td><td><a href="https://tokimon.github.io/jsfns/web#contentSize">contentSize</a></td></tr>
 <tr><td><a href="https://tokimon.github.io/jsfns/web#copyEvent">copyEvent</a></td><td><a href="https://tokimon.github.io/jsfns/web#createElement">createElement</a></td><td><a href="https://tokimon.github.io/jsfns/web#css">css</a></td><td><a href="https://tokimon.github.io/jsfns/web#domReady">domReady</a></td></tr>

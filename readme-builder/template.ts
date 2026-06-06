@@ -30,9 +30,9 @@ ${description}
 
 ## Available methods
 
-<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));">
+<table>
 ${methods}
-</div>
+</table>
 
 ${docReferences}
 

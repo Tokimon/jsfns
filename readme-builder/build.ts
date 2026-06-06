@@ -47,12 +47,16 @@ export async function build() {
 
 	const len = fileNames.length;
 
-	const methods = fileNames
-		.map(
-			(name) =>
-				`<a href="https://tokimon.github.io/jsfns/${packageName}#${name}" style="padding: 10px;">${name}</a>`,
-		)
-		.join('\n');
+	const methods = fileNames.reduce((str, name, index) => {
+		const n = index + 1;
+		const rowStart = index % 4 === 0 ? '<tr>' : '';
+		const isLastItem = n === len;
+		const isRowEnd = n % 4 === 0 || isLastItem;
+		const padding = isLastItem && n % 4 !== 0 ? '<td></td>'.repeat(4 - (n % 4)) : '';
+		const cell = `<td><a href="https://tokimon.github.io/jsfns/${packageName}#${name}">${name}</a></td>`;
+		const rowEnd = isRowEnd ? `${padding}</tr>\n` : '';
+		return `${str}${rowStart}${cell}${rowEnd}`;
+	}, '');
 
 	const content = template({
 		packageName,
