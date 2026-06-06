@@ -6,29 +6,79 @@
 This is a collection of simple, no dependency, JavaScript snippets with the aim
 of making it easier to work with vanilla JavaScript in the browser.
 
-## Methods
+## Available methods
 
-| Available methods |||
-| --- | --- | --- | --- |
-| [addClass](https://tokimon.github.io/jsfns/web#addClass) | [append](https://tokimon.github.io/jsfns/web#append) | [attr](https://tokimon.github.io/jsfns/web#attr) | [boxModel](https://tokimon.github.io/jsfns/web#boxModel) |
-| [children](https://tokimon.github.io/jsfns/web#children) | [classNameString](https://tokimon.github.io/jsfns/web#classNameString) | [contentBoxSize](https://tokimon.github.io/jsfns/web#contentBoxSize) | [contentSize](https://tokimon.github.io/jsfns/web#contentSize) |
-| [copyEvent](https://tokimon.github.io/jsfns/web#copyEvent) | [createElement](https://tokimon.github.io/jsfns/web#createElement) | [css](https://tokimon.github.io/jsfns/web#css) | [domReady](https://tokimon.github.io/jsfns/web#domReady) |
-| [elementData](https://tokimon.github.io/jsfns/web#elementData) | [elmIndex](https://tokimon.github.io/jsfns/web#elmIndex) | [ensureHTML](https://tokimon.github.io/jsfns/web#ensureHTML) | [find](https://tokimon.github.io/jsfns/web#find) |
-| [findByClass](https://tokimon.github.io/jsfns/web#findByClass) | [findById](https://tokimon.github.io/jsfns/web#findById) | [findByName](https://tokimon.github.io/jsfns/web#findByName) | [findByQuery](https://tokimon.github.io/jsfns/web#findByQuery) |
-| [findByTagName](https://tokimon.github.io/jsfns/web#findByTagName) | [getCurrentDocument](https://tokimon.github.io/jsfns/web#getCurrentDocument) | [getCurrentWindow](https://tokimon.github.io/jsfns/web#getCurrentWindow) | [hasClass](https://tokimon.github.io/jsfns/web#hasClass) |
-| [hidden](https://tokimon.github.io/jsfns/web#hidden) | [inDOM](https://tokimon.github.io/jsfns/web#inDOM) | [inView](https://tokimon.github.io/jsfns/web#inView) | [innerSize](https://tokimon.github.io/jsfns/web#innerSize) |
-| [innerXML](https://tokimon.github.io/jsfns/web#innerXML) | [insertAfter](https://tokimon.github.io/jsfns/web#insertAfter) | [insertBefore](https://tokimon.github.io/jsfns/web#insertBefore) | [invisible](https://tokimon.github.io/jsfns/web#invisible) |
-| [isBlob](https://tokimon.github.io/jsfns/web#isBlob) | [isDOMChildNode](https://tokimon.github.io/jsfns/web#isDOMChildNode) | [isDOMContainer](https://tokimon.github.io/jsfns/web#isDOMContainer) | [isDOMElement](https://tokimon.github.io/jsfns/web#isDOMElement) |
-| [isDOMFragment](https://tokimon.github.io/jsfns/web#isDOMFragment) | [isDOMNode](https://tokimon.github.io/jsfns/web#isDOMNode) | [isDOMRoot](https://tokimon.github.io/jsfns/web#isDOMRoot) | [isDocument](https://tokimon.github.io/jsfns/web#isDocument) |
-| [isEventTarget](https://tokimon.github.io/jsfns/web#isEventTarget) | [isHTMLChildElement](https://tokimon.github.io/jsfns/web#isHTMLChildElement) | [isHTMLElement](https://tokimon.github.io/jsfns/web#isHTMLElement) | [isWindow](https://tokimon.github.io/jsfns/web#isWindow) |
-| [marginBoxSize](https://tokimon.github.io/jsfns/web#marginBoxSize) | [nextSiblings](https://tokimon.github.io/jsfns/web#nextSiblings) | [off](https://tokimon.github.io/jsfns/web#off) | [on](https://tokimon.github.io/jsfns/web#on) |
-| [outerSize](https://tokimon.github.io/jsfns/web#outerSize) | [parseSelector](https://tokimon.github.io/jsfns/web#parseSelector) | [position](https://tokimon.github.io/jsfns/web#position) | [prepend](https://tokimon.github.io/jsfns/web#prepend) |
-| [previousSiblings](https://tokimon.github.io/jsfns/web#previousSiblings) | [removeClass](https://tokimon.github.io/jsfns/web#removeClass) | [replaceClass](https://tokimon.github.io/jsfns/web#replaceClass) | [replaceNode](https://tokimon.github.io/jsfns/web#replaceNode) |
-| [scrollInfo](https://tokimon.github.io/jsfns/web#scrollInfo) | [scrollParent](https://tokimon.github.io/jsfns/web#scrollParent) | [selectorToHTML](https://tokimon.github.io/jsfns/web#selectorToHTML) | [siblings](https://tokimon.github.io/jsfns/web#siblings) |
-| [toDOM](https://tokimon.github.io/jsfns/web#toDOM) | [toggleClass](https://tokimon.github.io/jsfns/web#toggleClass) | [trigger](https://tokimon.github.io/jsfns/web#trigger) | [types](https://tokimon.github.io/jsfns/web#types) |
-| [uniqueNodeList](https://tokimon.github.io/jsfns/web#uniqueNodeList) | [vendorPrefixed](https://tokimon.github.io/jsfns/web#vendorPrefixed) | [viewport](https://tokimon.github.io/jsfns/web#viewport) | [visible](https://tokimon.github.io/jsfns/web#visible) |
-| [wrap](https://tokimon.github.io/jsfns/web#wrap) |
-
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));">
+<a href="https://tokimon.github.io/jsfns/web#addClass" style="padding: 10px;">addClass</a>
+<a href="https://tokimon.github.io/jsfns/web#append" style="padding: 10px;">append</a>
+<a href="https://tokimon.github.io/jsfns/web#attr" style="padding: 10px;">attr</a>
+<a href="https://tokimon.github.io/jsfns/web#boxModel" style="padding: 10px;">boxModel</a>
+<a href="https://tokimon.github.io/jsfns/web#children" style="padding: 10px;">children</a>
+<a href="https://tokimon.github.io/jsfns/web#classNameString" style="padding: 10px;">classNameString</a>
+<a href="https://tokimon.github.io/jsfns/web#contentBoxSize" style="padding: 10px;">contentBoxSize</a>
+<a href="https://tokimon.github.io/jsfns/web#contentSize" style="padding: 10px;">contentSize</a>
+<a href="https://tokimon.github.io/jsfns/web#copyEvent" style="padding: 10px;">copyEvent</a>
+<a href="https://tokimon.github.io/jsfns/web#createElement" style="padding: 10px;">createElement</a>
+<a href="https://tokimon.github.io/jsfns/web#css" style="padding: 10px;">css</a>
+<a href="https://tokimon.github.io/jsfns/web#domReady" style="padding: 10px;">domReady</a>
+<a href="https://tokimon.github.io/jsfns/web#elementData" style="padding: 10px;">elementData</a>
+<a href="https://tokimon.github.io/jsfns/web#elmIndex" style="padding: 10px;">elmIndex</a>
+<a href="https://tokimon.github.io/jsfns/web#ensureHTML" style="padding: 10px;">ensureHTML</a>
+<a href="https://tokimon.github.io/jsfns/web#find" style="padding: 10px;">find</a>
+<a href="https://tokimon.github.io/jsfns/web#findByClass" style="padding: 10px;">findByClass</a>
+<a href="https://tokimon.github.io/jsfns/web#findById" style="padding: 10px;">findById</a>
+<a href="https://tokimon.github.io/jsfns/web#findByName" style="padding: 10px;">findByName</a>
+<a href="https://tokimon.github.io/jsfns/web#findByQuery" style="padding: 10px;">findByQuery</a>
+<a href="https://tokimon.github.io/jsfns/web#findByTagName" style="padding: 10px;">findByTagName</a>
+<a href="https://tokimon.github.io/jsfns/web#getCurrentDocument" style="padding: 10px;">getCurrentDocument</a>
+<a href="https://tokimon.github.io/jsfns/web#getCurrentWindow" style="padding: 10px;">getCurrentWindow</a>
+<a href="https://tokimon.github.io/jsfns/web#hasClass" style="padding: 10px;">hasClass</a>
+<a href="https://tokimon.github.io/jsfns/web#hidden" style="padding: 10px;">hidden</a>
+<a href="https://tokimon.github.io/jsfns/web#inDOM" style="padding: 10px;">inDOM</a>
+<a href="https://tokimon.github.io/jsfns/web#inView" style="padding: 10px;">inView</a>
+<a href="https://tokimon.github.io/jsfns/web#innerSize" style="padding: 10px;">innerSize</a>
+<a href="https://tokimon.github.io/jsfns/web#innerXML" style="padding: 10px;">innerXML</a>
+<a href="https://tokimon.github.io/jsfns/web#insertAfter" style="padding: 10px;">insertAfter</a>
+<a href="https://tokimon.github.io/jsfns/web#insertBefore" style="padding: 10px;">insertBefore</a>
+<a href="https://tokimon.github.io/jsfns/web#invisible" style="padding: 10px;">invisible</a>
+<a href="https://tokimon.github.io/jsfns/web#isBlob" style="padding: 10px;">isBlob</a>
+<a href="https://tokimon.github.io/jsfns/web#isDOMChildNode" style="padding: 10px;">isDOMChildNode</a>
+<a href="https://tokimon.github.io/jsfns/web#isDOMContainer" style="padding: 10px;">isDOMContainer</a>
+<a href="https://tokimon.github.io/jsfns/web#isDOMElement" style="padding: 10px;">isDOMElement</a>
+<a href="https://tokimon.github.io/jsfns/web#isDOMFragment" style="padding: 10px;">isDOMFragment</a>
+<a href="https://tokimon.github.io/jsfns/web#isDOMNode" style="padding: 10px;">isDOMNode</a>
+<a href="https://tokimon.github.io/jsfns/web#isDOMRoot" style="padding: 10px;">isDOMRoot</a>
+<a href="https://tokimon.github.io/jsfns/web#isDocument" style="padding: 10px;">isDocument</a>
+<a href="https://tokimon.github.io/jsfns/web#isEventTarget" style="padding: 10px;">isEventTarget</a>
+<a href="https://tokimon.github.io/jsfns/web#isHTMLChildElement" style="padding: 10px;">isHTMLChildElement</a>
+<a href="https://tokimon.github.io/jsfns/web#isHTMLElement" style="padding: 10px;">isHTMLElement</a>
+<a href="https://tokimon.github.io/jsfns/web#isWindow" style="padding: 10px;">isWindow</a>
+<a href="https://tokimon.github.io/jsfns/web#marginBoxSize" style="padding: 10px;">marginBoxSize</a>
+<a href="https://tokimon.github.io/jsfns/web#nextSiblings" style="padding: 10px;">nextSiblings</a>
+<a href="https://tokimon.github.io/jsfns/web#off" style="padding: 10px;">off</a>
+<a href="https://tokimon.github.io/jsfns/web#on" style="padding: 10px;">on</a>
+<a href="https://tokimon.github.io/jsfns/web#outerSize" style="padding: 10px;">outerSize</a>
+<a href="https://tokimon.github.io/jsfns/web#parseSelector" style="padding: 10px;">parseSelector</a>
+<a href="https://tokimon.github.io/jsfns/web#position" style="padding: 10px;">position</a>
+<a href="https://tokimon.github.io/jsfns/web#prepend" style="padding: 10px;">prepend</a>
+<a href="https://tokimon.github.io/jsfns/web#previousSiblings" style="padding: 10px;">previousSiblings</a>
+<a href="https://tokimon.github.io/jsfns/web#removeClass" style="padding: 10px;">removeClass</a>
+<a href="https://tokimon.github.io/jsfns/web#replaceClass" style="padding: 10px;">replaceClass</a>
+<a href="https://tokimon.github.io/jsfns/web#replaceNode" style="padding: 10px;">replaceNode</a>
+<a href="https://tokimon.github.io/jsfns/web#scrollInfo" style="padding: 10px;">scrollInfo</a>
+<a href="https://tokimon.github.io/jsfns/web#scrollParent" style="padding: 10px;">scrollParent</a>
+<a href="https://tokimon.github.io/jsfns/web#selectorToHTML" style="padding: 10px;">selectorToHTML</a>
+<a href="https://tokimon.github.io/jsfns/web#siblings" style="padding: 10px;">siblings</a>
+<a href="https://tokimon.github.io/jsfns/web#toDOM" style="padding: 10px;">toDOM</a>
+<a href="https://tokimon.github.io/jsfns/web#toggleClass" style="padding: 10px;">toggleClass</a>
+<a href="https://tokimon.github.io/jsfns/web#trigger" style="padding: 10px;">trigger</a>
+<a href="https://tokimon.github.io/jsfns/web#types" style="padding: 10px;">types</a>
+<a href="https://tokimon.github.io/jsfns/web#uniqueNodeList" style="padding: 10px;">uniqueNodeList</a>
+<a href="https://tokimon.github.io/jsfns/web#vendorPrefixed" style="padding: 10px;">vendorPrefixed</a>
+<a href="https://tokimon.github.io/jsfns/web#viewport" style="padding: 10px;">viewport</a>
+<a href="https://tokimon.github.io/jsfns/web#visible" style="padding: 10px;">visible</a>
+<a href="https://tokimon.github.io/jsfns/web#wrap" style="padding: 10px;">wrap</a>
+</div>
 
 ## [@jsfns/core](https://tokimon.github.io/jsfns/core)
 

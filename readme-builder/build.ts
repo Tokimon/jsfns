@@ -49,8 +49,10 @@ export async function build() {
 
 	const methods = fileNames.reduce((str, name, index) => {
 		const n = index + 1;
-		const end = n % 4 === 0 || n === len ? '|\n' : '';
-		return `${str}| [${name}](https://tokimon.github.io/jsfns/${packageName}#${name}) ${end}`;
+		const rowStart = index % 4 === 0 ? '<tr>' : '';
+		const rowEnd = n % 4 === 0 || n === len ? '</tr>\n' : '';
+		const cell = `<td><a href="https://tokimon.github.io/jsfns/${packageName}#${name}">${name}</a></td>`;
+		return `${str}${rowStart}${cell}${rowEnd}`;
 	}, '');
 
 	const content = template({

@@ -28,11 +28,11 @@ export function template({
 
 ${description}
 
-## Methods
+## Available methods
 
-| Available methods |||
-| --- | --- | --- | --- |
+<table>
 ${methods}
+</table>
 
 ${docReferences}
 
