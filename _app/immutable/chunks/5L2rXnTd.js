@@ -1,1 +1,0 @@
-import{s as e}from"./CZVuksdV.js";function t(...t){return[e,...t].join(`/`)||`/`}export{t};

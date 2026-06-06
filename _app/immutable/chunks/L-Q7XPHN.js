@@ -1,0 +1,1 @@
+import{s as e}from"./AzpFCDqK.js";function t(...t){return[e,...t].join(`/`)||`/`}export{t};
