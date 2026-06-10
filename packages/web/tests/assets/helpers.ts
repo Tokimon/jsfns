@@ -1,4 +1,4 @@
-import type { GeneralWindow } from '@jsfns/web/types.ts';
+import type { GeneralWindow, GlobalWindow } from '@jsfns/web/types.ts';
 
 export const generateId = (baseId: string): string => baseId + '__' + Date.now().toString(36);
 
@@ -29,6 +29,17 @@ export const appendFrame = (doc = document): HTMLIFrameElement => {
 
 	return frame;
 };
+
+/**
+ * A frame's `contentWindow` typed for reaching its realm's constructors (e.g.
+ * `Blob`, `Map`) when building cross-realm test objects.
+ *
+ * Test-only: the `GlobalWindow` assertion is safe here because the iframe is a
+ * standard same-engine realm we just created — unlike arbitrary foreign windows
+ * in production, where realm globals should be treated as optional.
+ */
+export const frameWindow = (frame: HTMLIFrameElement): GlobalWindow =>
+	frame.contentWindow as GlobalWindow;
 
 export const insertHtml = (html: string, elm: Element = document.body): void =>
 	elm.insertAdjacentHTML('beforeend', html);
