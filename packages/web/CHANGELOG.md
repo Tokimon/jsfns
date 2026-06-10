@@ -1,5 +1,20 @@
 # @jsfns/web
 
+## 2.1.0
+
+### Minor Changes
+
+- e43f74f: Cross-realm support for DOM guards:
+
+  - Fix `on`/`off` failing on an iframe's `contentWindow` ([#24](https://github.com/Tokimon/jsfns/issues/24)): `isEventTarget` no longer relies on a realm-bound `instanceof`
+  - `isBlob`, `isWindow`, and `isHTMLElement` now detect targets from another realm (e.g. iframes)
+  - Add a `GlobalWindow` type
+
+### Patch Changes
+
+- Updated dependencies [b85fd0d]
+  - @jsfns/core@2.1.0
+
 ## 2.0.1
 
 ### Patch Changes

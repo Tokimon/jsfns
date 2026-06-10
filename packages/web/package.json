@@ -1,6 +1,6 @@
 {
 	"name": "@jsfns/web",
-	"version": "2.0.1",
+	"version": "2.1.0",
 	"description": "Simple, no dependency, JS utility functions for use in a browser environment",
 	"private": false,
 	"author": "Toke Voltelen",
