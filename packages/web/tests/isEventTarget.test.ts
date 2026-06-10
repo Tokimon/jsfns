@@ -13,6 +13,8 @@ describe('"isEventTarget"', () => {
 			['String', ''],
 			['Number', 123],
 			['Boolean', true],
+			// Implements only part of the contract — `off` would fail on this
+			['Object with addEventListener but no removeEventListener', { addEventListener() {} }],
 		])('%s', (_, obj) => {
 			expect(isEventTarget(obj)).toBe(false);
 		});
@@ -27,6 +29,12 @@ describe('"isEventTarget"', () => {
 			['Comment Node', document.createComment('')],
 			['XMLHttpRequest', new XMLHttpRequest()],
 			['Object extending EventTarget', new Custom()],
+			// A cross-realm target (e.g. an iframe's contentWindow) is not an
+			// instance of this realm's EventTarget, but still implements the API
+			[
+				'Cross-realm target (not instanceof EventTarget)',
+				{ addEventListener() {}, removeEventListener() {} },
+			],
 		])('%s', (_, obj) => {
 			expect(isEventTarget(obj)).toBe(true);
 		});

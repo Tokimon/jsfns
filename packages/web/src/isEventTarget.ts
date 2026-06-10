@@ -1,5 +1,6 @@
 /**
- * Is the given object a viable event target (implements the addEventListener function)
+ * Is the given object a viable event target (implements the `addEventListener`
+ * and `removeEventListener` functions — the methods `on` and `off` rely on)
  *
  * @param obj - The object to check
  * @returns Is it an Event Target or not
@@ -16,6 +17,10 @@
  * isEventTarget({}) // --> false
  * ```
  */
-export const isEventTarget = (obj: unknown): obj is EventTarget => obj instanceof EventTarget;
+export const isEventTarget = (obj: unknown): obj is EventTarget =>
+	obj instanceof EventTarget ||
+	(obj != null &&
+		typeof (obj as EventTarget).addEventListener === 'function' &&
+		typeof (obj as EventTarget).removeEventListener === 'function');
 
 export default isEventTarget;
