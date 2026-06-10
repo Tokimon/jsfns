@@ -4,6 +4,12 @@
 export type GeneralWindow = Window | typeof window;
 
 /**
+ * A `Window` together with its global scope, exposing the realm's own
+ * constructors (e.g. `Blob`, `HTMLElement`) for cross-realm checks.
+ */
+export type GlobalWindow = Window & typeof globalThis;
+
+/**
  * A valid event name string. Includes all standard `DocumentEventMap` keys (like `"click"`, `"keydown"`)
  * as well as arbitrary custom string values.
  */
