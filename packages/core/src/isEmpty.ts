@@ -1,6 +1,8 @@
-import { isBoolean } from './isBoolean.ts';
-import { isNumber } from './isNumber.ts';
-import { isObject } from './isObject.ts';
+import { isBoolean } from './isBoolean.js';
+import { isMap } from './isMap.js';
+import { isNumber } from './isNumber.js';
+import { isPlainObject } from './isPlainObject.js';
+import { isSet } from './isSet.js';
 
 /**
  * Is the given value considered empty.
@@ -41,13 +43,9 @@ export function isEmpty(x: unknown) {
 
 	if (Array.isArray(x)) return !x.length;
 
-	if (x instanceof Map || x instanceof Set) return !x.size;
+	if (isMap(x) || isSet(x)) return !x.size;
 
-	if (isObject(x)) {
-		const proto = Object.getPrototypeOf(x);
-		const isPlain = proto === null || proto === Object.prototype;
-		return isPlain && !Object.keys(x).length;
-	}
+	if (isPlainObject(x)) return !Object.keys(x).length;
 
 	return false;
 }
