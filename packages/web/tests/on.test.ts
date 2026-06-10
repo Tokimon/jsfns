@@ -1,6 +1,13 @@
 import { type OnOptions, on } from '@jsfns/web/on.js';
 import { beforeAll, describe, expect, it, vi } from 'vitest';
-import { byId, generateId, insertHtml, triggerEvent } from './assets/helpers.js';
+import {
+	appendFrame,
+	byId,
+	frameWindow,
+	generateId,
+	insertHtml,
+	triggerEvent,
+} from './assets/helpers.js';
 
 const testID = generateId('on');
 const eventName = 'test';
@@ -344,5 +351,29 @@ describe('"on"', () => {
 
 	describe('With Window', () => {
 		suite(window);
+	});
+
+	describe('With a cross-realm iframe window (issue #24)', () => {
+		it('Binds to the iframe contentWindow instead of falling back to document', () => {
+			const frame = appendFrame();
+			const win = frameWindow(frame);
+			const handler = vi.fn();
+
+			const documentSpy = vi.spyOn(document, 'addEventListener');
+			const frameSpy = vi.spyOn(win, 'addEventListener');
+
+			const off = on(win, eventName, handler);
+
+			expect(frameSpy).toHaveBeenCalledWith(eventName, handler, undefined);
+			expect(documentSpy).not.toHaveBeenCalled();
+
+			win.dispatchEvent(new win.Event(eventName));
+			expect(handler).toHaveBeenCalledTimes(1);
+
+			off();
+			frameSpy.mockRestore();
+			documentSpy.mockRestore();
+			frame.remove();
+		});
 	});
 });
