@@ -54,4 +54,24 @@ describe('"isEmpty"', () => {
 			expect(isEmpty(value)).toBe(false);
 		});
 	});
+
+	describe('Handles plain objects from another realm', () => {
+		// A cross-realm `{}` has the *other* realm's `Object.prototype` (whose own
+		// prototype is null), not this realm's — so identity checks would misfire
+		const foreignProto = Object.create(null);
+
+		it('treats an empty foreign plain object as empty', () => {
+			const emptyForeign = Object.create(foreignProto);
+
+			expect(Object.getPrototypeOf(emptyForeign)).not.toBe(Object.prototype);
+			expect(isEmpty(emptyForeign)).toBe(true);
+		});
+
+		it('treats a non-empty foreign plain object as not empty', () => {
+			const nonEmptyForeign = Object.create(foreignProto);
+			nonEmptyForeign.a = 1;
+
+			expect(isEmpty(nonEmptyForeign)).toBe(false);
+		});
+	});
 });
