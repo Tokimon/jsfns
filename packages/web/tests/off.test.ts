@@ -1,6 +1,6 @@
 import { off } from '@jsfns/web/off.js';
 import { describe, expect, it, vi } from 'vitest';
-import { bind, triggerEvent } from './assets/helpers.js';
+import { appendFrame, bind, frameWindow, triggerEvent } from './assets/helpers.js';
 
 describe('"off"', () => {
 	function suite(elm?: HTMLElement | Window) {
@@ -60,5 +60,31 @@ describe('"off"', () => {
 		['Window', window],
 	])('With %s', (_, elm) => {
 		suite(elm);
+	});
+
+	describe('With a cross-realm iframe window (issue #24)', () => {
+		it('Removes from the iframe contentWindow instead of falling back to document', () => {
+			const eventName = 'test';
+			const frame = appendFrame();
+			const win = frameWindow(frame);
+			const handler = vi.fn();
+
+			const documentSpy = vi.spyOn(document, 'removeEventListener');
+			const frameSpy = vi.spyOn(win, 'removeEventListener');
+
+			bind(win, eventName, handler);
+
+			off(win, eventName, handler);
+
+			expect(frameSpy).toHaveBeenCalledWith(eventName, handler, undefined);
+			expect(documentSpy).not.toHaveBeenCalled();
+
+			win.dispatchEvent(new win.Event(eventName));
+			expect(handler).not.toHaveBeenCalled();
+
+			frameSpy.mockRestore();
+			documentSpy.mockRestore();
+			frame.remove();
+		});
 	});
 });
