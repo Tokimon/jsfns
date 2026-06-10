@@ -5,6 +5,7 @@ import {
 	byId,
 	createDetachedDocument,
 	createElement,
+	frameWindow,
 	generateId,
 	insertHtml,
 	removeElement,
@@ -43,9 +44,7 @@ describe('"isHTMLChildElement"', () => {
 			const { body } = frame.contentDocument as Document;
 			body.innerHTML = '<div></div>';
 
-			const iframeSpy = mockOffsetParent(
-				(frame.contentWindow as unknown as typeof globalThis).HTMLElement.prototype,
-			);
+			const iframeSpy = mockOffsetParent(frameWindow(frame).HTMLElement.prototype);
 
 			expect(isHTMLChildElement(body.firstElementChild)).toBe(true);
 
