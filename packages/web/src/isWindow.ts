@@ -1,3 +1,4 @@
+import { getObjectName } from '@jsfns/core/getObjectName.js';
 import type { GeneralWindow } from './types.ts';
 
 /**
@@ -16,7 +17,7 @@ import type { GeneralWindow } from './types.ts';
  * ```
  */
 export function isWindow(obj: unknown): obj is GeneralWindow {
-	return obj instanceof Window || Object.prototype.toString.call(obj).includes('object Window');
+	return obj instanceof Window || getObjectName(obj) === 'Window';
 }
 
 export default isWindow;
