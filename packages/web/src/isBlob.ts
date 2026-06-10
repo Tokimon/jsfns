@@ -1,3 +1,5 @@
+import { getObjectName } from '@jsfns/core/getObjectName.js';
+
 /**
  * Is the given object a Blob object
  *
@@ -12,6 +14,7 @@
  * isBlob('blob') // --> false
  * ```
  */
-export const isBlob = (obj: unknown): obj is Blob => obj instanceof Blob;
+export const isBlob = (obj: unknown): obj is Blob =>
+	obj instanceof Blob || getObjectName(obj) === 'Blob';
 
 export default isBlob;
