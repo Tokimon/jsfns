@@ -37,6 +37,13 @@ describe('"isHTMLElement"', () => {
 			frame.remove();
 		});
 
+		it('A non-element node in a detached Document (no associated window)', () => {
+			const doc = createDetachedDocument();
+
+			expect(doc.defaultView).toBe(null);
+			expect(isHTMLElement(doc.createTextNode(''))).toBe(false);
+		});
+
 		it.each([
 			['Document', document],
 			['Fragment', document.createDocumentFragment()],
