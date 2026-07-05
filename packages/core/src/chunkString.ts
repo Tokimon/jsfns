@@ -22,8 +22,18 @@ export type ChunkStringOptions = {
  */
 export function chunkString(str: string, options: ChunkStringOptions = {}): string[] {
 	const { size = 2, reverse = false } = options;
-	const rev = reverse ? `(?=(?:.{${size}})*$)` : '';
-	return str.match(new RegExp(`.{1,${size}}${rev}`, 'g')) || [];
+	if (size <= 0) return [''];
+
+	const chunks: string[] = [];
+	let len = reverse ? str.length % size : size;
+
+	while (str) {
+		chunks.push(str.slice(0, len));
+		str = str.slice(len);
+		len = size;
+	}
+
+	return chunks;
 }
 
 export default chunkString;

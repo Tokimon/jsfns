@@ -18,9 +18,14 @@ describe('"chunkString"', () => {
 				expect(chunks).toEqual(['abcd', 'efgh', 'ijkl']);
 			});
 
-			it('When size is grater than the string length, entire string will be returned as only entry in the array', () => {
+			it('When size is grater than the string length, return the entire string as the only entry of the array', () => {
 				const chunks = chunkString('abcdef', { size: 9 });
 				expect(chunks).toEqual(['abcdef']);
+			});
+
+			it.each([-1, 0])('When size is "%d", return an array with an empty string', (n) => {
+				const chunks = chunkString('abcdef', { size: n });
+				expect(chunks).toEqual(['']);
 			});
 
 			it('When string length is not divisible by the size, last entry will contain the remaining of the string', () => {
@@ -40,6 +45,11 @@ describe('"chunkString"', () => {
 			it('Works together', () => {
 				const chunks = chunkString('abcdefghijk', { reverse: true, size: 4 });
 				expect(chunks).toEqual(['abc', 'defg', 'hijk']);
+			});
+
+			it('Works even when size is greater than the length', () => {
+				const chunks = chunkString('abcdefghijk', { reverse: true, size: 20 });
+				expect(chunks).toEqual(['abcdefghijk']);
 			});
 		});
 	});
