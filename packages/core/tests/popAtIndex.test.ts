@@ -1,10 +1,14 @@
 import { popAtIndex, popAtIndexPure } from '@jsfns/core/popAtIndex.js';
-import { describe, expect, it } from 'vitest';
+import { describe, expect, expectTypeOf, it } from 'vitest';
 
 describe('"popAtIndex"', () => {
 	describe('"popAtIndex"', () => {
 		it('Returns the value a the given index', () => {
 			expect(popAtIndex([1, 2, 3], 1)).toBe(2);
+		});
+
+		it('Types the returned item as the array element type, not `unknown`', () => {
+			expectTypeOf(popAtIndex([1, 2, 3], 1)).toEqualTypeOf<number | undefined>();
 		});
 
 		it('Removes the value a the given index from the given array', () => {
@@ -29,6 +33,12 @@ describe('"popAtIndex"', () => {
 	describe('"popAtIndexPure"', () => {
 		it('Removes the value a the given index from the given array', () => {
 			expect(popAtIndexPure([1, 2, 3], 1)).toEqual([2, [1, 3]]);
+		});
+
+		it('Types the tuple entries as the array element type, not `unknown`', () => {
+			const [item, rest] = popAtIndexPure([1, 2, 3], 1);
+			expectTypeOf(item).toEqualTypeOf<number | undefined>();
+			expectTypeOf(rest).toEqualTypeOf<number[]>();
 		});
 
 		describe.each([-1, 10])('When index is out of bounds: %i', (index) => {

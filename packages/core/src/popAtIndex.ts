@@ -9,12 +9,12 @@
  *
  * @example
  * ```ts
- * popIndexPure([1,2,3], 1); // --> [2,  [1, 3]]
+ * popAtIndexPure([1,2,3], 1); // --> [2, [1, 3]]
  * ```
  */
-export function popAtIndexPure<T extends unknown[]>(list: T, index: number): [unknown, T] {
+export function popAtIndexPure<T>(list: T[], index: number): [T | undefined, T[]] {
 	if (index < 0 || index >= list.length) return [undefined, list];
-	return [list[index], list.toSpliced(index, 1) as T];
+	return [list[index], list.toSpliced(index, 1)];
 }
 
 /**
@@ -27,9 +27,11 @@ export function popAtIndexPure<T extends unknown[]>(list: T, index: number): [un
  * @param list - The Array to remove the item from
  * @param index - At what index to remove from
  *
+ * @returns The item popped from the array, if any
+ *
  * @example
  * ```ts
- * popIndex([1,2,3], 1); // --> 2 (array will then be [1, 3])
+ * popAtIndex([1,2,3], 1); // --> 2 (array will then be [1, 3])
  * ```
  */
 export function popAtIndex<T>(list: T[], index: number): T | undefined {
