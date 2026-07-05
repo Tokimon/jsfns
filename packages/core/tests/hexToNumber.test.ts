@@ -2,11 +2,17 @@ import { hexToNumber } from '@jsfns/core/hexToNumber.js';
 import { describe, expect, it } from 'vitest';
 
 describe('"hexToNumber"', () => {
-	it('Returns 0 on empty strings', () => {
-		expect(hexToNumber('')).toBe(0);
+	it('Generates a number from a hexadecimal', () => {
+		expect(hexToNumber('ab')).toBe(171);
 	});
 
-	it('Generates a number from a hexadecimal', () => {
-		expect(hexToNumber((250.0).toString(16))).toBe(250);
+	describe('Returns NaN on non-parsable values', () => {
+		it.each(['', 'g', 'gh'])('%s', (x) => {
+			expect(hexToNumber(x)).toBe(Number.NaN);
+		});
+	});
+
+	it('Ignores any subsequent non-parsable values', () => {
+		expect(hexToNumber('fh')).toBe(15);
 	});
 });
