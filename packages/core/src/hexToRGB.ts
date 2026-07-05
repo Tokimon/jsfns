@@ -1,34 +1,42 @@
 import { chunkString } from './chunkString.js';
 import { hexToNumber } from './hexToNumber.js';
-import { isString } from './isString.js';
+import { isNumber } from './isNumber.js';
+import type { RGBTuple } from './RGBToHex.js';
 
 /**
  * Converts a Hexadecimal color to a RGB(A) color array
  *
  * @param hex - Hex color to convert to RGB
  *
- * @returns Array with RGB values
+ * @returns Array with RGB values or `null` if parsing fails
  *
  * @example
  * ```ts
  * hexToRGB('#fff'); // --> [255, 255, 255]
  * hexToRGB('#2fd466'); // --> [47, 212, 102]
  *
+ * // Null on failed values
+ * hexToRGB('#ab'); // --> null
+ * hexToRGB(''); // --> null
+ *
  * // And with alpha channel
  * hexToRGB('#2fd46680'); // --> [47, 212, 102, 0.5]
  * ```
  */
-export function hexToRGB(hex: string): number[] {
-	if (!isString(hex) || !hex) return [0, 0, 0];
+export function hexToRGB(hex: string): RGBTuple | null {
+	const trimmed = hex.trim();
+	const color = trimmed.startsWith('#') ? trimmed.slice(1) : trimmed;
 
-	const color = hex[0] === '#' ? hex.slice(1) : hex;
-	const rgb = chunkString(color, { size: color.length <= 4 ? 1 : 2 }).map((c) =>
-		hexToNumber(c.length > 1 ? c : `${c}${c}`),
+	if (color.length < 3) return null;
+
+	const chunkSize = color.length <= 4 ? 1 : 2;
+	const [r, g, b, a] = chunkString(color, { size: chunkSize }).map((c) =>
+		hexToNumber(c.padStart(2, c)),
 	);
 
-	if (rgb.length > 3) rgb[3] = Number.parseFloat((rgb[3] / 255).toFixed(2));
+	if (!isNumber(r) || !isNumber(g) || !isNumber(b)) return null;
 
-	return rgb;
+	return !isNumber(a) ? [r, g, b] : [r, g, b, Number.parseFloat((a / 255).toFixed(2))];
 }
 
 export default hexToRGB;
