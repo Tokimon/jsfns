@@ -1,5 +1,6 @@
 import { isString } from '@jsfns/core/isString.js';
 import { ensureHTML } from './ensureHTML.js';
+import { isDOMElement } from './isDOMElement.js';
 
 /**
  * Append DOM element or plain HTML to the beginning of a given DOM element
@@ -17,7 +18,7 @@ import { ensureHTML } from './ensureHTML.js';
  * ```
  */
 export function prepend(elm: Element, insertElm: string | Node): Element | null {
-	if (!elm) return null;
+	if (!isDOMElement(elm)) return null;
 
 	if (isString(insertElm)) {
 		elm.insertAdjacentHTML('afterbegin', ensureHTML(insertElm));
