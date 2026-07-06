@@ -3,7 +3,7 @@ import { copyEvent } from './copyEvent.js';
 import { isDOMElement } from './isDOMElement.js';
 import { isEventTarget } from './isEventTarget.js';
 import { off } from './off.js';
-import type { ActualEvent, EventHandler, EventName } from './types.ts';
+import type { ActualEvent, EventHandler, EventName } from './types.js';
 
 /** The extended event listener options for the `on` function */
 export type OnOptions<E extends EventName = EventName> = AddEventListenerOptions & {
@@ -113,12 +113,12 @@ function onOptionsHandler<E extends EventName = EventName>(
  * // and delegate have been fulfilled).
  * ```
  */
-function on<E extends EventName>(
-	elm: Args<E>[0],
+function on<T extends EventTarget, E extends EventName>(
+	elm: T,
 	eventNames: E | E[],
 	handler: EventHandler<E>,
-	options?: Args<E>[3],
-): () => typeof elm;
+	options?: OnOptions<E>,
+): () => T;
 
 /**
  * Bind an event handler for one or more event names on `document`.
@@ -170,18 +170,19 @@ function on<E extends EventName>(
 function on<E extends EventName>(
 	eventNames: E | E[],
 	handler: EventHandler<E>,
-	options?: Args<E>[3],
+	options?: OnOptions<E>,
 ): () => Document;
 
-function on<E extends EventName>(...args: Args<E> | NotFirst<Args<E>>): () => (typeof args)[0] {
-	if (!isEventTarget(args[0])) return on(document, ...(args as NotFirst<Args<E>>));
+function on<E extends EventName>(...args: Args<E> | NotFirst<Args<E>>): () => EventTarget {
+	let [elm, eventNames, handler, options] = (
+		isEventTarget(args[0]) ? args : [document, ...args]
+	) as Args<E>;
 
-	let [elm, eventNames, handler, options] = args as Args<E>;
-	if (!Array.isArray(eventNames)) eventNames = [eventNames];
+	const evts = !Array.isArray(eventNames) ? [eventNames] : eventNames;
 
 	if (options) [handler, options] = onOptionsHandler(elm, handler, options);
 
-	for (const evt of eventNames) elm.addEventListener(evt, handler as EventListener, options);
+	for (const evt of evts) elm.addEventListener(evt, handler as EventListener, options);
 
 	return () => off(elm, eventNames, handler, options);
 }

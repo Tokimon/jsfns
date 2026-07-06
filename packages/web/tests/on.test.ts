@@ -1,5 +1,5 @@
 import { type OnOptions, on } from '@jsfns/web/on.js';
-import { beforeAll, describe, expect, it, vi } from 'vitest';
+import { beforeAll, describe, expect, expectTypeOf, it, vi } from 'vitest';
 import {
 	appendFrame,
 	byId,
@@ -374,6 +374,16 @@ describe('"on"', () => {
 			frameSpy.mockRestore();
 			documentSpy.mockRestore();
 			frame.remove();
+		});
+	});
+
+	describe('Typing', () => {
+		it('Types the cleanup function to return the specific element type given', () => {
+			expectTypeOf(on(document.body, 'click', () => {})).toEqualTypeOf<() => HTMLElement>();
+		});
+
+		it('Types the document-only overload cleanup function as returning Document', () => {
+			expectTypeOf(on('click', () => {})).toEqualTypeOf<() => Document>();
 		});
 	});
 });
