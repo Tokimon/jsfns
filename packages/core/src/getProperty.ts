@@ -1,12 +1,16 @@
-import { isNumeric } from './isNumeric.ts';
-import { isObjectLike } from './isObjectLike.ts';
-import type { Dictionary } from './types.ts';
+import { isNumeric } from './isNumeric.js';
+import { isObjectLike } from './isObjectLike.js';
+import type { Dictionary } from './types.js';
 
 /**
  * Read a value from an object or array by following a path of keys.
  *
  * Returns a `{ success, value }` discriminator — use `success` to distinguish
  * a missing path from a stored `null` or `undefined`.
+ *
+ * @typeParam T - Optional type to assert the found value as (defaults to `unknown`).
+ *                Not inferred from `input` - since `path` can navigate to any depth,
+ *                there's no way to derive it automatically, so it must be given explicitly.
  *
  * @param input - The object or array to read from
  * @param path - A dot-separated string (e.g. `'a.b.0.c'`) or an array of keys
@@ -40,16 +44,19 @@ import type { Dictionary } from './types.ts';
  *
  * // Array path
  * getProperty({ a: { b: 2 } }, ['a', 'b']); // --> { success: true, value: 2 }
+ *
+ * // Asserting the value's type explicitly (not inferred - see @typeParam)
+ * getProperty<number>({ a: { b: 2 } }, 'a.b'); // --> value is typed `number | null`
  * ```
  */
-export function getProperty(
+export function getProperty<T = unknown>(
 	input: Dictionary | unknown[],
 	path: string | string[],
 ): {
 	/** Whether the path was fully traversed */
 	success: boolean;
 	/** The value at the path, or `null` if any step could not be traversed */
-	value: unknown;
+	value: T | null;
 } {
 	const keys = (Array.isArray(path) ? path : path.split('.')).filter(Boolean);
 	const failure = { success: false, value: null };
@@ -66,5 +73,5 @@ export function getProperty(
 		current = (current as Dictionary)[key];
 	}
 
-	return { success: true, value: current };
+	return { success: true, value: current as T };
 }

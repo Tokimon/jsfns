@@ -1,5 +1,5 @@
 import { getProperty } from '@jsfns/core/getProperty.js';
-import { describe, expect, it } from 'vitest';
+import { describe, expect, expectTypeOf, it } from 'vitest';
 
 describe('"getProperty"', () => {
 	describe('Reading top-level properties', () => {
@@ -74,6 +74,22 @@ describe('"getProperty"', () => {
 			expect(getProperty([1, 2], '3').success).toBe(false);
 		});
 
+		it('a sparse array hole exists at the index', () => {
+			const sparse: number[] = [1];
+			sparse[2] = 3; // index 1 is a genuine hole, not a stored `undefined`
+
+			expect(getProperty(sparse, '1').success).toBe(false);
+		});
+
+		it.each([
+			'1e0',
+			'-1',
+			'1.0',
+			' 1',
+		])('a numeric-looking but non-canonical index is used: "%s"', (key) => {
+			expect(getProperty([1, 2, 3], key).success).toBe(false);
+		});
+
 		it('an index is out of bounds fo nested array', () => {
 			expect(getProperty({ a: [1, 2] }, 'a.5').success).toBe(false);
 		});
@@ -131,6 +147,21 @@ describe('"getProperty"', () => {
 
 		it('Returns success:false for an array path of only empty entries', () => {
 			expect(getProperty({ a: 1 }, ['', '', ''])).toEqual({ success: false, value: null });
+		});
+	});
+
+	describe('Typing', () => {
+		it('Types `value` as `unknown` by default, not inferred from `input`', () => {
+			// Regression guard: `value` must NOT be inferred as the shape of `input`
+			// (e.g. `{ b: number }` here) - the path can navigate to any depth, so
+			// there's no sound way to derive the found value's type from `input` alone.
+			expectTypeOf(getProperty({ a: { b: 2 } }, 'a.b').value).toEqualTypeOf<unknown>();
+		});
+
+		it('Types `value` as given, when a type argument is explicitly provided', () => {
+			expectTypeOf(getProperty<number>({ a: { b: 2 } }, 'a.b').value).toEqualTypeOf<
+				number | null
+			>();
 		});
 	});
 });
