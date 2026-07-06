@@ -1,5 +1,5 @@
 import { off } from '@jsfns/web/off.js';
-import { describe, expect, it, vi } from 'vitest';
+import { describe, expect, expectTypeOf, it, vi } from 'vitest';
 import { appendFrame, bind, frameWindow, triggerEvent } from './assets/helpers.js';
 
 describe('"off"', () => {
@@ -85,6 +85,18 @@ describe('"off"', () => {
 			frameSpy.mockRestore();
 			documentSpy.mockRestore();
 			frame.remove();
+		});
+	});
+
+	describe('Typing', () => {
+		it('Preserves the specific element type given, instead of widening to EventTarget', () => {
+			// Regression guard: this must stay assignable to HTMLElement (eg. `.click()`
+			// must remain available), not widen to the less specific EventTarget
+			expectTypeOf(off(document.body, 'click', () => {})).toEqualTypeOf<HTMLElement>();
+		});
+
+		it('Types the document-only overload as returning Document', () => {
+			expectTypeOf(off('click', () => {})).toEqualTypeOf<Document>();
 		});
 	});
 });
