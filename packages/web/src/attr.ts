@@ -4,6 +4,7 @@
  * @param elm - The DOM element to fetch/set the attribute from
  * @param attrName - Name of the attribute to handle
  * @param value - Value to insert into the attribute
+ *
  * @returns Data found in the attribute (the old value if {value} is defined)
  *
  * @example
@@ -13,11 +14,11 @@
  * attr(document.documentElement, 'lang'); // --> eg. 'en-US'
  *
  * // Set the value of an attribute
- * attr(document.documentElement, 'lang', 'da-DK'); // --> <html lang="da-DK">
+ * attr(document.documentElement, 'lang', 'da-DK'); // --> eg. 'en-US' (if that was the old value)
  *
  * // Set a boolean value
- * attr(MyInput, readonly, true); // --> <input readonly />
- * attr(MyInput, readonly, false); // --> <input />
+ * attr(MyInput, readonly, true); // --> false
+ * attr(MyInput, readonly, false); // --> true
  * ```
  */
 export function attr(
