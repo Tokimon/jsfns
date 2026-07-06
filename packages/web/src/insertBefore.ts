@@ -23,9 +23,7 @@ import { isDOMRoot } from './isDOMRoot.js';
  * ```
  */
 export function insertBefore(elm: Element, insertElm: string | Element): Element | null {
-	if (!inDOM(elm) || isDOMRoot(elm)) {
-		return null;
-	}
+	if (!inDOM(elm) || isDOMRoot(elm)) return null;
 
 	if (isString(insertElm)) {
 		elm.insertAdjacentHTML('beforebegin', ensureHTML(insertElm));
