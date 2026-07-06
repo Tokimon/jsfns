@@ -1,5 +1,5 @@
 import { trigger } from '@jsfns/web/trigger.js';
-import { describe, expect, it, vi } from 'vitest';
+import { describe, expect, expectTypeOf, it, vi } from 'vitest';
 import { bind, unbind } from './assets/helpers.js';
 
 describe('"Trigger"', () => {
@@ -76,5 +76,15 @@ describe('"Trigger"', () => {
 
 	describe('With Window', () => {
 		suite(window);
+	});
+
+	describe('Typing', () => {
+		it('Preserves the specific element type given, instead of widening to EventTarget', () => {
+			expectTypeOf(trigger(document.body, 'click')).toEqualTypeOf<HTMLElement>();
+		});
+
+		it('Types the document-only overload as returning Document', () => {
+			expectTypeOf(trigger('click')).toEqualTypeOf<Document>();
+		});
 	});
 });

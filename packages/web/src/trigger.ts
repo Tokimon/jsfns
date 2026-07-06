@@ -25,7 +25,7 @@ const customEvent = (name: string, data?: unknown) => {
  * trigger(MyElm, 'my-event', { SomeEntry: true })
  * ```
  */
-function trigger(elm: Args[0], eventNames: Args[1], data?: Args[2]): typeof elm;
+function trigger<T extends EventTarget>(elm: T, eventNames: string | string[], data?: unknown): T;
 
 /**
  * Trigger one or more events on Document.
@@ -41,15 +41,14 @@ function trigger(elm: Args[0], eventNames: Args[1], data?: Args[2]): typeof elm;
  * trigger('my-event', { SomeEntry: true })
  * ```
  */
-function trigger(eventNames: Args[1], data?: Args[2]): Document;
+function trigger(eventNames: string | string[], data?: unknown): Document;
 
-function trigger(...args: Args | NotFirst<Args>): Args[0] {
-	if (!isEventTarget(args[0])) return trigger(document, ...(args as NotFirst<Args>));
+function trigger(...args: Args | NotFirst<Args>): EventTarget {
+	const [elm, eventNames, data] = (isEventTarget(args[0]) ? args : [document, ...args]) as Args;
 
-	const [elm, eventNames, data] = args as Args;
-	const evs = !Array.isArray(eventNames) ? [eventNames] : eventNames;
+	const evts = !Array.isArray(eventNames) ? [eventNames] : eventNames;
 
-	for (const evt of evs) elm.dispatchEvent(customEvent(evt, data));
+	for (const evt of evts) elm.dispatchEvent(customEvent(evt, data));
 
 	return elm;
 }
