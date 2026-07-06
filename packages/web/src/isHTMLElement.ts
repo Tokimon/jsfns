@@ -1,7 +1,7 @@
 import getCurrentWindow from './getCurrentWindow.js';
 import isDOMNode from './isDOMNode.js';
 import isWindow from './isWindow.js';
-import type { GlobalWindow } from './types.ts';
+import type { GlobalWindow } from './types.js';
 
 /**
  * Is the given object a HTMLElement node

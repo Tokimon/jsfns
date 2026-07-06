@@ -1,4 +1,4 @@
-import type { GeneralWindow, GlobalWindow } from '@jsfns/web/types.ts';
+import type { GeneralWindow, GlobalWindow } from '@jsfns/web/types.js';
 
 export const generateId = (baseId: string): string => baseId + '__' + Date.now().toString(36);
 

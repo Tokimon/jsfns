@@ -1,4 +1,4 @@
-import { isObjectLike } from './isObjectLike.ts';
+import { isObjectLike } from './isObjectLike.js';
 
 /**
  * Is the given argument a plain object (non-null, non-array) or not

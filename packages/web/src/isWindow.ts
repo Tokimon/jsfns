@@ -1,5 +1,5 @@
 import { getObjectName } from '@jsfns/core/getObjectName.js';
-import type { GeneralWindow } from './types.ts';
+import type { GeneralWindow } from './types.js';
 
 /**
  * Is the given object a Window object (eg. window or IFrame.contentWindow)

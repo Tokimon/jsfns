@@ -1,5 +1,5 @@
 import { isDOMElement } from './isDOMElement.js';
-import type { GeneralWindow } from './types.ts';
+import type { GeneralWindow } from './types.js';
 import { viewport } from './viewport.js';
 
 /** The scroll information summary */
