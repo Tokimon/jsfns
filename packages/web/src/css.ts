@@ -133,7 +133,7 @@ function css(elm: HTMLElement): CSSStyleDeclaration;
  *
  * ```ts
  * css(MyElm, 'font-size') // --> 30
- * css(MyElm, 'borderSize') // --> '1px'
+ * css(MyElm, 'color') // --> 'rgb(0, 0, 0)'
  * ```
  */
 function css(elm: HTMLElement, property: string): string | number | null;
