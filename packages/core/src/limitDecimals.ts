@@ -1,21 +1,19 @@
+import { isNumber } from './isNumber.js';
 import { isString } from './isString.js';
+import { minDecimals } from './minDecimals.js';
+import { roundDecimals } from './roundDecimals.js';
+import { safeToFixed } from './safeToFixed.js';
+import { toSafeFractionDigits } from './toSafeFractionDigits.js';
 
-function maxDecimals(num: number, decimals: number) {
-	const multiplier = 10 ** decimals;
-	// toFixed is to avoid decimal imprecision (eg. 3.4500000003) and then convert back to number to remove any trailing 0's
-	return Number((Math.round(num * multiplier) / multiplier).toFixed(decimals));
-}
-
-function minDecimals(num: number, decimals: number) {
-	const strNum = num.toString();
-	const decLen = (strNum.split('.')[1] ?? '').length;
-	return decimals <= decLen ? strNum : Number(num).toFixed(decimals);
+function toDecimals(decimals: string) {
+	const dec = Number.parseInt(decimals.trim(), 10);
+	return !isNumber(dec) ? 0 : toSafeFractionDigits(dec);
 }
 
 function parseMinMax(decimalCount: string) {
 	const [minDec, maxDec] = decimalCount.split(/[,\s]+/);
-	const min = Number(minDec);
-	const max = Number(maxDec);
+	const min = toDecimals(minDec);
+	const max = toDecimals(maxDec);
 
 	return max < min ? [max, min] : [min, max];
 }
@@ -55,18 +53,25 @@ function parseMinMax(decimalCount: string) {
  * ```
  */
 export function limitDecimals(num: number, decimalCount: number | string = 2): string {
-	if (!isString(decimalCount)) return num.toFixed(decimalCount);
+	if (!isString(decimalCount)) return safeToFixed(num, decimalCount);
 
-	if (decimalCount.startsWith('<'))
-		return maxDecimals(num, Number(decimalCount.slice(1))).toString();
-	if (decimalCount.startsWith('>')) return minDecimals(num, Number(decimalCount.slice(1)));
+	if (decimalCount.startsWith('<')) {
+		const decimals = toDecimals(decimalCount.slice(1));
+		return roundDecimals(num, decimals).toString();
+	}
+
+	if (decimalCount.startsWith('>')) {
+		const decimals = toDecimals(decimalCount.slice(1));
+		return minDecimals(num, decimals);
+	}
 
 	if (decimalCount.includes(',')) {
 		const [min, max] = parseMinMax(decimalCount);
-		return minDecimals(maxDecimals(num, max), min);
+		const maxNum = roundDecimals(num, max);
+		return minDecimals(maxNum, min);
 	}
 
-	return num.toFixed(Number(decimalCount) || 0);
+	return safeToFixed(num, Number(decimalCount) || 0);
 }
 
 export default limitDecimals;

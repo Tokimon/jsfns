@@ -6,6 +6,10 @@ describe('"limitDecimals"', () => {
 		expect(limitDecimals(9.678, 'none')).toBe('10');
 	});
 
+	it('Falls back to 0 decimals when the "<"/">" suffix is not a valid number', () => {
+		expect(limitDecimals(123.456, '<abc')).toBe('123');
+	});
+
 	describe('Format the decimals to the default number of digits (2)', () => {
 		it.each([
 			[1, '1.00'],
