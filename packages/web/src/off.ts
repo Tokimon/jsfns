@@ -1,21 +1,22 @@
 import type { NotFirst } from '@jsfns/core/types.js';
 import { isEventTarget } from './isEventTarget.js';
-import type { EventHandler, EventName } from './types.ts';
+import type { EventHandler, EventName } from './types.js';
 
 type Args<E extends EventName = EventName> = [
 	elm: EventTarget,
-	eventNames: EventName | EventName[],
+	eventNames: E | E[],
 	handler: EventHandler<E>,
 	options?: AddEventListenerOptions,
 ];
 
 /**
- * Bind an event handler for one or more event names on a given DOM element.
+ * Remove an event handler for one or more event names from a given DOM element.
  *
- * @param elm - DOM element to bind the event to
- * @param eventNames - Event names to bind the handler to
- * @param handler - Handler to bind to the event
+ * @param elm - DOM element to remove the event from
+ * @param eventNames - Event names to remove the handler from
+ * @param handler - Handler to remove from the event
  * @param options - Options to pass to the 'removeEventListener'
+ *
  * @returns `elm`
  *
  * @example
@@ -26,26 +27,21 @@ type Args<E extends EventName = EventName> = [
  * off(MyElm, ['mouseenter', 'touchstart'], () => {})
  * ```
  */
-function off<E extends EventName>(
-	elm: Args<E>[0],
+function off<T extends EventTarget, E extends EventName>(
+	elm: T,
 	eventNames: E | E[],
 	handler: EventHandler<E>,
-	options?: Args<E>[3],
-): typeof elm;
-// function off(
-//   elm: EventTarget,
-//   eventNames: string | string[],
-//   handler: EventListenerOrEventListenerObject,
-//   options?: AddEventListenerOptions
-// ): typeof elm;
+	options?: AddEventListenerOptions,
+): T;
 
 /**
- * Bind an event handler for one or more event names to `document`
+ * Remove an event handler for one or more event names from `document`
  *
- * @param eventNames - Event names to bind the handler to
- * @param handler - Handler to bind to the event
+ * @param eventNames - Event names to remove the handler from
+ * @param handler - Handler to remove from the event
  * @param options - Options to pass to the 'removeEventListener'
- * @return document
+ *
+ * @returns document
  *
  * @example
  *
@@ -58,17 +54,17 @@ function off<E extends EventName>(
 function off<E extends EventName>(
 	eventNames: E | E[],
 	handler: EventHandler<E>,
-	options?: Args<E>[3],
+	options?: AddEventListenerOptions,
 ): Document;
-// function off(eventNames: string | string[], handler: EventListenerOrEventListenerObject, options?: AddEventListenerOptions): Document;
 
-function off<E extends EventName>(...args: Args<E> | NotFirst<Args<E>>): (typeof args)[0] {
-	if (!isEventTarget(args[0])) return off(document, ...(args as NotFirst<Args>));
+function off<E extends EventName>(...args: Args<E> | NotFirst<Args<E>>): EventTarget {
+	const [elm, eventNames, handler, options] = (
+		isEventTarget(args[0]) ? args : [document, ...args]
+	) as Args<E>;
 
-	let [elm, eventNames, handler, options] = args as Args<E>;
-	if (!Array.isArray(eventNames)) eventNames = [eventNames];
+	const evts = !Array.isArray(eventNames) ? [eventNames] : eventNames;
 
-	for (const evt of eventNames) elm.removeEventListener(evt, handler as EventListener, options);
+	for (const evt of evts) elm.removeEventListener(evt, handler as EventListener, options);
 
 	return elm;
 }
