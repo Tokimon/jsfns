@@ -13,7 +13,7 @@ import { isFunction } from './isFunction.js';
  * function *gen() {}
  *
  * isGeneratorLike(gen()); // --> true
- * isGeneratorLike({ next() {}, throw() {} return() {} [Symbol.iterator]() {} }); // --> true
+ * isGeneratorLike({ next() {}, throw() {}, return() {}, [Symbol.iterator]() {} }); // --> true
  * isGeneratorLike(() => {}); // --> false
  * ```
  */
