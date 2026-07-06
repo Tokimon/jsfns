@@ -22,10 +22,17 @@
 export function randomCryptoId(length = 10): string {
 	const len = Math.max(2, length);
 
-	const UiArr = new Uint32Array(Math.ceil(Math.max(1, len / 6)));
-	const numbers = globalThis.crypto.getRandomValues(UiArr);
+	// Cap the batch size so it never exceeds crypto.getRandomValues' length limit (16,384 Uint32 elements)
+	const valuesLen = Math.min(Math.ceil(len / 6), 16_000);
+	const UiArr = new Uint32Array(valuesLen);
 
-	return numbers.reduce((str, n) => str + n.toString(36), '').slice(0, len);
+	let id = '';
+	while (id.length < len) {
+		const numbers = globalThis.crypto.getRandomValues(UiArr);
+		id += numbers.reduce((str, n) => str + n.toString(36), '');
+	}
+
+	return id.slice(0, len);
 }
 
 export default randomCryptoId;
