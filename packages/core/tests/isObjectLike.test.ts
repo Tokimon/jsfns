@@ -10,18 +10,12 @@ class TestObj {
 
 describe('"isObjectLike"', () => {
 	describe('Returns `true` for object-like values', () => {
-		it.each([
-			{},
-			[],
-			new Object(),
-			new TestObj('test'),
-			new Date(),
-			new Map(),
-			new Set(),
-			/foo/,
-		])('"%s"', (n) => {
-			expect(isObjectLike(n)).toBe(true);
-		});
+		it.each([{}, [], new Object(), new TestObj('test'), new Date(), new Map(), new Set(), /foo/])(
+			'"%s"',
+			(n) => {
+				expect(isObjectLike(n)).toBe(true);
+			},
+		);
 	});
 
 	describe('Returns `false` for non object-like values', () => {

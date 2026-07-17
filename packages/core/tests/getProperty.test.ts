@@ -81,14 +81,12 @@ describe('"getProperty"', () => {
 			expect(getProperty(sparse, '1').success).toBe(false);
 		});
 
-		it.each([
-			'1e0',
-			'-1',
-			'1.0',
-			' 1',
-		])('a numeric-looking but non-canonical index is used: "%s"', (key) => {
-			expect(getProperty([1, 2, 3], key).success).toBe(false);
-		});
+		it.each(['1e0', '-1', '1.0', ' 1'])(
+			'a numeric-looking but non-canonical index is used: "%s"',
+			(key) => {
+				expect(getProperty([1, 2, 3], key).success).toBe(false);
+			},
+		);
 
 		it('an index is out of bounds fo nested array', () => {
 			expect(getProperty({ a: [1, 2] }, 'a.5').success).toBe(false);

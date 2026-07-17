@@ -130,25 +130,22 @@ describe('"deleteProperty"', () => {
 	});
 
 	describe('Option: `safe`', () => {
-		describe.each([
-			null,
-			undefined,
-			'',
-			[],
-			{},
-		])('Removes the property when its value is empty: "%s"', (value) => {
-			it('Object', () => {
-				const obj = { a: { b: value } };
-				const result = deleteProperty(obj, 'a.b', { safe: true });
-				expect(result).toEqual({ removed: true, obj: { a: {} } });
-			});
+		describe.each([null, undefined, '', [], {}])(
+			'Removes the property when its value is empty: "%s"',
+			(value) => {
+				it('Object', () => {
+					const obj = { a: { b: value } };
+					const result = deleteProperty(obj, 'a.b', { safe: true });
+					expect(result).toEqual({ removed: true, obj: { a: {} } });
+				});
 
-			it('Array', () => {
-				const obj = [0, { a: [value] }, 1];
-				const result = deleteProperty(obj, '1.a.0', { safe: true });
-				expect(result).toEqual({ removed: true, obj: [0, { a: [] }, 1] });
-			});
-		});
+				it('Array', () => {
+					const obj = [0, { a: [value] }, 1];
+					const result = deleteProperty(obj, '1.a.0', { safe: true });
+					expect(result).toEqual({ removed: true, obj: [0, { a: [] }, 1] });
+				});
+			},
+		);
 
 		describe('Does not remove the property when its value is non-empty', () => {
 			it('Object', () => {
