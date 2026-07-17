@@ -30,9 +30,7 @@ function getDelegateTarget<E extends EventName = EventName>(
 ) {
 	const { target } = e;
 	// Delegation does nothing for non-dom element targets
-	if (!isDOMElement(target)) return;
-
-	return target.closest(delegate);
+	if (isDOMElement(target)) return target.closest(delegate);
 }
 
 function onOptionsHandler<E extends EventName = EventName>(
@@ -46,12 +44,13 @@ function onOptionsHandler<E extends EventName = EventName>(
 	function eventHandler(this: EventTarget, e: Parameters<EventHandler<E>>[0]) {
 		if (when && when(e) !== true) return;
 
-		// We don't always remove when once is defined here, as we only should
-		// remove delegation once it has hit the delegation target
-		const trigger = (target: Element | EventTarget, event: typeof e) => {
+		// `once` is stripped from the options passed to `addEventListener` as soon as this
+		// wrapper exists, so this is the only place left to honor it - and only once `when`
+		// and/or `delegate` have actually been satisfied, not on every raw dispatch
+		function trigger(target: Element | EventTarget, event: typeof e) {
 			if (once) off(elm, e.type as E, eventHandler, options);
 			return handler.call(target, event);
-		};
+		}
 
 		if (!delegate) return trigger(this, e);
 
