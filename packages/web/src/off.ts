@@ -16,7 +16,7 @@ type Args<E extends EventName = EventName> = [
  * @param eventNames - Event names to remove the handler from
  * @param handler - Handler to remove from the event
  * @param options - Options to pass to the 'removeEventListener'
- *
+ * @typeParam E - The inferred event name(s)
  * @returns `elm`
  *
  * @example
@@ -40,8 +40,8 @@ function off<T extends EventTarget, E extends EventName>(
  * @param eventNames - Event names to remove the handler from
  * @param handler - Handler to remove from the event
  * @param options - Options to pass to the 'removeEventListener'
- *
- * @returns document
+ * @typeParam E - The inferred event name(s)
+ * @return document
  *
  * @example
  *

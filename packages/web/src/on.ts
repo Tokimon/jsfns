@@ -72,6 +72,7 @@ function onOptionsHandler<E extends EventName = EventName>(
  * @param eventNames - Event names to bind the handler to
  * @param handler - Handler to bind to the event
  * @param options - Options to pass to the 'addEventListener'
+ * @typeParam E - The inferred event name(s)
  * @returns function to remove added event handlers
  *
  * @example
@@ -126,6 +127,7 @@ function on<T extends EventTarget, E extends EventName>(
  * @param eventNames - Event names to bind the handler to
  * @param handler - Handler to bind to the event
  * @param options - Options to pass to the 'addEventListener'
+ * @typeParam E - The inferred event name(s)
  * @returns function to remove added event handlers
  *
  * @example

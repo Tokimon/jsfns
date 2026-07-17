@@ -2,6 +2,7 @@
  * Filter out duplicate values from an array
  *
  * @param arr - ArrayLike or Iterable collection to convert
+ * @typeParam T - The inferred type of the items in the given collection
  *
  * @returns A list with only unique items
  *

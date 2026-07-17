@@ -4,6 +4,7 @@ import { isDOMNode } from './isDOMNode.js';
  * Make a unique list of Elements from on or multiple Element collections
  * (usually as a result of some element selection method)
  *
+ * @typeParam T - The inferred element type of the given collections
  * @returns The unique list of elements
  *
  * @example

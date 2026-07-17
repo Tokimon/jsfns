@@ -9,6 +9,7 @@ type Args = [elm: Maybe<Document | HTMLElement>, classNames: string | string[]];
  * Separate multiple selectors by comma. Separate multiple class names by space.
  *
  * @param classNames - Class name(s) to find elements by
+ * @typeParam T - The inferred HTMLElement type of the found element(s)
  * @returns List of found DOM elements
  *
  * @example
@@ -27,6 +28,7 @@ function findByClass<T extends HTMLElement>(classNames: Args[1]): T[];
  *
  * @param elm - The DOM element to start the search from
  * @param classNames - Class name(s) to find elements by
+ * @typeParam T - The inferred HTMLElement type of the found element(s)
  * @returns List of found DOM elements
  *
  * @example

@@ -8,6 +8,7 @@ type Args = [elm: Maybe<Document | HTMLElement>, tagNames: string | string[]];
  * Find elements by given tag name
  *
  * @param tagNames - Tag name to find the elements by
+ * @typeParam T - The inferred HTMLElement type of the found element(s)
  * @returns List of found DOM elements
  *
  * @example
@@ -23,6 +24,7 @@ function findByTagName<T extends HTMLElement>(tagNames: Args[1]): T[];
  *
  * @param elm - The DOM element to start the search from
  * @param tagNames - Tag name to find the elements by
+ * @typeParam T - The inferred HTMLElement type of the found element(s)
  * @returns List of found DOM elements
  *
  * @example

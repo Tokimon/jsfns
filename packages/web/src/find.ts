@@ -29,6 +29,7 @@ function findBySpecializedMethod<T extends HTMLElement>(elm: Args[0], query: str
  * to find elements.
  *
  * @param selector - The selector to use
+ * @typeParam T - The inferred HTMLElement type of the found element(s)
  * @returns List of found DOM elements
  *
  * @example
@@ -50,6 +51,7 @@ function find<T extends HTMLElement>(selector: Args[1]): T | T[] | null;
  *
  * @param elm - The DOM element to start the search from
  * @param selector - The selector to use
+ * @typeParam T - The inferred HTMLElement type of the found element(s)
  * @returns List of found DOM elements
  *
  * @example

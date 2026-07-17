@@ -16,6 +16,8 @@ export type NotFirst<T extends Array<unknown>> = T extends [arg0: T[0], ...rest:
 /**
  * A generic wrapper for values that may be `null` or `undefined`.
  *
+ * @typeParam T - The wrapped value type
+ *
  * @example
  * ```ts
  * type MaybeString = Maybe<string>; // string | null | undefined
@@ -25,5 +27,7 @@ export type Maybe<T> = T | null | undefined;
 
 /**
  * A generic wrapper for a arecord with string only keys
+ *
+ * @typeParam T - The type of the record's values
  */
 export type Dictionary<T = unknown> = Record<string, T>;
