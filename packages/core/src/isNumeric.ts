@@ -16,7 +16,7 @@ import { isString } from './isString.js';
  * ```
  */
 export function isNumeric(x: unknown): boolean {
-	const num = isString(x) && !!x ? Number(x) : x;
+	const num = isString(x) && x ? Number(x) : x;
 	return isNumber(num) && !Number.isNaN(num);
 }
 
