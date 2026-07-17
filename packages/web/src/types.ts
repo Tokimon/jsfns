@@ -21,6 +21,8 @@ export type EventName = keyof DocumentEventMap | string;
  * - If the name is a known DOM event (e.g. `"click"`), it resolves to that event type.
  * - If the name is a custom string, it resolves to `CustomEvent<E>`.
  *
+ * @typeParam E - The event name to resolve the actual event type for
+ *
  * @example
  * ```ts
  * type ClickEvent = ActualEvent<'click'>; // MouseEvent
@@ -33,6 +35,8 @@ export type ActualEvent<E extends EventName = EventName> = E extends keyof Docum
 
 /**
  * A general event handler function for both native and custom events.
+ *
+ * @typeParam E - The event name the handler is bound to
  */
 export type EventHandler<E extends EventName = EventName> = (
 	this: EventSource | EventTarget,

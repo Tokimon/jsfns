@@ -4,6 +4,7 @@ import { uniqueNodeList } from './uniqueNodeList.js';
  * Find a DOM element with the given ID
  *
  * @param id - ID to find the element by
+ * @typeParam T - The inferred HTMLElement type of the found element
  * @returns The found element
  *
  * @example
@@ -19,6 +20,7 @@ function findById<T extends HTMLElement>(id: string): T | null;
  * Find a DOM elements from a list of IDs
  *
  * @param ids - ID to find the element by
+ * @typeParam T - The inferred HTMLElement type of the found elements
  * @returns The found elements
  *
  * @example

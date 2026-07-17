@@ -2,7 +2,11 @@ import { isNumeric } from '@jsfns/core/isNumeric.js';
 import { isString } from '@jsfns/core/isString.js';
 import { kebabCase } from '@jsfns/core/kebabCase.js';
 
-/** Convert camelCase property name to kebab-case */
+/**
+ * Convert camelCase property name to kebab-case
+ *
+ * @typeParam S - The camelCase string to convert
+ */
 export type CamelToKebab<S extends string> = S extends `${infer T}${infer U}`
 	? U extends Uncapitalize<U>
 		? `${Lowercase<T>}${CamelToKebab<U>}`

@@ -10,6 +10,7 @@ export type Args = [elm: Maybe<Document | HTMLElement>, queries: string | string
  *
  * @param elm - The DOM element to start the search from
  * @param queries - CSS selector to find elements by
+ * @typeParam T - The inferred HTMLElement type of the found element(s)
  * @returns List of found DOM elements
  *
  * @example
@@ -24,6 +25,7 @@ function findByQuery<T extends HTMLElement>(elm: Args[0], queries: Args[1]): T[]
  * Find all elements matching a given CSS selector
  *
  * @param queries - CSS selector to find elements by
+ * @typeParam T - The inferred HTMLElement type of the found element(s)
  * @returns List of found DOM elements
  *
  * @example
@@ -52,6 +54,7 @@ export type OneArgs = [elm: Args[0], query: string];
  *
  * @param elm - The DOM element to start the search from
  * @param query - CSS selector to find elements by
+ * @typeParam T - The inferred HTMLElement type of the found element
  * @returns List of found DOM elements
  *
  * @example
@@ -66,6 +69,7 @@ function findOneByQuery<T extends HTMLElement>(elm: OneArgs[0], query: string): 
  * Find first elements matching a given CSS selector
  *
  * @param query - CSS selector to find elements by
+ * @typeParam T - The inferred HTMLElement type of the found element
  * @returns List of found DOM elements
  *
  * @example

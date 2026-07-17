@@ -3,6 +3,7 @@
  *
  * @param list - The Array to remove the item from
  * @param index - At what index to remove from
+ * @typeParam T - The inferred tuple/array type of the given list
  *
  * @returns An array with two entries: the first entry is the value just removed and the second
  *          is the new array with the entry removed.
@@ -26,6 +27,7 @@ export function popAtIndexPure<T>(list: T[], index: number): [T | undefined, T[]
  *
  * @param list - The Array to remove the item from
  * @param index - At what index to remove from
+ * @typeParam T - The inferred type of the items in the given list
  *
  * @returns The item popped from the array, if any
  *

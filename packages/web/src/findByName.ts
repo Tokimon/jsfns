@@ -4,6 +4,7 @@ import { uniqueNodeList } from './uniqueNodeList.js';
  * Find DOM elements with the given name
  *
  * @param names - Value of name attribute to find the elements by
+ * @typeParam T - The inferred HTMLElement type of the found element(s)
  * @returns List of found DOM elements
  *
  * @example

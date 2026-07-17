@@ -3,6 +3,7 @@
  *
  * @param event - The event to copy
  * @param currentTarget - Element to define as currentTarget (falls back to the event currentTarget if not defined)
+ * @typeParam T - The inferred type of the given event
  * @returns The copied event
  *
  * @example
