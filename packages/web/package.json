@@ -31,6 +31,7 @@
 		"prepublishOnly": "pnpm validate && pnpm build && pnpm readme",
 		"postpublish": "pnpm clean",
 		"dry-run": "pnpm validate && pnpm build && npm pack --dry-run",
+		"prebuild": "pnpm --filter @jsfns/core build",
 		"build": "tsgo -p ./tsconfig.build.json",
 		"clean": "rm -rf ./dist",
 		"missing": "../../bin/missing.sh",
