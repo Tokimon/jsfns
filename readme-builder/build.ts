@@ -43,7 +43,8 @@ export async function build() {
 	const files = await readdir(join(packagePath, 'src'));
 	const fileNames = files
 		.map((file) => basename(file, '.ts'))
-		.filter((name) => !['index', 'types.d'].includes(name));
+		.filter((name) => !['index', 'types.d'].includes(name))
+		.sort((n1, n2) => n1.toLowerCase().localeCompare(n2.toLowerCase()));
 
 	const len = fileNames.length;
 
