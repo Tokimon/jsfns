@@ -13,7 +13,7 @@ jobs:
       fail-fast: false
       matrix:
         package: [core, web]
-        check: [lint, typecheck, docs, test]
+        check: [lint, typecheck, docs, test, build]
         include:
           - check: docs
             command: typedoc:validate
