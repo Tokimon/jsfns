@@ -27,9 +27,9 @@
 	},
 	"homepage": "https://tokimon.github.io/jsfns/core",
 	"scripts": {
-		"prepublishOnly": "pnpm validate && pnpm build && pnpm readme",
-		"postpublish": "pnpm clean",
-		"dry-run": "pnpm validate && pnpm build && npm pack --dry-run",
+		"prepublishOnly": "bun run validate && bun run build && bun run readme",
+		"postpublish": "bun run clean",
+		"dry-run": "bun run validate && bun run build && npm pack --dry-run",
 		"build": "tsgo -p ./tsconfig.build.json",
 		"clean": "rm -rf ./dist",
 		"missing": "../../bin/missing.sh",
@@ -40,8 +40,8 @@
 		"typedoc:validate": "typedoc --tsconfig tsconfig.typedoc.json --entryPoints \"src/*.ts\" --validation --treatWarningsAsErrors --emit none",
 		"lint": "biome check",
 		"format": "biome check --write",
-		"validate": "pnpm lint && pnpm typecheck && pnpm typedoc:validate && pnpm test:coverage",
-		"release": "pnpm publish --no-git-checks"
+		"validate": "bun run lint && bun run typecheck && bun run typedoc:validate && bun run test:coverage",
+		"release": "npm publish --provenance"
 	},
 	"files": [
 		"dist",

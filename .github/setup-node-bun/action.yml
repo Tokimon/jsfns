@@ -1,5 +1,5 @@
-name: "Setup Node + PNPM"
-description: "Sets up latest Node and pnpm with install"
+name: "Setup Node + Bun"
+description: "Sets up latest Bun (install) and Node (npm publish/registry auth)"
 
 inputs:
   fetch-depth:
@@ -12,13 +12,12 @@ runs:
     - uses: actions/checkout@v6
       with:
         fetch-depth: ${{ inputs.fetch-depth }}
-    - uses: pnpm/action-setup@v6
+    - uses: oven-sh/setup-bun@v2
       with:
-        version: latest
+        bun-version: latest
     - uses: actions/setup-node@v6
       with:
         node-version: latest
-        cache: "pnpm"
         registry-url: "https://registry.npmjs.org"
-    - run: pnpm install --frozen-lockfile
+    - run: bun install --frozen-lockfile
       shell: bash

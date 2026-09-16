@@ -1,46 +1,50 @@
 {
-	"name": "jsfns",
-	"version": "0.0.0",
-	"description": "Simple, no dependency, JS utility functions",
-	"private": true,
-	"type": "module",
-	"scripts": {
-		"readme": "pnpm validate && pnpm -r readme",
-		"missing": "pnpm --parallel missing",
-		"build": "pnpm -r build",
-		"clean": "pnpm --parallel run clean",
-		"format": "biome check --write",
-		"test": "pnpm --parallel test",
-		"types": "pnpm --parallel typecheck && pnpm typecheck",
-		"typecheck": "tsgo -p tsconfig.json",
-		"validate": "pnpm --parallel validate",
-		"dry-run": "pnpm -r dry-run && pnpm clean",
-		"changelog": "./bin/changelog.sh",
-		"versioning": "./bin/version.sh",
-		"release": "pnpm -r release"
-	},
-	"repository": {
-		"type": "git",
-		"url": "git+https://github.com/Tokimon/jsfns.git"
-	},
-	"keywords": [],
-	"author": "Toke Voltelen",
-	"license": "MIT",
-	"bugs": {
-		"url": "https://github.com/Tokimon/jsfns/issues"
-	},
-	"homepage": "https://github.com/Tokimon/jsfns#readme",
-	"devDependencies": {
-		"@biomejs/biome": "^2.5.4",
-		"@changesets/cli": "^2.31.1",
-		"@types/node": "^26.1.1",
-		"@typescript/native-preview": "7.0.0-dev.20260707.2",
-		"@vitest/coverage-v8": "^4.1.10",
-		"globals": "^17.7.0",
-		"tsx": "^4.23.1",
-		"typedoc": "^0.28.20",
-		"typescript": "^5.9.3",
-		"vite-tsconfig-paths": "^6.1.1",
-		"vitest": "^4.1.10"
-	}
+  "name": "jsfns",
+  "version": "0.0.0",
+  "description": "Simple, no dependency, JS utility functions",
+  "private": true,
+  "type": "module",
+  "workspaces": [
+    "packages/*",
+    "!**/test/**"
+  ],
+  "scripts": {
+    "readme": "bun run validate && bun run --filter '*' readme",
+    "missing": "bun run --filter '*' missing",
+    "build": "bun run --filter '*' build",
+    "clean": "bun run --filter '*' clean",
+    "format": "biome check --write",
+    "test": "bun run --filter '*' test",
+    "types": "bun run --filter '*' typecheck && bun run typecheck",
+    "typecheck": "tsgo -p tsconfig.json",
+    "validate": "bun run --filter '*' validate",
+    "dry-run": "bun run --filter '*' dry-run && bun run clean",
+    "changelog": "./bin/changelog.sh",
+    "versioning": "./bin/version.sh",
+    "release": "bun run --filter '*' release"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Tokimon/jsfns.git"
+  },
+  "keywords": [],
+  "author": "Toke Voltelen",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Tokimon/jsfns/issues"
+  },
+  "homepage": "https://github.com/Tokimon/jsfns#readme",
+  "devDependencies": {
+    "@biomejs/biome": "^2.5.4",
+    "@changesets/cli": "^2.31.1",
+    "@types/node": "^26.1.1",
+    "@typescript/native-preview": "7.0.0-dev.20260707.2",
+    "@vitest/coverage-v8": "^4.1.10",
+    "globals": "^17.7.0",
+    "tsx": "^4.23.1",
+    "typedoc": "^0.28.20",
+    "typescript": "^5.9.3",
+    "vite-tsconfig-paths": "^6.1.1",
+    "vitest": "^4.1.10"
+  }
 }

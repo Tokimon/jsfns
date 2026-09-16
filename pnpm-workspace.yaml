@@ -1,9 +1,0 @@
-packages:
-  - packages/*
-  - "!**/test/**"
-
-allowBuilds:
-  esbuild: true
-
-onlyBuiltDependencies:
-  - esbuild

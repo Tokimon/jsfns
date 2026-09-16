@@ -11,10 +11,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
-      - uses: ./.github/setup-node-pnpm
+      - uses: ./.github/setup-node-bun
 
       - name: Run validation
-        run: pnpm validate
+        run: bun run validate
 
   release:
     needs: validate
@@ -24,7 +24,7 @@ jobs:
       id-token: write
     steps:
       - uses: actions/checkout@v6
-      - uses: ./.github/setup-node-pnpm
+      - uses: ./.github/setup-node-bun
         with:
           fetch-depth: 0
 
@@ -33,11 +33,11 @@ jobs:
           echo "Tag: $GITHUB_REF_NAME"
           if [[ "$GITHUB_REF_NAME" == "@jsfns/core@"* ]]; then
             echo "Releasing @jsfns/core"
-            pnpm --filter @jsfns/core release --provenance
+            bun run --filter @jsfns/core release
           elif [[ "$GITHUB_REF_NAME" == "@jsfns/web@"* ]]; then
             echo "Releasing @jsfns/web"
-            pnpm --filter @jsfns/core build
-            pnpm --filter @jsfns/web release --provenance
+            bun run --filter @jsfns/core build
+            bun run --filter @jsfns/web release
           else
             echo "Unknown tag format: $GITHUB_REF_NAME"
             exit 1
