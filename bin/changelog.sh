@@ -9,7 +9,7 @@ changelog() {
             break
         fi
 
-        pnpm changeset --empty
+        bunx changeset --empty
         FILE=$(ls -t .changeset/*.md | head -n 1)
 
         sed -i "2i\"@jsfns/$1\": $SELECTED" $FILE

@@ -20,10 +20,10 @@ jobs:
     name: ${{ matrix.package }} / ${{ matrix.check }}
     steps:
       - uses: actions/checkout@v6
-      - uses: ./.github/setup-node-pnpm
+      - uses: ./.github/setup-node-bun
 
       - name: Run ${{ matrix.check }}
-        run: pnpm --filter @jsfns/${{ matrix.package }} ${{ matrix.command || matrix.check }}
+        run: bun run --filter @jsfns/${{ matrix.package }} ${{ matrix.command || matrix.check }}
 
   validate:
     needs: checks

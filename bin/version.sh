@@ -3,7 +3,7 @@ set -euo pipefail
 
 STATUS=".changeset/status.json"
 
-pnpm changeset status --output="$STATUS"
+bunx changeset status --output="$STATUS"
 
 TAGS=$(node -p "
   require('./$STATUS').releases
@@ -19,12 +19,12 @@ if [ -z "$TAGS" ]; then
   exit 1
 fi
 
-pnpm changeset version
+bunx changeset version
 
 git add .
 git commit -m "Release $TAGS"
 
-pnpm changeset tag
+bunx changeset tag
 
 git push origin HEAD
 git push origin $TAGS
