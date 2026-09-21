@@ -80,5 +80,12 @@ describe('"isHTMLChildElement"', () => {
 		])('DOM root elements', (_, elm) => {
 			expect(isHTMLChildElement(elm)).toBe(false);
 		});
+
+		it('A child of a void element (e.g. <input>), which never gets a layout box', () => {
+			const input = createElement('input');
+			input.appendChild(createElement('span'));
+
+			expect(isHTMLChildElement(input.firstChild)).toBe(false);
+		});
 	});
 });
