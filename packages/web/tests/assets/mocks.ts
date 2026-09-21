@@ -1,3 +1,4 @@
+import { isVoidElement } from '@jsfns/web/isVoidElement.js';
 import { vi } from 'vitest';
 
 type Overrides = {
@@ -33,6 +34,7 @@ export function mockOffsetParent(htmlElmProto: HTMLElement) {
 		this: HTMLElement,
 	) {
 		if (this.tagName === 'BODY' || this.style.position === 'fixed') return null;
+		if (isVoidElement(this.parentElement)) return null;
 
 		let parent = this.parentElement;
 
