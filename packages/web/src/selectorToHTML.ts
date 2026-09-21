@@ -1,22 +1,5 @@
+import { voidTags } from './isVoidElement.js';
 import { parseSelector } from './parseSelector.js';
-
-const voidTags = [
-	'area',
-	'base',
-	'br',
-	'col',
-	'embed',
-	'hr',
-	'img',
-	'input',
-	'keygen',
-	'link',
-	'meta',
-	'param',
-	'source',
-	'track',
-	'wbr',
-];
 
 /**
  * Converts a given CSS selector into HTML
