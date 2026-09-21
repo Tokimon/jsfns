@@ -17,11 +17,16 @@ export type HTMLChildElement = Omit<HTMLElement, HTMLElementParentProps> & {
  * @example
  *
  * ```ts
- * isHTMLChildElement(document.body) // --> true
  * isHTMLChildElement(document.getElementById('my-elm')) // --> true
  * isHTMLChildElement(createDetachedDocument().body) // --> true
  *
  * isHTMLChildElement(document.documentElement) // --> false
+ * isHTMLChildElement(document.body) // --> false - the <body> element's `offsetParent` is always `null`, per spec
+ *
+ * // A child of a void element (e.g. `<input>`) never gets a layout box either, so it has no `offsetParent`
+ * const input = document.createElement('input');
+ * input.appendChild(document.createElement('span'));
+ * isHTMLChildElement(input.firstChild) // --> false
  * ```
  */
 export function isHTMLChildElement(obj: unknown): obj is HTMLChildElement {
