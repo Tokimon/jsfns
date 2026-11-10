@@ -1,5 +1,6 @@
 /** The callback that need to be debounced */
-export type DebounceCallback = (...args: unknown[]) => void;
+// biome-ignore lint/suspicious/noExplicitAny: parameters are contravariant, "unknown[]" rejects callbacks with typed params
+export type DebounceCallback = (...args: any[]) => unknown;
 
 /**
  * The function returned by the debounce method. Effectively the callback with debounce added
@@ -12,7 +13,7 @@ export type DebouncedFunction<T extends DebounceCallback> = T & {
 };
 
 /**
- * Ensure that the givcen `callback` function will only be called `ms` milliseconds after the last call.
+ * Ensure that the given `callback` function will only be called `ms` milliseconds after the last call.
  * This ensures to not trigger too many consecutive calls, but only the last in the sequence.
  *
  * @param callback - The function to add debounce to
