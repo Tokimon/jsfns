@@ -79,7 +79,7 @@ describe('"findByQuery"', () => {
 			});
 
 			it('Find a DOM element matching a given CSS selector: .item', () => {
-				const node = findOneByQuery(target, '.item') as Element;
+				const node = findOneByQuery(target, '.item');
 				expect(node?.id).toBe('Item1');
 			});
 
