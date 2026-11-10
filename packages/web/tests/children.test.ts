@@ -19,7 +19,7 @@ describe('"children"', () => {
 	afterAll(() => removeElement(testID));
 
 	it('Should get all the children of a given DOM element', () => {
-		const node = byId(testID) as Element;
+		const node = byId(testID);
 		const childElements = children(node);
 
 		expect(childElements).toHaveLength(3);
