@@ -55,9 +55,7 @@ describe('"hash"', () => {
 		});
 
 		it('Mixes strings and arrays, equal to the flattened array', () => {
-			expect(hash('str', ['foo', 'bar'], 'more')).toBe(
-				hash(['str', 'foo', 'bar', 'more']),
-			);
+			expect(hash('str', ['foo', 'bar'], 'more')).toBe(hash(['str', 'foo', 'bar', 'more']));
 		});
 	});
 });
