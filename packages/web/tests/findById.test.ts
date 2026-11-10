@@ -1,5 +1,5 @@
 import { findById } from '@jsfns/web/findById.js';
-import { afterAll, beforeAll, describe, expect, it } from 'vitest';
+import { afterAll, assert, beforeAll, describe, expect, it } from 'vitest';
 import { generateId, insertHtml, removeElement } from './assets/helpers.js';
 
 const testID = generateId('FindByIDTest');
@@ -21,13 +21,14 @@ describe('"findById"', () => {
 	});
 
 	it('Finds a DOM element with a given ID', () => {
-		const elm = findById(testID) as Element;
+		const elm = findById(testID);
 
-		expect(elm.id).toBe(testID);
+		expect(elm?.id).toBe(testID);
 	});
 
 	it('Finds only the first DOM element with a given duplicate ID', () => {
-		const elm = findById('Duplicate') as Element;
+		const elm = findById('Duplicate');
+		assert(elm);
 
 		expect(elm.id).toBe('Duplicate');
 		expect(elm.className).toBe('first');
