@@ -34,4 +34,30 @@ describe('"hash"', () => {
 			expect(hash(str)).not.toBe(hash(str2));
 		});
 	});
+
+	describe('"hash (string[])"', () => {
+		it('Returns an empty string when an empty array is given', () => {
+			expect(hash([])).toBe('');
+		});
+
+		it('Returns the same hash for the same array', () => {
+			expect(hash(['a', 'b'])).toBe(hash(['a', 'b']));
+		});
+
+		it('Does not collide on different item boundaries', () => {
+			expect(hash(['ab', 'c'])).not.toBe(hash(['a', 'bc']));
+		});
+	});
+
+	describe('"hash (multiple arguments)"', () => {
+		it('Returns an empty string when no arguments are given', () => {
+			expect(hash()).toBe('');
+		});
+
+		it('Mixes strings and arrays, equal to the flattened array', () => {
+			expect(hash('str', ['foo', 'bar'], 'more')).toBe(
+				hash(['str', 'foo', 'bar', 'more']),
+			);
+		});
+	});
 });

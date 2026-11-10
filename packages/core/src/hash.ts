@@ -27,13 +27,14 @@ export function hashCode(str: string): number {
  * @example
  * ```ts
  * hash('Hash this string'); // --> sg463l
+ * hash('Hash', ['this', 'string']); // --> hash of all parts joined by a null character
  * ```
  *
- * @param str - String to generate hash string from
+ * @param parts - Strings (or arrays of strings) to generate hash string from
  * @returns Hash string
  */
-export function hash(str: string): string {
-	const code = hashCode(str);
+export function hash(...parts: (string | string[])[]): string {
+	const code = hashCode(parts.flat().join('\0'));
 	return code === 0 ? '' : code.toString(36);
 }
 
