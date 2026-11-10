@@ -89,9 +89,9 @@ describe('"replaceNode"', () => {
 		it('With a given CSS selector', () => {
 			replaceNode(node, '.replacement');
 
-			const children = testNode.childNodes;
+			const { children } = testNode;
 			expect(children).toHaveLength(1);
-			expect((children[0] as Element).className).toBe('replacement');
+			expect(children[0].className).toBe('replacement');
 		});
 
 		it('With a DOM element elsewhere in the DOM', () => {
