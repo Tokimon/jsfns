@@ -139,6 +139,77 @@ describe('"parseSelector"', () => {
 		});
 	});
 
+	describe('Tailwind like class names', () => {
+		it.each([
+			'flex',
+			'bg-blue-400/10',
+			'w-1/2',
+			'aspect-[4/3]',
+			'-ml-2',
+			'2xl:flex',
+			'md:hidden',
+			'@sm:flex',
+			'!hidden',
+			'p-0.5',
+			'group/sidebar-wrapper',
+			'group-hover/name:opacity-50',
+			'peer-disabled:cursor-not-allowed',
+			'data-[active=true]:bg-sidebar-accent',
+			'bg-[#ecedef]',
+			'border-[1.5px]',
+			'content-[""]',
+			'bg-[linear-gradient(90deg,var(--color-muted)_0%,transparent_100%)]',
+			'[anchor-name:--suggestion]',
+			'[&+div]:text-xs',
+			'[&::-webkit-search-cancel-button]:appearance-none',
+			'dark:hover:text-foreground',
+			'hover:not-disabled:bg-primary',
+		])('Parses "%s" as a class name', (cn) => {
+			const result = parseSelector(`div.${cn}`);
+			expect(result.attributes).toEqual({ class: cn });
+			expect(result.tagName).toBe('div');
+		});
+
+		it('Parses multiple Tailwind classes, ID and attributes together', () => {
+			const result = parseSelector('button#id.-ml-2.md:p-0.5.bg-[#fff][type=submit].w-1/2');
+			expect(result.tagName).toBe('button');
+			expect(result.attributes).toEqual({
+				type: 'submit',
+				id: 'id',
+				class: '-ml-2 md:p-0.5 bg-[#fff] w-1/2',
+			});
+		});
+
+		it('Parses CSS escaped class names', () => {
+			expect(parseSelector(String.raw`.md\:hidden.w-1\/2.p-0\.5`).attributes.class).toBe(
+				'md:hidden w-1/2 p-0.5',
+			);
+		});
+
+		it('Treats a "." between two digits as a decimal', () => {
+			expect(parseSelector('.a.2xl:flex.p-0.5.b').attributes.class).toBe('a 2xl:flex p-0.5 b');
+		});
+
+		it('Parses nested brackets in arbitrary variants', () => {
+			expect(parseSelector('.[&[data-x]]:flex.block').attributes.class).toBe(
+				'[&[data-x]]:flex block',
+			);
+		});
+
+		it('Ignores attributes without a name, unclosed attributes and stray characters', () => {
+			const result = parseSelector('span b[=x].a [oops');
+			expect(result).toEqual({
+				tagName: 'span',
+				attributeList: ['class'],
+				attributes: { class: 'a' },
+			});
+		});
+
+		it('Still treats a bracket after a plain class name as an attribute', () => {
+			expect(parseSelector('.foo[bar=baz]').attributes).toEqual({ bar: 'baz', class: 'foo' });
+		});
+	});
+
 	it('Parses full selector', () => {
 		const result = parseSelector('span#id.class[data-attr="value"]');
 		expect(result).toEqual({
