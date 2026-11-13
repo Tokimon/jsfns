@@ -24,6 +24,7 @@ const phrases = [
 
 	['data-ABBR42number space', `data_abbr_42_number_space`],
 	['Look! 99 ? ABBR #Test', 'look_99_abbr_test'],
+	['École Über-straße', 'école_über_straße'],
 ];
 
 describe('"snakeCase"', () => {
