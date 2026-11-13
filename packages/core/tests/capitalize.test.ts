@@ -8,6 +8,8 @@ describe('"capitalize"', () => {
 		['with_underscore', 'With_underscore'],
 		['with ABBR', 'With ABBR'],
 		['Already some Capitalized words', 'Already Some Capitalized Words'],
+		['école über-straße', 'École Über-Straße'],
+		['99 words', '99 Words'],
 	])('Returns string capitalized: "%s"', (input, output) => {
 		expect(capitalize(input)).toBe(output);
 	});
