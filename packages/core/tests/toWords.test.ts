@@ -16,6 +16,9 @@ describe('"toWords"', () => {
 			'   MangledTMI77 - equals_some $AbStract....l8ter  ',
 			['Mangled', 'TMI', '77', 'equals', 'some', 'Ab', 'Stract', 'l', '8', 'ter'],
 		],
+		['ÉcoleÜber-straße', ['École', 'Über', 'straße']],
+		['日本語2go', ['日本語', '2', 'go']],
+		['--- __ ', []],
 	])('Splits "%s" into words', (input, output) => {
 		expect(toWords(input)).toStrictEqual(output);
 	});
