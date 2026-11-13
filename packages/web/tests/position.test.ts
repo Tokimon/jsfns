@@ -1,11 +1,12 @@
-import position from '@jsfns/web/position.js';
+import { positionAbsolute, positionRelative, positionRelativeTo } from '@jsfns/web/position.js';
 import { afterAll, beforeAll, describe, expect, it, type MockInstance } from 'vitest';
 import { byId, generateId, getOne, insertHtml, removeElement } from './assets/helpers.js';
 import { mockOffsetParent, mockOffsetPosition } from './assets/mocks.js';
 
 const testID = generateId('position');
+const zero = { top: 0, left: 0, right: 0, bottom: 0 };
 
-describe('"position"', () => {
+describe('"position" methods', () => {
 	let testNode: HTMLElement;
 	let ChildElm: HTMLElement;
 	let FixedElm: HTMLElement;
@@ -37,25 +38,49 @@ describe('"position"', () => {
 		removeElement(testNode);
 	});
 
-	it('Returns position of a given element', () => {
-		const { top, left, right, bottom } = position(ChildElm);
-		expect({ top, left, right, bottom }).toEqual({ top: 350, left: 450, right: 550, bottom: 600 });
+	it.each([
+		['positionAbsolute', positionAbsolute, { top: 350, left: 450, right: 550, bottom: 600 }],
+		['positionRelative', positionRelative, { top: 300, left: 400, right: 500, bottom: 550 }],
+	])('"%s" returns the position of a given element', (_, fn, expected) => {
+		expect(fn(ChildElm)).toEqual(expected);
 	});
 
-	it('Returns position of a given element compared to its offset parent', () => {
-		const { relative } = position(ChildElm);
-		expect(relative).toEqual({ top: 300, left: 400, right: 500, bottom: 550 });
+	it('Fixed elements have the same absolute and relative position', () => {
+		const expected = { top: 300, left: 400, right: 500, bottom: 550 };
+		expect(positionAbsolute(FixedElm)).toEqual(expected);
+		expect(positionRelative(FixedElm)).toEqual(expected);
 	});
 
-	it('Returns position of a given fixed element', () => {
-		const { top, left, right, bottom, relative } = position(FixedElm);
-		const expectation = { top: 300, left: 400, right: 500, bottom: 550 };
+	describe('positionRelativeTo', () => {
+		it('Returns position compared to an ancestor', () => {
+			const parent = getOne(`#${testID} #Parent`);
+			expect(positionRelativeTo(ChildElm, parent)).toEqual({
+				top: 300,
+				left: 400,
+				right: 500,
+				bottom: 550,
+			});
+		});
 
-		expect({ top, left, right, bottom }).toEqual(expectation);
-		expect(relative).toEqual(expectation);
+		it('Returns position compared to a sibling', () => {
+			expect(positionRelativeTo(ChildElm, FixedElm)).toEqual({
+				top: 50,
+				left: 50,
+				right: 150,
+				bottom: 300,
+			});
+		});
+
+		it('Returns absolute position when target is null', () => {
+			expect(positionRelativeTo(ChildElm, null)).toEqual(positionAbsolute(ChildElm));
+		});
 	});
 
-	it('Returns 0 position when given element is null', () => {
-		expect(position(null)).toEqual({ top: 0, left: 0, right: 0, bottom: 0 });
+	it.each([
+		['positionAbsolute', positionAbsolute],
+		['positionRelative', positionRelative],
+		['positionRelativeTo', (elm: HTMLElement | null) => positionRelativeTo(elm, ChildElm)],
+	])('"%s" returns 0 position when given element is null', (_, fn) => {
+		expect(fn(null)).toEqual(zero);
 	});
 });
