@@ -20,14 +20,17 @@ export type CSSStyleDeclarationKeys = {
 		: K;
 }[keyof CSSStyleDeclaration];
 
+/** A value that can be set on a CSS property (`null` removes it) */
+export type CSSValue = string | number | null;
+
 /** The CSSStyle property names in kebab-case */
 export type KebabCaseCSSStyleDeclarationKeys = {
-	[K in CSSStyleDeclarationKeys as K extends string ? CamelToKebab<K> : never]?: string | number;
+	[K in CSSStyleDeclarationKeys as K extends string ? CamelToKebab<K> : never]?: CSSValue;
 };
 
 /** The CSSStyle property names in camelCase */
 export type CamelCaseCSSStyleDeclarationKeys = {
-	[K in CSSStyleDeclarationKeys as K extends string ? K : never]?: string | number;
+	[K in CSSStyleDeclarationKeys as K extends string ? K : never]?: CSSValue;
 };
 
 /** All valid CSS properties */
@@ -61,16 +64,11 @@ function applyValue(
 	}
 }
 
+const IMPORTANT = /\s*!\s*important\s*$/i;
+
 function setValue(elm: HTMLElement, property: CSSProperty, value: string | number | null): void {
-	let important = false;
-	let val = value;
-
-	if (isString(val) && val.includes('!important')) {
-		val = val.split(' ')[0];
-		important = true;
-	}
-
-	applyValue(elm, property, val, important);
+	const val = isString(value) ? value.replace(IMPORTANT, '') : value;
+	applyValue(elm, property, val, val !== value);
 }
 
 /**
@@ -104,7 +102,7 @@ function handleMultipleValues(
 ): CSSStyleDeclaration {
 	if (properties) {
 		for (const [key, value] of Object.entries(properties)) {
-			value && setValue(elm, key as CSSProperty, value);
+			value !== undefined && setValue(elm, key as CSSProperty, value);
 		}
 	}
 

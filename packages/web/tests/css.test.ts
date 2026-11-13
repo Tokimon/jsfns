@@ -128,6 +128,27 @@ describe('"css"', () => {
 			expect(testNode.style.cssText).toBe('font-size: 20em !important;');
 		});
 
+		it('Keeps multi-word values when `!important` is included', () => {
+			css(testNode, { border: '1px solid green !important' });
+			expect(testNode.style.cssText).toBe('border: 1px solid green !important;');
+		});
+
+		it('Handles `!important` regardless of case and spacing', () => {
+			css(testNode, { color: 'red !IMPORTANT' });
+			expect(testNode.style.cssText).toBe('color: red !important;');
+
+			css(testNode, { fontSize: '20em! important' });
+			expect(testNode.style.cssText).toBe('color: red !important; font-size: 20em !important;');
+		});
+
+		it('Removes properties with a `null` value', () => {
+			css(testNode, { color: 'red', fontSize: 20 });
+			expect(testNode.style.cssText).toBe('color: red; font-size: 20px;');
+
+			css(testNode, { color: null });
+			expect(testNode.style.cssText).toBe('font-size: 20px;');
+		});
+
 		it('Applies every property in the given mapping', () => {
 			css(testNode, {
 				fontSize: '20em !important',
