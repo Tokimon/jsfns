@@ -25,6 +25,7 @@ const phrases = [
 
 	['data-ABBR42number space', 'data ABBR 42 number space'],
 	['Look! 99 ? ABBR #Test', 'Look 99 ABBR Test'],
+	['École Über-straße', 'École Über straße'],
 ];
 
 describe('"phrasify"', () => {

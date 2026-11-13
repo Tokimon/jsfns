@@ -13,6 +13,7 @@ describe('"toCapitalizedPhrase"', () => {
 		['some99words', 'Some 99 Words'],
 		['HTMLElement', 'HTML Element'],
 		['  -spaced--out_ ', 'Spaced Out'],
+		['école über-straße', 'École Über Straße'],
 	])('Converts "%s" into "%s"', (input, output) => {
 		expect(toCapitalizedPhrase(input)).toBe(output);
 	});

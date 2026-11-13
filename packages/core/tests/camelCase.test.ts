@@ -41,6 +41,7 @@ const phrases: TestInput<CamelCaseSettings>[] = [
 
 	['data-ABBR42number space', ({ abbr }) => `data${abbrev(abbr)}42NumberSpace`],
 	['Look! 99 ? ABBR #Test', ({ abbr }) => `look99${abbrev(abbr)}Test`],
+	['École Über-straße', 'écoleÜberStraße'],
 ];
 
 describe('"camelCase"', () => {
