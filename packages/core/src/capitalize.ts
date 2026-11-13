@@ -19,10 +19,7 @@
  * ```
  */
 export function capitalize(str: string): string {
-	return str.replace(
-		/(^|[\s-])(\p{L})/gu,
-		(_, ...[before, char]: string[]) => before + char.toUpperCase(),
-	);
+	return str.replace(/(?<=^|[\s-])\p{L}/gu, (char) => char.toUpperCase());
 }
 
 export default capitalize;

@@ -10,6 +10,8 @@ describe('"capitalize"', () => {
 		['Already some Capitalized words', 'Already Some Capitalized Words'],
 		['école über-straße', 'École Über-Straße'],
 		['99 words', '99 Words'],
+		["it's école", "It's École"],
+		['straße über', 'Straße Über'],
 	])('Returns string capitalized: "%s"', (input, output) => {
 		expect(capitalize(input)).toBe(output);
 	});
