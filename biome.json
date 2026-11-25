@@ -17,6 +17,9 @@
 		"enabled": true,
 		"rules": {
 			"preset": "recommended",
+			"correctness": {
+				"noUnusedImports": { "level": "warn", "fix": "safe" }
+			},
 			"style": {
 				"useBlockStatements": "off",
 				"useTemplate": "off"
