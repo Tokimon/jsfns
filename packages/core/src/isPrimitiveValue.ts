@@ -22,3 +22,5 @@ import { isString } from './isString.js';
 export function isPrimitiveValue(x: unknown): x is number | string | boolean {
 	return isString(x) || isNumber(x) || isBoolean(x);
 }
+
+export default isPrimitiveValue;
