@@ -14,7 +14,6 @@ describe('"getByPointer"', () => {
 			['zero', { a: 0 }, '/a', 0],
 			['false', { a: false }, '/a', false],
 			['an empty string', { a: '' }, '/a', ''],
-			['the empty pointer (the input itself)', { a: 1 }, '', { a: 1 }],
 			['an empty key', { '': { '': 3 } }, '//', 3],
 			['an empty key after a segment', { a: { '': 1 } }, '/a/', 1],
 		])('Returns the value of %s', (_label, input, pointer, expected) => {
@@ -47,6 +46,7 @@ describe('"getByPointer"', () => {
 			['the pointer continues past a primitive', { a: 1 }, '/a/b'],
 			['the pointer continues past null', { a: null }, '/a/b'],
 			['the pointer does not start with "/"', { a: 1 }, 'a'],
+			['the empty pointer', { a: 1 }, ''],
 			['the pointer is a dot-path', { a: { b: 1 } }, 'a.b'],
 			['an empty segment is not ignored', { a: { b: 1 } }, '/a//b'],
 			['an inherited key is read', {}, '/constructor'],
