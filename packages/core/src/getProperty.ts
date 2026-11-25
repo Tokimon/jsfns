@@ -1,67 +1,42 @@
 import { isNumeric } from './isNumeric.js';
 import { isObjectLike } from './isObjectLike.js';
-import type { Dictionary } from './types.js';
+import type { Dictionary, FailedPathResolution, SuccessfulPathResolution } from './types.js';
 
-const failure = { success: false, value: null };
+const failure: FailedPathResolution = { success: false, value: null };
 
 /**
  * Read a value from an object or array by following a path of keys.
  *
- * Returns a `{ success, value }` discriminator — use `success` to distinguish
- * a missing path from a stored `null` or `undefined`.
+ * Returns `{ success, value }`: use `success` to tell a missing path from a stored `null`
+ * or `undefined`.
  *
- * @typeParam T - Optional type to assert the found value as (defaults to `unknown`).
- *                Not inferred from `input` - since `path` can navigate to any depth,
- *                there's no way to derive it automatically, so it must be given explicitly.
+ * @typeParam T - Type of the found value. Not inferred, and not checked at runtime.
  *
  * @param input - The object or array to read from
- * @param path - A dot-separated string (e.g. `'a.b.0.c'`) or an array of keys
- *               (e.g. `['a', 'b', '0', 'c']`). Empty segments are ignored, so
- *               `'a..b'` and `'.a.b.'` resolve the same as `'a.b'`.
+ * @param path - A dot-separated string (`'a.b.0'`) or an array of keys (`['a', 'b', '0']`).
+ *               Empty segments are ignored, so `'a..b'` equals `'a.b'`.
  *
- * @returns `{ success, value }` — see the property docs for details.
+ * @returns Whether the path was followed to its end, and the found value (`null` if it wasn't)
  *
  * @remarks
- * - An empty path (or one that filters down to no keys) returns
- *   `{ success: false, value: null }`.
- * - On arrays, only canonical numeric-string keys are accepted; `'length'`,
- *   `'map'`, and other inherited or non-numeric keys return failure.
- * - Sparse-array holes are treated as missing (`success: false`), not as a
- *   stored `undefined`.
- * - Only own properties are read; inherited ones (`'constructor'`, `'__proto__'`,
- *   `'toString'`, ...) return failure.
+ * - An empty path (or one with no keys left after filtering) fails.
+ * - Only own properties are read. Arrays only accept numeric keys, so `'length'` fails.
+ * - Sparse-array holes are missing, not a stored `undefined`.
  *
  * @example
  * ```ts
- * // Object input
  * getProperty({ a: { b: 2 } }, 'a.b'); // --> { success: true, value: 2 }
  * getProperty({ a: [{ b: 'hi' }] }, 'a.0.b'); // --> { success: true, value: 'hi' }
- * getProperty({ a: 1 }, 'a.b'); // --> { success: false, value: null }
- *
- * // Distinguishing missing from stored null
- * getProperty({ a: null }, 'a'); // --> { success: true, value: null }
- * getProperty({}, 'a');          // --> { success: false, value: null }
- *
- * // Array input
- * getProperty([10, 20, 30], '1'); // --> { success: true, value: 20 }
- * getProperty(['a', ['b', 'c']], '1.0'); // --> { success: true, value: 'b' }
- *
- * // Array path
  * getProperty({ a: { b: 2 } }, ['a', 'b']); // --> { success: true, value: 2 }
- *
- * // Asserting the value's type explicitly (not inferred - see @typeParam)
- * getProperty<number>({ a: { b: 2 } }, 'a.b'); // --> value is typed `number | null`
+ * getProperty({ a: null }, 'a'); // --> { success: true, value: null }
+ * getProperty({}, 'a'); // --> { success: false, value: null }
+ * getProperty<number>({ a: { b: 2 } }, 'a.b'); // --> value is `number | null`, `number` once `success` is checked
  * ```
  */
 export function getProperty<T = unknown>(
 	input: Dictionary | unknown[],
 	path: string | string[],
-): {
-	/** Whether the path was fully traversed */
-	success: boolean;
-	/** The value at the path, or `null` if any step could not be traversed */
-	value: T | null;
-} {
+): SuccessfulPathResolution<T> | FailedPathResolution {
 	const keys = (Array.isArray(path) ? path : path.split('.')).filter(Boolean);
 	if (!keys.length) return failure;
 

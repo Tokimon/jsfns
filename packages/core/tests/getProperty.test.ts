@@ -163,6 +163,12 @@ describe('"getProperty"', () => {
 			expectTypeOf(getProperty({ a: { b: 2 } }, 'a.b').value).toEqualTypeOf<unknown>();
 		});
 
+		it('Narrows `value` once `success` is checked', () => {
+			const result = getProperty<number>({ a: { b: 2 } }, 'a.b');
+			if (result.success) expectTypeOf(result.value).toEqualTypeOf<number>();
+			else expectTypeOf(result.value).toEqualTypeOf<null>();
+		});
+
 		it('Types `value` as given, when a type argument is explicitly provided', () => {
 			expectTypeOf(getProperty<number>({ a: { b: 2 } }, 'a.b').value).toEqualTypeOf<
 				number | null
