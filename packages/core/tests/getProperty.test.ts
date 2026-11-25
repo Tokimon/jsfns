@@ -104,6 +104,13 @@ describe('"getProperty"', () => {
 			expect(getProperty([1, 2], 'length').success).toBe(false);
 		});
 
+		it.each(['constructor', '__proto__', 'toString', 'a.constructor.name', 'a.__proto__.x'])(
+			'an inherited property is read: "%s"',
+			(path) => {
+				expect(getProperty({ a: {} }, path)).toEqual({ success: false, value: null });
+			},
+		);
+
 		it('the path continues past a primitive', () => {
 			expect(getProperty({ a: 1 }, 'a.b').success).toBe(false);
 		});
