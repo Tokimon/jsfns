@@ -2,6 +2,8 @@ import { isNumeric } from './isNumeric.js';
 import { isObjectLike } from './isObjectLike.js';
 import type { Dictionary } from './types.js';
 
+const failure = { success: false, value: null };
+
 /**
  * Read a value from an object or array by following a path of keys.
  *
@@ -26,6 +28,8 @@ import type { Dictionary } from './types.js';
  *   `'map'`, and other inherited or non-numeric keys return failure.
  * - Sparse-array holes are treated as missing (`success: false`), not as a
  *   stored `undefined`.
+ * - Only own properties are read; inherited ones (`'constructor'`, `'__proto__'`,
+ *   `'toString'`, ...) return failure.
  *
  * @example
  * ```ts
@@ -59,8 +63,6 @@ export function getProperty<T = unknown>(
 	value: T | null;
 } {
 	const keys = (Array.isArray(path) ? path : path.split('.')).filter(Boolean);
-	const failure = { success: false, value: null };
-
 	if (!keys.length) return failure;
 
 	let current: unknown = input;
@@ -68,10 +70,12 @@ export function getProperty<T = unknown>(
 	for (const key of keys) {
 		if (!isObjectLike(current)) return failure;
 		if (Array.isArray(current) && !isNumeric(key)) return failure;
-		if (!(key in current)) return failure;
+		if (!Object.hasOwn(current, key)) return failure;
 
 		current = (current as Dictionary)[key];
 	}
 
 	return { success: true, value: current as T };
 }
+
+export default getProperty;
