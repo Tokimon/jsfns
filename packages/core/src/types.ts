@@ -31,3 +31,23 @@ export type Maybe<T> = T | null | undefined;
  * @typeParam T - The type of the record's values
  */
 export type Dictionary<T = unknown> = Record<string, T>;
+
+/**
+ * The result of following a path that could be fully traversed
+ *
+ * @typeParam T - The type of the found value
+ */
+export type SuccessfulPathResolution<T> = {
+	/** Path resolved successfully */
+	success: true;
+	/** The found value */
+	value: T;
+};
+
+/** The result of following a path that could not be fully traversed */
+export type FailedPathResolution = {
+	/** Path failed to resolve */
+	success: false;
+	/** Value not found, so always `null` */
+	value: null;
+};
