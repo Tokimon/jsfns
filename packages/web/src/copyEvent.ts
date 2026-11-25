@@ -32,3 +32,5 @@ export function copyEvent<T extends Event>(event: T, currentTarget?: EventTarget
 
 	return copy;
 }
+
+export default copyEvent;

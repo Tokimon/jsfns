@@ -49,3 +49,5 @@ export function isEmpty(x: unknown) {
 
 	return false;
 }
+
+export default isEmpty;
