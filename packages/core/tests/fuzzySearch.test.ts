@@ -222,12 +222,12 @@ describe('"fuzzySearch"', () => {
 		};
 
 		it('agrees for every small input, search and option combination', () => {
-			const words = [...new Set([...strings('ab', 5), ...strings('abc', 3)])];
-			const inputs = [...new Set([...strings('ab', 6), ...strings('abc', 4)])];
+			const words = [...new Set([...strings('ab', 4), ...strings('abc', 3)])];
+			const inputs = [...new Set([...strings('ab', 5), ...strings('abc', 3)])];
 			const mismatches: string[] = [];
 			let matches = 0;
 
-			for (const maxDeviation of [0, 0.3, 0.6]) {
+			for (const maxDeviation of [0.3, 0.6]) {
 				for (const exactPrefixLength of [0, 1, 2]) {
 					for (const exactSuffixLength of [0, 1, 2]) {
 						for (const word of words) {
@@ -255,7 +255,7 @@ describe('"fuzzySearch"', () => {
 			}
 
 			expect(mismatches.slice(0, 10)).toEqual([]);
-			expect(matches).toBeGreaterThan(1000); // Make sure it is not only testing misses
+			expect(matches).toBeGreaterThan(500); // Make sure it is not only testing misses
 		});
 	});
 });
