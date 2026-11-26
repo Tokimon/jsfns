@@ -10,25 +10,8 @@ export type SubscribeOptions<TEvents extends Dictionary, K extends keyof TEvents
 	once?: boolean;
 };
 
-/**
- * A simple, environment-agnostic event bus. Instantiate once and use that single
- * instance to subscribe to and trigger typed events, without binding to any other source.
- *
- * @typeParam TEvents - A dictionary mapping event names to the type of data they carry
- *
- * @example
- *
- * ```ts
- * const events = new MicroEvents<{ greet: string }>();
- * const unsubscribe = events.subscribe('greet', (name) => console.log(`Hello, ${name}!`));
- *
- * events.trigger('greet', 'World'); // Logs: "Hello, World!"
- * unsubscribe();
- * ```
- */
-export class MicroEvents<TEvents extends Dictionary> {
-	#subs = new Map<keyof TEvents, Set<SubscriptionHandler<TEvents>>>();
-
+/** The event bus returned by {@link microEvents} */
+export type MicroEvents<TEvents extends Dictionary> = {
 	/**
 	 * Subscribe a handler to the given event
 	 *
@@ -51,24 +34,7 @@ export class MicroEvents<TEvents extends Dictionary> {
 		eventName: K,
 		handler: (data: TEvents[K]) => unknown,
 		options?: SubscribeOptions<TEvents, K>,
-	): () => void {
-		let fn = handler;
-		const { when, once } = options ?? {};
-
-		if (when || once) {
-			fn = (data) => {
-				if (when && !when(data)) return;
-				if (once) this.unsubscribe(eventName, fn);
-				return handler(data);
-			};
-		}
-
-		const set = this.#subs.get(eventName) ?? new Set();
-		set.add(fn as SubscriptionHandler<TEvents>);
-		this.#subs.set(eventName, set);
-
-		return () => this.unsubscribe(eventName, fn);
-	}
+	): () => void;
 
 	/**
 	 * Remove a specific handler previously subscribed to the given event
@@ -77,9 +43,7 @@ export class MicroEvents<TEvents extends Dictionary> {
 	 * @param handler - The handler to remove (the exact reference passed to, or returned by, `subscribe`)
 	 * @typeParam K - The inferred event name
 	 */
-	unsubscribe<K extends keyof TEvents>(eventName: K, handler: (data: TEvents[K]) => unknown): void {
-		this.#subs.get(eventName)?.delete(handler as SubscriptionHandler<TEvents>);
-	}
+	unsubscribe<K extends keyof TEvents>(eventName: K, handler: (data: TEvents[K]) => unknown): void;
 
 	/**
 	 * Remove every handler subscribed to the given event
@@ -87,9 +51,7 @@ export class MicroEvents<TEvents extends Dictionary> {
 	 * @param eventName - The event to clear all handlers from
 	 * @typeParam K - The inferred event name
 	 */
-	unsubscribeAll<K extends keyof TEvents>(eventName: K): void {
-		this.#subs.get(eventName)?.clear();
-	}
+	unsubscribeAll<K extends keyof TEvents>(eventName: K): void;
 
 	/**
 	 * Call every handler subscribed to the given event with the given data
@@ -98,7 +60,62 @@ export class MicroEvents<TEvents extends Dictionary> {
 	 * @param data - The data to pass to each subscribed handler
 	 * @typeParam K - The inferred event name
 	 */
-	trigger<K extends keyof TEvents>(eventName: K, data: TEvents[K]): void {
-		for (const fn of this.#subs.get(eventName) ?? []) fn(data);
-	}
+	trigger<K extends keyof TEvents>(eventName: K, data: TEvents[K]): void;
+};
+
+/**
+ * Create a simple, environment-agnostic event bus. Create it once and use that single
+ * instance to subscribe to and trigger typed events, without binding to any other source.
+ *
+ * @typeParam TEvents - A dictionary mapping event names to the type of data they carry
+ *
+ * @example
+ *
+ * ```ts
+ * const events = microEvents<{ greet: string }>();
+ * const unsubscribe = events.subscribe('greet', (name) => console.log(`Hello, ${name}!`));
+ *
+ * events.trigger('greet', 'World'); // Logs: "Hello, World!"
+ * unsubscribe();
+ * ```
+ */
+export function microEvents<TEvents extends Dictionary>(): MicroEvents<TEvents> {
+	const subs = new Map<keyof TEvents, Set<SubscriptionHandler<TEvents>>>();
+
+	const unsubscribe: MicroEvents<TEvents>['unsubscribe'] = (eventName, handler) => {
+		subs.get(eventName)?.delete(handler as SubscriptionHandler<TEvents>);
+	};
+
+	return {
+		subscribe(eventName, handler, options) {
+			let fn = handler;
+			const { when, once } = options ?? {};
+
+			if (when || once) {
+				fn = (data) => {
+					if (when && !when(data)) return;
+					if (once) unsubscribe(eventName, fn);
+					return handler(data);
+				};
+			}
+
+			const set = subs.get(eventName) ?? new Set();
+			set.add(fn as SubscriptionHandler<TEvents>);
+			subs.set(eventName, set);
+
+			return () => unsubscribe(eventName, fn);
+		},
+
+		unsubscribe,
+
+		unsubscribeAll(eventName) {
+			subs.get(eventName)?.clear();
+		},
+
+		trigger(eventName, data) {
+			for (const fn of subs.get(eventName) ?? []) fn(data);
+		},
+	};
 }
+
+export default microEvents;

@@ -3,7 +3,7 @@
 # Verifies every src file has a default export (files with no single main export are skipped)
 
 workspaceName=$(basename $PWD)
-skip=" index types MicroEvents position "
+skip=" index types position "
 
 missing=0
 

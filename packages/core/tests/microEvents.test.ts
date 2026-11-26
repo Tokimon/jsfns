@@ -1,4 +1,4 @@
-import { MicroEvents } from '@jsfns/core/MicroEvents.js';
+import { microEvents } from '@jsfns/core/microEvents.js';
 import { describe, expect, expectTypeOf, it, vi } from 'vitest';
 
 type TestEvents = {
@@ -7,10 +7,10 @@ type TestEvents = {
 	payload: { id: number; tags: string[] };
 };
 
-describe('"MicroEvents"', () => {
+describe('"microEvents"', () => {
 	describe('subscribe & trigger', () => {
 		it('Calls the subscribed handler with the triggered data', () => {
-			const events = new MicroEvents<TestEvents>();
+			const events = microEvents<TestEvents>();
 
 			const handler = vi.fn();
 
@@ -21,7 +21,7 @@ describe('"MicroEvents"', () => {
 		});
 
 		it('Calls all handlers subscribed to the same event', () => {
-			const events = new MicroEvents<TestEvents>();
+			const events = microEvents<TestEvents>();
 
 			const handlerA = vi.fn();
 			const handlerB = vi.fn();
@@ -36,7 +36,7 @@ describe('"MicroEvents"', () => {
 		});
 
 		it('Only calls handlers subscribed to the triggered event', () => {
-			const events = new MicroEvents<TestEvents>();
+			const events = microEvents<TestEvents>();
 
 			const greetHandler = vi.fn();
 			const countHandler = vi.fn();
@@ -51,13 +51,13 @@ describe('"MicroEvents"', () => {
 		});
 
 		it('Does nothing when triggering an event with no subscribers', () => {
-			const events = new MicroEvents<TestEvents>();
+			const events = microEvents<TestEvents>();
 
 			expect(() => events.trigger('greet', 'World')).not.toThrow();
 		});
 
 		it('Subscribing the same handler reference twice only calls it once per trigger', () => {
-			const events = new MicroEvents<TestEvents>();
+			const events = microEvents<TestEvents>();
 
 			const handler = vi.fn();
 
@@ -70,7 +70,7 @@ describe('"MicroEvents"', () => {
 		});
 
 		it('Calls handlers in the order they were subscribed', () => {
-			const events = new MicroEvents<TestEvents>();
+			const events = microEvents<TestEvents>();
 
 			const order: string[] = [];
 
@@ -84,7 +84,7 @@ describe('"MicroEvents"', () => {
 		});
 
 		it('Passes object/array data through by reference, without cloning', () => {
-			const events = new MicroEvents<TestEvents>();
+			const events = microEvents<TestEvents>();
 
 			const handler = vi.fn();
 			const data = { id: 1, tags: ['a', 'b'] };
@@ -96,7 +96,7 @@ describe('"MicroEvents"', () => {
 		});
 
 		it('Stops calling subsequent handlers when an earlier one throws', () => {
-			const events = new MicroEvents<TestEvents>();
+			const events = microEvents<TestEvents>();
 
 			const laterHandler = vi.fn();
 
@@ -110,8 +110,8 @@ describe('"MicroEvents"', () => {
 		});
 
 		it('Keeps subscriptions of separate instances independent', () => {
-			const eventsA = new MicroEvents<TestEvents>();
-			const eventsB = new MicroEvents<TestEvents>();
+			const eventsA = microEvents<TestEvents>();
+			const eventsB = microEvents<TestEvents>();
 
 			const handler = vi.fn();
 
@@ -124,7 +124,7 @@ describe('"MicroEvents"', () => {
 
 		describe('Mutating subscriptions during a trigger', () => {
 			it('Calls a handler subscribed from inside another handler during the same trigger', () => {
-				const events = new MicroEvents<TestEvents>();
+				const events = microEvents<TestEvents>();
 
 				const lateHandler = vi.fn();
 				const earlyHandler = vi.fn(() => {
@@ -138,7 +138,7 @@ describe('"MicroEvents"', () => {
 			});
 
 			it('Skips a not-yet-called handler that is unsubscribed from inside another handler', () => {
-				const events = new MicroEvents<TestEvents>();
+				const events = microEvents<TestEvents>();
 
 				const laterHandler = vi.fn();
 				const earlyHandler = vi.fn(() => {
@@ -153,7 +153,7 @@ describe('"MicroEvents"', () => {
 			});
 
 			it('Skips remaining handlers when `unsubscribeAll` clears the event from inside a handler', () => {
-				const events = new MicroEvents<TestEvents>();
+				const events = microEvents<TestEvents>();
 
 				const laterHandler = vi.fn();
 				const earlyHandler = vi.fn(() => {
@@ -171,7 +171,7 @@ describe('"MicroEvents"', () => {
 
 	describe('The function returned from `subscribe`', () => {
 		it('Removes the handler when called', () => {
-			const events = new MicroEvents<TestEvents>();
+			const events = microEvents<TestEvents>();
 
 			const handler = vi.fn();
 
@@ -184,7 +184,7 @@ describe('"MicroEvents"', () => {
 		});
 
 		it('Does nothing when called more than once', () => {
-			const events = new MicroEvents<TestEvents>();
+			const events = microEvents<TestEvents>();
 
 			const unsubscribe = events.subscribe('greet', vi.fn());
 
@@ -196,7 +196,7 @@ describe('"MicroEvents"', () => {
 
 	describe('unsubscribe', () => {
 		it('Removes a specific handler for the given event', () => {
-			const events = new MicroEvents<TestEvents>();
+			const events = microEvents<TestEvents>();
 
 			const handlerA = vi.fn();
 			const handlerB = vi.fn();
@@ -212,7 +212,7 @@ describe('"MicroEvents"', () => {
 		});
 
 		it('Does nothing when the handler was never subscribed', () => {
-			const events = new MicroEvents<TestEvents>();
+			const events = microEvents<TestEvents>();
 
 			expect(() => events.unsubscribe('greet', vi.fn())).not.toThrow();
 		});
@@ -221,7 +221,7 @@ describe('"MicroEvents"', () => {
 			it('once', () => {
 				// `subscribe` stores an internal wrapper when `once`/`when` are used, not the
 				// original function, so only the closure returned from `subscribe` can remove it.
-				const events = new MicroEvents<TestEvents>();
+				const events = microEvents<TestEvents>();
 
 				const handler = vi.fn();
 
@@ -236,7 +236,7 @@ describe('"MicroEvents"', () => {
 			it('when', () => {
 				// `subscribe` stores an internal wrapper when `once`/`when` are used, not the
 				// original function, so only the closure returned from `subscribe` can remove it.
-				const events = new MicroEvents<TestEvents>();
+				const events = microEvents<TestEvents>();
 
 				const handler = vi.fn();
 
@@ -252,7 +252,7 @@ describe('"MicroEvents"', () => {
 
 	describe('unsubscribeAll', () => {
 		it('Removes every handler for the given event', () => {
-			const events = new MicroEvents<TestEvents>();
+			const events = microEvents<TestEvents>();
 
 			const handlerA = vi.fn();
 			const handlerB = vi.fn();
@@ -268,7 +268,7 @@ describe('"MicroEvents"', () => {
 		});
 
 		it('Leaves other events untouched', () => {
-			const events = new MicroEvents<TestEvents>();
+			const events = microEvents<TestEvents>();
 			const greetHandler = vi.fn();
 			const countHandler = vi.fn();
 			events.subscribe('greet', greetHandler);
@@ -281,7 +281,7 @@ describe('"MicroEvents"', () => {
 		});
 
 		it('Does nothing when the event has no subscribers', () => {
-			const events = new MicroEvents<TestEvents>();
+			const events = microEvents<TestEvents>();
 
 			expect(() => events.unsubscribeAll('greet')).not.toThrow();
 		});
@@ -290,7 +290,7 @@ describe('"MicroEvents"', () => {
 			it('once', () => {
 				// `subscribe` stores an internal wrapper when `once`/`when` are used, not the
 				// original function, so only the closure returned from `subscribe` can remove it.
-				const events = new MicroEvents<TestEvents>();
+				const events = microEvents<TestEvents>();
 
 				const handler = vi.fn();
 
@@ -305,7 +305,7 @@ describe('"MicroEvents"', () => {
 			it('when', () => {
 				// `subscribe` stores an internal wrapper when `once`/`when` are used, not the
 				// original function, so only the closure returned from `subscribe` can remove it.
-				const events = new MicroEvents<TestEvents>();
+				const events = microEvents<TestEvents>();
 
 				const handler = vi.fn();
 
@@ -322,7 +322,7 @@ describe('"MicroEvents"', () => {
 	describe('Subscription options', () => {
 		describe('{ once }', () => {
 			it('Only calls the handler on the first trigger', () => {
-				const events = new MicroEvents<TestEvents>();
+				const events = microEvents<TestEvents>();
 
 				const handler = vi.fn();
 
@@ -335,7 +335,7 @@ describe('"MicroEvents"', () => {
 			});
 
 			it('Passing `false` does nothing', () => {
-				const events = new MicroEvents<TestEvents>();
+				const events = microEvents<TestEvents>();
 
 				const handler = vi.fn();
 
@@ -350,7 +350,7 @@ describe('"MicroEvents"', () => {
 
 		describe('{ when }', () => {
 			it('Only calls the handler when the predicate returns `true`', () => {
-				const events = new MicroEvents<TestEvents>();
+				const events = microEvents<TestEvents>();
 
 				const handler = vi.fn();
 
@@ -363,7 +363,7 @@ describe('"MicroEvents"', () => {
 			});
 
 			it('Keeps the subscription active after the predicate returns `false`', () => {
-				const events = new MicroEvents<TestEvents>();
+				const events = microEvents<TestEvents>();
 
 				const handler = vi.fn();
 
@@ -384,7 +384,7 @@ describe('"MicroEvents"', () => {
 
 		describe('{ once, when }', () => {
 			it('Does not remove the handler on a trigger the predicate rejects', () => {
-				const events = new MicroEvents<TestEvents>();
+				const events = microEvents<TestEvents>();
 
 				const handler = vi.fn();
 
@@ -396,7 +396,7 @@ describe('"MicroEvents"', () => {
 			});
 
 			it('Removes the handler only after the predicate first passes', () => {
-				const events = new MicroEvents<TestEvents>();
+				const events = microEvents<TestEvents>();
 
 				const handler = vi.fn();
 
@@ -413,7 +413,7 @@ describe('"MicroEvents"', () => {
 
 	describe('Typing', () => {
 		it('Types the handler data parameter to the specific event', () => {
-			const events = new MicroEvents<TestEvents>();
+			const events = microEvents<TestEvents>();
 
 			events.subscribe('greet', (data) => {
 				expectTypeOf(data).toEqualTypeOf<string>();
@@ -421,27 +421,27 @@ describe('"MicroEvents"', () => {
 		});
 
 		it('Types the function returned from `subscribe` as a plain cleanup function', () => {
-			const events = new MicroEvents<TestEvents>();
+			const events = microEvents<TestEvents>();
 
 			expectTypeOf(events.subscribe('greet', () => {})).toEqualTypeOf<() => void>();
 		});
 
 		it('Rejects a handler whose data type does not match the event', () => {
-			const events = new MicroEvents<TestEvents>();
+			const events = microEvents<TestEvents>();
 
 			// @ts-expect-error `greet` carries a string, not a number
 			events.subscribe('greet', (data: number) => data);
 		});
 
 		it('Rejects an event name that is not a key of `TEvents`', () => {
-			const events = new MicroEvents<TestEvents>();
+			const events = microEvents<TestEvents>();
 
 			// @ts-expect-error `unknown` is not a key of `TestEvents`
 			events.subscribe('unknown', () => {});
 		});
 
 		it('Types the `when` predicate parameter to the specific event', () => {
-			const events = new MicroEvents<TestEvents>();
+			const events = microEvents<TestEvents>();
 
 			events.subscribe('greet', () => {}, {
 				when: (data) => {
@@ -452,21 +452,21 @@ describe('"MicroEvents"', () => {
 		});
 
 		it('Rejects an event name in `unsubscribe` that is not a key of `TEvents`', () => {
-			const events = new MicroEvents<TestEvents>();
+			const events = microEvents<TestEvents>();
 
 			// @ts-expect-error `unknown` is not a key of `TestEvents`
 			events.unsubscribe('unknown', () => {});
 		});
 
 		it('Rejects an event name in `unsubscribeAll` that is not a key of `TEvents`', () => {
-			const events = new MicroEvents<TestEvents>();
+			const events = microEvents<TestEvents>();
 
 			// @ts-expect-error `unknown` is not a key of `TestEvents`
 			events.unsubscribeAll('unknown');
 		});
 
 		it('Rejects triggering an event with data of the wrong type', () => {
-			const events = new MicroEvents<TestEvents>();
+			const events = microEvents<TestEvents>();
 
 			// @ts-expect-error `count` expects a number, not a string
 			events.trigger('count', 'nope');
